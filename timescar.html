@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>移動シミュレーター｜タイムズカー料金シミュレーター</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #eef1f5;
+        --surface: #ffffff;
+        --surface-2: #f6f8fa;
+        --ink: #14273c;
+        --ink-soft: #4c5f73;
+        --line: #d8dfe8;
+        --navy: #0c2a4d;
+        --navy-2: #10365f;
+        --amber: #ffb700;
+        --amber-ink: #8a5f00;
+        --good: #0d7a4e;
+        --good-bg: #e2f3ea;
+        --warn: #b3261e;
+        --warn-bg: #fbe9e7;
+        --seg-bg: #e7ecf2;
+        --seg-on: #0c2a4d;
+        --seg-on-ink: #ffffff;
+        --shadow: 0 10px 30px rgba(12, 42, 77, .10);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0a141f;
+          --surface: #111f2f;
+          --surface-2: #0d1a29;
+          --ink: #e9eff6;
+          --ink-soft: #9db0c4;
+          --line: #26374c;
+          --navy: #0a2138;
+          --navy-2: #0e2c4a;
+          --amber-ink: #ffcf4d;
+          --good: #4cc38a;
+          --good-bg: #123528;
+          --warn: #ff9d94;
+          --warn-bg: #3d1d1a;
+          --seg-bg: #1b2c40;
+          --seg-on: #ffb700;
+          --seg-on-ink: #231a00;
+          --shadow: 0 10px 30px rgba(0, 0, 0, .45);
+        }
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; scroll-padding-bottom: 110px; }
+      select, input[type="number"] { scroll-margin-bottom: 110px; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+        line-height: 1.65;
+      }
+      .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+      button, select, input { font: inherit; color: inherit; }
+      select, input[type="number"] { min-height: 44px; }
+
+      .wrap { max-width: 1080px; margin: 0 auto; padding: 12px 16px 96px; }
+
+      header.page-head { margin: 2px 0 10px; }
+      header.page-head h1 { font-size: clamp(24px, 5vw, 34px); font-weight: 900; letter-spacing: .02em; margin: 0; }
+
+      .layout { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 20px; align-items: start; }
+      @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+
+      .panel {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        padding: 20px;
+      }
+      .panel + .panel { margin-top: 20px; }
+      .panel h2 { font-size: 17px; font-weight: 900; margin: 0 0 10px; display: flex; align-items: baseline; gap: 10px; }
+      .panel h2 .h-note { font-size: 12px; font-weight: 500; color: var(--ink-soft); }
+
+      .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      @media (max-width: 520px) { .grid2 { grid-template-columns: 1fr; } }
+      .field label, .field .f-label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+      .field .hint { font-size: 12px; color: var(--ink-soft); margin-top: 5px; }
+      select, input[type="number"] {
+        width: 100%; padding: 8px 12px;
+        background: var(--surface); border: 1px solid var(--line); border-radius: 9px;
+      }
+      select:focus-visible, input:focus-visible { outline: 2px solid var(--amber); outline-offset: 1px; }
+      .unit-wrap { position: relative; }
+      .unit-wrap input { padding-right: 44px; }
+      .unit-wrap .unit { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--ink-soft); font-size: 13px; pointer-events: none; }
+      .map-links { font-size: 12px; color: var(--ink-soft); margin-top: 6px; line-height: 1.9; }
+      .map-links a { color: var(--amber-ink); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+      .map-links a:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+
+      .or-divider { display: flex; align-items: center; gap: 12px; margin: 10px 0 8px; color: var(--ink-soft); font-size: 12px; font-weight: 700; }
+      .or-divider::before, .or-divider::after { content: ""; flex: 1; border-top: 1px dashed var(--line); }
+      .dimmed { opacity: .55; }
+      .dimmed .hint { opacity: 1; color: var(--amber-ink); font-weight: 700; }
+
+      /* segmented radios */
+      .seg { display: flex; background: var(--seg-bg); border-radius: 10px; padding: 4px; gap: 4px; }
+      .seg label { flex: 1; position: relative; }
+      .seg input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; padding: 0; appearance: none; -webkit-appearance: none; background: transparent; border: 0; border-radius: 7px; cursor: pointer; }
+      .seg .seg-face {
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        min-height: 44px; padding: 6px 4px; border-radius: 7px; text-align: center;
+        font-size: 14px; font-weight: 700; line-height: 1.3; cursor: pointer;
+      }
+      .seg .seg-face small { font-size: 11px; font-weight: 500; opacity: .75; }
+      .seg input:checked + .seg-face { background: var(--seg-on); color: var(--seg-on-ink); box-shadow: 0 2px 8px rgba(0,0,0,.18); }
+      .seg input:focus-visible + .seg-face { outline: 2px solid var(--amber); outline-offset: 2px; }
+      .seg.two .seg-face { flex-direction: row; gap: 6px; }
+
+      .opt-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      @media (max-width: 520px) { .opt-row { grid-template-columns: 1fr; } }
+
+      /* result / fare meter */
+      aside.result {
+        position: sticky; top: 16px;
+        background: var(--navy); color: #eef3f9;
+        border-radius: 14px; box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      @media (max-width: 860px) { aside.result { position: static; } }
+      .result-inner { padding: 20px; }
+      .plan-badge {
+        display: inline-block; background: var(--amber); color: #231a00;
+        font-weight: 900; font-size: 14px; padding: 4px 12px; border-radius: 999px;
+      }
+      .total-label { font-size: 12px; letter-spacing: .14em; color: #a9bfd8; margin-top: 16px; }
+      .total { display: flex; align-items: baseline; gap: 6px; margin: 2px 0 4px; }
+      .total .yen { font-size: 20px; font-weight: 700; color: var(--amber); }
+      .total .amount { font-size: 46px; font-weight: 700; line-height: 1; color: #fff; }
+      .total .tax { font-size: 12px; color: #a9bfd8; }
+      .save-banner {
+        display: none; margin-top: 10px; background: rgba(76, 195, 138, .16);
+        border: 1px solid rgba(76, 195, 138, .5); color: #8fe3b6;
+        border-radius: 9px; padding: 8px 12px; font-size: 13px; font-weight: 700;
+      }
+      .save-banner.show { display: block; }
+      .fare-rows { margin-top: 16px; border-top: 1px dashed rgba(255,255,255,.28); }
+      .fare-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 9px 0; border-bottom: 1px dashed rgba(255,255,255,.18); font-size: 14px; }
+      .fare-row .r-name { color: #cfdcec; }
+      .fare-row .r-name small { display: block; font-size: 11px; color: #8fa6c0; }
+      .fare-row .r-val { font-weight: 600; white-space: nowrap; }
+      .fare-row.minus .r-val { color: #8fe3b6; }
+      .fare-row.zero { opacity: .45; }
+      .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+      .meta-box { background: var(--navy-2); border-radius: 9px; padding: 10px 12px; }
+      .meta-box .m-label { font-size: 11px; color: #8fa6c0; }
+      .meta-box .m-val { font-size: 17px; font-weight: 700; }
+      .ref-rows { margin-top: 14px; font-size: 12.5px; color: #a9bfd8; }
+      .ref-rows div { display: flex; justify-content: space-between; padding: 3px 0; }
+      .warn-box {
+        display: none; margin-top: 14px; background: var(--warn-bg); color: var(--warn);
+        border-radius: 9px; padding: 9px 12px; font-size: 13px; font-weight: 700;
+      }
+      .warn-box.show { display: block; }
+      details.breakdown { margin-top: 16px; border-top: 1px solid rgba(255,255,255,.16); padding-top: 10px; }
+      details.breakdown summary { cursor: pointer; min-height: 36px; display: flex; align-items: center; font-size: 13px; font-weight: 700; color: #cfdcec; }
+      details.breakdown dl { margin: 6px 0 2px; font-size: 12.5px; }
+      details.breakdown dl div { display: flex; justify-content: space-between; gap: 10px; padding: 3px 0; color: #a9bfd8; }
+      details.breakdown dt { font-weight: 400; }
+      details.breakdown dd { margin: 0; color: #eef3f9; }
+
+      /* rate table */
+      .table-scroll { overflow-x: auto; }
+      table.rates { width: 100%; border-collapse: collapse; font-size: 14px; }
+      table.rates th, table.rates td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: right; }
+      @media (max-width: 520px) {
+        table.rates { font-size: 12.5px; }
+        table.rates th, table.rates td { padding: 8px 5px; }
+        table.rates th:first-child, table.rates td:first-child { white-space: normal; }
+      }
+      table.rates th:first-child, table.rates td:first-child { text-align: left; }
+      table.rates thead th { background: var(--surface-2); font-weight: 900; font-size: 13px; }
+      table.rates td.num, table.rates th.num { font-family: "IBM Plex Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+      table.rates tr.hl td { font-weight: 700; background: var(--surface-2); }
+      .settings { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px 22px; margin-top: 16px; font-size: 13.5px; }
+      .settings div { display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px dotted var(--line); padding: 5px 0; }
+      .settings dt { color: var(--ink-soft); }
+      .settings dd { margin: 0; font-weight: 700; }
+
+      .notes { font-size: 13px; color: var(--ink-soft); }
+      .notes li { margin-bottom: 7px; }
+      .notes ul { margin: 0; padding-left: 1.3em; }
+
+      /* compressed reference sections at page bottom */
+      .bottom-ref { display: grid; grid-template-columns: 1.25fr 1fr; gap: 20px; margin-top: 20px; align-items: start; }
+      @media (max-width: 860px) { .bottom-ref { grid-template-columns: 1fr; } }
+      .bottom-ref .panel { margin-top: 0; padding: 14px 18px; }
+      details.ref-panel > summary {
+        cursor: pointer; min-height: 44px; display: flex; align-items: baseline; gap: 10px;
+        font-size: 15px; font-weight: 900; list-style: none;
+      }
+      details.ref-panel > summary::-webkit-details-marker { display: none; }
+      details.ref-panel > summary::after { content: "開く"; margin-left: auto; font-size: 12px; font-weight: 700; color: var(--amber-ink); white-space: nowrap; }
+      details.ref-panel[open] > summary::after { content: "閉じる"; }
+      details.ref-panel > summary .h-note { font-size: 12px; font-weight: 500; color: var(--ink-soft); }
+      details.ref-panel .table-scroll { margin-top: 6px; }
+      details.ref-panel table.rates { font-size: 13px; }
+      details.ref-panel table.rates th, details.ref-panel table.rates td { padding: 6px 8px; }
+      details.ref-panel .settings { margin-top: 10px; font-size: 12.5px; }
+      details.ref-panel.notes { font-size: 12.5px; }
+      details.ref-panel.notes ul { margin-top: 6px; }
+      details.ref-panel.notes li { margin-bottom: 5px; }
+
+      /* privacy policy (page bottom) */
+      .privacy-policy { margin-top: 20px; }
+      .privacy-policy h2 { font-size: 16px; margin-bottom: 6px; }
+      .privacy-policy .pp-updated { font-size: 12px; color: var(--ink-soft); margin: 0 0 4px; }
+      .privacy-policy h3 { font-size: 13.5px; font-weight: 900; color: var(--ink); margin: 16px 0 4px; }
+      .privacy-policy p, .privacy-policy li { font-size: 13px; color: var(--ink-soft); }
+      .privacy-policy p { margin: 0 0 6px; }
+      .privacy-policy ul { margin: 0; padding-left: 1.3em; }
+      .privacy-policy li { margin-bottom: 4px; }
+
+      /* privacy policy popup (shown first on load) */
+      .pp-footer { margin: 18px 0 0; text-align: center; }
+      .pp-link {
+        background: none; border: 0; padding: 10px 14px; min-height: 44px;
+        color: var(--ink-soft); font-size: 13px; text-decoration: underline; cursor: pointer;
+      }
+      .pp-overlay {
+        position: fixed; inset: 0; z-index: 60; display: none;
+        align-items: center; justify-content: center; padding: 16px;
+        background: rgba(8, 18, 30, .55);
+      }
+      .pp-overlay.open { display: flex; }
+      .pp-dialog {
+        width: 100%; max-width: 640px; max-height: min(86dvh, 760px);
+        display: flex; flex-direction: column; overflow: hidden;
+        background: var(--surface); border: 1px solid var(--line);
+        border-radius: 14px; box-shadow: var(--shadow);
+      }
+      .pp-dialog.privacy-policy { margin-top: 0; }
+      .pp-scroll { overflow-y: auto; padding: 22px 22px 8px; -webkit-overflow-scrolling: touch; }
+      .pp-actions { border-top: 1px solid var(--line); padding: 12px 22px calc(14px + env(safe-area-inset-bottom)); }
+      .pp-btn-row { display: flex; gap: 10px; }
+      @media (max-width: 520px) { .pp-btn-row { flex-direction: column; } }
+      .pp-close-btn {
+        flex: 1; min-height: 48px; border: 0; border-radius: 9px; cursor: pointer;
+        background: var(--navy); color: #fff; font-size: 15px; font-weight: 900;
+      }
+      .pp-decline-btn {
+        flex: 1; min-height: 48px; border: 1px solid var(--line); border-radius: 9px; cursor: pointer;
+        background: var(--surface); color: var(--ink-soft); font-size: 15px; font-weight: 700;
+      }
+      .pp-decline-note { display: none; margin: 10px 0 0; font-size: 13px; color: var(--warn); font-weight: 700; text-align: center; }
+      .pp-decline-note.show { display: block; }
+      .pp-close-btn:focus-visible, .pp-decline-btn:focus-visible, .pp-link:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+
+      /* mobile sticky total bar */
+      .mobile-bar {
+        display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+        background: var(--navy); color: #fff; padding: 7px 16px calc(7px + env(safe-area-inset-bottom));
+        box-shadow: 0 -6px 20px rgba(0,0,0,.25);
+        align-items: center; justify-content: space-between; gap: 12px;
+      }
+      .mobile-bar .mb-plan { font-size: 12px; color: #a9bfd8; }
+      .mobile-bar .mb-plan b { display: block; color: var(--amber); font-size: 13px; }
+      .mobile-bar .mb-total { font-size: 24px; font-weight: 700; }
+      .mobile-bar .mb-total small { font-size: 12px; color: #a9bfd8; font-weight: 400; }
+      @media (max-width: 860px) { .mobile-bar { display: flex; } }
+    </style>
+  </head>
+  <body>
+<nav style="display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;background:#12283f;color:#fff;padding:10px 16px;font-family:system-ui,-apple-system,sans-serif;font-size:14px;"><a href="/" style="color:#fff;font-weight:800;text-decoration:none;">移動シミュレーター</a><a href="/timescar.html" style="color:#cfe2f3;text-decoration:none;">タイムズカー</a><a href="/highway.html" style="color:#cfe2f3;text-decoration:none;">高速道路</a><a href="/train.html" style="color:#cfe2f3;text-decoration:none;">電車・新幹線</a></nav>
+
+    <div class="wrap">
+      <header class="page-head">
+        <p style="margin:0 0 4px;font-size:13px;letter-spacing:.08em;opacity:.75;">移動シミュレーター</p>
+        <h1>タイムズカー料金シミュレーター</h1>
+      </header>
+
+      <div class="layout">
+        <div>
+          <section class="panel" aria-label="利用条件の入力">
+            <h2>利用条件</h2>
+            <div class="grid2">
+              <div class="field">
+                <label for="startTime">開始時刻</label>
+                <select id="startTime"></select>
+              </div>
+              <div class="field" id="durationField">
+                <label for="duration">所要時間</label>
+                <select id="duration"></select>
+                <p class="hint" id="durationHint" hidden>返却時刻が優先されています。所要時間を選び直すと、そちらで計算します</p>
+              </div>
+            </div>
+
+            <div class="or-divider">または 返却時刻で指定</div>
+            <div class="grid2">
+              <div class="field">
+                <label for="returnDay">返却日（開始日から）</label>
+                <select id="returnDay">
+                  <option value="" selected>―</option>
+                  <option value="0">当日</option>
+                  <option value="1">翌日</option>
+                  <option value="2">2日後</option>
+                  <option value="3">3日後</option>
+                  <option value="4">4日後</option>
+                  <option value="5">5日後</option>
+                  <option value="6">6日後</option>
+                  <option value="7">7日後</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="returnTime">返却時刻</label>
+                <select id="returnTime"></select>
+                <p class="hint">指定すると所要時間より優先して計算する（所要時間に戻すには「―」を選ぶ）</p>
+              </div>
+            </div>
+
+            <div class="grid2" style="margin-top:10px">
+              <div class="field">
+                <label for="distance">走行距離</label>
+                <select id="distance"></select>
+                <p class="hint">時間料金は20kmまで無料、超過分が20円/km。ナイトパックは全距離が対象</p>
+                <label for="distanceCustom" style="margin-top:6px; font-size:12px; color:var(--ink-soft)">プルダウンにない距離は直接入力（優先されます）</label>
+                <div class="unit-wrap">
+                  <input type="number" id="distanceCustom" min="0" step="1" value="" placeholder="例：137" inputmode="numeric" />
+                  <span class="unit">km</span>
+                </div>
+                <p class="map-links">距離を確認する：<a href="https://www.google.com/maps/dir/" target="_blank" rel="noopener noreferrer">Googleマップ</a> ／ <a href="https://maps.apple.com/?dirflg=d" target="_blank" rel="noopener noreferrer">Appleマップ</a> ／ <a href="https://map.yahoo.co.jp/" target="_blank" rel="noopener noreferrer">Yahoo!マップ</a> ／ <a href="https://www.navitime.co.jp/drive/" target="_blank" rel="noopener noreferrer">NAVITIME</a> ／ <a href="https://mapfan.com/" target="_blank" rel="noopener noreferrer">MapFan</a><br />ルート検索で表示された距離が往路と復路の合計になっているか確認の上、上に入力してください</p>
+              </div>
+              <div class="field">
+                <span class="f-label">車両クラス</span>
+                <div class="seg" role="radiogroup" aria-label="車両クラス" id="classSeg">
+                  <label><input type="radio" name="vclass" value="0" checked /><span class="seg-face">ベーシック<small>15分 ¥220</small></span></label>
+                  <label><input type="radio" name="vclass" value="1" /><span class="seg-face">ミドル<small>15分 ¥330</small></span></label>
+                  <label><input type="radio" name="vclass" value="2" /><span class="seg-face">プレミアム<small>15分 ¥440</small></span></label>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel" aria-label="オプションと割引">
+            <h2>オプション・割引</h2>
+            <div class="opt-row">
+              <div class="field">
+                <span class="f-label">安心補償（550円／1利用）</span>
+                <div class="seg two" role="radiogroup" aria-label="安心補償" id="hoshoSeg">
+                  <label><input type="radio" name="hosho" value="0" checked /><span class="seg-face">加入しない</span></label>
+                  <label><input type="radio" name="hosho" value="1" /><span class="seg-face">加入する</span></label>
+                </div>
+              </div>
+              <div class="field">
+                <span class="f-label">給油（時間料金30分引き）</span>
+                <div class="seg two" role="radiogroup" aria-label="給油" id="fuelSeg">
+                  <label><input type="radio" name="fuel" value="0" checked /><span class="seg-face">なし</span></label>
+                  <label><input type="radio" name="fuel" value="1" /><span class="seg-face">あり</span></label>
+                </div>
+                <p class="hint">同一利用内にナイトパックが含まれる場合は適応外</p>
+              </div>
+              <div class="field">
+                <span class="f-label">洗車（時間料金30分引き）</span>
+                <div class="seg two" role="radiogroup" aria-label="洗車" id="washSeg">
+                  <label><input type="radio" name="wash" value="0" checked /><span class="seg-face">なし</span></label>
+                  <label><input type="radio" name="wash" value="1" /><span class="seg-face">あり</span></label>
+                </div>
+                <p class="hint">同一利用内にナイトパックが含まれる場合は適応外</p>
+              </div>
+              <div class="field">
+                <span class="f-label">ステージ（距離料金から割引）</span>
+                <select id="stage">
+                  <option value="1" selected>ステージ1（割引なし）</option>
+                  <option value="2">ステージ2（割引なし）</option>
+                  <option value="3">ステージ3（最大300円）</option>
+                  <option value="4">ステージ4（最大1,000円）</option>
+                </select>
+                <p class="hint">同一利用内にナイトパックが含まれる場合は適応外</p>
+              </div>
+              <div class="field">
+                <span class="f-label">時間チケット（1予約1枚）</span>
+                <select id="timeTicket">
+                  <option value="0" selected>なし</option>
+                  <option value="15">15分</option>
+                  <option value="30">30分</option>
+                  <option value="60">60分</option>
+                  <option value="120">2時間</option>
+                  <option value="180">3時間</option>
+                  <option value="360">6時間</option>
+                </select>
+                <p class="hint">ナイトパック時は使用不可、ナイトパック後の延長時間分には使用可能</p>
+              </div>
+              <div class="field">
+                <span class="f-label">金額チケット</span>
+                <select id="moneyTicket">
+                  <option value="0" selected>なし</option>
+                  <option value="100">100円</option>
+                  <option value="200">200円</option>
+                  <option value="300">300円</option>
+                  <option value="500">500円</option>
+                  <option value="1000">1,000円</option>
+                  <option value="2000">2,000円</option>
+                  <option value="3000">3,000円</option>
+                  <option value="5000">5,000円</option>
+                </select>
+                <p class="hint">ナイトパックにも使用可能</p>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <aside class="result" aria-label="計算結果">
+          <div class="result-inner">
+            <span class="plan-badge" id="planName">—</span>
+            <div class="total-label">合計（税込）</div>
+            <div class="total">
+              <span class="yen">¥</span>
+              <span class="amount mono" id="totalAmount">0</span>
+              <span class="tax">税込</span>
+            </div>
+            <div class="save-banner" id="saveBanner"></div>
+
+            <div class="fare-rows">
+              <div class="fare-row" id="rowBase"><span class="r-name">基本料金<small id="baseNote"></small></span><span class="r-val mono" id="valBase">¥0</span></div>
+              <div class="fare-row" id="rowExt"><span class="r-name">延長料金<small>ナイトパックの9:00以降分</small></span><span class="r-val mono" id="valExt">¥0</span></div>
+              <div class="fare-row" id="rowDist"><span class="r-name">距離料金<small id="distNote"></small></span><span class="r-val mono" id="valDist">¥0</span></div>
+              <div class="fare-row" id="rowHosho"><span class="r-name">安心補償料</span><span class="r-val mono" id="valHosho">¥0</span></div>
+              <div class="fare-row minus" id="rowMoney"><span class="r-name">金額チケット割引</span><span class="r-val mono" id="valMoney">−¥0</span></div>
+            </div>
+
+            <div class="meta-grid">
+              <div class="meta-box"><div class="m-label">所要時間（計算結果）</div><div class="m-val" id="metaDuration">—</div></div>
+              <div class="meta-box"><div class="m-label">返却予定時刻</div><div class="m-val mono" id="metaReturn">—</div></div>
+            </div>
+
+            <div class="ref-rows">
+              <div><span>適用された時間料金割引（チケット含む）</span><span class="mono" id="refTimeDisc">¥0</span></div>
+              <div><span>適用されたステージ割引</span><span class="mono" id="refStageDisc">¥0</span></div>
+            </div>
+
+            <div class="warn-box" id="warnBox"></div>
+
+            <details class="breakdown">
+              <summary>計算の内訳を見る</summary>
+              <dl id="breakdownList"></dl>
+            </details>
+          </div>
+        </aside>
+      </div>
+
+      <div class="bottom-ref">
+          <details class="panel ref-panel" aria-label="料金表">
+            <summary>料金表 <span class="h-note">（税込）</span></summary>
+            <div class="table-scroll">
+              <table class="rates">
+                <thead>
+                  <tr><th>区分</th><th class="num">ベーシック</th><th class="num">ミドル</th><th class="num">プレミアム</th></tr>
+                </thead>
+                <tbody id="ratesBody"></tbody>
+              </table>
+            </div>
+            <dl class="settings">
+              <div><dt>距離料金</dt><dd class="mono">20円/km</dd></div>
+              <div><dt>安心補償</dt><dd class="mono">550円／1利用</dd></div>
+              <div><dt>ナイトパック対象</dt><dd>18:00〜翌9:00開始</dd></div>
+              <div><dt>時間料金の無料走行距離</dt><dd class="mono">20km</dd></div>
+              <div><dt>給油割引</dt><dd class="mono">30分</dd></div>
+              <div><dt>洗車割引</dt><dd class="mono">30分</dd></div>
+              <div><dt>給油＋洗車割引</dt><dd class="mono">60分</dd></div>
+              <div><dt>ナイトパック延長の上限</dt><dd class="mono">6時間（9:00以降）</dd></div>
+            </dl>
+          </details>
+
+          <details class="panel notes ref-panel" aria-label="前提と出典">
+            <summary>前提・出典</summary>
+            <ul>
+              <li>料金・距離料金・ナイトパックは公式（share.timescar.jp）および運営会社（park24.co.jp）の資料に基づく。最大料金表は2024〜2025年の公表値なので、現行の公式料金ページでも確認を。</li>
+              <li>距離料金は2025/12/1改定後の条件。時間料金は20km超の分のみ、ナイトパックは利用開始時からの全走行距離に課金される。</li>
+              <li>安心補償550円（1利用あたり）は2024/2/1改定後の金額。</li>
+              <li>ステージ割引はステージ3で最大300円、ステージ4で最大1,000円。ナイトパックは対象外。</li>
+              <li>給油・洗車割引は時間料金の部分にだけ適用し、最大時間料金・ナイトパック（延長含む）には適用しない。</li>
+              <li>時間チケットは時間料金と、ナイトパックの延長分に充当する。最大時間料金への充当は未確認のため充当しない前提。1予約につき1枚。</li>
+              <li>ナイトパックの延長は9:00以降、15分料金の積み上げで最大6時間まで。超える場合はナイトパックを候補から外す。開始が18:00〜翌9:00の利用のみ対象。</li>
+              <li>金額チケットは基本料金＋延長料金＋距離料金の範囲で割引し、補償料には使えない前提。</li>
+              <li>未対応：ミニマムチャージ（24時間以上の予約で実利用2時間未満）、月額基本料金、オプションサービス。</li>
+            </ul>
+          </details>
+      </div>
+
+      <p class="pp-footer"><button type="button" class="pp-link" id="ppOpen">プライバシーポリシー</button></p>
+    </div>
+
+    <div class="mobile-bar" aria-hidden="true">
+      <div class="mb-plan">採用プラン<b id="mbPlan">—</b></div>
+      <div class="mb-total mono">¥<span id="mbTotal">0</span> <small>税込</small></div>
+    </div>
+
+    <div class="pp-overlay" id="ppOverlay">
+      <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+        <div class="pp-scroll">
+          <h2 id="ppTitle">プライバシーポリシー</h2>
+          <p class="pp-updated">制定日：2026年11月12日</p>
+          <p>本ページでは、利用者のプライバシー保護のため、個人情報およびそれに類する情報の取り扱いについて、以下のとおり定めます。</p>
+
+          <h3>1. 入力情報の取り扱い</h3>
+          <p>本シミュレーターで入力された利用条件（開始時刻・所要時間・走行距離・各種オプション等）は、利用者のブラウザ内でのみ料金計算に使用されます。これらの入力内容がサーバーへ送信されることはなく、保存もされません。氏名・メールアドレス等の個人情報を入力いただく項目もありません。</p>
+
+          <h3>2. Cookie（クッキー）の利用について</h3>
+          <p>本ページでは、利便性の向上やアクセス状況の把握、後述する広告配信のために、Cookieを使用する場合があります。Cookieは利用者のブラウザに保存される小さなデータで、利用者個人を特定する情報は含まれません。ブラウザの設定によりCookieを無効化できますが、その場合、一部の機能や表示が正しく動作しないことがあります。</p>
+
+          <h3>3. 広告配信について</h3>
+          <p>本ページでは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。Googleを含む第三者配信事業者は、Cookieを使用して、利用者が本ページや他のウェブサイトに過去にアクセスした際の情報に基づき、興味・関心に応じた広告を配信することがあります。</p>
+          <ul>
+            <li>パーソナライズ広告は、Googleの広告設定から無効にできます。</li>
+            <li>第三者配信事業者によるCookieの使用は、各事業者のプライバシーポリシーに基づいて取り扱われます。</li>
+          </ul>
+
+          <h3>4. アクセス解析について</h3>
+          <p>本ページでは、利用状況を把握し、内容の改善に役立てるため、アクセス解析ツールを利用する場合があります。これらのツールはCookie等を用いて情報を収集しますが、個人を特定する目的では使用しません。</p>
+
+          <h3>5. 免責事項</h3>
+          <p>本シミュレーターの計算結果は目安であり、実際の料金は利用条件や公式の料金改定等により異なる場合があります。最終的な料金は、必ず公式の案内でご確認ください。本ページの利用により生じた損害について、運営者は責任を負いかねます。</p>
+
+          <h3>6. プライバシーポリシーの変更</h3>
+          <p>本ポリシーの内容は、法令の変更や本ページの運営方針の変更等に伴い、予告なく変更することがあります。変更後の内容は、本ページに掲載した時点で効力を生じるものとします。</p>
+        </div>
+        <div class="pp-actions">
+          <div class="pp-btn-row">
+            <button type="button" class="pp-decline-btn" id="ppDecline">同意しない</button>
+            <button type="button" class="pp-close-btn" id="ppClose">同意して閉じる</button>
+          </div>
+          <p class="pp-decline-note" id="ppDeclineNote">同意いただけない場合は本ページをご利用いただけません。自動で前のページに戻れない場合は、このタブを閉じてください。</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ===== 料金表 =====
+      var CLASSES = [
+        { name: "ベーシック", rate15: 220, caps: [4290, 5500, 6600, 8800, 9900, 14300], perDay: 5500, night: 2640 },
+        { name: "ミドル",     rate15: 330, caps: [6490, 7700, 8800, 11000, 13200, 18700], perDay: 6600, night: 3960 },
+        { name: "プレミアム", rate15: 440, caps: [8690, 9900, 12100, 17600, 20900, 27500], perDay: 7700, night: 5280 }
+      ];
+      var CAP_HOURS = [6, 12, 24, 36, 48, 72];
+      var DIST_PER_KM = 20;          // 距離料金 円/km
+      var HOSHO_FEE = 550;           // 安心補償 円/1利用
+      var FREE_KM = 20;              // 時間料金の無料走行距離
+      var NIGHT_START = 18 * 60;     // 18:00
+      var NIGHT_END = 9 * 60;        // 翌9:00
+      var NIGHT_EXT_MAX = 360;       // ナイトパック延長の上限(分)
+      var FUEL_MIN = 30, WASH_MIN = 30, BOTH_MIN = 60;
+      var STAGE_CAP = { 1: 0, 2: 0, 3: 300, 4: 1000 };
+
+      var $ = function (id) { return document.getElementById(id); };
+      var yen = function (n) { return "¥" + Math.round(n).toLocaleString("ja-JP"); };
+      function fmtClock(mins) {
+        var m = ((mins % 1440) + 1440) % 1440;
+        var h = Math.floor(m / 60), mm = m % 60;
+        return (h < 10 ? "0" : "") + h + ":" + (mm < 10 ? "0" : "") + mm;
+      }
+      function fmtDur(mins) {
+        return Math.floor(mins / 60) + "時間" + (mins % 60) + "分";
+      }
+      function durLabel(mins) {
+        if (mins < 60) return mins + "分";
+        var h = Math.floor(mins / 60), m = mins % 60;
+        return m === 0 ? h + "時間" : h + "時間" + m + "分";
+      }
+
+      // ===== セレクトの選択肢を生成（15分刻み） =====
+      (function buildOptions() {
+        var start = $("startTime"), dur = $("duration"), ret = $("returnTime"), dist = $("distance");
+        var i, opt;
+        // 初期状態はすべて「―」（未選択）から始める
+        function addBlank(sel) {
+          var b = document.createElement("option");
+          b.value = ""; b.textContent = "―"; b.selected = true;
+          sel.appendChild(b);
+        }
+        // 走行距離プルダウン：0〜600kmは10km刻み、それ以上は100km刻み
+        addBlank(dist);
+        var distVals = [];
+        for (i = 0; i <= 600; i += 10) distVals.push(i);
+        distVals.push(700, 800, 900, 1000);
+        distVals.forEach(function (kmv) {
+          opt = document.createElement("option");
+          opt.value = kmv; opt.textContent = kmv.toLocaleString("ja-JP") + "km";
+          dist.appendChild(opt);
+        });
+        addBlank(start);
+        for (i = 0; i < 96; i++) {
+          opt = document.createElement("option");
+          opt.value = i * 15; opt.textContent = fmtClock(i * 15);
+          start.appendChild(opt);
+        }
+        addBlank(dur);
+        for (i = 15; i <= 72 * 60; i += 15) {
+          opt = document.createElement("option");
+          opt.value = i; opt.textContent = durLabel(i);
+          dur.appendChild(opt);
+        }
+        opt = document.createElement("option");
+        opt.value = ""; opt.textContent = "―"; opt.selected = true; // 初期状態は未指定（所要時間で計算する）
+        ret.appendChild(opt);
+        for (i = 0; i < 96; i++) {
+          opt = document.createElement("option");
+          opt.value = i * 15; opt.textContent = fmtClock(i * 15);
+          ret.appendChild(opt);
+        }
+      })();
+
+      // ===== 料金表の描画 =====
+      (function renderRates() {
+        var rows = [
+          { label: "15分料金", get: function (c) { return c.rate15; } },
+          { label: "最大料金（6時間まで）", get: function (c) { return c.caps[0]; } },
+          { label: "最大料金（12時間まで）", get: function (c) { return c.caps[1]; } },
+          { label: "最大料金（24時間まで）", get: function (c) { return c.caps[2]; } },
+          { label: "最大料金（36時間まで）", get: function (c) { return c.caps[3]; } },
+          { label: "最大料金（48時間まで）", get: function (c) { return c.caps[4]; } },
+          { label: "最大料金（72時間まで）", get: function (c) { return c.caps[5]; } },
+          { label: "72時間以降（1日ごと）", get: function (c) { return c.perDay; } },
+          { label: "ナイトパック（18:00〜翌9:00）", get: function (c) { return c.night; }, hl: true }
+        ];
+        var html = "";
+        rows.forEach(function (r) {
+          html += "<tr" + (r.hl ? " class=\"hl\"" : "") + "><td>" + r.label + "</td>" +
+            CLASSES.map(function (c) { return "<td class=\"num\">" + r.get(c).toLocaleString("ja-JP") + "</td>"; }).join("") + "</tr>";
+        });
+        $("ratesBody").innerHTML = html;
+      })();
+
+      function radioVal(name) {
+        var el = document.querySelector('input[name="' + name + '"]:checked');
+        return el ? el.value : "0";
+      }
+
+      // ===== 計算 =====
+      function calc() {
+        var cls = CLASSES[parseInt(radioVal("vclass"), 10)];
+        var rate15 = cls.rate15;
+        var startMin = parseInt($("startTime").value, 10);
+        var retSpecified = $("returnTime").value !== "";
+        var retDay = parseInt($("returnDay").value, 10);
+        var retMin = retSpecified ? parseInt($("returnTime").value, 10) : 0;
+        var chosenDur = parseInt($("duration").value, 10);
+
+        // 所要時間(分): 返却時刻指定が優先
+        var rawDur = retSpecified ? (retDay * 1440 + retMin - startMin) : chosenDur;
+        var durMin = Math.max(0, rawDur);
+        var hours = durMin / 60;
+
+        // 走行距離: 直接入力があればそちらを優先、なければプルダウンの値
+        var kmCustom = parseFloat($("distanceCustom").value);
+        var km = (!isNaN(kmCustom) && kmCustom >= 0) ? kmCustom : parseFloat($("distance").value);
+        if (isNaN(km) || km < 0) km = 0;
+
+        // 「―」（未選択）の必須項目が残っている間は計算せず、未入力として表示する
+        var missing = [];
+        if ($("startTime").value === "") missing.push("開始時刻");
+        if (!retSpecified && $("duration").value === "") missing.push("所要時間");
+        if (retSpecified && $("returnDay").value === "") missing.push("返却日");
+        if ($("distance").value === "" && isNaN(kmCustom)) missing.push("走行距離");
+        if (missing.length) {
+          $("planName").textContent = "未入力";
+          $("totalAmount").textContent = "—";
+          $("mbPlan").textContent = "未入力";
+          $("mbTotal").textContent = "—";
+          $("valBase").textContent = yen(0);
+          $("baseNote").textContent = "";
+          $("valExt").textContent = yen(0);
+          $("rowExt").classList.add("zero");
+          $("valDist").textContent = yen(0);
+          $("distNote").textContent = "";
+          $("valHosho").textContent = yen(0);
+          $("rowHosho").classList.add("zero");
+          $("valMoney").textContent = "−" + yen(0);
+          $("rowMoney").classList.add("zero");
+          $("metaDuration").textContent = "—";
+          $("metaReturn").textContent = "—";
+          $("refTimeDisc").textContent = yen(0);
+          $("refStageDisc").textContent = yen(0);
+          var sb0 = $("saveBanner");
+          sb0.classList.remove("show"); sb0.textContent = "";
+          var wb0 = $("warnBox");
+          wb0.textContent = "未入力の項目があります：" + missing.join("・");
+          wb0.classList.add("show");
+          $("breakdownList").innerHTML = "";
+          $("durationField").classList.toggle("dimmed", retSpecified);
+          $("durationHint").hidden = !retSpecified;
+          return;
+        }
+
+        var hosho = radioVal("hosho") === "1";
+        var fuel = radioVal("fuel") === "1";
+        var wash = radioVal("wash") === "1";
+        var stage = parseInt($("stage").value, 10);
+        var ttMin = parseInt($("timeTicket").value, 10);
+        var moneyYen = parseInt($("moneyTicket").value, 10);
+
+        // 時間料金
+        var units = Math.ceil(durMin / 15);
+        var timeRaw = units * rate15;
+        var fwMin = (fuel && wash) ? BOTH_MIN : fuel ? FUEL_MIN : wash ? WASH_MIN : 0;
+        var discMin = fwMin + ttMin;
+        var discAmt = discMin / 15 * rate15;
+        var timeAfter = Math.max(0, timeRaw - discAmt);
+
+        // 最大時間料金
+        var maxFee;
+        if (hours <= 72) {
+          var idx = 0;
+          while (idx < CAP_HOURS.length - 1 && CAP_HOURS[idx] < hours) idx++;
+          maxFee = cls.caps[idx];
+        } else {
+          maxFee = cls.caps[5] + Math.ceil((hours - 72) / 24) * cls.perDay;
+        }
+        var normalBase = Math.min(timeAfter, maxFee);
+
+        // 距離料金（通常）
+        var distRaw = Math.max(0, km - FREE_KM) * DIST_PER_KM;
+        var stageDisc = Math.min(STAGE_CAP[stage], distRaw);
+        var normalDist = distRaw - stageDisc;
+        var normalTotal = normalBase + normalDist; // 補償・金額チケット除く
+
+        // ナイトパック判定
+        var endAbs = startMin + durMin;
+        var inNight = startMin >= NIGHT_START || startMin < NIGHT_END;
+        var nightEndAbs = startMin >= NIGHT_START ? 1440 + NIGHT_END : NIGHT_END;
+        var extMin = inNight ? Math.max(0, endAbs - nightEndAbs) : 0;
+        var extUnits = Math.ceil(extMin / 15);
+        var nightOK = inNight && durMin > 0 && extMin <= NIGHT_EXT_MAX;
+        var extFee = Math.max(0, extUnits * rate15 - ttMin / 15 * rate15);
+        var nightTotal = nightOK ? cls.night + extFee + km * DIST_PER_KM : null;
+
+        // 採用プラン
+        var isNight = nightOK && nightTotal < normalTotal;
+        var plan;
+        if (isNight) plan = extMin > 0 ? "ナイトパック+延長" : "ナイトパック";
+        else plan = timeAfter <= maxFee ? "時間料金" : "最大時間料金";
+
+        var base = isNight ? cls.night : normalBase;
+        var ext = isNight ? extFee : 0;
+        var dist = isNight ? km * DIST_PER_KM : normalDist;
+        var moneyDisc = Math.min(moneyYen, base + ext + dist);
+        var hoshoFee = hosho ? HOSHO_FEE : 0;
+        var total = base + ext + dist - moneyDisc + hoshoFee;
+
+        // 参考値（適用された割引）
+        var appliedTimeDisc = plan === "時間料金" ? Math.min(timeRaw, discAmt)
+          : plan === "ナイトパック+延長" ? Math.min(extUnits * rate15, ttMin / 15 * rate15) : 0;
+        var appliedStage = isNight ? 0 : stageDisc;
+
+        // 通常プランで払った場合との差（どちらも補償・金額チケット込みで比較）
+        var normalGrand = normalBase + normalDist - Math.min(moneyYen, normalBase + normalDist) + hoshoFee;
+        var saving = isNight ? normalGrand - total : 0;
+
+        // ===== 表示 =====
+        $("planName").textContent = plan;
+        $("totalAmount").textContent = Math.round(total).toLocaleString("ja-JP");
+        $("mbPlan").textContent = plan;
+        $("mbTotal").textContent = Math.round(total).toLocaleString("ja-JP");
+
+        $("valBase").textContent = yen(base);
+        $("baseNote").textContent = isNight ? "ナイトパック料金（" + cls.name + "）"
+          : plan === "最大時間料金" ? "最大時間料金で頭打ち（" + cls.name + "）" : "15分×" + units + "単位（" + cls.name + "）";
+        $("valExt").textContent = yen(ext);
+        $("rowExt").classList.toggle("zero", ext === 0);
+        $("valDist").textContent = yen(dist);
+        $("distNote").textContent = isNight ? km + "km × 20円（全距離）"
+          : "（" + km + "km − 無料20km）× 20円";
+        $("valHosho").textContent = yen(hoshoFee);
+        $("rowHosho").classList.toggle("zero", hoshoFee === 0);
+        $("valMoney").textContent = "−" + yen(moneyDisc);
+        $("rowMoney").classList.toggle("zero", moneyDisc === 0);
+
+        $("metaDuration").textContent = fmtDur(durMin);
+        var retAbs = startMin + durMin;
+        var retDays = Math.floor(retAbs / 1440);
+        $("metaReturn").textContent = fmtClock(retAbs) + (retDays > 0 ? "（+" + retDays + "日）" : "");
+
+        $("refTimeDisc").textContent = yen(appliedTimeDisc);
+        $("refStageDisc").textContent = yen(appliedStage);
+
+        var sb = $("saveBanner");
+        if (isNight && saving > 0) {
+          sb.textContent = "通常プラン（" + yen(normalGrand) + "）より " + yen(saving) + " お得";
+          sb.classList.add("show");
+        } else { sb.classList.remove("show"); sb.textContent = ""; }
+
+        // 入力チェック
+        var warn = "";
+        if (retSpecified && rawDur <= 0) warn = "返却時刻が開始時刻以前です（返却日を確認）";
+        else if (durMin === 0) warn = "所要時間が0分です";
+        var wb = $("warnBox");
+        wb.textContent = warn;
+        wb.classList.toggle("show", warn !== "");
+
+        // 所要時間フィールドの見た目（返却時刻指定時は優先される側を薄くするが、操作はできる）
+        $("durationField").classList.toggle("dimmed", retSpecified);
+        $("durationHint").hidden = !retSpecified;
+
+        // 内訳
+        var bd = [
+          ["15分料金（" + cls.name + "）", yen(rate15)],
+          ["利用単位数（15分）", units + "単位"],
+          ["時間料金（割引前）", yen(timeRaw)],
+          ["給油・洗車割引", fwMin + "分"],
+          ["時間チケット", ttMin + "分"],
+          ["時間料金の割引額", yen(discAmt)],
+          ["時間料金（割引後）", yen(timeAfter)],
+          ["最大時間料金", yen(maxFee)],
+          ["通常の基本料金", yen(normalBase)],
+          ["距離料金（割引前）", yen(distRaw)],
+          ["ステージ割引", yen(stageDisc)],
+          ["通常の距離料金", yen(normalDist)],
+          ["通常の合計（補償・チケット除く）", yen(normalTotal)],
+          ["開始がナイト時間帯か", inNight ? "はい" : "いいえ"],
+          ["ナイトパック延長", inNight ? fmtDur(extMin) + "（" + extUnits + "単位）" : "—"],
+          ["ナイトパックが使えるか", nightOK ? "はい" : "いいえ"],
+          ["延長料金（チケット充当後）", nightOK ? yen(extFee) : "—"],
+          ["ナイトの合計（補償・チケット除く）", nightOK ? yen(nightTotal) : "—"]
+        ];
+        $("breakdownList").innerHTML = bd.map(function (r) {
+          return "<div><dt>" + r[0] + "</dt><dd class=\"mono\">" + r[1] + "</dd></div>";
+        }).join("");
+      }
+
+      ["startTime", "duration", "returnDay", "returnTime", "distance", "distanceCustom", "stage", "timeTicket", "moneyTicket"]
+        .forEach(function (id) {
+          $(id).addEventListener("input", calc);
+          $(id).addEventListener("change", calc);
+        });
+      document.querySelectorAll('input[type="radio"]').forEach(function (el) {
+        el.addEventListener("change", calc);
+      });
+      // 所要時間に触れたら返却時刻の指定を外し、所要時間での計算に切り替える
+      // （同じ値を選び直しても切り替わるよう、changeだけでなくfocusでも外す）
+      function useDuration() {
+        if ($("returnTime").value !== "") {
+          $("returnTime").value = "";
+        }
+        calc();
+      }
+      $("duration").addEventListener("focus", useDuration);
+      $("duration").addEventListener("change", useDuration);
+      // 走行距離プルダウンに触れたら直接入力を外し、プルダウンの値で計算する
+      function useDistanceSelect() {
+        if ($("distanceCustom").value !== "") {
+          $("distanceCustom").value = "";
+        }
+        calc();
+      }
+      $("distance").addEventListener("focus", useDistanceSelect);
+      $("distance").addEventListener("change", useDistanceSelect);
+      calc();
+
+      // ===== プライバシーポリシー：初回のみ自動でポップアップ表示 =====
+      var ppOverlay = $("ppOverlay");
+      var PP_KEY = "tc-privacy-consented-v1";
+      function ppHasConsented() {
+        try { return localStorage.getItem(PP_KEY) === "1"; } catch (e) { return false; }
+      }
+      function ppRememberConsent() {
+        try { localStorage.setItem(PP_KEY, "1"); } catch (e) { /* 保存できない環境では毎回表示 */ }
+      }
+      function ppShow() {
+        ppOverlay.classList.add("open");
+        document.body.style.overflow = "hidden";
+        $("ppClose").focus();
+      }
+      function ppHide() {
+        ppRememberConsent();
+        ppOverlay.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+      $("ppClose").addEventListener("click", ppHide);
+      $("ppDecline").addEventListener("click", function () {
+        // 同意しない場合は同意を保存せず、ブラウザの「戻る」と同じ動きで前のページへ戻す
+        if (window.history && window.history.length > 1) {
+          window.history.back();
+          // 戻れなかった（ページが残った）場合に備えて案内を表示する
+          setTimeout(function () { $("ppDeclineNote").classList.add("show"); }, 400);
+        } else {
+          $("ppDeclineNote").classList.add("show");
+        }
+      });
+      $("ppOpen").addEventListener("click", function () {
+        $("ppDeclineNote").classList.remove("show");
+        ppShow();
+      });
+      ppOverlay.addEventListener("click", function (e) { if (e.target === ppOverlay) ppHide(); });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && ppOverlay.classList.contains("open")) ppHide();
+      });
+      if (!ppHasConsented()) ppShow();
+    </script>
+  </body>
+</html>
