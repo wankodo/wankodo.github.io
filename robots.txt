@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wankodo.github.io/mobility-simulator/sitemap.xml
