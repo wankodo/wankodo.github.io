@@ -1,4 +1,29 @@
+# wankodo.github.io — AI crawlers are welcome on all tool sites.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
 User-agent: *
 Allow: /
 
 Sitemap: https://wankodo.github.io/mobility-simulator/sitemap.xml
+Sitemap: https://wankodo.github.io/money-tools/sitemap.xml
+Sitemap: https://wankodo.github.io/uranai/sitemap.xml
+Sitemap: https://wankodo.github.io/insurance/sitemap.xml
