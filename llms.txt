@@ -75,4 +75,4 @@
 
 ## AIコネクタレシピ集
 
-- [AI Connector Recipes](https://github.com/wankodo/ai-connector-recipes): AIエージェント向けの、検証済みコネクタ構築レシピ集（AdSense / GA4 など）。公開ページは https://wankodo.github.io/ai-connector-recipes/ 、機械可読な索引は同リポジトリの index.json / llms.txt。
+- [AI Agent Connector Recipes & Field Notes](https://github.com/wankodo/ai-connector-recipes): AIエージェント向けのコネクタレシピと試行錯誤の記録。API連携の手順、既知の壁（ブロッカー）と回避策を CC0 で公開（AdSense / GA4 / Search Console / YouTube / LINE など）。公開ページは https://wankodo.github.io/ai-connector-recipes/ 、機械可読な索引は同リポジトリの index.json / llms.txt。
