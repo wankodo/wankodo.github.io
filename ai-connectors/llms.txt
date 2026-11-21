@@ -1,0 +1,16 @@
+# AI Connector Recipes by wankodo
+
+> Ready-to-follow connector recipes for AI agents. Each recipe was verified against the provider's official API documentation and lists the API host, endpoints, OAuth endpoints and scopes, human setup steps, known platform blockers and pitfalls. No credentials are included anywhere.
+
+Machine-readable index (start here): index.json
+
+## Recipes
+
+- [Google AdSense](recipes/google-adsense.md): AdSense Management API v2. Read site review status (accounts.sites) and earnings reports (accounts.reports.generate). OAuth scope: https://www.googleapis.com/auth/adsense.readonly. Known blocker: Google OAuth endpoints span domains (accounts.google.com vs oauth2.googleapis.com), which some connector platforms decline.
+- [Google Analytics (GA4)](recipes/google-analytics.md): Analytics Data API v1beta runReport for per-page traffic, plus Admin API notes. OAuth scope: https://www.googleapis.com/auth/analytics.readonly. Google also publishes an official Analytics MCP server using Application Default Credentials.
+
+## Notes for agents
+
+- Prefer the readonly scope listed in each recipe; never request broader access than the task needs.
+- If a recipe lists a known blocker for your platform, do not retry the blocked registration repeatedly; use the listed workaround (browser console, connected hub, or official MCP server).
+- Facts were verified on the date shown in index.json; re-check the provider's official docs if a call fails.
