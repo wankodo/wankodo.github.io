@@ -42,6 +42,20 @@ footer{max-width:860px;margin:0 auto;padding:0 14px 30px}
 ul.policy{margin:0 0 10px;padding-left:20px;font-size:14px}
 ul.policy li{margin-bottom:4px}
 </style>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
 </head>
 <body>
 <header>
@@ -134,6 +148,9 @@ ul.policy li{margin-bottom:4px}
     <h2><a href="https://wankodo.github.io/history/">歴史ツール集</a></h2>
     <p>紀元前3100年ごろから現代まで、世界各地の皇帝・王・大統領・首相など歴代の統治者を、年代を選んで世界地図の上に表示します。当時の国境の色分けつきで、歴史の学習にも使えます。</p>
     <div class="tools">
+      <a class="tool" href="https://wankodo.github.io/history/art.html" data-kw="美術家名簿 美術家 美術家 画家 彫刻家 芸術家 絵画 会派 代表作 美術史 歴史 人物 名簿"><span class="tname">美術家名簿</span><span class="tdesc">世界各地の画家・彫刻家など美術家2,353人の名簿です。名前・会派・出生地で検索でき、生没年や代表作（若い頃と晩年／近作）を表示します。出生地の地図つき。</span></a>
+      <a class="tool" href="https://wankodo.github.io/history/religion.html" data-kw="宗教家名簿 宗教家 宗教家 宗教 宗派 教祖 聖人 僧侶 神父 牧師 仏教 キリスト教 歴史 人物 名簿"><span class="tname">宗教家名簿</span><span class="tdesc">世界の宗教家4,935人の名簿です。宗教・宗派・階位や布教の足跡、生没年などを表示します。出生地の地図つき。</span></a>
+      <a class="tool" href="https://wankodo.github.io/history/genealogy.html" data-kw="家系図 家系図 家系図 系図 源氏 平家 氏族 豪族 神話 古事記 ギリシア神話 歴史 人物"><span class="tname">家系図</span><span class="tdesc">源氏・平家など日本の氏族と、古事記・ギリシア神話の神々の家系図です。拡大縮小・移動しながら系図をたどれ、名前検索でその人の場所をハイライトします。</span></a>
       <a class="tool" href="https://wankodo.github.io/history/rulers.html" data-kw="世界の歴代の統治者 世界の統治者 王 皇帝 天皇 歴史 世界史 歴代 国王 女王 ファラオ スルタン 大統領 首相 統治者 地図 年表 王朝 君主"><span class="tname">世界の歴代の統治者</span><span class="tdesc">年代を選ぶと、その時代に世界中で国を治めていた皇帝・王・大統領・首相などを世界地図の上に顔写真つきで表示します。当時の国境の色分けつき。</span></a>
     </div>
   </section>
@@ -151,9 +168,18 @@ ul.policy li{margin-bottom:4px}
   </section>
 
 </div>
+<section class="card explain-box">
+    <h2>このツールの解説</h2>
+    <p>よろず道具箱は、移動・お金・占い・保険・歴史の5つの個人ツールサイトへの総合入口です。上の検索欄にキーワードを入れると、全サイトのツールを横断して探せます。どのツールも無料・登録不要で、計算や占いはブラウザの中で完結します。</p>
+    <details>
+      <summary>詳しい解説：5つのサイトの内容</summary>
+      <p>移動シミュレーターは、電車・新幹線、高速道路、カーシェア、ガソリン代など、移動にかかるお金の試算集です。お金計算ツール集は、帳簿や請求書の作成、通信費・光熱費の比較、奨学金や引っ越しの試算を集めています。</p><p>占いツール集はタロットや生年月日占いなど日替わりで楽しめる占い集、保険ツール集は医療保険・自動車保険の比較と社会保険料の計算、歴史人物名鑑は世界の統治者・美術・宗教・家系図を調べられる資料集です。</p><p>各サイトのプライバシーポリシーは、各サイトのフッターにある「プライバシーポリシー」のリンクからご覧いただけます。計算結果は目安ですので、大事な判断の前に公式情報もあわせてご確認ください。</p>
+    </details>
+  </section>
 <footer>
   <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
   <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
 </footer>
 <script>
 (function(){
@@ -178,5 +204,25 @@ ul.policy li{margin-bottom:4px}
 })();
 </script>
 <script src="kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「よろず道具箱」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="policy-snippet.js"></script>
 </body>
 </html>
