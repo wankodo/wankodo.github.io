@@ -1,13 +1,181 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8" />
-<title>移動シミュレーター｜移転しました</title>
-<meta http-equiv="refresh" content="0; url=/mobility-simulator/" />
-<link rel="canonical" href="https://wankodo.github.io/mobility-simulator/" />
-<script>location.replace("/mobility-simulator/" + location.search + location.hash);</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>わんこ堂ツール集｜移動・お金・保険・占い・歴史の無料ツール総合トップ</title>
+<meta name="description" content="わんこ堂が公開している無料Webツールの総合トップです。移動シミュレーター、お金計算、保険の比較、占い、世界の歴代の統治者まで、登録不要・無料で使えるツールをまとめています。">
+<link rel="canonical" href="https://wankodo.github.io/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="わんこ堂ツール集｜無料ツールの総合トップ">
+<meta property="og:description" content="移動・お金・保険・占い・歴史。登録不要・無料のWebツールを5つのサイトにまとめました。">
+<meta property="og:url" content="https://wankodo.github.io/">
+<meta property="og:image" content="https://wankodo.github.io/ogp.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QQ4435VBMK');</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3970535652265626" crossorigin="anonymous"></script>
+<style>
+:root{--navy:#16283f;--navy2:#1f3a5c;--amber:#f2b33d;--ink:#22303f;--mut:#5a6a7a;--line:#d9e1e8;--bg:#f4f6f8;--card:#fff}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75}
+header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:44px 16px 36px;text-align:center}
+header h1{margin:0 0 10px;font-size:30px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:0 auto;max-width:720px;font-size:14.5px;opacity:.92}
+.wrap{max-width:860px;margin:0 auto;padding:20px 14px 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 20px 14px;margin:0 0 18px}
+.card h2{margin:0 0 8px;font-size:20px;border-left:5px solid var(--amber);padding-left:10px}
+.card h2 a{color:var(--ink);text-decoration:none}
+.card h2 a:hover{color:var(--navy2);text-decoration:underline}
+.card p{margin:0 0 14px;font-size:14px;color:var(--ink)}
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.tool{display:block;border:1px solid var(--line);border-radius:10px;padding:10px 12px;text-decoration:none;color:var(--ink);background:#fbfcfd}
+.tool:hover{border-color:var(--amber);background:#fff8ea}
+.tname{display:block;font-weight:700;font-size:14.5px;margin-bottom:2px}
+.tdesc{display:block;font-size:12.5px;color:var(--mut);line-height:1.6}
+.search{width:100%;font-size:16px;padding:12px 14px;border:1px solid var(--line);border-radius:10px}
+#searchInfo{font-size:12.5px;color:var(--mut);margin:8px 2px 0}
+.note{font-size:12.5px;color:var(--mut)}
+footer{max-width:860px;margin:0 auto;padding:0 14px 30px}
+.credit{font-size:12px;color:var(--mut);text-align:center;margin:4px 0}
+ul.policy{margin:0 0 10px;padding-left:20px;font-size:14px}
+ul.policy li{margin-bottom:4px}
+</style>
 </head>
 <body>
-<p>移動シミュレーターは <a href="/mobility-simulator/">https://wankodo.github.io/mobility-simulator/</a> へ移転しました。自動で移動しない場合はリンクを押してください。</p>
+<header>
+  <h1>わんこ堂<span class="accent">ツール集</span></h1>
+  <p>移動にかかるお金、お金の計算、保険の比較、占い、そして世界の歴史。暮らしと学びに役立つ無料のWebツールを、5つのサイトにまとめました。どれも登録不要・無料で、計算や判定はブラウザの中で完結します。</p>
+</header>
+<div class="wrap">
+
+  <section class="card">
+    <h2>ツールを探す</h2>
+    <p>名前やキーワードで、全サイトのツールを横断して探せます。</p>
+    <input type="search" class="search" id="toolSearch" placeholder="例：電車、帳簿、保険、タロット、王" aria-label="ツールを検索">
+    <p id="searchInfo"></p>
+  </section>
+
+  <section class="card">
+    <h2><a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a></h2>
+    <p>電車の運賃、高速道路の料金、ガソリン代、レンタカー、タクシーまで。移動にかかるお金と時間をまとめて試算できます。複数の移動を「行程カゴ」に積み上げて、1日の合計と割り勘まで出せるのが特徴です。</p>
+    <div class="tools">
+      <a class="tool" href="https://wankodo.github.io/mobility-simulator/timescar.html" data-kw="タイムズカー料金シミュレーター 車 カーシェア シェアカー タイムズ レンタカー 車 料金 ナイトパック 距離料金"><span class="tname">タイムズカー料金シミュレーター</span><span class="tdesc">カーシェアの利用料金を、利用時間と走行距離から試算します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/mobility-simulator/highway.html" data-kw="高速道路料金シミュレーター 車 高速 高速道路 ETC ドライブ インターチェンジ IC 有料道路 深夜割引 休日割引 NEXCO ネクスコ"><span class="tname">高速道路料金シミュレーター</span><span class="tdesc">高速道路の料金を、IC間・車種・ETC割引から計算します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/mobility-simulator/train.html" data-kw="電車・新幹線料金シミュレーター 電車 電車 鉄道 新幹線 運賃 特急 JR 私鉄 地下鉄 乗換 料金 切符"><span class="tname">電車・新幹線料金シミュレーター</span><span class="tdesc">電車と新幹線の運賃・特急料金を、路線と駅から調べます。</span></a>
+      <a class="tool" href="https://wankodo.github.io/mobility-simulator/gasoline.html" data-kw="ガソリン代計算 車 ガソリン 燃費 給油 燃料費 車 ドライブ 通勤 レギュラー ハイオク 軽油"><span class="tname">ガソリン代計算</span><span class="tdesc">走る距離と燃費から、ガソリン代を計算します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/mobility-simulator/ev.html" data-kw="EV電気代計算 車 EV 電気自動車 充電 電気代 車 電費"><span class="tname">EV電気代計算</span><span class="tdesc">電気自動車の充電にかかる電気代を計算します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/mobility-simulator/parking.html" data-kw="駐車場料金計算 車 駐車場 パーキング コインパーキング 車 料金 最大料金 月極"><span class="tname">駐車場料金計算</span><span class="tdesc">駐車場の料金体系から、停めた時間分の料金を計算します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/mobility-simulator/taxi.html" data-kw="タクシー料金計算 車 タクシー 運賃 初乗り 深夜 迎車 料金 距離"><span class="tname">タクシー料金計算</span><span class="tdesc">距離と時間から、タクシー運賃の目安を計算します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/mobility-simulator/pass.html" data-kw="定期代お得度チェック 電車 定期 定期券 通勤 通学 電車 お得 回数券 運賃"><span class="tname">定期代お得度チェック</span><span class="tdesc">定期券を買うのと都度払いの、どちらが得かを比べます。</span></a>
+      <a class="tool" href="https://wankodo.github.io/mobility-simulator/owncar.html" data-kw="マイカー維持費 vs カーシェア比較 車 マイカー 維持費 車検 自動車税 保険 カーシェア 比較 車 所有"><span class="tname">マイカー維持費 vs カーシェア比較</span><span class="tdesc">マイカーの年間維持費と、カーシェアの料金を比較します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/mobility-simulator/rental.html" data-kw="レンタカー料金比較 車 レンタカー レンタル 車 旅行 割引 料金 比較 トヨタ ニッポン オリックス タイムズ"><span class="tname">レンタカー料金比較</span><span class="tdesc">レンタカー各社の料金を、車種クラスと割引から比べます。</span></a>
+      <a class="tool" href="https://wankodo.github.io/mobility-simulator/menkyo.html" data-kw="免許更新の予約空き集約 車 免許更新 予約 空き 運転免許 警視庁 試験場 更新センター 空き状況"><span class="tname">免許更新の予約空き集約</span><span class="tdesc">東京の運転免許更新の予約空きを、全17会場ぶん1つの表にまとめて確認できます。</span></a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a></h2>
+    <p>帳簿や請求書の作成から、電気・ガス・水道・スマホの料金、奨学金の返済、引っ越し費用まで。暮らしと仕事のお金を計算するツール集です。</p>
+    <div class="tools">
+      <a class="tool" href="https://wankodo.github.io/money-tools/bookkeeping.html" data-kw="帳簿ツール（確定申告補助） 税金・申告 確定申告 青色申告 白色申告 帳簿 簿記 複式簿記 経費 売上 仕訳 決算書 収支内訳書 個人事業主 フリーランス 税金 所得税 会計"><span class="tname">帳簿ツール（確定申告補助）</span><span class="tdesc">収入と支出を入れるだけで、複式簿記の帳簿と、確定申告への転記ガイドが作れます。</span></a>
+      <a class="tool" href="https://wankodo.github.io/money-tools/scholarship.html" data-kw="奨学金返済シミュレーター 教育・ローン 奨学金 学費 学生 借金 返済 JASSO 日本学生支援機構 ローン 利息 大学 専門学校 進学 返還"><span class="tname">奨学金返済シミュレーター</span><span class="tdesc">借りる前に、毎月の返還額・返還総額・利息・完済時の年齢が分かります。返済中の見直しにも使えます。</span></a>
+      <a class="tool" href="https://wankodo.github.io/money-tools/invoice.html" data-kw="見積書・請求書・領収書ツール 書類作成 見積書 請求書 領収書 PDF 源泉徴収 消費税 インボイス 作成 フリーランス 個人事業主"><span class="tname">見積書・請求書・領収書ツール</span><span class="tdesc">見積書・請求書・領収書を作って、そのままPDFで保存できます。源泉徴収と消費税は自動計算です。</span></a>
+      <a class="tool" href="https://wankodo.github.io/money-tools/bookkeeping-corp.html" data-kw="帳簿ツール（法人用・法人税申告補助） 税金・申告 法人税 申告 別表 帳簿 簿記 複式簿記 法人 決算 仕訳 会社 経費"><span class="tname">帳簿ツール（法人用・法人税申告補助）</span><span class="tdesc">入出金を入力するだけで、法人の複式簿記の帳簿と、法人税申告書（別表）への転記ガイドが作れます。</span></a>
+      <a class="tool" href="https://wankodo.github.io/money-tools/mobile.html" data-kw="携帯料金比較 暮らし 携帯 スマホ 料金 プラン 比較 格安SIM 月額 乗り換え"><span class="tname">携帯料金比較</span><span class="tdesc">データ使用量と「やりたいこと」のチェックで、各社の携帯料金プランを通常月額（税込）で比較します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/money-tools/internet.html" data-kw="インターネット料金比較 暮らし インターネット 光回線 プロバイダ 料金 比較 自宅 回線 セット割"><span class="tname">インターネット料金比較</span><span class="tdesc">住居タイプと「お家でやりたいこと」のチェックで、自宅のインターネット料金を比較します。セット割の参考額も表示します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/money-tools/gas.html" data-kw="ガス代 比較・試算 暮らし ガス代 都市ガス LPガス プロパンガス 料金 比較 使用量 光熱費"><span class="tname">ガス代 比較・試算</span><span class="tdesc">月のガス使用量を入れるだけで、大手都市ガス会社の月額を安い順に比較。LPガスの目安試算つきです。</span></a>
+      <a class="tool" href="https://wankodo.github.io/money-tools/denki.html" data-kw="電気代 比較・試算 暮らし 電気代 電力会社 従量電灯 料金 比較 使用量 アンペア 光熱費"><span class="tname">電気代 比較・試算</span><span class="tdesc">契約アンペアと月の使用量を入れるだけで、大手電力会社の従量電灯プランの月額を安い順に比較します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/money-tools/suido.html" data-kw="水道代 比較・試算 暮らし 水道代 水道料金 下水道 料金 比較 使用量 光熱費"><span class="tname">水道代 比較・試算</span><span class="tdesc">口径と月の使用量を入れるだけで、全国20都市の水道代（下水道使用料込み）を安い順に比較します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/money-tools/moving.html" data-kw="引っ越し費用の目安 暮らし 引っ越し 引越し 見積もり 単身 家族 荷物 転居"><span class="tname">引っ越し費用の目安</span><span class="tdesc">荷物量と移動距離から、引っ越し費用の目安を出します。</span></a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><a href="https://wankodo.github.io/insurance/">保険ツール集</a></h2>
+    <p>医療保険と自動車保険の比較、社会保険料の計算、退職後の任意継続と国保の比較。各社が公式に公表している保険料例や、公的な料率に基づいて計算します。</p>
+    <div class="tools">
+      <a class="tool" href="https://wankodo.github.io/insurance/medical.html" data-kw="医療保険比較 医療保険 医療保険 がん保険 保険料 比較"><span class="tname">医療保険比較</span><span class="tdesc">年齢・性別で医療保険・がん保険19商品の月額保険料を比較します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/insurance/car.html" data-kw="自動車保険比較 自動車保険 自動車保険 任意保険 保険料 モデルケース"><span class="tname">自動車保険比較</span><span class="tdesc">各社公式の保険料モデルケースを条件で絞り込んで比較します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/insurance/continuation.html" data-kw="任意継続 vs 国保 健康保険 任意継続 国民健康保険 国保 退職"><span class="tname">任意継続 vs 国保</span><span class="tdesc">退職後の任意継続と国民健康保険の保険料を比較します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/insurance/social.html" data-kw="社会保険料計算 社会保険 社会保険料 健康保険 厚生年金 雇用保険"><span class="tname">社会保険料計算</span><span class="tdesc">給与と賞与から社会保険料の本人・会社負担を計算します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/insurance/freelance.html" data-kw="フリーランスの社会保険料計算 社会保険 フリーランス 個人事業主 国民年金 国民健康保険 国保 社会保険料 計算"><span class="tname">フリーランスの社会保険料計算</span><span class="tdesc">フリーランス・個人事業主向けに、国民年金と国民健康保険の保険料をあわせて計算します。</span></a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><a href="https://wankodo.github.io/uranai/">占いツール集</a></h2>
+    <p>タロット占い、おみくじ、生年月日で見る各種占い、エンジェルナンバーなど。毎日の運試しから、自分の性質を読み解くものまで揃えています。</p>
+    <div class="tools">
+      <a class="tool" href="https://wankodo.github.io/uranai/tarot.html" data-kw="タロット占い タロット タロット 占い ワンオラクル 今日の運勢 カード 大アルカナ 正位置 逆位置 ケルト十字 3枚 スリーカード 過去 現在 未来"><span class="tname">タロット占い</span><span class="tdesc">今日の1枚引き、3枚引き（過去・現在・未来）とケルト十字（10枚引き）が楽しめます。</span></a>
+      <a class="tool" href="https://wankodo.github.io/uranai/omikuji.html" data-kw="おみくじ 神社 おみくじ 神社 運勢 大吉 吉 凶 くじ 初詣 お参り 運試し"><span class="tname">おみくじ</span><span class="tdesc">大吉から凶までの運勢と、今日のひとことが出ます。毎日の運試しに。</span></a>
+      <a class="tool" href="https://wankodo.github.io/uranai/birthday-matome.html" data-kw="生年月日占い総合 誕生日 生年月日 占い まとめて 一覧 総合 数秘術 四柱推命 算命学 九星気学 六星占術 宿曜 マヤ暦 ホロスコープ 星座 干支 命卦 風水 誕生石 相性 誕生日"><span class="tname">生年月日占い総合</span><span class="tdesc">生年月日を入れるだけで、数秘術・四柱推命・算命学・九星気学・六星占術・宿曜・マヤ暦・ホロスコープ・星座占いなど14の占いの結果を一覧で表示します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/uranai/zodiac.html" data-kw="星座占い 星占い 星座 星占い 12星座 今日の運勢 ランキング ホロスコープ ラッキーアイテム ラッキーカラー"><span class="tname">星座占い</span><span class="tdesc">12星座の今日の運勢と、ラッキーアイテム・ラッキーカラーを表示します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/uranai/rokuyo.html" data-kw="六曜カレンダー 暦 六曜 大安 仏滅 友引 先勝 先負 赤口 カレンダー 暦 日取り 結婚式 葬式"><span class="tname">六曜カレンダー</span><span class="tdesc">今月のカレンダーに六曜（先勝・友引・先負・仏滅・大安・赤口）を表示します。日取りの参考に。</span></a>
+      <a class="tool" href="https://wankodo.github.io/uranai/eki.html" data-kw="易占い 易 易 易経 卦"><span class="tname">易占い</span><span class="tdesc">コインを投げて卦を立て、64卦から今日へのメッセージを読みます。</span></a>
+      <a class="tool" href="https://wankodo.github.io/uranai/moon.html" data-kw="月齢占い 月 月齢 満月 新月 月 ムーン"><span class="tname">月齢占い</span><span class="tdesc">今日の月齢と月の満ち欠けを表示し、月からの運勢メッセージを伝えます。</span></a>
+      <a class="tool" href="https://wankodo.github.io/uranai/rune.html" data-kw="ルーン占い ルーン ルーン 北欧"><span class="tname">ルーン占い</span><span class="tdesc">ルーン文字を1枚引いて、北欧の神話からのメッセージを受け取ります。</span></a>
+      <a class="tool" href="https://wankodo.github.io/uranai/blood.html" data-kw="血液型占い 血液型 血液型 A型 B型 O型 AB型"><span class="tname">血液型占い</span><span class="tdesc">血液型ごとに今日の運勢をランキング形式で表示します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/uranai/dream.html" data-kw="夢占い 夢 夢 意味 キーワード 夢診断"><span class="tname">夢占い</span><span class="tdesc">見た夢に出てきたキーワードから、夢の意味を検索できます。</span></a>
+      <a class="tool" href="https://wankodo.github.io/uranai/seimei.html" data-kw="姓名判断 姓名 姓名判断 画数 五格 名前占い"><span class="tname">姓名判断</span><span class="tdesc">名前の画数から五格と吉凶を診断します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/uranai/phone.html" data-kw="携帯番号占い 番号 携帯番号 番号占い 数字"><span class="tname">携帯番号占い</span><span class="tdesc">携帯番号の下4桁の合計から運勢を診断します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/uranai/playingcards.html" data-kw="トランプ占い トランプ トランプ カード占い"><span class="tname">トランプ占い</span><span class="tdesc">52枚のトランプから今日の1枚を引きます。</span></a>
+      <a class="tool" href="https://wankodo.github.io/uranai/oracle.html" data-kw="ワンオラクル オラクル オラクル メッセージ カード"><span class="tname">ワンオラクル</span><span class="tdesc">今日の1枚のオラクルカードを引きます。</span></a>
+      <a class="tool" href="https://wankodo.github.io/uranai/dice.html" data-kw="サイコロ占い サイコロ サイコロ ダイス"><span class="tname">サイコロ占い</span><span class="tdesc">サイコロ3個の合計で今日の運勢を占います。</span></a>
+      <a class="tool" href="https://wankodo.github.io/uranai/angel.html" data-kw="エンジェルナンバー 数字 エンジェルナンバー 数字 ゾロ目"><span class="tname">エンジェルナンバー</span><span class="tdesc">今日のエンジェルナンバーと、気になる数字の意味を表示します。</span></a>
+      <a class="tool" href="https://wankodo.github.io/uranai/crystal.html" data-kw="水晶占い 水晶 水晶 クリスタル"><span class="tname">水晶占い</span><span class="tdesc">水晶玉に映る今日の情景とメッセージを占います。</span></a>
+      <a class="tool" href="https://wankodo.github.io/uranai/hana.html" data-kw="花占い 花 花占い 好き嫌い"><span class="tname">花占い</span><span class="tdesc">花びらを1枚ずつちぎって占う、昔ながらの花占いです。</span></a>
+      <a class="tool" href="https://wankodo.github.io/uranai/pendulum.html" data-kw="ペンデュラム占い ペンデュラム ペンデュラム ダウジング 二択"><span class="tname">ペンデュラム占い</span><span class="tdesc">振り子に二択の質問を問いかける占いです。</span></a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><a href="https://wankodo.github.io/history/">歴史ツール集</a></h2>
+    <p>紀元前3100年ごろから現代まで、世界各地の皇帝・王・大統領・首相など歴代の統治者を、年代を選んで世界地図の上に表示します。当時の国境の色分けつきで、歴史の学習にも使えます。</p>
+    <div class="tools">
+      <a class="tool" href="https://wankodo.github.io/history/rulers.html" data-kw="世界の歴代の統治者 世界の統治者 王 皇帝 天皇 歴史 世界史 歴代 国王 女王 ファラオ スルタン 大統領 首相 統治者 地図 年表 王朝 君主"><span class="tname">世界の歴代の統治者</span><span class="tdesc">年代を選ぶと、その時代に世界中で国を治めていた皇帝・王・大統領・首相などを世界地図の上に顔写真つきで表示します。当時の国境の色分けつき。</span></a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>このサイトについて</h2>
+    <p>わんこ堂ツール集は、個人が運営する非公式の無料ツール集です。「調べれば分かるはずの数字を、その場で計算できるようにしたい」という考えで作っています。</p>
+    <ul class="policy">
+      <li>料金や保険料などのデータは、公式に公表されている資料に基づいて作成しています。</li>
+      <li>公式に数字が公表されていないものは、推測で埋めず、確認できる窓口を案内する形にしています。</li>
+      <li>入力した内容は外部に送信されません。処理はすべてお使いのブラウザの中で完結します。</li>
+      <li>関連プロジェクト：<a href="https://wankodo.github.io/ai-connector-recipes/">AIコネクタレシピ集</a>（AIエージェント向けの接続ノウハウ集）も公開しています。</li>
+    </ul>
+    <p class="note">各ツールの結果は目安です。実際の料金や条件は、必ず公式の案内でご確認ください。</p>
+  </section>
+
+</div>
+<footer>
+  <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+  <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+</footer>
+<script>
+(function(){
+  var input = document.getElementById('toolSearch');
+  var info = document.getElementById('searchInfo');
+  var tools = Array.prototype.slice.call(document.querySelectorAll('.tool'));
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section.card'));
+  input.addEventListener('input', function(){
+    var q = input.value.trim().toLowerCase();
+    var shown = 0;
+    tools.forEach(function(el){
+      var hit = !q || el.getAttribute('data-kw').toLowerCase().indexOf(q) >= 0 || el.textContent.toLowerCase().indexOf(q) >= 0;
+      el.style.display = hit ? '' : 'none';
+      if (hit) shown++;
+    });
+    sections.forEach(function(sec){
+      var any = Array.prototype.some.call(sec.querySelectorAll('.tool'), function(el){ return el.style.display !== 'none'; });
+      if (sec.querySelector('.tool')) sec.style.display = any ? '' : 'none';
+    });
+    info.textContent = q ? ('「' + input.value.trim() + '」に合うツール：' + shown + '件') : '';
+  });
+})();
+</script>
 </body>
 </html>
