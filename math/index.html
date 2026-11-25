@@ -181,7 +181,7 @@ gtag('config', 'G-QQ4435VBMK');
       <h3 id="resultHead"></h3>
       <div id="jumpBox"></div>
       <div id="resultCards"></div>
-      <p id="noHit" class="note" style="display:none">条件に合う項目が見つかりませんでした。キーワードを変えるか、下の「考え方」「計算機」の一覧から探してみてください。</p>
+      <p id="noHit" class="note" style="display:none">条件に合う項目が見つかりませんでした。キーワードを変えるか、検索欄を空にして「考え方」「計算機」の一覧から探してみてください。</p>
     </div>
   </section>
 
@@ -847,6 +847,8 @@ gtag('config', 'G-QQ4435VBMK');
   var noHit=document.getElementById("noHit");
   var chips=document.querySelectorAll(".chip[data-level]");
   var level="all";
+  var listSecs=[document.getElementById("sec-kaikata"),document.getElementById("sec-keisanki")];
+  function setListsVisible(v){listSecs.forEach(function(s){if(s)s.style.display=v?"":"none";});}
   function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
   function makeCard(it){
     var card=el("div","tool-card");
@@ -866,7 +868,8 @@ gtag('config', 'G-QQ4435VBMK');
   }
   function update(){
     var q=norm(input.value);
-    if(!q&&level==="all"){box.style.display="none";return;}
+    if(!q&&level==="all"){box.style.display="none";setListsVisible(true);return;}
+    setListsVisible(false);
     var items=INDEX.filter(function(it){
       if(level!=="all"&&it.level.indexOf(level)<0)return false;
       if(!q)return true;
@@ -878,6 +881,12 @@ gtag('config', 'G-QQ4435VBMK');
     secs.forEach(function(s){
       var a=el("a","jump-link","『"+s.name+"』のセクションへ移動 →");
       a.href="#"+s.id;
+      a.addEventListener("click",function(){
+        input.value="";
+        level="all";
+        chips.forEach(function(c){c.setAttribute("aria-pressed",String(c.dataset.level==="all"));});
+        update();
+      });
       jumpBox.appendChild(a);
     });
     cardsBox.innerHTML="";
