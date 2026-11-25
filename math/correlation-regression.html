@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>相関係数と回帰直線｜数学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-math.svg">
+<meta name="description" content="相関係数と回帰直線の使い方を、公式・手順・例題で解説。気温と電力需要、広告費と売上、品質管理での不良率の分析など、実際の現場での使われ方まで紹介します。対応する計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="数学ツール集">
+<meta property="og:title" content="相関係数と回帰直線｜数学ツール集">
+<meta property="og:description" content="2つの量の関係の強さを測る相関係数と、予測に使う回帰直線を、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/math/correlation-regression.html">
+<meta property="og:image" content="https://wankodo.github.io/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/ogp.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 数学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">数学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="./" class="cur">数学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>相関係数と<span class="accent">回帰直線</span></h1>
+    <p>数学解法辞典 ― 確率・統計（高校）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">数学ツール集トップ</a> ＞ 確率・統計 ＞ 相関係数と回帰直線</p>
+  <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">確率・統計</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    気温が上がると電力需要がどれだけ増えるか、広告費を増やすと売上がどれだけ伸びるかなど、2つの量の関係の強さと向きを1つの数字で掴むときに使う。工場の品質管理では、製造条件と不良率の関係を探る手がかりにもなる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p><strong>2つの量の組になったデータ</strong>（x と y のペア）が手元にあって、その関係を調べたいときの解法です。次のような場面で使います。</p>
+    <ul>
+      <li>身長と体重、勉強時間とテストの点数など、2つの量に「関係がありそうか」を数字で確かめたいとき（相関係数）</li>
+      <li>散布図に点がばらついていて、全体として右上がりか右下がりか、その傾き具合を1つの値で表したいとき</li>
+      <li>一方の値から他方を予測する式（直線）がほしいとき（回帰直線）。例えば広告費から売上を予測する</li>
+      <li>「関係が強い／弱い」を感覚ではなく基準のある言葉で報告したいとき</li>
+    </ul>
+    <p>相関係数 r は −1 から 1 の間の値をとり、1 に近いほど「片方が増えると他方も増える」関係（正の相関）が強く、−1 に近いほど「片方が増えると他方は減る」関係（負の相関）が強く、0 に近いほど直線的な関係は弱い、という目安になります。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <div class="formula">r ＝ S<sub>xy</sub> ÷ √(S<sub>xx</sub> ・ S<sub>yy</sub>)</div>
+    <p>x の平均を x̄、y の平均を ȳ とします。各データについて「平均からどれだけずれているか（偏差）」を計算し、次の3つの量を作ります。</p>
+    <ul>
+      <li>S<sub>xx</sub> ＝ (x − x̄)<sup>2</sup> の合計 … x の散らばり具合</li>
+      <li>S<sub>yy</sub> ＝ (y − ȳ)<sup>2</sup> の合計 … y の散らばり具合</li>
+      <li>S<sub>xy</sub> ＝ (x − x̄)(y − ȳ) の合計 … x と y が「一緒に動く」度合い</li>
+    </ul>
+    <p>S<sub>xy</sub> がポイントです。x も y も平均より大きい組では偏差同士の積がプラスに、片方だけ大きい組ではマイナスになります。同じ向きに動く組が多ければ S<sub>xy</sub> は大きなプラスになり、相関係数も 1 に近づきます。</p>
+    <p><strong>回帰直線</strong>は、散布図の点全体にいちばんよく沿う直線で、次の式で求めます。</p>
+    <div class="formula">y ＝ a ＋ bx　（b ＝ S<sub>xy</sub> ÷ S<sub>xx</sub>、a ＝ ȳ − b x̄）</div>
+    <p>この直線は必ず点 (x̄, ȳ)（平均の組）を通ります。傾き b は「x が1増えたとき、y が平均してどれだけ増えるか」を表します。</p>
+    <p>強さの目安は、一般に |r| が 0.7 以上で「強い」、0.4 以上で「中程度」、0.2 以上で「弱い」、0.2 未満で「ほぼなし」と言われることが多いです（分野によって基準は異なります）。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>x と y の平均 x̄・ȳ を求める。</strong></li>
+      <li><strong>各組について偏差 (x − x̄) と (y − ȳ) を計算する。</strong>表にまとめると計算ミスが減ります。</li>
+      <li><strong>S<sub>xy</sub>・S<sub>xx</sub>・S<sub>yy</sub> の3つを合計で求める。</strong></li>
+      <li><strong>相関係数 r ＝ S<sub>xy</sub> ÷ √(S<sub>xx</sub>・S<sub>yy</sub>) を計算し、符号と大きさから相関の向きと強さを読み取る。</strong></li>
+      <li><strong>回帰直線を求める。</strong>傾き b ＝ S<sub>xy</sub> ÷ S<sub>xx</sub>、切片 a ＝ ȳ − b x̄ の順に計算します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題：5日間について、広告費 x（万円）と売上 y（万円）を調べたら、x ＝ 1, 2, 3, 4, 5、y ＝ 2, 4, 5, 4, 5 だった。相関係数と、y の x への回帰直線を求めよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>平均：x̄ ＝ (1＋2＋3＋4＋5) ÷ 5 ＝ 3、ȳ ＝ (2＋4＋5＋4＋5) ÷ 5 ＝ 4</li>
+          <li>偏差を掛け合わせて合計する：S<sub>xy</sub> ＝ (−2)(−2) ＋ (−1)(0) ＋ (0)(1) ＋ (1)(0) ＋ (2)(1) ＝ 4 ＋ 0 ＋ 0 ＋ 0 ＋ 2 ＝ 6</li>
+          <li>S<sub>xx</sub> ＝ 4 ＋ 1 ＋ 0 ＋ 1 ＋ 4 ＝ 10、S<sub>yy</sub> ＝ 4 ＋ 0 ＋ 1 ＋ 0 ＋ 1 ＝ 6</li>
+          <li>相関係数：r ＝ 6 ÷ √(10 × 6) ＝ 6 ÷ √60 ≒ 0.7746</li>
+          <li>回帰直線の傾き：b ＝ S<sub>xy</sub> ÷ S<sub>xx</sub> ＝ 6 ÷ 10 ＝ 0.6</li>
+          <li>切片：a ＝ ȳ − b x̄ ＝ 4 − 0.6 × 3 ＝ 4 − 1.8 ＝ 2.2</li>
+        </ol>
+        <p><strong>答え：r ≒ 0.77（強い正の相関）、回帰直線 y ＝ 0.6x ＋ 2.2</strong>。広告費が1万円増えると、売上は平均して約0.6万円増える傾向がある、と読み取れます。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>気温と電力需要の予測</h3>
+    <p>電力会社は、気温と電力需要の関係を相関と回帰で捉え、翌日の最大電力を予測します。猛暑日には冷房需要が跳ね上がるため、この予測の精度が発電計画や節電のお願いの判断に直結します。</p>
+    <h3>広告費と売上の分析</h3>
+    <p>マーケティングでは、広告費と売上の相関を見て「広告が効いているか」を点検し、回帰直線の傾きから「広告費をあと1単位増やしたら売上がどれだけ伸びそうか」を見積もります。ただし、広告を増やす時期はもともと売れる時期と重なりやすいなど、見かけの相関に惑わされない注意も必要です。</p>
+    <h3>品質管理での要因探し</h3>
+    <p>工場では、温度・圧力・速度といった製造条件と不良率の相関を調べ、どの条件が不良と強く結びついているかを探ります。相関の強い条件から優先的に改善していくのが、品質管理の基本的な進め方です。</p>
+    <h3>注意：「相関がある」＝「原因である」ではない</h3>
+    <p>相関は「一緒に動く」ことしか示しません。例えば「アイスクリームの売上」と「水難事故」は強く相関しますが、原因はどちらでもなく、背後にある「暑さ」という第三の要因です。相関を見つけたら、因果関係があるかどうかは別の検証が必要だというのが、統計を使うときの大原則です。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p><strong>フランシス・ゴールトン</strong>（1822〜1911）イギリスの人類学者・統計学者で、親子の身長を調べる中で、背の高い親の子は親ほどには高くならず平均に近づく現象に気づき、「平均への回帰」という概念を生みました。回帰直線の「回帰」という言葉はここから来ています。その後、<strong>カール・ピアソン</strong>（1857〜1936）が相関係数を現在の数式の形に体系化し、統計学の基本道具として広めました。</p>
+  </section>
+
+  <a class="linkcard" href="calc-correlation-regression.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">相関係数と回帰直線 計算機：xとyのデータ列を入れると、平均・Sxy・Sxx・Syyから相関係数と回帰直線を解き方の手順つきで計算します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>データの散らばりを1つの量で見たいときは「平均・分散・標準偏差」、データの分布全体を掴みたいときは「四分位数と箱ひげ図・代表値」が役立ちます。<a href="./">数学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「数学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

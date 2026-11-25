@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一次不定方程式｜数学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-math.svg">
+<meta name="description" content="一次不定方程式の使い方を、公式・手順・例題で解説。拡張ユークリッドの互除法で整数解を求める方法や、硬貨の組み合わせや荷物の積み合わせなど、実際の現場での使われ方まで紹介します。対応する計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="数学ツール集">
+<meta property="og:title" content="一次不定方程式｜数学ツール集">
+<meta property="og:description" content="ax+by=c の整数解を拡張ユークリッドの互除法で求める方法を、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/math/diophantine.html">
+<meta property="og:image" content="https://wankodo.github.io/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/ogp.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 数学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">数学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="./" class="cur">数学ツール集</a>
+</div></nav>
+<header><div class="wrap"><h1>一次<span class="accent">不定方程式</span></h1><p>数学解法辞典 ― 数と式（高校）</p></div></header>
+<div class="wrap">
+<p class="crumb"><a href="./">数学ツール集トップ</a> ＞ 数と式 ＞ 一次不定方程式</p>
+<p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">数と式</span> <span class="badge badge-calc">計算機あり</span></p>
+<div class="summary-box"><span class="sb-lab">どんな時に使えるか</span>硬貨や切手の組み合わせで合計金額をぴったり作ったり、荷物の積み合わせで重さや容量をぴったり満たす個数の組み合わせを探したりするときに使う。2種類の数量の合計をちょうど目標値にする、実務の「ぴったり合わせ」の一般形である。</div>
+<section class="card"><h2>どんな問題に使うか</h2><p>未知数が2つあるのに式が1つしかない方程式 a x ＋ b y ＝ c で、<strong>解を整数に限る</strong>問題です。「不定」は解が1つに定まらないという意味ですが、整数という条件を付けると、解は規則正しく並んだ組み合わせだけに絞られます。</p><ul><li>「○円の品物と△円の品物を合わせてちょうど□円にする買い方は何通りか」という金額合わせの問題</li><li>2種類の箱や袋で、総個数や総重量をちょうど目標値にする組み合わせの問題</li><li>a x ＋ b y ＝ c の整数解をすべて（一般解の形で）求める問題</li><li>解があるかどうか自体を判定する問題（最大公約数がカギになる）</li></ul><p>実数の範囲では解は無数にありますが、整数解は「あるかないか」がまず問題になり、ある場合は等間隔に並びます。その構造を読み解くのがこの解法です。</p></section>
+<section class="card"><h2>公式・考え方</h2><div class="formula">a x ＋ b y ＝ c　（d ＝ gcd(a, b)）</div><p><strong>解がある条件：</strong>c が d で割り切れること。a x ＋ b y は常に d の倍数になるので、c が d の倍数でなければ整数解は1つもありません。逆に、割り切れれば解は必ずあります。</p><p><strong>特殊解と一般解：</strong>まず解を1つ（特殊解 x<sub>0</sub>, y<sub>0</sub>）見つけます。するとすべての解は</p><div class="formula">x ＝ x<sub>0</sub> ＋ (b/d) k，　y ＝ y<sub>0</sub> − (a/d) k　（k は整数）</div><p>の形に書けます。x を (b/d) 増やすと a x は a(b/d) 増え、y を (a/d) 減らすと b y はちょうど同じだけ減るので、合計が変わらない、という仕組みです。</p><p><strong>特殊解の見つけ方：</strong>拡張ユークリッドの互除法を使います。通常の互除法の割り算を逆にたどると、a x ＋ b y ＝ d を満たす x, y が機械的に求まります。あとは両辺を c/d 倍すれば、求める方程式の特殊解になります。</p></section>
+<section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>d ＝ gcd(a, b) を求め、c が d で割り切れるか確認する。</strong>割り切れなければ「整数解なし」で終了です。</li><li><strong>拡張ユークリッドの互除法で a x ＋ b y ＝ d の解を1つ求める。</strong>互除法の各割り算を記録し、余り＝割る数−商×割られる数の形で逆向きに代入していく。</li><li><strong>両辺を c/d 倍して、もとの方程式の特殊解 (x<sub>0</sub>, y<sub>0</sub>) を得る。</strong></li><li><strong>一般解 x ＝ x<sub>0</sub> ＋ (b/d)k，y ＝ y<sub>0</sub> − (a/d)k を書く。</strong></li><li><strong>個数や金額など x, y ≧ 0 の条件がある場合は、その範囲に入る k を絞り込む。</strong>x が 0 以上で最小になる解もここで見つかります。</li></ol></section>
+<section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：7個入りの箱と11個入りの箱を使って、ちょうど100個を出荷したい。7個入りの箱を x 箱、11個入りの箱を y 箱とするとき、組み合わせをすべて求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>式は 7x ＋ 11y ＝ 100 です。d ＝ gcd(7, 11) ＝ 1 で、100 は 1 で割り切れるので解があります。</p><ol class="steps"><li>7x ＋ 11y ＝ 1 の解を1つ探す：7×(−3) ＋ 11×2 ＝ −21 ＋ 22 ＝ 1 なので、(−3, 2) が解。</li><li>両辺を100倍すると特殊解は (−300, 200)。</li><li>一般解は x ＝ −300 ＋ 11k，y ＝ 200 − 7k。</li><li>x ≧ 0 となるのは k ≧ 28（x ＝ 8）のとき、y ≧ 0 となるのは k ≦ 28 のとき。よって k ＝ 28 のみ。</li></ol><p><strong>答え：7個入りの箱が8箱、11個入りの箱が4箱</strong>（検算：7×8 ＋ 11×4 ＝ 56 ＋ 44 ＝ 100）。組み合わせはこの1通りだけです。</p></details></div></section>
+<section class="card"><h2>現場での使われ方</h2><h3>硬貨・切手の金額合わせ</h3><p>「50円切手と80円切手でちょうど○○円分買う」といった問題は、まさに一次不定方程式です。自動販売機や両替機の設計、郵便料金の組み合わせ計算でも、合計をぴったり作れる組み合わせがあるかをこの形で判定します。</p><h3>荷物の積み合わせ</h3><p>トラックやコンテナに2種類の荷物を積むとき、総重量や容量の上限をぴったり満たす個数の組み合わせを探す問題も同じ形になります。切り捨てや端数を出さずに積み切る計画を立てる場面で使われます。</p><h3>暗号・計算機科学の土台</h3><p>特殊解を求める拡張ユークリッドの互除法は、RSA暗号で秘密鍵を求める計算（法のもとでの逆元計算）にもそのまま使われています。高校のこの単元が、現代の暗号技術の入口になっています。</p></section>
+<section class="card"><h2>考え出した人</h2><p><strong>ディオファントス</strong>（3世紀頃）アレクサンドリアの数学者で、著書『算術』で整数解を求める問題を数多く扱ったことから、この種の方程式は「ディオファントス方程式」とも呼ばれます。互除法そのものは<strong>ユークリッド</strong>（紀元前3世紀頃）の『原論』に記された方法で、それを逆にたどって解を組み立てるのが拡張ユークリッドの互除法です。またインドの<strong>アーリヤバタ</strong>（476〜550）も、同じ問題を解く「粉砕法（クッタカ）」を独自に編み出していました。</p></section>
+<a class="linkcard" href="calc-diophantine.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">一次不定方程式 計算機：a、b、c を入れると、拡張ユークリッドの互除法の手順つきで特殊解と一般解を計算します。</span></a>
+<section class="card"><h2>関連項目</h2><p>最大公約数を求めるユークリッドの互除法や、割り算の余りを扱う合同式の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「数学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
