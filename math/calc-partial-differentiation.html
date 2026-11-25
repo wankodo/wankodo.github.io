@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>偏微分 計算機｜数学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-math.svg">
+<meta name="description" content="多項式 f(x, y) の項（係数・xの指数・yの指数）を入れると、∂f/∂x と ∂f/∂y を手順つきで計算する無料の計算機です。偏微分の解説記事つき。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="数学ツール集">
+<meta property="og:title" content="偏微分 計算機｜数学ツール集">
+<meta property="og:description" content="多項式 f(x, y) の偏微分を、「他の変数は定数として扱う」手順つきで計算します。">
+<meta property="og:url" content="https://wankodo.github.io/math/calc-partial-differentiation.html">
+<meta property="og:image" content="https://wankodo.github.io/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/ogp.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+.field{margin:0 0 14px}
+.field label{display:block;font-weight:700;margin-bottom:5px}
+.field .fl-note{font-weight:400;font-size:12.5px;color:var(--mut)}
+.field input{width:100%;padding:12px 14px;font-size:17px;border:2px solid var(--navy);border-radius:10px;background:#fff;color:var(--ink)}
+.field input:focus{outline:3px solid var(--amber);outline-offset:0;border-color:var(--amber-d)}
+.btn{display:block;width:100%;min-height:50px;border:0;border-radius:10px;background:linear-gradient(180deg,#ffc44d,var(--amber));color:#231a00;font-size:16px;font-weight:800;cursor:pointer}
+.btn:hover{filter:brightness(1.05)}
+.err{display:none;background:#fdecea;border:1px solid var(--red);color:var(--red);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:14px}
+.result{display:none;background:var(--card);border:2px solid var(--amber);border-radius:10px;padding:16px;margin:14px 0}
+.result .ans{font-size:23px;font-weight:800;color:var(--navy);margin:0 0 8px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 数学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+<style>
+
+.field select{width:100%;padding:12px 14px;font-size:17px;border:2px solid var(--navy);border-radius:10px;background:#fff;color:var(--ink)}
+.field select:focus{outline:3px solid var(--amber);outline-offset:0;border-color:var(--amber-d)}
+.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;font-size:.72em;line-height:1.25;margin:0.15em}
+.frac.fn{border-bottom:1.5px solid currentColor;padding:0.3em}
+.frac.fd{padding:0.3em}
+.tbl{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+.tbl th,.tbl td{border:1px solid var(--line);padding:6px 8px;text-align:right}
+.tbl th{background:var(--soft);text-align:center}
+.term-row{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}
+.term-row.tr-lab{width:100%;font-weight:700;font-size:13.5px}
+.term-row input{flex:1;min-width:90px;padding:10px 12px;font-size:16px;border:2px solid var(--navy);border-radius:10px;background:#fff;color:var(--ink)}
+.term-row input:focus{outline:3px solid var(--amber);outline-offset:0;border-color:var(--amber-d)}
+.btn-sub{display:block;width:100%;min-height:44px;border:2px solid var(--navy);border-radius:10px;background:var(--card);color:var(--navy);font-size:14px;font-weight:700;cursor:pointer;margin:0 0 14px}
+
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">数学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="./" class="cur">数学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>偏微分 <span class="accent">計算機</span></h1>
+    <p>数学解法辞典 ― 微分・積分（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+ <p class="crumb"><a href="./">数学ツール集トップ</a> ＞ 微分・積分 ＞ <a href="partial-differentiation.html">偏微分</a> ＞ 計算機</p>
+ <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">微分・積分</span></p>
+
+
+<section class="card">
+<h2>項を入れると、多項式 f(x, y) の偏微分を計算します</h2>
+<p>項ごとに「係数・x の指数・y の指数」を入力してください（例：3x<sup>2</sup>y なら係数 3、x の指数 2、y の指数 1）。係数は整数・小数・分数（1/2 の形）に対応します。使わない行は空欄のままで構いません。「項を増やす」で行を追加できます。&part;f/&part;x と &part;f/&part;y を、「他の変数は定数として扱う」手順つきで表示します。</p>
+<div id="rowsWrap"></div>
+<button type="button" class="btn-sub" id="addRowBtn">＋ 項を増やす</button>
+<button type="button" class="btn" id="calcBtn">偏微分する</button>
+<div class="err" id="err" role="alert"></div>
+<div class="result" id="result">
+<p class="ans" id="ans"></p>
+<h3 style="margin:10px 0 4px;font-size:15px;">解き方の手順</h3>
+<ol class="steps" id="steps"></ol>
+</div>
+<p class="note">計算結果は目安です。指数は 0〜20 の整数に対応します。</p>
+</section>
+
+
+<script>
+(function(){
+"use strict";
+function gcd(a,b){a=Math.abs(a);b=Math.abs(b);while(b){var t=b;b=a%b;a=t;}return a||1;}
+function rat(n,d){if(d<0){n=-n;d=-d;}var g=gcd(n,d);return{n:n/g,d:d/g};}
+function parseNum(s){
+if(s==null)return null;
+s=String(s).trim().replace(/[０-９]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0);}).replace(/．/g,".").replace(/／/g,"/").replace(/－/g,"-");
+if(s==="")return null;
+var m=s.match(/^([+-]?\d+)\s*\/\s*([+-]?\d+)$/);
+if(m){var dn=parseInt(m[2],10);if(dn===0)return null;return rat(parseInt(m[1],10),dn);}
+if(/^[+-]?(\d+(\.\d*)?|\.\d+)$/.test(s)){
+var neg=s.charAt(0)==="-";var t=s.replace(/^[+-]/,"");var p=t.split(".");
+var ip=(p[0]===""?"0":p[0]);var fp=(p.length>1?p[1]:"");
+var den=1;for(var i=0;i<fp.length;i++)den*=10;
+var num=parseInt(ip,10)*den+(fp===""?0:parseInt(fp,10));
+if(neg)num=-num;
+return rat(num,den);
+}
+return null;
+}
+function rAdd(a,b){return rat(a.n*b.d+b.n*a.d,a.d*b.d);}
+function rMul(a,b){return rat(a.n*b.n,a.d*b.d);}
+function rIsZero(a){return a.n===0;}
+function rAbs(a){return{n:Math.abs(a.n),d:a.d};}
+function coefHTML(a){if(a.d===1)return String(a.n);return '<span class="frac"><span class="fn">'+a.n+'</span><span class="fd">'+a.d+'</span></span>';}
+function coefSignedHTML(r){return (r.n<0?"−":"")+coefHTML(rAbs(r));}
+function varHTML(v,p){if(p===0)return "";if(p===1)return v;return v+"<sup>"+p+"</sup>";}
+function termBodyHTML(c,a,b){
+var out="";
+var hasVar=(a>0||b>0);
+if(!(hasVar&&Math.abs(c.n)===1&&c.d===1))out+=coefHTML(rAbs(c));
+out+=varHTML("x",a)+varHTML("y",b);
+return out;
+}
+function termSignedHTML(t){return (t.c.n<0?"−":"")+termBodyHTML(t.c,t.a,t.b);}
+function polyHTML(terms){
+var ts=terms.filter(function(t){return!rIsZero(t.c);});
+if(!ts.length)return "0";
+var out="";
+ts.forEach(function(t,i){
+var body=termBodyHTML(t.c,t.a,t.b);
+if(i===0)out+=(t.c.n<0?"−":"")+body;
+else out+=(t.c.n<0?" − ":" ＋ ")+body;
+});
+return out;
+}
+var rowsWrap=document.getElementById("rowsWrap");
+var rows=[];
+function buildRow(){
+if(rows.length>=8)return;
+var idx=rows.length;
+var div=document.createElement("div");div.className="term-row";
+var lab=document.createElement("span");lab.className="tr-lab";lab.textContent="項"+(idx+1)+"（係数 × x の指数 × y の指数）";
+div.appendChild(lab);
+function mk(ph){var inp=document.createElement("input");inp.type="text";inp.placeholder=ph;inp.setAttribute("inputmode","text");div.appendChild(inp);return inp;}
+var c=mk("係数 例：3"),xp=mk("xの指数 例：2"),yp=mk("yの指数 例：1");
+rowsWrap.appendChild(div);
+rows.push({coef:c,xp:xp,yp:yp});
+}
+buildRow();buildRow();
+document.getElementById("addRowBtn").addEventListener("click",function(){buildRow();});
+var err=document.getElementById("err"),res=document.getElementById("result");
+var ans=document.getElementById("ans"),stepsEl=document.getElementById("steps");
+function fail(msg){err.textContent=msg;err.style.display="block";res.style.display="none";}
+function parseExp(s){
+s=String(s).trim();
+if(!/^\d+$/.test(s))return null;
+var v=parseInt(s,10);
+if(v>20)return null;
+return v;
+}
+function calc(){
+err.style.display="none";res.style.display="none";
+var terms=[],anyInput=false;
+for(var i=0;i<rows.length;i++){
+var cs=rows[i].coef.value.trim(),xs=rows[i].xp.value.trim(),ys=rows[i].yp.value.trim();
+if(cs===""&&xs===""&&ys==="")continue;
+anyInput=true;
+if(cs===""||xs===""||ys===""){fail("項"+(i+1)+" は、係数・x の指数・y の指数をすべて入力するか、すべて空欄にしてください。");return;}
+var c=parseNum(cs);
+if(c===null){fail("項"+(i+1)+" の係数には、整数・小数・分数（1/2 の形）で入力してください。");return;}
+var a=parseExp(xs),b=parseExp(ys);
+if(a===null||b===null){fail("項"+(i+1)+" の指数には、0〜20 の整数を入力してください。");return;}
+var found=null;
+terms.forEach(function(t){if(t.a===a&&t.b===b)found=t;});
+if(found)found.c=rAdd(found.c,c);
+else terms.push({c:c,a:a,b:b});
+}
+if(!anyInput){fail("項が入力されていません。少なくとも1つの項を入力してください。");return;}
+terms=terms.filter(function(t){return!rIsZero(t.c);});
+if(!terms.length){fail("すべての項の係数が 0 になっています。0 でない係数を入力してください。");return;}
+var steps=[];
+steps.push("元の式：f(x, y) ＝ "+polyHTML(terms));
+var dx=[],dy=[];
+steps.push("y を定数として扱い、x について微分します");
+terms.forEach(function(t){
+if(t.a===0){steps.push(termSignedHTML(t)+" は x を含まない（定数とみなす）ので、∂/∂x では 0 になります");}
+else{
+var nc=rMul(t.c,rat(t.a,1));
+var nt={c:nc,a:t.a-1,b:t.b};
+steps.push(termSignedHTML(t)+"：x の指数 "+t.a+" を係数に掛けて指数を1つ下げると、"+termSignedHTML(nt)+" になります（y の部分はそのまま残します）");
+dx.push(nt);
+}
+});
+steps.push("x を定数として扱い、y について微分します");
+terms.forEach(function(t){
+if(t.b===0){steps.push(termSignedHTML(t)+" は y を含まない（定数とみなす）ので、∂/∂y では 0 になります");}
+else{
+var nc=rMul(t.c,rat(t.b,1));
+var nt={c:nc,a:t.a,b:t.b-1};
+steps.push(termSignedHTML(t)+"：y の指数 "+t.b+" を係数に掛けて指数を1つ下げると、"+termSignedHTML(nt)+" になります（x の部分はそのまま残します）");
+dy.push(nt);
+}
+});
+ans.innerHTML="∂f/∂x ＝ "+polyHTML(dx)+"<br>∂f/∂y ＝ "+polyHTML(dy);
+stepsEl.innerHTML="";
+steps.forEach(function(s){var li=document.createElement("li");li.innerHTML=s;stepsEl.appendChild(li);});
+res.style.display="block";
+}
+document.getElementById("calcBtn").addEventListener("click",calc);
+})();
+</script>
+ <a class="linkcard" href="partial-differentiation.html">
+ <span class="lc-t">解法の解説を読む →</span>
+ <span class="lc-d" style="display:block;">偏微分の考え方・手順・例題と、機械学習の勾配や偏微分方程式など「現場での使われ方」を解説しています。</span>
+ </a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+
+<script>
+(function(){
+  "use strict";
+
+  function fmt(x){
+    if(!isFinite(x)) return String(x);
+    var r = Math.round(x * 10000) / 10000;
+    if(Math.abs(r - Math.round(r)) < 1e-9) return String(Math.round(r));
+    return String(r);
+  }
+  function sNum(n){
+    if(n < 0) return "−" + String(-n);
+    return String(n);
+  }
+  function parNum(n){
+    if(n < 0) return "(−" + String(-n) + ")";
+    return String(n);
+  }
+  function gcd2(x, y){
+    x = Math.abs(x); y = Math.abs(y);
+    while(y){ var t = x % y; x = y; y = t; }
+    return x;
+  }
+  function gcd3(x, y, z){ return gcd2(gcd2(x, y), z); }
+  function polyStr(a, b, c){
+    var parts = [];
+    if(a !== 0) parts.push({ s: a < 0 ? -1 : 1, t: Math.abs(a) === 1 ? "x²" : Math.abs(a) + "x²" });
+    if(b !== 0) parts.push({ s: b < 0 ? -1 : 1, t: Math.abs(b) === 1 ? "x" : Math.abs(b) + "x" });
+    if(c !== 0) parts.push({ s: c < 0 ? -1 : 1, t: String(Math.abs(c)) });
+    if(!parts.length) return "0";
+    var out = (parts[0].s < 0 ? "−" : "") + parts[0].t;
+    for(var i = 1; i < parts.length; i++){
+      out += (parts[i].s < 0 ? " − " : " ＋ ") + parts[i].t;
+    }
+    return out;
+  }
+  function linInside(p, q){
+    var xt = p === 1 ? "x" : p + "x";
+    if(q === 0) return xt;
+    return xt + (q > 0 ? " ＋ " + q : " − " + (-q));
+  }
+  function factorStr(p, q){
+    if(q === 0) return linInside(p, q);
+    return "(" + linInside(p, q) + ")";
+  }
+  function prefixStr(g){
+    if(g === 1) return "";
+    if(g === -1) return "−";
+    return sNum(g);
+  }
+  function findFactor(a2, b2, c2){
+    if(c2 === 0) return null;
+    var ps = [];
+    for(var p = 1; p <= a2; p++){ if(a2 % p === 0) ps.push(p); }
+    ps.sort(function(u, v){ return v - u; });
+    var qs = [];
+    for(var q = -Math.abs(c2); q <= Math.abs(c2); q++){
+      if(q !== 0 && c2 % q === 0) qs.push(q);
+    }
+    qs.sort(function(u, v){
+      if(Math.abs(u) !== Math.abs(v)) return Math.abs(u) - Math.abs(v);
+      return v - u;
+    });
+    for(var i = 0; i < ps.length; i++){
+      for(var j = 0; j < qs.length; j++){
+        var p = ps[i], r = a2 / p, q = qs[j], s = c2 / q;
+        if(p * s + q * r === b2) return { p: p, q: q, r: r, s: s };
+      }
+    }
+    return null;
+  }
+
+  function fracStr(num, den){
+    if(den < 0){ num = -num; den = -den; }
+    var d = gcd2(num, den);
+    num = num / d; den = den / d;
+    if(den === 1) return sNum(num);
+    return sNum(num) + "/" + den;
+  }
+  function sqrtSimplify(D){
+    var k = Math.floor(Math.sqrt(D));
+    while(k > 1){
+      if(D % (k * k) === 0) return { k: k, m: D / (k * k) };
+      k--;
+    }
+    return { k: 1, m: D };
+  }
+  var inA = document.getElementById("inA"), inB = document.getElementById("inB"), inC = document.getElementById("inC");
+  var err = document.getElementById("err"), res = document.getElementById("result");
+  var ans = document.getElementById("ans"), stepsEl = document.getElementById("steps");
+  function fail(msg){
+    err.textContent = msg;
+    err.style.display = "block";
+    res.style.display = "none";
+  }
+  function calc(){
+    err.style.display = "none";
+    res.style.display = "none";
+    var raws = [inA.value.trim(), inB.value.trim(), inC.value.trim()];
+    var names = ["a", "b", "c"];
+    var vals = [];
+    for(var i = 0; i < 3; i++){
+      if(raws[i] === ""){ fail("a・b・c のすべてに数値を入力してください（" + names[i] + " が空欄です）。"); return; }
+      var n = Number(raws[i]);
+      if(!isFinite(n)){ fail(names[i] + " には数値を入力してください。"); return; }
+      vals.push(n);
+    }
+    var a = vals[0], b = vals[1], c = vals[2];
+    if(a === 0){ fail("a（x² の係数）に 0 は使えません。二次方程式にならないため、a には 0 以外の数を入力してください。"); return; }
+    var steps = [], answer = "";
+    var allInt = Math.floor(a) === a && Math.floor(b) === b && Math.floor(c) === c;
+    var handled = false;
+    if(allInt){
+      var gAbs = gcd3(a, b, c);
+      var g = a < 0 ? -gAbs : gAbs;
+      var a2 = a / g, b2 = b / g, c2 = c / g;
+      if(c2 === 0){
+        var rootStrs = [];
+        var sortedVals = [0, -b2 / a2].sort(function(u, v){ return u - v; });
+        sortedVals.forEach(function(r){
+          if(r === 0) rootStrs.push("0");
+          else rootStrs.push(fracStr(-b2, a2));
+        });
+        if(g !== 1) steps.push("共通因数 " + sNum(g) + " をくくり出す：" + sNum(g) + "(" + polyStr(a2, b2, c2) + ") ＝ 0");
+        steps.push("x をくくり出す：" + polyStr(a2, b2, c2) + " ＝ x(" + linInside(a2, b2) + ") なので、x(" + linInside(a2, b2) + ") ＝ 0");
+        steps.push("x ＝ 0 または " + linInside(a2, b2) + " ＝ 0 → x ＝ " + rootStrs.join(", "));
+        answer = "x ＝ " + rootStrs.join(", ");
+        handled = true;
+      } else {
+        var f = findFactor(a2, b2, c2);
+        if(f){
+          if(g !== 1) steps.push("共通因数 " + sNum(g) + " をくくり出す：" + sNum(g) + "(" + polyStr(a2, b2, c2) + ") ＝ 0");
+          steps.push("たすき掛けで因数分解する：" + a2 + " ＝ " + f.p + " × " + f.r + "、" + sNum(c2) + " ＝ " + parNum(f.q) + " × " + parNum(f.s) + " と置くと、斜めの積の合計は " + f.p + " × " + parNum(f.s) + " ＋ " + parNum(f.q) + " × " + f.r + " ＝ " + sNum(b2) + " になり、x の係数と一致する");
+          var pairs = [{ p: f.p, q: f.q }, { p: f.r, q: f.s }];
+          var rootNums = pairs.map(function(pr){ return -pr.q / pr.p; });
+          var order = [0, 1].sort(function(i, j){ return rootNums[i] - rootNums[j]; });
+          var rootStrs2 = order.map(function(i){ return fracStr(-pairs[i].q, pairs[i].p); });
+          if(rootNums[0] === rootNums[1]){
+            steps.push(factorStr(f.p, f.q) + factorStr(f.r, f.s) + " ＝ 0 → x ＝ " + rootStrs2[0] + "（重解）");
+            answer = "x ＝ " + rootStrs2[0] + "（重解）";
+          } else {
+            steps.push(factorStr(f.p, f.q) + factorStr(f.r, f.s) + " ＝ 0 → x ＝ " + rootStrs2.join(", "));
+            answer = "x ＝ " + rootStrs2.join(", ");
+          }
+          handled = true;
+        }
+      }
+    }
+    if(!handled){
+      var D = b * b - 4 * a * c;
+      steps.push("判別式を計算する：D ＝ b² − 4ac ＝ " + parNum(allInt ? b : fmt(b)) + "² − 4 × " + (allInt ? parNum(a) : parNum(fmt(a))) + " × " + (allInt ? parNum(c) : parNum(fmt(c))) + " ＝ " + (allInt ? sNum(Math.round(D)) : fmt(D)));
+      if(D < 0){
+        steps.push("D ＝ " + (allInt ? sNum(Math.round(D)) : fmt(D)) + " ＜ 0 なので、解の公式の √ の中身が負になり、実数の解はありません。");
+        answer = "実数解はありません";
+      } else if(D === 0){
+        var rootD = -b / (2 * a);
+        var rootDStr = allInt ? fracStr(-b, 2 * a) : fmt(rootD);
+        steps.push("D ＝ 0 なので、解は1つだけです（重解）。");
+        steps.push("解の公式から：x ＝ −b / 2a ＝ " + rootDStr);
+        answer = "x ＝ " + rootDStr + "（重解）";
+      } else {
+        var sq = Math.sqrt(D);
+        if(allInt && Math.floor(D) === D){
+          var simp = sqrtSimplify(D);
+          if(simp.k > 1){
+            if(simp.m === 1) steps.push("√D ＝ √" + Math.round(D) + " ＝ " + simp.k);
+            else steps.push("√D ＝ √" + Math.round(D) + " ＝ " + simp.k + "√" + simp.m);
+          } else {
+            steps.push("√D ＝ √" + Math.round(D) + "（これ以上簡単にできない）");
+          }
+          steps.push("解の公式にあてはめる：x ＝ (−b ± √D) / 2a ＝ (" + sNum(-b) + " ± √" + Math.round(D) + ") / " + sNum(2 * a));
+          if(simp.m === 1){
+            // 有理数として分数で表す
+            var plusRoot = fracStr(-b + simp.k, 2 * a), minusRoot = fracStr(-b - simp.k, 2 * a);
+            var both = [ { v: (-b - sq) / (2 * a), s: minusRoot }, { v: (-b + sq) / (2 * a), s: plusRoot } ].sort(function(u, v){ return u.v - v.v; });
+            answer = "x ＝ " + both.map(function(o){ return o.s; }).join(", ");
+            steps.push("よって、x ＝ " + answer.substring(4));
+          } else {
+            var baseN = -b, denom = 2 * a, kk = simp.k;
+            if(denom < 0){ denom = -denom; baseN = -baseN; }
+            var g3 = gcd3(baseN, kk, denom);
+            baseN = baseN / g3; kk = kk / g3; denom = denom / g3;
+            var termStr = kk === 1 ? "√" + simp.m : kk + "√" + simp.m;
+            var exprPlus, exprMinus;
+            if(baseN === 0){
+              exprPlus = denom === 1 ? termStr : termStr + "/" + denom;
+              exprMinus = denom === 1 ? "−" + termStr : "−" + termStr + "/" + denom;
+            } else if(denom === 1){
+              exprPlus = sNum(baseN) + " ＋ " + termStr;
+              exprMinus = sNum(baseN) + " − " + termStr;
+            } else {
+              exprPlus = "(" + sNum(baseN) + " ＋ " + termStr + ") / " + denom;
+              exprMinus = "(" + sNum(baseN) + " − " + termStr + ") / " + denom;
+            }
+            // 答えの書式は分母のスラッシュを詰める
+            exprPlus = exprPlus.replace(") / ", ")/");
+            exprMinus = exprMinus.replace(") / ", ")/");
+            answer = "x ＝ " + exprPlus + ", " + exprMinus;
+            steps.push("√ を簡単にして約分すると：x ＝ " + exprPlus + ", " + exprMinus);
+            var approxPlus = (-b + sq) / (2 * a), approxMinus = (-b - sq) / (2 * a);
+            steps.push("近似値にすると、x ≒ " + fmt(approxPlus) + ", " + fmt(approxMinus));
+          }
+        } else {
+          steps.push("√D ≒ " + fmt(sq));
+          steps.push("解の公式にあてはめる：x ＝ (−b ± √D) / 2a");
+          var r1 = (-b - sq) / (2 * a), r2 = (-b + sq) / (2 * a);
+          var rs = [r1, r2].sort(function(u, v){ return u - v; });
+          answer = "x ＝ " + fmt(rs[0]) + ", " + fmt(rs[1]);
+          steps.push("よって、x ≒ " + fmt(rs[0]) + ", " + fmt(rs[1]));
+        }
+      }
+    }
+    ans.textContent = answer;
+    stepsEl.innerHTML = "";
+    steps.forEach(function(s){
+      var li = document.createElement("li");
+      li.textContent = s;
+      stepsEl.appendChild(li);
+    });
+    res.style.display = "block";
+  }
+  document.getElementById("calcBtn").addEventListener("click", calc);
+  [inA, inB, inC].forEach(function(el){
+    el.addEventListener("keydown", function(e){ if(e.key === "Enter"){ e.preventDefault(); calc(); } });
+  });
+})();
+</script>
+
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「数学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

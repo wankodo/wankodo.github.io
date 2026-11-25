@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行列の積｜数学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-math.svg">
+<meta name="description" content="行列の積の計算方法を、行と列の内積という考え方・手順・例題で解説。AIの計算の本体や3Dグラフィックスの座標変換など、実際の現場での使われ方まで紹介します。対応する計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="数学ツール集">
+<meta property="og:title" content="行列の積｜数学ツール集">
+<meta property="og:description" content="行列の積は「行×列の内積」の集まり。考え方・手順・例題と「現場での使われ方」を解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/math/matrix-multiplication.html">
+<meta property="og:image" content="https://wankodo.github.io/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/ogp.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 数学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<style>
+/* 行列表示・行列入力（線形代数ページ固有） */
+.mtx{display:inline-table;border-collapse:collapse;border-left:2.5px solid currentColor;border-right:2.5px solid currentColor;margin:4px 2px;vertical-align:middle}
+.mtx td{padding:1px 9px;text-align:center;font-size:16px}
+.min-grid{border-collapse:collapse;margin:4px 0}
+.min-grid td{padding:3px}
+.min-grid input{width:68px;padding:9px 6px;font-size:16px;border:2px solid var(--navy);border-radius:8px;text-align:center;background:#fff;color:var(--ink)}
+.min-grid input:focus{outline:3px solid var(--amber);outline-offset:0;border-color:var(--amber-d)}
+.field select{width:100%;padding:12px 14px;font-size:16px;border:2px solid var(--navy);border-radius:10px;background:#fff;color:var(--ink)}
+html[data-theme="andy"] .min-grid input,html[data-theme="andy"] .field select{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">数学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="./" class="cur">数学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>行列の<span class="accent">積</span></h1>
+    <p>数学解法辞典 ― 線形代数（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">数学ツール集トップ</a> ＞ 線形代数 ＞ 行列の積</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">線形代数</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    AI（人工知能）が文章や画像を処理する計算の本体は、行列の積を大量に繰り返すこと。3Dゲームや映画のCGで立体物を回したり動かしたりする座標の変換も、行列の積で計算されている。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p><strong>行列の積</strong>は、2つの行列 A・B を掛けて新しい行列 AB を作る計算です。次のような場面で使います。</p>
+    <ul>
+      <li>座標の変換（回転・拡大・移動など）を続けて行うとき、変換を表す行列同士を掛けて1つにまとめたい問題</li>
+      <li>連立一次方程式を Ax ＝ b の形に書いたときの、A と x の積を計算する問題</li>
+      <li>「単価の表」と「個数の表」のように、行と列の対応する数同士を掛けて合計する集計の問題</li>
+      <li>AI（ニューラルネットワーク）の計算のように、たくさんの数に重みを掛けて合計する処理</li>
+    </ul>
+    <p>行列の積は「行と列の掛け算の合計（内積）」の集まりです。ここさえ押さえれば、サイズが大きくなっても計算の仕組みは同じです。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>行列 A の<strong>行</strong>と行列 B の<strong>列</strong>を組み合わせ、対応する成分同士を掛けて合計したものが、積 AB の成分になります。</p>
+    <div class="formula">(AB) の (i, j) 成分 ＝ A の第 i 行と B の第 j 列の内積</div>
+    <p>例えば2×2行列同士なら、A ＝
+    <table class="mtx"><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></table>
+    、B ＝
+    <table class="mtx"><tr><td>e</td><td>f</td></tr><tr><td>g</td><td>h</td></tr></table>
+    の積は次のようになります。</p>
+    <div class="formula">AB ＝
+    <table class="mtx"><tr><td>ae ＋ bg</td><td>af ＋ bh</td></tr><tr><td>ce ＋ dg</td><td>cf ＋ dh</td></tr></table>
+    </div>
+    <h3>掛けられる条件</h3>
+    <p>行列の積が計算できるのは、<strong>A の列の数と B の行の数が一致するとき</strong>だけです。結果の行列のサイズは「A の行の数 × B の列の数」になります。例えば 2×3 行列と 3×2 行列は掛けられて、結果は 2×2 行列です。</p>
+    <h3>順番を入れ替えられない</h3>
+    <p>普通の数の掛け算と違い、行列の積は一般に <strong>AB ≠ BA</strong> です（そもそも BA が計算できない場合もあります）。「先に行う変換は右に書く」という約束とあわせて、順番が意味を持つ計算だと覚えておきましょう。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>掛けられるか確認する。</strong>A の列の数と B の行の数が同じかチェックします。違えば積は存在しません。</li>
+      <li><strong>結果のサイズを決める。</strong>結果は「A の行の数 × B の列の数」の行列になります。成分の位置 (i, j) を1つずつ埋めていきます。</li>
+      <li><strong>行と列の内積を計算する。</strong>(i, j) 成分は、A の第 i 行と B の第 j 列を左から順に掛けて合計します。</li>
+      <li><strong>すべての成分について繰り返す。</strong>行を下へ、列を右へずらしながら同じ計算を続けます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題：文房具店で、ノート（1冊150円）とペン（1本100円）を売っている。Aさんはノート2冊・ペン3本、Bさんはノート1冊・ペン4本を買った。単価の表と個数の表を行列で表し、行列の積で2人の代金を求めよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>単価を行列（1×2）、個数を行列（2×2）にまとめます。個数の表は「行が人、列が品物」になるよう置きます。</p>
+        <ol class="steps">
+          <li>単価の行列 P ＝ <table class="mtx"><tr><td>150</td><td>100</td></tr></table>（ノート、ペンの順）</li>
+          <li>個数の行列 Q ＝ <table class="mtx"><tr><td>2</td><td>1</td></tr><tr><td>3</td><td>4</td></tr></table>（列が Aさん、Bさん）</li>
+          <li>積 PQ の (1,1) 成分：150 × 2 ＋ 100 × 3 ＝ 300 ＋ 300 ＝ 600（Aさんの代金）</li>
+          <li>積 PQ の (1,2) 成分：150 × 1 ＋ 100 × 4 ＝ 150 ＋ 400 ＝ 550（Bさんの代金）</li>
+        </ol>
+        <p><strong>答え：Aさんは600円、Bさんは550円</strong>。「単価 × 個数の合計」という集計そのものが、行列の積の (行, 列) の内積になっています。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>AI（ニューラルネットワーク）の計算の本体</h3>
+    <p>AIが文章や画像を処理するとき、内部では「入力された数の集まりに、学習で決まった重み（係数）を掛けて合計する」という計算を何層も繰り返します。この計算はまさに行列の積であり、AI向けの半導体（GPUなど）が高速に処理しているのも行列の積です。</p>
+    <h3>3Dグラフィックスの座標変換</h3>
+    <p>3Dゲームや映画のCGでは、立体物の各点の座標に「回転」「拡大」「移動」を表す行列を掛けて、画面上の位置を計算します。複数の変換を続けるときは、先に行列同士の積で1つの変換にまとめてから座標に掛けるのが基本のやり方です。</p>
+    <h3>大量の集計・データ処理</h3>
+    <p>例題の代金計算のように、「単価 × 個数」「時間 × 人数」といった掛けて合計する集計は、表計算やデータ分析の随所に現れます。これを行列の積としてまとめて計算すると、大量のデータでも一括で処理できます。</p>
+  </section>
+
+  <a class="linkcard" href="calc-matrix-multiplication.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">行列の積 計算機：2×2同士・3×3同士の行列を入れると、内積の展開手順つきで積を計算します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <ul>
+      <li><a href="inverse-matrix.html">逆行列・掃き出し法</a> ― 行列の「割り算」にあたる計算と、連立方程式の解法です。</li>
+      <li><a href="linear-transformation.html">線形変換と回転行列</a> ― 行列の積を使って座標を変換する応用です。</li>
+      <li><a href="determinant.html">行列式</a> ― 行列から計算できる、もうひとつの基本量です。</li>
+    </ul>
+    <p><a href="./">数学ツール集トップへ戻る</a></p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「数学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

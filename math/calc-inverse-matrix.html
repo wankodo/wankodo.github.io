@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>逆行列・掃き出し法 計算機｜数学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-math.svg">
+<meta name="description" content="2×2・3×3行列の逆行列を、拡大行列の掃き出し過程を段階ごとに表示しながら計算する無料の計算機です。逆行列が存在しない場合はその理由も表示。解説記事つき。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="数学ツール集">
+<meta property="og:title" content="逆行列・掃き出し法 計算機｜数学ツール集">
+<meta property="og:description" content="行列を入れると、掃き出しの過程を行列の状態で段階表示しながら逆行列を計算します。">
+<meta property="og:url" content="https://wankodo.github.io/math/calc-inverse-matrix.html">
+<meta property="og:image" content="https://wankodo.github.io/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/ogp.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+.field{margin:0 0 14px}
+.field label{display:block;font-weight:700;margin-bottom:5px}
+.field .fl-note{font-weight:400;font-size:12.5px;color:var(--mut)}
+.field input{width:100%;padding:12px 14px;font-size:17px;border:2px solid var(--navy);border-radius:10px;background:#fff;color:var(--ink)}
+.field input:focus{outline:3px solid var(--amber);outline-offset:0;border-color:var(--amber-d)}
+.btn{display:block;width:100%;min-height:50px;border:0;border-radius:10px;background:linear-gradient(180deg,#ffc44d,var(--amber));color:#231a00;font-size:16px;font-weight:800;cursor:pointer}
+.btn:hover{filter:brightness(1.05)}
+.err{display:none;background:#fdecea;border:1px solid var(--red);color:var(--red);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:14px}
+.result{display:none;background:var(--card);border:2px solid var(--amber);border-radius:10px;padding:16px;margin:14px 0}
+.result .ans{font-size:23px;font-weight:800;color:var(--navy);margin:0 0 8px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 数学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<style>
+/* 行列表示・行列入力（線形代数ページ固有） */
+.mtx{display:inline-table;border-collapse:collapse;border-left:2.5px solid currentColor;border-right:2.5px solid currentColor;margin:4px 2px;vertical-align:middle}
+.mtx td{padding:1px 9px;text-align:center;font-size:16px}
+.min-grid{border-collapse:collapse;margin:4px 0}
+.min-grid td{padding:3px}
+.min-grid input{width:68px;padding:9px 6px;font-size:16px;border:2px solid var(--navy);border-radius:8px;text-align:center;background:#fff;color:var(--ink)}
+.min-grid input:focus{outline:3px solid var(--amber);outline-offset:0;border-color:var(--amber-d)}
+.field select{width:100%;padding:12px 14px;font-size:16px;border:2px solid var(--navy);border-radius:10px;background:#fff;color:var(--ink)}
+html[data-theme="andy"] .min-grid input,html[data-theme="andy"] .field select{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">数学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="./" class="cur">数学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>逆行列・掃き出し法 <span class="accent">計算機</span></h1>
+    <p>数学解法辞典 ― 線形代数（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">数学ツール集トップ</a> ＞ 線形代数 ＞ <a href="inverse-matrix.html">逆行列・掃き出し法</a> ＞ 計算機</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">線形代数</span></p>
+
+  <section class="card">
+    <h2>行列を入れると、掃き出し法で逆行列を計算します</h2>
+    <p>サイズ（2×2／3×3）を選び、行列 A の成分を入れてください。整数・小数・分数（例：1/2）が使えます。拡大行列の掃き出し過程を段階ごとに行列の状態で表示し、最後に逆行列 A<sup>−1</sup> を出します。行列式が 0 で逆行列が存在しない場合は、その旨と理由を表示します。</p>
+    <div class="field">
+      <label for="sizeSel">行列のサイズ</label>
+      <select id="sizeSel">
+        <option value="2" selected>2×2</option>
+        <option value="3">3×3</option>
+      </select>
+    </div>
+    <div id="grid2">
+      <div class="field"><label>行列 A（2×2）</label>
+      <table class="min-grid"><tr><td><input type="text" id="A211" inputmode="decimal" placeholder="例：2"></td><td><input type="text" id="A212" inputmode="decimal" placeholder="例：1"></td></tr><tr><td><input type="text" id="A221" inputmode="decimal" placeholder="例：5"></td><td><input type="text" id="A222" inputmode="decimal" placeholder="例：3"></td></tr></table></div>
+    </div>
+    <div id="grid3" style="display:none;">
+      <div class="field"><label>行列 A（3×3）</label>
+      <table class="min-grid"><tr><td><input type="text" id="A311" inputmode="decimal" placeholder="例：1"></td><td><input type="text" id="A312" inputmode="decimal" placeholder="例：2"></td><td><input type="text" id="A313" inputmode="decimal" placeholder="例：0"></td></tr><tr><td><input type="text" id="A321" inputmode="decimal" placeholder="例：0"></td><td><input type="text" id="A322" inputmode="decimal" placeholder="例：1"></td><td><input type="text" id="A323" inputmode="decimal" placeholder="例：1"></td></tr><tr><td><input type="text" id="A331" inputmode="decimal" placeholder="例：1"></td><td><input type="text" id="A332" inputmode="decimal" placeholder="例：0"></td><td><input type="text" id="A333" inputmode="decimal" placeholder="例：1"></td></tr></table></div>
+    </div>
+    <button type="button" class="btn" id="calcBtn">計算する</button>
+    <div class="err" id="err" role="alert"></div>
+    <div class="result" id="result">
+      <p class="ans" id="ans"></p>
+      <div id="resMat" style="text-align:center;margin:6px 0;"></div>
+      <h3 style="margin:10px 0 4px;font-size:15px;">掃き出しの手順</h3>
+      <ol class="steps" id="steps"></ol>
+    </div>
+    <p class="note">計算結果は目安です。分数で表せる結果は分数で表示します。</p>
+  </section>
+
+  <a class="linkcard" href="inverse-matrix.html">
+    <span class="lc-t">解法の解説を読む →</span>
+    <span class="lc-d" style="display:block;">逆行列と掃き出し法の考え方と手順、例題と、構造計算や産業連関表など「現場での使われ方」を解説しています。</span>
+  </a>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+
+<script>
+(function(){
+  "use strict";
+  function gcd(x, y){ x = Math.abs(x); y = Math.abs(y); while(y){ var t = x % y; x = y; y = t; } return x || 1; }
+  function mkFrac(n, d){ if(d < 0){ n = -n; d = -d; } var g = gcd(n, d); return [n / g, d / g]; }
+  function parseVal(s){
+    s = String(s).trim().replace(/−/g, "-").replace(/\s+/g, "");
+    if(s === "") return null;
+    if(s.indexOf("/") >= 0){
+      var parts = s.split("/");
+      if(parts.length !== 2) return null;
+      var n = Number(parts[0]), d = Number(parts[1]);
+      if(!isFinite(n) || !isFinite(d) || d === 0 || Math.floor(n) !== n || Math.floor(d) !== d) return null;
+      return mkFrac(n, d);
+    }
+    var v = Number(s);
+    if(!isFinite(v)) return null;
+    if(Math.floor(v) === v) return [v, 1];
+    var str = String(v), dec = str.split(".")[1] || "";
+    if(dec.length > 6) return null;
+    var den = Math.pow(10, dec.length);
+    return mkFrac(Math.round(v * den), den);
+  }
+  function fAdd(x, y){ return mkFrac(x[0] * y[1] + y[0] * x[1], x[1] * y[1]); }
+  function fSub(x, y){ return mkFrac(x[0] * y[1] - y[0] * x[1], x[1] * y[1]); }
+  function fMul(x, y){ return mkFrac(x[0] * y[0], x[1] * y[1]); }
+  function fDiv(x, y){ return mkFrac(x[0] * y[1], x[1] * y[0]); }
+  function fNeg(x){ return [-x[0], x[1]]; }
+  function isZero(f){ return f[0] === 0; }
+  function fmt(f){
+    if(f[0] === 0) return "0";
+    var a = Math.abs(f[0]);
+    var s = f[1] === 1 ? String(a) : a + "/" + f[1];
+    return f[0] < 0 ? "−" + s : s;
+  }
+  function augHTML(M, n){
+    var h = '<table class="mtx">';
+    for(var i = 0; i < n; i++){
+      h += "<tr>";
+      for(var j = 0; j < 2 * n; j++){
+        var st = j === n ? ' style="border-left:1.5px dashed currentColor;"' : "";
+        h += "<td" + st + ">" + fmt(M[i][j]) + "</td>";
+      }
+      h += "</tr>";
+    }
+    return h + "</table>";
+  }
+  var sizeSel = document.getElementById("sizeSel");
+  var grid2 = document.getElementById("grid2"), grid3 = document.getElementById("grid3");
+  var err = document.getElementById("err"), res = document.getElementById("result");
+  var ans = document.getElementById("ans"), stepsEl = document.getElementById("steps"), resMat = document.getElementById("resMat");
+  function syncSize(){
+    var n = sizeSel.value;
+    grid2.style.display = n === "2" ? "block" : "none";
+    grid3.style.display = n === "3" ? "block" : "none";
+  }
+  sizeSel.addEventListener("change", syncSize);
+  syncSize();
+  function fail(msg){
+    err.textContent = msg;
+    err.style.display = "block";
+    res.style.display = "none";
+  }
+  function calc(){
+    err.style.display = "none";
+    res.style.display = "none";
+    var n = Number(sizeSel.value);
+    var A = [];
+    for(var i = 1; i <= n; i++){
+      var row = [];
+      for(var j = 1; j <= n; j++){
+        var el = document.getElementById("A" + n + i + j);
+        var raw = el.value.trim();
+        if(raw === ""){ fail("A の (" + i + ", " + j + ") 成分が空欄です。すべての成分に数値を入力してください。"); return; }
+        var v = parseVal(raw);
+        if(v === null){ fail("A の (" + i + ", " + j + ") 成分「" + raw + "」は数値として読めません。整数・小数・分数（例：1/2）の形で入力してください。"); return; }
+        row.push(v);
+      }
+      A.push(row);
+    }
+    // 拡大行列 (A | E)
+    var M = [];
+    for(var r = 0; r < n; r++){
+      var mr = [];
+      for(var c = 0; c < n; c++) mr.push(A[r][c]);
+      for(var c2 = 0; c2 < n; c2++) mr.push(r === c2 ? [1, 1] : [0, 1]);
+      M.push(mr);
+    }
+    var stages = [];
+    stages.push({ label: "拡大行列 (A | E) を作る：", html: augHTML(M, n) });
+    var ok = true;
+    for(var col = 0; col < n; col++){
+      // ピボット探し
+      if(isZero(M[col][col])){
+        var swap = -1;
+        for(var r2 = col + 1; r2 < n; r2++){ if(!isZero(M[r2][col])){ swap = r2; break; } }
+        if(swap === -1){ ok = false; break; }
+        var tmp = M[col]; M[col] = M[swap]; M[swap] = tmp;
+        stages.push({ label: "第" + (col + 1) + "列：(" + (col + 1) + ", " + (col + 1) + ") 成分が 0 なので、第" + (col + 1) + "行と第" + (swap + 1) + "行を入れ替える：", html: augHTML(M, n) });
+      }
+      // 対角成分を 1 にする
+      var piv = M[col][col];
+      if(!(piv[0] === 1 && piv[1] === 1)){
+        for(var j = 0; j < 2 * n; j++) M[col][j] = fDiv(M[col][j], piv);
+        stages.push({ label: "第" + (col + 1) + "列：(" + (col + 1) + ", " + (col + 1) + ") 成分を 1 にするため、第" + (col + 1) + "行を " + fmt(piv) + " で割る：", html: augHTML(M, n) });
+      }
+      // 他の行のこの列を 0 にする
+      var changed = false;
+      for(var r3 = 0; r3 < n; r3++){
+        if(r3 === col) continue;
+        var factor = M[r3][col];
+        if(!isZero(factor)){
+          for(var j2 = 0; j2 < 2 * n; j2++) M[r3][j2] = fSub(M[r3][j2], fMul(factor, M[col][j2]));
+          changed = true;
+        }
+      }
+      if(changed) stages.push({ label: "第" + (col + 1) + "列：他の行の第" + (col + 1) + "列の成分を 0 にする：", html: augHTML(M, n) });
+    }
+    if(!ok){
+      fail("逆行列は存在しません。掃き出しの途中で、対角成分に 1 を作れない列が現れました。これは行列式が 0 の場合で、連立方程式の解が1つに決まらない（解がない、または無数にある）行列です。成分を変えてお試しください。");
+      return;
+    }
+    var inv = [];
+    for(var r4 = 0; r4 < n; r4++){
+      var irow = [];
+      for(var c4 = 0; c4 < n; c4++) irow.push(M[r4][n + c4]);
+      inv.push(irow);
+    }
+    ans.textContent = "A⁻¹ ＝";
+    var invHTML = '<table class="mtx">';
+    for(var r5 = 0; r5 < n; r5++){
+      invHTML += "<tr>";
+      for(var c5 = 0; c5 < n; c5++) invHTML += "<td>" + fmt(inv[r5][c5]) + "</td>";
+      invHTML += "</tr>";
+    }
+    invHTML += "</table>";
+    resMat.innerHTML = invHTML;
+    stepsEl.innerHTML = "";
+    stages.forEach(function(st){
+      var li = document.createElement("li");
+      li.innerHTML = st.label + "<br>" + st.html;
+      stepsEl.appendChild(li);
+    });
+    var last = document.createElement("li");
+    last.textContent = "左側が単位行列 E になったので、右側が逆行列 A⁻¹ です。";
+    stepsEl.appendChild(last);
+    res.style.display = "block";
+  }
+  document.getElementById("calcBtn").addEventListener("click", calc);
+})();
+
+</script>
+
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「数学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
