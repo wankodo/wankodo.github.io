@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>二次関数 計算機｜数学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-math.svg">
+<meta name="description" content="a・b・c を入れると平方完成して頂点と軸を、解き方の手順とグラフつきで計算する無料の計算機です。二次関数の解説記事つき。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="数学ツール集">
+<meta property="og:title" content="二次関数 計算機｜数学ツール集">
+<meta property="og:description" content="a・b・c から平方完成の手順と頂点・軸、放物線のグラフを表示しながら計算します。">
+<meta property="og:url" content="https://wankodo.github.io/math/calc-quadratic-function.html">
+<meta property="og:image" content="https://wankodo.github.io/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/ogp.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+.field{margin:0 0 14px}
+.field label{display:block;font-weight:700;margin-bottom:5px}
+.field .fl-note{font-weight:400;font-size:12.5px;color:var(--mut)}
+.field input{width:100%;padding:12px 14px;font-size:17px;border:2px solid var(--navy);border-radius:10px;background:#fff;color:var(--ink)}
+.field input:focus{outline:3px solid var(--amber);outline-offset:0;border-color:var(--amber-d)}
+.btn{display:block;width:100%;min-height:50px;border:0;border-radius:10px;background:linear-gradient(180deg,#ffc44d,var(--amber));color:#231a00;font-size:16px;font-weight:800;cursor:pointer}
+.btn:hover{filter:brightness(1.05)}
+.err{display:none;background:#fdecea;border:1px solid var(--red);color:var(--red);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:14px}
+.result{display:none;background:var(--card);border:2px solid var(--amber);border-radius:10px;padding:16px;margin:14px 0}
+.result .ans{font-size:23px;font-weight:800;color:var(--navy);margin:0 0 8px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 数学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<style>
+.field select{width:100%;padding:12px 14px;font-size:17px;border:2px solid var(--navy);border-radius:10px;background:#fff;color:var(--ink)}
+.field select:focus{outline:3px solid var(--amber);outline-offset:0;border-color:var(--amber-d)}
+.graph-wrap{text-align:center;margin:12px 0}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">数学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="./" class="cur">数学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>二次関数 <span class="accent">計算機</span></h1>
+    <p>数学解法辞典 ― 関数（中学・高校）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">数学ツール集トップ</a> ＞ 関数 ＞ <a href="quadratic-function.html">二次関数</a> ＞ 計算機</p>
+  <p><span class="badge badge-lv">中学・高校</span> <span class="badge badge-genre">関数</span></p>
+
+  <section class="card">
+    <h2>a・b・c を入れると、平方完成して頂点と軸を求めます</h2>
+    <p>y ＝ ax<sup>2</sup> ＋ bx ＋ c の係数 a・b・c を入れてください（a ≠ 0、小数可）。平方完成の手順と、頂点・軸・放物線のグラフを表示します。</p>
+    <div class="field">
+      <label for="inA">a（x<sup>2</sup> の係数）</label>
+      <input type="number" id="inA" inputmode="decimal" step="any" placeholder="例：1">
+    </div>
+    <div class="field">
+      <label for="inB">b（x の係数）</label>
+      <input type="number" id="inB" inputmode="decimal" step="any" placeholder="例：2">
+    </div>
+    <div class="field">
+      <label for="inC">c（定数項）</label>
+      <input type="number" id="inC" inputmode="decimal" step="any" placeholder="例：4">
+    </div>
+    <button type="button" class="btn" id="calcBtn">計算する</button>
+    <div class="err" id="err" role="alert"></div>
+    <div class="result" id="result">
+      <p class="ans" id="ans"></p>
+      <div class="graph-wrap"><svg id="graphSvg" viewBox="0 0 320 240" width="320" height="240" role="img" aria-label="二次関数のグラフ"></svg></div>
+      <h3 style="margin:10px 0 4px;font-size:15px;">解き方の手順</h3>
+      <ol class="steps" id="steps"></ol>
+    </div>
+    <p class="note">計算結果は目安です。小数は小数第4位まで表示し、整数の入力では頂点の座標などを分数でも表示します。</p>
+  </section>
+
+  <a class="linkcard" href="quadratic-function.html">
+    <span class="lc-t">解法の解説を読む →</span>
+    <span class="lc-d" style="display:block;">二次関数の公式・考え方・例題と、車の制動距離や物の軌道など「現場での使われ方」を解説しています。</span>
+  </a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script>
+(function(){
+  "use strict";
+  function fmt(x){
+    if(!isFinite(x)) return String(x);
+    var r = Math.round(x * 10000) / 10000;
+    if(Math.abs(r - Math.round(r)) < 1e-9) return String(Math.round(r));
+    return String(r);
+  }
+  function gcd(a,b){ a=Math.abs(a); b=Math.abs(b); while(b){ var t=a%b; a=b; b=t; } return a||1; }
+  function fracStr(num, den){
+    if(den<0){ num=-num; den=-den; }
+    var g=gcd(num,den); num=Math.round(num/g); den=Math.round(den/g);
+    if(den===1) return String(num);
+    return num+"/"+den;
+  }
+  function isInt(x){ return Math.abs(x-Math.round(x))<1e-9; }
+  function disp(s){ return String(s).replace(/-/g,"−"); }
+  // value display: prefer fraction string if given
+  function valStr(x, frac){ return frac ? disp(frac) : disp(fmt(x)); }
+  function signedTerm(coefVal, coefFrac, variable){
+    // returns " ＋ 3x" / " − 3x" style for linear term inside expression, coef may be 1/-1
+    var v=coefVal;
+    if(v===0) return "";
+    var absFrac=null;
+    if(coefFrac){ absFrac = coefFrac.charAt(0)==="-" ? coefFrac.slice(1) : coefFrac; }
+    var body;
+    if(absFrac){ body = (absFrac==="1" ? variable : absFrac+variable); }
+    else { body = (Math.abs(v)===1 ? variable : fmt(Math.abs(v))+variable); }
+    return (v>0 ? " ＋ " : " − ") + body;
+  }
+  function constTerm(v, frac){
+    if(v===0) return "";
+    var absStr = frac ? (frac.charAt(0)==="-" ? frac.slice(1) : frac) : fmt(Math.abs(v));
+    return (v>0 ? " ＋ " : " − ") + absStr;
+  }
+  function coefPrefix(v, frac){
+    // for a in front of parenthesis: "2", "−", "" for 1, etc.
+    if(frac){
+      if(frac==="1") return "";
+      if(frac==="-1") return "−";
+      return disp(frac);
+    }
+    if(v===1) return "";
+    if(v===-1) return "−";
+    return disp(fmt(v));
+  }
+  var inA=document.getElementById("inA"), inB=document.getElementById("inB"), inC=document.getElementById("inC");
+  var err=document.getElementById("err"), res=document.getElementById("result");
+  var ans=document.getElementById("ans"), stepsEl=document.getElementById("steps");
+  var graphSvg=document.getElementById("graphSvg");
+  function fail(msg){ err.textContent=msg; err.style.display="block"; res.style.display="none"; }
+  function drawGraph(a,p,q){
+    var pts=[], i, x, y;
+    for(i=-6;i<=6;i++){ x=p+i*0.5; y=a*(x-p)*(x-p)+q; pts.push([x,y]); }
+    var xs=pts.map(function(pt){return pt[0];}), ys=pts.map(function(pt){return pt[1];});
+    xs.push(0); ys.push(0);
+    var xMin=Math.min.apply(null,xs), xMax=Math.max.apply(null,xs);
+    var yMin=Math.min.apply(null,ys), yMax=Math.max.apply(null,ys);
+    var padX=(xMax-xMin)*0.15+0.5; xMin-=padX; xMax+=padX;
+    var padY=(yMax-yMin)*0.15+0.5; yMin-=padY; yMax+=padY;
+    if(xMin>0) xMin=-1; if(xMax<0) xMax=1;
+    if(yMin>0) yMin=-1; if(yMax<0) yMax=1;
+    var W=320,H=240,L=30,R=10,T=10,B=30;
+    function sx(v){ return L+(v-xMin)/(xMax-xMin)*(W-L-R); }
+    function sy(v){ return T+(yMax-v)/(yMax-yMin)*(H-T-B); }
+    var h="";
+    h+='<rect x="0" y="0" width="320" height="240" fill="#fbfcfd"></rect>';
+    var gx, gy;
+    for(gx=Math.ceil(xMin); gx<=xMax; gx++){ h+='<line x1="'+fmt(sx(gx))+'" y1="'+T+'" x2="'+fmt(sx(gx))+'" y2="'+(H-B)+'" stroke="#ddd6c8" stroke-width="1"></line>'; }
+    for(gy=Math.ceil(yMin); gy<=yMax; gy++){ h+='<line x1="'+L+'" y1="'+fmt(sy(gy))+'" x2="'+(W-R)+'" y2="'+fmt(sy(gy))+'" stroke="#ddd6c8" stroke-width="1"></line>'; }
+    h+='<line x1="'+fmt(sx(p))+'" y1="'+T+'" x2="'+fmt(sx(p))+'" y2="'+(H-B)+'" stroke="#68707c" stroke-width="1.5" stroke-dasharray="5 4"></line>';
+    h+='<line x1="'+L+'" y1="'+fmt(sy(0))+'" x2="'+(W-R)+'" y2="'+fmt(sy(0))+'" stroke="#12283f" stroke-width="1.5"></line>';
+    h+='<line x1="'+fmt(sx(0))+'" y1="'+T+'" x2="'+fmt(sx(0))+'" y2="'+(H-B)+'" stroke="#12283f" stroke-width="1.5"></line>';
+    var d="";
+    pts.forEach(function(pt,idx){ d+=(idx===0?"M":"L")+fmt(sx(pt[0]))+" "+fmt(sy(pt[1]))+" "; });
+    h+='<path d="'+d+'" fill="none" stroke="#c77f02" stroke-width="2.5"></path>';
+    h+='<circle cx="'+fmt(sx(p))+'" cy="'+fmt(sy(q))+'" r="4.5" fill="#b03a2e"></circle>';
+    h+='<text x="'+(W-R-14)+'" y="'+fmt(sy(0)-4)+'" font-size="12" fill="#12283f">x</text>';
+    h+='<text x="'+fmt(sx(0)+6)+'" y="'+(T+10)+'" font-size="12" fill="#12283f">y</text>';
+    graphSvg.innerHTML=h;
+  }
+  function calc(){
+    err.style.display="none"; res.style.display="none";
+    var raws=[["a",inA],["b",inB],["c",inC]], vals={}, i, el, v, n;
+    for(i=0;i<raws.length;i++){
+      el=raws[i][1]; v=el.value.trim();
+      if(v===""){ fail("「"+raws[i][0]+"」が空欄です。a・b・c すべてに入力してください。"); return; }
+      n=Number(v);
+      if(!isFinite(n)){ fail("「"+raws[i][0]+"」には数値を入力してください。"); return; }
+      vals[raws[i][0]]=n;
+    }
+    var a=vals.a, b=vals.b, c=vals.c;
+    if(a===0){ fail("a が 0 です。a ＝ 0 では x² の項が消えて二次関数になりません。a には 0 以外の数を入力してください。"); return; }
+    var allInt=isInt(a)&&isInt(b)&&isInt(c);
+    var p=-b/(2*a), q=c - (b*b)/(4*a);
+    // fractions: p = -b/(2a), q = (4ac - b^2)/(4a)
+    var fracP=null, fracQ=null, fracA=null, fracB=null;
+    if(allInt){
+      fracP=fracStr(Math.round(-b), Math.round(2*a));
+      fracQ=fracStr(Math.round(4*a*c - b*b), Math.round(4*a));
+      fracA=fracStr(Math.round(a),1);
+      fracB=fracStr(Math.round(b),1);
+    }
+    var pStr=valStr(p,fracP), qStr=valStr(q,fracQ);
+    // Step1: y = a(x^2 + (b/a)x) + c ; inner linear coef = b/a
+    var innerB = b/a;
+    var fracInnerB=null;
+    if(allInt) fracInnerB=fracStr(Math.round(b), Math.round(a));
+    var step1 = "y ＝ "+coefPrefix(a,fracA)+"(x²"+signedTerm(innerB, fracInnerB, "x")+")"+constTerm(c, allInt?fracStr(Math.round(c),1):null);
+    // Step2: half = b/(2a) ; (x - p) where p = -b/(2a), so inside: (x - p)^2 - p^2 ... expressed with -p = b/(2a)
+    // halfVal = -p
+    var half = -p; // = b/(2a)
+    var fracHalf=null;
+    if(allInt) fracHalf=fracStr(Math.round(b), Math.round(2*a));
+    var halfStr=valStr(half,fracHalf);
+    var sqHalf = half*half;
+    var fracSqHalf=null;
+    if(allInt){ var fr=fracStr(Math.round(b), Math.round(2*a)); var parts=fr.split("/"); if(parts.length===2){ fracSqHalf=fracStr(Math.round(Math.pow(Number(parts[0]),2)), Math.round(Math.pow(Number(parts[1]),2))); } else { fracSqHalf=fracStr(Math.round(half*half),1); } }
+    var sqStr=valStr(sqHalf,fracSqHalf);
+    // (x + half) expression: if half>=0 "x ＋ half" else "x − |half|"
+    var parenX = "x"+(half>=0 ? " ＋ "+(fracHalf? (fracHalf.charAt(0)==="-"?fracHalf.slice(1):fracHalf):fmt(Math.abs(half))) : " − "+(fracHalf? (fracHalf.charAt(0)==="-"?fracHalf.slice(1):fracHalf):fmt(Math.abs(half))));
+    if(half===0) parenX="x";
+    var step2 = "y ＝ "+coefPrefix(a,fracA)+"{("+parenX+")² − "+sqStr+"}"+constTerm(c, allInt?fracStr(Math.round(c),1):null);
+    if(half===0) step2 = "y ＝ "+coefPrefix(a,fracA)+"(x²)"+constTerm(c, allInt?fracStr(Math.round(c),1):null)+" ＝ そのまま整理します";
+    // Step3 completed form: y = a(x-p)^2+q ; (x-p): if p>=0 "x − p" else "x ＋ |p|"
+    var parenP = "x"+(p>0 ? " − "+pStr : (p<0 ? " ＋ "+(fracP?fracP.slice(1):fmt(Math.abs(p))) : ""));
+    var step3 = "y ＝ "+coefPrefix(a,fracA)+"("+parenP+")²"+constTerm(q,fracQ);
+    var opening = a>0 ? "上に開く（頂点で最小）" : "下に開く（頂点で最大）";
+    var step4 = "頂点 ("+pStr+", "+qStr+")、軸 x ＝ "+pStr+"。a ＝ "+disp(fmt(a))+(a>0?" ＞ 0":" ＜ 0")+" なので、放物線は"+opening+"。";
+    var steps=[step1, step2, step3, step4];
+    // Prefix step descriptions to make process clear
+    steps[0]="x² の係数でくくる："+step1;
+    steps[1]="かっこの中を平方完成する（x の係数の半分の2乗を足して引く）："+step2;
+    steps[2]="整理する："+step3;
+    steps[3]=step4;
+    ans.textContent="頂点 ("+pStr+", "+qStr+")、軸 x ＝ "+pStr;
+    stepsEl.innerHTML="";
+    steps.forEach(function(s){ var li=document.createElement("li"); li.textContent=s; stepsEl.appendChild(li); });
+    drawGraph(a,p,q);
+    res.style.display="block";
+  }
+  document.getElementById("calcBtn").addEventListener("click", calc);
+  [inA,inB,inC].forEach(function(el){ el.addEventListener("keydown", function(e){ if(e.key==="Enter"){ e.preventDefault(); calc(); } }); });
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「数学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
