@@ -60,6 +60,9 @@ ol.steps{margin:8px 0;padding-left:22px}
 ol.steps li{margin-bottom:7px}
 .example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
 .example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
 .tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
 .linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
 .linkcard:hover{background:var(--navy2)}
@@ -190,13 +193,16 @@ gtag('config', 'G-QQ4435VBMK');
     <h2>例題</h2>
     <div class="example">
       <p class="ex-q">問題：長さ5mのはしごを、建物の壁に立てかける。壁の高さ3mのところに、はしごの先端が届いている。はしごの足元は、壁から何m離れているか。</p>
-      <p>壁と地面は直角に交わるので、壁・地面・はしごで直角三角形ができます。はしごが斜辺（c ＝ 5）、壁が片方の辺（b ＝ 3）、知りたい足元の距離がもう一方の辺（a）です。</p>
-      <ol class="steps">
-        <li>公式にあてはめる：a<sup>2</sup> ＋ 3<sup>2</sup> ＝ 5<sup>2</sup></li>
-        <li>斜辺でない辺を求めるので引き算にする：a<sup>2</sup> ＝ 5<sup>2</sup> − 3<sup>2</sup> ＝ 25 − 9 ＝ 16</li>
-        <li>平方根をとる：a ＝ √16 ＝ 4</li>
-      </ol>
-      <p><strong>答え：4m</strong>。3・4・5の組み合わせは、この定理でいちばん有名な辺の比です。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>壁と地面は直角に交わるので、壁・地面・はしごで直角三角形ができます。はしごが斜辺（c ＝ 5）、壁が片方の辺（b ＝ 3）、知りたい足元の距離がもう一方の辺（a）です。</p>
+        <ol class="steps">
+          <li>公式にあてはめる：a<sup>2</sup> ＋ 3<sup>2</sup> ＝ 5<sup>2</sup></li>
+          <li>斜辺でない辺を求めるので引き算にする：a<sup>2</sup> ＝ 5<sup>2</sup> − 3<sup>2</sup> ＝ 25 − 9 ＝ 16</li>
+          <li>平方根をとる：a ＝ √16 ＝ 4</li>
+        </ol>
+        <p><strong>答え：4m</strong>。3・4・5の組み合わせは、この定理でいちばん有名な辺の比です。</p>
+      </details>
     </div>
   </section>
 
