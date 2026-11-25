@@ -200,6 +200,21 @@ gtag('config', 'G-QQ4435VBMK');
         <p><strong>答え：10 m</strong>。速度が時々刻々と変わっても、その合計である距離は定積分で一発で出せます。</p>
       </details>
     </div>
+    <div class="example">
+      <p class="ex-q">サンプル問題：小学校の実験で、円錐の容器で3杯分の水を注ぐと、同じ底面・同じ高さの円柱の容器がちょうどいっぱいになった。あの「3杯」の理由、つまり円錐の体積が円柱の3分の1になるわけを、定積分で確かめよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>小学校では「3杯でいっぱいになる」という結果だけを体験して終わります。なぜ3杯なのか、その正体は定積分で判明します。円錐を高さの方向に薄く輪切りにすると、体積は「断面積 × 厚さ」の合計、つまり断面積の定積分で表せます。</p>
+        <ol class="steps">
+          <li>頂点を x ＝ 0 とし、高さ方向に x 軸を取る。頂点から距離 x の位置で切った断面は円で、相似の関係から、その半径は <span class="frac"><span class="fn">r</span><span class="fd">h</span></span>x になる</li>
+          <li>断面積を x の式で表す：S(x) ＝ π（<span class="frac"><span class="fn">r</span><span class="fd">h</span></span>x）<sup>2</sup> ＝ π（<span class="frac"><span class="fn">r</span><span class="fd">h</span></span>）<sup>2</sup>x<sup>2</sup>（断面積は x<sup>2</sup> に比例する）</li>
+          <li>断面積を頂点（x ＝ 0）から底面（x ＝ h）まで定積分する：V ＝ ∫<sub>0</sub><sup>h</sup> S(x) dx ＝ π（<span class="frac"><span class="fn">r</span><span class="fd">h</span></span>）<sup>2</sup>［<span class="frac"><span class="fn">x<sup>3</sup></span><span class="fd">3</span></span>］<sub>0</sub><sup>h</sup> ＝ π（<span class="frac"><span class="fn">r</span><span class="fd">h</span></span>）<sup>2</sup> × <span class="frac"><span class="fn">h<sup>3</sup></span><span class="fd">3</span></span></li>
+          <li>整理すると V ＝ <span class="frac"><span class="fn">1</span><span class="fd">3</span></span>πr<sup>2</sup>h</li>
+        </ol>
+        <p><strong>答え：V ＝ <span class="frac"><span class="fn">1</span><span class="fd">3</span></span>πr<sup>2</sup>h</strong>。公式の「3分の1」の正体は、∫x<sup>2</sup>dx ＝ <span class="frac"><span class="fn">x<sup>3</sup></span><span class="fd">3</span></span> の分母の「3」です。断面積が x<sup>2</sup> に比例する立体は、積分すると必ずこの「3」が顔を出します。暗記した数字ではなく、定積分の計算から出てくる数字だったのです。</p>
+        <p>導出をじっくり追いたい場合は、専用ページ「<a href="cone-volume.html">円錐の体積はなぜ1/3なのか</a>」もどうぞ。</p>
+      </details>
+    </div>
   </section>
 
   <section class="card">
