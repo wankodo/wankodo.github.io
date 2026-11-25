@@ -60,6 +60,13 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .tool-card h3 a:hover{text-decoration:underline}
 .tool-card p{margin:8px 0 0;font-size:13.5px}
 .tool-card .tc-links{margin-top:10px;font-size:13.5px;display:flex;gap:18px;flex-wrap:wrap}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 4px}
+.chip{border:2px solid var(--navy);background:var(--card);color:var(--navy);border-radius:999px;padding:6px 16px;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--navy);color:#fff}
+#searchResults h3{margin:14px 0 4px;font-size:16px;color:var(--navy)}
+.jump-link{display:block;background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:12px 16px;margin:10px 0;color:var(--ink);text-decoration:none;font-weight:700}
+.jump-link:hover{border-color:var(--amber-d);text-decoration:underline}
+section.card{scroll-margin-top:12px}
 .summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
 .summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
 .formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
@@ -113,6 +120,8 @@ html[data-theme="andy"] .badge-calc{color:#fff}
 html[data-theme="andy"] .tri-fig{color:#d8f1f6}
 html[data-theme="andy"] .linkcard{background:#0d2a42}
 html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+html[data-theme="andy"] .chip[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;border-color:#46d9ec}
+html[data-theme="andy"] .jump-link{background:rgba(70,217,236,.10);color:#d8f1f6}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
@@ -157,6 +166,26 @@ gtag('config', 'G-QQ4435VBMK');
 
 <div class="wrap">
   <section class="card">
+    <h2>解法を検索</h2>
+    <div class="field">
+      <label for="mathSearch">キーワード <span class="fl-note">解法名・公式名のほか、「GPS」のような使われ方でも引けます。セクション名を入れると、そのセクションへの移動リンクも出ます</span></label>
+      <input type="search" id="mathSearch" placeholder="例：解の公式、頂点、GPS" autocomplete="off">
+    </div>
+    <div class="chips" role="group" aria-label="レベルで絞り込み">
+      <button type="button" class="chip" data-level="all" aria-pressed="true">すべて</button>
+      <button type="button" class="chip" data-level="中学" aria-pressed="false">中学</button>
+      <button type="button" class="chip" data-level="高校" aria-pressed="false">高校</button>
+      <button type="button" class="chip" data-level="大学" aria-pressed="false">大学</button>
+    </div>
+    <div id="searchResults" style="display:none">
+      <h3 id="resultHead"></h3>
+      <div id="jumpBox"></div>
+      <div id="resultCards"></div>
+      <p id="noHit" class="note" style="display:none">条件に合う項目が見つかりませんでした。キーワードを変えるか、下のジャンル別一覧から探してみてください。</p>
+    </div>
+  </section>
+
+  <section class="card" id="sec-kazu">
     <h2>数と式</h2>
     <div class="tool-card">
       <h3><a href="prime-factorization.html">素因数分解</a></h3>
@@ -178,7 +207,7 @@ gtag('config', 'G-QQ4435VBMK');
     </div>
   </section>
 
-  <section class="card">
+  <section class="card" id="sec-houteishiki">
     <h2>方程式</h2>
     <div class="tool-card">
       <h3><a href="linear-equation.html">一次方程式</a></h3>
@@ -200,7 +229,7 @@ gtag('config', 'G-QQ4435VBMK');
     </div>
   </section>
 
-  <section class="card">
+  <section class="card" id="sec-kansu">
     <h2>関数</h2>
     <div class="tool-card">
       <h3><a href="linear-function.html">一次関数</a></h3>
@@ -216,7 +245,7 @@ gtag('config', 'G-QQ4435VBMK');
     </div>
   </section>
 
-  <section class="card">
+  <section class="card" id="sec-zukei">
     <h2>図形</h2>
     <div class="tool-card">
       <h3><a href="pythagoras.html">三平方の定理</a></h3>
@@ -226,7 +255,7 @@ gtag('config', 'G-QQ4435VBMK');
     </div>
   </section>
 
-  <section class="card">
+  <section class="card" id="sec-sankaku">
     <h2>三角関数</h2>
     <div class="tool-card">
       <h3><a href="trigonometric-ratios.html">三角比</a></h3>
@@ -236,7 +265,7 @@ gtag('config', 'G-QQ4435VBMK');
     </div>
   </section>
 
-  <section class="card">
+  <section class="card" id="sec-kakuritsu">
     <h2>確率・統計</h2>
     <div class="tool-card">
       <h3><a href="permutations-combinations.html">順列・組合せ</a></h3>
@@ -258,7 +287,7 @@ gtag('config', 'G-QQ4435VBMK');
     </div>
   </section>
 
-  <section class="card">
+  <section class="card" id="sec-suretsu">
     <h2>数列</h2>
     <div class="tool-card">
       <h3><a href="sequences.html">等差数列・等比数列</a></h3>
@@ -268,7 +297,7 @@ gtag('config', 'G-QQ4435VBMK');
     </div>
   </section>
 
-  <section class="card">
+  <section class="card" id="sec-bibun">
     <h2>微分・積分</h2>
     <div class="tool-card">
       <h3><a href="differentiation.html">微分（導関数）</a></h3>
@@ -302,6 +331,99 @@ gtag('config', 'G-QQ4435VBMK');
   function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
   btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
   sync();
+})();
+</script>
+<script>
+(function(){
+  /* 検索インデックス（設計書 §4）。summary は各記事冒頭の代表説明と同一文面 */
+  var INDEX=[
+    {title:"素因数分解",slug:"prime-factorization",genre:"数と式",level:"中学",calc:true,problem:"整数を素数の積に分解する",keywords:"素数 分解 約分 暗号 RSA 公約数",summary:"ネットショッピングの決済などを守る暗号（RSA）は、「大きな数を素因数分解するのはものすごく時間がかかる」ことを利用して作られている。約分や公約数を求めるときの土台でもある。"},
+    {title:"最大公約数・最小公倍数",slug:"gcd-lcm",genre:"数と式",level:"中学",calc:true,problem:"公約数・公倍数を素早く求める",keywords:"ユークリッドの互除法 互除法 公約数 公倍数 GCD LCM 約分 通分 歯車",summary:"歯車が均等にすり減るように歯数を決めたり、周期の違う機械のタイミングが次にそろう時点を出したりするときに使う。ユークリッドの互除法は、コンピュータが公約数を一瞬で出すための基本アルゴリズムでもある。"},
+    {title:"因数分解",slug:"factorization",genre:"数と式",level:"中学・高校",calc:true,problem:"式を積の形に直す（公式・たすき掛け）",keywords:"たすき掛け たすきがけ 公式 積の形 振動解析",summary:"式を掛け算の形に直すと、方程式の解やグラフの交点が読み取れるようになる。建物や機械の揺れ方を調べる振動解析でも、方程式を因数分解して揺れの周期を割り出す。"},
+    {title:"一次方程式",slug:"linear-equation",genre:"方程式",level:"中学",calc:true,problem:"未知数が1つの方程式を解く",keywords:"移項 未知数 損益分岐点 赤字",summary:"店や会社の「何個売れば赤字にならないか」（損益分岐点）を出すときに使う。利益がゼロになる点を一次方程式で解くのは、経営の基本計算のひとつ。"},
+    {title:"連立方程式",slug:"simultaneous-equations",genre:"方程式",level:"中学",calc:true,problem:"代入法・加減法で2元の方程式を解く",keywords:"代入法 加減法 連立 2元 二元 電気回路 シミュレーション",summary:"電気回路の中の電流や、建物にかかる力の釣り合いのように、わからない数が複数ある現場の計算は連立方程式で解く。コンピュータはこれを大量に解いて、天気や構造のシミュレーションをしている。"},
+    {title:"二次方程式",slug:"quadratic-equation",genre:"方程式",level:"中学・高校",calc:true,problem:"解の公式・因数分解・平方完成で解く",keywords:"解の公式 平方完成 判別式 放物線 弾道 パラボラアンテナ",summary:"ロケットや砲弾の弾道計算、橋のアーチやパラボラアンテナの形の設計など、放物線が関わる場面で使う。ボールを投げたときの高さや、面積から一辺の長さを求める問題もこの仲間。"},
+    {title:"一次関数",slug:"linear-function",genre:"関数",level:"中学",calc:true,problem:"変化の割合・2点から直線の式を求める",keywords:"傾き 変化の割合 切片 直線の式 比例 センサー キャリブレーション",summary:"温度センサーのような計測機器は、センサーが出す電気信号を実際の温度に直す換算（キャリブレーション）に一次関数を使っている。一定のペースで変わる量を予測する土台になる。"},
+    {title:"二次関数",slug:"quadratic-function",genre:"関数",level:"中学・高校",calc:true,problem:"平方完成で頂点・軸を求める、グラフの平行移動",keywords:"頂点 軸 平方完成 放物線 グラフ 最大 最小 ブレーキ 制動距離",summary:"車のブレーキをかけてから止まるまでの距離は、速度の2乗に比例して伸びる。車の安全設計や、投げた物の軌道の計算に使う。頂点を求めると、一番高くなる点や最大・最小が分かる。"},
+    {title:"三平方の定理",slug:"pythagoras",genre:"図形",level:"中学",calc:true,problem:"直角三角形の辺の長さを求める",keywords:"ピタゴラスの定理 ピタゴラス 直角三角形 斜辺 対角線 GPS 測量 建築 直角",summary:"建築現場で建物の直角を出したり、測量で直接測れない距離を割り出したりするときに使う。GPSが衛星からの距離をもとに現在地を決める計算も、この定理が土台になっている。"},
+    {title:"三角比",slug:"trigonometric-ratios",genre:"三角関数",level:"高校",calc:true,problem:"sin・cos・tan の値と辺の長さ・角度",keywords:"sin cos tan サイン コサイン タンジェント 角度 測量 高さ",summary:"測量士が土地や建物の高さ・距離を測るときに使う。直接測れない高さでも、距離と角度が分かれば三角比で割り出せるので、地図作りや工事現場で現役の技術。"},
+    {title:"順列・組合せ",slug:"permutations-combinations",genre:"確率・統計",level:"高校",calc:true,problem:"nPr・nCr の計算と考え方",keywords:"nPr nCr 順列 組み合わせ 組合せ 場合の数 階乗 パスワード 宝くじ セキュリティ",summary:"パスワードの組み合わせが全部で何通りあるかを数えて、「破るのに何年かかるか」を見積もるセキュリティの計算に使う。宝くじの当選確率を出すのも同じ考え方。"},
+    {title:"確率の基本",slug:"probability-basics",genre:"確率・統計",level:"中学・高校",calc:false,problem:"場合の数から確率を求める",keywords:"確率 場合の数 降水確率 保険料 不良品",summary:"保険料の設定、天気予報の降水確率、工場で不良品が出る割合の見積もりなど、「どれくらい起こりやすいか」を数字にして判断する仕事の土台になっている。"},
+    {title:"平均・分散・標準偏差",slug:"mean-variance",genre:"確率・統計",level:"高校",calc:true,problem:"データの散らばりを数値化する",keywords:"平均 分散 標準偏差 偏差値 ばらつき 品質管理 リスク データ",summary:"工場の品質管理では、製品の寸法のばらつきが標準偏差で規格内かどうかを判定する。投資の世界でも、値動きの大きさ＝リスクを測る物差しとして使われている。"},
+    {title:"等差数列・等比数列",slug:"sequences",genre:"数列",level:"高校",calc:true,problem:"一般項と和を求める",keywords:"等差数列 等比数列 一般項 和 公差 公比 複利 ローン 返済",summary:"銀行の複利計算は等比数列そのもので、ローンの返済計画もこれで立てる。一定の差で増える並び（等差）と一定の倍率で増える並び（等比）が分かると、遠い先の数や合計を一気に求められる。"},
+    {title:"微分（導関数）",slug:"differentiation",genre:"微分・積分",level:"高校",calc:true,problem:"多項式の微分・微分の公式",keywords:"微分 導関数 変化の速さ 速度 勾配降下法 AI 学習 接線",summary:"車の速度メーターの計算、AIが学習するときの細かい調整、コストが一番安くなる生産量を探す計算など、「変化の速さ」と「一番よい点」を求める技術の土台になっている。"},
+    {title:"定積分",slug:"integration",genre:"微分・積分",level:"高校",calc:true,problem:"多項式の定積分の計算",keywords:"積分 定積分 面積 体積 原始関数 電気使用量",summary:"曲線に囲まれた土地や部品の面積・体積を出したり、電気の使用量を合計したりするときに使う。「少しずつ変わる量の合計」を出すのが定積分の仕事。"}
+  ];
+  var SECTIONS=[
+    {name:"数と式",id:"sec-kazu"},
+    {name:"方程式",id:"sec-houteishiki"},
+    {name:"関数",id:"sec-kansu"},
+    {name:"図形",id:"sec-zukei"},
+    {name:"三角関数",id:"sec-sankaku"},
+    {name:"確率・統計",id:"sec-kakuritsu"},
+    {name:"数列",id:"sec-suretsu"},
+    {name:"微分・積分",id:"sec-bibun"}
+  ];
+  function norm(s){
+    return String(s||"").toLowerCase()
+      .replace(/[Ａ-Ｚａ-ｚ０-９]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0);})
+      .replace(/[\s　]/g,"");
+  }
+  var input=document.getElementById("mathSearch");
+  var box=document.getElementById("searchResults");
+  var head=document.getElementById("resultHead");
+  var jumpBox=document.getElementById("jumpBox");
+  var cardsBox=document.getElementById("resultCards");
+  var noHit=document.getElementById("noHit");
+  var chips=document.querySelectorAll(".chip[data-level]");
+  var level="all";
+  function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
+  function makeCard(it){
+    var card=el("div","tool-card");
+    var h3=el("h3");var a=el("a",null,it.title);a.href=it.slug+".html";h3.appendChild(a);card.appendChild(h3);
+    var pb=el("p");
+    pb.appendChild(el("span","badge badge-lv",it.level));
+    pb.appendChild(document.createTextNode(" "));
+    pb.appendChild(el("span","badge badge-genre",it.genre));
+    if(it.calc){pb.appendChild(document.createTextNode(" "));pb.appendChild(el("span","badge badge-calc","計算機あり"));}
+    card.appendChild(pb);
+    card.appendChild(el("p",null,it.summary));
+    var links=el("p","tc-links");
+    var la=el("a",null,"解法の解説を読む");la.href=it.slug+".html";links.appendChild(la);
+    if(it.calc){var ca=el("a",null,"計算機で試す");ca.href="calc-"+it.slug+".html";links.appendChild(ca);}
+    card.appendChild(links);
+    return card;
+  }
+  function update(){
+    var q=norm(input.value);
+    if(!q&&level==="all"){box.style.display="none";return;}
+    var items=INDEX.filter(function(it){
+      if(level!=="all"&&it.level.indexOf(level)<0)return false;
+      if(!q)return true;
+      var hay=norm(it.title+" "+it.keywords+" "+it.problem+" "+it.genre);
+      return hay.indexOf(q)>=0;
+    });
+    var secs=q?SECTIONS.filter(function(s){var n=norm(s.name);return n.indexOf(q)>=0||q.indexOf(n)>=0;}):[];
+    jumpBox.innerHTML="";
+    secs.forEach(function(s){
+      var a=el("a","jump-link","『"+s.name+"』のセクションへ移動 →");
+      a.href="#"+s.id;
+      jumpBox.appendChild(a);
+    });
+    cardsBox.innerHTML="";
+    items.forEach(function(it){cardsBox.appendChild(makeCard(it));});
+    noHit.style.display=items.length?"none":"block";
+    head.textContent=q?("「"+input.value.trim()+"」の検索結果（"+items.length+"件）"):("レベル："+level+" の項目（"+items.length+"件）");
+    box.style.display="block";
+  }
+  input.addEventListener("input",update);
+  chips.forEach(function(ch){
+    ch.addEventListener("click",function(){
+      level=ch.dataset.level;
+      chips.forEach(function(c){c.setAttribute("aria-pressed",String(c===ch));});
+      update();
+    });
+  });
 })();
 </script>
 <script src="../kumagames.js"></script>
