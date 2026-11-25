@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<!-- 試作：方眼ノート・手書き風デザイン（本番 index.html 未反映・単体で完結） -->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数学ツール(解説付き)</title>
+<link rel="icon" type="image/svg+xml" href="favicon-math.svg">
+<meta name="description" content="解法名や問題の特徴から数学の解き方を調べられて、そのまま計算もできるコーナー「数学ツール(解説付き)」。各解法が実際の現場でどう使われているかまで解説します。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="数学ツール集">
+<meta property="og:title" content="数学ツール(解説付き)">
+<meta property="og:description" content="解法を調べられて、そのまま計算もできる数学コーナー。各解法の「現場での使われ方」まで解説します。">
+<meta property="og:url" content="https://wankodo.github.io/math/">
+<meta property="og:image" content="https://wankodo.github.io/math/ogp-math.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/math/ogp-math.png">
+<style>
+/* ===== 試作：方眼ノート・手書き風デザイン（index-note.html 専用） ===== */
+:root{
+  --paper:#fffdf4; --paper2:#fffef9; --bg:#f6f1e1; --ink:#26303a; --mut:#55606b;
+  --line:#ddd5bf; --grid:rgba(70,120,180,.13); --grid2:rgba(70,120,180,.20);
+  --blue:#1d4e9e; --blue-d:#173f80; --red:#c23b2e; --red-soft:rgba(214,90,80,.55);
+  --marker:rgba(255,213,79,.55); --marker-b:rgba(130,195,250,.45);
+  --amber:#f2a007; --green:#1e7d46;
+  --maru:"Hiragino Maru Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;
+  background-color:var(--bg);
+  background-image:
+    linear-gradient(var(--grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px),
+    linear-gradient(var(--grid2) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid2) 1px,transparent 1px);
+  background-size:24px 24px,24px 24px,120px 120px,120px 120px;
+  color:var(--ink);font-size:15px;line-height:1.85}
+::selection{background:var(--marker)}
+a{color:var(--blue)}
+/* --- ノートの表紙帯のようなサイトバー --- */
+.sitebar{background:var(--blue);border-bottom:3px solid var(--blue-d)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:underline;text-underline-offset:3px;font-size:13px}
+.sitebar a:hover{color:#ffe9a8}
+.sitebar .sb-name{font-weight:700;letter-spacing:.05em;color:#fff;font-size:13.5px;font-family:var(--maru)}
+/* --- 罫線つきサイトナビ（現在地はマーカーでなぞる） --- */
+.sitenav{background:var(--paper);border-bottom:2px solid var(--red-soft)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--ink)}
+.sitenav a:hover{text-decoration:underline;color:var(--blue)}
+.sitenav a.cur{font-weight:700;color:var(--blue-d);background:linear-gradient(transparent 58%,var(--marker) 58%);padding:0 2px}
+/* --- ノート最初のページ風ヘッダー --- */
+header{padding:30px 16px 10px;
+  background-image:
+    radial-gradient(circle 7px at 56px 14px,rgba(38,48,58,.10) 98%,transparent),
+    radial-gradient(circle 7px at 50% 14px,rgba(38,48,58,.10) 98%,transparent),
+    radial-gradient(circle 7px at calc(100% - 56px) 14px,rgba(38,48,58,.10) 98%,transparent)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:27px;letter-spacing:.03em;font-family:var(--maru);font-weight:700;color:var(--ink)}
+header h1 .accent{display:inline-block;color:var(--blue);border:3px solid var(--red);
+  border-radius:52% 48% 55% 45%/62% 58% 42% 55%;padding:0 12px 2px;transform:rotate(-1.4deg)}
+header p{margin:12px 0 0;font-size:13.5px;color:var(--mut);max-width:46em}
+header p::before{content:"※ ";color:var(--red);font-weight:700}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--blue);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+/* --- ノートの紙面カード（左に赤マージン線と綴じ穴） --- */
+.card{position:relative;background-color:var(--paper2);
+  background-image:
+    radial-gradient(circle 6px at 19px 44px,var(--bg) 5px,#d9d2ba 6px,transparent 7px),
+    radial-gradient(circle 6px at 19px 50%,var(--bg) 5px,#d9d2ba 6px,transparent 7px),
+    radial-gradient(circle 6px at 19px calc(100% - 44px),var(--bg) 5px,#d9d2ba 6px,transparent 7px),
+    linear-gradient(90deg,transparent 0 38px,var(--red-soft) 38px,var(--red-soft) 40px,transparent 40px);
+  border:1px solid var(--line);border-radius:4px 14px 6px 12px/12px 6px 14px 4px;
+  padding:20px 20px 20px 54px;margin:16px 0;box-shadow:0 2px 6px rgba(80,70,40,.12)}
+.card h2{margin:0 0 12px;font-size:20px;font-family:var(--maru);font-weight:700;color:var(--ink);
+  background:linear-gradient(transparent 64%,var(--marker) 64%);padding:0 8px 3px 4px}
+#sec-keisanki h2{background:linear-gradient(transparent 64%,var(--marker-b) 64%)}
+.card h2::before{content:"";display:inline-block;width:11px;height:11px;border:2.5px solid var(--red);
+  border-radius:50% 46% 55% 45%;margin-right:9px;vertical-align:0}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--blue-d);border-bottom:2px dashed rgba(29,78,158,.35);padding-bottom:2px}
+.card p{margin:8px 0}
+/* --- ラベル風バッジ --- */
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:3px;padding:1px 9px;line-height:1.7;border:1.5px solid}
+.badge-lv{background:#eaf1fb;color:var(--blue-d);border-color:var(--blue)}
+.badge-genre{background:#fff3d6;color:#7a5200;border-color:#d9a514}
+.badge-calc{background:#e6f4ec;color:var(--green);border-color:var(--green)}
+/* --- 紙片カード（上にマスキングテープ） --- */
+.tool-card{display:block;position:relative;background:#fffefb;border:1px solid #e3dcc6;
+  border-radius:3px 10px 4px 8px/8px 4px 10px 3px;padding:16px 18px;
+  box-shadow:0 1px 4px rgba(80,70,40,.10);color:var(--ink);margin:18px 0}
+.tool-card::before{content:"";position:absolute;top:-9px;left:50%;width:92px;height:18px;
+  transform:translateX(-50%) rotate(-1.2deg);background:rgba(255,213,79,.45);
+  border-left:1px dashed rgba(80,70,40,.18);border-right:1px dashed rgba(80,70,40,.18);
+  box-shadow:0 1px 2px rgba(80,70,40,.10)}
+#sec-keisanki .tool-card::before{background:rgba(130,195,250,.45)}
+.tool-card:hover{border-color:var(--blue);box-shadow:0 3px 10px rgba(80,70,40,.16)}
+.tool-card h3{margin:0;font-size:17px;font-family:var(--maru);color:var(--ink);border-bottom:0;padding-bottom:0}
+.tool-card h3 a{color:var(--ink);text-decoration:none}
+.tool-card h3 a:hover{color:var(--blue);background:linear-gradient(transparent 62%,var(--marker) 62%)}
+.tool-card p{margin:8px 0 0;font-size:13.5px}
+.tool-card .tc-links{margin-top:10px;font-size:13.5px;display:flex;gap:18px;flex-wrap:wrap}
+.tool-card .tc-links a{color:var(--blue);font-weight:700;text-decoration:none}
+.tool-card .tc-links a::before{content:"→ ";color:var(--red);font-weight:700}
+.tool-card .tc-links a:hover{text-decoration:underline}
+/* --- 検索まわり --- */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 4px}
+.chip{border:2px solid var(--blue);background:var(--paper2);color:var(--blue-d);border-radius:999px;padding:6px 16px;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;box-shadow:0 1px 2px rgba(80,70,40,.12)}
+.chip:hover{background:#eaf1fb}
+.chip[aria-pressed="true"]{background:var(--blue);color:#fff}
+#searchResults h3{margin:14px 0 4px;font-size:16px;color:var(--blue-d);border-bottom:2px dashed rgba(29,78,158,.35);padding-bottom:2px}
+.result-group-head{margin:18px 0 2px;font-size:16px;font-family:var(--maru);color:var(--ink);border-left:5px solid var(--red);padding-left:10px}
+.result-group-head .rg-note{font-size:12.5px;font-weight:400;color:var(--mut);margin-left:8px}
+.jump-link{display:block;background:#fff7d6;border:1px solid #e3cf8a;border-radius:4px;box-shadow:0 1px 3px rgba(80,70,40,.12);padding:12px 16px;margin:10px 0;color:var(--ink);text-decoration:none;font-weight:700}
+.jump-link:hover{border-color:#d9a514;text-decoration:underline}
+section.card{scroll-margin-top:12px}
+/* --- 以下、記事ページと共通の部品（トップでは未使用のものも流儀を合わせて用意） --- */
+.summary-box{background:#fff7d6;border:1.5px dashed #d9a514;border-radius:8px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--red);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background-color:var(--paper2);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:24px 24px;border:1.5px solid #9db8dd;border-radius:8px;margin:12px 0;letter-spacing:.03em;color:var(--ink)}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+ol.steps li::marker{color:var(--red);font-weight:700}
+.example{background:var(--paper2);border:1px solid var(--line);border-left:4px solid var(--red-soft);border-radius:6px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.tri-fig{text-align:center;margin:10px 0;color:var(--blue)}
+.linkcard{display:block;background:var(--blue);color:#fff;border-radius:8px;padding:16px;text-decoration:none;margin:14px 0;box-shadow:0 2px 5px rgba(80,70,40,.18)}
+.linkcard:hover{background:var(--blue-d)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#d7e5fa;margin-top:4px}
+.field{margin:0 0 14px}
+.field label{display:block;font-weight:700;margin-bottom:5px}
+.field .fl-note{font-weight:400;font-size:12.5px;color:var(--mut)}
+.field input{width:100%;padding:12px 14px;font-size:17px;border:2px solid #9db8dd;border-radius:8px;background:#fffefb;color:var(--ink)}
+.field input:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3px rgba(255,213,79,.55)}
+.btn{display:block;width:100%;min-height:50px;border:1.5px solid #d9a514;border-radius:10px;background:linear-gradient(180deg,#ffd968,#f5b921);color:#231a00;font-size:16px;font-weight:800;cursor:pointer}
+.btn:hover{filter:brightness(1.05)}
+.err{display:none;background:#fdecea;border:1px solid var(--red);color:#a02c20;border-radius:10px;padding:12px 14px;margin:14px 0;font-size:14px}
+.result{display:none;background:var(--paper2);border:2.5px solid var(--blue);border-radius:10px;padding:16px;margin:14px 0}
+.result .ans{font-size:23px;font-weight:800;color:var(--blue-d);margin:0 0 8px}
+/* --- ノートの裏表紙風フッター --- */
+footer{margin:28px 0 0;background:#31404f;color:#e8e4d5;border-top:4px solid var(--red)}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#b9c2cc}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+@media (max-width:560px){
+  .card{padding:16px 14px 16px 44px}
+  header h1{font-size:23px}
+  header{padding-top:26px}
+}
+</style>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">数学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="./" class="cur">数学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>数学<span class="accent">ツール(解説付き)</span></h1>
+    <p>解法名や問題の特徴から解き方を調べられて、そのまま計算もできるコーナーです。各解法が実際の現場でどう使われているかまで解説します。</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="card">
+    <h2>解法を検索</h2>
+    <div class="field">
+      <label for="mathSearch">キーワード <span class="fl-note">解法名・公式名のほか、「GPS」のような使われ方でも引けます。セクション名を入れると、そのセクションへの移動リンクも出ます</span></label>
+      <input type="search" id="mathSearch" placeholder="例：解の公式、頂点、GPS" autocomplete="off">
+    </div>
+    <div class="chips" role="group" aria-label="レベルで絞り込み">
+      <button type="button" class="chip" data-level="all" aria-pressed="true">すべて</button>
+      <button type="button" class="chip" data-level="中学" aria-pressed="false">中学</button>
+      <button type="button" class="chip" data-level="高校" aria-pressed="false">高校</button>
+      <button type="button" class="chip" data-level="大学" aria-pressed="false">大学</button>
+    </div>
+    <div id="searchResults" style="display:none">
+      <h3 id="resultHead"></h3>
+      <div id="jumpBox"></div>
+      <div id="resultCards"></div>
+      <p id="noHit" class="note" style="display:none">条件に合う項目が見つかりませんでした。キーワードを変えるか、検索欄を空にして「考え方」「計算機」の一覧から探してみてください。</p>
+    </div>
+  </section>
+
+  <section class="card" id="sec-kaikata">
+    <h2>考え方</h2>
+    <p>全81項目の解説記事です。各解法の考え方と、実際の現場でどう使われているかを解説しています。ジャンルとレベルは各カードに表示しています。</p>
+    <div class="tool-card">
+      <h3><a href="prime-factorization.html">素因数分解</a></h3>
+      <p><span class="badge badge-lv">中学</span> <span class="badge badge-genre">数と式</span></p>
+      <p>ネットショッピングの決済などを守る暗号（RSA）は、「大きな数を素因数分解するのはものすごく時間がかかる」ことを利用して作られている。約分や公約数を求めるときの土台でもある。</p>
+      <p class="tc-links"><a href="prime-factorization.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="gcd-lcm.html">最大公約数・最小公倍数</a></h3>
+      <p><span class="badge badge-lv">中学</span> <span class="badge badge-genre">数と式</span></p>
+      <p>歯車が均等にすり減るように歯数を決めたり、周期の違う機械のタイミングが次にそろう時点を出したりするときに使う。ユークリッドの互除法は、コンピュータが公約数を一瞬で出すための基本アルゴリズムでもある。</p>
+      <p class="tc-links"><a href="gcd-lcm.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="factorization.html">因数分解</a></h3>
+      <p><span class="badge badge-lv">中学・高校</span> <span class="badge badge-genre">数と式</span></p>
+      <p>式を掛け算の形に直すと、方程式の解やグラフの交点が読み取れるようになる。建物や機械の揺れ方を調べる振動解析でも、方程式を因数分解して揺れの周期を割り出す。</p>
+      <p class="tc-links"><a href="factorization.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="square-root.html">平方根の計算</a></h3>
+      <p><span class="badge badge-lv">中学</span> <span class="badge badge-genre">数と式</span></p>
+      <p>測量や建築で直接測れない距離を出す計算や、データのばらつきを表す標準偏差の計算では、最後に平方根を取る操作が欠かせない。画面の対角線の長さを求めるときにも同じ計算が使われている。</p>
+      <p class="tc-links"><a href="square-root.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="expansion.html">展開の公式</a></h3>
+      <p><span class="badge badge-lv">中学・高校</span> <span class="badge badge-genre">数と式</span></p>
+      <p>面積が一辺の増減でどれだけ変わるかを求めるときや、データのばらつきを表す分散の式を変形するときに、(a＋b)² のような展開の公式が土台になる。暗算で大きな数の掛け算を工夫するときにも同じ考え方が使われている。</p>
+      <p class="tc-links"><a href="expansion.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="exponents.html">指数法則</a></h3>
+      <p><span class="badge badge-lv">中学・高校</span> <span class="badge badge-genre">数と式</span></p>
+      <p>ウイルスの増え方や放射性物質が半分になるまでの時間（半減期）の計算は、同じ倍率で増減する指数の考え方そのもの。コンピュータが扱うデータ量や計算の手間が2の累乗で増える場面でも、指数法則が見積もりの土台になる。</p>
+      <p class="tc-links"><a href="exponents.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="logarithm.html">対数の性質と計算</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">数と式</span></p>
+      <p>地震のマグニチュード、音の大きさを表すデシベル、水溶液の酸性度を表すpHは、どれも対数を使って大きな幅の量を扱いやすい数字に直したもの。大きな数の桁数をすぐに見積もるときにも常用対数が使われている。</p>
+      <p class="tc-links"><a href="logarithm.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="congruence.html">合同式</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">数と式</span></p>
+      <p>曜日の計算、書籍のISBNやマイナンバーにつく検査数字（チェックディジット）の判定、ネット通信を守るRSA暗号は、どれも割り算の余りに注目する合同式の考え方を使っている。コンピュータがデータを振り分けるハッシュの計算でも余りが土台になる。</p>
+      <p class="tc-links"><a href="congruence.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="sets-propositions.html">集合と命題</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">数と式</span></p>
+      <p>プログラムの条件分岐やデータベース検索の AND・OR・NOT は、集合と命題の論理そのものである。顧客データを条件で絞り込む分析ではベン図で重なりを捉え、デジタル回路の設計では真理表で動作を確かめる。</p>
+      <p class="tc-links"><a href="sets-propositions.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="linear-inequality.html">一次不等式</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">数と式</span></p>
+      <p>「何個以上買えば元が取れるか」「予算以内に収まるのは何個までか」という範囲の判断に使う。製品の寸法や濃度が規格の範囲内に収まっているかを考える土台にもなる。</p>
+      <p class="tc-links"><a href="linear-inequality.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="recurring-decimal.html">循環小数を分数に直す</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">数と式</span></p>
+      <p>割り算の結果が分数で正確に表せる数かどうかを判定する考え方である。コンピュータでは 0.1 が2進数で循環小数になり正確に表せないことが、金額計算などの誤差の原因になる。</p>
+      <p class="tc-links"><a href="recurring-decimal.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="number-bases.html">記数法</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">数と式</span></p>
+      <p>コンピュータ内部のデータ表現そのものである。16進数はメモリの中身や色コード（#FF8000）、文字コードの表示に使われ、2進数はコンピュータのあらゆる計算の土台になっている。</p>
+      <p class="tc-links"><a href="number-bases.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="diophantine.html">一次不定方程式</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">数と式</span></p>
+      <p>硬貨や切手の組み合わせで合計金額をぴったり作ったり、荷物の積み合わせで重さや容量をぴったり満たす個数の組み合わせを探したりするときに使う。2種類の数量の合計をちょうど目標値にする、実務の「ぴったり合わせ」の一般形である。</p>
+      <p class="tc-links"><a href="diophantine.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="binomial-theorem.html">二項定理</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">数と式</span></p>
+      <p>「n回中k回起こる」場合の数を数える二項分布の土台であり、保険や品質検査の確率計算に直結する。複利や誤差の見積もりで使う近似 (1+x)^n ≒ 1+nx も、この定理から出てくる。</p>
+      <p class="tc-links"><a href="binomial-theorem.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="linear-equation.html">一次方程式</a></h3>
+      <p><span class="badge badge-lv">中学</span> <span class="badge badge-genre">方程式</span></p>
+      <p>店や会社の「何個売れば赤字にならないか」（損益分岐点）を出すときに使う。利益がゼロになる点を一次方程式で解くのは、経営の基本計算のひとつ。</p>
+      <p class="tc-links"><a href="linear-equation.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="simultaneous-equations.html">連立方程式</a></h3>
+      <p><span class="badge badge-lv">中学</span> <span class="badge badge-genre">方程式</span></p>
+      <p>電気回路の中の電流や、建物にかかる力の釣り合いのように、わからない数が複数ある現場の計算は連立方程式で解く。コンピュータはこれを大量に解いて、天気や構造のシミュレーションをしている。</p>
+      <p class="tc-links"><a href="simultaneous-equations.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="quadratic-equation.html">二次方程式</a></h3>
+      <p><span class="badge badge-lv">中学・高校</span> <span class="badge badge-genre">方程式</span></p>
+      <p>ロケットや砲弾の弾道計算、橋のアーチやパラボラアンテナの形の設計など、放物線が関わる場面で使う。ボールを投げたときの高さや、面積から一辺の長さを求める問題もこの仲間。</p>
+      <p class="tc-links"><a href="quadratic-equation.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="discriminant.html">判別式</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">方程式</span></p>
+      <p>設計や制御の計算では、方程式に実数の解があるかどうかが「その条件をそもそも実現できるか」の分かれ目になることがある。判別式は、解を全部求める前に、その実現できるかどうかを先に判定するチェックに使われる。</p>
+      <p class="tc-links"><a href="discriminant.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="higher-equations.html">高次方程式</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">方程式</span></p>
+      <p>電気回路や振動する機械の性質は、三次・四次などの方程式（特性方程式）を解くことで分かることがある。因数定理と組立除法は、その方程式を一次式の積に分けて、性質を決める解を取り出すための基本の道具。</p>
+      <p class="tc-links"><a href="higher-equations.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="quadratic-inequality.html">二次不等式</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">方程式</span></p>
+      <p>商品をいくらで売れば利益が出るか、製品がどこまでなら規格内に収まるかは、「〜以上になる範囲」「〜以下に収まる範囲」として二次不等式で表せることがある。条件を満たす範囲を一度に求めるのが二次不等式の仕事。</p>
+      <p class="tc-links"><a href="quadratic-inequality.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="vieta.html">解と係数の関係</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">方程式</span></p>
+      <p>方程式を実際に解かなくても、解の和と積だけで性質が分かるのが強みである。制御工学では特性方程式の解（極）の和と積から系の応答の速さや安定性の見通しを立て、振動系でも固有振動に関わる量が和と積に現れる。</p>
+      <p class="tc-links"><a href="vieta.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="exp-log-equations.html">指数方程式・対数方程式</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">方程式</span></p>
+      <p>半減期が分かっている物質について「量がここまで減るのは何年後か」を逆算するときに使う。放射性炭素年代測定の考え方や、複利で元金が2倍になる年数の逆算（72の法則の裏側）も、同じ方程式で表される。</p>
+      <p class="tc-links"><a href="exp-log-equations.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="linear-function.html">一次関数</a></h3>
+      <p><span class="badge badge-lv">中学</span> <span class="badge badge-genre">関数</span></p>
+      <p>温度センサーのような計測機器は、センサーが出す電気信号を実際の温度に直す換算（キャリブレーション）に一次関数を使っている。一定のペースで変わる量を予測する土台になる。</p>
+      <p class="tc-links"><a href="linear-function.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="quadratic-function.html">二次関数</a></h3>
+      <p><span class="badge badge-lv">中学・高校</span> <span class="badge badge-genre">関数</span></p>
+      <p>車のブレーキをかけてから止まるまでの距離は、速度の2乗に比例して伸びる。車の安全設計や、投げた物の軌道の計算に使う。頂点を求めると、一番高くなる点や最大・最小が分かる。</p>
+      <p class="tc-links"><a href="quadratic-function.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="max-min.html">関数の最大・最小</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">関数</span></p>
+      <p>限られた予算や材料で、囲える面積や得られる利益をいちばん大きくしたいとき、二次関数の頂点と区間の端を比べる最大・最小の考え方が使われる。条件の中でいちばんよい答えを探す最適化の入口になる考え方。</p>
+      <p class="tc-links"><a href="max-min.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="inverse-composite-functions.html">分数関数・無理関数と逆関数・合成関数</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">関数</span></p>
+      <p>逆関数は、摂氏と華氏の換算やデータの正規化と復元、暗号化と復号のように「元に戻せる変換」を扱うときに使う考え方で、分数関数は酵素反応の速度（ミカエリス・メンテン式）のように「増えるがやがて飽和する」量のモデルになる。</p>
+      <p class="tc-links"><a href="inverse-composite-functions.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="pythagoras.html">三平方の定理</a></h3>
+      <p><span class="badge badge-lv">中学</span> <span class="badge badge-genre">図形</span></p>
+      <p>建築現場で建物の直角を出したり、測量で直接測れない距離を割り出したりするときに使う。GPSが衛星からの距離をもとに現在地を決める計算も、この定理が土台になっている。</p>
+      <p class="tc-links"><a href="pythagoras.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="heron.html">三角形の面積（ヘロンの公式）</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">図形</span></p>
+      <p>土地の測量では、土地を三角形に区切って3辺の長さだけを測り、ヘロンの公式で面積を出す方法が使われている。角度を測らなくても、辺の長さだけで面積が分かるのが強み。</p>
+      <p class="tc-links"><a href="heron.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="circle-sector.html">円・扇形</a></h3>
+      <p><span class="badge badge-lv">中学</span> <span class="badge badge-genre">図形</span></p>
+      <p>ピザやケーキを何等分かに切り分けたとき、1切れの面積やふちの長さは扇形の計算で出せる。レーダーが見回す範囲や、扇風機や回転する機械がカバーする範囲も、同じ扇形の考え方で表される。</p>
+      <p class="tc-links"><a href="circle-sector.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="similarity-congruence.html">相似・合同の証明</a></h3>
+      <p><span class="badge badge-lv">中学</span> <span class="badge badge-genre">図形</span></p>
+      <p>設計図や地図は、実物を決まった縮尺で縮めた相似な図で、縮尺から実際の長さや面積を逆算できる。模型作りや建築の図面も、相似と合同の考え方が土台になっている。</p>
+      <p class="tc-links"><a href="similarity-congruence.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="triangle-circle-properties.html">三角形・円の性質</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">図形</span></p>
+      <p>チェバの定理の特別な場合である重心は、構造物や部品のバランスを取る重心位置の考え方につながっている。方べきの定理は円に対する点の位置関係を長さの積で判定でき、製図や測量で寸法の整合を確かめる土台になる。</p>
+      <p class="tc-links"><a href="triangle-circle-properties.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="polyhedra.html">空間図形と多面体</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">図形</span></p>
+      <p>サッカーボールやジオデシックドームは多面体の応用で、化学ではフラーレン（C60）の分子が切頂二十面体の形をしている。3Dグラフィックスでは立体を多角形の集まりで表し、頂点・辺・面の数の整合がモデルの正しさのチェックになる。</p>
+      <p class="tc-links"><a href="polyhedra.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="circle-equation.html">円の方程式</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">図形と方程式</span></p>
+      <p>携帯電話の基地局やGPSでは「ある点から一定距離の範囲」を円で表して計算し、CNC工作機械は円弧を中心と半径で指定して金属を削る。地図アプリの「駅から半径1km」の範囲指定も、円の方程式の考え方そのものだ。</p>
+      <p class="tc-links"><a href="circle-equation.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="line-equations.html">直線の方程式と2直線の関係</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">図形と方程式</span></p>
+      <p>道路や線路の勾配（傾き）の設計や、建物の基準線（通り芯）の設定は、直線の方程式で表される。センサーの測定値を実際の量に換算する校正直線も、2点を通る直線の式そのものだ。</p>
+      <p class="tc-links"><a href="line-equations.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="locus-region.html">軌跡と不等式の表す領域</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">図形と方程式</span></p>
+      <p>線形計画法は、工場の生産計画で利益が最大になる製品の組み合わせや、輸送計画、材料の配合計画を決めるのに使われる最適化の基本だ。不等式の表す領域は「条件を全部満たす範囲」をつかむ方法として、設計の現場でも使われる。</p>
+      <p class="tc-links"><a href="locus-region.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="conic-sections.html">二次曲線</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">図形と方程式</span></p>
+      <p>放物線はパラボラアンテナやヘッドライトの反射鏡、楕円は惑星の軌道と結石破砕装置、双曲線は発電所の冷却塔の形や双曲線航法（ロラン）に使われる。円錐を切って現れる曲線が、そのまま最先端の技術を支えている。</p>
+      <p class="tc-links"><a href="conic-sections.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="parametric-polar.html">媒介変数表示と極座標</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">図形と方程式</span></p>
+      <p>レーダーの画面は「距離と方位」で目標を表示する極座標そのもので、航空管制や気象レーダーはこの表示で飛行機や雨雲を追っている。ロボットアームの関節角度による位置決めや、歯車の歯形に使われるサイクロイド曲線の計算にも、媒介変数表示と極座標が土台になっている。</p>
+      <p class="tc-links"><a href="parametric-polar.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="trigonometric-ratios.html">三角比</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">三角関数</span></p>
+      <p>測量士が土地や建物の高さ・距離を測るときに使う。直接測れない高さでも、距離と角度が分かれば三角比で割り出せるので、地図作りや工事現場で現役の技術。</p>
+      <p class="tc-links"><a href="trigonometric-ratios.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="sine-cosine-laws.html">正弦定理・余弦定理</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">三角関数</span></p>
+      <p>測量では、直接測れない2点間の距離を、測れる辺と角度から正弦定理・余弦定理で割り出す三角測量が使われてきた。船や飛行機の航法や、GPSで位置を決める幾何の計算も同じ考え方の上にある。</p>
+      <p class="tc-links"><a href="sine-cosine-laws.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="addition-theorems.html">加法定理</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">三角関数</span></p>
+      <p>音や電気の波は重ね合わせることができ、その計算の土台が加法定理。2つの波が合わさったときの形や、交流電気の電圧・電流のずれを扱う計算で使われている。</p>
+      <p class="tc-links"><a href="addition-theorems.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="trig-synthesis.html">三角関数の合成</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">三角関数</span></p>
+      <p>向きの違う2つの振動や波が合わさると、1つの大きな波になる。その合成した波の大きさ（振幅）とずれを出す計算が三角関数の合成で、音のうなりや機械の振動を調べるときに使う。</p>
+      <p class="tc-links"><a href="trig-synthesis.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="trig-graphs.html">三角関数のグラフと性質</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">三角関数</span></p>
+      <p>家庭の交流電圧は sin の波そのもので、周波数と振幅で決まる。潮の満ち引きや音の波、季節ごとの気温の変化も周期を持つ波として三角関数で表され、信号処理ではあらゆる波を sin の重ね合わせで表す。</p>
+      <p class="tc-links"><a href="trig-graphs.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="permutations-combinations.html">順列・組合せ</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">確率・統計</span></p>
+      <p>パスワードの組み合わせが全部で何通りあるかを数えて、「破るのに何年かかるか」を見積もるセキュリティの計算に使う。宝くじの当選確率を出すのも同じ考え方。</p>
+      <p class="tc-links"><a href="permutations-combinations.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="probability-basics.html">確率の基本</a></h3>
+      <p><span class="badge badge-lv">中学・高校</span> <span class="badge badge-genre">確率・統計</span></p>
+      <p>保険料の設定、天気予報の降水確率、工場で不良品が出る割合の見積もりなど、「どれくらい起こりやすいか」を数字にして判断する仕事の土台になっている。</p>
+      <p class="tc-links"><a href="probability-basics.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="mean-variance.html">平均・分散・標準偏差</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">確率・統計</span></p>
+      <p>工場の品質管理では、製品の寸法のばらつきが標準偏差で規格内かどうかを判定する。投資の世界でも、値動きの大きさ＝リスクを測る物差しとして使われている。</p>
+      <p class="tc-links"><a href="mean-variance.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="conditional-probability.html">条件付き確率</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">確率・統計</span></p>
+      <p>病気の検査で陽性と出たときに本当に病気である確率や、迷惑メールを見分けるフィルタの判定など、「ある情報が分かったあと」で確率がどう変わるかを計算するときに使う。</p>
+      <p class="tc-links"><a href="conditional-probability.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="distributions.html">二項分布・正規分布</a></h3>
+      <p><span class="badge badge-lv">高校・大学</span> <span class="badge badge-genre">確率・統計</span></p>
+      <p>工場で100個の製品を調べたときに不良品が何個出るかの見当や、身長のように平均のまわりに自然に集まるデータのばらつきを表すときに使う。試験の偏差値も、正規分布の考え方を土台にしている。</p>
+      <p class="tc-links"><a href="distributions.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="estimation-testing.html">推定・検定の考え方</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">確率・統計</span></p>
+      <p>テレビの視聴率や世論調査のように、一部だけを調べて全体の割合を誤差つきで推し量ったり、新薬や改良品に本当に効果があるかをデータで確かめたりするときに使う。</p>
+      <p class="tc-links"><a href="estimation-testing.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="correlation-regression.html">相関係数と回帰直線</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">確率・統計</span></p>
+      <p>気温が上がると電力需要がどれだけ増えるか、広告費を増やすと売上がどれだけ伸びるかなど、2つの量の関係の強さと向きを1つの数字で掴むときに使う。工場の品質管理では、製造条件と不良率の関係を探る手がかりにもなる。</p>
+      <p class="tc-links"><a href="correlation-regression.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="quartiles-boxplot.html">四分位数と箱ひげ図・代表値</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">確率・統計</span></p>
+      <p>給料やテストの点数のように、平均だけでは実態が見えないデータの分布を、真ん中とばらつきで掴むときに使う。賃金統計では年収の分布が四分位数で示され、製品寸法のばらつきの比較にも箱ひげ図が使われる。</p>
+      <p class="tc-links"><a href="quartiles-boxplot.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="expected-value.html">期待値</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">確率・統計</span></p>
+      <p>保険料や宝くじのように、結果が偶然で決まる場面で「平均すると1回あたりいくらになるか」を先に計算して判断するときに使う。ゲームのガチャや報酬の設計でも、1回あたりの平均獲得量は期待値で決められている。</p>
+      <p class="tc-links"><a href="expected-value.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="sequences.html">等差数列・等比数列</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">数列</span></p>
+      <p>銀行の複利計算は等比数列そのもので、ローンの返済計画もこれで立てる。一定の差で増える並び（等差）と一定の倍率で増える並び（等比）が分かると、遠い先の数や合計を一気に求められる。</p>
+      <p class="tc-links"><a href="sequences.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="recurrence.html">漸化式</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">数列</span></p>
+      <p>1年後の人口や感染者数、ローンの残高のように、「今の値から次の値が決まる」量の先の姿を予測するときに使う。コンピュータで同じ計算を繰り返す処理の速さを見積もる場面でも同じ考え方が出てくる。</p>
+      <p class="tc-links"><a href="recurrence.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="sigma.html">Σの公式</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">数列</span></p>
+      <p>毎日の売上や複利で増えた利息のように、たくさんの数を並べて合計するとき、その合計を一つの式で一気に求めるために使う。コンピュータで大量のデータを集計する計算の土台にもなっている。</p>
+      <p class="tc-links"><a href="sigma.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="induction.html">数学的帰納法</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">数列</span></p>
+      <p>コンピュータのプログラムやアルゴリズムが、どんな入力でも正しく動くことを確かめる証明で使う考え方。ドミノ倒しのように、最初の一つと「次へつながる仕組み」を示せば、すべて成り立つことが保証できる。</p>
+      <p class="tc-links"><a href="induction.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="geometric-series.html">無限等比級数</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">数列</span></p>
+      <p>薬を一定の間隔で繰り返し飲んだとき体内に残る薬の量がどこまで増えるかや、公共投資が消費の連鎖を呼ぶ経済波及効果の大きさを見積もるときに使う。終わりのない足し算の行き着く先を、1つの式で言い当てられる。</p>
+      <p class="tc-links"><a href="geometric-series.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="vector-dot.html">ベクトルの成分計算・内積</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">ベクトル</span></p>
+      <p>3Dゲームやアニメーションでは、光が物の表面にどれくらい当たっているか（明るさ）を内積で計算する。力の向きと進む向きの関係から、どれだけ仕事をしたかを求める物理の計算でも使う。</p>
+      <p class="tc-links"><a href="vector-dot.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="vector-equations.html">直線・平面の方程式</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">ベクトル</span></p>
+      <p>3D空間で光がまっすぐ進む様子を再現するレイトレーシングや、ロボットの腕が通る道筋を表す計算では、直線や平面をベクトルの式で表して、当たり判定や位置決めをする。</p>
+      <p class="tc-links"><a href="vector-equations.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="cross-product.html">ベクトルの外積</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">ベクトル</span></p>
+      <p>3Dグラフィックスでは、面の向き（法線）を外積で求めて光の当たり方を決める。モーターや扉が回る力の強さ（トルク）を計算するときにも、外積の考え方が使われる。</p>
+      <p class="tc-links"><a href="cross-product.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="differentiation.html">微分（導関数）</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>車の速度メーターの計算、AIが学習するときの細かい調整、コストが一番安くなる生産量を探す計算など、「変化の速さ」と「一番よい点」を求める技術の土台になっている。</p>
+      <p class="tc-links"><a href="differentiation.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="integration.html">定積分</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>曲線に囲まれた土地や部品の面積・体積を出したり、電気の使用量を合計したりするときに使う。「少しずつ変わる量の合計」を出すのが定積分の仕事。</p>
+      <p class="tc-links"><a href="integration.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="tangent.html">接線の方程式</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>走っている物のその瞬間の速度や、グラフが今どれくらい速く変わっているかは、接線の傾きで表される。複雑な曲線を接線で近づけて計算を簡単にする一次近似の土台でもある。</p>
+      <p class="tc-links"><a href="tangent.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="extrema.html">増減表と極値</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>店の価格や工場の生産量を調整して、利益や効率が一番よくなる点（最大・最小）を探すときに使う。グラフの増え方・減り方を増減表にまとめると、山や谷の位置がはっきり分かる。</p>
+      <p class="tc-links"><a href="extrema.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="area-under-curve.html">面積（曲線と軸）</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>土地や部品のように、境界が曲線になっている形の面積を定積分で求める。土木工事で道路やトンネルの断面積を出して、掘る土の量や材料の量を見積もる計算にもつながる。</p>
+      <p class="tc-links"><a href="area-under-curve.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="limits.html">極限</a></h3>
+      <p><span class="badge badge-lv">高校・大学</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>微分も積分も、「限りなく近づく」という極限の考え方の上に成り立っている。コンピュータで方程式の答えを少しずつ近づけて求める計算（数値計算）でも、どこまで近づければ十分かを決める物差しになる。</p>
+      <p class="tc-links"><a href="limits.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="taylor.html">テイラー展開</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>電卓やコンピュータが sin や e^x のような関数の値を計算する方法のひとつが、関数を多項式の足し算に置き換えるテイラー展開。項を増やすほど本当の値に近づくので、必要な精度に合わせて項の数を調整できる。</p>
+      <p class="tc-links"><a href="taylor.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="differential-equations.html">微分方程式の基礎</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>電気回路の電流の変化、ばねの振動、熱の伝わり方、生き物の数の増え方など、「今の状態から次にどう変わるか」を表す方程式が微分方程式。天気予報や機械の制御など、変化を予測する技術の土台になっている。</p>
+      <p class="tc-links"><a href="differential-equations.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="partial-differentiation.html">偏微分</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>AI（機械学習）は、予測の誤差を小さくするために、たくさんの調整つまみ（パラメータ）を少しずつ動かして学習する。そのとき「つまみを1つだけ動かすと誤差がどう変わるか」を測る道具が偏微分で、学習の進め方を決めている。</p>
+      <p class="tc-links"><a href="partial-differentiation.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="multiple-integrals.html">重積分</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>不規則な形をした物の体積や重さ、重心の位置は、細かく刻んで足し合わせる重積分で求める。確率の計算でも、広がりを持った量を合計して期待値（平均）を出すのに使われる。</p>
+      <p class="tc-links"><a href="multiple-integrals.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="newton-method.html">ニュートン法</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>コンピュータが方程式の答えや平方根を高速に求めるときに使われる、代表的な計算方法（アルゴリズム）。グラフの接線を使って答えに次々に近づいていくので、数回の繰り返しで答えにほぼ到達する。</p>
+      <p class="tc-links"><a href="newton-method.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="fourier.html">フーリエ変換の考え方</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>音楽を「どの高さの音がどれだけ含まれているか」に分解する考え方で、音声や画像の圧縮、雑音を取り除く処理、MRIで体の断面画像を作る計算の基礎になっている。</p>
+      <p class="tc-links"><a href="fourier.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="differentiation-rules.html">いろいろな関数の微分</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>AIの学習で使う活性化関数（シグモイド関数など）の微分は合成関数の微分（連鎖律）そのもので、誤差逆伝播法の心臓部になっている。物理の速度・加速度や経済の限界費用など、変化率を扱うすべての場面で使う道具でもある。</p>
+      <p class="tc-links"><a href="differentiation-rules.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="integration-techniques.html">置換積分・部分積分</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>確率分布の計算（指数分布の確率など）や信号処理、物理の仕事や重心の計算では、基本の形に帰着させる置換積分・部分積分が必須の道具になる。微分方程式を解く途中でも頻出する。</p>
+      <p class="tc-links"><a href="integration-techniques.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="integration-applications.html">積分の応用（体積・曲線の長さ）</a></h3>
+      <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>ワインのタンクやボトルのような回転体の容器の容量は、回転体の体積の計算で設計する。ケーブルや道路など、曲がったものの長さを見積もるときにも曲線の長さの考え方を使う。</p>
+      <p class="tc-links"><a href="integration-applications.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="matrix-multiplication.html">行列の積</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">線形代数</span></p>
+      <p>AI（人工知能）が文章や画像を処理する計算の本体は、行列の積を大量に繰り返すこと。3Dゲームや映画のCGで立体物を回したり動かしたりする座標の変換も、行列の積で計算されている。</p>
+      <p class="tc-links"><a href="matrix-multiplication.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="inverse-matrix.html">逆行列・掃き出し法</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">線形代数</span></p>
+      <p>建物にかかる力の釣り合いや電気回路の電流のように、わからない数がたくさん絡み合う計算は連立一次方程式として行列で表し、掃き出し法で解く。工場同士の取引をまとめた産業連関表でも、逆行列を使って必要な生産量を求める。</p>
+      <p class="tc-links"><a href="inverse-matrix.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="determinant.html">行列式</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">線形代数</span></p>
+      <p>行列式の値は、その行列で平面や空間を変形したとき、面積や体積が何倍になるかを表している。値が0かどうかで、逆行列が存在するか、連立方程式の答えが1つに決まるかも判定できる。</p>
+      <p class="tc-links"><a href="determinant.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="eigenvalues.html">固有値・固有ベクトル</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">線形代数</span></p>
+      <p>建物や橋にはそれぞれ揺れやすい振動の速さ（固有振動数）があり、固有値を求めることで地震の揺れと共振する危険を調べる。Googleの検索順位を決めるPageRankや、大量のデータの要点をつかむ主成分分析も、固有値の考え方が土台になっている。</p>
+      <p class="tc-links"><a href="eigenvalues.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="linear-transformation.html">線形変換と回転行列</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">線形代数</span></p>
+      <p>ゲームやCADで図形や立体を回したり、大きくしたりする描画の計算は、点の座標に行列を掛ける線形変換で行われている。キャラクターの向きや画面の中のカメラの動きも、この計算で決まる。</p>
+      <p class="tc-links"><a href="linear-transformation.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="complex-numbers.html">複素数の四則計算</a></h3>
+      <p><span class="badge badge-lv">高校・大学</span> <span class="badge badge-genre">複素数</span></p>
+      <p>電気工学では、交流回路の計算に複素数を使う。コイルやコンデンサーの電流の流れにくさ（インピーダンス）を複素数で表すと、抵抗だけの回路と同じように足し算や割り算で計算できる。通信や音声などの信号を扱う信号処理でも土台になっている。</p>
+      <p class="tc-links"><a href="complex-numbers.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="polar-form.html">極形式・ド・モアブルの定理</a></h3>
+      <p><span class="badge badge-lv">高校・大学</span> <span class="badge badge-genre">複素数</span></p>
+      <p>交流の電気の波は、大きさと、タイミングのずれ（位相）で決まる。複素数を極形式で表すと位相を角度として扱えて、波の回転や合成の計算が、角度の足し算や掛け算でできるようになる。</p>
+      <p class="tc-links"><a href="polar-form.html">解法の解説を読む</a></p>
+    </div>
+  </section>
+
+  <section class="card" id="sec-keisanki">
+    <h2>計算機</h2>
+    <p>数字を入れると、答えと解き方の手順が表示される計算機です（81項目）。</p>
+    <div class="tool-card">
+      <h3><a href="calc-prime-factorization.html">素因数分解</a></h3>
+      <p class="tc-links"><a href="calc-prime-factorization.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-gcd-lcm.html">最大公約数・最小公倍数</a></h3>
+      <p class="tc-links"><a href="calc-gcd-lcm.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-factorization.html">因数分解</a></h3>
+      <p class="tc-links"><a href="calc-factorization.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-expansion.html">展開の公式</a></h3>
+      <p class="tc-links"><a href="calc-expansion.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-exponents.html">指数法則</a></h3>
+      <p class="tc-links"><a href="calc-exponents.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-square-root.html">平方根の計算</a></h3>
+      <p class="tc-links"><a href="calc-square-root.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-logarithm.html">対数の性質と計算</a></h3>
+      <p class="tc-links"><a href="calc-logarithm.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-congruence.html">合同式</a></h3>
+      <p class="tc-links"><a href="calc-congruence.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-sets-propositions.html">集合と命題</a></h3>
+      <p class="tc-links"><a href="calc-sets-propositions.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-linear-inequality.html">一次不等式</a></h3>
+      <p class="tc-links"><a href="calc-linear-inequality.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-recurring-decimal.html">循環小数を分数に直す</a></h3>
+      <p class="tc-links"><a href="calc-recurring-decimal.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-number-bases.html">記数法</a></h3>
+      <p class="tc-links"><a href="calc-number-bases.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-diophantine.html">一次不定方程式</a></h3>
+      <p class="tc-links"><a href="calc-diophantine.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-binomial-theorem.html">二項定理</a></h3>
+      <p class="tc-links"><a href="calc-binomial-theorem.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-linear-equation.html">一次方程式</a></h3>
+      <p class="tc-links"><a href="calc-linear-equation.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-simultaneous-equations.html">連立方程式</a></h3>
+      <p class="tc-links"><a href="calc-simultaneous-equations.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-quadratic-equation.html">二次方程式</a></h3>
+      <p class="tc-links"><a href="calc-quadratic-equation.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-discriminant.html">判別式</a></h3>
+      <p class="tc-links"><a href="calc-discriminant.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-higher-equations.html">高次方程式</a></h3>
+      <p class="tc-links"><a href="calc-higher-equations.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-quadratic-inequality.html">二次不等式</a></h3>
+      <p class="tc-links"><a href="calc-quadratic-inequality.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-vieta.html">解と係数の関係</a></h3>
+      <p class="tc-links"><a href="calc-vieta.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-exp-log-equations.html">指数方程式・対数方程式</a></h3>
+      <p class="tc-links"><a href="calc-exp-log-equations.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-linear-function.html">一次関数</a></h3>
+      <p class="tc-links"><a href="calc-linear-function.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-quadratic-function.html">二次関数</a></h3>
+      <p class="tc-links"><a href="calc-quadratic-function.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-max-min.html">関数の最大・最小</a></h3>
+      <p class="tc-links"><a href="calc-max-min.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-inverse-composite-functions.html">分数関数・無理関数と逆関数・合成関数</a></h3>
+      <p class="tc-links"><a href="calc-inverse-composite-functions.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-pythagoras.html">三平方の定理</a></h3>
+      <p class="tc-links"><a href="calc-pythagoras.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-heron.html">三角形の面積（ヘロンの公式）</a></h3>
+      <p class="tc-links"><a href="calc-heron.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-circle-sector.html">円・扇形</a></h3>
+      <p class="tc-links"><a href="calc-circle-sector.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-similarity-congruence.html">相似・合同の証明</a></h3>
+      <p class="tc-links"><a href="calc-similarity-congruence.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-triangle-circle-properties.html">三角形・円の性質</a></h3>
+      <p class="tc-links"><a href="calc-triangle-circle-properties.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-polyhedra.html">空間図形と多面体</a></h3>
+      <p class="tc-links"><a href="calc-polyhedra.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-circle-equation.html">円の方程式</a></h3>
+      <p class="tc-links"><a href="calc-circle-equation.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-line-equations.html">直線の方程式と2直線の関係</a></h3>
+      <p class="tc-links"><a href="calc-line-equations.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-locus-region.html">軌跡と不等式の表す領域</a></h3>
+      <p class="tc-links"><a href="calc-locus-region.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-conic-sections.html">二次曲線</a></h3>
+      <p class="tc-links"><a href="calc-conic-sections.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-parametric-polar.html">媒介変数表示と極座標</a></h3>
+      <p class="tc-links"><a href="calc-parametric-polar.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-trigonometric-ratios.html">三角比</a></h3>
+      <p class="tc-links"><a href="calc-trigonometric-ratios.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-sine-cosine-laws.html">正弦定理・余弦定理</a></h3>
+      <p class="tc-links"><a href="calc-sine-cosine-laws.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-addition-theorems.html">加法定理</a></h3>
+      <p class="tc-links"><a href="calc-addition-theorems.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-trig-synthesis.html">三角関数の合成</a></h3>
+      <p class="tc-links"><a href="calc-trig-synthesis.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-trig-graphs.html">三角関数のグラフと性質</a></h3>
+      <p class="tc-links"><a href="calc-trig-graphs.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-probability-basics.html">確率の基本</a></h3>
+      <p class="tc-links"><a href="calc-probability-basics.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-permutations-combinations.html">順列・組合せ</a></h3>
+      <p class="tc-links"><a href="calc-permutations-combinations.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-mean-variance.html">平均・分散・標準偏差</a></h3>
+      <p class="tc-links"><a href="calc-mean-variance.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-conditional-probability.html">条件付き確率</a></h3>
+      <p class="tc-links"><a href="calc-conditional-probability.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-distributions.html">二項分布・正規分布</a></h3>
+      <p class="tc-links"><a href="calc-distributions.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-estimation-testing.html">推定・検定の考え方</a></h3>
+      <p class="tc-links"><a href="calc-estimation-testing.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-correlation-regression.html">相関係数と回帰直線</a></h3>
+      <p class="tc-links"><a href="calc-correlation-regression.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-quartiles-boxplot.html">四分位数と箱ひげ図・代表値</a></h3>
+      <p class="tc-links"><a href="calc-quartiles-boxplot.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-expected-value.html">期待値</a></h3>
+      <p class="tc-links"><a href="calc-expected-value.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-sequences.html">等差数列・等比数列</a></h3>
+      <p class="tc-links"><a href="calc-sequences.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-recurrence.html">漸化式</a></h3>
+      <p class="tc-links"><a href="calc-recurrence.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-sigma.html">Σの公式</a></h3>
+      <p class="tc-links"><a href="calc-sigma.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-induction.html">数学的帰納法</a></h3>
+      <p class="tc-links"><a href="calc-induction.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-geometric-series.html">無限等比級数</a></h3>
+      <p class="tc-links"><a href="calc-geometric-series.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-vector-dot.html">ベクトルの成分計算・内積</a></h3>
+      <p class="tc-links"><a href="calc-vector-dot.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-vector-equations.html">直線・平面の方程式</a></h3>
+      <p class="tc-links"><a href="calc-vector-equations.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-cross-product.html">ベクトルの外積</a></h3>
+      <p class="tc-links"><a href="calc-cross-product.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-limits.html">極限</a></h3>
+      <p class="tc-links"><a href="calc-limits.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-differentiation.html">微分（導関数）</a></h3>
+      <p class="tc-links"><a href="calc-differentiation.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-integration.html">定積分</a></h3>
+      <p class="tc-links"><a href="calc-integration.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-tangent.html">接線の方程式</a></h3>
+      <p class="tc-links"><a href="calc-tangent.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-extrema.html">増減表と極値</a></h3>
+      <p class="tc-links"><a href="calc-extrema.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-area-under-curve.html">面積（曲線と軸）</a></h3>
+      <p class="tc-links"><a href="calc-area-under-curve.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-taylor.html">テイラー展開</a></h3>
+      <p class="tc-links"><a href="calc-taylor.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-differential-equations.html">微分方程式の基礎</a></h3>
+      <p class="tc-links"><a href="calc-differential-equations.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-partial-differentiation.html">偏微分</a></h3>
+      <p class="tc-links"><a href="calc-partial-differentiation.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-multiple-integrals.html">重積分</a></h3>
+      <p class="tc-links"><a href="calc-multiple-integrals.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-newton-method.html">ニュートン法</a></h3>
+      <p class="tc-links"><a href="calc-newton-method.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-fourier.html">フーリエ変換の考え方</a></h3>
+      <p class="tc-links"><a href="calc-fourier.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-differentiation-rules.html">いろいろな関数の微分</a></h3>
+      <p class="tc-links"><a href="calc-differentiation-rules.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-integration-techniques.html">置換積分・部分積分</a></h3>
+      <p class="tc-links"><a href="calc-integration-techniques.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-integration-applications.html">積分の応用（体積・曲線の長さ）</a></h3>
+      <p class="tc-links"><a href="calc-integration-applications.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-matrix-multiplication.html">行列の積</a></h3>
+      <p class="tc-links"><a href="calc-matrix-multiplication.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-inverse-matrix.html">逆行列・掃き出し法</a></h3>
+      <p class="tc-links"><a href="calc-inverse-matrix.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-determinant.html">行列式</a></h3>
+      <p class="tc-links"><a href="calc-determinant.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-eigenvalues.html">固有値・固有ベクトル</a></h3>
+      <p class="tc-links"><a href="calc-eigenvalues.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-linear-transformation.html">線形変換と回転行列</a></h3>
+      <p class="tc-links"><a href="calc-linear-transformation.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-complex-numbers.html">複素数の四則計算</a></h3>
+      <p class="tc-links"><a href="calc-complex-numbers.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-polar-form.html">極形式・ド・モアブルの定理</a></h3>
+      <p class="tc-links"><a href="calc-polar-form.html">計算機</a></p>
+    </div>
+  </section>
+
+  <p class="note">全81項目を収録しています（全項目に計算機つき）。大学レベルの項目も18項目収録しています。</p>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  /* 検索インデックス（設計書 §4）。summary は各記事冒頭の代表説明と同一文面 */
+  var INDEX=[
+    {title:"素因数分解",slug:"prime-factorization",genre:"数と式",level:"中学",calc:true,problem:"整数を素数の積に分解する",keywords:"素数 分解 約分 暗号 RSA 公約数",summary:"ネットショッピングの決済などを守る暗号（RSA）は、「大きな数を素因数分解するのはものすごく時間がかかる」ことを利用して作られている。約分や公約数を求めるときの土台でもある。"},
+    {title:"最大公約数・最小公倍数",slug:"gcd-lcm",genre:"数と式",level:"中学",calc:true,problem:"公約数・公倍数を素早く求める",keywords:"ユークリッドの互除法 互除法 公約数 公倍数 GCD LCM 約分 通分 歯車",summary:"歯車が均等にすり減るように歯数を決めたり、周期の違う機械のタイミングが次にそろう時点を出したりするときに使う。ユークリッドの互除法は、コンピュータが公約数を一瞬で出すための基本アルゴリズムでもある。"},
+    {title:"因数分解",slug:"factorization",genre:"数と式",level:"中学・高校",calc:true,problem:"式を積の形に直す（公式・たすき掛け）",keywords:"たすき掛け たすきがけ 公式 積の形 振動解析",summary:"式を掛け算の形に直すと、方程式の解やグラフの交点が読み取れるようになる。建物や機械の揺れ方を調べる振動解析でも、方程式を因数分解して揺れの周期を割り出す。"},
+    {title:"一次方程式",slug:"linear-equation",genre:"方程式",level:"中学",calc:true,problem:"未知数が1つの方程式を解く",keywords:"移項 未知数 損益分岐点 赤字",summary:"店や会社の「何個売れば赤字にならないか」（損益分岐点）を出すときに使う。利益がゼロになる点を一次方程式で解くのは、経営の基本計算のひとつ。"},
+    {title:"連立方程式",slug:"simultaneous-equations",genre:"方程式",level:"中学",calc:true,problem:"代入法・加減法で2元の方程式を解く",keywords:"代入法 加減法 連立 2元 二元 電気回路 シミュレーション",summary:"電気回路の中の電流や、建物にかかる力の釣り合いのように、わからない数が複数ある現場の計算は連立方程式で解く。コンピュータはこれを大量に解いて、天気や構造のシミュレーションをしている。"},
+    {title:"二次方程式",slug:"quadratic-equation",genre:"方程式",level:"中学・高校",calc:true,problem:"解の公式・因数分解・平方完成で解く",keywords:"解の公式 平方完成 判別式 放物線 弾道 パラボラアンテナ",summary:"ロケットや砲弾の弾道計算、橋のアーチやパラボラアンテナの形の設計など、放物線が関わる場面で使う。ボールを投げたときの高さや、面積から一辺の長さを求める問題もこの仲間。"},
+    {title:"一次関数",slug:"linear-function",genre:"関数",level:"中学",calc:true,problem:"変化の割合・2点から直線の式を求める",keywords:"傾き 変化の割合 切片 直線の式 比例 センサー キャリブレーション",summary:"温度センサーのような計測機器は、センサーが出す電気信号を実際の温度に直す換算（キャリブレーション）に一次関数を使っている。一定のペースで変わる量を予測する土台になる。"},
+    {title:"二次関数",slug:"quadratic-function",genre:"関数",level:"中学・高校",calc:true,problem:"平方完成で頂点・軸を求める、グラフの平行移動",keywords:"頂点 軸 平方完成 放物線 グラフ 最大 最小 ブレーキ 制動距離",summary:"車のブレーキをかけてから止まるまでの距離は、速度の2乗に比例して伸びる。車の安全設計や、投げた物の軌道の計算に使う。頂点を求めると、一番高くなる点や最大・最小が分かる。"},
+    {title:"三平方の定理",slug:"pythagoras",genre:"図形",level:"中学",calc:true,problem:"直角三角形の辺の長さを求める",keywords:"ピタゴラスの定理 ピタゴラス 直角三角形 斜辺 対角線 GPS 測量 建築 直角",summary:"建築現場で建物の直角を出したり、測量で直接測れない距離を割り出したりするときに使う。GPSが衛星からの距離をもとに現在地を決める計算も、この定理が土台になっている。"},
+    {title:"三角比",slug:"trigonometric-ratios",genre:"三角関数",level:"高校",calc:true,problem:"sin・cos・tan の値と辺の長さ・角度",keywords:"sin cos tan サイン コサイン タンジェント 角度 測量 高さ",summary:"測量士が土地や建物の高さ・距離を測るときに使う。直接測れない高さでも、距離と角度が分かれば三角比で割り出せるので、地図作りや工事現場で現役の技術。"},
+    {title:"順列・組合せ",slug:"permutations-combinations",genre:"確率・統計",level:"高校",calc:true,problem:"nPr・nCr の計算と考え方",keywords:"nPr nCr 順列 組み合わせ 組合せ 場合の数 階乗 パスワード 宝くじ セキュリティ",summary:"パスワードの組み合わせが全部で何通りあるかを数えて、「破るのに何年かかるか」を見積もるセキュリティの計算に使う。宝くじの当選確率を出すのも同じ考え方。"},
+    {title:"確率の基本",slug:"probability-basics",genre:"確率・統計",level:"中学・高校",calc:true,problem:"場合の数から確率を求める",keywords:"確率 場合の数 降水確率 保険料 不良品",summary:"保険料の設定、天気予報の降水確率、工場で不良品が出る割合の見積もりなど、「どれくらい起こりやすいか」を数字にして判断する仕事の土台になっている。"},
+    {title:"平均・分散・標準偏差",slug:"mean-variance",genre:"確率・統計",level:"高校",calc:true,problem:"データの散らばりを数値化する",keywords:"平均 分散 標準偏差 偏差値 ばらつき 品質管理 リスク データ",summary:"工場の品質管理では、製品の寸法のばらつきが標準偏差で規格内かどうかを判定する。投資の世界でも、値動きの大きさ＝リスクを測る物差しとして使われている。"},
+    {title:"等差数列・等比数列",slug:"sequences",genre:"数列",level:"高校",calc:true,problem:"一般項と和を求める",keywords:"等差数列 等比数列 一般項 和 公差 公比 複利 ローン 返済",summary:"銀行の複利計算は等比数列そのもので、ローンの返済計画もこれで立てる。一定の差で増える並び（等差）と一定の倍率で増える並び（等比）が分かると、遠い先の数や合計を一気に求められる。"},
+    {title:"微分（導関数）",slug:"differentiation",genre:"微分・積分",level:"高校",calc:true,problem:"多項式の微分・微分の公式",keywords:"微分 導関数 変化の速さ 速度 勾配降下法 AI 学習 接線",summary:"車の速度メーターの計算、AIが学習するときの細かい調整、コストが一番安くなる生産量を探す計算など、「変化の速さ」と「一番よい点」を求める技術の土台になっている。"},
+    {title:"定積分",slug:"integration",genre:"微分・積分",level:"高校",calc:true,problem:"多項式の定積分の計算",keywords:"積分 定積分 面積 体積 原始関数 電気使用量",summary:"曲線に囲まれた土地や部品の面積・体積を出したり、電気の使用量を合計したりするときに使う。「少しずつ変わる量の合計」を出すのが定積分の仕事。"},
+    {title:"平方根の計算",slug:"square-root",genre:"数と式",level:"中学",calc:true,problem:"√の簡約・分母の有理化",keywords:"平方根 ルート √ 簡約 有理化 標準偏差 対角線 距離",summary:"測量や建築で直接測れない距離を出す計算や、データのばらつきを表す標準偏差の計算では、最後に平方根を取る操作が欠かせない。画面の対角線の長さを求めるときにも同じ計算が使われている。"},
+    {title:"展開の公式",slug:"expansion",genre:"数と式",level:"中学・高校",calc:true,problem:"乗法公式で式を展開する",keywords:"展開 乗法公式 分配法則 暗算 面積 分散",summary:"面積が一辺の増減でどれだけ変わるかを求めるときや、データのばらつきを表す分散の式を変形するときに、(a＋b)² のような展開の公式が土台になる。暗算で大きな数の掛け算を工夫するときにも同じ考え方が使われている。"},
+    {title:"指数法則",slug:"exponents",genre:"数と式",level:"中学・高校",calc:true,problem:"指数の計算・累乗根",keywords:"指数 累乗 累乗根 半減期 2の累乗 増殖 計算量",summary:"ウイルスの増え方や放射性物質が半分になるまでの時間（半減期）の計算は、同じ倍率で増減する指数の考え方そのもの。コンピュータが扱うデータ量や計算の手間が2の累乗で増える場面でも、指数法則が見積もりの土台になる。"},
+    {title:"対数の性質と計算",slug:"logarithm",genre:"数と式",level:"高校",calc:true,problem:"対数の定義・底の変換・桁数",keywords:"対数 ログ 底の変換 桁数 常用対数 マグニチュード デシベル pH",summary:"地震のマグニチュード、音の大きさを表すデシベル、水溶液の酸性度を表すpHは、どれも対数を使って大きな幅の量を扱いやすい数字に直したもの。大きな数の桁数をすぐに見積もるときにも常用対数が使われている。"},
+    {title:"合同式",slug:"congruence",genre:"数と式",level:"大学",calc:true,problem:"剰余の計算と合同方程式",keywords:"合同式 剰余 余り mod 曜日 チェックディジット ISBN マイナンバー ハッシュ 暗号 RSA",summary:"曜日の計算、書籍のISBNやマイナンバーにつく検査数字（チェックディジット）の判定、ネット通信を守るRSA暗号は、どれも割り算の余りに注目する合同式の考え方を使っている。コンピュータがデータを振り分けるハッシュの計算でも余りが土台になる。"},
+    {title:"集合と命題",slug:"sets-propositions",genre:"数と式",level:"高校",calc:true,problem:"集合の重なり（和集合・共通部分・補集合）と命題の真偽（真理表・対偶・ド・モルガンの法則）を正確に扱う問題",keywords:"集合 命題 真理表 ド・モルガンの法則 ベン図 補集合 和集合 共通部分 対偶",summary:"プログラムの条件分岐やデータベース検索の AND・OR・NOT は、集合と命題の論理そのものである。顧客データを条件で絞り込む分析ではベン図で重なりを捉え、デジタル回路の設計では真理表で動作を確かめる。"},
+    {title:"一次不等式",slug:"linear-inequality",genre:"数と式",level:"高校",calc:true,problem:"ax＋b（符号）c の形の不等式を解き、xの範囲（〜以上・〜未満）を求める問題",keywords:"一次不等式 不等号 移項 負の数で割る 範囲 損益分岐",summary:"「何個以上買えば元が取れるか」「予算以内に収まるのは何個までか」という範囲の判断に使う。製品の寸法や濃度が規格の範囲内に収まっているかを考える土台にもなる。"},
+    {title:"循環小数を分数に直す",slug:"recurring-decimal",genre:"数と式",level:"高校",calc:true,problem:"同じ数字の並びが無限に繰り返される循環小数を、約分済みの分数で正確に表す問題",keywords:"循環小数 分数 循環節 有理数 約分 0.999",summary:"割り算の結果が分数で正確に表せる数かどうかを判定する考え方である。コンピュータでは 0.1 が2進数で循環小数になり正確に表せないことが、金額計算などの誤差の原因になる。"},
+    {title:"記数法",slug:"number-bases",genre:"数と式",level:"高校",calc:true,problem:"二進法・n進法（2〜16進数）のあいだで、位取りの展開と割り算の余りを使って数を変換する問題",keywords:"記数法 二進法 n進法 16進数 進数変換 位取り ライプニッツ",summary:"コンピュータ内部のデータ表現そのものである。16進数はメモリの中身や色コード（#FF8000）、文字コードの表示に使われ、2進数はコンピュータのあらゆる計算の土台になっている。"},
+    {title:"一次不定方程式",slug:"diophantine",genre:"数と式",level:"高校",calc:true,problem:"式が1つしかない a x + b y = c について、整数解の有無・特殊解・一般解を求める問題",keywords:"一次不定方程式 ディオファントス方程式 整数解 拡張ユークリッド互除法 特殊解 一般解",summary:"硬貨や切手の組み合わせで合計金額をぴったり作ったり、荷物の積み合わせで重さや容量をぴったり満たす個数の組み合わせを探したりするときに使う。2種類の数量の合計をちょうど目標値にする、実務の「ぴったり合わせ」の一般形である。"},
+    {title:"二項定理",slug:"binomial-theorem",genre:"数と式",level:"高校",calc:true,problem:"(a+b)^n の展開と、二項係数 nCk および特定の項の係数を求める問題",keywords:"二項定理 二項係数 組み合わせ nCk パスカルの三角形 展開 一般項 二項分布",summary:"「n回中k回起こる」場合の数を数える二項分布の土台であり、保険や品質検査の確率計算に直結する。複利や誤差の見積もりで使う近似 (1+x)^n ≒ 1+nx も、この定理から出てくる。"},
+    {title:"判別式",slug:"discriminant",genre:"方程式",level:"高校",calc:true,problem:"解の個数・重解の判定",keywords:"判別式 D 重解 解の個数 実数解",summary:"設計や制御の計算では、方程式に実数の解があるかどうかが「その条件をそもそも実現できるか」の分かれ目になることがある。判別式は、解を全部求める前に、その実現できるかどうかを先に判定するチェックに使われる。"},
+    {title:"高次方程式",slug:"higher-equations",genre:"方程式",level:"高校",calc:true,problem:"因数定理・組立除法で解く",keywords:"高次方程式 三次方程式 四次方程式 因数定理 組立除法 特性方程式 複素数",summary:"電気回路や振動する機械の性質は、三次・四次などの方程式（特性方程式）を解くことで分かることがある。因数定理と組立除法は、その方程式を一次式の積に分けて、性質を決める解を取り出すための基本の道具。"},
+    {title:"二次不等式",slug:"quadratic-inequality",genre:"方程式",level:"高校",calc:true,problem:"符号表・グラフで不等式を解く",keywords:"二次不等式 不等式 符号表 範囲 利益 価格帯 規格",summary:"商品をいくらで売れば利益が出るか、製品がどこまでなら規格内に収まるかは、「〜以上になる範囲」「〜以下に収まる範囲」として二次不等式で表せることがある。条件を満たす範囲を一度に求めるのが二次不等式の仕事。"},
+    {title:"解と係数の関係",slug:"vieta",genre:"方程式",level:"高校",calc:true,problem:"2次方程式を解かずに解の和・積から対称式の値を求める問題と、2解から方程式を復元する問題",keywords:"解と係数の関係 ビエト Vieta 解の和 解の積 対称式 二次方程式",summary:"方程式を実際に解かなくても、解の和と積だけで性質が分かるのが強みである。制御工学では特性方程式の解（極）の和と積から系の応答の速さや安定性の見通しを立て、振動系でも固有振動に関わる量が和と積に現れる。"},
+    {title:"指数方程式・対数方程式",slug:"exp-log-equations",genre:"方程式",level:"高校",calc:true,problem:"未知数が指数や対数の中に現れる方程式 a^x = b および log_a(x) = b を解く問題",keywords:"指数方程式 対数方程式 対数 半減期 底の変換 真数条件 ネイピア",summary:"半減期が分かっている物質について「量がここまで減るのは何年後か」を逆算するときに使う。放射性炭素年代測定の考え方や、複利で元金が2倍になる年数の逆算（72の法則の裏側）も、同じ方程式で表される。"},
+    {title:"関数の最大・最小",slug:"max-min",genre:"関数",level:"高校",calc:true,problem:"定義域つき最大・最小（場合分け）",keywords:"最大 最小 定義域 場合分け 最適化 頂点 端点",summary:"限られた予算や材料で、囲える面積や得られる利益をいちばん大きくしたいとき、二次関数の頂点と区間の端を比べる最大・最小の考え方が使われる。条件の中でいちばんよい答えを探す最適化の入口になる考え方。"},
+    {title:"分数関数・無理関数と逆関数・合成関数",slug:"inverse-composite-functions",genre:"関数",level:"高校",calc:true,problem:"分数関数の漸近線と定義域・値域、無理関数の定義域、逆関数の求め方と存在条件、合成関数の計算を扱う問題。",keywords:"分数関数 漸近線 無理関数 定義域 逆関数 合成関数 一次分数関数",summary:"逆関数は、摂氏と華氏の換算やデータの正規化と復元、暗号化と復号のように「元に戻せる変換」を扱うときに使う考え方で、分数関数は酵素反応の速度（ミカエリス・メンテン式）のように「増えるがやがて飽和する」量のモデルになる。"},
+    {title:"三角形の面積（ヘロンの公式）",slug:"heron",genre:"図形",level:"高校",calc:true,problem:"3辺から面積を求める",keywords:"ヘロンの公式 ヘロン 三角形 面積 測量 三辺 土地",summary:"土地の測量では、土地を三角形に区切って3辺の長さだけを測り、ヘロンの公式で面積を出す方法が使われている。角度を測らなくても、辺の長さだけで面積が分かるのが強み。"},
+    {title:"円・扇形",slug:"circle-sector",genre:"図形",level:"中学",calc:true,problem:"円周・面積・弧の長さ・扇形の面積",keywords:"円 扇形 円周 面積 弧 おうぎ形 ピザ ケーキ レーダー",summary:"ピザやケーキを何等分かに切り分けたとき、1切れの面積やふちの長さは扇形の計算で出せる。レーダーが見回す範囲や、扇風機や回転する機械がカバーする範囲も、同じ扇形の考え方で表される。"},
+    {title:"相似・合同の証明",slug:"similarity-congruence",genre:"図形",level:"中学",calc:true,problem:"証明の進め方・条件の使い分け",keywords:"相似 合同 証明 縮尺 設計図 地図 模型",summary:"設計図や地図は、実物を決まった縮尺で縮めた相似な図で、縮尺から実際の長さや面積を逆算できる。模型作りや建築の図面も、相似と合同の考え方が土台になっている。"},
+    {title:"三角形・円の性質",slug:"triangle-circle-properties",genre:"図形",level:"高校",calc:true,problem:"方べきの定理で円と点に関する線分の長さを、チェバの定理で3直線が1点に交わる条件から辺の比を求める問題を扱う（メネラウス・内心・外心も解説）。",keywords:"方べきの定理 チェバの定理 メネラウスの定理 内心 外心 重心 円 三角形",summary:"チェバの定理の特別な場合である重心は、構造物や部品のバランスを取る重心位置の考え方につながっている。方べきの定理は円に対する点の位置関係を長さの積で判定でき、製図や測量で寸法の整合を確かめる土台になる。"},
+    {title:"空間図形と多面体",slug:"polyhedra",genre:"図形",level:"高校",calc:true,problem:"オイラーの多面体定理 V−E+F＝2 を使って頂点・辺・面の数を求め、正多面体の数の組み合わせを確認する問題を扱う。",keywords:"オイラーの多面体定理 多面体 正多面体 プラトン立体 頂点 辺 面 フラーレン",summary:"サッカーボールやジオデシックドームは多面体の応用で、化学ではフラーレン（C60）の分子が切頂二十面体の形をしている。3Dグラフィックスでは立体を多角形の集まりで表し、頂点・辺・面の数の整合がモデルの正しさのチェックになる。"},
+    {title:"円の方程式",slug:"circle-equation",genre:"図形と方程式",level:"高校",calc:true,problem:"中心と半径から円の方程式を立て、一般形から平方完成で中心と半径を読み取り、点と円の位置関係を判定する問題。",keywords:"円の方程式 標準形 一般形 平方完成 中心 半径 点と円の位置関係",summary:"携帯電話の基地局やGPSでは「ある点から一定距離の範囲」を円で表して計算し、CNC工作機械は円弧を中心と半径で指定して金属を削る。地図アプリの「駅から半径1km」の範囲指定も、円の方程式の考え方そのものだ。"},
+    {title:"直線の方程式と2直線の関係",slug:"line-equations",genre:"図形と方程式",level:"高校",calc:true,problem:"2点から直線の方程式を求め、2直線の平行・垂直の判定と交点の座標を求める問題。",keywords:"直線の方程式 傾き 切片 2点 平行 垂直 交点",summary:"道路や線路の勾配（傾き）の設計や、建物の基準線（通り芯）の設定は、直線の方程式で表される。センサーの測定値を実際の量に換算する校正直線も、2点を通る直線の式そのものだ。"},
+    {title:"軌跡と不等式の表す領域",slug:"locus-region",genre:"図形と方程式",level:"高校",calc:true,problem:"条件を満たす点の集まり（軌跡）と不等式の表す領域を扱い、線形計画法で制約のもとでの最大値・最小値を求める問題。",keywords:"軌跡 垂直二等分線 領域 不等式 線形計画法 最大値 最小値 最適化",summary:"線形計画法は、工場の生産計画で利益が最大になる製品の組み合わせや、輸送計画、材料の配合計画を決めるのに使われる最適化の基本だ。不等式の表す領域は「条件を全部満たす範囲」をつかむ方法として、設計の現場でも使われる。"},
+    {title:"二次曲線",slug:"conic-sections",genre:"図形と方程式",level:"高校",calc:true,problem:"放物線・楕円・双曲線について、焦点・準線・漸近線・離心率など曲線を決める量を求める問題。",keywords:"二次曲線 放物線 楕円 双曲線 焦点 準線 漸近線 離心率 円錐曲線",summary:"放物線はパラボラアンテナやヘッドライトの反射鏡、楕円は惑星の軌道と結石破砕装置、双曲線は発電所の冷却塔の形や双曲線航法（ロラン）に使われる。円錐を切って現れる曲線が、そのまま最先端の技術を支えている。"},
+    {title:"媒介変数表示と極座標",slug:"parametric-polar",genre:"図形と方程式",level:"高校",calc:true,problem:"直交座標と極座標を相互に変換し、媒介変数表示（サイクロイド）の点の座標を求める問題を扱う。",keywords:"媒介変数表示 極座標 直交座標 変換 サイクロイド 象限 ラジアン",summary:"レーダーの画面は「距離と方位」で目標を表示する極座標そのもので、航空管制や気象レーダーはこの表示で飛行機や雨雲を追っている。ロボットアームの関節角度による位置決めや、歯車の歯形に使われるサイクロイド曲線の計算にも、媒介変数表示と極座標が土台になっている。"},
+    {title:"正弦定理・余弦定理",slug:"sine-cosine-laws",genre:"三角関数",level:"高校",calc:true,problem:"三角形の辺と角を求める",keywords:"正弦定理 余弦定理 三角測量 辺 角 航法 GPS",summary:"測量では、直接測れない2点間の距離を、測れる辺と角度から正弦定理・余弦定理で割り出す三角測量が使われてきた。船や飛行機の航法や、GPSで位置を決める幾何の計算も同じ考え方の上にある。"},
+    {title:"加法定理",slug:"addition-theorems",genre:"三角関数",level:"高校",calc:true,problem:"sin(α±β) などの展開・2倍角",keywords:"加法定理 2倍角 二倍角 半角 波の重ね合わせ 交流 位相",summary:"音や電気の波は重ね合わせることができ、その計算の土台が加法定理。2つの波が合わさったときの形や、交流電気の電圧・電流のずれを扱う計算で使われている。"},
+    {title:"三角関数の合成",slug:"trig-synthesis",genre:"三角関数",level:"高校",calc:true,problem:"a sinθ＋b cosθ を1つの sin にまとめる",keywords:"合成 三角関数の合成 振幅 振動 うなり 波",summary:"向きの違う2つの振動や波が合わさると、1つの大きな波になる。その合成した波の大きさ（振幅）とずれを出す計算が三角関数の合成で、音のうなりや機械の振動を調べるときに使う。"},
+    {title:"三角関数のグラフと性質",slug:"trig-graphs",genre:"三角関数",level:"高校",calc:true,problem:"弧度法と度数法を換算し、y＝a sin(bx＋c)＋d の振幅・周期・値域を読み取る問題を扱う（一般角も解説）。",keywords:"三角関数 グラフ 弧度法 ラジアン 一般角 振幅 周期 値域 sin",summary:"家庭の交流電圧は sin の波そのもので、周波数と振幅で決まる。潮の満ち引きや音の波、季節ごとの気温の変化も周期を持つ波として三角関数で表され、信号処理ではあらゆる波を sin の重ね合わせで表す。"},
+    {title:"条件付き確率",slug:"conditional-probability",genre:"確率・統計",level:"高校",calc:true,problem:"条件が付いた確率・ベイズの考え方",keywords:"条件付き確率 ベイズ 検査 陽性 迷惑メール フィルタ 感度 特異度",summary:"病気の検査で陽性と出たときに本当に病気である確率や、迷惑メールを見分けるフィルタの判定など、「ある情報が分かったあと」で確率がどう変わるかを計算するときに使う。"},
+    {title:"二項分布・正規分布",slug:"distributions",genre:"確率・統計",level:"高校・大学",calc:true,problem:"分布の形と確率の計算の考え方",keywords:"二項分布 正規分布 分布 偏差値 不良品 ばらつき 身長",summary:"工場で100個の製品を調べたときに不良品が何個出るかの見当や、身長のように平均のまわりに自然に集まるデータのばらつきを表すときに使う。試験の偏差値も、正規分布の考え方を土台にしている。"},
+    {title:"推定・検定の考え方",slug:"estimation-testing",genre:"確率・統計",level:"大学",calc:true,problem:"区間推定と仮説検定の枠組み",keywords:"推定 検定 区間推定 仮説検定 視聴率 世論調査 標本 誤差 ABテスト 新薬",summary:"テレビの視聴率や世論調査のように、一部だけを調べて全体の割合を誤差つきで推し量ったり、新薬や改良品に本当に効果があるかをデータで確かめたりするときに使う。"},
+    {title:"相関係数と回帰直線",slug:"correlation-regression",genre:"確率・統計",level:"高校",calc:true,problem:"2つの量の組データについて、関係の強さと向きを相関係数で測り、一方から他方を予測する回帰直線を求める問題。",keywords:"相関係数 回帰直線 散布図 Sxy Sxx 相関 予測 統計",summary:"気温が上がると電力需要がどれだけ増えるか、広告費を増やすと売上がどれだけ伸びるかなど、2つの量の関係の強さと向きを1つの数字で掴むときに使う。工場の品質管理では、製造条件と不良率の関係を探る手がかりにもなる。"},
+    {title:"四分位数と箱ひげ図・代表値",slug:"quartiles-boxplot",genre:"確率・統計",level:"高校",calc:true,problem:"データの分布を第1四分位数・中央値・第3四分位数・四分位範囲で要約し、箱ひげ図と外れ値の判定に使う問題。",keywords:"四分位数 箱ひげ図 中央値 代表値 四分位範囲 IQR 外れ値 データの分析",summary:"給料やテストの点数のように、平均だけでは実態が見えないデータの分布を、真ん中とばらつきで掴むときに使う。賃金統計では年収の分布が四分位数で示され、製品寸法のばらつきの比較にも箱ひげ図が使われる。"},
+    {title:"期待値",slug:"expected-value",genre:"確率・統計",level:"高校",calc:true,problem:"値と確率の分布から期待値 E＝Σx・p（と分散）を求め、参加料などと比べて割に合うかを判断する問題。",keywords:"期待値 確率 分散 くじ 保険料 還元率 大数の法則",summary:"保険料や宝くじのように、結果が偶然で決まる場面で「平均すると1回あたりいくらになるか」を先に計算して判断するときに使う。ゲームのガチャや報酬の設計でも、1回あたりの平均獲得量は期待値で決められている。"},
+    {title:"漸化式",slug:"recurrence",genre:"数列",level:"高校",calc:true,problem:"特性方程式・階差数列で一般項を出す",keywords:"漸化式 特性方程式 階差数列 一般項 人口 ローン残高 再帰 感染",summary:"1年後の人口や感染者数、ローンの残高のように、「今の値から次の値が決まる」量の先の姿を予測するときに使う。コンピュータで同じ計算を繰り返す処理の速さを見積もる場面でも同じ考え方が出てくる。"},
+    {title:"Σの公式",slug:"sigma",genre:"数列",level:"高校",calc:true,problem:"シグマの計算公式と使い方",keywords:"シグマ Σ 和の公式 合計 集計 複利 売上",summary:"毎日の売上や複利で増えた利息のように、たくさんの数を並べて合計するとき、その合計を一つの式で一気に求めるために使う。コンピュータで大量のデータを集計する計算の土台にもなっている。"},
+    {title:"数学的帰納法",slug:"induction",genre:"数列",level:"高校",calc:true,problem:"証明の型と書き方",keywords:"数学的帰納法 帰納法 証明 ドミノ プログラム 正しさ",summary:"コンピュータのプログラムやアルゴリズムが、どんな入力でも正しく動くことを確かめる証明で使う考え方。ドミノ倒しのように、最初の一つと「次へつながる仕組み」を示せば、すべて成り立つことが保証できる。"},
+    {title:"無限等比級数",slug:"geometric-series",genre:"数列",level:"高校",calc:true,problem:"初項 a・公比 r の等比数列を無限に足した和 a/(1−r) を求め、|r|≧1 のときは発散と判定する問題。",keywords:"無限等比級数 等比数列 収束 発散 循環小数 極限 乗数",summary:"薬を一定の間隔で繰り返し飲んだとき体内に残る薬の量がどこまで増えるかや、公共投資が消費の連鎖を呼ぶ経済波及効果の大きさを見積もるときに使う。終わりのない足し算の行き着く先を、1つの式で言い当てられる。"},
+    {title:"ベクトルの成分計算・内積",slug:"vector-dot",genre:"ベクトル",level:"高校",calc:true,problem:"成分の和・スカラー倍・内積と角度",keywords:"ベクトル 内積 成分 なす角 仕事 3D 明るさ 光",summary:"3Dゲームやアニメーションでは、光が物の表面にどれくらい当たっているか（明るさ）を内積で計算する。力の向きと進む向きの関係から、どれだけ仕事をしたかを求める物理の計算でも使う。"},
+    {title:"直線・平面の方程式",slug:"vector-equations",genre:"ベクトル",level:"高校",calc:true,problem:"ベクトル方程式の立て方",keywords:"ベクトル方程式 直線 平面 レイトレーシング ロボット 軌道 光線",summary:"3D空間で光がまっすぐ進む様子を再現するレイトレーシングや、ロボットの腕が通る道筋を表す計算では、直線や平面をベクトルの式で表して、当たり判定や位置決めをする。"},
+    {title:"ベクトルの外積",slug:"cross-product",genre:"ベクトル",level:"大学",calc:true,problem:"外積と平行四辺形の面積",keywords:"外積 法線 トルク 回転 面積 3D モーター",summary:"3Dグラフィックスでは、面の向き（法線）を外積で求めて光の当たり方を決める。モーターや扉が回る力の強さ（トルク）を計算するときにも、外積の考え方が使われる。"},
+    {title:"接線の方程式",slug:"tangent",genre:"微分・積分",level:"高校",calc:true,problem:"曲線上の点における接線",keywords:"接線 接線の方程式 傾き 一次近似 速度",summary:"走っている物のその瞬間の速度や、グラフが今どれくらい速く変わっているかは、接線の傾きで表される。複雑な曲線を接線で近づけて計算を簡単にする一次近似の土台でもある。"},
+    {title:"増減表と極値",slug:"extrema",genre:"微分・積分",level:"高校",calc:true,problem:"極大・極小とグラフの概形",keywords:"増減表 極値 極大 極小 グラフの概形 利益",summary:"店の価格や工場の生産量を調整して、利益や効率が一番よくなる点（最大・最小）を探すときに使う。グラフの増え方・減り方を増減表にまとめると、山や谷の位置がはっきり分かる。"},
+    {title:"面積（曲線と軸）",slug:"area-under-curve",genre:"微分・積分",level:"高校",calc:true,problem:"囲まれた面積の求め方",keywords:"面積 曲線 定積分 土木 断面積 土量",summary:"土地や部品のように、境界が曲線になっている形の面積を定積分で求める。土木工事で道路やトンネルの断面積を出して、掘る土の量や材料の量を見積もる計算にもつながる。"},
+    {title:"極限",slug:"limits",genre:"微分・積分",level:"高校・大学",calc:true,problem:"数列・関数の極限の考え方",keywords:"極限 リミット 収束 はさみうち ロピタル 数値計算 近づく",summary:"微分も積分も、「限りなく近づく」という極限の考え方の上に成り立っている。コンピュータで方程式の答えを少しずつ近づけて求める計算（数値計算）でも、どこまで近づければ十分かを決める物差しになる。"},
+    {title:"テイラー展開",slug:"taylor",genre:"微分・積分",level:"大学",calc:true,problem:"関数を多項式で近似する展開",keywords:"テイラー展開 マクローリン展開 近似 電卓 関数 多項式 精度",summary:"電卓やコンピュータが sin や e^x のような関数の値を計算する方法のひとつが、関数を多項式の足し算に置き換えるテイラー展開。項を増やすほど本当の値に近づくので、必要な精度に合わせて項の数を調整できる。"},
+    {title:"微分方程式の基礎",slug:"differential-equations",genre:"微分・積分",level:"大学",calc:true,problem:"変数分離形などの基本的な解き方と考え方",keywords:"微分方程式 変数分離 電気回路 振動 制御 人口 熱 天気予報",summary:"電気回路の電流の変化、ばねの振動、熱の伝わり方、生き物の数の増え方など、「今の状態から次にどう変わるか」を表す方程式が微分方程式。天気予報や機械の制御など、変化を予測する技術の土台になっている。"},
+    {title:"偏微分",slug:"partial-differentiation",genre:"微分・積分",level:"大学",calc:true,problem:"多変数関数の微分（偏微分）",keywords:"偏微分 勾配 機械学習 AI 誤差 パラメータ 勾配降下法",summary:"AI（機械学習）は、予測の誤差を小さくするために、たくさんの調整つまみ（パラメータ）を少しずつ動かして学習する。そのとき「つまみを1つだけ動かすと誤差がどう変わるか」を測る道具が偏微分で、学習の進め方を決めている。"},
+    {title:"重積分",slug:"multiple-integrals",genre:"微分・積分",level:"大学",calc:true,problem:"二重積分の考え方",keywords:"重積分 二重積分 体積 質量 重心 期待値",summary:"不規則な形をした物の体積や重さ、重心の位置は、細かく刻んで足し合わせる重積分で求める。確率の計算でも、広がりを持った量を合計して期待値（平均）を出すのに使われる。"},
+    {title:"ニュートン法",slug:"newton-method",genre:"微分・積分",level:"大学",calc:true,problem:"接線を使って方程式の解に近づく反復法",keywords:"ニュートン法 反復 近似 平方根 アルゴリズム 収束 コンピュータ",summary:"コンピュータが方程式の答えや平方根を高速に求めるときに使われる、代表的な計算方法（アルゴリズム）。グラフの接線を使って答えに次々に近づいていくので、数回の繰り返しで答えにほぼ到達する。"},
+    {title:"フーリエ変換の考え方",slug:"fourier",genre:"微分・積分",level:"大学",calc:true,problem:"波を周波数の成分に分ける考え方",keywords:"フーリエ変換 周波数 圧縮 MP3 JPEG MRI ノイズ除去 音声 画像",summary:"音楽を「どの高さの音がどれだけ含まれているか」に分解する考え方で、音声や画像の圧縮、雑音を取り除く処理、MRIで体の断面画像を作る計算の基礎になっている。"},
+    {title:"いろいろな関数の微分",slug:"differentiation-rules",genre:"微分・積分",level:"高校",calc:true,problem:"積・商・合成関数（連鎖律）と三角・指数・対数関数の導関数を公式で求める問題。",keywords:"微分 積の微分 商の微分 合成関数 連鎖律 三角関数 指数関数 対数関数 導関数",summary:"AIの学習で使う活性化関数（シグモイド関数など）の微分は合成関数の微分（連鎖律）そのもので、誤差逆伝播法の心臓部になっている。物理の速度・加速度や経済の限界費用など、変化率を扱うすべての場面で使う道具でもある。"},
+    {title:"置換積分・部分積分",slug:"integration-techniques",genre:"微分・積分",level:"高校",calc:true,problem:"置換積分で基本形に帰着させる不定積分と、部分積分公式で種類の違う関数の積を積分する問題。",keywords:"置換積分 部分積分 不定積分 積分定数 xe^x xsinx",summary:"確率分布の計算（指数分布の確率など）や信号処理、物理の仕事や重心の計算では、基本の形に帰着させる置換積分・部分積分が必須の道具になる。微分方程式を解く途中でも頻出する。"},
+    {title:"積分の応用（体積・曲線の長さ）",slug:"integration-applications",genre:"微分・積分",level:"高校",calc:true,problem:"回転体の体積を定積分で求める問題と、円弧など曲線の長さを求める問題。",keywords:"積分の応用 回転体 体積 曲線の長さ 円弧 円錐 定積分",summary:"ワインのタンクやボトルのような回転体の容器の容量は、回転体の体積の計算で設計する。ケーブルや道路など、曲がったものの長さを見積もるときにも曲線の長さの考え方を使う。"},
+    {title:"行列の積",slug:"matrix-multiplication",genre:"線形代数",level:"大学",calc:true,problem:"行列同士の積の計算",keywords:"行列 積 行列の積 AI ニューラルネット 3D 座標変換 CG",summary:"AI（人工知能）が文章や画像を処理する計算の本体は、行列の積を大量に繰り返すこと。3Dゲームや映画のCGで立体物を回したり動かしたりする座標の変換も、行列の積で計算されている。"},
+    {title:"逆行列・掃き出し法",slug:"inverse-matrix",genre:"線形代数",level:"大学",calc:true,problem:"逆行列と連立方程式の解法",keywords:"逆行列 掃き出し法 ガウス 連立一次方程式 産業連関表 レオンチェフ",summary:"建物にかかる力の釣り合いや電気回路の電流のように、わからない数がたくさん絡み合う計算は連立一次方程式として行列で表し、掃き出し法で解く。工場同士の取引をまとめた産業連関表でも、逆行列を使って必要な生産量を求める。"},
+    {title:"行列式",slug:"determinant",genre:"線形代数",level:"大学",calc:true,problem:"2×2・3×3 の行列式",keywords:"行列式 サラス 面積 体積 拡大率 逆行列の判定",summary:"行列式の値は、その行列で平面や空間を変形したとき、面積や体積が何倍になるかを表している。値が0かどうかで、逆行列が存在するか、連立方程式の答えが1つに決まるかも判定できる。"},
+    {title:"固有値・固有ベクトル",slug:"eigenvalues",genre:"線形代数",level:"大学",calc:true,problem:"固有方程式と対角化の考え方",keywords:"固有値 固有ベクトル 固有振動数 共振 検索順位 主成分分析 対角化 振動",summary:"建物や橋にはそれぞれ揺れやすい振動の速さ（固有振動数）があり、固有値を求めることで地震の揺れと共振する危険を調べる。Googleの検索順位を決めるPageRankや、大量のデータの要点をつかむ主成分分析も、固有値の考え方が土台になっている。"},
+    {title:"線形変換と回転行列",slug:"linear-transformation",genre:"線形代数",level:"大学",calc:true,problem:"行列による点の変換と回転",keywords:"線形変換 回転行列 回転 拡大縮小 ゲーム CAD カメラ",summary:"ゲームやCADで図形や立体を回したり、大きくしたりする描画の計算は、点の座標に行列を掛ける線形変換で行われている。キャラクターの向きや画面の中のカメラの動きも、この計算で決まる。"},
+    {title:"複素数の四則計算",slug:"complex-numbers",genre:"複素数",level:"高校・大学",calc:true,problem:"複素数の和・積・商と共役",keywords:"複素数 虚数 共役 絶対値 交流回路 インピーダンス 信号処理",summary:"電気工学では、交流回路の計算に複素数を使う。コイルやコンデンサーの電流の流れにくさ（インピーダンス）を複素数で表すと、抵抗だけの回路と同じように足し算や割り算で計算できる。通信や音声などの信号を扱う信号処理でも土台になっている。"},
+    {title:"極形式・ド・モアブルの定理",slug:"polar-form",genre:"複素数",level:"高校・大学",calc:true,problem:"偏角と累乗・n乗根",keywords:"極形式 ド・モアブル 偏角 位相 交流 累乗 n乗根 回転",summary:"交流の電気の波は、大きさと、タイミングのずれ（位相）で決まる。複素数を極形式で表すと位相を角度として扱えて、波の回転や合成の計算が、角度の足し算や掛け算でできるようになる。"}
+  ];
+  var SECTIONS=[
+    {name:"考え方",id:"sec-kaikata"},
+    {name:"計算機",id:"sec-keisanki"}
+  ];
+  function norm(s){
+    return String(s||"").toLowerCase()
+      .replace(/[Ａ-Ｚａ-ｚ０-９]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0);})
+      .replace(/[\s　]/g,"");
+  }
+  var input=document.getElementById("mathSearch");
+  var box=document.getElementById("searchResults");
+  var head=document.getElementById("resultHead");
+  var jumpBox=document.getElementById("jumpBox");
+  var cardsBox=document.getElementById("resultCards");
+  var noHit=document.getElementById("noHit");
+  var chips=document.querySelectorAll(".chip[data-level]");
+  var level="all";
+  var listSecs=[document.getElementById("sec-kaikata"),document.getElementById("sec-keisanki")];
+  function setListsVisible(v){listSecs.forEach(function(s){if(s)s.style.display=v?"":"none";});}
+  function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
+  function makeCard(it,mode){
+    var card=el("div","tool-card");
+    if(mode==="calc"){
+      var h3c=el("h3");var ac=el("a",null,it.title);ac.href="calc-"+it.slug+".html";h3c.appendChild(ac);card.appendChild(h3c);
+      var linksc=el("p","tc-links");
+      var ca=el("a",null,"計算機");ca.href="calc-"+it.slug+".html";linksc.appendChild(ca);
+      card.appendChild(linksc);
+      return card;
+    }
+    var h3=el("h3");var a=el("a",null,it.title);a.href=it.slug+".html";h3.appendChild(a);card.appendChild(h3);
+    var pb=el("p");
+    pb.appendChild(el("span","badge badge-lv",it.level));
+    pb.appendChild(document.createTextNode(" "));
+    pb.appendChild(el("span","badge badge-genre",it.genre));
+    card.appendChild(pb);
+    card.appendChild(el("p",null,it.summary));
+    var links=el("p","tc-links");
+    var la=el("a",null,"解法の解説を読む");la.href=it.slug+".html";links.appendChild(la);
+    card.appendChild(links);
+    return card;
+  }
+  function makeGroupHead(name,note){
+    var h=el("h4","result-group-head",name);
+    h.appendChild(el("span","rg-note",note));
+    return h;
+  }
+  function update(){
+    var q=norm(input.value);
+    if(!q&&level==="all"){box.style.display="none";setListsVisible(true);return;}
+    setListsVisible(false);
+    var items=INDEX.filter(function(it){
+      if(level!=="all"&&it.level.indexOf(level)<0)return false;
+      if(!q)return true;
+      var hay=norm(it.title+" "+it.keywords+" "+it.problem+" "+it.genre);
+      return hay.indexOf(q)>=0;
+    });
+    var secs=q?SECTIONS.filter(function(s){var n=norm(s.name);return n.indexOf(q)>=0||q.indexOf(n)>=0;}):[];
+    jumpBox.innerHTML="";
+    secs.forEach(function(s){
+      var a=el("a","jump-link","『"+s.name+"』のセクションへ移動 →");
+      a.href="#"+s.id;
+      a.addEventListener("click",function(){
+        input.value="";
+        level="all";
+        chips.forEach(function(c){c.setAttribute("aria-pressed",String(c.dataset.level==="all"));});
+        update();
+      });
+      jumpBox.appendChild(a);
+    });
+    cardsBox.innerHTML="";
+    if(items.length){
+      cardsBox.appendChild(makeGroupHead("考え方","仕組みから知りたい人へ"));
+      items.forEach(function(it){cardsBox.appendChild(makeCard(it,"article"));});
+      var calcItems=items.filter(function(it){return it.calc;});
+      if(calcItems.length){
+        cardsBox.appendChild(makeGroupHead("計算機","さくっと計算したい人へ"));
+        calcItems.forEach(function(it){cardsBox.appendChild(makeCard(it,"calc"));});
+      }
+    }
+    noHit.style.display=(items.length||secs.length)?"none":"block";
+    head.textContent=q?("「"+input.value.trim()+"」の検索結果（"+items.length+"件）"):("レベル："+level+" の項目（"+items.length+"件）");
+    box.style.display="block";
+  }
+  input.addEventListener("input",update);
+  chips.forEach(function(ch){
+    ch.addEventListener("click",function(){
+      level=ch.dataset.level;
+      chips.forEach(function(c){c.setAttribute("aria-pressed",String(c===ch));});
+      update();
+    });
+  });
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「数学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
