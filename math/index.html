@@ -190,7 +190,7 @@ gtag('config', 'G-QQ4435VBMK');
 
   <section class="card" id="sec-kaikata">
     <h2>考え方</h2>
-    <p>全81項目の解説記事です。各解法の考え方と、実際の現場でどう使われているかを解説しています。ジャンルとレベルは各カードに表示しています。</p>
+    <p>全96項目の解説記事です。各解法の考え方と、実際の現場でどう使われているかを解説しています。ジャンルとレベルは各カードに表示しています。</p>
     <div class="tool-card">
       <h3><a href="prime-factorization.html">素因数分解</a></h3>
       <p><span class="badge badge-lv">中学</span> <span class="badge badge-genre">数と式</span></p>
@@ -268,6 +268,12 @@ gtag('config', 'G-QQ4435VBMK');
       <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">数と式</span></p>
       <p>硬貨や切手の組み合わせで合計金額をぴったり作ったり、荷物の積み合わせで重さや容量をぴったり満たす個数の組み合わせを探したりするときに使う。2種類の数量の合計をちょうど目標値にする、実務の「ぴったり合わせ」の一般形である。</p>
       <p class="tc-links"><a href="diophantine.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="chinese-remainder.html">中国剰余定理</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">数と式</span></p>
+      <p>RSA暗号の復号を高速化する実装（CRT-RSA）に使われ、実際の暗号ライブラリに組み込まれている。余りの情報から元の数を復元する仕組みは、誤り訂正や並列計算（剰余数系）の土台にもなっている。</p>
+      <p class="tc-links"><a href="chinese-remainder.html">解法の解説を読む</a></p>
     </div>
     <div class="tool-card">
       <h3><a href="binomial-theorem.html">二項定理</a></h3>
@@ -474,10 +480,22 @@ gtag('config', 'G-QQ4435VBMK');
       <p class="tc-links"><a href="distributions.html">解法の解説を読む</a></p>
     </div>
     <div class="tool-card">
+      <h3><a href="poisson-distribution.html">ポアソン分布と指数分布</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">確率・統計</span></p>
+      <p>コールセンターの着信数に合わせた人員配置や、機械の故障・交通事故の件数予測にはポアソン分布が使われる。次の故障や着信までの待ち時間を表す指数分布とセットで、待ち行列や信頼性工学の基本になっている。</p>
+      <p class="tc-links"><a href="poisson-distribution.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
       <h3><a href="estimation-testing.html">推定・検定の考え方</a></h3>
       <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">確率・統計</span></p>
       <p>テレビの視聴率や世論調査のように、一部だけを調べて全体の割合を誤差つきで推し量ったり、新薬や改良品に本当に効果があるかをデータで確かめたりするときに使う。</p>
       <p class="tc-links"><a href="estimation-testing.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="statistical-tests.html">t検定・カイ二乗検定</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">確率・統計</span></p>
+      <p>新薬の臨床試験で『効いた』と言えるか、WebサービスのA/Bテストで差が本物かを判定するのが検定の仕事である。t検定とカイ二乗検定は、医療・マーケティング・品質管理の現場で最もよく使われる検定の代表格だ。</p>
+      <p class="tc-links"><a href="statistical-tests.html">解法の解説を読む</a></p>
     </div>
     <div class="tool-card">
       <h3><a href="correlation-regression.html">相関係数と回帰直線</a></h3>
@@ -498,6 +516,12 @@ gtag('config', 'G-QQ4435VBMK');
       <p class="tc-links"><a href="expected-value.html">解法の解説を読む</a></p>
     </div>
     <div class="tool-card">
+      <h3><a href="markov-chains.html">マルコフ連鎖</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">確率・統計</span></p>
+      <p>『今の状態だけから次が決まる』推移を追う方法で、信用格付けがどう移っていくかのリスク管理や、在庫・天気の推移予測に使われる。検索エンジンの PageRank も、リンクをたどるマルコフ連鎖の定常分布として生まれた。</p>
+      <p class="tc-links"><a href="markov-chains.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
       <h3><a href="sequences.html">等差数列・等比数列</a></h3>
       <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">数列</span></p>
       <p>銀行の複利計算は等比数列そのもので、ローンの返済計画もこれで立てる。一定の差で増える並び（等差）と一定の倍率で増える並び（等比）が分かると、遠い先の数や合計を一気に求められる。</p>
@@ -508,6 +532,12 @@ gtag('config', 'G-QQ4435VBMK');
       <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">数列</span></p>
       <p>1年後の人口や感染者数、ローンの残高のように、「今の値から次の値が決まる」量の先の姿を予測するときに使う。コンピュータで同じ計算を繰り返す処理の速さを見積もる場面でも同じ考え方が出てくる。</p>
       <p class="tc-links"><a href="recurrence.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="second-order-recurrence.html">二階線形漸化式</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">数列</span></p>
+      <p>フィボナッチ数列の一般項（ビネの公式）を出す解法で、世代をまたぐ人口の増え方や、分割統治アルゴリズムの計算量の見積もりに応用される。黄金比が自然界のらせんやデザインに現れる理由もここから見えてくる。</p>
+      <p class="tc-links"><a href="second-order-recurrence.html">解法の解説を読む</a></p>
     </div>
     <div class="tool-card">
       <h3><a href="sigma.html">Σの公式</a></h3>
@@ -546,6 +576,12 @@ gtag('config', 'G-QQ4435VBMK');
       <p class="tc-links"><a href="cross-product.html">解法の解説を読む</a></p>
     </div>
     <div class="tool-card">
+      <h3><a href="vector-calculus.html">ベクトル解析（発散・回転）</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">ベクトル</span></p>
+      <p>天気予報のシミュレーションや飛行機の翼のまわりの空気の流れは、風や水の流れをベクトル場として扱い、発散や回転で流れの性質を読み解く。電磁気の法則（マクスウェル方程式）もこの言葉で書かれている。</p>
+      <p class="tc-links"><a href="vector-calculus.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
       <h3><a href="differentiation.html">微分（導関数）</a></h3>
       <p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">微分・積分</span></p>
       <p>車の速度メーターの計算、AIが学習するときの細かい調整、コストが一番安くなる生産量を探す計算など、「変化の速さ」と「一番よい点」を求める技術の土台になっている。</p>
@@ -582,6 +618,12 @@ gtag('config', 'G-QQ4435VBMK');
       <p class="tc-links"><a href="limits.html">解法の解説を読む</a></p>
     </div>
     <div class="tool-card">
+      <h3><a href="series-convergence.html">級数の収束判定と収束半径</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>テイラー展開などの近似計算で『どこまで足せば十分か』『そもそも収束するのか』を判定する物差しである。数値シミュレーションの誤差評価や、信号処理の級数表現が正しいかの確認に使われる。</p>
+      <p class="tc-links"><a href="series-convergence.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
       <h3><a href="taylor.html">テイラー展開</a></h3>
       <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">微分・積分</span></p>
       <p>電卓やコンピュータが sin や e^x のような関数の値を計算する方法のひとつが、関数を多項式の足し算に置き換えるテイラー展開。項を増やすほど本当の値に近づくので、必要な精度に合わせて項の数を調整できる。</p>
@@ -594,16 +636,34 @@ gtag('config', 'G-QQ4435VBMK');
       <p class="tc-links"><a href="differential-equations.html">解法の解説を読む</a></p>
     </div>
     <div class="tool-card">
+      <h3><a href="second-order-ode.html">二階線形微分方程式</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>車のサスペンションのばねとダンパーの効き具合や、地震で建物がどう揺れるかは、二階の微分方程式で表される振動の問題である。楽器の弦の振動や電気回路の応答も同じ形で、解き方の型がそのまま設計に使われる。</p>
+      <p class="tc-links"><a href="second-order-ode.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
       <h3><a href="partial-differentiation.html">偏微分</a></h3>
       <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">微分・積分</span></p>
       <p>AI（機械学習）は、予測の誤差を小さくするために、たくさんの調整つまみ（パラメータ）を少しずつ動かして学習する。そのとき「つまみを1つだけ動かすと誤差がどう変わるか」を測る道具が偏微分で、学習の進め方を決めている。</p>
       <p class="tc-links"><a href="partial-differentiation.html">解法の解説を読む</a></p>
     </div>
     <div class="tool-card">
+      <h3><a href="lagrange-multipliers.html">ラグランジュ乗数法</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>限られた予算や材料の中で一番よい設計を探す最適化の基本で、経済学の効用最大化から機械学習の学習アルゴリズムまで顔を出す。『制約の中で最大・最小を探す』問題の標準装備である。</p>
+      <p class="tc-links"><a href="lagrange-multipliers.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
       <h3><a href="multiple-integrals.html">重積分</a></h3>
       <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">微分・積分</span></p>
       <p>不規則な形をした物の体積や重さ、重心の位置は、細かく刻んで足し合わせる重積分で求める。確率の計算でも、広がりを持った量を合計して期待値（平均）を出すのに使われる。</p>
       <p class="tc-links"><a href="multiple-integrals.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="jacobian.html">重積分の変数変換（ヤコビアン）</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>画像を歪ませるワーピングや地図投影の面積の歪みは、座標変換の拡大率であるヤコビアンで測る。ロボット工学では関節の動きと手先の動きを結ぶヤコビ行列が制御の要になっている。</p>
+      <p class="tc-links"><a href="jacobian.html">解法の解説を読む</a></p>
     </div>
     <div class="tool-card">
       <h3><a href="newton-method.html">ニュートン法</a></h3>
@@ -616,6 +676,12 @@ gtag('config', 'G-QQ4435VBMK');
       <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">微分・積分</span></p>
       <p>音楽を「どの高さの音がどれだけ含まれているか」に分解する考え方で、音声や画像の圧縮、雑音を取り除く処理、MRIで体の断面画像を作る計算の基礎になっている。</p>
       <p class="tc-links"><a href="fourier.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="laplace-transform.html">ラプラス変換</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>工場の自動制御やロボットの姿勢制御では、微分方程式で表される機械の応答をラプラス変換で代数の計算に直して設計する。電気回路のスイッチを入れた直後の電流の変化（過渡現象）の解析でも、現場の標準的な道具になっている。</p>
+      <p class="tc-links"><a href="laplace-transform.html">解法の解説を読む</a></p>
     </div>
     <div class="tool-card">
       <h3><a href="differentiation-rules.html">いろいろな関数の微分</a></h3>
@@ -636,6 +702,12 @@ gtag('config', 'G-QQ4435VBMK');
       <p class="tc-links"><a href="integration-applications.html">解法の解説を読む</a></p>
     </div>
     <div class="tool-card">
+      <h3><a href="numerical-integration.html">数値積分（台形公式・シンプソン公式）</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">微分・積分</span></p>
+      <p>積分が式で解けない関数の面積や体積を、実務では台形公式やシンプソン公式で数値的に出す。CADの面積計算、センサーデータからの消費電力量の積算、船の排水量を計算する『シンプソンの法則』がその代表である。</p>
+      <p class="tc-links"><a href="numerical-integration.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
       <h3><a href="matrix-multiplication.html">行列の積</a></h3>
       <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">線形代数</span></p>
       <p>AI（人工知能）が文章や画像を処理する計算の本体は、行列の積を大量に繰り返すこと。3Dゲームや映画のCGで立体物を回したり動かしたりする座標の変換も、行列の積で計算されている。</p>
@@ -646,6 +718,12 @@ gtag('config', 'G-QQ4435VBMK');
       <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">線形代数</span></p>
       <p>建物にかかる力の釣り合いや電気回路の電流のように、わからない数がたくさん絡み合う計算は連立一次方程式として行列で表し、掃き出し法で解く。工場同士の取引をまとめた産業連関表でも、逆行列を使って必要な生産量を求める。</p>
       <p class="tc-links"><a href="inverse-matrix.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="rank-independence.html">行列のランクと線形独立</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">線形代数</span></p>
+      <p>連立方程式に解があるか、解が1つに決まるかを判定するのがランクである。センサーが何台あっても実質何個分の情報しかないか、データの実質的な次元を見抜く場面でも使われる。</p>
+      <p class="tc-links"><a href="rank-independence.html">解法の解説を読む</a></p>
     </div>
     <div class="tool-card">
       <h3><a href="determinant.html">行列式</a></h3>
@@ -666,6 +744,12 @@ gtag('config', 'G-QQ4435VBMK');
       <p class="tc-links"><a href="linear-transformation.html">解法の解説を読む</a></p>
     </div>
     <div class="tool-card">
+      <h3><a href="least-squares.html">グラム・シュミットの直交化と最小二乗法</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">線形代数</span></p>
+      <p>GPSの測位計算の心臓部は最小二乗法で、誤差のある大量の測定から最も確からしい位置を割り出す。測量の網平均やセンサーの校正、機械学習の線形回帰も同じ仕組みで、直交化はその計算を安定させる道具である。</p>
+      <p class="tc-links"><a href="least-squares.html">解法の解説を読む</a></p>
+    </div>
+    <div class="tool-card">
       <h3><a href="complex-numbers.html">複素数の四則計算</a></h3>
       <p><span class="badge badge-lv">高校・大学</span> <span class="badge badge-genre">複素数</span></p>
       <p>電気工学では、交流回路の計算に複素数を使う。コイルやコンデンサーの電流の流れにくさ（インピーダンス）を複素数で表すと、抵抗だけの回路と同じように足し算や割り算で計算できる。通信や音声などの信号を扱う信号処理でも土台になっている。</p>
@@ -677,11 +761,17 @@ gtag('config', 'G-QQ4435VBMK');
       <p>交流の電気の波は、大きさと、タイミングのずれ（位相）で決まる。複素数を極形式で表すと位相を角度として扱えて、波の回転や合成の計算が、角度の足し算や掛け算でできるようになる。</p>
       <p class="tc-links"><a href="polar-form.html">解法の解説を読む</a></p>
     </div>
+    <div class="tool-card">
+      <h3><a href="euler-formula.html">オイラーの公式と複素指数関数</a></h3>
+      <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">複素数</span></p>
+      <p>交流回路や信号処理では、波を複素数の回転として表すフェーザ表示が実務の標準で、その土台がオイラーの公式である。振動や波の計算が、三角関数の面倒な計算から指数関数の簡単な計算に化ける。</p>
+      <p class="tc-links"><a href="euler-formula.html">解法の解説を読む</a></p>
+    </div>
   </section>
 
   <section class="card" id="sec-keisanki">
     <h2>計算機</h2>
-    <p>数字を入れると、答えと解き方の手順が表示される計算機です（81項目）。</p>
+    <p>数字を入れると、答えと解き方の手順が表示される計算機です（96項目）。</p>
     <div class="tool-card">
       <h3><a href="calc-prime-factorization.html">素因数分解</a></h3>
       <p class="tc-links"><a href="calc-prime-factorization.html">計算機</a></p>
@@ -733,6 +823,10 @@ gtag('config', 'G-QQ4435VBMK');
     <div class="tool-card">
       <h3><a href="calc-diophantine.html">一次不定方程式</a></h3>
       <p class="tc-links"><a href="calc-diophantine.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-chinese-remainder.html">中国剰余定理</a></h3>
+      <p class="tc-links"><a href="calc-chinese-remainder.html">計算機</a></p>
     </div>
     <div class="tool-card">
       <h3><a href="calc-binomial-theorem.html">二項定理</a></h3>
@@ -871,8 +965,16 @@ gtag('config', 'G-QQ4435VBMK');
       <p class="tc-links"><a href="calc-distributions.html">計算機</a></p>
     </div>
     <div class="tool-card">
+      <h3><a href="calc-poisson-distribution.html">ポアソン分布と指数分布</a></h3>
+      <p class="tc-links"><a href="calc-poisson-distribution.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
       <h3><a href="calc-estimation-testing.html">推定・検定の考え方</a></h3>
       <p class="tc-links"><a href="calc-estimation-testing.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-statistical-tests.html">t検定・カイ二乗検定</a></h3>
+      <p class="tc-links"><a href="calc-statistical-tests.html">計算機</a></p>
     </div>
     <div class="tool-card">
       <h3><a href="calc-correlation-regression.html">相関係数と回帰直線</a></h3>
@@ -887,12 +989,20 @@ gtag('config', 'G-QQ4435VBMK');
       <p class="tc-links"><a href="calc-expected-value.html">計算機</a></p>
     </div>
     <div class="tool-card">
+      <h3><a href="calc-markov-chains.html">マルコフ連鎖</a></h3>
+      <p class="tc-links"><a href="calc-markov-chains.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
       <h3><a href="calc-sequences.html">等差数列・等比数列</a></h3>
       <p class="tc-links"><a href="calc-sequences.html">計算機</a></p>
     </div>
     <div class="tool-card">
       <h3><a href="calc-recurrence.html">漸化式</a></h3>
       <p class="tc-links"><a href="calc-recurrence.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-second-order-recurrence.html">二階線形漸化式</a></h3>
+      <p class="tc-links"><a href="calc-second-order-recurrence.html">計算機</a></p>
     </div>
     <div class="tool-card">
       <h3><a href="calc-sigma.html">Σの公式</a></h3>
@@ -919,8 +1029,16 @@ gtag('config', 'G-QQ4435VBMK');
       <p class="tc-links"><a href="calc-cross-product.html">計算機</a></p>
     </div>
     <div class="tool-card">
+      <h3><a href="calc-vector-calculus.html">ベクトル解析（発散・回転）</a></h3>
+      <p class="tc-links"><a href="calc-vector-calculus.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
       <h3><a href="calc-limits.html">極限</a></h3>
       <p class="tc-links"><a href="calc-limits.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-series-convergence.html">級数の収束判定と収束半径</a></h3>
+      <p class="tc-links"><a href="calc-series-convergence.html">計算機</a></p>
     </div>
     <div class="tool-card">
       <h3><a href="calc-differentiation.html">微分（導関数）</a></h3>
@@ -951,12 +1069,24 @@ gtag('config', 'G-QQ4435VBMK');
       <p class="tc-links"><a href="calc-differential-equations.html">計算機</a></p>
     </div>
     <div class="tool-card">
+      <h3><a href="calc-second-order-ode.html">二階線形微分方程式</a></h3>
+      <p class="tc-links"><a href="calc-second-order-ode.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
       <h3><a href="calc-partial-differentiation.html">偏微分</a></h3>
       <p class="tc-links"><a href="calc-partial-differentiation.html">計算機</a></p>
     </div>
     <div class="tool-card">
+      <h3><a href="calc-lagrange-multipliers.html">ラグランジュ乗数法</a></h3>
+      <p class="tc-links"><a href="calc-lagrange-multipliers.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
       <h3><a href="calc-multiple-integrals.html">重積分</a></h3>
       <p class="tc-links"><a href="calc-multiple-integrals.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-jacobian.html">重積分の変数変換（ヤコビアン）</a></h3>
+      <p class="tc-links"><a href="calc-jacobian.html">計算機</a></p>
     </div>
     <div class="tool-card">
       <h3><a href="calc-newton-method.html">ニュートン法</a></h3>
@@ -965,6 +1095,10 @@ gtag('config', 'G-QQ4435VBMK');
     <div class="tool-card">
       <h3><a href="calc-fourier.html">フーリエ変換の考え方</a></h3>
       <p class="tc-links"><a href="calc-fourier.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-laplace-transform.html">ラプラス変換</a></h3>
+      <p class="tc-links"><a href="calc-laplace-transform.html">計算機</a></p>
     </div>
     <div class="tool-card">
       <h3><a href="calc-differentiation-rules.html">いろいろな関数の微分</a></h3>
@@ -979,12 +1113,20 @@ gtag('config', 'G-QQ4435VBMK');
       <p class="tc-links"><a href="calc-integration-applications.html">計算機</a></p>
     </div>
     <div class="tool-card">
+      <h3><a href="calc-numerical-integration.html">数値積分（台形公式・シンプソン公式）</a></h3>
+      <p class="tc-links"><a href="calc-numerical-integration.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
       <h3><a href="calc-matrix-multiplication.html">行列の積</a></h3>
       <p class="tc-links"><a href="calc-matrix-multiplication.html">計算機</a></p>
     </div>
     <div class="tool-card">
       <h3><a href="calc-inverse-matrix.html">逆行列・掃き出し法</a></h3>
       <p class="tc-links"><a href="calc-inverse-matrix.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-rank-independence.html">行列のランクと線形独立</a></h3>
+      <p class="tc-links"><a href="calc-rank-independence.html">計算機</a></p>
     </div>
     <div class="tool-card">
       <h3><a href="calc-determinant.html">行列式</a></h3>
@@ -999,6 +1141,10 @@ gtag('config', 'G-QQ4435VBMK');
       <p class="tc-links"><a href="calc-linear-transformation.html">計算機</a></p>
     </div>
     <div class="tool-card">
+      <h3><a href="calc-least-squares.html">グラム・シュミットの直交化と最小二乗法</a></h3>
+      <p class="tc-links"><a href="calc-least-squares.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
       <h3><a href="calc-complex-numbers.html">複素数の四則計算</a></h3>
       <p class="tc-links"><a href="calc-complex-numbers.html">計算機</a></p>
     </div>
@@ -1006,9 +1152,13 @@ gtag('config', 'G-QQ4435VBMK');
       <h3><a href="calc-polar-form.html">極形式・ド・モアブルの定理</a></h3>
       <p class="tc-links"><a href="calc-polar-form.html">計算機</a></p>
     </div>
+    <div class="tool-card">
+      <h3><a href="calc-euler-formula.html">オイラーの公式と複素指数関数</a></h3>
+      <p class="tc-links"><a href="calc-euler-formula.html">計算機</a></p>
+    </div>
   </section>
 
-  <p class="note">全81項目を収録しています（全項目に計算機つき）。大学レベルの項目も18項目収録しています。</p>
+  <p class="note">全96項目を収録しています（全項目に計算機つき）。大学レベルの項目も33項目収録しています。</p>
 </div>
 
 <footer>
@@ -1058,6 +1208,7 @@ gtag('config', 'G-QQ4435VBMK');
     {title:"循環小数を分数に直す",slug:"recurring-decimal",genre:"数と式",level:"高校",calc:true,problem:"同じ数字の並びが無限に繰り返される循環小数を、約分済みの分数で正確に表す問題",keywords:"循環小数 分数 循環節 有理数 約分 0.999",summary:"割り算の結果が分数で正確に表せる数かどうかを判定する考え方である。コンピュータでは 0.1 が2進数で循環小数になり正確に表せないことが、金額計算などの誤差の原因になる。"},
     {title:"記数法",slug:"number-bases",genre:"数と式",level:"高校",calc:true,problem:"二進法・n進法（2〜16進数）のあいだで、位取りの展開と割り算の余りを使って数を変換する問題",keywords:"記数法 二進法 n進法 16進数 進数変換 位取り ライプニッツ",summary:"コンピュータ内部のデータ表現そのものである。16進数はメモリの中身や色コード（#FF8000）、文字コードの表示に使われ、2進数はコンピュータのあらゆる計算の土台になっている。"},
     {title:"一次不定方程式",slug:"diophantine",genre:"数と式",level:"高校",calc:true,problem:"式が1つしかない a x + b y = c について、整数解の有無・特殊解・一般解を求める問題",keywords:"一次不定方程式 ディオファントス方程式 整数解 拡張ユークリッド互除法 特殊解 一般解",summary:"硬貨や切手の組み合わせで合計金額をぴったり作ったり、荷物の積み合わせで重さや容量をぴったり満たす個数の組み合わせを探したりするときに使う。2種類の数量の合計をちょうど目標値にする、実務の「ぴったり合わせ」の一般形である。"},
+    {title:"中国剰余定理",slug:"chinese-remainder",genre:"数と式",level:"大学",calc:true,problem:"x≡a (mod m) の連立合同式（余りの条件）から、条件を満たす数を求める",keywords:"中国剰余定理 連立合同式 孫子算経 RSA 余り 合同式",summary:"RSA暗号の復号を高速化する実装（CRT-RSA）に使われ、実際の暗号ライブラリに組み込まれている。余りの情報から元の数を復元する仕組みは、誤り訂正や並列計算（剰余数系）の土台にもなっている。"},
     {title:"二項定理",slug:"binomial-theorem",genre:"数と式",level:"高校",calc:true,problem:"(a+b)^n の展開と、二項係数 nCk および特定の項の係数を求める問題",keywords:"二項定理 二項係数 組み合わせ nCk パスカルの三角形 展開 一般項 二項分布",summary:"「n回中k回起こる」場合の数を数える二項分布の土台であり、保険や品質検査の確率計算に直結する。複利や誤差の見積もりで使う近似 (1+x)^n ≒ 1+nx も、この定理から出てくる。"},
     {title:"判別式",slug:"discriminant",genre:"方程式",level:"高校",calc:true,problem:"解の個数・重解の判定",keywords:"判別式 D 重解 解の個数 実数解",summary:"設計や制御の計算では、方程式に実数の解があるかどうかが「その条件をそもそも実現できるか」の分かれ目になることがある。判別式は、解を全部求める前に、その実現できるかどうかを先に判定するチェックに使われる。"},
     {title:"高次方程式",slug:"higher-equations",genre:"方程式",level:"高校",calc:true,problem:"因数定理・組立除法で解く",keywords:"高次方程式 三次方程式 四次方程式 因数定理 組立除法 特性方程式 複素数",summary:"電気回路や振動する機械の性質は、三次・四次などの方程式（特性方程式）を解くことで分かることがある。因数定理と組立除法は、その方程式を一次式の積に分けて、性質を決める解を取り出すための基本の道具。"},
@@ -1082,37 +1233,51 @@ gtag('config', 'G-QQ4435VBMK');
     {title:"三角関数のグラフと性質",slug:"trig-graphs",genre:"三角関数",level:"高校",calc:true,problem:"弧度法と度数法を換算し、y＝a sin(bx＋c)＋d の振幅・周期・値域を読み取る問題を扱う（一般角も解説）。",keywords:"三角関数 グラフ 弧度法 ラジアン 一般角 振幅 周期 値域 sin",summary:"家庭の交流電圧は sin の波そのもので、周波数と振幅で決まる。潮の満ち引きや音の波、季節ごとの気温の変化も周期を持つ波として三角関数で表され、信号処理ではあらゆる波を sin の重ね合わせで表す。"},
     {title:"条件付き確率",slug:"conditional-probability",genre:"確率・統計",level:"高校",calc:true,problem:"条件が付いた確率・ベイズの考え方",keywords:"条件付き確率 ベイズ 検査 陽性 迷惑メール フィルタ 感度 特異度",summary:"病気の検査で陽性と出たときに本当に病気である確率や、迷惑メールを見分けるフィルタの判定など、「ある情報が分かったあと」で確率がどう変わるかを計算するときに使う。"},
     {title:"二項分布・正規分布",slug:"distributions",genre:"確率・統計",level:"高校・大学",calc:true,problem:"分布の形と確率の計算の考え方",keywords:"二項分布 正規分布 分布 偏差値 不良品 ばらつき 身長",summary:"工場で100個の製品を調べたときに不良品が何個出るかの見当や、身長のように平均のまわりに自然に集まるデータのばらつきを表すときに使う。試験の偏差値も、正規分布の考え方を土台にしている。"},
+    {title:"ポアソン分布と指数分布",slug:"poisson-distribution",genre:"確率・統計",level:"大学",calc:true,problem:"平均λ回起こる現象について、ちょうどk回起こる確率と、待ち時間の確率を求める",keywords:"ポアソン分布 指数分布 待ち時間 故障 着信 確率分布",summary:"コールセンターの着信数に合わせた人員配置や、機械の故障・交通事故の件数予測にはポアソン分布が使われる。次の故障や着信までの待ち時間を表す指数分布とセットで、待ち行列や信頼性工学の基本になっている。"},
     {title:"推定・検定の考え方",slug:"estimation-testing",genre:"確率・統計",level:"大学",calc:true,problem:"区間推定と仮説検定の枠組み",keywords:"推定 検定 区間推定 仮説検定 視聴率 世論調査 標本 誤差 ABテスト 新薬",summary:"テレビの視聴率や世論調査のように、一部だけを調べて全体の割合を誤差つきで推し量ったり、新薬や改良品に本当に効果があるかをデータで確かめたりするときに使う。"},
+    {title:"t検定・カイ二乗検定",slug:"statistical-tests",genre:"確率・統計",level:"大学",calc:true,problem:"2×2の分割表のカイ二乗検定と、標本平均のt検定で、差が偶然かどうかを判定する",keywords:"t検定 カイ二乗検定 有意差 p値 A/Bテスト 臨床試験 独立性",summary:"新薬の臨床試験で『効いた』と言えるか、WebサービスのA/Bテストで差が本物かを判定するのが検定の仕事である。t検定とカイ二乗検定は、医療・マーケティング・品質管理の現場で最もよく使われる検定の代表格だ。"},
     {title:"相関係数と回帰直線",slug:"correlation-regression",genre:"確率・統計",level:"高校",calc:true,problem:"2つの量の組データについて、関係の強さと向きを相関係数で測り、一方から他方を予測する回帰直線を求める問題。",keywords:"相関係数 回帰直線 散布図 Sxy Sxx 相関 予測 統計",summary:"気温が上がると電力需要がどれだけ増えるか、広告費を増やすと売上がどれだけ伸びるかなど、2つの量の関係の強さと向きを1つの数字で掴むときに使う。工場の品質管理では、製造条件と不良率の関係を探る手がかりにもなる。"},
     {title:"四分位数と箱ひげ図・代表値",slug:"quartiles-boxplot",genre:"確率・統計",level:"高校",calc:true,problem:"データの分布を第1四分位数・中央値・第3四分位数・四分位範囲で要約し、箱ひげ図と外れ値の判定に使う問題。",keywords:"四分位数 箱ひげ図 中央値 代表値 四分位範囲 IQR 外れ値 データの分析",summary:"給料やテストの点数のように、平均だけでは実態が見えないデータの分布を、真ん中とばらつきで掴むときに使う。賃金統計では年収の分布が四分位数で示され、製品寸法のばらつきの比較にも箱ひげ図が使われる。"},
     {title:"期待値",slug:"expected-value",genre:"確率・統計",level:"高校",calc:true,problem:"値と確率の分布から期待値 E＝Σx・p（と分散）を求め、参加料などと比べて割に合うかを判断する問題。",keywords:"期待値 確率 分散 くじ 保険料 還元率 大数の法則",summary:"保険料や宝くじのように、結果が偶然で決まる場面で「平均すると1回あたりいくらになるか」を先に計算して判断するときに使う。ゲームのガチャや報酬の設計でも、1回あたりの平均獲得量は期待値で決められている。"},
+    {title:"マルコフ連鎖",slug:"markov-chains",genre:"確率・統計",level:"大学",calc:true,problem:"遷移行列で表される状態の移り変わりについて、nステップ後の分布と定常分布を求める",keywords:"マルコフ連鎖 遷移行列 定常分布 PageRank 格付遷移 予測",summary:"『今の状態だけから次が決まる』推移を追う方法で、信用格付けがどう移っていくかのリスク管理や、在庫・天気の推移予測に使われる。検索エンジンの PageRank も、リンクをたどるマルコフ連鎖の定常分布として生まれた。"},
     {title:"漸化式",slug:"recurrence",genre:"数列",level:"高校",calc:true,problem:"特性方程式・階差数列で一般項を出す",keywords:"漸化式 特性方程式 階差数列 一般項 人口 ローン残高 再帰 感染",summary:"1年後の人口や感染者数、ローンの残高のように、「今の値から次の値が決まる」量の先の姿を予測するときに使う。コンピュータで同じ計算を繰り返す処理の速さを見積もる場面でも同じ考え方が出てくる。"},
+    {title:"二階線形漸化式",slug:"second-order-recurrence",genre:"数列",level:"大学",calc:true,problem:"a_{n+2}＝p a_{n+1}＋q a_n の2階線形漸化式を特性方程式で解き、一般項と第n項を求める",keywords:"二階線形漸化式 フィボナッチ ビネの公式 特性方程式 一般項 黄金比",summary:"フィボナッチ数列の一般項（ビネの公式）を出す解法で、世代をまたぐ人口の増え方や、分割統治アルゴリズムの計算量の見積もりに応用される。黄金比が自然界のらせんやデザインに現れる理由もここから見えてくる。"},
     {title:"Σの公式",slug:"sigma",genre:"数列",level:"高校",calc:true,problem:"シグマの計算公式と使い方",keywords:"シグマ Σ 和の公式 合計 集計 複利 売上",summary:"毎日の売上や複利で増えた利息のように、たくさんの数を並べて合計するとき、その合計を一つの式で一気に求めるために使う。コンピュータで大量のデータを集計する計算の土台にもなっている。"},
     {title:"数学的帰納法",slug:"induction",genre:"数列",level:"高校",calc:true,problem:"証明の型と書き方",keywords:"数学的帰納法 帰納法 証明 ドミノ プログラム 正しさ",summary:"コンピュータのプログラムやアルゴリズムが、どんな入力でも正しく動くことを確かめる証明で使う考え方。ドミノ倒しのように、最初の一つと「次へつながる仕組み」を示せば、すべて成り立つことが保証できる。"},
     {title:"無限等比級数",slug:"geometric-series",genre:"数列",level:"高校",calc:true,problem:"初項 a・公比 r の等比数列を無限に足した和 a/(1−r) を求め、|r|≧1 のときは発散と判定する問題。",keywords:"無限等比級数 等比数列 収束 発散 循環小数 極限 乗数",summary:"薬を一定の間隔で繰り返し飲んだとき体内に残る薬の量がどこまで増えるかや、公共投資が消費の連鎖を呼ぶ経済波及効果の大きさを見積もるときに使う。終わりのない足し算の行き着く先を、1つの式で言い当てられる。"},
     {title:"ベクトルの成分計算・内積",slug:"vector-dot",genre:"ベクトル",level:"高校",calc:true,problem:"成分の和・スカラー倍・内積と角度",keywords:"ベクトル 内積 成分 なす角 仕事 3D 明るさ 光",summary:"3Dゲームやアニメーションでは、光が物の表面にどれくらい当たっているか（明るさ）を内積で計算する。力の向きと進む向きの関係から、どれだけ仕事をしたかを求める物理の計算でも使う。"},
     {title:"直線・平面の方程式",slug:"vector-equations",genre:"ベクトル",level:"高校",calc:true,problem:"ベクトル方程式の立て方",keywords:"ベクトル方程式 直線 平面 レイトレーシング ロボット 軌道 光線",summary:"3D空間で光がまっすぐ進む様子を再現するレイトレーシングや、ロボットの腕が通る道筋を表す計算では、直線や平面をベクトルの式で表して、当たり判定や位置決めをする。"},
     {title:"ベクトルの外積",slug:"cross-product",genre:"ベクトル",level:"大学",calc:true,problem:"外積と平行四辺形の面積",keywords:"外積 法線 トルク 回転 面積 3D モーター",summary:"3Dグラフィックスでは、面の向き（法線）を外積で求めて光の当たり方を決める。モーターや扉が回る力の強さ（トルク）を計算するときにも、外積の考え方が使われる。"},
+    {title:"ベクトル解析（発散・回転）",slug:"vector-calculus",genre:"ベクトル",level:"大学",calc:true,problem:"ベクトル場の発散（div）と回転（rot）を成分から計算する",keywords:"ベクトル解析 発散 回転 div rot 線積分 マクスウェル 流体",summary:"天気予報のシミュレーションや飛行機の翼のまわりの空気の流れは、風や水の流れをベクトル場として扱い、発散や回転で流れの性質を読み解く。電磁気の法則（マクスウェル方程式）もこの言葉で書かれている。"},
     {title:"接線の方程式",slug:"tangent",genre:"微分・積分",level:"高校",calc:true,problem:"曲線上の点における接線",keywords:"接線 接線の方程式 傾き 一次近似 速度",summary:"走っている物のその瞬間の速度や、グラフが今どれくらい速く変わっているかは、接線の傾きで表される。複雑な曲線を接線で近づけて計算を簡単にする一次近似の土台でもある。"},
     {title:"増減表と極値",slug:"extrema",genre:"微分・積分",level:"高校",calc:true,problem:"極大・極小とグラフの概形",keywords:"増減表 極値 極大 極小 グラフの概形 利益",summary:"店の価格や工場の生産量を調整して、利益や効率が一番よくなる点（最大・最小）を探すときに使う。グラフの増え方・減り方を増減表にまとめると、山や谷の位置がはっきり分かる。"},
     {title:"面積（曲線と軸）",slug:"area-under-curve",genre:"微分・積分",level:"高校",calc:true,problem:"囲まれた面積の求め方",keywords:"面積 曲線 定積分 土木 断面積 土量",summary:"土地や部品のように、境界が曲線になっている形の面積を定積分で求める。土木工事で道路やトンネルの断面積を出して、掘る土の量や材料の量を見積もる計算にもつながる。"},
     {title:"極限",slug:"limits",genre:"微分・積分",level:"高校・大学",calc:true,problem:"数列・関数の極限の考え方",keywords:"極限 リミット 収束 はさみうち ロピタル 数値計算 近づく",summary:"微分も積分も、「限りなく近づく」という極限の考え方の上に成り立っている。コンピュータで方程式の答えを少しずつ近づけて求める計算（数値計算）でも、どこまで近づければ十分かを決める物差しになる。"},
+    {title:"級数の収束判定と収束半径",slug:"series-convergence",genre:"微分・積分",level:"大学",calc:true,problem:"無限級数が収束するか発散するかを、比判定・p級数・等比級数で判定する",keywords:"収束判定 比判定 収束半径 p級数 等比級数 発散 テイラー展開",summary:"テイラー展開などの近似計算で『どこまで足せば十分か』『そもそも収束するのか』を判定する物差しである。数値シミュレーションの誤差評価や、信号処理の級数表現が正しいかの確認に使われる。"},
     {title:"テイラー展開",slug:"taylor",genre:"微分・積分",level:"大学",calc:true,problem:"関数を多項式で近似する展開",keywords:"テイラー展開 マクローリン展開 近似 電卓 関数 多項式 精度",summary:"電卓やコンピュータが sin や e^x のような関数の値を計算する方法のひとつが、関数を多項式の足し算に置き換えるテイラー展開。項を増やすほど本当の値に近づくので、必要な精度に合わせて項の数を調整できる。"},
     {title:"微分方程式の基礎",slug:"differential-equations",genre:"微分・積分",level:"大学",calc:true,problem:"変数分離形などの基本的な解き方と考え方",keywords:"微分方程式 変数分離 電気回路 振動 制御 人口 熱 天気予報",summary:"電気回路の電流の変化、ばねの振動、熱の伝わり方、生き物の数の増え方など、「今の状態から次にどう変わるか」を表す方程式が微分方程式。天気予報や機械の制御など、変化を予測する技術の土台になっている。"},
+    {title:"二階線形微分方程式",slug:"second-order-ode",genre:"微分・積分",level:"大学",calc:true,problem:"y''＋p y'＋q y＝0 の形の2階線形微分方程式を特性方程式で解く",keywords:"二階線形微分方程式 特性方程式 振動 減衰 RLC ばね",summary:"車のサスペンションのばねとダンパーの効き具合や、地震で建物がどう揺れるかは、二階の微分方程式で表される振動の問題である。楽器の弦の振動や電気回路の応答も同じ形で、解き方の型がそのまま設計に使われる。"},
     {title:"偏微分",slug:"partial-differentiation",genre:"微分・積分",level:"大学",calc:true,problem:"多変数関数の微分（偏微分）",keywords:"偏微分 勾配 機械学習 AI 誤差 パラメータ 勾配降下法",summary:"AI（機械学習）は、予測の誤差を小さくするために、たくさんの調整つまみ（パラメータ）を少しずつ動かして学習する。そのとき「つまみを1つだけ動かすと誤差がどう変わるか」を測る道具が偏微分で、学習の進め方を決めている。"},
+    {title:"ラグランジュ乗数法",slug:"lagrange-multipliers",genre:"微分・積分",level:"大学",calc:true,problem:"x²＋y²＝R のような制約のもとで、関数の最大値・最小値を求める",keywords:"ラグランジュ乗数法 制約つき最適化 最大値 最小値 効用最大化 機械学習",summary:"限られた予算や材料の中で一番よい設計を探す最適化の基本で、経済学の効用最大化から機械学習の学習アルゴリズムまで顔を出す。『制約の中で最大・最小を探す』問題の標準装備である。"},
     {title:"重積分",slug:"multiple-integrals",genre:"微分・積分",level:"大学",calc:true,problem:"二重積分の考え方",keywords:"重積分 二重積分 体積 質量 重心 期待値",summary:"不規則な形をした物の体積や重さ、重心の位置は、細かく刻んで足し合わせる重積分で求める。確率の計算でも、広がりを持った量を合計して期待値（平均）を出すのに使われる。"},
+    {title:"重積分の変数変換（ヤコビアン）",slug:"jacobian",genre:"微分・積分",level:"大学",calc:true,problem:"座標変換のヤコビアン（面積の拡大率）と、極座標による二重積分を計算する",keywords:"ヤコビアン 変数変換 極座標 重積分 面積 ロボット",summary:"画像を歪ませるワーピングや地図投影の面積の歪みは、座標変換の拡大率であるヤコビアンで測る。ロボット工学では関節の動きと手先の動きを結ぶヤコビ行列が制御の要になっている。"},
     {title:"ニュートン法",slug:"newton-method",genre:"微分・積分",level:"大学",calc:true,problem:"接線を使って方程式の解に近づく反復法",keywords:"ニュートン法 反復 近似 平方根 アルゴリズム 収束 コンピュータ",summary:"コンピュータが方程式の答えや平方根を高速に求めるときに使われる、代表的な計算方法（アルゴリズム）。グラフの接線を使って答えに次々に近づいていくので、数回の繰り返しで答えにほぼ到達する。"},
     {title:"フーリエ変換の考え方",slug:"fourier",genre:"微分・積分",level:"大学",calc:true,problem:"波を周波数の成分に分ける考え方",keywords:"フーリエ変換 周波数 圧縮 MP3 JPEG MRI ノイズ除去 音声 画像",summary:"音楽を「どの高さの音がどれだけ含まれているか」に分解する考え方で、音声や画像の圧縮、雑音を取り除く処理、MRIで体の断面画像を作る計算の基礎になっている。"},
+    {title:"ラプラス変換",slug:"laplace-transform",genre:"微分・積分",level:"大学",calc:true,problem:"微分方程式を代数の計算に直して解くための変換と、その逆変換",keywords:"ラプラス変換 逆ラプラス変換 伝達関数 過渡現象 微分方程式 制御",summary:"工場の自動制御やロボットの姿勢制御では、微分方程式で表される機械の応答をラプラス変換で代数の計算に直して設計する。電気回路のスイッチを入れた直後の電流の変化（過渡現象）の解析でも、現場の標準的な道具になっている。"},
     {title:"いろいろな関数の微分",slug:"differentiation-rules",genre:"微分・積分",level:"高校",calc:true,problem:"積・商・合成関数（連鎖律）と三角・指数・対数関数の導関数を公式で求める問題。",keywords:"微分 積の微分 商の微分 合成関数 連鎖律 三角関数 指数関数 対数関数 導関数",summary:"AIの学習で使う活性化関数（シグモイド関数など）の微分は合成関数の微分（連鎖律）そのもので、誤差逆伝播法の心臓部になっている。物理の速度・加速度や経済の限界費用など、変化率を扱うすべての場面で使う道具でもある。"},
     {title:"置換積分・部分積分",slug:"integration-techniques",genre:"微分・積分",level:"高校",calc:true,problem:"置換積分で基本形に帰着させる不定積分と、部分積分公式で種類の違う関数の積を積分する問題。",keywords:"置換積分 部分積分 不定積分 積分定数 xe^x xsinx",summary:"確率分布の計算（指数分布の確率など）や信号処理、物理の仕事や重心の計算では、基本の形に帰着させる置換積分・部分積分が必須の道具になる。微分方程式を解く途中でも頻出する。"},
     {title:"積分の応用（体積・曲線の長さ）",slug:"integration-applications",genre:"微分・積分",level:"高校",calc:true,problem:"回転体の体積を定積分で求める問題と、円弧など曲線の長さを求める問題。",keywords:"積分の応用 回転体 体積 曲線の長さ 円弧 円錐 定積分",summary:"ワインのタンクやボトルのような回転体の容器の容量は、回転体の体積の計算で設計する。ケーブルや道路など、曲がったものの長さを見積もるときにも曲線の長さの考え方を使う。"},
+    {title:"数値積分（台形公式・シンプソン公式）",slug:"numerical-integration",genre:"微分・積分",level:"大学",calc:true,problem:"積分を台形公式とシンプソン公式で数値的に近似し、正確な値と比べる",keywords:"数値積分 台形公式 シンプソン公式 近似 面積 排水量",summary:"積分が式で解けない関数の面積や体積を、実務では台形公式やシンプソン公式で数値的に出す。CADの面積計算、センサーデータからの消費電力量の積算、船の排水量を計算する『シンプソンの法則』がその代表である。"},
     {title:"行列の積",slug:"matrix-multiplication",genre:"線形代数",level:"大学",calc:true,problem:"行列同士の積の計算",keywords:"行列 積 行列の積 AI ニューラルネット 3D 座標変換 CG",summary:"AI（人工知能）が文章や画像を処理する計算の本体は、行列の積を大量に繰り返すこと。3Dゲームや映画のCGで立体物を回したり動かしたりする座標の変換も、行列の積で計算されている。"},
     {title:"逆行列・掃き出し法",slug:"inverse-matrix",genre:"線形代数",level:"大学",calc:true,problem:"逆行列と連立方程式の解法",keywords:"逆行列 掃き出し法 ガウス 連立一次方程式 産業連関表 レオンチェフ",summary:"建物にかかる力の釣り合いや電気回路の電流のように、わからない数がたくさん絡み合う計算は連立一次方程式として行列で表し、掃き出し法で解く。工場同士の取引をまとめた産業連関表でも、逆行列を使って必要な生産量を求める。"},
+    {title:"行列のランクと線形独立",slug:"rank-independence",genre:"線形代数",level:"大学",calc:true,problem:"3×3行列のランク（階数）を掃き出し法で求め、ベクトルの組の線形独立・従属を判定する",keywords:"ランク 階数 線形独立 線形従属 掃き出し法 行列",summary:"連立方程式に解があるか、解が1つに決まるかを判定するのがランクである。センサーが何台あっても実質何個分の情報しかないか、データの実質的な次元を見抜く場面でも使われる。"},
     {title:"行列式",slug:"determinant",genre:"線形代数",level:"大学",calc:true,problem:"2×2・3×3 の行列式",keywords:"行列式 サラス 面積 体積 拡大率 逆行列の判定",summary:"行列式の値は、その行列で平面や空間を変形したとき、面積や体積が何倍になるかを表している。値が0かどうかで、逆行列が存在するか、連立方程式の答えが1つに決まるかも判定できる。"},
     {title:"固有値・固有ベクトル",slug:"eigenvalues",genre:"線形代数",level:"大学",calc:true,problem:"固有方程式と対角化の考え方",keywords:"固有値 固有ベクトル 固有振動数 共振 検索順位 主成分分析 対角化 振動",summary:"建物や橋にはそれぞれ揺れやすい振動の速さ（固有振動数）があり、固有値を求めることで地震の揺れと共振する危険を調べる。Googleの検索順位を決めるPageRankや、大量のデータの要点をつかむ主成分分析も、固有値の考え方が土台になっている。"},
     {title:"線形変換と回転行列",slug:"linear-transformation",genre:"線形代数",level:"大学",calc:true,problem:"行列による点の変換と回転",keywords:"線形変換 回転行列 回転 拡大縮小 ゲーム CAD カメラ",summary:"ゲームやCADで図形や立体を回したり、大きくしたりする描画の計算は、点の座標に行列を掛ける線形変換で行われている。キャラクターの向きや画面の中のカメラの動きも、この計算で決まる。"},
+    {title:"グラム・シュミットの直交化と最小二乗法",slug:"least-squares",genre:"線形代数",level:"大学",calc:true,problem:"ベクトルの組をグラム・シュミットで直交化し、データに最小二乗法で直線をあてはめる",keywords:"グラム・シュミット 直交化 最小二乗法 正規方程式 GPS 線形回帰 射影",summary:"GPSの測位計算の心臓部は最小二乗法で、誤差のある大量の測定から最も確からしい位置を割り出す。測量の網平均やセンサーの校正、機械学習の線形回帰も同じ仕組みで、直交化はその計算を安定させる道具である。"},
     {title:"複素数の四則計算",slug:"complex-numbers",genre:"複素数",level:"高校・大学",calc:true,problem:"複素数の和・積・商と共役",keywords:"複素数 虚数 共役 絶対値 交流回路 インピーダンス 信号処理",summary:"電気工学では、交流回路の計算に複素数を使う。コイルやコンデンサーの電流の流れにくさ（インピーダンス）を複素数で表すと、抵抗だけの回路と同じように足し算や割り算で計算できる。通信や音声などの信号を扱う信号処理でも土台になっている。"},
     {title:"極形式・ド・モアブルの定理",slug:"polar-form",genre:"複素数",level:"高校・大学",calc:true,problem:"偏角と累乗・n乗根",keywords:"極形式 ド・モアブル 偏角 位相 交流 累乗 n乗根 回転",summary:"交流の電気の波は、大きさと、タイミングのずれ（位相）で決まる。複素数を極形式で表すと位相を角度として扱えて、波の回転や合成の計算が、角度の足し算や掛け算でできるようになる。"}
+    {title:"オイラーの公式と複素指数関数",slug:"euler-formula",genre:"複素数",level:"大学",calc:true,problem:"e^{iθ}＝cosθ＋i sinθ を使って、複素数の指数・対数を計算する",keywords:"オイラーの公式 複素指数関数 フェーザ 交流 位相 e^iπ",summary:"交流回路や信号処理では、波を複素数の回転として表すフェーザ表示が実務の標準で、その土台がオイラーの公式である。振動や波の計算が、三角関数の面倒な計算から指数関数の簡単な計算に化ける。"}
   ];
   var SECTIONS=[
     {name:"考え方",id:"sec-kaikata"},
