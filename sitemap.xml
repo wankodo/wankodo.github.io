@@ -47,6 +47,8 @@
 <url><loc>https://wankodo.github.io/math/calc-square-root.html</loc></url>
 <url><loc>https://wankodo.github.io/math/expansion.html</loc></url>
 <url><loc>https://wankodo.github.io/math/calc-expansion.html</loc></url>
+<url><loc>https://wankodo.github.io/math/algebraic-expressions.html</loc></url>
+<url><loc>https://wankodo.github.io/math/calc-algebraic-expressions.html</loc></url>
 <url><loc>https://wankodo.github.io/math/inequality-proof.html</loc></url>
 <url><loc>https://wankodo.github.io/math/calc-inequality-proof.html</loc></url>
 <url><loc>https://wankodo.github.io/math/exponents.html</loc></url>
@@ -165,6 +167,8 @@
 <url><loc>https://wankodo.github.io/math/calc-linear-inequality.html</loc></url>
 <url><loc>https://wankodo.github.io/math/absolute-value.html</loc></url>
 <url><loc>https://wankodo.github.io/math/calc-absolute-value.html</loc></url>
+<url><loc>https://wankodo.github.io/math/signed-numbers.html</loc></url>
+<url><loc>https://wankodo.github.io/math/calc-signed-numbers.html</loc></url>
 <url><loc>https://wankodo.github.io/math/recurring-decimal.html</loc></url>
 <url><loc>https://wankodo.github.io/math/calc-recurring-decimal.html</loc></url>
 <url><loc>https://wankodo.github.io/math/number-bases.html</loc></url>
@@ -205,6 +209,10 @@
 <url><loc>https://wankodo.github.io/math/calc-quartiles-boxplot.html</loc></url>
 <url><loc>https://wankodo.github.io/math/histograms.html</loc></url>
 <url><loc>https://wankodo.github.io/math/calc-histograms.html</loc></url>
+<url><loc>https://wankodo.github.io/math/approx-significant.html</loc></url>
+<url><loc>https://wankodo.github.io/math/calc-approx-significant.html</loc></url>
+<url><loc>https://wankodo.github.io/math/sampling-survey.html</loc></url>
+<url><loc>https://wankodo.github.io/math/calc-sampling-survey.html</loc></url>
 <url><loc>https://wankodo.github.io/math/expected-value.html</loc></url>
 <url><loc>https://wankodo.github.io/math/calc-expected-value.html</loc></url>
 <url><loc>https://wankodo.github.io/math/markov-chains.html</loc></url>
