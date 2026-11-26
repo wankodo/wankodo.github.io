@@ -44,6 +44,8 @@
 <url><loc>https://wankodo.github.io/math/calc-mean-value-theorem.html</loc></url>
 <url><loc>https://wankodo.github.io/math/integration.html</loc></url>
 <url><loc>https://wankodo.github.io/math/calc-integration.html</loc></url>
+<url><loc>https://wankodo.github.io/math/improper-integrals.html</loc></url>
+<url><loc>https://wankodo.github.io/math/calc-improper-integrals.html</loc></url>
 <url><loc>https://wankodo.github.io/math/riemann-sum.html</loc></url>
 <url><loc>https://wankodo.github.io/math/calc-riemann-sum.html</loc></url>
 <url><loc>https://wankodo.github.io/mobility-simulator/</loc></url>
@@ -95,8 +97,12 @@
 <url><loc>https://wankodo.github.io/math/calc-distributions.html</loc></url>
 <url><loc>https://wankodo.github.io/math/poisson-distribution.html</loc></url>
 <url><loc>https://wankodo.github.io/math/calc-poisson-distribution.html</loc></url>
+<url><loc>https://wankodo.github.io/math/entropy.html</loc></url>
+<url><loc>https://wankodo.github.io/math/calc-entropy.html</loc></url>
 <url><loc>https://wankodo.github.io/math/estimation-testing.html</loc></url>
 <url><loc>https://wankodo.github.io/math/calc-estimation-testing.html</loc></url>
+<url><loc>https://wankodo.github.io/math/central-limit-theorem.html</loc></url>
+<url><loc>https://wankodo.github.io/math/calc-central-limit-theorem.html</loc></url>
 <url><loc>https://wankodo.github.io/math/statistical-tests.html</loc></url>
 <url><loc>https://wankodo.github.io/math/calc-statistical-tests.html</loc></url>
 <url><loc>https://wankodo.github.io/math/recurrence.html</loc></url>
@@ -161,6 +167,10 @@
 <url><loc>https://wankodo.github.io/math/calc-determinant.html</loc></url>
 <url><loc>https://wankodo.github.io/math/eigenvalues.html</loc></url>
 <url><loc>https://wankodo.github.io/math/calc-eigenvalues.html</loc></url>
+<url><loc>https://wankodo.github.io/math/jordan-form.html</loc></url>
+<url><loc>https://wankodo.github.io/math/calc-jordan-form.html</loc></url>
+<url><loc>https://wankodo.github.io/math/quadratic-forms.html</loc></url>
+<url><loc>https://wankodo.github.io/math/calc-quadratic-forms.html</loc></url>
 <url><loc>https://wankodo.github.io/math/linear-transformation.html</loc></url>
 <url><loc>https://wankodo.github.io/math/calc-linear-transformation.html</loc></url>
 <url><loc>https://wankodo.github.io/math/least-squares.html</loc></url>
@@ -171,6 +181,8 @@
 <url><loc>https://wankodo.github.io/math/calc-polar-form.html</loc></url>
 <url><loc>https://wankodo.github.io/math/euler-formula.html</loc></url>
 <url><loc>https://wankodo.github.io/math/calc-euler-formula.html</loc></url>
+<url><loc>https://wankodo.github.io/math/residue.html</loc></url>
+<url><loc>https://wankodo.github.io/math/calc-residue.html</loc></url>
 <url><loc>https://wankodo.github.io/math/sets-propositions.html</loc></url>
 <url><loc>https://wankodo.github.io/math/calc-sets-propositions.html</loc></url>
 <url><loc>https://wankodo.github.io/math/linear-inequality.html</loc></url>
@@ -227,6 +239,8 @@
 <url><loc>https://wankodo.github.io/math/calc-expected-value.html</loc></url>
 <url><loc>https://wankodo.github.io/math/markov-chains.html</loc></url>
 <url><loc>https://wankodo.github.io/math/calc-markov-chains.html</loc></url>
+<url><loc>https://wankodo.github.io/math/graph-theory.html</loc></url>
+<url><loc>https://wankodo.github.io/math/calc-graph-theory.html</loc></url>
 <url><loc>https://wankodo.github.io/math/geometric-series.html</loc></url>
 <url><loc>https://wankodo.github.io/math/calc-geometric-series.html</loc></url>
 <url><loc>https://wankodo.github.io/math/inverse-composite-functions.html</loc></url>

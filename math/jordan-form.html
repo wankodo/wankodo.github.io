@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ジョルダン標準形｜数学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-math.svg">
+<meta name="description" content="ジョルダン標準形の求め方を、公式・手順・例題で解説。対角化できない行列でも必ず標準形にできる理由、ジョルダン細胞の形、連立微分方程式や制御工学など実際の現場での使われ方まで紹介します。対応する計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="数学ツール集">
+<meta property="og:title" content="ジョルダン標準形｜数学ツール集">
+<meta property="og:description" content="対角化できない行列の行き着く先、ジョルダン標準形とジョルダン細胞の求め方を、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/math/jordan-form.html">
+<meta property="og:image" content="https://wankodo.github.io/math/ogp-math.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/math/ogp-math.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 数学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">数学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="./" class="cur">数学ツール集</a>
+</div></nav>
+<header><div class="wrap"><h1>ジョルダン<span class="accent">標準形</span></h1><p>数学解法辞典 ― 線形代数（大学）</p></div></header>
+<div class="wrap">
+<p class="crumb"><a href="./">数学ツール集トップ</a> ＞ 線形代数 ＞ ジョルダン標準形</p>
+<p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">線形代数</span> <span class="badge badge-calc">計算機あり</span></p>
+<div class="summary-box"><span class="sb-lab">どんな時に使えるか</span>ジョルダン標準形は、対角化できない行列でも必ず行き着ける「最終形」で、連立線形微分方程式の解の形の決定（t·e^(λt) の項が現れるかどうか）や制御工学の状態方程式の解析、行列の累乗の計算に使われる。固有値が重なっても行列の振る舞いを完全に見通せる、線形代数の到達点である。</div>
+<section class="card"><h2>どんな問題に使うか</h2><p>行列を、似た形（相似な行列）の中でいちばん単純な形に変形する問題です。対角化はその特別な場合で、固有ベクトルが足りずに対角化できない行列でも、ジョルダン標準形には必ず変形できます。</p><ul><li>固有値が重解の行列が、対角化できるかジョルダン細胞になるかを判定する問題</li><li>行列のジョルダン標準形を求める問題</li><li>ジョルダン標準形を使って行列の累乗（n乗）を計算する問題</li><li>連立線形微分方程式の解の形を、ジョルダン標準形から読み取る問題</li></ul><p>固有値・固有ベクトルの項目で学ぶ対角化の続きにあたる項目です。対角化は「固有ベクトルが十分に取れる場合」の話で、取れない場合の受け皿がジョルダン標準形になります。</p></section>
+<section class="card"><h2>公式・考え方</h2><p>どんな正方行列も、複素数の範囲では、適当な正則行列 P による相似変換 P<sup>−1</sup>AP で<strong>ジョルダン標準形</strong>に変形できます。対角化できるかどうかは運次第でも、ジョルダン標準形には<strong>必ず</strong>できる、というのがこの理論の核心です。</p><p>ジョルダン標準形は、対角線上に<strong>ジョルダン細胞</strong>と呼ばれるブロックを並べた形です。ジョルダン細胞は、対角成分がすべて同じ固有値 λ で、その1つ上の成分（上対角成分）がすべて 1 のブロックです。</p><div class="formula">ジョルダン細胞（2×2）＝ [λ 1; 0 λ]（1行目：λ 1／2行目：0 λ）</div><p>固有ベクトルが十分に取れる固有値については、細胞は1×1（ただの対角成分）になります。つまり対角形は「すべての細胞が1×1のジョルダン標準形」であり、対角化はジョルダン標準形の特別な場合です。固有値が重解でも固有ベクトルが足りないと、2×2以上の細胞が現れます。</p><p>2×2行列では、固有方程式 λ² − tλ ＋ Δ ＝ 0（t はトレース、Δ は行列式）の判別式 D ＝ t² − 4Δ で場合が分かれます。D ＞ 0 なら異なる固有値が2つで対角形、D ＝ 0 なら重解で、行列が λI そのものでなければジョルダン細胞になります。</p></section>
+<section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>固有方程式を作る。</strong>トレース t ＝ a ＋ d と行列式 Δ ＝ ad − bc から、λ² − tλ ＋ Δ ＝ 0 と立てる。</li><li><strong>判別式 D ＝ t² − 4Δ を計算する。</strong>固有値が異なる2つか、重解か、複素数かがここで決まる。</li><li><strong>D ＞ 0 の場合：</strong>異なる2つの実固有値 λ ＝ (t ± √D) / 2 が取れ、固有ベクトルも2本取れるので、標準形は対角形 diag(λ1, λ2)。</li><li><strong>D ＜ 0 の場合：</strong>複素固有値 t/2 ± i·√(−D)/2 になる。実数の範囲では対角化できないが、複素数の範囲では対角形になる。</li><li><strong>D ＝ 0 の場合：</strong>固有値は重解 λ ＝ t/2。行列が λI そのもの（b ＝ c ＝ 0 かつ a ＝ d ＝ λ）なら固有ベクトルが2本取れて対角形、そうでなければ固有ベクトルは1本だけで、ジョルダン細胞 [λ 1; 0 λ] になる。</li><li><strong>最終形を書く。</strong>対角形かジョルダン細胞かを明示して答える。</li></ol></section>
+<section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：行列 [[2, 1], [0, 2]]（1行目：2 1／2行目：0 2）のジョルダン標準形を求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>トレース t ＝ 2 ＋ 2 ＝ 4、行列式 Δ ＝ 2×2 − 1×0 ＝ 4 なので、固有方程式は λ² − 4λ ＋ 4 ＝ (λ − 2)² ＝ 0、固有値は 2（重解）です。</p><p>固有ベクトルは (A − 2I)v ＝ 0、つまり [[0, 1], [0, 0]] v ＝ 0 を解いて得られ、v は (1, 0) 方向の1本しか取れません。行列が 2I そのものではないため、対角化はできません。</p><p>したがって標準形はジョルダン細胞になります。もとの行列自体が、すでに対角成分 2・上対角成分 1 のジョルダン細胞の形をしています。</p><p><strong>答え：ジョルダン標準形は [[2, 1], [0, 2]]（固有値 2 のジョルダン細胞）</strong></p></details></div></section>
+<section class="card"><h2>現場での使われ方</h2><h3>連立線形微分方程式の解の形の決定</h3><p>連立線形微分方程式 x' ＝ Ax の解は、A のジョルダン標準形で形が決まります。対角化できる場合は e^(λt) の組み合わせだけですが、ジョルダン細胞があると、解に t·e^(λt) のような「t が掛かった項」が現れます。振動や共振、減衰の仕方が変わる分岐点が、細胞があるかどうかで決まるのです。</p><h3>制御工学の状態方程式の解析</h3><p>制御工学では、システムを状態方程式 x' ＝ Ax ＋ Bu の形で表し、A の固有値（極）の位置で安定性を判定します。重解の極がある場合にシステムがどう振る舞うかは、対角化できるかジョルダン細胞になるかで変わるため、標準形による解析が設計の基礎になっています。</p><h3>行列の累乗の計算</h3><p>行列の n 乗 A^n は、もとの形のままでは計算が大変ですが、ジョルダン標準形 J に変形すれば J^n が規則的に計算でき、A^n ＝ P J^n P<sup>−1</sup> と戻せます。ジョルダン細胞の累乗には二項係数が現れる形の公式があり、マルコフ連鎖の n ステップ遷移や漸化式の一般項など、繰り返し適用する計算の土台になります。</p></section>
+<section class="card"><h2>考え出した人</h2><p>フランスの数学者<strong>カミーユ・ジョルダン</strong>（1838〜1922）が、1870年に標準形の理論を提示しました。行列（当時は線形変換の置換の理論として）を、相似なものの中で最も単純な形に帰着させるこの結果は、群論の創始者の一人でもあるジョルダンの代表的な業績で、「ジョルダン標準形」の名前は彼に由来します。</p></section>
+<a class="linkcard" href="calc-jordan-form.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">ジョルダン標準形 計算機：2×2行列の成分を入れると、固有方程式と判別式から対角形かジョルダン細胞かを手順つきで判定します。</span></a>
+<section class="card"><h2>関連項目</h2><p>ジョルダン標準形は、固有値・固有ベクトルの項目で扱う対角化の続きです。対角化は固有ベクトルが十分に取れる場合の標準形であり、取れない場合まで含めて必ず行き着ける形がジョルダン標準形だと捉えると、線形代数の全体像がつながります。行列のランクと線形独立の項目も、固有ベクトルの本数を考える土台としてあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「数学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

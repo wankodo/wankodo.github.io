@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>情報量とエントロピー｜数学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-math.svg">
+<meta name="description" content="情報量とエントロピーの使い方を、公式・手順・例題で解説。自己情報量 −log₂(p) とエントロピー H ＝ −Σ p·log₂(p) の求め方や、データ圧縮の限界やパスワードの強さの評価など、実際の現場での使われ方まで紹介します。対応する計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="数学ツール集">
+<meta property="og:title" content="情報量とエントロピー｜数学ツール集">
+<meta property="og:description" content="自己情報量とエントロピーの求め方を、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/math/entropy.html">
+<meta property="og:image" content="https://wankodo.github.io/math/ogp-math.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/math/ogp-math.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 数学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">数学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="./" class="cur">数学ツール集</a>
+</div></nav>
+<header><div class="wrap"><h1>情報量と<span class="accent">エントロピー</span></h1><p>数学解法辞典 ― 確率・統計（大学）</p></div></header>
+<div class="wrap">
+<p class="crumb"><a href="./">数学ツール集トップ</a> ＞ 確率・統計 ＞ 情報量とエントロピー</p>
+<p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">確率・統計</span> <span class="badge badge-calc">計算機あり</span></p>
+<div class="summary-box"><span class="sb-lab">どんな時に使えるか</span>エントロピーは、データ圧縮の限界を決める量である。ZIPなどの圧縮でどこまで小さくできるかは元のデータのエントロピーで決まり、パスワードの強さの評価や、機械学習の決定木が「どの質問で分けるか」を決める情報利得の計算にも使われる。通信の理論限界を示したシャノンの情報理論の中心にある量である。</div>
+<section class="card"><h2>どんな問題に使うか</h2><p>確率分布が与えられたときに、各事象の「意外さ」を数値化した自己情報量と、分布全体の平均的な意外さであるエントロピーを求める問題です。</p><ul><li>ある事象の自己情報量 −log₂(p) を求める問題</li><li>確率分布からエントロピー H ＝ −Σ p·log₂(p) を計算する問題</li><li>コインやサイコロなど、分布の形が違うもののエントロピーを比べて「どちらが予測しにくいか」を答える問題</li><li>エントロピーから、符号化に必要な平均ビット数の下限を見積もる問題</li></ul><p>確率そのものや期待値を求める項目と違い、こちらは「確率分布の形そのものを1つの数で表す」計算が中心です。</p></section>
+<section class="card"><h2>公式・考え方</h2><p><strong>自己情報量</strong>は、確率 p で起きる事象が実際に起きたときの「意外さ」です。めったに起きない事象ほど大きく、必ず起きる事象（p ＝ 1）では 0 になります。底を2にした対数を使うと、単位は<strong>ビット</strong>になります。</p><div class="formula">自己情報量 ＝ −log₂(p)</div><p><strong>エントロピー</strong> H は、自己情報量を確率で重みづけした平均（期待値）です。分布が均等に散らばっているほど大きく、どれか1つに集中しているほど小さくなります。</p><div class="formula">H ＝ −Σ pᵢ·log₂(pᵢ)</div><p>確率0の事象については、log₂(0) が定義できませんが、p·log₂(p) の極限が 0 になるため、<strong>寄与を0として扱います</strong>。また、n 通りの結果がすべて等確率（各 1/n）のとき、エントロピーは最大値 log₂(n) になります。</p></section>
+<section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>確率の合計が1か確認する。</strong>確率分布でなければエントロピーは計算できない。</li><li><strong>各事象の自己情報量 −log₂(p) を求める。</strong>p が 1/2、1/4、1/8 のような2の累乗の逆数なら、情報量はそれぞれ 1、2、3 ビットとすぐ分かる。</li><li><strong>各事象の寄与 p ×（自己情報量）を計算する。</strong>確率0の事象の寄与は0とする。</li><li><strong>寄与をすべて合計する。</strong>その合計がエントロピー H（単位ビット）。</li><li><strong>最大値と比べる。</strong>結果が n 通りなら H は log₂(n) 以下になるはずで、超えていたら計算ミス。</li></ol></section>
+<section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：確率分布（0.5, 0.25, 0.125, 0.125）のエントロピー H を求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>自己情報量は、p ＝ 0.5 のとき −log₂(0.5) ＝ 1 ビット、p ＝ 0.25 のとき −log₂(0.25) ＝ 2 ビット、p ＝ 0.125 のとき −log₂(0.125) ＝ 3 ビットです。</p><p>寄与は 0.5 × 1 ＝ 0.5、0.25 × 2 ＝ 0.5、0.125 × 3 ＝ 0.375 が2つで、合計は 0.5 ＋ 0.5 ＋ 0.375 ＋ 0.375 ＝ 1.75 となります。</p><p><strong>答え：1.75 ビット</strong></p></details></div></section>
+<section class="card"><h2>現場での使われ方</h2><h3>データ圧縮の限界（ハフマン符号化・ZIP）</h3><p>エントロピーは「そのデータを、情報を落とさずにどこまで圧縮できるか」の理論的な限界です。頻繁に現れる記号に短い符号を割り当てるハフマン符号化は、この限界に迫る方法として設計されました。ZIP などの圧縮形式でも、元のデータのエントロピーが高い（＝ランダムに近い）ほど圧縮が効かず、すでに圧縮されたファイルを再圧縮しても小さくならないのはこのためです。</p><h3>シャノンの通信理論</h3><p>エントロピーはもともと、ノイズのある通信路で情報をどれだけ速く・正確に送れるかを扱う通信理論の中で生まれました。情報源のエントロピーが、誤りなく送るために必要な通信量の下限を与え、現代の通信や誤り訂正符号の設計の土台になっています。</p><h3>パスワードの強さの評価</h3><p>パスワードの強さは「何ビットのエントロピーがあるか」で測られます。使える文字の種類と長さからエントロピーを計算し、総当たり攻撃にどれだけ耐えるかを見積もります。ランダムな8文字と、辞書にある単語では、見た目の長さが同じでもエントロピーが大きく違う、という評価ができます。</p><h3>機械学習の決定木（情報利得）</h3><p>機械学習の決定木では、データを分類するときに「どの特徴で分割すると一番きれいに分かれるか」を、エントロピーの減少量である情報利得で判断します。分割前後でエントロピーが大きく下がる特徴ほど、分類に役立つ質問だというわけです。</p></section>
+<section class="card"><h2>考え出した人</h2><p>情報量とエントロピーを定義したのは、アメリカの数学者・工学者<strong>クロード・シャノン</strong>（1916〜2001）です。1948年の論文『通信の数学的理論』で、情報の量を確率と対数で測る枠組みを示し、情報理論という分野そのものを創始しました。「ビット」を情報の単位として定着させたのもこの論文で、熱力学のエントロピーと形が似ていることから、この量もエントロピーと呼ばれています。</p></section>
+<a class="linkcard" href="calc-entropy.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">情報量とエントロピー 計算機：確率のリストを入れると、各事象の自己情報量とエントロピーを手順つきで計算します。</span></a>
+<section class="card"><h2>関連項目</h2><p>確率の基本的な考え方を押さえてから読むと、自己情報量の「意外さ」の意味がつかみやすくなります。まれな出来事の回数を扱うポアソン分布と指数分布の項目や、平均の考え方を使う期待値の項目も、同じ確率・統計の仲間です。<a href="./">数学ツール集トップへ戻る</a></p></section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「数学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
