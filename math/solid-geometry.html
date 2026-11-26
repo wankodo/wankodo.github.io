@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>立体の表面積と体積｜数学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-math.svg">
+<meta name="description" content="立体の表面積と体積の求め方を、公式・手順・例題で解説。柱体・錐体・球の公式の使い分けを、タンクの容量計算や塗装面積の見積もりなど実際の現場での使われ方まで紹介します。対応する計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="数学ツール集">
+<meta property="og:title" content="立体の表面積と体積｜数学ツール集">
+<meta property="og:description" content="柱体の体積は底面積×高さ、錐体はその1/3、球は 4/3πr³。立体の表面積と体積を公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/math/solid-geometry.html">
+<meta property="og:image" content="https://wankodo.github.io/math/ogp-math.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/math/ogp-math.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 数学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">数学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="./" class="cur">数学ツール集</a>
+</div></nav>
+<header><div class="wrap"><h1>立体の<span class="accent">表面積と体積</span></h1><p>数学解法辞典 ― 図形（中学1年）</p></div></header>
+<div class="wrap">
+<p class="crumb"><a href="./">数学ツール集トップ</a> ＞ 図形 ＞ 立体の表面積と体積</p>
+<p><span class="badge badge-lv">中学1年</span> <span class="badge badge-genre">図形</span> <span class="badge badge-calc">計算機あり</span></p>
+<div class="summary-box"><span class="sb-lab">どんな時に使えるか</span>タンク・サイロ・ドラム缶の容量計算や、塗料・メッキの面積見積もりは、立体の体積と表面積の計算そのものである。飲料缶の内容量設計や球形のガスタンクの容量計算まで、建築・製造の見積もりの基礎になっている。</div>
+<section class="card"><h2>どんな問題に使うか</h2><p>角柱・円柱などの柱体、角錐・円錐などの錐体、そして球について、体積（中に入る量）と表面積（表面全体の広さ）を求める問題です。立体の種類によって公式の形が決まります。</p><ul><li>柱体の体積と表面積（底面積×高さが基本）</li><li>錐体の体積と表面積（体積は対応する柱体の 1/3）</li><li>球の体積と表面積（半径だけから決まる）</li><li>円錐の側面積（展開図のおうぎ形で考える）</li></ul><p>表面積は「展開図に開いて、面の面積を合計する」と考えると、どの立体でも迷いません。</p></section>
+<section class="card"><h2>公式・考え方</h2><p><strong>柱体の体積</strong>は、どの高さで切っても断面が底面と同じなので、底面積×高さです。</p><div class="formula">柱体の体積 ＝ 底面積 × 高さ</div><p><strong>錐体の体積</strong>は、底面と高さが同じ柱体のちょうど 1/3 です（なぜ 1/3 なのかは、高校・大学の積分で確かめられます）。</p><div class="formula">錐体の体積 ＝ 底面積 × 高さ ÷ 3</div><p><strong>円柱・円錐</strong>（底面の半径 r、高さ h）では、底面積が πr² なので次のようになります。円錐の側面は、母線（頂点から底面の円周までの長さ）を l として、展開すると半径 l のおうぎ形になります。</p><div class="formula">円柱：体積 ＝ πr²h／表面積 ＝ 2πr(r ＋ h)</div><div class="formula">円錐：体積 ＝ (1/3)πr²h／表面積 ＝ πr(r ＋ l)</div><p><strong>球</strong>（半径 r）の公式は、表面積と体積が次の形です。球の表面積 4πr² は、同じ半径の円の面積 πr² のちょうど4倍です。</p><div class="formula">球：体積 ＝ (4/3)πr³／表面積 ＝ 4πr²</div></section>
+<section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>立体の種類を見分ける。</strong>柱体か、錐体か、球かで使う公式が決まります。</li><li><strong>底面積を出す。</strong>円なら πr²、多角形ならその面積公式を使います。</li><li><strong>体積を求める。</strong>柱体は底面積×高さ、錐体はその 1/3、球は (4/3)πr³。</li><li><strong>表面積は展開図で考える。</strong>底面・側面に分けて面積を出し、合計します。円錐の側面は母線が必要なので、三平方の定理で先に求めます。</li><li><strong>単位をそろえる。</strong>体積は立方（cm³ など）、表面積は平方（cm² など）。混ざっていないか最後に確認します。</li></ol></section>
+<section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：（1）底面の半径 3cm、高さ 10cm の円柱の体積と表面積を求めよ。（2）半径 3cm の球の体積と表面積を求めよ。（π はそのまま使ってよい）</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>（1）体積 ＝ π × 3² × 10 ＝ 90π cm³。表面積 ＝ 2π × 3 × (3 ＋ 10) ＝ 78π cm²。</p><p>（2）体積 ＝ (4/3)π × 3³ ＝ 36π cm³。表面積 ＝ 4π × 3² ＝ 36π cm²。半径 3 の球では、体積と表面積の係数が偶然同じ 36 になります。</p><p><strong>答え：（1）体積 90π cm³、表面積 78π cm²（2）体積 36π cm³、表面積 36π cm²</strong></p></details></div></section>
+<section class="card"><h2>現場での使われ方</h2><h3>タンク・サイロの容量計算</h3><p>工場の円柱タンクや穀物サイロにどれだけ入るかは、円柱の体積計算そのものです。薬品や燃料の在庫管理では、タンクの液面の高さから残量を逆算することもあり、体積の公式が日常の管理に使われています。球形のLPGタンク（ガスタンク）も、球の体積の公式で容量が決まります。</p><h3>塗装・メッキの面積見積もり</h3><p>塗料やメッキは「表面積 × 単価」で費用が決まります。部品や構造物の表面積を立体の公式で見積もることは、製造コストの計算の第一歩です。表面積の見積もりがずれると、材料費も工数もずれるため、現場では基本の計算として扱われます。</p><h3>飲料缶の内容量設計</h3><p>飲料缶やペットボトルの「内容量」は、容器の内側の体積です。350mL 入る缶の寸法は、円柱の体積が 350cm³ になるよう設計されています。材料の使用量（表面積）を抑えながら容量を確保する設計は、体積と表面積のバランスの計算の上に成り立っています。</p></section>
+<section class="card"><h2>考え出した人</h2><p>球の体積と表面積の公式は、古代ギリシャの<strong>アルキメデス</strong>（紀元前3世紀）が発見しました。球が、それに外接する円柱の体積のちょうど 2/3 になることを突き止め、本人はこの発見を大変誇りに思って、墓石に円柱と球の図を刻ませたと伝えられています。錐体の体積が柱体の 1/3 になることの証明は<strong>エウドクソス</strong>によるもので、ユークリッドの『原論』第12巻に収められています。</p></section>
+<a class="linkcard" href="calc-solid-geometry.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">立体の表面積と体積 計算機：直方体・円柱・円錐・球・正四角錐の体積と表面積を、手順つきで計算します。</span></a>
+<section class="card"><h2>関連項目</h2><p>円の面積やおうぎ形の計算は円・扇形の項目、立体の頂点・辺・面の性質は空間図形と多面体の項目、円錐の体積がなぜ 1/3 になるかは定積分（面積）の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「数学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
