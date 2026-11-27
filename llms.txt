@@ -221,7 +221,7 @@
 
 ## 物理ツール集
 
-> 中学理科・高校物理基礎・高校物理・大学レベルの法則辞典と計算機。全129項目、各項目に解説記事があり、多くの項目に計算機もついています。トップは [物理ツール集](https://wankodo.github.io/physics/) です。
+> 中学理科・高校物理基礎・高校物理・大学レベルの法則辞典と計算機。全143項目、各項目に解説記事があり、多くの項目に計算機もついています。トップは [物理ツール集](https://wankodo.github.io/physics/) です。
 
 - [等加速度直線運動｜物理ツール集](https://wankodo.github.io/physics/uniform-acceleration.html): 初速度・加速度・時間から速度と変位を求める。計算機つき。
 - [自由落下と鉛直投射｜物理ツール集](https://wankodo.github.io/physics/free-fall-vertical-throw.html): 高さや初速度から、落下時間・落下速度・最高点の高さを求める。計算機つき。
@@ -352,3 +352,17 @@
 - [X線の発生と性質｜物理ツール集](https://wankodo.github.io/physics/x-rays.html): X線管の電圧から最短波長を、またはX線の波長から光子のエネルギーを求める。計算機つき。
 - [放射性崩壊と半減期｜物理ツール集](https://wankodo.github.io/physics/radioactive-decay-half-life.html): 半減期と経過時間から残りの量と残存割合を、または残存割合から経過時間を求める。計算機つき。
 - [質量欠損と結合エネルギー｜物理ツール集](https://wankodo.github.io/physics/binding-energy-mass-defect.html): 陽子と中性子の数と原子の質量から質量欠損と結合エネルギーを、または質量欠損から結合エネルギーを求める。計算機つき。
+- [核分裂と核融合｜物理ツール集](https://wankodo.github.io/physics/nuclear-fission-fusion.html): 核分裂と核融合の反応式を書き、質量欠損から放出エネルギーを求め、連鎖反応と臨界を説明する。解説記事のみ。
+- [不確定性原理｜物理ツール集](https://wankodo.github.io/physics/uncertainty-principle.html): 位置の不確定さから運動量や速度の不確定さの下限を求める。計算機つき。
+- [シュレーディンガー方程式の考え方｜物理ツール集](https://wankodo.github.io/physics/schrodinger-equation.html): 波動関数と確率解釈を理解し、井戸型ポテンシャルや水素原子の定常状態とエネルギー固有値を求める。解説記事のみ。
+- [井戸型ポテンシャルと量子数｜物理ツール集](https://wankodo.github.io/physics/particle-in-a-box.html): 箱の幅と量子数から電子のエネルギー準位とド・ブロイ波長を求める。計算機つき。
+- [トンネル効果｜物理ツール集](https://wankodo.github.io/physics/quantum-tunneling.html): エネルギー障壁に対するトンネル透過率の厚さ・高さ依存性を見積もり、その応用を説明する。解説記事のみ。
+- [素粒子とクォーク｜物理ツール集](https://wankodo.github.io/physics/elementary-particles-quarks.html): 素粒子をクォーク・レプトン・ゲージ粒子に分類し、陽子・中性子のクォーク構成と電荷を求める。解説記事のみ。
+- [量子もつれとベルの不等式｜物理ツール集](https://wankodo.github.io/physics/entanglement-bell.html): もつれ状態の相関をベルの不等式（CHSH形）と比べ、局所的な隠れた変数で説明できるかを判定する。解説記事のみ。
+- [パウリの排他原理と周期表｜物理ツール集](https://wankodo.github.io/physics/pauli-exclusion-periodic-table.html): 量子数から殻・軌道の収容数を求め、原子の電子配置を書き、周期表での位置と化学的性質を説明する。解説記事のみ。
+- [時間の遅れ｜物理ツール集](https://wankodo.github.io/physics/time-dilation.html): 速さ β＝v/c からローレンツ因子 γ を求め、固有時間に対して時間がどれだけ遅れて進むかと、ミューオンが寿命のあいだに進める距離を求める。計算機つき。
+- [ローレンツ収縮｜物理ツール集](https://wankodo.github.io/physics/length-contraction.html): 静止したときの長さ L0 と速さ β＝v/c から、ローレンツ因子 γ と運動方向に収縮した長さ L を求める。計算機つき。
+- [ローレンツ変換｜物理ツール集](https://wankodo.github.io/physics/lorentz-transformation.html): 速さ β＝v/c で運動する慣性系へのローレンツ変換で、位置 x と時刻 t を x' と t' に換算する。計算機つき。
+- [相対論的運動量とエネルギー｜物理ツール集](https://wankodo.github.io/physics/relativistic-energy-momentum.html): 静止質量と速さ β＝v/c から、ローレンツ因子 γ、相対論的運動量、静止エネルギー、全エネルギーと運動エネルギーを求める。計算機つき。
+- [ブラックホールとシュワルツシルト半径｜物理ツール集](https://wankodo.github.io/physics/black-hole-schwarzschild.html): 天体の質量からシュワルツシルト半径を求める。計算機つき。
+- [ハッブル・ルメートルの法則と宇宙の膨張｜物理ツール集](https://wankodo.github.io/physics/hubble-lemaitre-law.html): 銀河までの距離から後退速度を求める、またはハッブル定数から宇宙の年齢を見積もる。計算機つき。
