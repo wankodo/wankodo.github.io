@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>特殊相対性理論の2つの原理｜物理ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-physics.svg">
+<meta name="description" content="特殊相対性理論の2つの原理（相対性原理と光速不変の原理）を、公式・手順・例題で解説。マイケルソン・モーリーの実験、列車と雷による同時の相対性、時間の遅れへつながる筋道と、現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="物理ツール集">
+<meta property="og:title" content="特殊相対性理論の2つの原理｜物理ツール集">
+<meta property="og:description" content="相対性原理と光速不変の原理から、なぜ時間の遅れが出てくるのかを、思考実験・例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/physics/special-relativity-principles.html">
+<meta property="og:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 物理コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">物理ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="./" class="cur">物理ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">特殊相対性理論の2つの原理</span></h1>
+    <p>物理の解法辞典 ― 相対論・宇宙物理（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">物理ツール集トップ</a> ＞ 相対論・宇宙物理 ＞ 特殊相対性理論の2つの原理</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">相対論・宇宙物理</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    等速直線運動では物理法則は同じで、光の速さは誰が見ても同じだという2つの原理から、時間と空間の常識がどう変わるかを知りたいときに使う。同時の相対性を経て、時間の遅れやローレンツ収縮が避けられない結論として出てくる出発点である。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>特殊相対性理論の出発点である<strong>2つの原理</strong>そのものを理解し、そこから何が導かれるかをたどるときの解説です。次のような場面で使います。</p>
+    <ul>
+      <li>相対性原理と光速不変の原理の内容を、言葉で正確に説明する問題</li>
+      <li>マイケルソン・モーリーの実験が何を示したかを説明する問題</li>
+      <li>「同時刻」が観測者によって食い違う（同時の相対性）ことを、列車と雷の思考実験で説明する問題</li>
+      <li>時間の遅れやローレンツ収縮が、なぜ2つの原理から避けられずに出てくるのか、その筋道を問う問題</li>
+    </ul>
+    <p>2つの原理はどちらも単純に見えますが、両方を同時に真剣に受け入れると、「時間は誰にとっても同じ速さで流れる」「同時刻は絶対である」という日常の常識の方が成り立たなくなります。この緊張こそが特殊相対性理論の心臓部です。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <div class="formula">原理1（相対性原理）：すべての慣性系で物理法則は同じ形に書ける</div>
+    <div class="formula">原理2（光速不変の原理）：真空中の光速 c は、光源や観測者の運動によらず一定</div>
+    <p>各言葉の意味は次の通りです。</p>
+    <ul>
+      <li><strong>慣性系</strong>：静止しているか等速直線運動をしている座標系。加速している系は含まない（それが「特殊」相対性理論と呼ばれる理由）</li>
+      <li><strong>c</strong>：真空中の光速 ＝ 3.00×10<sup>8</sup> m/s（このページではこの値を使う）</li>
+      <li><strong>β ＝ v/c</strong>：物体の速さ v [m/s] を光速で割った無次元の比。相対論的な効果の大きさは β で決まる</li>
+    </ul>
+    <p><strong>相対性原理</strong>は、ガリレイ以来の考え方をアインシュタインが力学からすべての物理法則（電磁気学を含む）へ広げたものです。等速で動く電車の中で行う実験と、駅で行う実験で、結果に違いは出ません。つまり「絶対に静止している系」は存在せず、運動は常に相対的です。</p>
+    <p><strong>光速不変の原理</strong>が革命的なのはこちらです。日常の感覚では、走っている車から投げたボールの速さは「車の速さ＋投げた速さ」になるはずです。ところが光については、1887年の<strong>マイケルソン・モーリーの実験</strong>が、地球の公転運動の向きによって光の速さが変わる兆候をまったく示しませんでした。干渉計を回転させても干渉縞のずれは観測されず、「光を運ぶ媒質（エーテル）の風」を検出しようとした試みは失敗に終わったのです。アインシュタインはこの結果を正面から受け止め、光速は誰が測っても c だと原理に据えました。</p>
+    <p><strong>同時の相対性（列車と雷の思考実験）</strong>：長い列車の両端に同時に雷が落ちた場面を考えます。線路脇に立つ観測者には、両端からの光が中央で同時に出会うので「同時」と判定できます。ところが列車の中央に乗る観測者は、前方へ進みながら光を迎えるため、前方の雷の光に先に出会います。光速はどちらの観測者にとっても c で同じですから、列車の観測者にとっては「前方の雷が先に落ちた」と判定せざるを得ません。<strong>離れた2地点で「同時」は、観測者の運動状態によって食い違う</strong>のです。</p>
+    <p><strong>なぜ時間の遅れが出てくるか</strong>：同時が相対的なら、時間の進み方も絶対ではあり得ません。たとえば光が鏡で往復する「光時計」を考えると、横から見る観測者には光の経路が斜めに長く見えます。光速は不変なので、経路が長い分だけ往復に時間がかかる、すなわち動いている時計は遅れて見える、という結論になります。これを定量化したものがローレンツ因子 γ ＝ 1/√(1 − β<sup>2</sup>) で、詳しくは「時間の遅れ」のページで扱います。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>系を確認する。</strong>関係する観測者がすべて慣性系（等速直線運動）にいるかを確かめます。加速が絡む場面は特殊相対性理論の範囲外です。</li>
+      <li><strong>光速はどちらの系でも c として扱う。</strong>光の速さに観測者の速さを足したり引いたりしないことが最大のポイントです。</li>
+      <li><strong>「同時」は光信号の届き方で判定する。</strong>離れた地点の出来事の同時性は、光が各観測者に届く順序から判定し直します。</li>
+      <li><strong>時間や長さのずれは β から γ を経由して求める。</strong>γ ＝ 1/√(1 − β<sup>2</sup>) を計算し、時間の遅れ・ローレンツ収縮の式へ進みます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題：光速の 0.60 倍（β ＝ 0.60）で運動する宇宙船の時計は、静止した観測者から見てどれだけ遅れるか。ローレンツ因子 γ を求めて説明せよ。また、この遅れが2つの原理のどちらから直接出てくるか述べよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>γ ＝ 1/√(1 − β<sup>2</sup>) ＝ 1/√(1 − 0.36) ＝ 1/√0.64 ＝ 1/0.80 ＝ 1.25 です。</li>
+          <li>静止した観測者が測る時間は γ 倍に伸びて見えるので、宇宙船の時計が 1.0 秒を刻むあいだに、観測者の時計は 1.25 秒進みます。つまり宇宙船の時計は 0.80 倍の速さで進む（20％遅れる）ことになります。</li>
+          <li>この結論の直接の源は原理2（光速不変）です。光時計の経路が観測者によって長く見えても光速が変わらないため、時間の進み方の方が変わらざるを得ません。原理1は「どちらの観測者の立場でも同じ法則が成り立つ」ことを保証し、遅れが一方的な錯覚でなく互いに成り立つ関係であることを支えています。</li>
+        </ol>
+        <p><strong>答え：γ ＝ 1.25 で、宇宙船の時計は静止した観測者から見て 0.80 倍の速さで進む。</strong>β が日常の速さ（β ≒ 0）では γ ≒ 1 となり、古典力学の「時間は絶対」がよい近似として回復します。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>GPS と相対論補正の土台</h3>
+    <p>GPS 衛星の原子時計には、特殊相対性理論による遅れと一般相対性理論による進みが毎日蓄積します。この補正の計算全体の出発点が「光速はどの系でも c」という原理であり、測位信号の伝播時間から距離を求める仕組み自体が光速不変を前提に設計されています。</p>
+    <h3>加速器・素粒子実験の設計</h3>
+    <p>粒子加速器では、光速近くまで加速された粒子の寿命やエネルギーを、特殊相対性理論の枠組みで計算して検出器の配置や測定を設計します。古典力学の速度の足し算では実験結果と合わなくなるため、2つの原理に基づくローレンツ変換が実験物理の日常の道具になっています。</p>
+    <h3>光速の精密測定と長さの定義</h3>
+    <p>光速不変は現代の計量の土台でもあります。1983年以降、1 メートルは「光が真空中で 1/299,792,458 秒間に進む距離」と定義されており、光速は測定値ではなく定義値として長さの基準になっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p>2つの原理を公理として理論を組み立てたのは<strong>アルベルト・アインシュタイン</strong>（1879〜1955）で、1905年の論文「運動する物体の電気力学について」で発表しました。相対性原理そのものはガリレイに遡り、変換式の数学的な形はヘンドリック・ローレンツやアンリ・ポアンカレが先に得ていましたが、「エーテルを捨て、同時の相対性まで受け入れて原理から再構成した」点がアインシュタインの独創です。マイケルソン・モーリーの実験（1887年）は、その受け入れを迫った観測事実でした。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>2つの原理から出てくる結論は「<a href="time-dilation.html">時間の遅れ</a>」「<a href="length-contraction.html">ローレンツ収縮</a>」、座標変換の形は「<a href="lorentz-transformation.html">ローレンツ変換</a>」、エネルギーの結論は「<a href="mass-energy-equivalence.html">E＝mc²の意味</a>」へ。重力を含む拡張は「<a href="general-relativity.html">一般相対性理論の考え方</a>」で扱います。<a href="./">物理ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「物理ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>バンド理論｜物理ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-physics.svg">
+<meta name="description" content="バンド理論を、公式・手順・例題で解説。エネルギーバンドと禁制帯（バンドギャップ）、導体・半導体・絶縁体の違いがバンドの詰まり方で決まる理由、フェルミエネルギーとは何か、半導体デバイスなど実際の現場での使われ方まで紹介します。プランク定数 h＝6.63×10⁻³⁴ J・s、光速 c＝3.00×10⁸ m/s、電気素量 e＝1.60×10⁻¹⁹ C を使用。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="物理ツール集">
+<meta property="og:title" content="バンド理論｜物理ツール集">
+<meta property="og:description" content="導体・半導体・絶縁体の違いはバンドの詰まり方で決まる。エネルギーバンドと禁制帯、フェルミエネルギーを、例題と現場での使われ方で解説。">
+<meta property="og:url" content="https://wankodo.github.io/physics/band-theory.html">
+<meta property="og:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 物理コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">物理ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="./" class="cur">物理ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">バンド理論</span></h1>
+    <p>物理の解法辞典 ― 物性（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">物理ツール集トップ</a> ＞ 物性 ＞ バンド理論</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">物性</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    固体の中の電子が取れるエネルギーは、帯状に連なったエネルギーバンドに限られ、その間に電子の入れない禁制帯がある。バンドの詰まり方と禁制帯の幅を見ることで、その物質が導体・半導体・絶縁体のどれになるかが決まる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>固体中の電子のエネルギー状態を帯（バンド）として捉え、電気伝導の違いを説明する<strong>バンド理論</strong>の解法です。次のような場面で使います。</p>
+    <ul>
+      <li>バンド図を見て、その物質が導体・半導体・絶縁体のどれかを判断する問題</li>
+      <li>バンドギャップの大きさから、半導体が吸収できる光の波長を求める問題</li>
+      <li>温度を上げると半導体の電気抵抗が下がる理由を説明する問題</li>
+      <li>LEDや太陽電池など、半導体デバイスの動作原理を調べる場面</li>
+    </ul>
+    <p>孤立した原子の電子は、決まったエネルギーの準位しか取れません。ところが原子が多数集まって固体になると、準位がわずかにずれたものが無数に重なり、帯状の<strong>エネルギーバンド</strong>になります。バンドとバンドの間には、電子が存在できない<strong>禁制帯（バンドギャップ）</strong>が残ります。この構造が、物質の電気的性質のほぼすべてを決めます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <div class="formula">E<sub>g</sub> ＝ 伝導帯の下端 − 価電子帯の上端　／　光の吸収条件：hν ≧ E<sub>g</sub></div>
+    <p>用語と記号の意味は次の通りです。</p>
+    <ul>
+      <li><strong>価電子帯</strong>：原子の結合に使われる電子（価電子）が入るバンド。通常はほぼ満員です</li>
+      <li><strong>伝導帯</strong>：電子が自由に動き回れるバンド。ここに電子がいて初めて電流が流れます</li>
+      <li><strong>E<sub>g</sub></strong>：禁制帯の幅（バンドギャップ）[eV]。価電子帯と伝導帯のエネルギーの差です</li>
+      <li><strong>フェルミエネルギー E<sub>F</sub></strong>：絶対零度で、電子が詰まっている一番上のエネルギーの目安。電子の「満員ライン」を表します</li>
+      <li><strong>hν</strong>：光子のエネルギー。h はプランク定数、ν は光の振動数です</li>
+    </ul>
+    <p>このページの計算では h ＝ 6.63×10<sup>−34</sup> J・s、c ＝ 3.00×10<sup>8</sup> m/s、e ＝ 1.60×10<sup>−19</sup> C を使い、hc ≒ 1,240 eV・nm として計算します（1 eV は電子1個を1 V で加速したときのエネルギーです）。</p>
+    <h3>バンドの詰まり方で決まる3つのタイプ</h3>
+    <ul>
+      <li><strong>導体（金属）</strong>：バンドが半分だけ詰まっているか、満員のバンドと空のバンドが重なっています。フェルミエネルギーがバンドの中にあり、わずかな電圧で電子が動けるため、よく電気を通します。</li>
+      <li><strong>半導体</strong>：価電子帯は満員ですが、禁制帯が狭い（目安として E<sub>g</sub> が 0.1〜3 eV 程度）。熱や光のエネルギーで一部の電子が伝導帯へ跳び上がり、電気を通します。代表例はシリコン（E<sub>g</sub> ≒ 1.1 eV）とゲルマニウム（E<sub>g</sub> ≒ 0.67 eV）です。</li>
+      <li><strong>絶縁体</strong>：禁制帯が広く（目安として E<sub>g</sub> が 3 eV を大きく超える）、熱エネルギーでは電子が伝導帯に届きません。ダイヤモンドは E<sub>g</sub> ≒ 5.5 eV の絶縁体です。</li>
+    </ul>
+    <p>電子が伝導帯へ跳び上がると、価電子帯には電子の抜けた穴（<strong>正孔</strong>）が残り、これも電荷を運びます。温度が上がると跳び上がる電子が増えるため、半導体は温度が高いほど抵抗が下がります。これは、温度が上がると抵抗が上がる金属とは反対の振る舞いです。また、光の吸収は hν ≧ E<sub>g</sub> のときに起き、この条件がLEDの発光色や太陽電池の感度を決めます。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>バンド図で満員ラインを確認する。</strong>フェルミエネルギーがバンドの中にあれば導体です。</li>
+      <li><strong>禁制帯の幅 E<sub>g</sub> を読む。</strong>価電子帯が満員で E<sub>g</sub> が小さければ半導体、大きければ絶縁体です。</li>
+      <li><strong>光の吸収・発光を考えるときは hν と E<sub>g</sub> を比べる。</strong>波長で考える場合は λ ＝ hc/E<sub>g</sub>（hc ≒ 1,240 eV・nm）で換算します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題：シリコン（バンドギャップ E<sub>g</sub> ＝ 1.1 eV）は、波長何 nm 以下の光を吸収して電子を伝導帯へ跳び上がらせることができるか。hc ≒ 1,240 eV・nm として求めよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>吸収の条件は hν ≧ E<sub>g</sub> です。波長で表すと、吸収できる最長の波長は λ ＝ hc/E<sub>g</sub> で与えられます。</li>
+          <li>λ ＝ 1,240 ÷ 1.1 ≒ 1,127 nm ≒ 1.1 μm</li>
+        </ol>
+        <p><strong>答え：約 1,127 nm（約 1.1 μm）以下の波長の光を吸収できる。</strong>これは赤外線の領域で、可視光（約380〜780 nm）はすべてこれより短いため、シリコンは可視光をよく吸収します。シリコン太陽電池が赤外線の一部まで発電に使えるのは、このバンドギャップのためです。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>半導体デバイスの材料選び</h3>
+    <p>LEDの発光色は、材料のバンドギャップでほぼ決まります。赤色LEDの材料（ガリウムヒ素系）から、バンドギャップの大きい窒化ガリウム系の青色LEDまで、欲しい光のエネルギーに合わせて E<sub>g</sub> の材料を選ぶのが半導体デバイス設計の基本です。太陽電池でも、太陽光のスペクトルに合った E<sub>g</sub> の材料選びが変換効率を左右します。</p>
+    <h3>不純物ドーピングの設計</h3>
+    <p>半導体に微量の不純物を加えるドーピングは、禁制帯の中に新しい準位を作り、フェルミエネルギーの位置を動かす技術として理解されます。電子の多いn型と正孔の多いp型の作り分けは、このバンドの考え方の上に成り立っています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p>固体中の電子に量子力学を適用し、バンド構造の考え方を打ち立てたのは、スイス出身の<strong>フェリックス・ブロッホ</strong>（1905〜1983）で、1928年の論文で周期ポテンシャル中の電子の波動関数（ブロッホ関数）を示しました。その後、イギリスの<strong>アラン・ウィルソン</strong>（1906〜1995）が1931年にバンドの詰まり方から導体・絶縁体の違いと半導体の概念を説明し、これが現代の半導体物理学の出発点になりました。フェルミエネルギーの名前は、イタリアの物理学者<strong>エンリコ・フェルミ</strong>（1901〜1954）に由来します。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>半導体の応用は「<a href="semiconductor-and-diode.html">半導体とダイオード</a>」、熱と電気の変換は「熱電効果」、結晶の構造そのものは「結晶とブラッグ反射」で扱います。<a href="./">物理ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「物理ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

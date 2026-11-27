@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>相転移と臨界現象｜物理ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-physics.svg">
+<meta name="description" content="相転移と臨界現象を、公式・手順・例題で解説。一次相転移と潜熱、臨界点で液体と気体の区別が消えること、超臨界流体によるコーヒーのカフェイン抽出、自発的対称性の破れへの入口まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="物理ツール集">
+<meta property="og:title" content="相転移と臨界現象｜物理ツール集">
+<meta property="og:description" content="融けるときに熱を吸う潜熱と、臨界点で液と気体の区別が消える不思議を、超臨界流体の実用と例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/physics/phase-transitions-critical-phenomena.html">
+<meta property="og:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 物理コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">物理ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="./" class="cur">物理ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">相転移と臨界現象</span></h1>
+    <p>物理の解法辞典 ― 物性（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">物理ツール集トップ</a> ＞ 物性 ＞ 相転移と臨界現象</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">物性</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    温度や圧力を変えると固体・液体・気体の間で状態が切り替わるのが相転移で、一次相転移では潜熱の出入りを伴い、臨界点を超えると液体と気体の区別が消えて、両方の性質を併せ持つ超臨界流体になる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>物質の状態変化と、その境界で起きる特異な振る舞いを扱うときの解法です。次のような場面で使います。</p>
+    <ul>
+      <li>融解・蒸発に必要な熱量を、潜熱から求める問題</li>
+      <li>温度−圧力の相図から、ある条件でどの相にいるか、昇華や三重点を読み取る問題</li>
+      <li>臨界点を超えた超臨界流体かどうかを、臨界温度・臨界圧力と比べて判断する問題</li>
+      <li>強磁性の消失（キュリー点）や超伝導転移など、熱の出入りがない転移との違いを整理する問題</li>
+    </ul>
+    <p>相転移は物性物理の中心テーマの1つで、氷が融ける現象から磁石・超伝導・宇宙初期の状態変化まで、同じ言葉と考え方で貫かれています。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <div class="formula">一次相転移の熱量：Q ＝ mL（温度は転移中一定）</div>
+    <p>各記号の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>Q</strong>：出入りする熱量 [J]、<strong>m</strong>：質量 [kg]</li>
+      <li><strong>L</strong>：潜熱 [J/kg]。融解熱や蒸発熱で、水の融解熱は約 3.34×10<sup>5</sup> J/kg、蒸発熱（100 ℃）は約 2.26×10<sup>6</sup> J/kg</li>
+    </ul>
+    <p><strong>一次相転移</strong>は、融解・蒸発・昇華のように潜熱の出入りがあり、密度などの量が跳び跳びに変わる転移です。転移の最中は熱を加えても温度が上がらず、すべてが状態変化に使われます。これに対して、強磁性がキュリー点で消える転移や超伝導転移のように潜熱を伴わないものは<strong>二次相転移</strong>（連続転移）と呼ばれ、比熱の異常などで特徴づけられます。</p>
+    <p><strong>臨界点</strong>は、液体と気体を分ける蒸発曲線の終点です。水では臨界温度約 374 ℃・臨界圧力約 22.1 MPa、二酸化炭素では臨界温度約 31.1 ℃・臨界圧力約 7.38 MPa です。臨界点に近づくと液体と気体の密度差が小さくなり、臨界点では区別そのものが消えます。臨界点付近では密度の揺らぎがあらゆる大きさに広がって光を強く散乱する<strong>臨界タンパク光（臨界乳光）</strong>が見られます。臨界温度と臨界圧力を両方超えた領域の流体が<strong>超臨界流体</strong>で、気体のように拡散しやすく、液体のように物質を溶かす力を併せ持ちます。</p>
+    <p>臨界現象の深い理解は、転移点の近くで物理量がべき乗則に従うこと（臨界指数）と、物質の細部によらず同じ指数を持つ系のグループ（普遍性クラス）があることにつながりました。さらに、磁石で「向きがそろう」ように、転移で系がある方向を自ら選ぶ現象は<strong>自発的対称性の破れ</strong>と呼ばれ、素粒子物理のヒッグス機構の考え方の原型にもなっています。相転移の学習はここへの入口です。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>相図上の位置を確認する。</strong>温度と圧力から、今どの相にいて、どの境界を越える変化かを読みます。</li>
+      <li><strong>熱量は2種類に分ける。</strong>温度変化の分は Q ＝ mcΔT、相転移の分は Q ＝ mL で別々に計算して足します。転移中は温度が一定である点が要点です。</li>
+      <li><strong>超臨界かどうかは両方比べる。</strong>温度が臨界温度より高く、かつ圧力が臨界圧力より高いときにだけ超臨界流体です。片方だけでは判定しません。</li>
+      <li><strong>転移の次数を区別する。</strong>潜熱と密度の跳びがあれば一次、なければ二次（連続）転移として整理します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題：（1）0 ℃ の氷 50 g を全部融かして 0 ℃ の水にするのに必要な熱量を求めよ。水の融解熱は 334 J/g とする。（2）二酸化炭素を 40 ℃・10 MPa にしたものは超臨界流体か。二酸化炭素の臨界温度は 31.1 ℃、臨界圧力は 7.38 MPa とする。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>（1）融解は温度が変わらない一次相転移なので、Q ＝ mL ＝ 50 g × 334 J/g ＝ 16,700 J ＝ 16.7 kJ です。熱を加えている間、氷と水が共存する温度は 0 ℃ のまま動きません。</li>
+          <li>（2）温度 40 ℃ ＞ 臨界温度 31.1 ℃、圧力 10 MPa ＞ 臨界圧力 7.38 MPa で、両方の条件を満たすので超臨界流体です。</li>
+          <li>仮に圧力が 5 MPa なら、温度が臨界温度を超えていても超臨界ではなく、単なる気体（圧縮ガス）として扱います。</li>
+        </ol>
+        <p><strong>答え：（1）16.7 kJ。（2）温度・圧力とも臨界値を超えているので超臨界流体である。</strong></p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>超臨界二酸炭素によるカフェイン抽出</h3>
+    <p>コーヒー豆からカフェインだけを抜くデカフェ処理の主要な方法の1つが、超臨界二酸化炭素による抽出です。超臨界 CO<sub>2</sub> はカフェインをよく溶かし、圧力を戻せば気体に戻って完全に抜けるため、溶媒が製品に残りません。臨界温度が約 31 ℃ と室温に近く、熱に弱い食品でも使いやすい点が選ばれる理由です。香料や医薬品原料の抽出・分離にも同じ技術が使われています。</p>
+    <h3>超臨界水・超臨界発電</h3>
+    <p>超臨界水は有機物を強く分解する性質があり、廃棄物処理の研究・実用に使われています。また火力・原子力の分野では、臨界点を超えた圧力の蒸気を使う超臨界圧プラントが、発電効率の高さから広く採用されています。</p>
+    <h3>潜熱の利用（蓄熱と冷却）</h3>
+    <p>一次相転移の潜熱は、保冷剤や蓄熱材の仕組みそのものです。融けるときに大量の熱を吸って温度を一定に保つ性質が、輸送用保冷材や建物の蓄熱材（相変化材料、PCM）に利用されています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p>臨界点の概念は、1869年にアイルランドの<strong>トーマス・アンドリュース</strong>が二酸化炭素の実験で液体と気体の連続性を示したことに始まります。相の平衡を熱力学で整理したのはアメリカの<strong>ジョサイア・ギブズ</strong>（相律、1870年代）です。臨界現象の現代的な理解は、1970年代に<strong>ケネス・ウィルソン</strong>がくりこみ群の方法で普遍性を説明して決定的になりました。自発的対称性の破れの考え方は、南部陽一郎らによって素粒子物理へも展開されています。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>潜熱そのものの計算は「<a href="latent-heat-phase-change.html">潜熱と相変化</a>」、温度変化の熱量は「<a href="calorimetry-specific-heat.html">熱量と比熱・熱容量</a>」、二次相転移とも関わる熱力学の基本は「<a href="second-law-entropy.html">熱力学第二法則とエントロピー</a>」が役立ちます。<a href="./">物理ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「物理ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
