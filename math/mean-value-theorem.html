@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>条件を確認する。</strong>関数が区間 [p, q] で連続で、(p, q) で微分可能かを確かめる。多項式の関数はすべての区間でこの条件を満たす。</li><li><strong>両端の値を求める。</strong>f(p) と f(q) を計算する。</li><li><strong>平均変化率を求める。</strong>(f(q) − f(p)) ÷ (q − p) を計算する。</li><li><strong>導関数を求める。</strong>f′(x) を計算する。</li><li><strong>f′(c) ＝ 平均変化率 とおいて解く。</strong>方程式を解いて c の候補を求める。</li><li><strong>区間の内側にあるか確認する。</strong>求めた c が p ＜ c ＜ q を満たすことを確かめる。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：関数 f(x) ＝ x² − 2x について、区間 [0, 3] で平均値の定理を満たす c を求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>f は多項式の関数なので、区間 [0, 3] で連続で、(0, 3) で微分可能です。f(0) ＝ 0、f(3) ＝ 9 − 6 ＝ 3 なので、平均変化率 ＝ (3 − 0) ÷ (3 − 0) ＝ 1 です。</p><p>f′(x) ＝ 2x − 2 なので、f′(c) ＝ 1 とおくと 2c − 2 ＝ 1 を解いて c ＝ 1.5 となります。これは区間 (0, 3) の内側にあります。</p><p><strong>答え：c ＝ 1.5</strong></p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>高速道路の平均速度監視（区間速度取り締まり）</h3><p>高速道路の区間速度取り締まり（平均速度監視）は、区間の入口と出口の通過時刻から平均速度を計算し、制限速度を超えていないかを判定する仕組みです。平均値の定理が示すのは、この平均速度とまったく同じ瞬間速度で走った瞬間が、区間の中に必ず存在したということです。つまり平均速度が制限を超えていれば、その瞬間速度で制限を超えた瞬間が確かにあったことが、定理によって保証されます。</p><h3>誤差の評価</h3><p>測定値や近似値にどれだけの誤差がありうるかを評価するとき、平均値の定理が使われます。区間の両端での関数の値の差は、区間の中のどこかの点での微分係数と区間の幅の積に等しいので、微分係数の大きさの上限が分かれば、値の差（誤差）の上限を見積もることができます。</p><h3>数値計算の精度保証</h3><p>コンピュータによる数値計算では、近似計算の結果が真の値からどれだけずれているかを保証する必要があります。平均値の定理はその誤差評価の土台で、テイラー展開の剰余項の評価など、微分を使った理論の証明でも繰り返し使われる基本定理です。</p></section>
-<section class="card"><h2>考え出した人</h2><p>平均値の定理は、フランスの数学者<strong>ジョゼフ＝ルイ・ラグランジュ</strong>（1736〜1813）が1797年に提示したとされます。ラグランジュは微分積分を代数的に基礎づけようとした大著の中でこの定理を述べ、微分の理論の土台に据えました。前段階となるロルの定理は、フランスの数学者<strong>ミシェル・ロル</strong>（1652〜1719）が1691年に発表したもので、もとは方程式の解の存在を扱う結果でした。現在の形の証明や条件の整備は、その後のコーシーらによって進められました。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line"><strong>ジョゼフ＝ルイ・ラグランジュ</strong>（1736〜1813、フランスの数学者）／<strong>ミシェル・ロル</strong>（1652〜1719、フランスの数学者）</p><p>平均値の定理は、フランスの数学者<strong>ジョゼフ＝ルイ・ラグランジュ</strong>（1736〜1813）が1797年に提示したとされます。ラグランジュは微分積分を代数的に基礎づけようとした大著の中でこの定理を述べ、微分の理論の土台に据えました。前段階となるロルの定理は、フランスの数学者<strong>ミシェル・ロル</strong>（1652〜1719）が1691年に発表したもので、もとは方程式の解の存在を扱う結果でした。現在の形の証明や条件の整備は、その後のコーシーらによって進められました。</p></section>
 <a class="linkcard" href="calc-mean-value-theorem.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">平均値の定理 計算機：2次関数の係数と区間を入れると、平均変化率と平均値の定理を満たす c を手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>平均変化率と微分係数の項目、導関数の計算の項目、接線の方程式の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

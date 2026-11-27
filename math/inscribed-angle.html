@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>どの弧を見込んでいるかを確認する。</strong>円周角の頂点と、両端の点が作る弧を特定します。</li><li><strong>中心角との関係を使う。</strong>同じ弧の中心角が分かれば、円周角はその半分。逆に円周角から中心角は2倍です。</li><li><strong>同じ弧の円周角に移し替える。</strong>求めにくい位置の角は、同じ弧を見込む別の円周角と等しいことを使って移します。</li><li><strong>直径があれば 90° を使う。</strong>直径を一辺に含む三角形の、円周上の頂点の角は直角です。</li><li><strong>三角形の内角の和や、内接四角形の性質で仕上げる。</strong>分かった角を組み合わせて、残りの角を求めます。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：弧ABに対する中心角が 120° のとき、弧ABに対する円周角を求めよ。また、直径ABの円で、円周上の点Pをとるとき、∠APB を求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>円周角は中心角の半分なので、120° ÷ 2 ＝ 60° です。</p><p>直径ABに対する中心角は 180°（まっすぐな角）なので、その円周角 ∠APB は 180° ÷ 2 ＝ 90° です。</p><p><strong>答え：60°／∠APB ＝ 90°</strong></p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>航海と測量の位置決定</h3><p>GPSのない時代、船の位置は陸の目標（灯台や山頂）を見込む角度を測って割り出していました。既知の2つの目標を見込む角度が分かると、船はその2目標を通る円の弧の上にいることが決まります。これは「同じ弧を見込む円周角はどこでも等しい」という定理そのもので、別の目標でもう1つ円を決めれば、2つの弧の交点が現在位置になります。測量の交会法も同じ原理です。</p><h3>サッカーのシュート角度</h3><p>ゴールの2本のポストを両端とする「弧」に対して、シュートを打つ位置からゴールを見込む角度がシュート角度です。同じ円弧上の位置からは、どこから打ってもシュート角度は同じになります。ゴールに近づく（弧の内側に入る）と角度は広がり、角度が広い位置ほど決めやすい、という感覚は円周角の定理で裏づけられます。</p><h3>円形劇場・スタジアムの客席設計</h3><p>円形劇場やスタジアムで、舞台やピッチの両端を同じ円弧上の席から見ると、見込む角度は席によらず等しくなります。つまり同じ弧に沿った席は「見える大きさ」の条件がそろうため、客席の配置や格差の設計を考えるときの目安になります。</p></section>
-<section class="card"><h2>考え出した人</h2><p>直径に対する円周角が 90° になることは、古代ギリシャの<strong>タレス</strong>（紀元前6世紀頃）が示したと伝えられ、「タレスの定理」の名で知られています。円周角と中心角の関係の証明は、<strong>ユークリッド</strong>の『原論』第3巻に収められて体系化されました。円周角の定理は、角度の測定だけで位置を決める航海・測量の技術を支える、実用と結びついた定理です。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line"><strong>タレス</strong>（紀元前6世紀頃、古代ギリシャ）／<strong>ユークリッド</strong></p><p>直径に対する円周角が 90° になることは、古代ギリシャの<strong>タレス</strong>（紀元前6世紀頃）が示したと伝えられ、「タレスの定理」の名で知られています。円周角と中心角の関係の証明は、<strong>ユークリッド</strong>の『原論』第3巻に収められて体系化されました。円周角の定理は、角度の測定だけで位置を決める航海・測量の技術を支える、実用と結びついた定理です。</p></section>
 <a class="linkcard" href="calc-inscribed-angle.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">円周角の定理 計算機：中心角から円周角、円周角から中心角、弧の割合から角度を、手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>円の基本的な長さ・面積の計算は円・扇形の項目、方べきの定理など円と三角形の性質は三角形・円の性質の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

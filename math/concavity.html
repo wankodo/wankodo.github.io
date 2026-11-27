@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>f′(x) と f′′(x) を求める。</strong>元の関数を2回続けて微分する。</li><li><strong>f′′(x) ＝ 0 となる x を求める。</strong>ここが変曲点の候補になる。</li><li><strong>候補の前後で f′′ の符号を調べる。</strong>符号が切り替わっていれば変曲点、変わらなければ変曲点ではない。</li><li><strong>区間ごとの凹凸を答える。</strong>f′′ ＞ 0 の区間は下に凸、f′′ ＜ 0 の区間は上に凸。</li><li><strong>変曲点の y 座標を求める。</strong>候補の x を元の関数に代入し、点の座標として答える。</li><li><strong>必要なら増減表にまとめる。</strong>f′ の符号（増減）と f′′ の符号（凹凸）を合わせて、グラフの概形を描く。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：関数 f(x) ＝ x³ − 6x² ＋ 5 の凹凸を調べ、変曲点を求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>f′(x) ＝ 3x² − 12x、f′′(x) ＝ 6x − 12 です。f′′(x) ＝ 0 となるのは x ＝ 2 のときです。</p><p>x ＜ 2 では f′′(x) ＜ 0 なので上に凸、x ＞ 2 では f′′(x) ＞ 0 なので下に凸です。x ＝ 2 の前後で符号が切り替わっているので、ここが変曲点になります。</p><p>f(2) ＝ 8 − 24 ＋ 5 ＝ −11 です。</p><p><strong>答え：x ＜ 2 で上に凸、x ＞ 2 で下に凸。変曲点は (2, −11)</strong></p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>経済学の限界効用逓減</h3><p>同じものをたくさん消費するほど、1単位増えたときの追加の満足度（限界効用）は小さくなっていく、というのが経済学の限界効用逓減の法則です。効用を量の関数としてグラフに描くと、増え方はだんだん緩やかになる上に凸の形になります。価格設定や税制の議論で「追加分への効き目がどう変わるか」を読むとき、この凹凸の見方が土台になっています。</p><h3>機械学習で最適化がうまくいく保証</h3><p>機械学習では、損失関数（予測の誤差を表す関数）を最小にするパラメータを探します。損失関数が下に凸な形をしていると、局所的な最小値がそのまま全体の最小値になるため、勾配を下っていく方法で大域的な最適解にたどり着けることが保証されます。線形回帰の二乗誤差などがこの性質を持っていて、逆にニューラルネットワークのように凸でない場合は、初期値によって結果が変わりうる難しさが生まれます。</p><h3>薬の用量反応曲線を読む</h3><p>薬の用量を増やしたとき効き目がどう変わるかを示す用量反応曲線は、少ない用量では効き目が急に立ち上がり、ある量を超えると効き目の伸びが鈍って頭打ちに近づく形になることが多くあります。この「伸び方が切り替わるあたり」を読むときに、曲線の凹凸や変曲点の考え方が、適切な用量の範囲を考える手がかりになります。</p></section>
-<section class="card"><h2>考え出した人</h2><p>凹凸と第2次導関数の関係は、特定の誰か一人が考え出したものではありません。17世紀にニュートンとライプニッツが微積分を築き、その後、関数のグラフの形を導関数で読み解く方法が微分学の発展の中で少しずつ整えられていきました。第2次導関数の符号で曲がり方を判定する見方は、その積み重ねの上に確立した、微分学の基本的な道具の一つです。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line">特定の個人ではなく、微分学の発展の中で少しずつ整えられていった考え方</p><p>凹凸と第2次導関数の関係は、特定の誰か一人が考え出したものではありません。17世紀にニュートンとライプニッツが微積分を築き、その後、関数のグラフの形を導関数で読み解く方法が微分学の発展の中で少しずつ整えられていきました。第2次導関数の符号で曲がり方を判定する見方は、その積み重ねの上に確立した、微分学の基本的な道具の一つです。</p></section>
 <a class="linkcard" href="calc-concavity.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">関数の凹凸と第2次導関数 計算機：3次関数の係数を入れると、第2次導関数と変曲点、凹凸の切り替わりを手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>導関数の計算そのものは「いろいろな関数の微分」の項目、増減と極値からグラフを描く考え方は微分の応用の項目、逆の操作は「積分の応用」の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

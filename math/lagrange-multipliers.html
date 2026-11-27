@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>目的関数 f と制約 g ＝ 0 を書き出す。</strong>制約は「＝ 一定値」の形に整えておく。</li><li><strong>∇f と ∇g を計算する。</strong></li><li><strong>∇f ＝ λ ∇g の成分方程式と制約を連立させる。</strong>未知数は x、y、λ の3つ、式も3本になる。</li><li><strong>連立方程式を解いて候補点を求める。</strong>λ を消去したり、x や y を λ で表して制約に代入したりするのが定石。</li><li><strong>各候補点で f の値を計算し、最大値・最小値を判定する。</strong>制約が閉じた曲線（円など）の場合は、候補の中の最大・最小がそのまま答えになる。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：制約 x<sup>2</sup> ＋ y<sup>2</sup> ＝ 25 のもとで、f(x, y) ＝ 3x ＋ 4y の最大値・最小値を求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>∇f ＝ (3, 4)、g ＝ x<sup>2</sup> ＋ y<sup>2</sup> − 25 と置くと ∇g ＝ (2x, 2y) です。</p><ol class="steps"><li>ラグランジュ方程式は 3 ＝ 2λx、4 ＝ 2λy。よって x ＝ 3/(2λ)、y ＝ 4/(2λ)。</li><li>制約に代入すると (9 ＋ 16)/(4λ<sup>2</sup>) ＝ 25、つまり 25/(4λ<sup>2</sup>) ＝ 25 なので λ<sup>2</sup> ＝ 1/4、λ ＝ ±1/2。</li><li>λ ＝ 1/2 のとき (x, y) ＝ (3, 4) で、f ＝ 9 ＋ 16 ＝ 25。</li><li>λ ＝ −1/2 のとき (x, y) ＝ (−3, −4) で、f ＝ −9 − 16 ＝ −25。</li></ol><p><strong>答え：最大値 25（点 (3, 4)）、最小値 −25（点 (−3, −4)）</strong>。制約の円は閉じた曲線なので、候補はこの2点だけで、大きい方が最大値、小さい方が最小値です。</p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>経済学の効用最大化</h3><p>限られた予算の中で、満足度（効用）を最大にする買い物の組み合わせを求める問題は、経済学の基本です。予算制約のもとで効用関数を最大化する計算にラグランジュ乗数法が使われ、乗数 λ は「予算を1単位増やしたとき効用がどれだけ増えるか」という限界的な意味を持ちます。</p><h3>工学の最適設計</h3><p>材料の量や重量に上限がある中で強度や性能を最大にする、といった設計の最適化でも、制約つき極値問題として定式化し、乗数法の考え方で解きます。構造設計や制御の分野で広く使われる最適化の基礎です。</p><h3>機械学習の学習アルゴリズム</h3><p>機械学習でも、重みの大きさに制約をかけて学習する手法や、サポートベクターマシンのように制約つき最適化を解く手法があり、その理論の中心にラグランジュ乗数法があります。制約を乗数で取り込む発想は、現代の最適化アルゴリズムの土台になっています。</p></section>
-<section class="card"><h2>考え出した人</h2><p><strong>ジョゼフ＝ルイ・ラグランジュ</strong>（1736〜1813）。著書『解析力学』（1788）で、制約のある極値問題に乗数法を導入しました。力学の問題を一般化された座標と方程式で統一的に扱う中で、この方法を体系づけたものです。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line"><strong>ジョゼフ＝ルイ・ラグランジュ</strong>（1736〜1813）</p><p><strong>ジョゼフ＝ルイ・ラグランジュ</strong>（1736〜1813）。著書『解析力学』（1788）で、制約のある極値問題に乗数法を導入しました。力学の問題を一般化された座標と方程式で統一的に扱う中で、この方法を体系づけたものです。</p></section>
 <a class="linkcard" href="calc-lagrange-multipliers.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">ラグランジュ乗数法 計算機：a、b、R を入れると、制約 x²＋y²＝R のもとでの最大値・最小値とその点を手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>偏微分や勾配を扱う項目、微分の応用として極値を扱う項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

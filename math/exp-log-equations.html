@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>方程式の形を見分ける。</strong>x が指数にあるか、対数の中にあるかを確認する。</li><li><strong>指数方程式 a<sup>x</sup> ＝ b の場合：</strong>まず b が a の累乗で書けるか試し、書ければ指数を比べる。書けない場合は両辺の対数を取る。</li><li><strong>対数を取ったら x ＝ log b ／ log a を計算する。</strong></li><li><strong>対数方程式 log<sub>a</sub> x ＝ b の場合：</strong>定義から x ＝ a<sup>b</sup> とする。</li><li><strong>条件を確かめる。</strong>底は a ＞ 0、a ≠ 1、対数の真数は正、指数方程式では b ＞ 0 が必要です。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：半減期10年の物質がある。元の量の 1/8 になるのは何年後か。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>t 年後の量は、元の量 × (1/2)<sup>t/10</sup> です。これが元の量の 1/8 になる条件は (1/2)<sup>t/10</sup> ＝ 1/8 です。</p><ol class="steps"><li>1/8 ＝ (1/2)<sup>3</sup> と書けるので、底 (1/2) をそろえると t/10 ＝ 3。</li><li>よって t ＝ 30。</li></ol><p><strong>答え：30年後</strong>。半減が3回起きる（1 → 1/2 → 1/4 → 1/8）と 1/8 になる、という見方でも確かめられます。</p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>半減期からの逆算と年代測定</h3><p>放射性物質は一定の割合で減っていくため、残っている量の割合が分かれば、指数方程式を解いて経過時間を逆算できます。放射性炭素（炭素14）の割合から遺物や化石の年代を推定する放射性炭素年代測定は、この考え方をそのまま使った技術です。</p><h3>複利で2倍になる年数</h3><p>年利 r で運用した元金が2倍になる年数は (1 ＋ r)<sup>t</sup> ＝ 2 という指数方程式の解で、「72 ÷ 金利（%）年」という72の法則はその近似です。ローンや投資の見通しを立てるときの基本計算になっています。</p><h3>音や地震の「段階」表示</h3><p>音の大きさ（デシベル）や地震のマグニチュードは対数で目盛られた量です。これらの値から元のエネルギーの比を逆算する場面でも、対数方程式と同じ操作が使われます。</p></section>
-<section class="card"><h2>考え出した人</h2><p>この解法自体に特定の考案者はいませんが、土台になる対数を考案したのはスコットランドの<strong>ジョン・ネイピア</strong>（1550〜1617）で、1614年に発表しました。ほぼ同時期にスイスのヨスト・ビュルギも独立に対数の考え方に到達していたことが知られています。巨大な掛け算を足し算に変える対数は、天文学の計算を劇的に楽にし、その逆操作として指数方程式・対数方程式の解法が整っていきました。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line">特定の個人ではなく、土台になる対数を考案した<strong>ジョン・ネイピア</strong>（1550〜1617、スコットランド）／<strong>ヨスト・ビュルギ</strong>（スイス）に由来する方法</p><p>この解法自体に特定の考案者はいませんが、土台になる対数を考案したのはスコットランドの<strong>ジョン・ネイピア</strong>（1550〜1617）で、1614年に発表しました。ほぼ同時期にスイスのヨスト・ビュルギも独立に対数の考え方に到達していたことが知られています。巨大な掛け算を足し算に変える対数は、天文学の計算を劇的に楽にし、その逆操作として指数方程式・対数方程式の解法が整っていきました。</p></section>
 <a class="linkcard" href="calc-exp-log-equations.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">指数方程式・対数方程式 計算機：a^x=b と log_a(x)=b を手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>指数関数・対数関数のグラフや性質の項目、常用対数の項目とあわせて読むとつながりが見えます。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

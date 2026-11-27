@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>|x − a| を「a からの距離」と読み替える。</strong>方程式なら「a から距離 b の点」、不等式なら「a から距離 b 未満（または b より大きい）範囲」と言い換える。</li><li><strong>右辺 b の符号を確認する。</strong>b ＜ 0 の方程式や b ≦ 0 の ＜ 型は解なし、＞ 型は b の値によって「すべての実数」などになる。</li><li><strong>公式に当てはめる。</strong>|X| ＝ b ⇔ X ＝ ±b、|X| ＜ b ⇔ −b ＜ X ＜ b、|X| ＞ b ⇔ X ＜ −b または X ＞ b。</li><li><strong>X ＝ x − a として x について解く。</strong>方程式なら x ＝ a − b と a ＋ b、不等式なら両端に a を足して範囲を出す。</li><li><strong>中身が式の場合は場合分けする。</strong>中身が 0 以上か未満かで絶対値の外し方を変え、それぞれ解いて、場合の条件と重なる部分を答えにする。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：|x − 4| ＝ 3 を解け。また |x − 1| ＜ 2 も解け。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>方程式 |x − 4| ＝ 3 は「4 からの距離が 3 の点」です。x − 4 ＝ ±3 より、x − 4 ＝ 3 のとき x ＝ 7、x − 4 ＝ −3 のとき x ＝ 1 となります。</p><p>不等式 |x − 1| ＜ 2 は「1 からの距離が 2 未満の範囲」です。−2 ＜ x − 1 ＜ 2 の両辺に 1 を足して、−1 ＜ x ＜ 3 となります。</p><p><strong>答え：x ＝ 1, 7／−1 ＜ x ＜ 3</strong></p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>製造業の寸法公差</h3><p>部品の図面では、寸法が「基準寸法 ± 公差」という形で指定されます。たとえば基準 50mm、公差 ±0.1mm なら、実寸 x は 49.9mm から 50.1mm の間になければならず、これは |x − 50| ≦ 0.1 という絶対値の不等式そのものです。公差の範囲を外れた部品は不良品として弾かれます。</p><h3>測定誤差・精度の表記</h3><p>測定器の精度は「真値からどれだけ離れてよいか」という形で表されます。誤差が ±0.5 の範囲に収まる、という表記は、測定値と真値の差の絶対値が 0.5 以下であることと同義です。実験データの信頼性を議論するときも、誤差の絶対値で範囲を示すのが基本になります。</p><h3>電子部品の定格管理</h3><p>電子部品には、中心値からの許容範囲として定格が定められています。抵抗値の許容差（±5% など）や、絶対最大定格のように「この範囲を超えてはいけない」という管理は、中心値からどれだけ離れてよいかを絶対値の言葉で表したものです。回路設計では、この範囲内に収まるよう部品を選定します。</p></section>
-<section class="card"><h2>考え出した人</h2><p>絶対値の記号 |x| を導入したのは、ドイツの数学者<strong>ワイエルシュトラス</strong>（Karl Weierstrass、1815〜1897）で、1841年の論文で使ったとされます。「距離」としての考え方自体はそれ以前からありましたが、この記号が定着したことで、絶対値を含む方程式・不等式の扱いが、場合分けを含む機械的な手順として整理できるようになりました。ワイエルシュトラスは解析学の厳密化でも知られる数学者です。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line"><strong>ワイエルシュトラス</strong>（1815〜1897、ドイツの数学者）</p><p>絶対値の記号 |x| を導入したのは、ドイツの数学者<strong>ワイエルシュトラス</strong>（Karl Weierstrass、1815〜1897）で、1841年の論文で使ったとされます。「距離」としての考え方自体はそれ以前からありましたが、この記号が定着したことで、絶対値を含む方程式・不等式の扱いが、場合分けを含む機械的な手順として整理できるようになりました。ワイエルシュトラスは解析学の厳密化でも知られる数学者です。</p></section>
 <a class="linkcard" href="calc-absolute-value.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">絶対値を含む方程式・不等式 計算機：中心 a と右辺 b、種類を選ぶと、a からの距離として読む手順つきで解を計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>不等式の基本的な扱いを扱う一次不等式や、場合分けの考え方を使う二次関数の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

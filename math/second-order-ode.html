@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>特性方程式 r<sup>2</sup> ＋ p r ＋ q ＝ 0 を立てる。</strong>y'' を r<sup>2</sup>、y' を r、y を 1 に置き換えた2次方程式です。</li><li><strong>判別式 D ＝ p<sup>2</sup> − 4q を計算し、符号で場合分けする。</strong></li><li><strong>特性方程式の根を求める。</strong>D ＞ 0 なら異なる実数根、D ＝ 0 なら重根、D ＜ 0 なら α ± βi の形に書く。</li><li><strong>場合に応じた一般解の形に当てはめる。</strong>任意定数 C<sub>1</sub>、C<sub>2</sub> を含んだ形が一般解です。</li><li><strong>初期条件があれば、C<sub>1</sub>、C<sub>2</sub> を決める。</strong>y と y' に初期値を代入して連立方程式を解きます。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：ばねの振動を表す方程式 y'' ＋ 4y ＝ 0 を、初期条件 y(0) ＝ 1、y'(0) ＝ 0 のもとで解け。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>p ＝ 0、q ＝ 4 の場合です。特性方程式から順に解きます。</p><ol class="steps"><li>特性方程式は r<sup>2</sup> ＋ 4 ＝ 0。判別式は D ＝ 0<sup>2</sup> − 4×4 ＝ −16 ＜ 0。</li><li>根は r ＝ ±2i なので、α ＝ 0、β ＝ 2。</li><li>一般解は y ＝ C<sub>1</sub> cos 2t ＋ C<sub>2</sub> sin 2t（変数を t として書く）。</li><li>y(0) ＝ C<sub>1</sub> ＝ 1。また y' ＝ −2C<sub>1</sub> sin 2t ＋ 2C<sub>2</sub> cos 2t なので、y'(0) ＝ 2C<sub>2</sub> ＝ 0、よって C<sub>2</sub> ＝ 0。</li></ol><p><strong>答え：y ＝ cos 2t</strong>。減衰のない単振動で、周期は 2π/2 ＝ π です。</p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>車のサスペンション設計</h3><p>車のサスペンションは、ばねとダンパー（減衰器）の組み合わせで表され、その動きは二階線形微分方程式になります。特性方程式の根の形から、段差を越えたあと車体が何回揺れて収まるか、揺れが速く収まるか（過減衰・臨界減衰・不足減衰）を判定し、乗り心地と安定性のバランスを設計します。</p><h3>建物の耐震設計</h3><p>地震で建物がどう揺れるかも、建物を質量・ばね・ダンパーで近似した振動の方程式で解析します。固有周期（β に対応する量）が地震の揺れの周期と重なると共振して揺れが大きくなるため、固有周期をずらす設計や、ダンパーで減衰を加える設計にこの計算が使われます。</p><h3>楽器の弦と電気回路</h3><p>楽器の弦の振動は、張力と線密度から決まる固有振動数の重ね合わせとして解析され、音の高さの設計に結びつきます。また、抵抗・コイル・コンデンサからなるRLC回路の電流も同じ形の方程式で表され、共振周波数の設計に使われます。</p></section>
-<section class="card"><h2>考え出した人</h2><p><strong>レオンハルト・オイラー</strong>（1707〜1783）は、定数係数の線形微分方程式を特性方程式で解く方法を確立しました。指数関数を試すという発想と、複素数の根を三角関数で表すオイラーの公式が、この解法の土台になっています。弦の振動の問題は、<strong>ダランベール</strong>（1717〜1783）ら同時代の数学者が競って研究したテーマで、振動現象の数学的な理解がこの時代に大きく進みました。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line"><strong>レオンハルト・オイラー</strong>（1707〜1783）／<strong>ダランベール</strong>（1717〜1783）</p><p><strong>レオンハルト・オイラー</strong>（1707〜1783）は、定数係数の線形微分方程式を特性方程式で解く方法を確立しました。指数関数を試すという発想と、複素数の根を三角関数で表すオイラーの公式が、この解法の土台になっています。弦の振動の問題は、<strong>ダランベール</strong>（1717〜1783）ら同時代の数学者が競って研究したテーマで、振動現象の数学的な理解がこの時代に大きく進みました。</p></section>
 <a class="linkcard" href="calc-second-order-ode.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">二階線形微分方程式 計算機：p と q を入れると、特性方程式と判別式の手順つきで一般解を計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>微分方程式を代数の計算に直すラプラス変換の項目や、2次方程式の解の公式・判別式の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>まず項 a<sub>n</sub> が 0 に近づくか確認する。</strong>0 に近づかなければ、その時点で発散と判定できる。</li><li><strong>級数の形を見て、使える物差しを選ぶ。</strong>等比級数の形なら公比 r、1/n<sup>p</sup> の形なら p を読み取る。</li><li><strong>等比級数は |r| と 1 を比べ、p級数は p と 1 を比べる。</strong>境界（|r| ＝ 1、p ＝ 1）は発散側であることに注意する。</li><li><strong>一般の形には比判定を使う。</strong>|a<sub>n+1</sub>/a<sub>n</sub>| を計算し、n → ∞ の極限 L を求めて 1 と比べる。</li><li><strong>べき級数では、比判定から収束半径 R を求め、端点は別々に調べる。</strong>|x| ＝ R となる端点では収束・発散が個別に決まります。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：(1) 等比級数 Σ<sub>n＝0</sub><sup>∞</sup> (2/3)<sup>n</sup> の収束・発散を判定し、収束する場合は和も求めよ。(2) 調和級数 Σ<sub>n＝1</sub><sup>∞</sup> 1/n の収束・発散を判定せよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><ol class="steps"><li>(1) 公比は r ＝ 2/3 で、|r| ＝ 2/3 ＜ 1 なので収束する。和は初項（n ＝ 0 の項）1 を使って 1/(1 − 2/3) ＝ 1/(1/3) ＝ 3。</li><li>(2) 調和級数は p級数の p ＝ 1 の場合で、p ≦ 1 なので発散する。項 1/n は 0 に近づくが、それだけでは収束は保証されない、という代表例である。</li></ol><p><strong>答え：(1) 収束し、和は 3。(2) 発散する</strong>。</p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>近似計算の誤差評価</h3><p>テイラー展開などで関数を多項式で近似するとき、「何項目まで足せば必要な精度が出るか」は、残りの項の級数がどれだけ小さいかで評価します。収束判定と収束半径は、その近似が使いたい範囲で成り立つか、誤差がどれくらいかを保証する物差しになっています。</p><h3>数値シミュレーションの信頼性確認</h3><p>シミュレーションでは、無限に続く計算を有限の項で打ち切ることがよくあります。打ち切った先の級数が収束する性質を持っていなければ、計算結果は信用できません。収束の理論は、数値計算の結果が意味を持つための前提を支えています。</p><h3>信号処理の級数表現</h3><p>信号を周波数成分の和として表す級数表現では、その級数が収束する範囲でなければ表現自体が成り立ちません。収束半径の考え方は、級数表現が正しく使える範囲を確認する場面で使われます。</p></section>
-<section class="card"><h2>考え出した人</h2><p><strong>ジャン・ル・ロン・ダランベール</strong>（1717〜1783）は、隣り合う項の比を見る比判定を発表しました（1768）。その後、<strong>オーギュスタン＝ルイ・コーシー</strong>（1789〜1857）が『解析教程』（1821）で根判定や収束半径など、収束の理論を体系化しました。「項が 0 に近づけば収束するはず」という素朴な思い込みを排し、厳密な判定の枠組みを作ったのがこの時代です。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line"><strong>ジャン・ル・ロン・ダランベール</strong>（1717〜1783）／<strong>オーギュスタン＝ルイ・コーシー</strong>（1789〜1857）</p><p><strong>ジャン・ル・ロン・ダランベール</strong>（1717〜1783）は、隣り合う項の比を見る比判定を発表しました（1768）。その後、<strong>オーギュスタン＝ルイ・コーシー</strong>（1789〜1857）が『解析教程』（1821）で根判定や収束半径など、収束の理論を体系化しました。「項が 0 に近づけば収束するはず」という素朴な思い込みを排し、厳密な判定の枠組みを作ったのがこの時代です。</p></section>
 <a class="linkcard" href="calc-series-convergence.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">級数の収束判定 計算機：等比級数とp級数の収束・発散の判定と、Σ x^n/n! への比判定の適用を、手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>有限の等比数列の和や無限等比級数の項目、極限の考え方を扱う項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>領域の形に合った変換を選ぶ。</strong>円形の領域なら極座標、平行四辺形なら線形変換が基本です。</li><li><strong>偏微分 ∂x/∂u、∂x/∂v、∂y/∂u、∂y/∂v の4つを計算する。</strong></li><li><strong>ヤコビアン J ＝ ∂x/∂u ・ ∂y/∂v − ∂x/∂v ・ ∂y/∂u を求め、絶対値を取る。</strong></li><li><strong>被積分関数と積分範囲を新しい変数で書き直す。</strong>範囲の端がどう写るかを確認する。</li><li><strong>書き換えた二重積分を、内側から順に計算する。</strong></li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：極座標変換を使って、円盤 x<sup>2</sup> ＋ y<sup>2</sup> ≦ 1 の面積を二重積分で求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>面積は ∬<sub>D</sub> 1 dx dy です。x ＝ r cos θ、y ＝ r sin θ と置くと、ヤコビアンは r になります。</p><ol class="steps"><li>ヤコビアン：∂x/∂r ＝ cos θ、∂x/∂θ ＝ −r sin θ、∂y/∂r ＝ sin θ、∂y/∂θ ＝ r cos θ なので、J ＝ r cos<sup>2</sup> θ ＋ r sin<sup>2</sup> θ ＝ r。</li><li>円盤は 0 ≦ r ≦ 1、0 ≦ θ ≦ 2π と書ける。</li><li>積分は ∫∫ r dr dθ ＝ ∫<sub>0</sub><sup>2π</sup> dθ × ∫<sub>0</sub><sup>1</sup> r dr ＝ 2π × 1/2。</li></ol><p><strong>答え：面積 ＝ π</strong>。半径1の円の面積 π×1<sup>2</sup> ＝ π と一致します。ヤコビアンの r を掛けなければ 2π になってしまうので、r の役割がよく分かる例です。</p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>画像のワーピングと地図投影</h3><p>画像を歪ませるワーピング（変形）では、場所ごとに画像がどれだけ伸び縮みするかをヤコビアンで測ります。地図の投影法でも、地球の表面を平面に写すとき場所ごとに面積が歪みますが、その歪みの大きさは投影のヤコビアンで表されます。面積を正しく保つ正積図法の設計は、この計算の応用です。</p><h3>ロボット工学のヤコビ行列</h3><p>ロボットアームでは、関節の角度の変化と手先の位置の変化を結ぶヤコビ行列が制御の要になっています。手先を望みの方向へ動かすために関節をどう動かすかは、この行列を使って計算します。行列式が 0 になる特異姿勢では手先が動かせない方向が出るため、その検出にもヤコビアンが使われます。</p><h3>確率分布の変数変換</h3><p>確率変数を変換したときの確率密度の補正にも、ヤコビアンの絶対値が現れます。乱数の生成方法の設計や、統計モデルの計算で使われる考え方です。</p></section>
-<section class="card"><h2>考え出した人</h2><p><strong>カール・グスタフ・ヤコブ・ヤコビ</strong>（1804〜1851、ドイツの数学者）。変数変換に現れる行列式を導入し、この行列式は「ヤコビアン」と呼ばれます。楕円関数や力学の研究でも大きな業績を残した数学者です。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line"><strong>カール・グスタフ・ヤコブ・ヤコビ</strong>（1804〜1851、ドイツの数学者）</p><p><strong>カール・グスタフ・ヤコブ・ヤコビ</strong>（1804〜1851、ドイツの数学者）。変数変換に現れる行列式を導入し、この行列式は「ヤコビアン」と呼ばれます。楕円関数や力学の研究でも大きな業績を残した数学者です。</p></section>
 <a class="linkcard" href="calc-jacobian.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">重積分の変数変換（ヤコビアン）計算機：線形変換のヤコビアンと面積の拡大率、極座標変換の r・θ と円盤上の二重積分を手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>重積分そのものを扱う項目や、行列式を扱う項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

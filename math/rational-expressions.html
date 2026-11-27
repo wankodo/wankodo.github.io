@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>分母が0になる値（x の値の制限）を確認する。</strong>各分母 ＝ 0 となる x の値を除くことを、最初に押さえておく。</li><li><strong>分子・分母を因数分解する。</strong>共通因数をくくり出し、因数分解の公式を使って、分子と分母を因数の積の形に直す。</li><li><strong>約分できるものは先に約分する。</strong>分子と分母の共通因数を消して、式をできるだけ簡単にしておく。</li><li><strong>演算に応じて計算する。</strong>足し算・引き算は通分して分子同士を計算し、掛け算は分子同士・分母同士を掛け、割り算は割る式の逆数を掛ける形に直す。</li><li><strong>最後にもう一度、因数分解と約分をして答えを整理する。</strong>分子を展開しっぱなしにせず、約分できないか確認してから答えとする。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：1/(x − 1) ＋ 1/(x ＋ 1) を計算せよ（x ≠ ±1）。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>分母 (x − 1) と (x ＋ 1) を通分します。通分の分母は (x − 1)(x ＋ 1) です。</p><ol class="steps"><li>1/(x − 1) ＝ (x ＋ 1)/((x − 1)(x ＋ 1))、1/(x ＋ 1) ＝ (x − 1)/((x − 1)(x ＋ 1)) と通分する。</li><li>分子同士を足すと ((x ＋ 1) ＋ (x − 1))/((x − 1)(x ＋ 1)) ＝ 2x/((x − 1)(x ＋ 1)) になる。</li><li>分母を展開すると (x − 1)(x ＋ 1) ＝ x<sup>2</sup> − 1 で、分子 2x との共通因数はないので、これ以上約分できない。</li></ol><p><strong>答え：2x/(x<sup>2</sup> − 1)</strong>（x ≠ ±1）。</p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>電気回路の合成抵抗</h3><p>抵抗を並列につないだときの合成抵抗 R は、1/R ＝ 1/R<sub>1</sub> ＋ 1/R<sub>2</sub> という「逆数の和」で決まります。これは分数式の足し算そのもので、通分すると R ＝ R<sub>1</sub>R<sub>2</sub>/(R<sub>1</sub> ＋ R<sub>2</sub>) という1つの分数式に整理できます。回路設計や電気工事の現場では、この形で合成抵抗を求める計算が日常的に行われます。</p><h3>レンズの公式</h3><p>レンズの焦点距離 f、レンズから物体までの距離 a、像までの距離 b の間には、1/f ＝ 1/a ＋ 1/b という関係（レンズの公式）があります。これも逆数の和の形をした分数式で、カメラのレンズ設計や眼鏡・コンタクトレンズの度数設計では、この式を変形して必要な距離や焦点距離を求めます。</p><h3>仕事算・濃度計算</h3><p>複数人で仕事を分け合うとき、1時間あたりに進む仕事量は「1/所要時間」の和になるため、実効速度は分数式の足し算で求まります。また、濃度の違う食塩水などを混ぜる濃度計算でも、食塩の量や全体の量を分数で表して加減する計算が使われます。どちらも分数式の通分・約分の考え方がそのまま土台になっています。</p></section>
-<section class="card"><h2>考え出した人</h2><p>分数式の計算に、特定の考案者はいません。分数の通分・約分の手順そのものは古くから知られており、古代中国の数学書<strong>『九章算術』</strong>（紀元前後）には、分数の加減や約分の方法が既に体系化されて載っています。その後、16世紀以降に文字を使って式を表す記号代数が発達すると、数字の分数の計算ルールが文字式へと広がり、現在の分数式の計算として整備されていきました。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line">特定の個人ではなく、古代中国の数学書『九章算術』（紀元前後）に分数の方法が体系化されていたもの</p><p>分数式の計算に、特定の考案者はいません。分数の通分・約分の手順そのものは古くから知られており、古代中国の数学書<strong>『九章算術』</strong>（紀元前後）には、分数の加減や約分の方法が既に体系化されて載っています。その後、16世紀以降に文字を使って式を表す記号代数が発達すると、数字の分数の計算ルールが文字式へと広がり、現在の分数式の計算として整備されていきました。</p></section>
 <a class="linkcard" href="calc-rational-expressions.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">分数式の計算 計算機：2つの分数と演算（足し算・引き算・掛け算・割り算）を入れると、通分・約分の手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>分数式の計算の土台になる因数分解や、通分・約分の考え方が共通する整式の計算の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

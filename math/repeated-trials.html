@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>1回の試行の成功確率 p を確認する。</strong>何を「成功」とみなすかを決め、その確率を分数または小数で表す。</li><li><strong>試行回数 n と成功回数 r を読み取る。</strong>「ちょうど r 回」なのか「r 回以下」なのか、問題文の条件を正確に押さえる。</li><li><strong>順番の数 nCr を計算する。</strong>n 回のうち成功する r 回の位置の選び方である。</li><li><strong>p^r と (1−p)^(n−r) を計算する。</strong>成功 r 回分と失敗 n−r 回分の確率の積である。</li><li><strong>3つの因子を掛け合わせる。</strong>nCr × p^r × (1−p)^(n−r) が求める確率になる。分数のまま計算すると約分できて簡単になることが多い。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：サイコロを5回投げるとき、1の目がちょうど2回出る確率を求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>1回の試行で1の目が出る確率は p ＝ 1/6 です。n ＝ 5、r ＝ 2 として公式に当てはめると、5C2 × (1/6)^2 × (5/6)^3 となります。</p><p>5C2 ＝ 10、(1/6)^2 ＝ 1/36、(5/6)^3 ＝ 125/216 なので、10 × 1/36 × 125/216 ＝ 1250/7776 ＝ 625/3888 です。小数では約0.161になります。</p><p><strong>答え：625/3888（約0.161）</strong></p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>工場の抜き取り検査の合格判定</h3><p>製品を全部検査できないとき、一部を抜き取って検査し「不良品が k 個以下ならロット全体を合格とする」という判定ルールが使われます。不良率 p が分かれば、抜き取った n 個の中に不良品がちょうど r 個含まれる確率は反復試行の公式で計算でき、「本当は不良率が高いロットを誤って合格させる確率」を見積もって、抜き取り個数や合格ライン k を設計します。</p><h3>薬の治験・ワクチンの有効性評価</h3><p>薬やワクチンの効果を確かめる治験では、投与したグループとしないグループで、症状が改善した人数や発症した人数を比べます。「効果がないのに、偶然これだけの差が出る確率」は、成功回数の確率を積み上げる反復試行（二項分布）の計算で評価され、有効性を判定する統計的な裏付けになっています。</p><h3>通信のビット誤り率とガチャの確率設計</h3><p>デジタル通信では、ビットが誤って届く確率（ビット誤り率）から、データをまとめたブロック全体が誤る確率を見積もります。これも「n 回の送信で誤りがちょうど r 回起こる確率」という反復試行の形です。同じ形は、くじやガチャで「n 回引いて当たりがちょうど r 回出る確率」の設計にも使われ、提供割合の表示や期待値の計算の土台になっています。</p></section>
-<section class="card"><h2>考え出した人</h2><p>スイスの数学者<strong>ヤコブ・ベルヌーイ</strong>（1654〜1705）が基礎を築きました。彼の死後の1713年に出版された著書『推測術』の中で、反復試行の確率の積み上げである二項分布の基礎が論じられ、試行回数を大きくすると成功の割合が成功確率に近づくという<strong>大数の法則</strong>も示されました。確率論が「偶然を数で扱う学問」として形になった出発点のひとつです。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line"><strong>ヤコブ・ベルヌーイ</strong>（1654〜1705、スイスの数学者）</p><p>スイスの数学者<strong>ヤコブ・ベルヌーイ</strong>（1654〜1705）が基礎を築きました。彼の死後の1713年に出版された著書『推測術』の中で、反復試行の確率の積み上げである二項分布の基礎が論じられ、試行回数を大きくすると成功の割合が成功確率に近づくという<strong>大数の法則</strong>も示されました。確率論が「偶然を数で扱う学問」として形になった出発点のひとつです。</p></section>
 <a class="linkcard" href="calc-repeated-trials.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">独立試行と反復試行の確率 計算機：試行回数 n、成功回数 r、成功確率 p を入れると、nCr × p^r × (1−p)^(n−r) を手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>成功回数の分布全体の平均や分散を扱う二項分布の項目、分布の代表値として結果の平均像を計算する期待値の項目、順番の数 nCr そのものの計算に使う二項定理の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

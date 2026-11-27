@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>何を求めるか確認する。</strong>展開全体か、特定の項の係数かで手順が変わります。</li><li><strong>一般項 <sub>n</sub>C<sub>k</sub> a<sup>n−k</sup> b<sup>k</sup> を書く。</strong>a と b には、式中の符号や係数も含めて代入します（例：(x ＋ 2)<sup>4</sup> なら a ＝ x、b ＝ 2）。</li><li><strong>特定の項なら、a の指数から k を決める。</strong>x<sup>2</sup> の項なら n − k ＝ 2 となる k を求めます。</li><li><strong><sub>n</sub>C<sub>k</sub> を計算し、b<sup>k</sup> などの数値部分を掛け合わせる。</strong></li><li><strong>展開全体なら k ＝ 0 から n まで順に項を書き並べる。</strong>係数が左右対称になっているかで検算できます。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：(x ＋ 2)<sup>4</sup> の展開で、x<sup>2</sup> の係数を求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><ol class="steps"><li>一般項は <sub>4</sub>C<sub>k</sub> x<sup>4−k</sup> · 2<sup>k</sup>。</li><li>x<sup>2</sup> の項は 4 − k ＝ 2、つまり k ＝ 2 のとき。</li><li>係数は <sub>4</sub>C<sub>2</sub> × 2<sup>2</sup> ＝ 6 × 4 ＝ 24。</li></ol><p><strong>答え：24</strong>。参考に全体を展開すると (x ＋ 2)<sup>4</sup> ＝ x<sup>4</sup> ＋ 8x<sup>3</sup> ＋ 24x<sup>2</sup> ＋ 32x ＋ 16 で、x<sup>2</sup> の係数が 24 になっていることが確かめられます。</p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>二項分布の土台</h3><p>「コインを10回投げて表がちょうど3回出る確率」のように、同じ試行を繰り返す確率モデルが二項分布です。その確率の式に出てくる <sub>n</sub>C<sub>k</sub> は二項係数そのもので、保険の事故件数の見積もりや、工場の抜き取り検査で不良品が出る確率の計算など、確率を使う現場の土台になっています。</p><h3>複利と誤差の近似</h3><p>x が小さいとき (1 ＋ x)<sup>n</sup> ≒ 1 ＋ nx と近似できます。二項定理の最初の2項だけを残したもので、金利の概算や、測定誤差が積み重なったときの影響の見積もりなど、「だいたいの大きさを素早くつかむ」場面で広く使われます。</p></section>
-<section class="card"><h2>考え出した人</h2><p>係数を三角形に並べる方法は、中国の<strong>楊輝</strong>（13世紀）が紹介したことで「楊輝の三角形」とも呼ばれ、インドやペルシャにもそれより前の先行例があります。ヨーロッパでは<strong>ブレーズ・パスカル</strong>（1623〜1662）がこの三角形を体系的に論じ、「パスカルの三角形」の名で広まりました。さらに指数を整数以外へ広げた一般二項定理は、<strong>アイザック・ニュートン</strong>（1643〜1727）が1665年頃に到達したものです。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line"><strong>楊輝</strong>（13世紀、中国）／<strong>ブレーズ・パスカル</strong>（1623〜1662）／<strong>アイザック・ニュートン</strong>（1643〜1727）</p><p>係数を三角形に並べる方法は、中国の<strong>楊輝</strong>（13世紀）が紹介したことで「楊輝の三角形」とも呼ばれ、インドやペルシャにもそれより前の先行例があります。ヨーロッパでは<strong>ブレーズ・パスカル</strong>（1623〜1662）がこの三角形を体系的に論じ、「パスカルの三角形」の名で広まりました。さらに指数を整数以外へ広げた一般二項定理は、<strong>アイザック・ニュートン</strong>（1643〜1727）が1665年頃に到達したものです。</p></section>
 <a class="linkcard" href="calc-binomial-theorem.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">二項定理 計算機：nCk の計算と、(a+b)^n の各項の値と合計を手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>場合の数・組み合わせの項目や、確率の項目とあわせて読むとつながりが見えます。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>F の成分 P、Q、R を確認する。</strong>どの成分が x、y、z のどの関数になっているか書き出す。</li><li><strong>発散に必要な偏微分 ∂P/∂x、∂Q/∂y、∂R/∂z を計算する。</strong>偏微分では、微分する変数以外は定数として扱う。</li><li><strong>3つの偏微分を足して div F を得る。</strong></li><li><strong>回転の各成分 ∂R/∂y − ∂Q/∂z、∂P/∂z − ∂R/∂x、∂Q/∂x − ∂P/∂y を計算する。</strong>引く順番を取り違えないよう注意する。</li><li><strong>結果を解釈する。</strong>発散の符号で湧き出し・吸い込みを、回転が 0 かどうかで渦の有無を読み取る。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：ベクトル場 F ＝ (x y, y<sup>2</sup>, z) の発散と回転を求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>P ＝ x y、Q ＝ y<sup>2</sup>、R ＝ z と置きます。</p><ol class="steps"><li>発散：∂P/∂x ＝ y、∂Q/∂y ＝ 2y、∂R/∂z ＝ 1 なので、div F ＝ y ＋ 2y ＋ 1 ＝ 3y ＋ 1。</li><li>回転の第1成分：∂R/∂y − ∂Q/∂z ＝ 0 − 0 ＝ 0。</li><li>回転の第2成分：∂P/∂z − ∂R/∂x ＝ 0 − 0 ＝ 0。</li><li>回転の第3成分：∂Q/∂x − ∂P/∂y ＝ 0 − x ＝ −x。</li></ol><p><strong>答え：発散 ＝ 3y ＋ 1、回転 ＝ (0, 0, −x)</strong>。回転の第3成分が −x なので、x が 0 でない場所では z 軸まわりの渦があることが分かります。</p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>流体シミュレーションと気象予報</h3><p>空気や水の流れを計算する流体力学では、速度場の発散が重要な役割を果たします。空気や水はふつうほとんど圧縮されないため、流れの計算では「発散が 0」という条件（非圧縮条件）を課してシミュレーションを行います。天気予報の数値計算でも、風の場をこの条件とあわせて解いています。回転は渦度と呼ばれ、台風や渦の発生・発達を追う指標になっています。</p><h3>電磁気学とマクスウェル方程式</h3><p>電磁気の基本法則であるマクスウェル方程式は、電場と磁場の発散と回転を使って書かれています。電場の発散が電荷と結びつく式、磁場の発散が 0 である式、電場の回転が磁場の変化と結びつく式、磁場の回転が電流と結びつく式の4つで、電磁波の存在まで予言されました。</p><h3>コンピュータグラフィックスの流体表現</h3><p>映画やゲームで水や煙を描く流体シミュレーションでも、速度場の発散を 0 に保つ計算や、渦を表す回転の計算が内部で行われています。見た目の自然さは、この数学に支えられています。</p></section>
-<section class="card"><h2>考え出した人</h2><p><strong>ジョサイア・ウィラード・ギブズ</strong>（1839〜1903、アメリカ）と<strong>オリヴァー・ヘヴィサイド</strong>（1850〜1925、イギリス）が、ハミルトンの四元数からベクトルの計算を独立させ、1880年代にベクトル解析として体系化しました。ギブズは講義用のテキストで、ヘヴィサイドは電磁気の研究の中で、それぞれベクトルの記法と計算を整え、今日使われる形の基礎を作りました。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line"><strong>ジョサイア・ウィラード・ギブズ</strong>（1839〜1903、アメリカ）／<strong>オリヴァー・ヘヴィサイド</strong>（1850〜1925、イギリス）</p><p><strong>ジョサイア・ウィラード・ギブズ</strong>（1839〜1903、アメリカ）と<strong>オリヴァー・ヘヴィサイド</strong>（1850〜1925、イギリス）が、ハミルトンの四元数からベクトルの計算を独立させ、1880年代にベクトル解析として体系化しました。ギブズは講義用のテキストで、ヘヴィサイドは電磁気の研究の中で、それぞれベクトルの記法と計算を整え、今日使われる形の基礎を作りました。</p></section>
 <a class="linkcard" href="calc-vector-calculus.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">ベクトル解析（発散・回転）計算機：線形のベクトル場の9つの係数を入れると、発散と回転を手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>ベクトルの成分や内積・外積を扱う項目、偏微分を扱う項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>母集団と標本を確認する。</strong>全体の大きさ（母集団の大きさ）と、実際に調べた個数（標本数）を問題文から読み取る。</li><li><strong>標本の平均を求める。</strong>標本の合計を標本数で割る。個数の問題では、標本での割合を求める。</li><li><strong>母集団の大きさをかける。</strong>標本の平均（または割合）に母集団の大きさをかけて、全体の合計（または個数）を推定する。</li><li><strong>「およそ」で答える。</strong>標本調査の結果は推定値なので、答えは「およそ○○」と書く。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：ある工場で作られた電球20,000個の中から200個を無作為に抜き取って調べたところ、不良品が6個あった。全体の不良品の個数はおよそ何個と考えられるか。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>標本での不良品の割合は 6 ÷ 200 ＝ 0.03 です。この割合が全体でもほぼ同じだとみなすと、全体の不良品の個数は 0.03 × 20,000 ＝ 600（個）と推定できます。</p><p><strong>答え：およそ600個</strong></p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>テレビの視聴率</h3><p>テレビの視聴率は、全国のすべてのテレビを調べているわけではありません。調査会社が無作為に選んだ調査用のモニター世帯（標本）の視聴状況を集計し、その割合から全体の視聴率を推定しています。標本の世帯数は全体に比べればごく少数ですが、選び方に偏りがないため、番組全体の人気を推し量る指標として成り立っています。</p><h3>世論調査</h3><p>新聞社や放送局が行う内閣支持率などの世論調査も標本調査です。有権者全体に聞くことはできないので、無作為に選んだ千人程度の回答から全体の傾向を推定します。年代や地域に偏りが出ないよう標本の選び方を工夫することと、標本の数によって推定に幅（誤差）が出ることが、結果を読むときの注意点です。</p><h3>工場の抜き取り検査</h3><p>工場では、作った製品の一部を抜き取って検査し、その結果でロット全体の合否を判定する抜き取り検査が広く行われています。とくに、電球の点灯寿命のように「調べると製品が壊れたり使えなくなったりする」破壊検査では、全数検査はそもそも不可能です。全部を調べたら売るものが残らないため、標本で全体を推し量るしかありません。</p></section>
-<section class="card"><h2>考え出した人</h2><p>標本から全体を推定する方法を本格的に提唱したのは、ノルウェーの統計家<strong>アンデシュ・ニコライ・キエール</strong>（1838〜1919）です。彼は1895年の国際統計協会の会議で、国勢調査のような全数調査の一部を標本で置き換える「代表法」を提案しました。当時は「一部を調べただけで全体が分かるはずがない」と強い反対も受けましたが、この考え方がその後、世論調査や品質管理に広がる標本調査の土台になりました。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line"><strong>アンデシュ・ニコライ・キエール</strong>（1838〜1919、ノルウェーの統計家）</p><p>標本から全体を推定する方法を本格的に提唱したのは、ノルウェーの統計家<strong>アンデシュ・ニコライ・キエール</strong>（1838〜1919）です。彼は1895年の国際統計協会の会議で、国勢調査のような全数調査の一部を標本で置き換える「代表法」を提案しました。当時は「一部を調べただけで全体が分かるはずがない」と強い反対も受けましたが、この考え方がその後、世論調査や品質管理に広がる標本調査の土台になりました。</p></section>
 <a class="linkcard" href="calc-sampling-survey.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">標本調査 計算機：標本数・標本の合計・母集団の大きさを入れると、標本の平均と母集団全体の推定合計を手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>集めたデータを表やグラフにまとめる度数分布とヒストグラムの項目、分布を真ん中とばらつきで要約する四分位数と箱ひげ図・代表値の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

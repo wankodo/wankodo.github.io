@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>第 m−1 群までの総項数を出す。</strong>(m−1)m/2 を計算し、前の群までに項が何個あるかを確認する。</li><li><strong>第 m 群までの総項数を出す。</strong>m(m＋1)/2 を計算する。</li><li><strong>初項の番号を決める。</strong>初項は第 (m−1)m/2 ＋ 1 項目である。</li><li><strong>末項の番号を決める。</strong>末項は第 m(m＋1)/2 項目である。</li><li><strong>もとの数列の公式に代入する。</strong>第 n 項の公式に初項・末項の番号をそれぞれ代入して値を出す。</li><li><strong>項数を確認する。</strong>末項の番号 − 初項の番号 ＋ 1 が m になっていれば正しい。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：自然数 1,2,3,… を、第1群に1個、第2群に2個、第3群に3個…と分けていく。第10群の初項と末項を求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>第9群までの総項数は 9×10/2 ＝ 45 です。したがって第10群の初項は、第46項目、つまり 46 です。</p><p>第10群までの総項数は 10×11/2 ＝ 55 なので、第10群の末項は第55項目、つまり 55 です。項数は 55 − 46 ＋ 1 ＝ 10 で、第10群の個数と合います。</p><p><strong>答え：初項 46、末項 55</strong></p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><p>正直に言うと、この単元は入試テクニックとしての色が強く、群数列そのものが現場で直接使われる場面は限られます。それでも、「一定数ごとに区切って数える考え方」自体は、番号付けの実務のあちこちに通じています。</p><h3>倉庫の棚番・座席の割り当て</h3><p>倉庫の棚や劇場の座席は、列やブロックごとに区切って番号を振ります。「通しの番号が、どのブロックの何番目か」を逆算する考え方は、群数列で前の群までの総数を数える手順とそのまま同じ形です。</p><h3>ファイルの連番管理</h3><p>写真や書類のファイルを日付や分類ごとにフォルダへ区切って連番で管理するときも、「前のまとまりまでに何件あるか」を押さえることが、通し番号のずれを防ぐ土台になります。</p></section>
-<section class="card"><h2>考え出した人</h2><p>群数列には、特定の考案者はいません。数列を扱いやすいまとまりに区切って数える工夫として、教科書の中で定着してきた考え方です。もとになっているのは、1＋2＋…＋m ＝ m(m＋1)/2 という、古代から知られていた自然数の和の公式であり、群数列はその応用の形と言えます。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line">特定の個人ではなく、教科書の中で定着してきた考え方で、古代から知られていた自然数の和の公式がもとになっている</p><p>群数列には、特定の考案者はいません。数列を扱いやすいまとまりに区切って数える工夫として、教科書の中で定着してきた考え方です。もとになっているのは、1＋2＋…＋m ＝ m(m＋1)/2 という、古代から知られていた自然数の和の公式であり、群数列はその応用の形と言えます。</p></section>
 <a class="linkcard" href="calc-grouped-sequences.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">群数列 計算機：群の番号 m と数列の種類を入れると、その群の初項・末項・項数と第 m 群までの総項数を手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>群の境目を数える土台になる等差数列の和の項目や、項を無限に足していく無限等比級数の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

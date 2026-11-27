@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>d ＝ gcd(a, b) を求め、c が d で割り切れるか確認する。</strong>割り切れなければ「整数解なし」で終了です。</li><li><strong>拡張ユークリッドの互除法で a x ＋ b y ＝ d の解を1つ求める。</strong>互除法の各割り算を記録し、余り＝割る数−商×割られる数の形で逆向きに代入していく。</li><li><strong>両辺を c/d 倍して、もとの方程式の特殊解 (x<sub>0</sub>, y<sub>0</sub>) を得る。</strong></li><li><strong>一般解 x ＝ x<sub>0</sub> ＋ (b/d)k，y ＝ y<sub>0</sub> − (a/d)k を書く。</strong></li><li><strong>個数や金額など x, y ≧ 0 の条件がある場合は、その範囲に入る k を絞り込む。</strong>x が 0 以上で最小になる解もここで見つかります。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：7個入りの箱と11個入りの箱を使って、ちょうど100個を出荷したい。7個入りの箱を x 箱、11個入りの箱を y 箱とするとき、組み合わせをすべて求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>式は 7x ＋ 11y ＝ 100 です。d ＝ gcd(7, 11) ＝ 1 で、100 は 1 で割り切れるので解があります。</p><ol class="steps"><li>7x ＋ 11y ＝ 1 の解を1つ探す：7×(−3) ＋ 11×2 ＝ −21 ＋ 22 ＝ 1 なので、(−3, 2) が解。</li><li>両辺を100倍すると特殊解は (−300, 200)。</li><li>一般解は x ＝ −300 ＋ 11k，y ＝ 200 − 7k。</li><li>x ≧ 0 となるのは k ≧ 28（x ＝ 8）のとき、y ≧ 0 となるのは k ≦ 28 のとき。よって k ＝ 28 のみ。</li></ol><p><strong>答え：7個入りの箱が8箱、11個入りの箱が4箱</strong>（検算：7×8 ＋ 11×4 ＝ 56 ＋ 44 ＝ 100）。組み合わせはこの1通りだけです。</p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>硬貨・切手の金額合わせ</h3><p>「50円切手と80円切手でちょうど○○円分買う」といった問題は、まさに一次不定方程式です。自動販売機や両替機の設計、郵便料金の組み合わせ計算でも、合計をぴったり作れる組み合わせがあるかをこの形で判定します。</p><h3>荷物の積み合わせ</h3><p>トラックやコンテナに2種類の荷物を積むとき、総重量や容量の上限をぴったり満たす個数の組み合わせを探す問題も同じ形になります。切り捨てや端数を出さずに積み切る計画を立てる場面で使われます。</p><h3>暗号・計算機科学の土台</h3><p>特殊解を求める拡張ユークリッドの互除法は、RSA暗号で秘密鍵を求める計算（法のもとでの逆元計算）にもそのまま使われています。高校のこの単元が、現代の暗号技術の入口になっています。</p></section>
-<section class="card"><h2>考え出した人</h2><p><strong>ディオファントス</strong>（3世紀頃）アレクサンドリアの数学者で、著書『算術』で整数解を求める問題を数多く扱ったことから、この種の方程式は「ディオファントス方程式」とも呼ばれます。互除法そのものは<strong>ユークリッド</strong>（紀元前3世紀頃）の『原論』に記された方法で、それを逆にたどって解を組み立てるのが拡張ユークリッドの互除法です。またインドの<strong>アーリヤバタ</strong>（476〜550）も、同じ問題を解く「粉砕法（クッタカ）」を独自に編み出していました。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line"><strong>ディオファントス</strong>（3世紀頃、アレクサンドリアの数学者）／<strong>ユークリッド</strong>（紀元前3世紀頃）／<strong>アーリヤバタ</strong>（476〜550、インド）</p><p><strong>ディオファントス</strong>（3世紀頃）アレクサンドリアの数学者で、著書『算術』で整数解を求める問題を数多く扱ったことから、この種の方程式は「ディオファントス方程式」とも呼ばれます。互除法そのものは<strong>ユークリッド</strong>（紀元前3世紀頃）の『原論』に記された方法で、それを逆にたどって解を組み立てるのが拡張ユークリッドの互除法です。またインドの<strong>アーリヤバタ</strong>（476〜550）も、同じ問題を解く「粉砕法（クッタカ）」を独自に編み出していました。</p></section>
 <a class="linkcard" href="calc-diophantine.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">一次不定方程式 計算機：a、b、c を入れると、拡張ユークリッドの互除法の手順つきで特殊解と一般解を計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>最大公約数を求めるユークリッドの互除法や、割り算の余りを扱う合同式の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

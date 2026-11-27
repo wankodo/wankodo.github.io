@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>変換したい関数が変換表のどの行に当たるかを確認する。</strong>表にない形は、和や定数倍に分けて表の形に直す。</li><li><strong>変換表を適用して F(s) を書く。</strong>パラメータ a や ω をそのまま式に代入する。</li><li><strong>微分方程式を解く場合は、両辺を変換して F(s) についての代数方程式を解く。</strong>初期条件は微分の変換の式から自動的に入る。</li><li><strong>必要なら部分分数分解などで F(s) を変換表の形に分け直す。</strong></li><li><strong>変換表を逆向きに読んで逆変換し、f(t) を得る。</strong>最後に初期条件を満たすか検算する。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：f(t) ＝ sin 3t のラプラス変換を求めよ。また、補足として F(s) ＝ 1/(s − 2) の逆ラプラス変換も求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>変換表の sin ωt → ω/(s<sup>2</sup> ＋ ω<sup>2</sup>) の行を使います。</p><ol class="steps"><li>sin 3t は ω ＝ 3 の場合なので、F(s) ＝ 3/(s<sup>2</sup> ＋ 3<sup>2</sup>) ＝ 3/(s<sup>2</sup> ＋ 9)。</li><li>補足：1/(s − 2) は e<sup>at</sup> → 1/(s − a) の行を逆向きに読んだもので、a ＝ 2 と置くと逆変換は e<sup>2t</sup>。</li></ol><p><strong>答え：sin 3t の変換は 3/(s<sup>2</sup> ＋ 9)、1/(s − 2) の逆変換は e<sup>2t</sup></strong>です。</p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>自動制御とロボットの姿勢制御</h3><p>工場の自動制御やロボットの姿勢制御では、モーターや機械の動きを表す微分方程式をラプラス変換し、「伝達関数」と呼ばれる s の分数式の形で設計します。伝達関数の分母の根（極）の位置を見ることで、機械が安定するか、目標値にどれくらいの速さで追いつくかを、実際に動かす前に判定できます。</p><h3>電気回路の過渡現象の解析</h3><p>回路のスイッチを入れた直後、電流や電圧はすぐには安定せず、しばらく変化し続けます。この過渡現象は微分方程式で表されますが、ラプラス変換を使えば代数の計算で電流の時間変化を求められます。回路設計の現場で標準的に使われる道具です。</p><h3>機械の振動・応答の設計</h3><p>ばねやダンパーを持つ機械に外力が加わったときの応答も、同じ枠組みで扱えます。入力と出力の関係を伝達関数として表しておくことで、共振を避ける設計や、応答を速くする調整を計算の上で進められます。</p></section>
-<section class="card"><h2>考え出した人</h2><p><strong>ピエール＝シモン・ラプラス</strong>（1749〜1827）はフランスの数学者で、確率論の著書などでこの変換を体系的に使いました。その名が変換の名前になっています。後に<strong>オリヴァー・ヘヴィサイド</strong>（1850〜1925）が、電気回路の計算にこの考え方を実用的に広め、工学の現場で使われる道具として定着させました。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line"><strong>ピエール＝シモン・ラプラス</strong>（1749〜1827、フランスの数学者）／<strong>オリヴァー・ヘヴィサイド</strong>（1850〜1925）</p><p><strong>ピエール＝シモン・ラプラス</strong>（1749〜1827）はフランスの数学者で、確率論の著書などでこの変換を体系的に使いました。その名が変換の名前になっています。後に<strong>オリヴァー・ヘヴィサイド</strong>（1850〜1925）が、電気回路の計算にこの考え方を実用的に広め、工学の現場で使われる道具として定着させました。</p></section>
 <a class="linkcard" href="calc-laplace-transform.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">ラプラス変換 計算機：基本的な関数の変換と代表的な形の逆変換を、変換表の手順つきで計算します。指定した s での数値も表示します。</span></a>
 <section class="card"><h2>関連項目</h2><p>微分方程式そのものの解き方は二階線形微分方程式の項目、積分の計算方法は積分の手法や部分積分・置換積分の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

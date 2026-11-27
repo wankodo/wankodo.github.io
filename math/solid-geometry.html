@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>立体の種類を見分ける。</strong>柱体か、錐体か、球かで使う公式が決まります。</li><li><strong>底面積を出す。</strong>円なら πr²、多角形ならその面積公式を使います。</li><li><strong>体積を求める。</strong>柱体は底面積×高さ、錐体はその 1/3、球は (4/3)πr³。</li><li><strong>表面積は展開図で考える。</strong>底面・側面に分けて面積を出し、合計します。円錐の側面は母線が必要なので、三平方の定理で先に求めます。</li><li><strong>単位をそろえる。</strong>体積は立方（cm³ など）、表面積は平方（cm² など）。混ざっていないか最後に確認します。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：（1）底面の半径 3cm、高さ 10cm の円柱の体積と表面積を求めよ。（2）半径 3cm の球の体積と表面積を求めよ。（π はそのまま使ってよい）</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>（1）体積 ＝ π × 3² × 10 ＝ 90π cm³。表面積 ＝ 2π × 3 × (3 ＋ 10) ＝ 78π cm²。</p><p>（2）体積 ＝ (4/3)π × 3³ ＝ 36π cm³。表面積 ＝ 4π × 3² ＝ 36π cm²。半径 3 の球では、体積と表面積の係数が偶然同じ 36 になります。</p><p><strong>答え：（1）体積 90π cm³、表面積 78π cm²（2）体積 36π cm³、表面積 36π cm²</strong></p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>タンク・サイロの容量計算</h3><p>工場の円柱タンクや穀物サイロにどれだけ入るかは、円柱の体積計算そのものです。薬品や燃料の在庫管理では、タンクの液面の高さから残量を逆算することもあり、体積の公式が日常の管理に使われています。球形のLPGタンク（ガスタンク）も、球の体積の公式で容量が決まります。</p><h3>塗装・メッキの面積見積もり</h3><p>塗料やメッキは「表面積 × 単価」で費用が決まります。部品や構造物の表面積を立体の公式で見積もることは、製造コストの計算の第一歩です。表面積の見積もりがずれると、材料費も工数もずれるため、現場では基本の計算として扱われます。</p><h3>飲料缶の内容量設計</h3><p>飲料缶やペットボトルの「内容量」は、容器の内側の体積です。350mL 入る缶の寸法は、円柱の体積が 350cm³ になるよう設計されています。材料の使用量（表面積）を抑えながら容量を確保する設計は、体積と表面積のバランスの計算の上に成り立っています。</p></section>
-<section class="card"><h2>考え出した人</h2><p>球の体積と表面積の公式は、古代ギリシャの<strong>アルキメデス</strong>（紀元前3世紀）が発見しました。球が、それに外接する円柱の体積のちょうど 2/3 になることを突き止め、本人はこの発見を大変誇りに思って、墓石に円柱と球の図を刻ませたと伝えられています。錐体の体積が柱体の 1/3 になることの証明は<strong>エウドクソス</strong>によるもので、ユークリッドの『原論』第12巻に収められています。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line"><strong>アルキメデス</strong>（紀元前3世紀、古代ギリシャ）／<strong>エウドクソス</strong></p><p>球の体積と表面積の公式は、古代ギリシャの<strong>アルキメデス</strong>（紀元前3世紀）が発見しました。球が、それに外接する円柱の体積のちょうど 2/3 になることを突き止め、本人はこの発見を大変誇りに思って、墓石に円柱と球の図を刻ませたと伝えられています。錐体の体積が柱体の 1/3 になることの証明は<strong>エウドクソス</strong>によるもので、ユークリッドの『原論』第12巻に収められています。</p></section>
 <a class="linkcard" href="calc-solid-geometry.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">立体の表面積と体積 計算機：直方体・円柱・円錐・球・正四角錐の体積と表面積を、手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>円の面積やおうぎ形の計算は円・扇形の項目、立体の頂点・辺・面の性質は空間図形と多面体の項目、円錐の体積がなぜ 1/3 になるかは定積分（面積）の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>データの範囲を見て階級を決める。</strong>区間の幅をそろえ、すべてのデータがどれかの階級に入るようにする。</li><li><strong>各階級の度数を数えて、度数分布表を作る。</strong>合計がデータの総数と合うか確認する。</li><li><strong>相対度数を求める。</strong>各階級の度数を合計で割り、全体に対する割合に直す。</li><li><strong>累積度数・累積相対度数を積み上げる。</strong>上から順に足していき、最後が合計（相対度数なら 1）になるか確認する。</li><li><strong>階級値で平均を出す。</strong>階級値×度数を合計し、度数の合計で割る。</li><li><strong>ヒストグラムで形を読む。</strong>山の数、左右の偏り、飛び離れた値（外れ値）がないかを見る。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：あるクラスのテストの点数が次の度数分布表にまとまった。合計40人である。（1）60点以上80点未満の階級の相対度数を求めよ。（2）階級値を使って平均点を近似計算せよ。表：40点未満…4人／40点以上60点未満…10人／60点以上80点未満…16人／80点以上…10人。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>（1）相対度数 ＝ 16 ÷ 40 ＝ 0.4 です。</p><p>（2）階級値は、40点未満の階級を 30（20点以上40点未満として）、以下 50、70、90 とみなします。階級値×度数は 30×4 ＝ 120、50×10 ＝ 500、70×16 ＝ 1120、90×10 ＝ 900 で、合計 2640。平均 ＝ 2640 ÷ 40 ＝ 66点となります。</p><p><strong>答え：（1）0.4（2）約66点</strong></p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>工場の品質管理（QC七つ道具）</h3><p>ヒストグラムは、品質管理の道具「QC七つ道具」の筆頭です。製品の寸法や重さを大量に測ってヒストグラムにすると、規格に対して山が偏っていないか、二山になって工程が混ざっていないか、外れ値がないかが一目で分かります。平均とばらつきの数字だけでは見えない「形の異常」を捉えるのが、現場でのヒストグラムの役目です。</p><h3>気象・健康データの分布表示</h3><p>気象庁の平年値や降水量のデータ、健康診断の血圧やコレステロールの分布は、度数分布やヒストグラムの形で示されます。「平均的な値」だけでなく「どの範囲にどれだけの人がいるか」が分かるため、異常値の早期発見や、集団どうしの比較に使われます。</p><h3>テストやスポーツ記録の把握</h3><p>テストの点数分布や、スポーツの記録の分布も同じ見方をします。平均点が同じでも、山が1つか2つかでクラスやチームの実態はまったく違うため、指導や練習計画の判断材料になります。</p></section>
-<section class="card"><h2>考え出した人</h2><p>「ヒストグラム」という名前と図の形は、イギリスの統計学者<strong>カール・ピアソン</strong>（1857〜1936）が1890年代に導入したとされます。データを区間に分けて棒の面積で量を表すこの図は、統計学が「分布の形を見る」学問として整っていく過程で生まれました。度数分布表そのものは、それ以前から人口統計や天文観測の整理に使われてきた、データ整理の基本技術です。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line"><strong>カール・ピアソン</strong>（1857〜1936、イギリスの統計学者）</p><p>「ヒストグラム」という名前と図の形は、イギリスの統計学者<strong>カール・ピアソン</strong>（1857〜1936）が1890年代に導入したとされます。データを区間に分けて棒の面積で量を表すこの図は、統計学が「分布の形を見る」学問として整っていく過程で生まれました。度数分布表そのものは、それ以前から人口統計や天文観測の整理に使われてきた、データ整理の基本技術です。</p></section>
 <a class="linkcard" href="calc-histograms.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">度数分布とヒストグラム 計算機：階級と度数を入れると、相対度数・累積度数・累積相対度数と階級値による平均を手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>生のデータから直接平均や散らばりを求める平均・分散・標準偏差の項目、分布を真ん中とばらつきで要約する四分位数と箱ひげ図・代表値の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>範囲を確認する。</strong>0 ≦ θ ＜ 2π など、解を求める範囲を最初に押さえる（範囲が違えば解の個数も変わる）。</li><li><strong>基本の角 α を1つ求める。</strong>sin θ ＝ a なら α ＝ asin(a) というように、逆三角関数や有名角の表から代表の解を1つ出す。</li><li><strong>単位円に直線を引く。</strong>sin なら y ＝ a、cos なら x ＝ a の直線と単位円の交点を描き、交点の位置から対称性を使って残りの解を出す。</li><li><strong>範囲の中の解だけを残す。</strong>得られた角を範囲に合わせて 2π の倍数を足し引きし、範囲外のものを除く。不等式の場合は交点の間の弧を範囲として書き、端点は含めない。</li><li><strong>2次式に帰着する型は置き換える。</strong>sin<sup>2</sup> θ を含む式は t ＝ sin θ と置いて t の方程式として解き、最後に基本の形に戻して θ を求める。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：0 ≦ θ ＜ 2π のとき、sin θ ＝ √3/2 を解け。また sin θ ＞ √3/2 の範囲も求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>単位円の上で、直線 y ＝ √3/2 と単位円の交点を考えます。y 座標が √3/2 になる点は2つあり、対応する角は θ ＝ π/3 と θ ＝ 2π/3 です（sin(π/3) ＝ √3/2、sin(2π/3) ＝ sin(π − π/3) ＝ sin(π/3) ＝ √3/2）。</p><p><strong>答え（方程式）：θ ＝ π/3, 2π/3</strong></p><p>不等式 sin θ ＞ √3/2 は、単位円上で y 座標が √3/2 より大きくなる弧の範囲です。その弧は2つの交点の間にあるので、<strong>答え（不等式）：π/3 ＜ θ ＜ 2π/3</strong>（端点は等号を含まないので含めない）。</p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>波の干渉・位相の一致</h3><p>音や振動などの波は三角関数で表されます。2つの波の位相が一致する時刻や、合成波の振幅がある値になる瞬間は、sin や cos を含む方程式を解いて求めます。音響設計や振動対策では、「いつ重なるか」を方程式の解として拾い出す計算が基本になります。</p><h3>交流回路の導通角の計算</h3><p>交流電圧は時間とともに sin 波で変化します。ダイオードなどの素子が電圧が閾値を超えた時間帯だけ電流を流す場合、その「導通している時間帯の割合（導通角）」は sin θ ＞ a 型の不等式を解いて求めます。電源回路や電力制御の設計で使われる計算です。</p><h3>潮位・日照の時間帯の算出</h3><p>潮位はおおよそ周期的に上下し、太陽の高度も1日の周期で変わります。「潮位が○m以上になる時間帯」や「日照が得られる時間の長さ」は、周期する量を三角関数で近似し、不等式を解いて条件を満たす時間帯として算出されます。</p></section>
-<section class="card"><h2>考え出した人</h2><p>三角関数の方程式を解く方法には、特定の考案者はいません。起源は古代の天文学で、2世紀の<strong>プトレマイオス</strong>が著書『アルマゲスト』に残した<strong>弦の表</strong>（円の弦の長さを角度ごとに並べた表）が、三角関数の表の始まりとされています。天体の位置を計算するために三角法が発達する中で、表を逆に引いて角度を求める作業が繰り返され、やがて方程式を単位円の上で幾何学的に解く考え方が整えられていきました。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line">特定の個人ではなく、古代の天文学の中で発達した方法</p><p>三角関数の方程式を解く方法には、特定の考案者はいません。起源は古代の天文学で、2世紀の<strong>プトレマイオス</strong>が著書『アルマゲスト』に残した<strong>弦の表</strong>（円の弦の長さを角度ごとに並べた表）が、三角関数の表の始まりとされています。天体の位置を計算するために三角法が発達する中で、表を逆に引いて角度を求める作業が繰り返され、やがて方程式を単位円の上で幾何学的に解く考え方が整えられていきました。</p></section>
 <a class="linkcard" href="calc-trig-equations.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">三角関数の方程式・不等式 計算機：関数（sin・cos・tan）と右辺の値 a を入れると、0° 以上 360° 未満の範囲の解や区間を、手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>三角関数の値そのものを求める三角比・三角関数の項目や、波の重ね合わせを扱う加法定理の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>極を見つける。</strong>分母が 0 になる点が極である。積分する閉曲線の内部にある極だけが対象になる。</li><li><strong>各極での留数を求める。</strong>1位の極（分母の因子が1重）なら、その因子を取り除いて極の値を代入する（部分分数の係数を求める要領）。</li><li><strong>留数を全部足す。</strong>閉曲線の内部にある極の留数の和 S を作る。</li><li><strong>留数定理で積分値に直す。</strong>∮ f(z) dz ＝ 2πi × S と計算する。曲線が時計回りなら符号が逆になる。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：f(z) ＝ (2z ＋ 1) / ((z − 1)(z − 3)) について、（1）z ＝ 1 と z ＝ 3 での留数を求めよ。（2）両方の極を内部に含む閉曲線 C（反時計回り）に沿った積分 ∮ f(z) dz の値を求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>（1）z ＝ 1 での留数は、(z − 1) を取り除いて z ＝ 1 を代入し、(2 × 1 ＋ 1) ÷ (1 − 3) ＝ 3 ÷ (−2) ＝ −1.5 です。z ＝ 3 での留数は同様に、(2 × 3 ＋ 1) ÷ (3 − 1) ＝ 7 ÷ 2 ＝ 3.5 です。</p><p>（2）留数の和は −1.5 ＋ 3.5 ＝ 2。留数定理より ∮ f(z) dz ＝ 2πi × 2 ＝ 4πi となります。</p><p><strong>答え：（1）Res(f, 1) ＝ −1.5、Res(f, 3) ＝ 3.5（2）4πi</strong></p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>実積分の計算道具</h3><p>∫₋∞^∞ dx/(1+x²) のような、実数の範囲では原始関数が見つけにくい、あるいは区間が無限に広い積分は、積分路を複素平面に広げて留数定理で計算するのが定石です。この例では上半平面の極 z ＝i の留数から答え π が一気に出ます。物理や工学で出会う積分の多くが、この「複素数への持ち上げ」で解かれています。</p><h3>電気回路・制御工学の解析</h3><p>回路や制御系の応答は、伝達関数の極の位置で決まります。極がどこにあり、その留数がいくつかで、応答の速さや振動の様子、安定かどうかが読み取れるため、極と留数は設計の現場で日常的に計算される量です。</p><h3>信号処理</h3><p>フィルタの設計や信号の解析では、複素平面上の極と留数を使って伝達特性を表します。周波数応答の形は極の配置で決まり、留数は各成分の強さを表すため、デジタル信号処理の基礎理論にも留数の考え方が組み込まれています。</p></section>
-<section class="card"><h2>考え出した人</h2><p>留数の理論を築いたのは、フランスの数学者<strong>オーギュスタン＝ルイ・コーシー</strong>（1789〜1857）です。コーシーは1820年代に複素関数の積分を体系化し、積分の値が極の周りの「残り（résidu＝留数）」で決まることを示しました。もともとは積分計算の技術として生まれた留数定理は、その後、複素関数論全体の中心的な定理になりました。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line"><strong>オーギュスタン＝ルイ・コーシー</strong>（1789〜1857、フランスの数学者）</p><p>留数の理論を築いたのは、フランスの数学者<strong>オーギュスタン＝ルイ・コーシー</strong>（1789〜1857）です。コーシーは1820年代に複素関数の積分を体系化し、積分の値が極の周りの「残り（résidu＝留数）」で決まることを示しました。もともとは積分計算の技術として生まれた留数定理は、その後、複素関数論全体の中心的な定理になりました。</p></section>
 <a class="linkcard" href="calc-residue.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">複素積分と留数 計算機：f(z) ＝ (p z ＋ q) / ((z − a)(z − b)) の係数を入れると、2つの極での留数と閉曲線積分の値を手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>閉曲線を円としてパラメータ表示するとき、その土台になるのがオイラーの公式と複素指数関数の項目です。e<sup>iθ</sup> ＝ cosθ ＋ i sinθ という表し方が、複素平面上の回転と積分路の記述を支えています。あわせて読むと、留数定理の 2πi という係数が「1周分の回転」から来ていることも見えてきます。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

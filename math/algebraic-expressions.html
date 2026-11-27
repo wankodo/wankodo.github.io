@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>同類項を確認する。</strong>文字の部分が同じ項どうしに印を付け、まとめられる組み合わせを把握する。</li><li><strong>減法なら、引く式の符号を変える。</strong>引く式の各項の符号をすべて変えて、加法の形に直す。</li><li><strong>同類項の係数を足す。</strong>x の項は x の項どうし、y の項は y の項どうしで、係数だけを計算する。</li><li><strong>表記ルールで整える。</strong>係数が 1 の項は数字を書かず、係数が 0 の項は省いて、短い式にまとめる。</li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：（3x＋2y）＋（5x−4y）を計算せよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>同類項どうしを合わせます。x の係数は 3＋5＝8、y の係数は 2＋（−4）＝−2 です。文字の部分はそのまま残るので、x の項は 8x、y の項は −2y となります。</p><p><strong>答え：8x−2y</strong></p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>金額計算を1本の式に一般化する</h3><p>「300円の品を a 個、500円の品を b 個買うと合計はいくらか」という計算は、300a＋500b という1本の式にまとまります。個数が変わるたびに掛け算をやり直すのではなく、式を先に作っておいて個数を代入するだけにできるのが、文字式の実用的な強みです。レジの合計計算や買い物の予算立ても、頭の中ではこの形で処理されています。</p><h3>料金表とレシピの換算</h3><p>単価表をもとに数量ぶんの料金を出す作業や、レシピの分量を人数ぶんに換算する作業は、「単価×数量」の項を並べて足す計算の繰り返しです。項目が増えても、同じ文字で置いた項を足していく形は変わらないため、表計算ソフトの合計式もこの考え方で組み立てられています。</p><h3>仕事の見積もり</h3><p>工事や制作の見積もりでは、材料費・人件費・諸経費といった項目ごとの金額を並べ、項目ごとに数量や単価が変わっても合計をすぐ出し直せる形にしておきます。各項目を項として式にまとめ、条件が変わったら係数にあたる数量・単価を差し替える——この「式を整理してから代入する」進め方は、見積もりの現場でそのまま使われている手順です。</p><h3>方程式・関数の土台</h3><p>方程式を解くときの移項や両辺の整理、関数の式を変形する操作は、すべて同類項をまとめる計算の上に成り立っています。式の計算が速く正確にできることは、この先の数学全体の計算速度を決める土台です。</p></section>
-<section class="card"><h2>考え出した人</h2><p>文字で数を表して式を扱う「記号代数」の基礎は、16世紀フランスの数学者<strong>フランソワ・ビエト</strong>（1540〜1603）が築いたとされます。ビエトは、未知の量だけでなく既知の量にも文字を使う方法を整え、具体的な数ごとの計算を、文字の式の一般的な計算へと押し上げました。個々の数値計算を1本の式にまとめるという発想は、ここから本格的に始まりました。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line"><strong>フランソワ・ビエト</strong>（1540〜1603、フランスの数学者）</p><p>文字で数を表して式を扱う「記号代数」の基礎は、16世紀フランスの数学者<strong>フランソワ・ビエト</strong>（1540〜1603）が築いたとされます。ビエトは、未知の量だけでなく既知の量にも文字を使う方法を整え、具体的な数ごとの計算を、文字の式の一般的な計算へと押し上げました。個々の数値計算を1本の式にまとめるという発想は、ここから本格的に始まりました。</p></section>
 <a class="linkcard" href="calc-algebraic-expressions.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">式の計算 計算機：2つの式の x と y の係数を入れると、加法・減法で同類項を合わせた式を手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>式に具体的な数を入れて値を求める代入と式の値の項目、式を解いて未知数を求める一次方程式の項目、文字式どうしの掛け算を扱う単項式の乗法・除法の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>

@@ -49,6 +49,7 @@ header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
 .card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
 .card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
 .card p{margin:8px 0}
+.card .who-line{margin:2px 0 10px;padding:9px 12px;background:var(--soft);border:1px solid var(--line);border-radius:8px;font-size:14.5px;line-height:1.6}
 .badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
 .badge-lv{background:var(--navy);color:#fff}
 .badge-genre{background:var(--amber);color:#231a00}
@@ -144,7 +145,7 @@ gtag('config', 'G-QQ4435VBMK');
 <section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>方程式を a x<sup>2</sup> ＋ b x ＋ c ＝ 0 の形に整え、a、b、c を読み取る。</strong>符号の取り違えに注意します。</li><li><strong>α ＋ β ＝ −b/a と αβ ＝ c/a を計算する。</strong>−b のマイナスを落とさないことが最大の注意点です。</li><li><strong>求める対称式を、α＋β と αβ で表す形に変形する。</strong></li><li><strong>手順2の値を代入して計算する。</strong></li><li><strong>解から方程式を作る逆向きの問題では、x<sup>2</sup> − (α＋β)x ＋ αβ ＝ 0 に当てはめる。</strong></li></ol></section>
 <section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：2次方程式 x<sup>2</sup> − 7x ＋ 3 ＝ 0 の2解を α、β とするとき、α<sup>2</sup> ＋ β<sup>2</sup> を求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><ol class="steps"><li>解と係数の関係から、α ＋ β ＝ 7、αβ ＝ 3。</li><li>α<sup>2</sup> ＋ β<sup>2</sup> ＝ (α＋β)<sup>2</sup> − 2αβ と変形する。</li><li>代入すると 7<sup>2</sup> − 2×3 ＝ 49 − 6 ＝ 43。</li></ol><p><strong>答え：43</strong>。解の公式で α、β を実際に出して2乗しても同じ43になりますが、無理数の計算を丸ごと省けるのがこの解法の利点です。</p></details></div></section>
 <section class="card"><h2>現場での使われ方</h2><h3>制御工学での見通し立て</h3><p>機械や電気回路の動きを表す特性方程式の解（極）は、系がどれだけ速く応答し、安定するかを決めます。2次の特性方程式では、極の和と積が減衰や応答の速さに関わる量と結びついているため、極を個別に求める前に、和と積から系のだいたいの振る舞いの見通しを立てることができます。</p><h3>振動系の解析</h3><p>ばねや振り子などの振動系でも、固有振動に関わる量が、方程式の解の和と積の形で現れます。個々の解を追うのではなく、和と積という「まとまった量」で系の性質を捉える考え方は、工学の解析で広く使われています。</p><h3>「解かずに調べる」という発想</h3><p>方程式を解くのが難しい・不可能な場合でも、解の和や積なら係数から分かる。この発想は3次以上の方程式にも一般化され、数値計算の検算（求めた解の和と積が係数と合っているか）にも使われます。</p></section>
-<section class="card"><h2>考え出した人</h2><p><strong>フランソワ・ビエト</strong>（ヴィエト、1540〜1603）フランスの数学者で、既知の量と未知の量をともに文字で表し、方程式を一般の形で扱う方法を確立した人物です。解と係数の関係はその成果のひとつで、英語では今も Vieta's formulas（ビエトの公式）と呼ばれています。</p></section>
+<section class="card"><h2>考え出した人</h2><p class="who-line"><strong>フランソワ・ビエト</strong>（1540〜1603、フランスの数学者）</p><p><strong>フランソワ・ビエト</strong>（ヴィエト、1540〜1603）フランスの数学者で、既知の量と未知の量をともに文字で表し、方程式を一般の形で扱う方法を確立した人物です。解と係数の関係はその成果のひとつで、英語では今も Vieta's formulas（ビエトの公式）と呼ばれています。</p></section>
 <a class="linkcard" href="calc-vieta.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">解と係数の関係 計算機：係数から解の和・積と対称式の値を、解から方程式を、手順つきで計算します。</span></a>
 <section class="card"><h2>関連項目</h2><p>2次方程式の解の公式や因数分解の項目とあわせて読むとつながりが見えます。<a href="./">数学ツール集トップへ戻る</a></p></section>
 </div>
