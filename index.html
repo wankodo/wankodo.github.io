@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>よろず道具箱｜移動・お金・保険・占い・歴史の無料ツール総合トップ</title>
@@ -20,7 +21,17 @@
 *{box-sizing:border-box}
 body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75}
 /* タイトル背景に薬箱の画像（title-bg.webp）を敷く。暗幕グラデーションで文字の可読性を確保 */
-header{background:linear-gradient(90deg,rgba(10,20,34,.88) 0%,rgba(10,20,34,.78) 42%,rgba(10,20,34,.55) 74%,rgba(10,20,34,.62) 100%),url('title-bg.webp') center 58%/cover no-repeat,linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:58px 16px 50px;text-align:center}
+header{position:relative;background:linear-gradient(90deg,rgba(10,20,34,.88) 0%,rgba(10,20,34,.78) 42%,rgba(10,20,34,.55) 74%,rgba(10,20,34,.62) 100%),url('title-bg.webp') center 58%/cover no-repeat,linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:58px 16px 50px;text-align:center}
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+.hdr-switch{position:absolute;top:12px;right:12px}
+html[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32)}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+html[data-theme="andy"] .tool{background:#0a1e30}
+html[data-theme="andy"] .tool:hover{background:#0d2a42}
+html[data-theme="andy"] .search{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
 header h1{margin:0 0 10px;font-size:30px;letter-spacing:.04em;text-shadow:0 2px 14px rgba(0,0,0,.6)}
 header h1 .accent{color:var(--amber)}
 header p{margin:0 auto;max-width:720px;font-size:14.5px;opacity:.95;text-shadow:0 1px 10px rgba(0,0,0,.65)}
@@ -64,6 +75,7 @@ ul.policy li{margin-bottom:4px}
 </head>
 <body>
 <header>
+  <div class="ido-theme-switch hdr-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div>
   <h1>よろず<span class="accent">道具箱</span></h1>
   <p>移動にかかるお金、お金の計算、保険の比較、占い、そして世界の歴史。暮らしと学びに役立つ無料のWebツールを、5つのサイトにまとめました。どれも登録不要・無料で、計算や判定はブラウザの中で完結します。</p>
 </header>
@@ -229,5 +241,13 @@ ul.policy li{margin-bottom:4px}
   </div>
 </div>
 <script src="policy-snippet.js"></script>
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
 </body>
 </html>
