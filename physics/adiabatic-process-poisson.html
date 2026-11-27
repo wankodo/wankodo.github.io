@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>断熱変化とポアソンの式｜物理ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-physics.svg">
+<meta name="description" content="断熱変化とポアソンの式（TV^(γ−1)＝一定、pV^γ＝一定）の使い方を、公式・手順・例題で解説。比熱比γの意味、ディーゼルエンジンの圧縮加熱や大気の断熱減率など現場での使われ方まで紹介します。対応する計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="物理ツール集">
+<meta property="og:title" content="断熱変化とポアソンの式｜物理ツール集">
+<meta property="og:description" content="断熱圧縮で気体が熱くなる理由はポアソンの式で計算できる。公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/physics/adiabatic-process-poisson.html">
+<meta property="og:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 物理コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">物理ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="./" class="cur">物理ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">断熱変化</span>とポアソンの式</h1>
+    <p>物理の解法辞典 ― 熱・熱力学（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">物理ツール集トップ</a> ＞ 熱・熱力学 ＞ 断熱変化とポアソンの式</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">熱・熱力学</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    熱の出入りがない断熱変化で、気体を圧縮・膨張させたときの温度と圧力の変化を知りたいときに使う。比熱比 γ を使うポアソンの式により、圧縮すると温度が上がり、膨張すると温度が下がることが数値で求まる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>気体を<strong>熱の出入りがない条件（断熱）</strong>で圧縮・膨張させたときの、温度・圧力の変化を扱う解法です。次のような場面で使います。</p>
+    <ul>
+      <li>断熱圧縮したあとの気体の温度を求める問題（自転車の空気入れが熱くなる理由の定量計算など）</li>
+      <li>断熱膨張したあとの気体の圧力・温度を求める問題</li>
+      <li>エンジンのシリンダー内での圧縮で、温度がどこまで上がるかを見積もる問題</li>
+      <li>等温変化（pV ＝ 一定）との違いを、指数 γ の有無で説明する問題</li>
+    </ul>
+    <p>断熱変化では、圧縮で外部からされた仕事がすべて内部エネルギー（温度の上昇）になり、膨張では逆に温度が下がります。変化が速くて熱が逃げる暇がない場合や、断熱材で囲んだ場合がこれに当たります。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <div class="formula">TV<sup>γ−1</sup> ＝ 一定，　pV<sup>γ</sup> ＝ 一定</div>
+    <p>これが<strong>ポアソンの式</strong>です。変化の前後で書くと、温度は T<sub>2</sub> ＝ T<sub>1</sub>(V<sub>1</sub>/V<sub>2</sub>)<sup>γ−1</sup>、圧力は p<sub>2</sub> ＝ p<sub>1</sub>(V<sub>1</sub>/V<sub>2</sub>)<sup>γ</sup> となります。各記号の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>T</strong>：絶対温度 [K]、<strong>p</strong>：圧力（単位は前後でそろえればよい。このページの計算機は [hPa]）、<strong>V</strong>：体積（同 [L]）</li>
+      <li><strong>γ（ガンマ）</strong>：比熱比。定圧比熱と定積比熱の比 γ ＝ C<sub>p</sub>/C<sub>V</sub> で、気体の種類で決まる無次元の定数。1より大きい値を取ります</li>
+    </ul>
+    <p>γ の代表値は、単原子分子気体で 5/3 ≒ 1.67、空気のような2原子分子気体で 7/5 ＝ <strong>1.4</strong> です。等温変化のボイルの法則 pV ＝ 一定と比べると、断熱変化では圧力の式の指数が 1 ではなく γ になる分、圧縮したときの圧力の上がり方が大きく、温度も変化します。</p>
+    <p>ポアソンの式は、理想気体の状態方程式と熱力学第一法則（断熱では ΔU ＝ −W）を組み合わせて導かれます。準静的（ゆっくりと釣り合いを保ちながらの）断熱変化で成り立つ式です。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>γ の値を決める。</strong>気体の種類から比熱比を選びます（空気なら γ ＝ 1.4）。</li>
+      <li><strong>求める量で式を選ぶ。</strong>温度なら T<sub>2</sub> ＝ T<sub>1</sub>(V<sub>1</sub>/V<sub>2</sub>)<sup>γ−1</sup>、圧力なら p<sub>2</sub> ＝ p<sub>1</sub>(V<sub>1</sub>/V<sub>2</sub>)<sup>γ</sup> です。</li>
+      <li><strong>体積の比を代入する。</strong>温度は必ず絶対温度 [K] で代入します。圧力と体積は前後で単位をそろえます。</li>
+      <li><strong>べき乗を計算する。</strong>圧縮（V<sub>2</sub> ＜ V<sub>1</sub>）なら温度・圧力は上がり、膨張なら下がることを確認して検算します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題：温度 300 K の空気 2.0 L を、熱の出入りがないように体積 1.0 L まで断熱圧縮した。圧縮後の温度を求めよ。ただし空気の比熱比は γ ＝ 1.4 とする。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>温度を求めるので、T<sub>2</sub> ＝ T<sub>1</sub>(V<sub>1</sub>/V<sub>2</sub>)<sup>γ−1</sup> を使います。</li>
+          <li>代入すると T<sub>2</sub> ＝ 300 × (2.0 ÷ 1.0)<sup>1.4−1</sup> ＝ 300 × 2<sup>0.4</sup> です。</li>
+          <li>2<sup>0.4</sup> ≒ 1.32 なので、T<sub>2</sub> ≒ 300 × 1.32 ＝ 395.9 K。約 396 K です。</li>
+        </ol>
+        <p><strong>答え：約 396 K（約 123 ℃）。</strong>体積を半分に断熱圧縮しただけで、室温の空気が約 96 K も温度上昇します。圧縮の仕事が逃げ場なく熱に変わるためです。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>ディーゼルエンジンの圧縮着火</h3>
+    <p>ディーゼルエンジンは、空気だけをシリンダー内で強く圧縮し、その断熱圧縮で高温になった空気に燃料を噴射して自然着火させます。点火プラグなしで着火できるのは、ポアソンの式で示される圧縮による温度上昇を利用しているからで、圧縮比の設計はこの計算が基礎になっています。</p>
+    <h3>大気の断熱減率とフェーン現象</h3>
+    <p>上昇する空気の塊は、まわりの気圧が下がって膨張し、断熱膨張で温度が下がります（乾燥断熱減率：およそ100 m 上昇するごとに約1 ℃低下）。逆に、山を越えて吹き下ろす空気は断熱圧縮で熱くなり、これがフェーン現象で山の反対側が高温・乾燥になる仕組みです。気象学ではポアソンの式から導かれる「温位」という量が、空気の塊を追跡する道具として日常的に使われています。</p>
+    <h3>消火器・スプレー缶が冷たくなる理由</h3>
+    <p>ガスボンベから気体が急に噴き出すと断熱膨張で温度が下がります。二酸化炭素消火器の噴射口やホーンが冷たくなり霜が付くのはこのためで、急激な膨張を伴う機器の設計では、この温度低下を見込んでおく必要があります。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p>フランスの数学者・物理学者<strong>シメオン・ドニ・ポアソン</strong>（1781〜1840）が、断熱変化における圧力と体積の関係として示したため「ポアソンの式」と呼ばれます。断熱圧縮で熱が発生するという現象そのものは、それ以前から火おこし器（圧縮発火器）の経験で知られていましたが、ポアソンの式によって比熱比 γ を使った定量的な計算が可能になりました。カルノーの熱機関の理論でも、断熱過程はサイクルの一部として組み込まれています。</p>
+  </section>
+
+  <a class="linkcard" href="calc-adiabatic-process-poisson.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">断熱変化とポアソンの式 計算機：モードを選んで比熱比 γ と体積変化を入れると、変化後の温度 T2 [K] または圧力 p2 [hPa] を表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>気体の基本の関係式は「<a href="ideal-gas-equation.html">気体の状態方程式</a>」、熱機関の効率の上限は「<a href="carnot-cycle.html">カルノーサイクル</a>」、熱の量の計算は「<a href="calorimetry-specific-heat.html">熱量と比熱・熱容量</a>」が役立ちます。<a href="./">物理ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「物理ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

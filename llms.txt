@@ -221,7 +221,7 @@
 
 ## 物理ツール集
 
-> 中学理科・高校物理基礎・高校物理・大学レベルの法則辞典と計算機。全45項目、各項目に解説記事があり、多くの項目に計算機もついています。トップは [物理ツール集](https://wankodo.github.io/physics/) です。
+> 中学理科・高校物理基礎・高校物理・大学レベルの法則辞典と計算機。全59項目、各項目に解説記事があり、多くの項目に計算機もついています。トップは [物理ツール集](https://wankodo.github.io/physics/) です。
 
 - [等加速度直線運動｜物理ツール集](https://wankodo.github.io/physics/uniform-acceleration.html): 初速度・加速度・時間から速度と変位を求める。計算機つき。
 - [自由落下と鉛直投射｜物理ツール集](https://wankodo.github.io/physics/free-fall-vertical-throw.html): 高さや初速度から、落下時間・落下速度・最高点の高さを求める。計算機つき。
@@ -268,3 +268,17 @@
 - [コリオリ力とフーコー振り子｜物理ツール集](https://wankodo.github.io/physics/coriolis-force.html): 回転する地球上で動く物体のずれの大きさと、フーコー振り子の振動面の回転速度を求める。解説記事のみ。
 - [二体問題と換算質量｜物理ツール集](https://wankodo.github.io/physics/two-body-problem.html): 2つの物体の質量から換算質量を求め、連星の公転周期を求める。解説記事のみ。
 - [ラグランジュ力学と最小作用の原理｜物理ツール集](https://wankodo.github.io/physics/lagrangian-mechanics.html): ラグランジアンからオイラー・ラグランジュ方程式で拘束のある系の運動方程式を立てる。解説記事のみ。
+- [潜熱と物質の三態｜物理ツール集](https://wankodo.github.io/physics/latent-heat-phase-change.html): 質量と潜熱から融解・蒸発に必要な熱量を求め、氷から水蒸気までの熱量の内訳を求める。計算機つき。
+- [熱膨張｜物理ツール集](https://wankodo.github.io/physics/thermal-expansion.html): 線膨張率と温度変化から長さの伸びを求め、体積膨張率から体積の増加を求める。計算機つき。
+- [ボイル・シャルルの法則｜物理ツール集](https://wankodo.github.io/physics/boyle-charles-law.html): 圧力の変化からボイルの法則で、温度の変化からシャルルの法則で気体の体積を求める。計算機つき。
+- [気体分子運動論｜物理ツール集](https://wankodo.github.io/physics/kinetic-theory-of-gases.html): 温度と分子量から気体分子の平均運動エネルギーと二乗平均速度を求める。計算機つき。
+- [熱力学第一法則｜物理ツール集](https://wankodo.github.io/physics/first-law-of-thermodynamics.html): 吸収した熱と気体がした仕事から内部エネルギーの変化を求め、内部エネルギーの変化と熱から仕事を求める。計算機つき。
+- [気体の状態変化｜物理ツール集](https://wankodo.github.io/physics/gas-state-changes.html): 等温・定圧・定積変化で気体のした仕事・吸収した熱・内部エネルギーの変化を求める。計算機つき。
+- [熱機関の効率とヒートポンプ｜物理ツール集](https://wankodo.github.io/physics/heat-engine-efficiency.html): 吸収した熱と排出した熱から熱機関の仕事と熱効率、ヒートポンプの成績係数を求める。計算機つき。
+- [熱伝導と熱の移動｜物理ツール集](https://wankodo.github.io/physics/heat-conduction.html): 熱伝導率・断面積・厚さ・温度差から単位時間に流れる熱と、流れた熱量を求める。計算機つき。
+- [黒体放射｜物理ツール集](https://wankodo.github.io/physics/blackbody-radiation.html): 温度から黒体放射のピーク波長と単位面積あたりの放射エネルギーを求める。計算機つき。
+- [熱力学第二法則とエントロピー｜物理ツール集](https://wankodo.github.io/physics/second-law-entropy.html): 等温可逆変化で吸収した熱と温度から、温度変化で質量・比熱・温度からエントロピー変化を求める。計算機つき。
+- [カルノーサイクル｜物理ツール集](https://wankodo.github.io/physics/carnot-cycle.html): 高温源と低温源の温度から、熱機関の効率の上限（カルノー効率）を求める。計算機つき。
+- [断熱変化とポアソンの式｜物理ツール集](https://wankodo.github.io/physics/adiabatic-process-poisson.html): 断熱変化で体積を変えたときの気体の温度・圧力の変化を求める。計算機つき。
+- [マクスウェル分布｜物理ツール集](https://wankodo.github.io/physics/maxwell-distribution.html): 気体分子の速さの分布と、最確速度・平均速度・二乗平均速度の3つの代表値を求める。解説記事のみ。
+- [ボルツマン分布と統計力学の入口｜物理ツール集](https://wankodo.github.io/physics/boltzmann-distribution.html): ボルツマン分布 exp(−E/kT) を使って、状態の割合や高度による大気密度の減少を求める。解説記事のみ。
