@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光の分散とスペクトル｜物理ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-physics.svg">
+<meta name="description" content="光の分散とスペクトルを、公式・手順・例題で解説。プリズムで白色光が虹色に分かれる仕組み、連続スペクトル・輝線スペクトル・吸収線の違いと元素の同定（分光学）、虹や分光器など実際の現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="物理ツール集">
+<meta property="og:title" content="光の分散とスペクトル｜物理ツール集">
+<meta property="og:description" content="プリズムで光が虹色に分かれるのはなぜか。光の分散と3種類のスペクトルを、公式・手順・例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/physics/dispersion-and-spectrum.html">
+<meta property="og:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 物理コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">物理ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="./" class="cur">物理ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>光の<span class="accent">分散</span>とスペクトル</h1>
+    <p>物理の解法辞典 ― 光（高校物理基礎・1年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">物理ツール集トップ</a> ＞ 光 ＞ 光の分散とスペクトル</p>
+  <p><span class="badge badge-lv">高校物理基礎・1年</span> <span class="badge badge-genre">光</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    白色光がプリズムで虹色に分かれる理由と、光を波長ごとに分けたスペクトルから何が分かるかを知りたいときに使う。屈折率は波長によって違うため色ごとに曲がり方が変わり、スペクトルの線のパターンは元素の指紋として元素の同定に使える。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>光が<strong>色（波長）ごとに分かれる現象</strong>と、<strong>スペクトルの読み取り</strong>を扱うときの解法です。次のような場面で使います。</p>
+    <ul>
+      <li>プリズムに白色光を通すと虹色に分かれる理由を説明する問題</li>
+      <li>赤い光と紫の光では、どちらが大きく曲がる（偏角が大きい）かを答える問題</li>
+      <li>連続スペクトル・輝線スペクトル・吸収線の違いと、それぞれどんな光源から得られるかを答える問題</li>
+      <li>未知の気体のスペクトルから、含まれている元素を同定する問題</li>
+    </ul>
+    <p>屈折の法則そのものは「屈折とスネルの法則」で扱いました。この項目では、<strong>屈折率が色によって違う</strong>ことが引き起こす現象を扱います。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <div class="formula">屈折率は波長が短い（紫）ほど大きく、長い（赤）ほど小さい</div>
+    <p>ガラスなどの透明な物質では、屈折率 n は光の波長によって少しずつ違います。一般に<strong>波長が短い光ほど屈折率が大きく、大きく屈折します</strong>。この性質を<strong>正常分散</strong>といいます。代表的なクラウンガラスでは、赤い光で n ≒ 1.514、紫の光で n ≒ 1.532 と、差はわずか0.02ほどですが、プリズムを通すとその差が目に見える色の分かれ方になります。</p>
+    <p>色と波長の対応は次の通りです（波長は真空中・空気中の値の目安）。</p>
+    <ul>
+      <li><strong>紫</strong>：約 380〜450 nm（最も短く、最も大きく曲がる）</li>
+      <li><strong>青</strong>：約 450〜495 nm</li>
+      <li><strong>緑</strong>：約 495〜570 nm</li>
+      <li><strong>黄</strong>：約 570〜590 nm</li>
+      <li><strong>橙</strong>：約 590〜620 nm</li>
+      <li><strong>赤</strong>：約 620〜750 nm（最も長く、最も小さく曲がる）</li>
+    </ul>
+    <p>光を波長ごとに分けて並べたものを<strong>スペクトル</strong>といい、3種類に分けられます。</p>
+    <ul>
+      <li><strong>連続スペクトル</strong>：すべての波長が切れ目なくつながった帯。太陽光や白熱電球など、高温の固体・液体が発する光で見られます</li>
+      <li><strong>輝線スペクトル（線スペクトル）</strong>：特定の波長だけが明るい線として現れるもの。低圧の気体を放電させたとき（ネオン管、水素放電管など）に見られます。線の位置（波長）は元素ごとに決まっていて、元素の「指紋」になります</li>
+      <li><strong>吸収線</strong>：連続スペクトルの中に暗い線が入ったもの。連続光が低温の気体を通るとき、気体の元素が自分の輝線と同じ波長の光を吸収するために生じます。太陽光のスペクトルに見られるフラウンホーファー線が代表例です</li>
+    </ul>
+    <p>輝線と吸収線の波長が元素ごとに固有であることを利用して、光を調べるだけでその物質に含まれる元素を特定する学問・技術を<strong>分光学</strong>といいます。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>色と波長の順序を確認する。</strong>赤が最も長く、紫が最も短い波長です。</li>
+      <li><strong>屈折の大きさは波長の短い順。</strong>正常分散では紫が最も大きく、赤が最も小さく曲がります。プリズムでは、紫が頂角から最も離れる向きに偏ります。</li>
+      <li><strong>スペクトルは光源の状態で分類する。</strong>高温の固体・液体なら連続、放電中の低圧気体なら輝線、連続光＋手前の低温気体なら吸収線です。</li>
+      <li><strong>元素の同定は線のパターン全体で照合する。</strong>1本の線だけでは別の元素と偶然一致することがあるため、複数の線の位置と強さの組み合わせで判定します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題：頂角 60° のクラウンガラスのプリズムに、赤い光と紫の光をそれぞれ最小偏角の条件で通した。赤い光の屈折率を 1.514、紫の光の屈折率を 1.532 として、それぞれの最小偏角を求め、どちらが大きく曲がるか答えよ。最小偏角 δ は、頂角 A と屈折率 n から δ ＝ 2 arcsin(n sin(A ÷ 2)) − A で求められる。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>A ＝ 60° なので sin(A ÷ 2) ＝ sin30° ＝ 0.50 です。</li>
+          <li>赤い光：n sin(A ÷ 2) ＝ 1.514 × 0.50 ＝ 0.757。arcsin(0.757) ≒ 49.2° なので、δ ＝ 2 × 49.2° − 60° ≒ 38.4°。</li>
+          <li>紫の光：n sin(A ÷ 2) ＝ 1.532 × 0.50 ＝ 0.766。arcsin(0.766) ≒ 50.0° なので、δ ＝ 2 × 50.0° − 60° ≒ 40.0°。</li>
+          <li>差は約 1.6° です。屈折率の差は 0.018 しかありませんが、プリズムを通すとこの角度の差として現れ、色の分かれ目になります。</li>
+        </ol>
+        <p><strong>答え：赤い光の最小偏角は約 38.4°、紫の光は約 40.0° で、紫の光の方が大きく曲がる</strong>。白色光を通せば、この間の角度に他の色が連続的に並び、虹色の帯（スペクトル）が得られます。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>分光器と天体の元素分析</h3>
+    <p>プリズムや回折格子で光を波長ごとに分ける装置が分光器です。恒星の光のスペクトルを調べれば、地球からはるか遠くの星に含まれる元素や、星が近づく・遠ざかる速さ（ドップラー効果による線のずれ）が分かります。1868年には、太陽光の吸収線の中に地球上で未発見の元素の線が見つかり、ヘリウムと名付けられました（ヘリウムが地球上で発見されたのはその27年後です）。</p>
+    <h3>虹と分光光度計</h3>
+    <p>雨上がりの虹は、空中の水滴がプリズムと同じ働きをして太陽光を分散させる自然現象です。また、化学の実験や食品・水質の検査で使われる分光光度計は、試料を通した光のスペクトル（どの波長がどれだけ吸収されたか）を測って、物質の種類と濃度を調べる装置で、吸収線の考え方がそのまま実用化されています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p>白色光が色の集まりであることを示したのは<strong>アイザック・ニュートン</strong>（1643〜1727）で、1666年頃のプリズム実験で、太陽光を虹色に分け、さらに別のプリズムで白色に戻せることを確かめました。スペクトルの暗線は1814年に<strong>ヨゼフ・フォン・フラウンホーファー</strong>が詳しく記録し、1859〜60年には<strong>グスタフ・キルヒホッフ</strong>と<strong>ロベルト・ブンゼン</strong>が、輝線のパターンから元素を同定できることを示して分光学を創始しました。この方法でセシウムとルビジウムという新元素も発見されています。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>屈折そのものの計算は「屈折とスネルの法則」、境界面で光がすべて反射する条件は「全反射」、光の量子としての性質は「光電効果」が役立ちます。<a href="./">物理ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「物理ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

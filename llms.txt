@@ -221,7 +221,7 @@
 
 ## 物理ツール集
 
-> 中学理科・高校物理基礎・高校物理・大学レベルの法則辞典と計算機。全75項目、各項目に解説記事があり、多くの項目に計算機もついています。トップは [物理ツール集](https://wankodo.github.io/physics/) です。
+> 中学理科・高校物理基礎・高校物理・大学レベルの法則辞典と計算機。全92項目、各項目に解説記事があり、多くの項目に計算機もついています。トップは [物理ツール集](https://wankodo.github.io/physics/) です。
 
 - [等加速度直線運動｜物理ツール集](https://wankodo.github.io/physics/uniform-acceleration.html): 初速度・加速度・時間から速度と変位を求める。計算機つき。
 - [自由落下と鉛直投射｜物理ツール集](https://wankodo.github.io/physics/free-fall-vertical-throw.html): 高さや初速度から、落下時間・落下速度・最高点の高さを求める。計算機つき。
@@ -298,3 +298,20 @@
 - [光の屈折とスネルの法則｜物理ツール集](https://wankodo.github.io/physics/refraction-snells-law.html): 2つの媒質の屈折率と入射角から屈折角を求め、全反射が起こるかどうかを判定する。計算機つき。
 - [全反射と臨界角｜物理ツール集](https://wankodo.github.io/physics/total-internal-reflection.html): 密な媒質と疎な媒質の屈折率から臨界角を求め、与えられた入射角で全反射するかどうかを判定する。計算機つき。
 - [球面鏡の写像公式｜物理ツール集](https://wankodo.github.io/physics/spherical-mirror.html): 球面鏡の焦点距離と物体の距離から、像ができる位置と倍率、像の種類を求める。計算機つき。
+- [光学器械（顕微鏡・望遠鏡）｜物理ツール集](https://wankodo.github.io/physics/optical-instruments.html): ルーペ・顕微鏡・望遠鏡の倍率（角倍率・総合倍率）を求める。計算機つき。
+- [光の分散とスペクトル｜物理ツール集](https://wankodo.github.io/physics/dispersion-and-spectrum.html): 波長による屈折率の違い（分散）で白色光が分かれる仕組みと、スペクトルの種類から元素を同定する方法を理解する。解説記事のみ。
+- [光の速さと屈折率｜物理ツール集](https://wankodo.github.io/physics/refractive-index-and-light-speed.html): 屈折率から媒質中の光の速さを求め、媒質中の光速から屈折率を求める。計算機つき。
+- [ヤングの干渉実験｜物理ツール集](https://wankodo.github.io/physics/youngs-interference.html): 二重スリットの明線の間隔から光の波長を求め、波長から明線の間隔を求める。計算機つき。
+- [回折格子｜物理ツール集](https://wankodo.github.io/physics/diffraction-grating.html): 回折格子で明線が現れる角度を求め、格子の本数から格子定数を求める。計算機つき。
+- [薄膜干渉｜物理ツール集](https://wankodo.github.io/physics/thin-film-interference.html): 薄膜の反射光が強め合う波長を、膜の屈折率と厚さから求める。計算機つき。
+- [ニュートンリング｜物理ツール集](https://wankodo.github.io/physics/newtons-rings.html): レンズの曲率半径と光の波長から、ニュートンリングの暗環の半径を求める。計算機つき。
+- [偏光とマリュスの法則｜物理ツール集](https://wankodo.github.io/physics/polarization-malus.html): 入射光の強さと偏光方向との角度から、検光子を透過した光の強さを求める。計算機つき。
+- [回折限界と分解能｜物理ツール集](https://wankodo.github.io/physics/diffraction-limit-resolution.html): 波長とレンズ・望遠鏡の口径から、回折で決まる最小分離角と分解できる最小の間隔を求める。計算機つき。
+- [レーザーの原理｜物理ツール集](https://wankodo.github.io/physics/laser-principles.html): 誘導放出・反転分布・共振器の3要素から、レーザーが単色性・指向性・可干渉性をもつ理由を理解する。解説記事のみ。
+- [静電気と帯電｜物理ツール集](https://wankodo.github.io/physics/static-electricity.html): 摩擦による帯電の仕組み（電子の移動）と帯電列を理解し、静電気の利用と事故防止の例を説明する。解説記事のみ。
+- [クーロンの法則｜物理ツール集](https://wankodo.github.io/physics/coulombs-law.html): 2つの点電荷の大きさと距離から、はたらく静電気力の大きさと引力・斥力を求める。計算機つき。
+- [電場と電気力線｜物理ツール集](https://wankodo.github.io/physics/electric-field.html): 点電荷が作る電場の強さと向き、および電場中の電荷が受ける力の大きさと向きを求める。計算機つき。
+- [電位と等電位面｜物理ツール集](https://wankodo.github.io/physics/electric-potential.html): 点電荷が作る電位と、電荷を電位の異なる点へ移すときに電場がする仕事を求める。計算機つき。
+- [ガウスの法則｜物理ツール集](https://wankodo.github.io/physics/gausss-law.html): 球状の電荷・無限平板・無限直線が作る電場の強さをガウスの法則から求める。計算機つき。
+- [誘電体とコンデンサーの応用｜物理ツール集](https://wankodo.github.io/physics/dielectric-capacitor.html): 平行板コンデンサーの電気容量を面積・間隔・比誘電率から求め、誘電体を入れる前後の容量の変化を求める。計算機つき。
+- [抵抗率｜物理ツール集](https://wankodo.github.io/physics/resistivity.html): 抵抗率と導線の長さ・断面積から電気抵抗を求める。計算機つき。

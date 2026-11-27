@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>静電気と帯電｜物理ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-physics.svg">
+<meta name="description" content="静電気と帯電を、公式・手順・例題で解説。電子の移動による帯電の仕組みと帯電列、コピー機・静電塗装・集塵機など静電気の利用、ガソリンスタンドの静電気除去や雷など事故防止の工夫まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="物理ツール集">
+<meta property="og:title" content="静電気と帯電｜物理ツール集">
+<meta property="og:description" content="こすると電気を帯びるのはなぜか。電子の移動で説明する静電気と帯電の仕組み、利用と事故防止を解説。">
+<meta property="og:url" content="https://wankodo.github.io/physics/static-electricity.html">
+<meta property="og:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 物理コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">物理ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="./" class="cur">物理ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">静電気</span>と帯電</h1>
+    <p>物理の解法辞典 ― 電磁気（中学2年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">物理ツール集トップ</a> ＞ 電磁気 ＞ 静電気と帯電</p>
+  <p><span class="badge badge-lv">中学2年</span> <span class="badge badge-genre">電磁気</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    物をこすり合わせると静電気が生じる理由と、その利用と事故防止を知りたいときに使う。帯電は電子が物から物へ移動することで起こり、どちらの符号に帯電するかは物質の組み合わせ（帯電列）で決まる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>静電気の<strong>生じる仕組み</strong>と、<strong>帯電した物の性質</strong>を扱うときの解法です。次のような場面で使います。</p>
+    <ul>
+      <li>2つの物をこすり合わせたとき、それぞれが＋と−のどちらに帯電するかを答える問題</li>
+      <li>帯電したストロー同士が退け合ったり、近づけた物を引き寄せたりする理由を説明する問題</li>
+      <li>帯電列を使って、摩擦帯電の符号を予測する問題</li>
+      <li>静電気を利用した製品と、静電気の事故を防ぐ工夫の例を挙げる問題</li>
+    </ul>
+    <p>冬にドアノブで「パチッ」となる現象も、下敷きで髪が逆立つ現象も、すべて同じ<strong>電子の移動</strong>で説明できます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <div class="formula">帯電 ＝ 電子の移動（電子を失った物が＋、受け取った物が−）</div>
+    <p>すべての物は、＋の電気をもつ原子核と、−の電気をもつ電子からできています。通常は＋と−が釣り合っていて電気的に中性ですが、物をこすり合わせると、表面の<strong>電子だけが一方から他方へ移動</strong>します（原子核は固体の中では動きません）。</p>
+    <ul>
+      <li><strong>電子を失った物</strong>：−が減って＋が勝ち、<strong>＋に帯電</strong>します</li>
+      <li><strong>電子を受け取った物</strong>：−が増えて<strong>−に帯電</strong>します</li>
+      <li>移動した電子の総量は変わらないので、2つの物の帯電量は必ず<strong>＋と−で同じ大きさ</strong>になります（電気量保存）</li>
+    </ul>
+    <p>どちらの物が電子を失うかは、物質の組み合わせで決まります。物質を「＋に帯電しやすい順」に並べたものを<strong>帯電列</strong>といい、離れた位置にある物質同士ほど強く帯電します。代表的な帯電列（＋側 → −側）は次の通りです。</p>
+    <ul>
+      <li>（＋側）ガラス ― 人の髪 ― ナイロン ― 羊毛 ― 絹 ― 木綿 ― ポリエステル ― プラスチック（塩化ビニルなど）（−側）</li>
+    </ul>
+    <p>例えばガラス棒を絹布でこすると、帯電列で＋側のガラスが電子を失って＋に、絹が−に帯電します。逆にプラスチックの下敷きを髪でこすると、髪が＋に、下敷きが−に帯電し、＋と−が引き合うため髪が下敷きに引き寄せられます。</p>
+    <p>帯電した物を近づけたときの力は、<strong>同じ符号同士は退け合い、違う符号は引き合います</strong>。また、帯電した物を導体に近づけると、導体の中で電子が移動して近い側に逆符号の電気が集まります。これを<strong>静電誘導</strong>といい、帯電した物が帯電していない軽い物（紙片など）を引き寄せるのは、静電誘導で近くの面に逆符号が現れるためです。</p>
+    <p>たまった静電気が一度に流れるのが<strong>放電</strong>です。ドアノブの火花も雷も放電の一種で、雷は雲の中で摩擦や氷の粒の衝突によって帯電が蓄積し、限界を超えて空気中を一気に流れる大規模な放電です。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>電子の移動で考える。</strong>「＋の電気が移動した」とは考えず、常に「電子がどちらへ移動したか」で符号を決めます。</li>
+      <li><strong>帯電列で順序を確認する。</strong>＋側にある物質が電子を失って＋に、−側にある物質が電子を受け取って−に帯電します。</li>
+      <li><strong>力の向きは符号の組み合わせで決める。</strong>同符号なら退け合い、異符号なら引き合います。帯電していない物を引き寄せる場合は静電誘導で説明します。</li>
+      <li><strong>除電は「逃がす」か「中和する」。</strong>導体を通して大地へ逃がす（アース）、湿度を上げて表面の水分から逃がす、逆符号のイオンを吹き付けて中和する、が基本の3通りです。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題：プラスチックの下敷きを乾いた布でこすったら、下敷きが紙片を引き寄せるようになった。下敷きと布はそれぞれ何に帯電したか、電子の移動を使って説明せよ。また、下敷きが帯電していない紙片を引き寄せる理由も説明せよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>帯電列では、プラスチックは布（木綿など）より−側にあります。こすり合わせると、電子は布から下敷きへ移動します。</li>
+          <li>電子を受け取った下敷きは<strong>−に帯電</strong>し、電子を失った布は<strong>＋に帯電</strong>します。両方の帯電量は同じ大きさです。</li>
+          <li>紙片については、−に帯電した下敷きを近づけると、紙片の中で静電誘導が起こり、下敷きに近い側に＋の電気が集まります。近い側の＋と下敷きの−の引き合う力が、遠い側の退け合う力より強いため、紙片全体として引き寄せられます。</li>
+        </ol>
+        <p><strong>答え：下敷きは−、布は＋に帯電する。紙片が引き寄せられるのは静電誘導のため</strong>。この「帯電した物は、帯電していない軽い物も引き寄せる」という性質は、静電気の利用（集塵・塗装）でも使われています。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>コピー機と静電塗装・集塵</h3>
+    <p>コピー機（レーザープリンター）は、感光体という円筒の表面を静電気で一様に帯電させ、原稿の絵の部分だけ光を当てて電気を逃がし、残った帯電部分に逆符号に帯電したトナー（粉）を付着させて紙に転写する仕組みです。静電塗装は、塗料の粒を帯電させて、接地した金属製品に引き寄せて塗る方法で、裏側まで塗料が回り込み、無駄が少なく均一に塗れます。工場の電気集塵機も、粉塵を帯電させて電極に吸着させる同じ原理です。</p>
+    <h3>事故防止：給油時の除電と雷</h3>
+    <p>ガソリンは静電気の火花で引火する危険があるため、セルフ式ガソリンスタンドには給油前に触って体の静電気を大地へ逃がす「静電気除去シート」が設置されています。タンクローリーや航空機への給油でも、ホースを接続する前にアースを取り、帯電がたまらないようにします。雷については避雷針が使われますが、これは雷を「防ぐ」のではなく、建物の代わりに落雷を受けて電流を大地へ安全に流すことで被害を防ぐ装置です。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p>静電気の記録は古く、紀元前6世紀頃のギリシャの<strong>タレス</strong>が、琥珀（こはく）をこすると軽い物を引き寄せることを記しています。電気を意味する英語 electricity は、琥珀のギリシャ語エーレクトロンに由来します。帯電に＋と−の2種類があることを示したのは18世紀の<strong>シャルル・デュフェ</strong>で、<strong>ベンジャミン・フランクリン</strong>（1706〜1790）が＋・−の呼び名を定め、1752年の凧の実験で雷が電気現象であることを示しました。電子そのものが発見されるのは1897年（J.J.トムソン）で、「電子の移動による帯電」の説明はその上に成り立っています。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>電流が流れているときの計算は「電流とオームの法則」、電荷を蓄える部品は「コンデンサー」、電場の強さの求め方は「ガウスの法則」が役立ちます。<a href="./">物理ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「物理ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
