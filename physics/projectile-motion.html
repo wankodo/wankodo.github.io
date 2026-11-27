@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>水平投射と斜方投射｜物理ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-physics.svg">
+<meta name="description" content="水平投射と斜方投射の使い方を、公式・手順・例題で解説。初速度を水平成分と鉛直成分に分けて、滞空時間・射程・最高点を求める方法と、スポーツや噴水・放水など実際の現場での使われ方まで紹介します。重力加速度 g＝9.8 m/s² を使用。対応する計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="物理ツール集">
+<meta property="og:title" content="水平投射と斜方投射｜物理ツール集">
+<meta property="og:description" content="投げた物体の放物線運動を、成分分解・公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/physics/projectile-motion.html">
+<meta property="og:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 物理コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">物理ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="./" class="cur">物理ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">水平投射</span>と斜方投射</h1>
+    <p>物理の解法辞典 ― 力学（高校物理・2年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">物理ツール集トップ</a> ＞ 力学 ＞ 水平投射と斜方投射</p>
+  <p><span class="badge badge-lv">高校物理・2年</span> <span class="badge badge-genre">力学</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    斜めに投げた物体の運動は、水平方向（等速度）と鉛直方向（等加速度）に分けて考えると解けるときに使う。初速度と角度と初期高さから、空中にある時間（滞空時間）、水平に届く距離（射程）、最高点の高さを、重力加速度 g ＝ 9.8 m/s² を使って求める。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>空気の抵抗を無視できる状況で、物体を水平に、または斜めに投げたときの運動を扱う解法です。次のような場面で使います。</p>
+    <ul>
+      <li>崖や台の上から水平に投げた物体が、どこに落ちるかを求める問題（水平投射）</li>
+      <li>斜め上に投げた物体の滞空時間・射程・最高点を求める問題（斜方投射）</li>
+      <li>同じ速さで投げる角度を変えたとき、射程がどう変わるかを考える問題</li>
+    </ul>
+    <p>鍵は<strong>運動の成分分解</strong>です。水平方向には力が働かないので等速度運動、鉛直方向には重力だけが働くので等加速度運動（自由落下や投げ上げと同じ）になります。2つの方向は互いに影響しないので、別々に計算して組み合わせます。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 240" width="520" height="240" role="img" aria-label="斜方投射の放物線の軌跡" style="max-width:100%;height:auto;">
+        <line x1="20" y1="200" x2="505" y2="200" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M40,200 Q290,-60 500,200" fill="none" stroke="#c2410c" stroke-width="2"/>
+        <line x1="40" y1="200" x2="105" y2="135" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M105,135 L92,138 L102,148 Z" fill="currentColor"/>
+        <path d="M85,200 A45,45 0 0 0 72,168" fill="none" stroke="currentColor" stroke-width="1"/>
+        <line x1="280" y1="70" x2="280" y2="200" stroke="currentColor" stroke-width="0.7" stroke-dasharray="3 3"/>
+        <circle cx="40" cy="200" r="3" fill="currentColor"/>
+        <circle cx="280" cy="70" r="3" fill="#c2410c"/>
+        <circle cx="500" cy="200" r="3" fill="currentColor"/>
+        <text x="112" y="128" font-size="13" fill="currentColor">v₀</text>
+        <text x="92" y="192" font-size="13" fill="currentColor">θ</text>
+        <text x="288" y="66" font-size="13" fill="currentColor">最高点 H</text>
+        <text x="288" y="140" font-size="12" fill="currentColor">H</text>
+        <text x="270" y="222" text-anchor="middle" font-size="13" fill="currentColor">射程 x ＝ v₀ cosθ × t</text>
+        <text x="40" y="222" font-size="12" fill="currentColor">投げた位置</text>
+        <text x="500" y="222" text-anchor="end" font-size="12" fill="currentColor">落下点</text>
+      </svg>
+      <p>投げた物体の軌跡は放物線になります。最高点では鉛直成分の速度が0になり、水平成分の速度 v<sub>0</sub> cosθ は最後まで変わりません。</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>使う物理定数は重力加速度 <strong>g ＝ 9.8 m/s<sup>2</sup></strong> です。まず初速度 v<sub>0</sub> を、角度 θ を使って2つの成分に分けます。</p>
+    <div class="formula">水平成分 v<sub>0</sub> cosθ　　鉛直成分 v<sub>0</sub> sinθ</div>
+    <p>記号の意味と単位は次のとおりです。</p>
+    <ul>
+      <li>v<sub>0</sub>：初速度 [m/s]</li>
+      <li>θ：投げる角度 [°] ― 水平方向から測る。水平投射では θ ＝ 0°</li>
+      <li>h<sub>0</sub>：初期高さ [m] ― 投げた位置の、落下する地面からの高さ</li>
+      <li>t：滞空時間 [s]、x：射程 [m]、H：最高点の高さ [m]（地面から測る）</li>
+    </ul>
+    <p>鉛直方向は、初速度 v<sub>0</sub> sinθ の投げ上げに、高さ h<sub>0</sub> の分だけ落下が加わった運動です。地面に着く条件（変位が −h<sub>0</sub>）を解くと、滞空時間は次の式になります。</p>
+    <div class="formula">t ＝ (v<sub>0</sub> sinθ ＋ √((v<sub>0</sub> sinθ)<sup>2</sup> ＋ 2gh<sub>0</sub>)) ÷ g</div>
+    <div class="formula">射程 x ＝ v<sub>0</sub> cosθ × t　　最高点 H ＝ h<sub>0</sub> ＋ (v<sub>0</sub> sinθ)<sup>2</sup> ÷ (2g)</div>
+    <p>水平投射（θ ＝ 0°）では sinθ ＝ 0 なので、滞空時間は自由落下と同じ t ＝ √(2h<sub>0</sub> ÷ g) になり、最高点は投げた位置の高さ h<sub>0</sub> のままです。また、初期高さが0で角度を変えられる場合、射程は θ ＝ 45° のときに最大になります。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>初速度を成分に分ける。</strong>水平成分 v<sub>0</sub> cosθ と鉛直成分 v<sub>0</sub> sinθ を計算します。</li>
+      <li><strong>鉛直方向から滞空時間を求める。</strong>落下の式に v<sub>0</sub> sinθ と h<sub>0</sub> を入れ、地面に着くまでの時間 t を出します。</li>
+      <li><strong>射程は水平成分 × 滞空時間。</strong>水平方向は等速度なので、x ＝ v<sub>0</sub> cosθ × t です。</li>
+      <li><strong>最高点は鉛直成分だけから求める。</strong>投げ上げの高さ (v<sub>0</sub> sinθ)<sup>2</sup> ÷ (2g) に初期高さ h<sub>0</sub> を足します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題：地面から、初速度 20 m/s、角度 45° で小球を投げた。滞空時間、射程、最高点の高さを求めよ。ただし重力加速度は g ＝ 9.8 m/s<sup>2</sup> とし、空気の抵抗は無視する。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>成分に分けると、水平成分・鉛直成分とも 20 × (1 ÷ √2) ≒ 14.14 m/s です。初期高さ h<sub>0</sub> ＝ 0 m です。</li>
+          <li>滞空時間：t ＝ (14.14 ＋ √(14.14<sup>2</sup> ＋ 0)) ÷ 9.8 ＝ 2 × 14.14 ÷ 9.8 ≒ 2.9 s</li>
+          <li>射程：x ＝ 14.14 × 2.886 ≒ 40.8 m</li>
+          <li>最高点：H ＝ 0 ＋ 14.14<sup>2</sup> ÷ (2 × 9.8) ＝ 200 ÷ 19.6 ≒ 10.2 m</li>
+        </ol>
+        <p><strong>答え：滞空時間は約 2.9 s、射程は約 40.8 m、最高点は約 10.2 m</strong>。射程の式 x ＝ v<sub>0</sub><sup>2</sup> sin2θ ÷ g に入れても、400 × 1 ÷ 9.8 ≒ 40.8 m と一致します。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>球技の飛距離と角度の目安</h3>
+    <p>砲丸投げややり投げ、野球の外野への打球など、投げたり打ったりした物体の飛び方は放物運動で近似できます。同じ初速度なら45°で最も遠くへ飛ぶという性質は、投てき競技のフォームや、ゴルフのクラブのロフト角（フェースの傾き）の設計を考えるときの出発点になっています（実際は空気抵抗やリリースの高さで最適な角度は少し下がります）。</p>
+    <h3>噴水と消防放水の届く範囲</h3>
+    <p>噴水の水や消防の放水がどこまで届くかは、ノズルからの初速度と角度で決まります。放水の届く距離や、噴水の水の弧の形を見積もる計算は、この放物運動の式そのものです。</p>
+    <h3>ドローンや配送物の落下位置の予測</h3>
+    <p>飛行中の航空機やドローンから物を落とすと、物は水平方向の速度を保ったまま落ちるため、真下ではなく前方に落下します。落下点を予測する水平投射の計算は、物資投下や、災害時の落下物範囲の見積もりの基礎になっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p>投げた物体の軌跡が放物線になることと、「水平方向の運動と鉛直方向の運動は独立している」ことを示したのは、<strong>ガリレオ・ガリレイ</strong>（1564〜1642）です。著書『新科学対話』（1638年）の中で、水平投射の軌跡が半放物線になることを論じました。大砲の弾道を扱う実用上の問題から生まれた考え方で、成分に分けて考える方法は、その後の力学全体の基本になりました。</p>
+  </section>
+
+  <a class="linkcard" href="calc-projectile-motion.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">水平投射と斜方投射 計算機：初速度・角度・初期高さを入れると、滞空時間・射程・最高点の高さを、公式への代入過程とあわせて表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>鉛直方向の運動の土台は「自由落下と鉛直投射」と「等加速度直線運動」、初速度を成分に分ける計算は「力の合成と分解」と同じ三角関数の考え方です。<a href="./">物理ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「物理ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

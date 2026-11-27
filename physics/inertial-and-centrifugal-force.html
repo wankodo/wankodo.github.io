@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>慣性力と遠心力｜物理ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-physics.svg">
+<meta name="description" content="慣性力と遠心力の使い方を、公式・手順・例題で解説。エレベーターで体重計の目盛りが変わる理由や、カーブで外側に引かれる遠心力と必要な摩擦の見積もり、乗り物の安全設計など実際の現場での使われ方まで紹介します。対応する計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="物理ツール集">
+<meta property="og:title" content="慣性力と遠心力｜物理ツール集">
+<meta property="og:description" content="加速する乗り物の中で感じる慣性力と遠心力を、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/physics/inertial-and-centrifugal-force.html">
+<meta property="og:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 物理コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">物理ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="./" class="cur">物理ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">慣性力</span>と遠心力</h1>
+    <p>物理の解法辞典 ― 力学（高校物理・2年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">物理ツール集トップ</a> ＞ 力学 ＞ 慣性力と遠心力</p>
+  <p><span class="badge badge-lv">高校物理・2年</span> <span class="badge badge-genre">力学</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    加速している電車やエレベーター、カーブを曲がる車の中など、加速する側に乗って考えるときに使う。その立場では、加速度と逆向きに慣性力がはたらくように見え、見かけの重さの変化や遠心力を、地面に立つ立場と同じ運動方程式の形で扱える。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p><strong>加速している乗り物の中の立場</strong>で、物の重さの変化や押しつけられる力を扱うときの解法です。次のような場面で使います。</p>
+    <ul>
+      <li>エレベーターが加速・減速するとき、体重計の目盛り（見かけの重さ）がどう変わるかを求める問題</li>
+      <li>発車・停車する電車の中で、体が前後に引かれる力の大きさを求める問題</li>
+      <li>カーブを曲がる車や自転車に生じる遠心力と、滑らないために必要な摩擦を求める問題</li>
+      <li>自由落下するエレベーターの中で無重力になる理由を説明する問題</li>
+    </ul>
+    <p>地面に立つ立場（慣性系）では存在しない力ですが、加速する側の立場では「慣性力 −ma」を加えることで、つり合いの式や運動方程式がそのまま使えるようになります。円運動の場合の慣性力が、中心から外向きに見える<strong>遠心力</strong>です。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <div class="formula">慣性力 ＝ −ma（加速度 a と逆向きに、大きさ ma）</div>
+    <div class="formula">エレベーターの垂直抗力：上向き加速 N ＝ m(g ＋ a)／下向き加速 N ＝ m(g − a)</div>
+    <div class="formula">遠心力 ＝ mv<sup>2</sup> ÷ r　／　必要な静止摩擦係数の下限 μ ＝ v<sup>2</sup> ÷ (rg)</div>
+    <p>記号の意味と単位は次のとおりです。重力加速度は g ＝ 9.8 m/s<sup>2</sup> を使います。</p>
+    <ul>
+      <li>m：物体（人）の質量 [kg]</li>
+      <li>a：乗り物の加速度 [m/s<sup>2</sup>]</li>
+      <li>N：垂直抗力 [N] ― 体重計が押し返す力で、目盛りはこの大きさに比例します（見かけの重さ）</li>
+      <li>v：カーブでの速さ [m/s]、r：カーブの半径 [m]、μ：静止摩擦係数（単位なし）</li>
+    </ul>
+    <p>エレベーターが下向きに g と同じ加速度で落下すると N ＝ m(g − g) ＝ 0 となり、体重計の目盛りは 0、つまり<strong>無重力状態</strong>になります。国際宇宙ステーションの中が無重力なのも、ステーション全体が地球のまわりを自由落下し続けているためです。</p>
+    <p>カーブでは、車の立場では外向きに遠心力 mv<sup>2</sup>/r が見えます。実際に車を円運動させているのはタイヤと路面の間の静止摩擦力（向心力）で、その上限 μmg を遠心力が超えると車は外側へ滑り出します。μ の下限の式で質量が消えるのは、遠心力も摩擦の上限も質量に比例するためです。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>どの立場で考えるか決める。</strong>乗り物の中の立場では、加速度と逆向きに慣性力 ma を書き加えます。</li>
+      <li><strong>エレベーターなら垂直抗力を立てる。</strong>上向き加速は N ＝ m(g ＋ a)、下向き加速は N ＝ m(g − a) です。a ≧ g の下向き加速では N ＝ 0（無重力）として扱います。</li>
+      <li><strong>カーブなら遠心力 mv<sup>2</sup>/r を求める。</strong>滑らない条件は、遠心力が静止摩擦力の上限 μmg 以下であることです。</li>
+      <li><strong>必要な摩擦係数は μ ＝ v<sup>2</sup>/(rg) で見積もる。</strong>実際の路面の μ（乾いた舗装ではおよそ 0.7 程度、凍結路では 0.1 程度まで下がる）と比べて安全か判断します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題（エレベーター）：質量 50 kg の人が、加速度 2.0 m/s<sup>2</sup> で上向きに加速するエレベーターの中で体重計に乗った。体重計が受ける垂直抗力（見かけの重さ）を求めよ。g ＝ 9.8 m/s<sup>2</sup> とする。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>上向きに加速するので N ＝ m(g ＋ a) を使います。</li>
+          <li>N ＝ 50 × (9.8 ＋ 2.0) ＝ 50 × 11.8 ＝ 590 N</li>
+        </ol>
+        <p><strong>答え：垂直抗力は 590 N</strong>。静止時の 490 N より 100 N 大きく、体重計の目盛りは約 60 kg 分を指します。なおカーブの例として、質量 800 kg の車が速さ 10 m/s で半径 50 m のカーブを曲がると、遠心力は 800 × 10<sup>2</sup> ÷ 50 ＝ 1,600 N、必要な静止摩擦係数の下限は 10<sup>2</sup> ÷ (50 × 9.8) ≒ 0.20 です。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>乗り物の加速と乗り心地・安全設計</h3>
+    <p>電車やエレベーターでは、発車・停止のときの加速度が大きいほど乗客は強い慣性力を感じ、つり革につかまる手や足元への負担が増えます。エレベーターの加減速の設計値や、車両の起動加速度の上限は、乗客が感じる見かけの重さの変化を基準に決められています。</p>
+    <h3>道路のカーブと速度制限</h3>
+    <p>カーブで必要な摩擦係数の下限 μ ＝ v<sup>2</sup>/(rg) は、速さの2乗で増えます。雨や凍結で路面の μ が下がったときに同じカーブが滑りやすくなるのはこのためで、カーブの制限速度や、路面を外側に向けて傾けるバンク（カント）の設計は、この見積もりに基づいて決められます。</p>
+    <h3>宇宙飛行士の訓練と無重力実験</h3>
+    <p>航空機を放物線飛行させて自由落下状態を作ると、機内は一時的に無重力になります。この仕組みは宇宙飛行士の訓練や、無重力でしかできない材料・生物の実験に使われています。落下するエレベーターと同じく、機体全体が重力だけで落下するとき、内部では垂直抗力が 0 になることが原理です。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p>慣性の考え方は<strong>ガリレオ・ガリレイ</strong>（1564〜1642）が先駆けとなり、<strong>アイザック・ニュートン</strong>（1643〜1727）の運動の法則で基礎づけられました。加速する座標系で慣性力を導入して扱う方法は古典力学の中で整えられ、遠心力については<strong>クリスティアーン・ホイヘンス</strong>（1629〜1695）が円運動の研究で理論化しました。のちに<strong>アルベルト・アインシュタイン</strong>（1879〜1955）は、重力と慣性力が区別できないという等価原理から一般相対性理論を築きました。</p>
+  </section>
+
+  <a class="linkcard" href="calc-inertial-and-centrifugal-force.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">慣性力と遠心力 計算機：質量と加速度・向きを入れるとエレベーターの見かけの重さを、質量・速さ・半径を入れるとカーブの遠心力と必要な静止摩擦係数の下限を、公式への代入過程とあわせて表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>円運動そのものの量は「等速円運動」、直線の加速運動は「等加速度直線運動」、落下と無重力の関係は「自由落下と鉛直投射」が役立ちます。<a href="./">物理ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「物理ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
