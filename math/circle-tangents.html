@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>円の接線の方程式と2円の位置関係｜数学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-math.svg">
+<meta name="description" content="円の接線の方程式と2円の位置関係の使い方を、公式・手順・例題で解説。円周上の点での接線、円外の点からの接線の長さ、中心間距離による5通りの位置関係と共通接線の本数、地平線までの距離やベルトドライブのベルト長など実際の現場での使われ方まで紹介します。対応する計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="数学ツール集">
+<meta property="og:title" content="円の接線の方程式と2円の位置関係｜数学ツール集">
+<meta property="og:description" content="円の接線の方程式と、中心間距離で決まる2円の位置関係・共通接線の本数を、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/math/circle-tangents.html">
+<meta property="og:image" content="https://wankodo.github.io/math/ogp-math.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/math/ogp-math.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 数学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">数学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="./" class="cur">数学ツール集</a>
+</div></nav>
+<header><div class="wrap"><h1>円の<span class="accent">接線</span>と2円の位置関係</h1><p>数学解法辞典 ― 図形と方程式（高校）</p></div></header>
+<div class="wrap">
+<p class="crumb"><a href="./">数学ツール集トップ</a> ＞ 図形と方程式 ＞ 円の接線の方程式と2円の位置関係</p>
+<p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">図形と方程式</span> <span class="badge badge-calc">計算機あり</span></p>
+<div class="summary-box"><span class="sb-lab">どんな時に使えるか</span>山の上や衛星から地平線までどれだけ見えるかは、地球への接線の長さで決まる。ベルトがプーリーに巻きつく長さや、2つの円が重なるかどうかも、接線と中心間距離の関係で読み解ける。円に「触れる」直線と、2円の位置関係を扱う道具である。</div>
+<section class="card"><h2>どんな問題に使うか</h2><p>円に<strong>ちょうど1点で触れる直線（接線）の方程式</strong>を求める問題と、<strong>2つの円がどのような位置関係にあるか</strong>を判定する問題です。どちらも「中心と半径」という円の情報だけで決まるのが特徴です。</p><ul><li>円周上の点における接線の方程式を求める問題</li><li>円の外部の点から引いた接線の方程式と、その接線の長さを求める問題</li><li>2円が離れている・外接する・2点で交わる・内接する・一方が他方の内部にある、のどれかを判定する問題</li><li>2円の共通接線（両方の円に接する直線）が何本引けるかを問う問題</li></ul><p>接線については「接点が円周上にある点か、円外の点か」で解き方が分かれます。2円については、方程式を連立する前に中心間距離を調べるだけで、交点の個数まで見通せます。</p></section>
+<section class="card"><h2>公式・考え方</h2><div class="formula">円 (x−a)<sup>2</sup>＋(y−b)<sup>2</sup>＝r<sup>2</sup> 上の点 (x<sub>0</sub>, y<sub>0</sub>) における接線：(x<sub>0</sub>−a)(x−a)＋(y<sub>0</sub>−b)(y−b)＝r<sup>2</sup></div><p><strong>接線と半径は垂直：</strong>接点と中心を結ぶ半径は、接線と直角に交わります。上の接線の公式はこの性質から導かれます。特に中心が原点の円 x<sup>2</sup>＋y<sup>2</sup>＝r<sup>2</sup> では、接線は x<sub>0</sub>x＋y<sub>0</sub>y＝r<sup>2</sup> という覚えやすい形になります。</p><div class="formula">円外の点 P から円に引いた接線の長さ：√(d<sup>2</sup>−r<sup>2</sup>)（d は P と中心の距離）</div><p><strong>接線の長さ：</strong>中心 C、接点を T とすると、三角形 CTP は CT⊥TP の直角三角形です。三平方の定理より TP<sup>2</sup>＝CP<sup>2</sup>−r<sup>2</sup> となり、接線の長さは √(d<sup>2</sup>−r<sup>2</sup>) です。1つの円外の点からは接線が2本引け、その長さは等しくなります。点が円周上にあれば接線は1本、円の内部にあれば接線は引けません。</p><div class="formula">2円の位置関係は、中心間距離 d と r<sub>1</sub>＋r<sub>2</sub>、|r<sub>1</sub>−r<sub>2</sub>| の大小で決まる</div><p><strong>2円の位置関係（5通り）：</strong>半径を r<sub>1</sub>、r<sub>2</sub> とします。d ＞ r<sub>1</sub>＋r<sub>2</sub> なら<strong>離れている</strong>、d ＝ r<sub>1</sub>＋r<sub>2</sub> なら<strong>外接する</strong>、|r<sub>1</sub>−r<sub>2</sub>| ＜ d ＜ r<sub>1</sub>＋r<sub>2</sub> なら<strong>2点で交わる</strong>、d ＝ |r<sub>1</sub>−r<sub>2</sub>| なら<strong>内接する</strong>、d ＜ |r<sub>1</sub>−r<sub>2</sub>| なら<strong>一方が他方の内部にある</strong>、となります。</p><p><strong>共通接線の本数：</strong>2円に共通な接線の本数は位置関係と対応し、離れているとき<strong>4本</strong>、外接するとき<strong>3本</strong>、2点で交わるとき<strong>2本</strong>、内接するとき<strong>1本</strong>、一方が他方の内部にあるとき<strong>0本</strong>です。接点で2円が触れるたびに、そこを通る共通接線が1本「共有」されて減っていく、と捉えると覚えやすくなります。</p></section>
+<section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>円の中心と半径を取り出す。</strong>方程式が一般形なら平方完成して、(x−a)<sup>2</sup>＋(y−b)<sup>2</sup>＝r<sup>2</sup> の形に直し、中心 (a, b) と半径 r を読む。</li><li><strong>接線の問題は、点の位置を確認する。</strong>点と中心の距離 d を求め、d ＝ r なら円周上、d ＞ r なら円外、d ＜ r なら円内と判断する。</li><li><strong>円周上の点なら接線の公式に代入する。</strong>(x<sub>0</sub>−a)(x−a)＋(y<sub>0</sub>−b)(y−b)＝r<sup>2</sup> に値を入れて整理すれば、接線の方程式がそのまま得られる。</li><li><strong>円外の点なら、まず接線の長さを求める。</strong>√(d<sup>2</sup>−r<sup>2</sup>) で長さを出し、接線は接点 (x<sub>0</sub>, y<sub>0</sub>) を未知数として「接点が円周上にある」「接線の公式を満たす」の2条件を連立して求める（接線は2本出る）。</li><li><strong>2円の問題は、中心間距離 d を計算する。</strong>2中心の座標から d ＝ √((a<sub>2</sub>−a<sub>1</sub>)<sup>2</sup>＋(b<sub>2</sub>−b<sub>1</sub>)<sup>2</sup>) を求める。</li><li><strong>d と r<sub>1</sub>＋r<sub>2</sub>、|r<sub>1</sub>−r<sub>2</sub>| を比べる。</strong>大小関係から5通りの位置関係のどれかを判定し、対応する共通接線の本数（4・3・2・1・0本）もあわせて答える。</li></ol></section>
+<section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題1：円 x<sup>2</sup>＋y<sup>2</sup>＝9 と点 (5, 0) について、点 (5, 0) からこの円に引いた接線の長さと、接線の方程式を求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>円の中心は原点 (0, 0)、半径は r ＝ 3 です。点 (5, 0) と中心の距離は d ＝ 5 で、d ＞ r なので点は円の外部にあり、接線は2本引けます。</p><p>接線の長さは √(d<sup>2</sup>−r<sup>2</sup>) ＝ √(25−9) ＝ √16 ＝ <strong>4</strong> です。</p><p>接点を (x<sub>0</sub>, y<sub>0</sub>) とすると、接点は円周上にあるので x<sub>0</sub><sup>2</sup>＋y<sub>0</sub><sup>2</sup>＝9、接線 x<sub>0</sub>x＋y<sub>0</sub>y＝9 が点 (5, 0) を通るので 5x<sub>0</sub>＝9、すなわち x<sub>0</sub>＝9/5 です。これを円の式に入れると y<sub>0</sub>＝±12/5 となります。接線の公式に代入して整理すると、接線は次の2本です。</p><p><strong>答え：接線の長さ 4、接線の方程式は y ＝ (3/4)(x−5) と y ＝ −(3/4)(x−5)</strong></p></details></div><div class="example"><p class="ex-q">問題2：円 x<sup>2</sup>＋y<sup>2</sup>＝25 と円 (x−4)<sup>2</sup>＋y<sup>2</sup>＝9 の位置関係と、共通接線の本数を求めよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>第1の円は中心 (0, 0)、半径 r<sub>1</sub>＝5。第2の円は中心 (4, 0)、半径 r<sub>2</sub>＝3 です。中心間距離は d ＝ 4 で、r<sub>1</sub>＋r<sub>2</sub>＝8、|r<sub>1</sub>−r<sub>2</sub>|＝2 となります。</p><p>2 ＜ 4 ＜ 8、つまり |r<sub>1</sub>−r<sub>2</sub>| ＜ d ＜ r<sub>1</sub>＋r<sub>2</sub> なので、2円は2点で交わります。共通接線は、2点で交わる場合の本数です。</p><p><strong>答え：2点で交わる、共通接線は2本</strong></p></details></div></section>
+<section class="card"><h2>現場での使われ方</h2><h3>地平線までの距離と衛星の可視範囲</h3><p>高い場所から見える地平線は、視点から地球（球）に引いた接線の接点の集まりです。地平線までの距離は、地球の半径を R、視点の高さを h として、接線の長さの公式 √(d<sup>2</sup>−r<sup>2</sup>) にあたる √((R＋h)<sup>2</sup>−R<sup>2</sup>) で計算されます。人工衛星が地上のどの範囲と通信できるか（可視範囲・フットプリント）の算出でも、衛星から地球への接線が境界になるため、同じ考え方が使われています。</p><h3>ベルトドライブのベルト長</h3><p>2つのプーリー（滑車）にベルトを掛けるベルトドライブでは、ベルトの直線部分は2円の共通接線に沿い、巻きつく部分は円弧になります。そのためベルトの全長は、共通接線の長さと円弧の長さの和として計算され、プーリーの中心間距離と半径から設計段階で決まります。中心間距離を調整するテンショナーの設計でも、接線の長さの変化が基礎になります。</p><h3>CADの接線拘束</h3><p>機械設計のCADでは、円や円弧に対して「接する」という接線拘束（タンジェント拘束）を指定して形状を決める機能が標準で備わっています。歯車の歯形、ベルトやチェーンの経路、カムの輪郭など、円弧同士や円弧と直線が滑らかにつながる設計では、接線の条件が形状の滑らかさと寸法を同時に決める役割を果たしています。</p></section>
+<section class="card"><h2>考え出した人</h2><p>円と接線の性質に、単独の考案者はいません。紀元前3世紀頃、<strong>ユークリッド</strong>が著書『原論』の第III巻で、円と接線の性質（接線は接点を通る半径と直角に交わること、円外の点から引いた2本の接線の長さが等しいことなど）を命題として体系的にまとめました。同じく紀元前3世紀の<strong>アポロニウス</strong>は『円錐曲線論』で円を含む円錐曲線の接線を扱い、接線論を大きく広げました。2円の位置関係の判定も、この古典幾何の積み重ねの上に、座標を用いる解析幾何の方法が加わって現在の形になっています。</p></section>
+<a class="linkcard" href="calc-circle-tangents.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">円の接線と2円の位置関係 計算機：円外の点からの接線の長さと方程式、または2円の位置関係の判定と共通接線の本数を、手順つきで計算します。</span></a>
+<section class="card"><h2>関連項目</h2><p>円そのものの方程式の作り方は円の方程式の項目、点と直線の距離は点と直線の距離の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「数学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

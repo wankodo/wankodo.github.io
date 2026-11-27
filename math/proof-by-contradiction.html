@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>背理法｜数学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-math.svg">
+<meta name="description" content="背理法の使い方を、公式・手順・例題で解説。結論の否定を仮定して矛盾を導く型、対偶との違い、√2が無理数であることの証明、暗号の安全性証明やプログラムの形式検証など実際の現場での使われ方まで紹介します。対応する計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="数学ツール集">
+<meta property="og:title" content="背理法｜数学ツール集">
+<meta property="og:description" content="結論の否定を仮定して矛盾を導く背理法を、型・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/math/proof-by-contradiction.html">
+<meta property="og:image" content="https://wankodo.github.io/math/ogp-math.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/math/ogp-math.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 数学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">数学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="./" class="cur">数学ツール集</a>
+</div></nav>
+<header><div class="wrap"><h1><span class="accent">背理法</span></h1><p>数学解法辞典 ― 数と式（高校）</p></div></header>
+<div class="wrap">
+<p class="crumb"><a href="./">数学ツール集トップ</a> ＞ 数と式 ＞ 背理法</p>
+<p><span class="badge badge-lv">高校</span> <span class="badge badge-genre">数と式</span> <span class="badge badge-calc">計算機あり</span></p>
+<div class="summary-box"><span class="sb-lab">どんな時に使えるか</span>「〜でない」「存在しない」「無限にある」といった、直接は掴みにくい結論を証明したい時に使う。結論の否定を仮定して論理を進め、矛盾が出れば仮定が誤りだと分かるので、結論の正しさが示せる。</div>
+<section class="card"><h2>どんな問題に使うか</h2><p>証明したい命題を<strong>直接示すのが難しいときに、結論の否定を仮定して矛盾を導く</strong>ことで証明する方法です。矛盾とは、仮定や既知の事実と食い違う結論（例えば「p も q も偶数だが、p と q は互いに素である」など）が同時に成り立ってしまうことです。</p><ul><li>√2 は無理数である、のように「〜でない」ことを示す証明</li><li>素数は無限にある、のように「有限ではない」ことを示す証明</li><li>条件を満たすものは存在しない、という不存在の証明</li><li>直接構成できない対象について、間接的に正しさを示す証明</li></ul><p>背理法は計算の道具ではなく、証明の進め方の型です。仮定を置くことで使える条件が1つ増える（結論の否定が使える）ため、直接の証明より手がかりが増えるのが強みです。</p></section>
+<section class="card"><h2>公式・考え方</h2><div class="formula">背理法の型：結論の否定を仮定する → 論理を正しく進める → 矛盾が導かれる → 仮定が誤り → よって結論が正しい</div><p><strong>なぜこれで証明になるのか：</strong>命題は「正しい」か「正しくない」かのどちらかです。結論が正しくないと仮定して正しく論理を進めたのに矛盾が出たなら、その仮定自体が成り立たない、つまり結論は正しい、ということになります。途中の論理に誤りがないことが前提なので、一歩一歩の変形や推論の正しさが大切です。</p><p><strong>対偶との違い：</strong>対偶による証明は、「p ならば q」を「q でないならば p でない」に言い換えて示す方法で、元の命題と論理的に同値な命題を直接証明します。一方、背理法は「p であり、かつ q でない」と仮定して矛盾を導きます。対偶は背理法の特別な場合と見ることもできますが、背理法の方が仮定に p も使える分、適用できる場面が広くなります。</p><p><strong>どんな命題に向くか：</strong>結論が否定の形をした命題が特に向いています。「〜でない（無理数である、割り切れない）」「無限にある（有限個で尽きない）」「存在しない」という命題は、その否定を仮定すると「有理数である」「有限個しかない」「存在する」という具体的な対象や式が手に入り、計算や論理を進めやすくなるからです。</p></section>
+<section class="card"><h2>解き方の手順</h2><ol class="steps"><li><strong>結論の否定を正確に書く。</strong>「√2 は無理数である」の否定は「√2 は有理数である」というように、証明したい結論を正しく否定する（否定の作り方を間違えると証明全体が崩れる）。</li><li><strong>否定を仮定して、具体的な形に置く。</strong>有理数なら p/q（p、q は互いに素な整数）というように、仮定から得られる具体的な式や対象を設定する。</li><li><strong>論理を進める。</strong>仮定した式を変形したり、既知の定理や性質を使ったりして、結論を次々に導いていく。</li><li><strong>矛盾を見つける。</strong>「互いに素なのに両方とも偶数」「偶数と奇数が等しい」など、同時に成り立たない事柄がそろったところが矛盾である。</li><li><strong>結論を述べる。</strong>矛盾が生じたので最初の仮定が誤りであり、よって元の結論が正しい、と締めくくる。</li></ol></section>
+<section class="card"><h2>例題</h2><div class="example"><p class="ex-q">問題：√2 は無理数であることを、背理法で証明せよ。</p><details class="ans-fold"><summary>答えと解説を見る</summary><p>背理法で証明します。結論の否定、つまり「√2 は有理数である」と仮定します。すると、互いに素な正の整数 p、q を使って √2 ＝ p/q と書けます（有理数は既約分数で表せる）。</p><p>両辺を2乗すると 2 ＝ p<sup>2</sup>/q<sup>2</sup>、つまり p<sup>2</sup> ＝ 2q<sup>2</sup> となります。右辺は偶数なので p<sup>2</sup> は偶数であり、したがって p も偶数です（奇数の2乗は奇数だから）。そこで p ＝ 2k（k は正の整数）と置くと、(2k)<sup>2</sup> ＝ 2q<sup>2</sup> より 4k<sup>2</sup> ＝ 2q<sup>2</sup>、つまり q<sup>2</sup> ＝ 2k<sup>2</sup> となります。よって q<sup>2</sup> も偶数で、q も偶数です。</p><p>しかし、これは「p と q は互いに素である」ことに反します（2という共通の約数を持つため）。矛盾が生じたので、最初の仮定「√2 は有理数である」は誤りです。</p><p><strong>答え：よって、√2 は無理数である。</strong></p></details></div></section>
+<section class="card"><h2>現場での使われ方</h2><h3>暗号の安全性証明（帰着）</h3><p>現代の暗号方式の安全性証明は、背理法に近い「帰着（リダクション）」という形を取ることがあります。「もしこの暗号を破れる攻撃者がいるなら、その攻撃者を使って、解くのが困難だと信じられている既知の数学問題（素因数分解など）も解けてしまう」という論法です。困難な問題が解けるという矛盾めいた結論に帰着させることで、「だから暗号は破れないはずだ」という安全性の根拠を与えます。</p><h3>プログラムの形式検証</h3><p>プログラムが仕様通りに動くことを数学的に保証する形式検証では、「仕様に違反する実行が存在する」と仮定して、その条件を数式（論理式）に翻訳し、矛盾する（充足不可能である）ことをソルバーと呼ばれる道具で示す考え方が使われます。違反する実行が存在しないことが分かれば、プログラムは仕様を満たすと結論できます。背理法の「否定を仮定して矛盾を導く」という型そのものです。</p></section>
+<section class="card"><h2>考え出した人</h2><p>背理法には単独の考案者はいません。古代ギリシャで発達した証明の方法で、紀元前3世紀頃の<strong>ユークリッド</strong>が著書『原論』の中で用いたことで知られます。例えば『原論』第IX巻命題20では、素数が有限個しかないと仮定すると矛盾が生じることを示し、素数の無限性を証明しました。また、哲学者<strong>アリストテレス</strong>は論理学を体系化し、矛盾を導いて仮定を退ける推論の形を整理しました。背理法はその後、数学の証明の基本的な型として受け継がれています。</p></section>
+<a class="linkcard" href="calc-proof-by-contradiction.html"><span class="lc-t">この解法を計算機で試す →</span><span class="lc-d" style="display:block;">背理法 ガイド型計算機：代表例（√2は無理数である、素数は無限にある、log₂3は無理数である）を選ぶと、否定の仮定から矛盾、結論までの証明ステップを表示します。</span></a>
+<section class="card"><h2>関連項目</h2><p>命題の真偽や集合の考え方を扱う項目や、無理数の性質を扱う平方根の項目もあわせて読むと理解が深まります。<a href="./">数学ツール集トップへ戻る</a></p></section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「数学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
