@@ -221,7 +221,7 @@
 
 ## 物理ツール集
 
-> 中学理科・高校物理基礎・高校物理・大学レベルの法則辞典と計算機。全31項目、各項目に解説記事があり、多くの項目に計算機もついています。トップは [物理ツール集](https://wankodo.github.io/physics/) です。
+> 中学理科・高校物理基礎・高校物理・大学レベルの法則辞典と計算機。全45項目、各項目に解説記事があり、多くの項目に計算機もついています。トップは [物理ツール集](https://wankodo.github.io/physics/) です。
 
 - [等加速度直線運動｜物理ツール集](https://wankodo.github.io/physics/uniform-acceleration.html): 初速度・加速度・時間から速度と変位を求める。計算機つき。
 - [自由落下と鉛直投射｜物理ツール集](https://wankodo.github.io/physics/free-fall-vertical-throw.html): 高さや初速度から、落下時間・落下速度・最高点の高さを求める。計算機つき。
@@ -254,3 +254,17 @@
 - [等速円運動｜物理ツール集](https://wankodo.github.io/physics/uniform-circular-motion.html): 半径と周期・回転数から円運動の角速度・速さ・向心加速度を求める。計算機つき。
 - [慣性力と遠心力｜物理ツール集](https://wankodo.github.io/physics/inertial-and-centrifugal-force.html): エレベーターの見かけの重さと、カーブでの遠心力と必要な摩擦係数を求める。計算機つき。
 - [万有引力｜物理ツール集](https://wankodo.github.io/physics/universal-gravitation.html): 2つの物体の間にはたらく万有引力と、人工衛星の速さと公転周期を求める。計算機つき。
+- [脱出速度と衛星の運動｜物理ツール集](https://wankodo.github.io/physics/escape-velocity-satellites.html): 人工衛星の速さと公転周期と、天体からの脱出速度（第二宇宙速度）を求める。計算機つき。
+- [ケプラーの法則｜物理ツール集](https://wankodo.github.io/physics/keplers-laws.html): 惑星の公転周期と軌道長半径をケプラーの第3法則で互いに求める。計算機つき。
+- [単振り子とばね振り子｜物理ツール集](https://wankodo.github.io/physics/pendulum-and-spring-oscillator.html): 単振り子とばね振り子の周期と振動数を求める。計算機つき。
+- [重心｜物理ツール集](https://wankodo.github.io/physics/center-of-mass.html): 複数の物体の質量と位置から重心の位置を求める。計算機つき。
+- [力のモーメントと剛体のつり合い｜物理ツール集](https://wankodo.github.io/physics/torque-and-rigid-body-equilibrium.html): 力のモーメントと、てこがつり合う支点からの距離を求める。計算機つき。
+- [圧力｜物理ツール集](https://wankodo.github.io/physics/pressure.html): 力と面積から圧力を、深さから水圧を求める。計算機つき。
+- [ばねの合成｜物理ツール集](https://wankodo.github.io/physics/spring-combination.html): 直列・並列につないだ2つのばねの合成ばね定数と、力を加えたときの伸びを求める。計算機つき。
+- [慣性モーメントと回転の運動方程式｜物理ツール集](https://wankodo.github.io/physics/moment-of-inertia.html): 形状と質量・寸法から慣性モーメントを求め、回転エネルギーを計算する。計算機つき。
+- [角運動量とその保存則｜物理ツール集](https://wankodo.github.io/physics/angular-momentum.html): 質点の角運動量を求め、慣性モーメントの変化による角速度の変化を保存則から求める。計算機つき。
+- [剛体の転がり運動｜物理ツール集](https://wankodo.github.io/physics/rolling-motion.html): 斜面を滑らずに転がる剛体の加速度を求め、形による違いを比べる。解説記事のみ。
+- [減衰振動・強制振動と共振｜物理ツール集](https://wankodo.github.io/physics/damped-and-forced-oscillation.html): 固有振動数と駆動力の振動数、Q値から強制振動の振幅倍率を求める。計算機つき。
+- [コリオリ力とフーコー振り子｜物理ツール集](https://wankodo.github.io/physics/coriolis-force.html): 回転する地球上で動く物体のずれの大きさと、フーコー振り子の振動面の回転速度を求める。解説記事のみ。
+- [二体問題と換算質量｜物理ツール集](https://wankodo.github.io/physics/two-body-problem.html): 2つの物体の質量から換算質量を求め、連星の公転周期を求める。解説記事のみ。
+- [ラグランジュ力学と最小作用の原理｜物理ツール集](https://wankodo.github.io/physics/lagrangian-mechanics.html): ラグランジアンからオイラー・ラグランジュ方程式で拘束のある系の運動方程式を立てる。解説記事のみ。

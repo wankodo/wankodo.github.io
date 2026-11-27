@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ラグランジュ力学と最小作用の原理｜物理ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-physics.svg">
+<meta name="description" content="ラグランジュ力学と最小作用の原理を、公式・手順・例題で解説。作用と最小作用の原理、ラグランジアン L＝T−V とオイラー・ラグランジュ方程式の意味、単振り子と斜面で運動方程式を導く手順、ニュートン力学との使い分けまで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="物理ツール集">
+<meta property="og:title" content="ラグランジュ力学と最小作用の原理｜物理ツール集">
+<meta property="og:description" content="L＝T−V から運動方程式を機械的に導くラグランジュ力学と最小作用の原理を、公式・手順・例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/physics/lagrangian-mechanics.html">
+<meta property="og:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 物理コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">物理ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="./" class="cur">物理ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">ラグランジュ力学</span>と<span class="accent">最小作用の原理</span></h1>
+    <p>物理の解法辞典 ― 力学（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">物理ツール集トップ</a> ＞ 力学 ＞ ラグランジュ力学と最小作用の原理</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">力学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    拘束の多い複雑な運動について、力を1つずつ数え上げずに運動方程式を立てたいときに使う。運動エネルギーと位置エネルギーの差 L＝T−V を作り、オイラー・ラグランジュ方程式に当てはめるだけで、振り子でも斜面でも運動方程式が機械的に得られる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>ニュートンの運動方程式を、<strong>エネルギーを出発点にして立て直す解法（解析力学）</strong>の入口です。次のような場面で使います。</p>
+    <ul>
+      <li>振り子や斜面のように、物体の動ける方向が拘束されている系の運動方程式を立てる問題</li>
+      <li>糸の張力や垂直抗力などの拘束力を求めずに、運動だけを先に知りたい問題</li>
+      <li>2つ以上の物体が連動する系で、座標の選び方を工夫して式を簡単にする問題</li>
+      <li>「自然はなぜこの軌道を選ぶのか」を、最小作用の原理から統一的に説明する問題</li>
+    </ul>
+    <p>ニュートン力学では、はたらく力をすべてベクトルとして数え上げ、成分に分けて運動方程式を立てます。ところが拘束力（張力・垂直抗力など）は最初は大きさが分からず、運動と一緒に解く必要があります。ラグランジュ力学では<strong>拘束力は最初から式に現れず</strong>、動ける自由度に合わせた座標（一般化座標）だけを使えばよいので、拘束のある問題ほど楽になります。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <div class="formula">L ＝ T − V、　d/dt (∂L/∂q̇) − ∂L/∂q ＝ 0（オイラー・ラグランジュ方程式）</div>
+    <p>各記号の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>L</strong>：ラグランジアン [J]。運動エネルギー T [J] から位置エネルギー V [J] を引いたもの</li>
+      <li><strong>q</strong>：一般化座標。位置を表す変数で、長さとは限らず角度でもよい（振り子なら角度 θ）</li>
+      <li><strong>q̇</strong>：一般化速度。q の時間微分（q の上にドットを付けた量）</li>
+      <li><strong>∂L/∂q</strong> など：偏微分。「その変数だけを動かしたときの L の変化の割合」を表す</li>
+    </ul>
+    <p>土台にあるのが<strong>最小作用の原理</strong>です。作用とは、ラグランジアンを出発時刻から到着時刻まで時間で積み上げた量 S ＝ ∫L dt のことで、実際の運動は「始点と終点を固定したとき、作用 S が停留値（多くの場合ほぼ最小）を取る軌道」として選ばれます。光が進む道を決めるフェルマーの原理（最短時間の原理）と同じ発想で、力学全体を「自然は作用を節約する」という1つの原理から導く見方です。</p>
+    <p>オイラー・ラグランジュ方程式は、その原理から出てくる計算手順です。一般化座標が複数あれば、その数だけ方程式が立ちます。ニュートンの運動方程式と<strong>答えは完全に同じ</strong>で、違うのは立て方だけです。エネルギーはスカラー（向きのない量）なので、ベクトルの成分分解で悩む場面が大幅に減ります。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>一般化座標を選ぶ。</strong>拘束に沿った変数（斜面なら斜面方向の距離、振り子なら角度）を取ると、拘束条件を別に書く必要がなくなります。</li>
+      <li><strong>運動エネルギー T と位置エネルギー V を、その座標と速度で書き、L ＝ T − V を作る。</strong></li>
+      <li><strong>オイラー・ラグランジュ方程式 d/dt (∂L/∂q̇) − ∂L/∂q ＝ 0 に当てはめる。</strong>偏微分と時間微分を機械的に実行します。</li>
+      <li><strong>出てきた式を整理すれば、それが運動方程式。</strong>必要なら小さな振れの近似（sinθ ≒ θ など）で解ける形にします。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題：長さ l の糸に質量 m のおもりをつけた単振り子について、鉛直からの角度 θ を一般化座標として運動方程式を導け。重力加速度は g とする。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>おもりの速さは lθ̇ なので、運動エネルギーは T ＝ (1/2)m(lθ̇)<sup>2</sup> ＝ (1/2)ml<sup>2</sup>θ̇<sup>2</sup> です。</li>
+          <li>最下点を基準にした高さは l(1 − cosθ) なので、位置エネルギーは V ＝ mgl(1 − cosθ) です。よって L ＝ T − V ＝ (1/2)ml<sup>2</sup>θ̇<sup>2</sup> − mgl(1 − cosθ)。</li>
+          <li>∂L/∂θ̇ ＝ ml<sup>2</sup>θ̇、その時間微分は ml<sup>2</sup>θ̈。∂L/∂θ ＝ −mgl sinθ です。</li>
+          <li>オイラー・ラグランジュ方程式に入れると ml<sup>2</sup>θ̈ − (−mgl sinθ) ＝ 0、整理して θ̈ ＋ (g/l) sinθ ＝ 0 が得られます。</li>
+        </ol>
+        <p><strong>答え：運動方程式は θ̈ ＋ (g/l) sinθ ＝ 0。</strong>糸の張力は一度も登場していません。小さい振れでは sinθ ≒ θ と近似でき、θ̈ ＋ (g/l)θ ＝ 0 という単振動の式になり、周期 T ＝ 2π√(l/g) が得られます。ついでに斜面（角度 α、斜面方向の座標 x）でも、L ＝ (1/2)mẋ<sup>2</sup> ＋ mgx sinα から ẍ ＝ g sinα が直ちに出ます（x を下る向きに取り、高さの減少を V の減少として数えた場合）。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>ロボット工学と制御</h3>
+    <p>多関節ロボットアームの運動方程式は、関節角度を一般化座標とするラグランジュ力学で立てるのが標準的な方法です。関節が多いほど力の数え上げは困難になりますが、T と V さえ書ければ方程式が機械的に得られるため、ロボットの制御プログラムの土台になっています。</p>
+    <h3>構造・機械の振動解析</h3>
+    <p>建物や機械の振動を多数の質点とばねでモデル化する解析では、変位を一般化座標としてラグランジュ方程式から全体の運動方程式（行列の形）を作ります。有限要素法による振動シミュレーションの理論的な出発点もこの形です。</p>
+    <h3>現代物理学への橋渡し</h3>
+    <p>最小作用の原理とラグランジアンの方法は、電磁場や相対性理論、量子力学（ファインマンの経路積分）でもそのまま使われる、現代物理の共通言語です。保存則が対称性から導かれること（ネーターの定理）も、この枠組みで初めて明確になりました。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p>「作用」の考え方の原型は、1740年代に<strong>ピエール＝ルイ・モーペルテュイ</strong>（1698〜1759）が提唱した最小作用の原理にあります。それを厳密な力学の体系に仕上げたのが<strong>ジョゼフ＝ルイ・ラグランジュ</strong>（1736〜1813）で、1788年の『解析力学』で、図も幾何学も使わず方程式だけで力学を展開しました。ラグランジュ自身、この著書に図が1つもないことを誇ったと伝えられます。その後<strong>ウィリアム・ローワン・ハミルトン</strong>（1805〜1865）が原理を作用の停留として定式化し直し（ハミルトンの原理）、解析力学は現代物理への橋になりました。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>振り子の基礎は「単振動」、エネルギーの考え方は「力学的エネルギー保存則」、もとの立て方は「運動方程式」が役立ちます。<a href="./">物理ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「物理ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
