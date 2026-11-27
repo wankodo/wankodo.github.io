@@ -221,7 +221,7 @@
 
 ## 物理ツール集
 
-> 中学理科・高校物理基礎・高校物理・大学レベルの法則辞典と計算機。全111項目、各項目に解説記事があり、多くの項目に計算機もついています。トップは [物理ツール集](https://wankodo.github.io/physics/) です。
+> 中学理科・高校物理基礎・高校物理・大学レベルの法則辞典と計算機。全129項目、各項目に解説記事があり、多くの項目に計算機もついています。トップは [物理ツール集](https://wankodo.github.io/physics/) です。
 
 - [等加速度直線運動｜物理ツール集](https://wankodo.github.io/physics/uniform-acceleration.html): 初速度・加速度・時間から速度と変位を求める。計算機つき。
 - [自由落下と鉛直投射｜物理ツール集](https://wankodo.github.io/physics/free-fall-vertical-throw.html): 高さや初速度から、落下時間・落下速度・最高点の高さを求める。計算機つき。
@@ -334,3 +334,21 @@
 - [マクスウェル方程式｜物理ツール集](https://wankodo.github.io/physics/maxwell-equations.html): マクスウェル方程式の4つの式がそれぞれ何を表すかを読み取り、真空中の光速を ε0 と μ0 から求める。解説記事のみ。
 - [RC回路の過渡現象｜物理ツール集](https://wankodo.github.io/physics/rc-transient.html): 抵抗と電気容量から時定数を求め、充電・放電の途中のコンデンサーの電圧と回路の電流を求める。計算機つき。
 - [ポインティングベクトル｜物理ツール集](https://wankodo.github.io/physics/poynting-vector.html): ポインティングベクトルから電磁エネルギーの流れる向きと単位面積あたりのエネルギーの流れ（強さ）を求める。解説記事のみ。
+- [浮力とアルキメデスの原理｜物理ツール集](https://wankodo.github.io/physics/buoyancy-archimedes.html): 液体中の物体が受ける浮力を求め、物体が浮くか沈むかを判定する。計算機つき。
+- [パスカルの原理｜物理ツール集](https://wankodo.github.io/physics/pascals-principle.html): 小さいピストンに加えた力から、大きいピストンに出る力と持ち上がる距離を求める。計算機つき。
+- [連続の式｜物理ツール集](https://wankodo.github.io/physics/continuity-equation.html): 断面積が変わる管の中の流速の変化と体積流量を求める。計算機つき。
+- [ベルヌーイの定理｜物理ツール集](https://wankodo.github.io/physics/bernoullis-theorem.html): 流れる流体の2点のあいだで圧力を求め、流速から動圧を求める。計算機つき。
+- [粘性とストークスの法則｜物理ツール集](https://wankodo.github.io/physics/viscosity-stokes-law.html): 粘性のある流体の中を落ちる小さな球の終端速度と、球が受ける抗力を求める。計算機つき。
+- [レイノルズ数｜物理ツール集](https://wankodo.github.io/physics/reynolds-number.html): 密度・流速・代表長さ・粘性係数からレイノルズ数を求め、流れの状態を見分ける。計算機つき。
+- [揚力とマグヌス効果｜物理ツール集](https://wankodo.github.io/physics/lift-and-magnus-effect.html): 翼の揚力の仕組みと、回転する球が曲がるマグヌス効果を説明する。解説記事のみ。
+- [表面張力と毛細管現象｜物理ツール集](https://wankodo.github.io/physics/surface-tension-capillarity.html): 毛細管上昇の高さと、表面張力による力を求める。計算機つき。
+- [トリチェリの定理｜物理ツール集](https://wankodo.github.io/physics/torricellis-theorem.html): 水面から穴までの深さから流出速度を求め、体積流量と到達距離に応用する。計算機つき。
+- [ナビエ・ストークス方程式の考え方｜物理ツール集](https://wankodo.github.io/physics/navier-stokes-equation.html): ナビエ・ストークス方程式の各項の意味を読み取り、静止流体など簡単な場合に適用する。解説記事のみ。
+- [光子のエネルギーとプランク定数｜物理ツール集](https://wankodo.github.io/physics/photon-energy.html): 振動数または波長から光子1個のエネルギーを J と eV で求める。計算機つき。
+- [コンプトン効果｜物理ツール集](https://wankodo.github.io/physics/compton-effect.html): 入射X線の波長と散乱角から波長の変化と散乱後の波長を求める。計算機つき。
+- [ド・ブロイ波と物質波｜物理ツール集](https://wankodo.github.io/physics/de-broglie-waves.html): 加速電圧で加速された電子、または質量と速さが与えられた粒子のド・ブロイ波長を求める。計算機つき。
+- [ボーアの水素原子模型｜物理ツール集](https://wankodo.github.io/physics/bohr-model.html): 主量子数から水素原子の電子の軌道半径とエネルギー準位、電子の速さを求める。計算機つき。
+- [水素スペクトルと準位間遷移｜物理ツール集](https://wankodo.github.io/physics/hydrogen-spectrum-transitions.html): 水素原子の下の準位と上の準位から、放出される光子のエネルギーと波長と系列を求める。計算機つき。
+- [X線の発生と性質｜物理ツール集](https://wankodo.github.io/physics/x-rays.html): X線管の電圧から最短波長を、またはX線の波長から光子のエネルギーを求める。計算機つき。
+- [放射性崩壊と半減期｜物理ツール集](https://wankodo.github.io/physics/radioactive-decay-half-life.html): 半減期と経過時間から残りの量と残存割合を、または残存割合から経過時間を求める。計算機つき。
+- [質量欠損と結合エネルギー｜物理ツール集](https://wankodo.github.io/physics/binding-energy-mass-defect.html): 陽子と中性子の数と原子の質量から質量欠損と結合エネルギーを、または質量欠損から結合エネルギーを求める。計算機つき。

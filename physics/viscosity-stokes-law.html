@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>粘性とストークスの法則｜物理ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-physics.svg">
+<meta name="description" content="粘性とストークスの法則の使い方を、公式・手順・例題で解説。終端速度とストークスの抗力の求め方、ミリカンの油滴実験や落球式粘度計、血沈など現場での使われ方まで紹介します。対応する計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="物理ツール集">
+<meta property="og:title" content="粘性とストークスの法則｜物理ツール集">
+<meta property="og:description" content="小さな球が流体から受ける抵抗は速さに比例する。終端速度と抗力の計算を、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/physics/viscosity-stokes-law.html">
+<meta property="og:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 物理コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">物理ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="./" class="cur">物理ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">粘性</span>とストークスの法則</h1>
+    <p>物理の解法辞典 ― 流体（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">物理ツール集トップ</a> ＞ 流体 ＞ 粘性とストークスの法則</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">流体</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    小さな球が粘性のある流体の中をゆっくり落ちる速さや、球が受ける抵抗力を知りたいときに使う。重力と浮力と粘性抵抗がつり合う終端速度は球の半径の2乗に比例し、ミリカンの油滴実験や沈降測定の基礎になる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>流体の<strong>粘性</strong>（ねばり）によって小さな物体が受ける抵抗を扱う項目です。次のような場面で使います。</p>
+    <ul>
+      <li>液体や気体の中を小さな球が落ちる終端速度（最終的に一定になる速さ）を求める問題</li>
+      <li>ゆっくり動く小さな球が流体から受ける抗力（粘性抵抗）を求める問題</li>
+      <li>落下する球の速さの測定から、液体の粘性係数を逆に求める問題</li>
+    </ul>
+    <p>球が落ち始めると粘性抵抗が速さとともに増え、やがて重力（浮力を差し引いた分）とつり合って速さが一定になります。この速さが<strong>終端速度</strong>です。ストークスの法則が成り立つのは、流れがゆっくりで球が小さい（レイノルズ数が小さい）場合に限ります。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <div class="formula">ストークスの抗力 F ＝ 6πηrv</div>
+    <p>η は流体の粘性係数 [Pa・s]、r は球の半径 [m]、v は球の速さ [m/s] です。抗力は速さに比例します（速い物体が受ける空気抵抗が速さの2乗に比例するのとは違う、小さく遅い物体に特有の形です）。</p>
+    <div class="formula">終端速度 v ＝ 2r<sup>2</sup>Δρg / (9η)</div>
+    <p>Δρ は球と流体の密度差 [kg/m<sup>3</sup>]、g は重力加速度で <strong>g ＝ 9.8 m/s<sup>2</sup></strong> です。球にはたらく重力から浮力を引いた力 (4/3)πr<sup>3</sup>Δρg と、抗力 6πηrv がつり合う条件から導かれます。半径の2乗に比例するので、小さい粒子ほど極端にゆっくり沈みます。半径を mm で測った場合は 1 mm ＝ 1×10<sup>−3</sup> m として m に直します。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>半径を m に直す。</strong>mm で与えられたら 10<sup>−3</sup> を掛けます。</li>
+      <li><strong>抗力なら F ＝ 6πηrv、終端速度なら v ＝ 2r<sup>2</sup>Δρg/(9η) にあてはめる。</strong>g ＝ 9.8 m/s<sup>2</sup> を使います。</li>
+      <li><strong>結果は指数表記で確認する。</strong>終端速度や抗力は非常に小さい値になることが多いので、×10<sup>−n</sup> の形で読み取ります。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：半径 0.0010 mm（＝ 1 μm）の油滴が空気中（粘性係数 1.8×10<sup>−5</sup> Pa・s）を落ちる。油と空気の密度差を 1,000 kg/m<sup>3</sup> として、終端速度を求めよ。ただし g ＝ 9.8 m/s<sup>2</sup> とする。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>半径を m に直します。r ＝ 0.0010 mm ＝ 1.0×10<sup>−6</sup> m。</li>
+          <li>v ＝ 2r<sup>2</sup>Δρg/(9η) ＝ 2 × (1.0×10<sup>−6</sup>)<sup>2</sup> × 1,000 × 9.8 ÷ (9 × 1.8×10<sup>−5</sup>) ≒ 1.2×10<sup>−4</sup> m/s。</li>
+        </ol>
+        <p><strong>答え：約 1.2×10<sup>−4</sup> m/s</strong>。1 μm の油滴は 1 秒に 0.12 mm ほどしか落ちません。ミリカンの油滴実験で油滴がゆっくり落ちるのはこのためです。</p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題2：粘性係数 1.0×10<sup>−3</sup> Pa・s の水の中で、半径 0.10 mm の球が 0.010 m/s で動いている。受ける抗力は何 N か。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>半径を m に直します。r ＝ 0.10 mm ＝ 1.0×10<sup>−4</sup> m。</li>
+          <li>F ＝ 6πηrv ＝ 6π × 1.0×10<sup>−3</sup> × 1.0×10<sup>−4</sup> × 0.010 ≒ 1.9×10<sup>−8</sup> N。</li>
+        </ol>
+        <p><strong>答え：約 1.9×10<sup>−8</sup> N</strong>。微小な粒子にはたらく力は、このように非常に小さくなります。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>ミリカンの油滴実験</h3>
+    <p>ミリカンは、空気中をゆっくり落ちる微小な油滴の終端速度を測り、ストークスの法則から油滴の半径と重さを求め、電場でつり合わせる実験から電気素量（電子1個の電気量）を測定しました。終端速度の測定が、目に見えない粒子の大きさを決める物差しになっています。</p>
+    <h3>落球式粘度計</h3>
+    <p>液体の中で球を落とし、終端速度を測ることで液体の粘性係数を求める落球式粘度計は、ストークスの法則の応用です。油や化学溶液の粘度管理などに使われています。</p>
+    <h3>沈降と血沈</h3>
+    <p>微粒子が液体の中で沈む速さ（沈降速度）は終端速度の考え方で見積もられ、水処理の沈殿槽の設計などに使われます。医療検査の血沈（赤血球沈降速度）は、血液中で赤血球が沈む速さを測る検査で、炎症の有無の目安として長く使われています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p>アイルランドの<strong>ジョージ・ガブリエル・ストークス</strong>（1819〜1903）が、1851年に小さな球が粘性流体から受ける抵抗の法則を導きました。ストークスは流体力学と光学の基礎を築いた物理学者で、蛍光の研究や、流体の粘性を表す方程式（ナビエ・ストークス方程式）にも名を残しています。</p>
+  </section>
+
+  <a class="linkcard" href="calc-viscosity-stokes-law.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">粘性とストークスの法則 計算機：球の半径・粘性係数・密度差から終端速度を、粘性係数・半径・速さから抗力を、指数表記つきで表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>浮力そのものは浮力とアルキメデスの原理の項目、静止した液体の圧力は「<a href="pressure.html">圧力</a>」で扱っています。<a href="./">物理ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「物理ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

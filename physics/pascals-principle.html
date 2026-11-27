@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>パスカルの原理｜物理ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-physics.svg">
+<meta name="description" content="パスカルの原理の使い方を、公式・手順・例題で解説。圧力の伝わりとピストンの面積比で力が増幅される仕組み、油圧ジャッキや油圧ブレーキ、油圧プレスなど現場での使われ方まで紹介します。対応する計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="物理ツール集">
+<meta property="og:title" content="パスカルの原理｜物理ツール集">
+<meta property="og:description" content="液体に加えた圧力はそのまま全体に伝わる。力の増幅の計算を、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/physics/pascals-principle.html">
+<meta property="og:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 物理コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">物理ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="./" class="cur">物理ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">パスカル</span>の原理</h1>
+    <p>物理の解法辞典 ― 流体（高校物理基礎・1年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">物理ツール集トップ</a> ＞ 流体 ＞ パスカルの原理</p>
+  <p><span class="badge badge-lv">高校物理基礎・1年</span> <span class="badge badge-genre">流体</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    密閉した液体の一部に加えた圧力が、液体のすべての部分に同じ大きさで伝わることを使って、小さい力を大きい力に変えたいときに使う。力の倍率はピストンの面積の比で決まり、油圧ジャッキやブレーキの仕組みを説明できる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>密閉された液体に加えた圧力の伝わり方を扱う項目です。次のような場面で使います。</p>
+    <ul>
+      <li>小さいピストンに加えた力から、大きいピストンに出る力を求める問題</li>
+      <li>小さいピストンを押し込んだ距離から、大きいピストンが持ち上がる距離を求める問題</li>
+      <li>油圧ジャッキで自動車を持ち上げられる理由を説明する問題</li>
+    </ul>
+    <p>力そのものが増えるのではなく、<strong>圧力が同じ</strong>まま面積が大きくなることで、力＝圧力×面積が大きくなります。その代わり、大きいピストンの動く距離は面積比の分だけ短くなり、仕事（力×距離）は増えません。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <div class="formula">F<sub>1</sub>/A<sub>1</sub> ＝ F<sub>2</sub>/A<sub>2</sub>　つまり　F<sub>2</sub> ＝ F<sub>1</sub> × A<sub>2</sub>/A<sub>1</sub></div>
+    <p>A<sub>1</sub>・A<sub>2</sub> は小さいピストンと大きいピストンの面積 [cm<sup>2</sup>]、F<sub>1</sub>・F<sub>2</sub> はそれぞれにかかる力 [N] です。圧力 P ＝ F/A が両側で等しくなることから導かれます。面積の比だけを使うので、面積は cm<sup>2</sup> のままで計算できます。</p>
+    <div class="formula">d<sub>2</sub> ＝ d<sub>1</sub> × A<sub>1</sub>/A<sub>2</sub></div>
+    <p>d<sub>1</sub> は小さいピストンを押し込む距離 [cm]、d<sub>2</sub> は大きいピストンが持ち上がる距離 [cm] です。液体の体積が変わらない（A<sub>1</sub>d<sub>1</sub> ＝ A<sub>2</sub>d<sub>2</sub>）ことから導かれます。力を増やすほど、動く距離は短くなります。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>面積比を確認する。</strong>A<sub>2</sub>/A<sub>1</sub> が力の倍率になります。</li>
+      <li><strong>F<sub>2</sub> ＝ F<sub>1</sub> × A<sub>2</sub>/A<sub>1</sub> にあてはめる。</strong></li>
+      <li><strong>距離が問われたら体積の保存を使う。</strong>d<sub>2</sub> ＝ d<sub>1</sub> × A<sub>1</sub>/A<sub>2</sub> で求めます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：面積 10 cm<sup>2</sup> の小さいピストンに 50 N の力を加えた。面積 200 cm<sup>2</sup> の大きいピストンには何 N の力が出るか。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>面積比は 200 ÷ 10 ＝ 20 倍です。</li>
+          <li>F<sub>2</sub> ＝ 50 × 20 ＝ 1,000 N。</li>
+        </ol>
+        <p><strong>答え：1,000 N</strong>。50 N（約 5 kg の重さ）で 1,000 N（約 100 kg の重さ）を支える力が出ます。油圧ジャッキの基本です。</p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題2：問題1の装置で、小さいピストンを 20 cm 押し込んだ。大きいピストンは何 cm 持ち上がるか。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>d<sub>2</sub> ＝ d<sub>1</sub> × A<sub>1</sub>/A<sub>2</sub> ＝ 20 × 10/200 ＝ 1.0 cm。</li>
+        </ol>
+        <p><strong>答え：1.0 cm</strong>。力を20倍にする代わりに、距離は20分の1になります。ジャッキを何度も操作して少しずつ持ち上げるのはこのためです。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>油圧ジャッキと油圧プレス</h3>
+    <p>自動車整備で使う油圧ジャッキは、小さいピストンをレバーで何度も押して大きいピストンに大きな力を出させ、車両を持ち上げます。金属板を曲げたり押しつぶしたりする油圧プレスも同じ原理で、工場の成形加工に広く使われています。</p>
+    <h3>油圧ブレーキ</h3>
+    <p>自動車やバイクのブレーキペダル（レバー）の力は、ブレーキ液を通じて各車輪のブレーキに伝わります。液体は圧力をそのまま伝えるため、ペダル側の小さいピストンから車輪側のピストンへ、力を確実に伝えることができます。</p>
+    <h3>建設機械の油圧シリンダー</h3>
+    <p>ショベルカーなどの建設機械のアームは、油圧シリンダーで動きます。エンジンで油に圧力をかけ、その圧力をシリンダーのピストンに伝えて大きな力を出す仕組みは、パスカルの原理の応用です。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p>フランスの<strong>ブレーズ・パスカル</strong>（1623〜1662）が、液体にかかる圧力がそのまま全体に伝わることを示しました。圧力の単位 Pa（パスカル）は彼の名にちなみます。パスカルは大気圧の実験でも知られ、高所では気圧が下がることを確かめました。</p>
+  </section>
+
+  <a class="linkcard" href="calc-pascals-principle.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">パスカルの原理 計算機：小さいピストンの面積と力、大きいピストンの面積から出る力を求め、押し込む距離を入れれば持ち上がる距離も表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>圧力そのものの定義と水圧は「<a href="pressure.html">圧力</a>」で扱っています。液体の中の物体の浮き沈みは浮力の項目もあわせてどうぞ。<a href="./">物理ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「物理ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
