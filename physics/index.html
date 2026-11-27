@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>物理ツール(解説付き)</title>
+<link rel="icon" type="image/svg+xml" href="favicon-physics.svg">
+<meta name="description" content="法則名や現象の特徴から物理の考え方を調べられて、そのまま計算もできるコーナー「物理ツール(解説付き)」。各法則が実際の現場でどう使われているかまで解説します。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="物理ツール集">
+<meta property="og:title" content="物理ツール(解説付き)">
+<meta property="og:description" content="法則を調べられて、そのまま計算もできる物理コーナー。各法則の「現場での使われ方」まで解説します。">
+<meta property="og:url" content="https://wankodo.github.io/physics/">
+<meta property="og:image" content="https://wankodo.github.io/math/ogp-physics.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/math/ogp-physics.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.tool-card{display:block;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;box-shadow:0 1px 3px rgba(18,40,63,.06);color:var(--ink);margin:12px 0}
+.tool-card:hover{border-color:var(--amber);box-shadow:0 2px 10px rgba(18,40,63,.13)}
+.tool-card h3{margin:0;font-size:17px;color:var(--navy)}
+.tool-card h3 a{color:var(--navy);text-decoration:none}
+.tool-card h3 a:hover{text-decoration:underline}
+.tool-card p{margin:8px 0 0;font-size:13.5px}
+.tool-card .tc-links{margin-top:10px;font-size:13.5px;display:flex;gap:18px;flex-wrap:wrap}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 4px}
+.chip{border:2px solid var(--navy);background:var(--card);color:var(--navy);border-radius:999px;padding:6px 16px;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--navy);color:#fff}
+#searchResults h3{margin:14px 0 4px;font-size:16px;color:var(--navy)}
+.result-group-head{margin:18px 0 2px;font-size:16px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.result-group-head .rg-note{font-size:12.5px;font-weight:400;color:var(--mut);margin-left:8px}
+.jump-link{display:block;background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:12px 16px;margin:10px 0;color:var(--ink);text-decoration:none;font-weight:700}
+.jump-link:hover{border-color:var(--amber-d);text-decoration:underline}
+section.card{scroll-margin-top:12px}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+.field{margin:0 0 14px}
+.field label{display:block;font-weight:700;margin-bottom:5px}
+.field .fl-note{font-weight:400;font-size:12.5px;color:var(--mut)}
+.field input{width:100%;padding:12px 14px;font-size:17px;border:2px solid var(--navy);border-radius:10px;background:#fff;color:var(--ink)}
+.field input:focus{outline:3px solid var(--amber);outline-offset:0;border-color:var(--amber-d)}
+.btn{display:block;width:100%;min-height:50px;border:0;border-radius:10px;background:linear-gradient(180deg,#ffc44d,var(--amber));color:#231a00;font-size:16px;font-weight:800;cursor:pointer}
+.btn:hover{filter:brightness(1.05)}
+.err{display:none;background:#fdecea;border:1px solid var(--red);color:var(--red);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:14px}
+.result{display:none;background:var(--card);border:2px solid var(--amber);border-radius:10px;padding:16px;margin:14px 0}
+.result .ans{font-size:23px;font-weight:800;color:var(--navy);margin:0 0 8px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 物理コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+html[data-theme="andy"] .chip[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;border-color:#46d9ec}
+html[data-theme="andy"] .jump-link{background:rgba(70,217,236,.10);color:#d8f1f6}
+html[data-theme="andy"] .result-group-head{color:#d8f1f6}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">物理ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="./" class="cur">物理ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>物理<span class="accent">ツール(解説付き)</span></h1>
+    <p>法則名や現象の特徴から考え方を調べられて、そのまま計算もできるコーナーです。各法則が実際の現場でどう使われているかまで解説します。</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="card">
+    <h2>法則・考え方を検索</h2>
+    <div class="field">
+      <label for="physicsSearch">キーワード <span class="fl-note">法則名・公式名のほか、「救急車のサイレン」のような使われ方でも引けます。セクション名を入れると、そのセクションへの移動リンクも出ます</span></label>
+      <input type="search" id="physicsSearch" placeholder="例：オームの法則、落下、ドップラー効果" autocomplete="off">
+    </div>
+    <div class="chips" role="group" aria-label="レベルで絞り込み">
+      <button type="button" class="chip" data-level="all" aria-pressed="true">すべて</button>
+      <button type="button" class="chip" data-level="中学" aria-pressed="false">中学</button>
+      <button type="button" class="chip" data-level="高校物理基礎" aria-pressed="false">高校物理基礎</button>
+      <button type="button" class="chip" data-level="高校物理" aria-pressed="false">高校物理</button>
+      <button type="button" class="chip" data-level="大学" aria-pressed="false">大学</button>
+    </div>
+    <div id="searchResults" style="display:none">
+      <h3 id="resultHead"></h3>
+      <div id="jumpBox"></div>
+      <div id="resultCards"></div>
+      <p id="noHit" class="note" style="display:none">条件に合う項目が見つかりませんでした。キーワードを変えるか、検索欄を空にして「考え方」「計算機」の一覧から探してみてください。</p>
+    </div>
+  </section>
+
+  <section class="card" id="sec-kaikata">
+    <h2>考え方</h2>
+    <p>全16項目の解説記事です。各法則の考え方と、実際の現場でどう使われているかを解説しています。分野とレベルは各カードに表示しています。</p>
+    <div class="tool-card">
+      <h3><a href="uniform-acceleration.html">等加速度直線運動</a></h3>
+      <p><span class="badge badge-lv">高校物理基礎・1年</span> <span class="badge badge-genre">力学</span></p>
+      <p>初速度と加速度が分かっている運動について、ある時間たったあとの速さと進んだ距離を求めるときに使う。電車の発車や自動車の加速のように、一定の割合で速さが変わり続ける運動の先行きを、2本の式で言い当てられる。</p>
+      <p class="tc-links"><a href="uniform-acceleration.html">解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="free-fall-vertical-throw.html">自由落下と鉛直投射</a></h3>
+      <p><span class="badge badge-lv">高校物理基礎・1年</span> <span class="badge badge-genre">力学</span></p>
+      <p>手放した物体が重力だけで落ちる運動と、真上に投げ上げたり真下に投げ下ろしたりする運動について、落ちるまでの時間、地面に着く速さ、最高点の高さを求めるときに使う。重力加速度 g ＝ 9.8 m/s² を使った等加速度直線運動として計算できる。</p>
+      <p class="tc-links"><a href="free-fall-vertical-throw.html">解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="hookes-law.html">フックの法則と弾性力</a></h3>
+      <p><span class="badge badge-lv">中学1年</span> <span class="badge badge-genre">力学</span></p>
+      <p>ばねにおもりをつるしたり引っ張ったりしたとき、ばねの伸びが力の大きさに比例することから、未知の力やばねの伸びを計算するときに使う。体重計やばねばかりなど、伸びを目盛りに変えて力を測る道具の土台にもなっている。</p>
+      <p class="tc-links"><a href="hookes-law.html">解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="mechanical-energy-conservation.html">力学的エネルギー保存則</a></h3>
+      <p><span class="badge badge-lv">高校物理基礎・1年</span> <span class="badge badge-genre">力学</span></p>
+      <p>摩擦や空気抵抗が無視できる場面で、高いところにある物体の位置エネルギーと運動エネルギーの合計が変わらないことから、落下後の速さや到達する高さを求めるときに使う。ジェットコースターや振り子の動きの設計・解析の土台にもなっている。</p>
+      <p class="tc-links"><a href="mechanical-energy-conservation.html">解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="simple-harmonic-motion.html">単振動</a></h3>
+      <p><span class="badge badge-lv">高校物理・2年</span> <span class="badge badge-genre">力学</span></p>
+      <p>ばねや振り子のように、つり合いの位置を中心に同じ往復を繰り返す運動について、ある時刻の位置・速度・加速度を求めるときに使う。振幅と周期が分かれば変位は正弦波で表せ、速度と加速度も同じ式の組から言い当てられる。</p>
+      <p class="tc-links"><a href="simple-harmonic-motion.html">解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calorimetry-specific-heat.html">熱量と比熱・熱容量</a></h3>
+      <p><span class="badge badge-lv">高校物理基礎・1年</span> <span class="badge badge-genre">熱・熱力学</span></p>
+      <p>物質を温めたり冷ましたりするときに必要な熱の量や、温度の違う2つの物質を混ぜたときの最終温度を求めるときに使う。質量と比熱と温度変化を掛け合わせれば熱量が分かり、熱の出入りのつり合いから混合温度も計算できる。</p>
+      <p class="tc-links"><a href="calorimetry-specific-heat.html">解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="ideal-gas-equation.html">気体の状態方程式</a></h3>
+      <p><span class="badge badge-lv">高校物理・2年</span> <span class="badge badge-genre">熱・熱力学</span></p>
+      <p>温度・圧力・体積が分かっている気体が「何モルあるか」「分子が何個あるか」を求めるときに使う。気体の量を体積ではなく物質量で数えることで、温度や圧力が変わっても、種類の違う気体でも、同じ物差しで比べられる。</p>
+      <p class="tc-links"><a href="ideal-gas-equation.html">解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="wave-basics.html">波の基本量</a></h3>
+      <p><span class="badge badge-lv">中学1年</span> <span class="badge badge-genre">波動・音</span></p>
+      <p>波の速さ・振動数・波長のうち2つが分かれば、残り1つを求めるときに使う。水面の波でも音でも光でも電波でも、波なら必ず成り立つ基本の関係で、波の性質を数字でつかめるようになる。</p>
+      <p class="tc-links"><a href="wave-basics.html">解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="speed-of-sound.html">音の速さ</a></h3>
+      <p><span class="badge badge-lv">中学1年</span> <span class="badge badge-genre">波動・音</span></p>
+      <p>気温が分かれば音の速さが計算でき、雷が光ってから音が聞こえるまでの時間で雷までの距離を見積もったり、花火の音の遅れを説明したりできる。気温1℃あたり約0.6 m/s変わる、身近な速さの物差しである。</p>
+      <p class="tc-links"><a href="speed-of-sound.html">解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="doppler-effect.html">ドップラー効果</a></h3>
+      <p><span class="badge badge-lv">高校物理・2年</span> <span class="badge badge-genre">波動・音</span></p>
+      <p>救急車が近づくときサイレンが高く、通り過ぎると低く聞こえるのは、音源や観測者の運動で音波の間隔が変わるドップラー効果のためである。両者の速さと向きから、聞こえる音の振動数を1つの式で計算できる。</p>
+      <p class="tc-links"><a href="doppler-effect.html">解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="lens-imaging-formula.html">レンズの写像公式</a></h3>
+      <p><span class="badge badge-lv">中学1年</span> <span class="badge badge-genre">光</span></p>
+      <p>カメラのピントが合う位置や、ルーペで文字が大きく見える仕組みを知りたいときに使う。物体の距離と焦点距離さえ分かれば、像ができる位置と大きさの倍率を1つの式で言い当てられる。</p>
+      <p class="tc-links"><a href="lens-imaging-formula.html">解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="current-and-ohms-law.html">電流とオームの法則</a></h3>
+      <p><span class="badge badge-lv">中学2年</span> <span class="badge badge-genre">電磁気</span></p>
+      <p>電圧・電流・抵抗のうち2つが分かれば残り1つを求めるときや、電池につないだ回路にどれだけ電流が流れるかを見積もるときに使う。V＝IR の1つの式で、回路の基本量の関係を言い当てられる。</p>
+      <p class="tc-links"><a href="current-and-ohms-law.html">解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="resistors-series-parallel.html">抵抗の直列・並列合成</a></h3>
+      <p><span class="badge badge-lv">中学2年</span> <span class="badge badge-genre">電磁気</span></p>
+      <p>抵抗を直列や並列につないだとき、全体を1つの抵抗とみなした合成抵抗を求めるときに使う。直列は単純に足し合わせ、並列は逆数の和の逆数で計算でき、回路全体に流れる電流の見積もりに直結する。</p>
+      <p class="tc-links"><a href="resistors-series-parallel.html">解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="electric-power-and-joule-heat.html">電力とジュール熱</a></h3>
+      <p><span class="badge badge-lv">中学2年</span> <span class="badge badge-genre">電磁気</span></p>
+      <p>電気製品が1秒あたりにどれだけ電気エネルギーを消費するか（電力）と、使い続けたときに生じる熱の量（ジュール熱）を知りたいときに使う。家電の消費電力の表示を読んだり、ヒーターの発熱量や電気料金のもとになる電力量を見積もったりする土台になる。</p>
+      <p class="tc-links"><a href="electric-power-and-joule-heat.html">解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="capacitor-basics.html">コンデンサー</a></h3>
+      <p><span class="badge badge-lv">高校物理・3年</span> <span class="badge badge-genre">電磁気</span></p>
+      <p>電気を一時的に蓄える部品であるコンデンサーに、どれだけの電荷とエネルギーが蓄えられるかを知りたいときに使う。容量と電圧から電荷とエネルギーを、直列・並列の接続からは合成容量を計算できる。</p>
+      <p class="tc-links"><a href="capacitor-basics.html">解説を読む</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="photoelectric-effect.html">光電効果</a></h3>
+      <p><span class="badge badge-lv">高校物理・3年</span> <span class="badge badge-genre">原子・量子・素粒子</span></p>
+      <p>金属に光を当てたときに飛び出す電子のエネルギーを知りたいときに使う。光のエネルギーは振動数で決まること、仕事関数を超えた分だけが電子の運動エネルギーになることが分かり、光を粒（光子）として捉える量子論の入口になる。</p>
+      <p class="tc-links"><a href="photoelectric-effect.html">解説を読む</a></p>
+    </div>
+  </section>
+
+  <section class="card" id="sec-keisanki">
+    <h2>計算機</h2>
+    <p>数字を入れると、答えと解き方の手順が表示される計算機です（16項目）。</p>
+    <div class="tool-card">
+      <h3><a href="calc-uniform-acceleration.html">等加速度直線運動</a></h3>
+      <p class="tc-links"><a href="calc-uniform-acceleration.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-free-fall-vertical-throw.html">自由落下と鉛直投射</a></h3>
+      <p class="tc-links"><a href="calc-free-fall-vertical-throw.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-hookes-law.html">フックの法則と弾性力</a></h3>
+      <p class="tc-links"><a href="calc-hookes-law.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-mechanical-energy-conservation.html">力学的エネルギー保存則</a></h3>
+      <p class="tc-links"><a href="calc-mechanical-energy-conservation.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-simple-harmonic-motion.html">単振動</a></h3>
+      <p class="tc-links"><a href="calc-simple-harmonic-motion.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-calorimetry-specific-heat.html">熱量と比熱・熱容量</a></h3>
+      <p class="tc-links"><a href="calc-calorimetry-specific-heat.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-ideal-gas-equation.html">気体の状態方程式</a></h3>
+      <p class="tc-links"><a href="calc-ideal-gas-equation.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-wave-basics.html">波の基本量</a></h3>
+      <p class="tc-links"><a href="calc-wave-basics.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-speed-of-sound.html">音の速さ</a></h3>
+      <p class="tc-links"><a href="calc-speed-of-sound.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-doppler-effect.html">ドップラー効果</a></h3>
+      <p class="tc-links"><a href="calc-doppler-effect.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-lens-imaging-formula.html">レンズの写像公式</a></h3>
+      <p class="tc-links"><a href="calc-lens-imaging-formula.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-current-and-ohms-law.html">電流とオームの法則</a></h3>
+      <p class="tc-links"><a href="calc-current-and-ohms-law.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-resistors-series-parallel.html">抵抗の直列・並列合成</a></h3>
+      <p class="tc-links"><a href="calc-resistors-series-parallel.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-electric-power-and-joule-heat.html">電力とジュール熱</a></h3>
+      <p class="tc-links"><a href="calc-electric-power-and-joule-heat.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-capacitor-basics.html">コンデンサー</a></h3>
+      <p class="tc-links"><a href="calc-capacitor-basics.html">計算機</a></p>
+    </div>
+    <div class="tool-card">
+      <h3><a href="calc-photoelectric-effect.html">光電効果</a></h3>
+      <p class="tc-links"><a href="calc-photoelectric-effect.html">計算機</a></p>
+    </div>
+  </section>
+
+  <p class="note">全127項目を収録しています（全項目に計算機つき）。大学レベルの項目も40項目収録しています。</p>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script>
+(function(){
+  /* 検索インデックス（設計書 §4）。summary は各記事冒頭の代表説明と同一文面 */
+  var INDEX=[
+    {title:"等加速度直線運動",slug:"uniform-acceleration",genre:"力学",level:"高校物理基礎・1年",cat:"高校物理基礎",calc:true,problem:"初速度・加速度・時間から速度と変位を求める",keywords:"等加速度直線運動 速度 変位 加速度 初速度 v=v0+at x=v0t 公式 電車 加速 ブレーキ",summary:"初速度と加速度が分かっている運動について、ある時間たったあとの速さと進んだ距離を求めるときに使う。電車の発車や自動車の加速のように、一定の割合で速さが変わり続ける運動の先行きを、2本の式で言い当てられる。"},
+    {title:"自由落下と鉛直投射",slug:"free-fall-vertical-throw",genre:"力学",level:"高校物理基礎・1年",cat:"高校物理基礎",calc:true,problem:"高さや初速度から、落下時間・落下速度・最高点の高さを求める",keywords:"自由落下 鉛直投げ上げ 鉛直投げ下ろし 重力加速度 落下時間 最高点 g=9.8 公式",summary:"手放した物体が重力だけで落ちる運動と、真上に投げ上げたり真下に投げ下ろしたりする運動について、落ちるまでの時間、地面に着く速さ、最高点の高さを求めるときに使う。重力加速度 g ＝ 9.8 m/s² を使った等加速度直線運動として計算できる。"},
+    {title:"フックの法則と弾性力",slug:"hookes-law",genre:"力学",level:"中学1年",cat:"中学",calc:true,problem:"ばね定数と力・質量から、ばねの伸びと弾性エネルギーを求める",keywords:"フックの法則 弾性力 ばね ばね定数 伸び N/m 弾性エネルギー おもり",summary:"ばねにおもりをつるしたり引っ張ったりしたとき、ばねの伸びが力の大きさに比例することから、未知の力やばねの伸びを計算するときに使う。体重計やばねばかりなど、伸びを目盛りに変えて力を測る道具の土台にもなっている。"},
+    {title:"力学的エネルギー保存則",slug:"mechanical-energy-conservation",genre:"力学",level:"高校物理基礎・1年",cat:"高校物理基礎",calc:true,problem:"質量・高さ・初速度から位置エネルギーと地面での速さ・運動エネルギーを求める",keywords:"力学的エネルギー保存則 位置エネルギー 運動エネルギー 落下 速さ mgh 自由落下",summary:"摩擦や空気抵抗が無視できる場面で、高いところにある物体の位置エネルギーと運動エネルギーの合計が変わらないことから、落下後の速さや到達する高さを求めるときに使う。ジェットコースターや振り子の動きの設計・解析の土台にもなっている。"},
+    {title:"単振動",slug:"simple-harmonic-motion",genre:"力学",level:"高校物理・2年",cat:"高校物理",calc:true,problem:"振幅・周期・時刻から単振動の変位・速度・加速度を求める",keywords:"単振動 正弦波 サイン 振幅 周期 振動数 角振動数 ばね 振り子 変位 速度 加速度 rad/s Hz",summary:"ばねや振り子のように、つり合いの位置を中心に同じ往復を繰り返す運動について、ある時刻の位置・速度・加速度を求めるときに使う。振幅と周期が分かれば変位は正弦波で表せ、速度と加速度も同じ式の組から言い当てられる。"},
+    {title:"熱量と比熱・熱容量",slug:"calorimetry-specific-heat",genre:"熱・熱力学",level:"高校物理基礎・1年",cat:"高校物理基礎",calc:true,problem:"質量・比熱・温度変化から熱量を求め、温度の違う2つの物質の混合温度を求める",keywords:"熱量 比熱 熱容量 Q=mcΔT ジュール カロリー 水 混合温度 熱のつり合い J g K ℃",summary:"物質を温めたり冷ましたりするときに必要な熱の量や、温度の違う2つの物質を混ぜたときの最終温度を求めるときに使う。質量と比熱と温度変化を掛け合わせれば熱量が分かり、熱の出入りのつり合いから混合温度も計算できる。"},
+    {title:"気体の状態方程式",slug:"ideal-gas-equation",genre:"熱・熱力学",level:"高校物理・2年",cat:"高校物理",calc:true,problem:"圧力・体積・温度から気体の物質量と分子数を求める",keywords:"気体の状態方程式 pV=nRT 理想気体 物質量 mol 気体定数 アボガドロ数 分子数 ボイル シャルル 圧力 体積 絶対温度",summary:"温度・圧力・体積が分かっている気体が「何モルあるか」「分子が何個あるか」を求めるときに使う。気体の量を体積ではなく物質量で数えることで、温度や圧力が変わっても、種類の違う気体でも、同じ物差しで比べられる。"},
+    {title:"波の基本量",slug:"wave-basics",genre:"波動・音",level:"中学1年",cat:"中学",calc:true,problem:"波の速さ・振動数・波長のうち2つから残り1つと周期を求める",keywords:"波 速さ 振動数 波長 周期 v=fλ ヘルツ Hz 音波 電波",summary:"波の速さ・振動数・波長のうち2つが分かれば、残り1つを求めるときに使う。水面の波でも音でも光でも電波でも、波なら必ず成り立つ基本の関係で、波の性質を数字でつかめるようになる。"},
+    {title:"音の速さ",slug:"speed-of-sound",genre:"波動・音",level:"中学1年",cat:"中学",calc:true,problem:"気温から音の速さを求め、距離から音が届く時間を求める",keywords:"音の速さ 音速 気温 331.5 0.6t m/s やまびこ 反射 雷 距離",summary:"気温が分かれば音の速さが計算でき、雷が光ってから音が聞こえるまでの時間で雷までの距離を見積もったり、花火の音の遅れを説明したりできる。気温1℃あたり約0.6 m/s変わる、身近な速さの物差しである。"},
+    {title:"ドップラー効果",slug:"doppler-effect",genre:"波動・音",level:"高校物理・2年",cat:"高校物理",calc:true,problem:"音源と観測者の運動から、観測される音の振動数を求める",keywords:"ドップラー効果 振動数 音源 観測者 音速 サイレン 救急車 スピードガン 血流 赤方偏移",summary:"救急車が近づくときサイレンが高く、通り過ぎると低く聞こえるのは、音源や観測者の運動で音波の間隔が変わるドップラー効果のためである。両者の速さと向きから、聞こえる音の振動数を1つの式で計算できる。"},
+    {title:"レンズの写像公式",slug:"lens-imaging-formula",genre:"光",level:"中学1年",cat:"中学",calc:true,problem:"焦点距離と物体の距離から、像ができる位置と倍率を求める",keywords:"レンズ 写像公式 凸レンズ 凹レンズ 焦点距離 実像 虚像 倍率 1/a+1/b=1/f 光路図",summary:"カメラのピントが合う位置や、ルーペで文字が大きく見える仕組みを知りたいときに使う。物体の距離と焦点距離さえ分かれば、像ができる位置と大きさの倍率を1つの式で言い当てられる。"},
+    {title:"電流とオームの法則",slug:"current-and-ohms-law",genre:"電磁気",level:"中学2年",cat:"中学",calc:true,problem:"電圧・電流・抵抗のうち2つから残り1つを求める",keywords:"オームの法則 電流 電圧 抵抗 V=IR ボルト アンペア オーム 回路",summary:"電圧・電流・抵抗のうち2つが分かれば残り1つを求めるときや、電池につないだ回路にどれだけ電流が流れるかを見積もるときに使う。V＝IR の1つの式で、回路の基本量の関係を言い当てられる。"},
+    {title:"抵抗の直列・並列合成",slug:"resistors-series-parallel",genre:"電磁気",level:"中学2年",cat:"中学",calc:true,problem:"抵抗の直列・並列接続の合成抵抗を求める",keywords:"合成抵抗 直列 並列 抵抗 オームの法則 回路 分圧",summary:"抵抗を直列や並列につないだとき、全体を1つの抵抗とみなした合成抵抗を求めるときに使う。直列は単純に足し合わせ、並列は逆数の和の逆数で計算でき、回路全体に流れる電流の見積もりに直結する。"},
+    {title:"電力とジュール熱",slug:"electric-power-and-joule-heat",genre:"電磁気",level:"中学2年",cat:"中学",calc:true,problem:"電圧・電流・時間から電力と電力量（発熱量）を求める",keywords:"電力 ジュール熱 電力量 P=VI Q=Pt ワット W ジュール J Wh 発熱量 消費電力",summary:"電気製品が1秒あたりにどれだけ電気エネルギーを消費するか（電力）と、使い続けたときに生じる熱の量（ジュール熱）を知りたいときに使う。家電の消費電力の表示を読んだり、ヒーターの発熱量や電気料金のもとになる電力量を見積もったりする土台になる。"},
+    {title:"コンデンサー",slug:"capacitor-basics",genre:"電磁気",level:"高校物理・3年",cat:"高校物理",calc:true,problem:"電気容量と電圧から蓄えられる電荷と静電エネルギーを求め、2つのコンデンサーの合成容量を求める",keywords:"コンデンサー 電気容量 静電容量 電荷 静電エネルギー 合成容量 直列 並列 Q=CV ファラド μF",summary:"電気を一時的に蓄える部品であるコンデンサーに、どれだけの電荷とエネルギーが蓄えられるかを知りたいときに使う。容量と電圧から電荷とエネルギーを、直列・並列の接続からは合成容量を計算できる。"},
+    {title:"光電効果",slug:"photoelectric-effect",genre:"原子・量子・素粒子",level:"高校物理・3年",cat:"高校物理",calc:true,problem:"振動数または波長と仕事関数から光子のエネルギーと電子の最大運動エネルギーを求める",keywords:"光電効果 光子 光量子 エネルギー E=hν 仕事関数 最大運動エネルギー 阻止電圧 アインシュタイン プランク定数 eV",summary:"金属に光を当てたときに飛び出す電子のエネルギーを知りたいときに使う。光のエネルギーは振動数で決まること、仕事関数を超えた分だけが電子の運動エネルギーになることが分かり、光を粒（光子）として捉える量子論の入口になる。"},
+  ];
+  var SECTIONS=[
+    {name:"考え方",id:"sec-kaikata"},
+    {name:"計算機",id:"sec-keisanki"}
+  ];
+  function norm(s){
+    return String(s||"").toLowerCase()
+      .replace(/[Ａ-Ｚａ-ｚ０-９]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0);})
+      .replace(/[\s　]/g,"");
+  }
+  var input=document.getElementById("physicsSearch");
+  var box=document.getElementById("searchResults");
+  var head=document.getElementById("resultHead");
+  var jumpBox=document.getElementById("jumpBox");
+  var cardsBox=document.getElementById("resultCards");
+  var noHit=document.getElementById("noHit");
+  var chips=document.querySelectorAll(".chip[data-level]");
+  var level="all";
+  var listSecs=[document.getElementById("sec-kaikata"),document.getElementById("sec-keisanki")];
+  function setListsVisible(v){listSecs.forEach(function(s){if(s)s.style.display=v?"":"none";});}
+  function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
+  function makeCard(it,mode){
+    var card=el("div","tool-card");
+    if(mode==="calc"){
+      var h3c=el("h3");var ac=el("a",null,it.title);ac.href="calc-"+it.slug+".html";h3c.appendChild(ac);card.appendChild(h3c);
+      var linksc=el("p","tc-links");
+      var ca=el("a",null,"計算機");ca.href="calc-"+it.slug+".html";linksc.appendChild(ca);
+      card.appendChild(linksc);
+      return card;
+    }
+    var h3=el("h3");var a=el("a",null,it.title);a.href=it.slug+".html";h3.appendChild(a);card.appendChild(h3);
+    var pb=el("p");
+    pb.appendChild(el("span","badge badge-lv",it.level));
+    pb.appendChild(document.createTextNode(" "));
+    pb.appendChild(el("span","badge badge-genre",it.genre));
+    card.appendChild(pb);
+    card.appendChild(el("p",null,it.summary));
+    var links=el("p","tc-links");
+    var la=el("a",null,"解説を読む");la.href=it.slug+".html";links.appendChild(la);
+    card.appendChild(links);
+    return card;
+  }
+  function makeGroupHead(name,note){
+    var h=el("h4","result-group-head",name);
+    h.appendChild(el("span","rg-note",note));
+    return h;
+  }
+  function update(){
+    var q=norm(input.value);
+    if(!q&&level==="all"){box.style.display="none";setListsVisible(true);return;}
+    setListsVisible(false);
+    var items=INDEX.filter(function(it){
+      if(level!=="all"&&it.cat!==level)return false;
+      if(!q)return true;
+      var hay=norm(it.title+" "+it.keywords+" "+it.problem+" "+it.genre);
+      return hay.indexOf(q)>=0;
+    });
+    var secs=q?SECTIONS.filter(function(s){var n=norm(s.name);return n.indexOf(q)>=0||q.indexOf(n)>=0;}):[];
+    jumpBox.innerHTML="";
+    secs.forEach(function(s){
+      var a=el("a","jump-link","『"+s.name+"』のセクションへ移動 →");
+      a.href="#"+s.id;
+      a.addEventListener("click",function(){
+        input.value="";
+        level="all";
+        chips.forEach(function(c){c.setAttribute("aria-pressed",String(c.dataset.level==="all"));});
+        update();
+      });
+      jumpBox.appendChild(a);
+    });
+    cardsBox.innerHTML="";
+    if(items.length){
+      cardsBox.appendChild(makeGroupHead("考え方","仕組みから知りたい人へ"));
+      items.forEach(function(it){cardsBox.appendChild(makeCard(it,"article"));});
+      var calcItems=items.filter(function(it){return it.calc;});
+      if(calcItems.length){
+        cardsBox.appendChild(makeGroupHead("計算機","さくっと計算したい人へ"));
+        calcItems.forEach(function(it){cardsBox.appendChild(makeCard(it,"calc"));});
+      }
+    }
+    noHit.style.display=(items.length||secs.length)?"none":"block";
+    head.textContent=q?("「"+input.value.trim()+"」の検索結果（"+items.length+"件）"):("レベル："+level+" の項目（"+items.length+"件）");
+    box.style.display="block";
+  }
+  input.addEventListener("input",update);
+  chips.forEach(function(ch){
+    ch.addEventListener("click",function(){
+      level=ch.dataset.level;
+      chips.forEach(function(c){c.setAttribute("aria-pressed",String(c===ch));});
+      update();
+    });
+  });
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「物理ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

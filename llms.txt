@@ -218,3 +218,24 @@
 - [極形式・ド・モアブルの定理｜数学ツール集](https://wankodo.github.io/math/polar-form.html): 偏角と累乗・n乗根。計算機つき。
 - [オイラーの公式と複素指数関数｜数学ツール集](https://wankodo.github.io/math/euler-formula.html): e^{iθ}＝cosθ＋i sinθ を使って、複素数の指数・対数を計算する。計算機つき。
 - [複素積分と留数｜数学ツール集](https://wankodo.github.io/math/residue.html): 有理関数の各極での留数を求め、留数定理で閉曲線に沿った複素積分の値を計算する問題に使う。。計算機つき。
+
+## 物理ツール集
+
+> 中学理科・高校物理基礎・高校物理・大学レベルの法則辞典と計算機。全16項目、各項目に解説記事と計算機があります。トップは [物理ツール集](https://wankodo.github.io/physics/) です。
+
+- [等加速度直線運動｜物理ツール集](https://wankodo.github.io/physics/uniform-acceleration.html): 初速度・加速度・時間から速度と変位を求める。計算機つき。
+- [自由落下と鉛直投射｜物理ツール集](https://wankodo.github.io/physics/free-fall-vertical-throw.html): 高さや初速度から、落下時間・落下速度・最高点の高さを求める。計算機つき。
+- [フックの法則と弾性力｜物理ツール集](https://wankodo.github.io/physics/hookes-law.html): ばね定数と力・質量から、ばねの伸びと弾性エネルギーを求める。計算機つき。
+- [力学的エネルギー保存則｜物理ツール集](https://wankodo.github.io/physics/mechanical-energy-conservation.html): 質量・高さ・初速度から位置エネルギーと地面での速さ・運動エネルギーを求める。計算機つき。
+- [単振動｜物理ツール集](https://wankodo.github.io/physics/simple-harmonic-motion.html): 振幅・周期・時刻から単振動の変位・速度・加速度を求める。計算機つき。
+- [熱量と比熱・熱容量｜物理ツール集](https://wankodo.github.io/physics/calorimetry-specific-heat.html): 質量・比熱・温度変化から熱量を求め、温度の違う2つの物質の混合温度を求める。計算機つき。
+- [気体の状態方程式｜物理ツール集](https://wankodo.github.io/physics/ideal-gas-equation.html): 圧力・体積・温度から気体の物質量と分子数を求める。計算機つき。
+- [波の基本量｜物理ツール集](https://wankodo.github.io/physics/wave-basics.html): 波の速さ・振動数・波長のうち2つから残り1つと周期を求める。計算機つき。
+- [音の速さ｜物理ツール集](https://wankodo.github.io/physics/speed-of-sound.html): 気温から音の速さを求め、距離から音が届く時間を求める。計算機つき。
+- [ドップラー効果｜物理ツール集](https://wankodo.github.io/physics/doppler-effect.html): 音源と観測者の運動から、観測される音の振動数を求める。計算機つき。
+- [レンズの写像公式｜物理ツール集](https://wankodo.github.io/physics/lens-imaging-formula.html): 焦点距離と物体の距離から、像ができる位置と倍率を求める。計算機つき。
+- [電流とオームの法則｜物理ツール集](https://wankodo.github.io/physics/current-and-ohms-law.html): 電圧・電流・抵抗のうち2つから残り1つを求める。計算機つき。
+- [抵抗の直列・並列合成｜物理ツール集](https://wankodo.github.io/physics/resistors-series-parallel.html): 抵抗の直列・並列接続の合成抵抗を求める。計算機つき。
+- [電力とジュール熱｜物理ツール集](https://wankodo.github.io/physics/electric-power-and-joule-heat.html): 電圧・電流・時間から電力と電力量（発熱量）を求める。計算機つき。
+- [コンデンサー｜物理ツール集](https://wankodo.github.io/physics/capacitor-basics.html): 電気容量と電圧から蓄えられる電荷と静電エネルギーを求め、2つのコンデンサーの合成容量を求める。計算機つき。
+- [光電効果｜物理ツール集](https://wankodo.github.io/physics/photoelectric-effect.html): 振動数または波長と仕事関数から光子のエネルギーと電子の最大運動エネルギーを求める。計算機つき。
