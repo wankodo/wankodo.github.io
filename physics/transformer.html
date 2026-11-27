@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>変圧器と相互誘導｜物理ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-physics.svg">
+<meta name="description" content="変圧器と相互誘導の使い方を、公式・手順・例題で解説。巻数比による電圧の変換や理想変圧器の電力保存、送電の変圧や充電器のアダプターなど実際の現場での使われ方まで紹介します。対応する計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="物理ツール集">
+<meta property="og:title" content="変圧器と相互誘導｜物理ツール集">
+<meta property="og:description" content="巻数比で電圧を変える変圧器の仕組みと、理想変圧器の電力保存から二次電流を求める方法を、公式・手順・例題で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/physics/transformer.html">
+<meta property="og:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 物理コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">物理ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="./" class="cur">物理ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">変圧器</span>と相互誘導</h1>
+    <p>物理の解法辞典 ― 電磁気（高校物理・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">物理ツール集トップ</a> ＞ 電磁気 ＞ 変圧器と相互誘導</p>
+  <p><span class="badge badge-lv">高校物理・3年</span> <span class="badge badge-genre">電磁気</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    交流の電圧を上げ下げする変圧器について、二次側に現れる電圧と電流を知りたいときに使う。巻数比と一次電圧から二次電圧を、理想変圧器の電力保存から二次電流と電力を計算できる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>2つのコイルを同じ鉄心に巻いた<strong>変圧器</strong>で、電圧がどう変換されるかを計算したいときの解法です。次のような場面で使います。</p>
+    <ul>
+      <li>一次コイルの巻数 N<sub>1</sub>、二次コイルの巻数 N<sub>2</sub>、一次電圧 V<sub>1</sub> から、二次電圧 V<sub>2</sub> を求める問題</li>
+      <li>理想変圧器で電力が保存されることから、二次電流 I<sub>2</sub> を求める問題</li>
+      <li>送電で電圧を上げる（昇圧）・下げる（降圧）理由を、電流と損失の観点で確かめる場面</li>
+    </ul>
+    <p>一次コイルに交流を流すと、鉄心の中の磁束が周期的に変化し、その変化が二次コイルを貫いて起電力を生じます。1つのコイルの変化が別のコイルに影響するこの現象が<strong>相互誘導</strong>です。変圧器は交流でしか働かないのは、直流では磁束が変化しないためです。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <div class="formula">V<sub>2</sub> ＝ V<sub>1</sub> × N<sub>2</sub> ÷ N<sub>1</sub>　／　V<sub>1</sub>I<sub>1</sub> ＝ V<sub>2</sub>I<sub>2</sub></div>
+    <p>記号の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>N<sub>1</sub>・N<sub>2</sub></strong>：一次コイル・二次コイルの巻数 [回]</li>
+      <li><strong>V<sub>1</sub>・V<sub>2</sub></strong>：一次電圧・二次電圧 [V]（交流の実効値）</li>
+      <li><strong>I<sub>1</sub>・I<sub>2</sub></strong>：一次電流・二次電流 [A]（交流の実効値）</li>
+      <li><strong>P</strong>：電力 [W]。理想変圧器では一次側と二次側で等しくなります</li>
+    </ul>
+    <p>鉄心の中の磁束の変化は両コイルに共通で、1巻きあたりの起電力は同じです。そのため、電圧は巻数に比例します（V<sub>1</sub> ÷ N<sub>1</sub> ＝ V<sub>2</sub> ÷ N<sub>2</sub>）。N<sub>2</sub> が N<sub>1</sub> より多ければ昇圧、少なければ降圧です。</p>
+    <p>損失のない<strong>理想変圧器</strong>では、入れた電力がそのまま出てくるため V<sub>1</sub>I<sub>1</sub> ＝ V<sub>2</sub>I<sub>2</sub> が成り立ちます。電圧を上げると電流はその分だけ減り、電圧を下げると電流は増えます。実際の変圧器には鉄心やコイルでの損失があり、効率は100%にはなりませんが、大型のものでは98%程度に達します。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>巻数比を先に求める。</strong>N<sub>2</sub> ÷ N<sub>1</sub> が電圧の変換比です。1より大きければ昇圧、小さければ降圧です。</li>
+      <li><strong>二次電圧は V<sub>2</sub> ＝ V<sub>1</sub> × N<sub>2</sub> ÷ N<sub>1</sub> で求める。</strong></li>
+      <li><strong>二次電流は電力保存から求める。</strong>まず P ＝ V<sub>1</sub>I<sub>1</sub> を求め、I<sub>2</sub> ＝ P ÷ V<sub>2</sub>（＝ I<sub>1</sub> × V<sub>1</sub> ÷ V<sub>2</sub>）と計算します。</li>
+      <li><strong>検算する。</strong>V<sub>2</sub>I<sub>2</sub> が V<sub>1</sub>I<sub>1</sub> と一致するか確かめます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：一次コイルの巻数が1,000回、二次コイルの巻数が100回の変圧器に、一次電圧 100 V の交流を加えた。二次電圧を求めよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>巻数比は N<sub>2</sub> ÷ N<sub>1</sub> ＝ 100 ÷ 1,000 ＝ 0.10 です（降圧）。</li>
+          <li>二次電圧：V<sub>2</sub> ＝ V<sub>1</sub> × N<sub>2</sub> ÷ N<sub>1</sub> ＝ 100 × 0.10 ＝ 10 V</li>
+        </ol>
+        <p><strong>答え：二次電圧は 10 V</strong>。</p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題2：問題1の変圧器を理想変圧器とし、一次電流が 2.0 A 流れている。二次電流と電力を求めよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>電力：P ＝ V<sub>1</sub>I<sub>1</sub> ＝ 100 × 2.0 ＝ 200 W</li>
+          <li>二次電流：I<sub>2</sub> ＝ I<sub>1</sub> × V<sub>1</sub> ÷ V<sub>2</sub> ＝ 2.0 × 100 ÷ 10 ＝ 20 A（検算：V<sub>2</sub>I<sub>2</sub> ＝ 10 × 20 ＝ 200 W で一致）</li>
+        </ol>
+        <p><strong>答え：二次電流は 20 A、電力は 200 W</strong>。電圧を10分の1に下げると、電流は10倍になります。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>送電と配電の変圧</h3>
+    <p>発電所で作られた電気は、変圧器で数十万ボルトまで昇圧して送電されます。電力が同じなら電圧が高いほど電流が小さく、送電線の抵抗による発熱損失（電流の2乗に比例）を大幅に減らせるためです。変電所や電柱の上の変圧器（柱上変圧器）で段階的に降圧され、家庭には 100 V で届けられます。交流が直流ではなく送電の標準になった大きな理由が、この変圧のしやすさです。</p>
+    <h3>ACアダプターと充電器</h3>
+    <p>ノートパソコンやスマートフォンの充電器の中にも小型の変圧器が入っており、家庭の 100 V を機器に合った低い電圧に変えています。近年の小型充電器は、交流を一度直流にしてから高い周波数でスイッチングし、小さな変圧器で変換するスイッチング方式が主流です。</p>
+    <h3>IH調理器と非接触給電</h3>
+    <p>IH調理器は、コイルの作る変動磁場が鍋底に渦電流を生じさせて加熱する、相互誘導の応用です。スマートフォンのワイヤレス充電も、充電台のコイルと端末のコイルの間の相互誘導で電力を送る仕組みで、変圧器を2つに引き離したものと見ることができます。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p>相互誘導は<strong>マイケル・ファラデー</strong>（1791〜1867）が1831年に発見した電磁誘導の一部です。実用的な変圧器は1880年代に実用化され、1885年にはハンガリーのジペルノウスキーらが閉じた鉄心を持つ現在の形に近い変圧器を開発しました。交流送電の普及とともに変圧器は電力網の要となり、現代の電力システムは変圧器なしには成り立ちません。</p>
+  </section>
+
+  <a class="linkcard" href="calc-transformer.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">変圧器と相互誘導 計算機：巻数と一次電圧を入れると二次電圧を、一次電流も入れると理想変圧器の二次電流と電力を表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>コイル1つで起きる誘導については「自己誘導とコイル」、電力と発熱の関係は「電力とジュール熱」が役立ちます。変圧器が扱う交流そのものの性質は「交流の基礎」で扱います。<a href="./">物理ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「物理ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

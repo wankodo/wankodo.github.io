@@ -221,7 +221,7 @@
 
 ## 物理ツール集
 
-> 中学理科・高校物理基礎・高校物理・大学レベルの法則辞典と計算機。全92項目、各項目に解説記事があり、多くの項目に計算機もついています。トップは [物理ツール集](https://wankodo.github.io/physics/) です。
+> 中学理科・高校物理基礎・高校物理・大学レベルの法則辞典と計算機。全111項目、各項目に解説記事があり、多くの項目に計算機もついています。トップは [物理ツール集](https://wankodo.github.io/physics/) です。
 
 - [等加速度直線運動｜物理ツール集](https://wankodo.github.io/physics/uniform-acceleration.html): 初速度・加速度・時間から速度と変位を求める。計算機つき。
 - [自由落下と鉛直投射｜物理ツール集](https://wankodo.github.io/physics/free-fall-vertical-throw.html): 高さや初速度から、落下時間・落下速度・最高点の高さを求める。計算機つき。
@@ -315,3 +315,22 @@
 - [ガウスの法則｜物理ツール集](https://wankodo.github.io/physics/gausss-law.html): 球状の電荷・無限平板・無限直線が作る電場の強さをガウスの法則から求める。計算機つき。
 - [誘電体とコンデンサーの応用｜物理ツール集](https://wankodo.github.io/physics/dielectric-capacitor.html): 平行板コンデンサーの電気容量を面積・間隔・比誘電率から求め、誘電体を入れる前後の容量の変化を求める。計算機つき。
 - [抵抗率｜物理ツール集](https://wankodo.github.io/physics/resistivity.html): 抵抗率と導線の長さ・断面積から電気抵抗を求める。計算機つき。
+- [キルヒホッフの法則｜物理ツール集](https://wankodo.github.io/physics/kirchhoffs-laws.html): 直列回路の電流と各抵抗での電圧降下、並列回路の各枝への分流を求める。計算機つき。
+- [半導体とダイオード｜物理ツール集](https://wankodo.github.io/physics/semiconductor-and-diode.html): n型・p型半導体のキャリアとpn接合の整流作用を理解し、ダイオードに流れる電流の向きを判断する。解説記事のみ。
+- [磁場と磁力線｜物理ツール集](https://wankodo.github.io/physics/magnetic-field-basics.html): 磁石のまわりの磁力線の向きを描き、方位磁針のN極が指す向きから磁場の向きを読み取る。解説記事のみ。
+- [電流が作る磁場｜物理ツール集](https://wankodo.github.io/physics/magnetic-field-of-current.html): 直線電流のまわり・円形電流の中心・ソレノイド内部の磁場の強さと磁束密度を求める。計算機つき。
+- [ローレンツ力と荷電粒子の運動｜物理ツール集](https://wankodo.github.io/physics/lorentz-force.html): 磁場中を動く電荷が受けるローレンツ力の大きさと、一様磁場中の円運動の半径・周期を求める。計算機つき。
+- [電流が磁場から受ける力｜物理ツール集](https://wankodo.github.io/physics/force-on-current.html): 磁場の中に置かれた導線を流れる電流が受ける力の大きさを求める。計算機つき。
+- [電磁誘導とレンツの法則｜物理ツール集](https://wankodo.github.io/physics/electromagnetic-induction.html): 磁束の変化による誘導起電力と、磁場中を動く導体棒に生じる起電力を求める。計算機つき。
+- [自己誘導とコイル｜物理ツール集](https://wankodo.github.io/physics/self-inductance.html): 自己インダクタンスと電流の変化・時間から自己誘導起電力の大きさを求め、自己インダクタンスと電流からコイルに蓄えられる磁場のエネルギーを求める。計算機つき。
+- [変圧器と相互誘導｜物理ツール集](https://wankodo.github.io/physics/transformer.html): 一次・二次コイルの巻数と一次電圧から二次電圧を求め、理想変圧器の電力保存から二次電流と電力を求める。計算機つき。
+- [発電機とモーター｜物理ツール集](https://wankodo.github.io/physics/generator-and-motor.html): 発電機で交流が生まれる仕組みと、モーターが整流子で回り続ける仕組みを、電流・磁場・力の向きで説明する。解説記事のみ。
+- [交流の基礎｜物理ツール集](https://wankodo.github.io/physics/ac-basics.html): 電圧の最大値から実効値と平均値を求め、実効値・周波数・時刻から交流電圧の瞬時値を求める。計算機つき。
+- [交流回路とリアクタンス｜物理ツール集](https://wankodo.github.io/physics/ac-circuits-reactance.html): 周波数と抵抗・インダクタンス・電気容量から誘導性・容量性リアクタンスとインピーダンスを求め、電圧が分かれば電流を求める。計算機つき。
+- [RLC直列共振｜物理ツール集](https://wankodo.github.io/physics/rlc-series-resonance.html): インダクタンスと電気容量からRLC直列回路の共振周波数を求め、抵抗が分かれば共振の鋭さを表すQ値を求める。計算機つき。
+- [電磁波｜物理ツール集](https://wankodo.github.io/physics/electromagnetic-waves.html): 波長から振動数、振動数から波長を、真空中の光速との関係 c＝fλ から求める。計算機つき。
+- [ホール効果｜物理ツール集](https://wankodo.github.io/physics/hall-effect.html): 電流・磁束密度・キャリア密度・試料の厚さからホール電圧を求める。計算機つき。
+- [アンペールの法則とビオ・サバールの法則｜物理ツール集](https://wankodo.github.io/physics/ampere-and-biot-savart.html): 磁束密度と半径から閉回路を貫く全電流を求める、または電流素片が作る磁束密度を求める。計算機つき。
+- [マクスウェル方程式｜物理ツール集](https://wankodo.github.io/physics/maxwell-equations.html): マクスウェル方程式の4つの式がそれぞれ何を表すかを読み取り、真空中の光速を ε0 と μ0 から求める。解説記事のみ。
+- [RC回路の過渡現象｜物理ツール集](https://wankodo.github.io/physics/rc-transient.html): 抵抗と電気容量から時定数を求め、充電・放電の途中のコンデンサーの電圧と回路の電流を求める。計算機つき。
+- [ポインティングベクトル｜物理ツール集](https://wankodo.github.io/physics/poynting-vector.html): ポインティングベクトルから電磁エネルギーの流れる向きと単位面積あたりのエネルギーの流れ（強さ）を求める。解説記事のみ。
