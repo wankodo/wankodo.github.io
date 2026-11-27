@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光の反射と平面鏡の像｜物理ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-physics.svg">
+<meta name="description" content="光の反射の法則と平面鏡の像のでき方を、公式・手順・例題で解説。入射角と反射角の関係、像の位置と大きさが物体と等しくなる理由を扱い、姿見や潜望鏡など実際の現場での使われ方まで紹介します。対応する計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="物理ツール集">
+<meta property="og:title" content="光の反射と平面鏡の像｜物理ツール集">
+<meta property="og:description" content="入射角と反射角の関係と、平面鏡にできる像の位置・大きさを求める方法を、公式・手順・例題で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/physics/light-reflection-and-mirror-image.html">
+<meta property="og:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/physics/ogp-physics.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 物理コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">物理ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="./" class="cur">物理ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>光の<span class="accent">反射</span>と平面鏡の像</h1>
+    <p>物理の解法辞典 ― 光（中学1年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">物理ツール集トップ</a> ＞ 光 ＞ 光の反射と平面鏡の像</p>
+  <p><span class="badge badge-lv">中学1年</span> <span class="badge badge-genre">光</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    鏡に物が映る仕組みや、光がどの向きに反射するかを知りたいときに使う。反射の法則では入射角と反射角が等しく、平面鏡の像は鏡の後ろの同じ距離に、物体と同じ大きさで、左右が入れ替わってできる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>光が鏡などの滑らかな面で反射する向きと、平面鏡にできる<strong>像の位置と大きさ</strong>を求めたいときの解法です。次のような場面で使います。</p>
+    <ul>
+      <li>入射角が与えられたときの反射角や、入射光線と反射光線のなす角を求める問題</li>
+      <li>鏡の前に立つと像がどこに、どの大きさで見えるかを求める問題</li>
+      <li>鏡に全身を映すにはどれだけの高さの鏡が要るか、といった応用問題の土台</li>
+      <li>潜望鏡のように、鏡を組み合わせて光の向きを変える仕組みを考える場面</li>
+    </ul>
+    <p>角度は鏡の面とのなす角ではなく、面に垂直な線（法線）とのなす角で測るのが約束です。この約束を守れば、反射は「入射角＝反射角」という1つの関係で言い当てられます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <div class="formula">反射角 ＝ 入射角　／　像の位置 ＝ 鏡の後ろ 物体と同じ距離、像の大きさ ＝ 物体の大きさ</div>
+    <p>用語の意味は次の通りです。</p>
+    <ul>
+      <li><strong>入射角</strong>：入ってくる光線（入射光線）と法線のなす角 [°]</li>
+      <li><strong>反射角</strong>：反射していく光線（反射光線）と法線のなす角 [°]。反射の法則により、常に入射角と等しい</li>
+      <li><strong>法線</strong>：反射する点で面に垂直に立てた線</li>
+      <li><strong>像</strong>：光が集まる（または集まるように見える）位置にできる、物体の姿。平面鏡の像は実際に光が集まっているわけではない<strong>虚像</strong>で、スクリーンには映らない</li>
+    </ul>
+    <p>入射光線と反射光線のなす角は、入射角と反射角の和なので 2θ になります。たとえば入射角 30° なら、2本の光線のなす角は 60° です。</p>
+    <p>平面鏡の像は、物体の各点から出た光が鏡で反射し、その反射光を目が「鏡の後ろからまっすぐ来たもの」として受け取ることで見えます。そのため像は鏡をはさんで物体と対称な位置、つまり鏡の後ろに物体と同じ距離だけ離れた位置に、物体と同じ大きさでできます。上下はそのまま（正立）ですが、左右は入れ替わって見えます。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 220" width="520" height="220" role="img" aria-label="光の反射の図" style="max-width:100%;height:auto;">
+        <line x1="60" y1="180" x2="460" y2="180" stroke="currentColor" stroke-width="3"/>
+        <line x1="260" y1="40" x2="260" y2="180" stroke="currentColor" stroke-width="1" stroke-dasharray="5 4"/>
+        <line x1="120" y1="60" x2="260" y2="180" stroke="#c2410c" stroke-width="2"/>
+        <line x1="260" y1="180" x2="400" y2="60" stroke="#c2410c" stroke-width="2"/>
+        <path d="M232,150 A42,42 0 0 1 260,138" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M260,138 A42,42 0 0 1 288,150" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <text x="130" y="46" text-anchor="middle" font-size="13" fill="currentColor">入射光線</text>
+        <text x="392" y="46" text-anchor="middle" font-size="13" fill="currentColor">反射光線</text>
+        <text x="272" y="56" font-size="12" fill="currentColor">法線</text>
+        <text x="216" y="132" text-anchor="middle" font-size="12" fill="currentColor">入射角</text>
+        <text x="306" y="132" text-anchor="middle" font-size="12" fill="currentColor">反射角</text>
+        <text x="260" y="204" text-anchor="middle" font-size="13" fill="currentColor">鏡</text>
+      </svg>
+      <p>光の反射。入射角と反射角は法線とのなす角で測り、反射の法則により両者は等しくなります。</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>角度は法線から測る。</strong>問題文の角度が面とのなす角で書かれている場合は、90° から引いて法線とのなす角に直します。</li>
+      <li><strong>反射角＝入射角を当てる。</strong>反射光線の向きはこの1本の関係で決まります。入射光線と反射光線のなす角は 2θ です。</li>
+      <li><strong>平面鏡の像は対称に置く。</strong>像の位置は鏡の後ろに物体と同じ距離、大きさは物体と等倍、と置きます。</li>
+      <li><strong>像の種類を確認する。</strong>平面鏡の像は常に正立の虚像で、左右が入れ替わります。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">例題1：平面鏡に、入射角 30° で光が入射した。反射角と、入射光線と反射光線のなす角を求めよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>反射の法則より、反射角 ＝ 入射角 ＝ 30° です。</li>
+          <li>入射光線と反射光線のなす角 ＝ 入射角 ＋ 反射角 ＝ 30° ＋ 30° ＝ 60° です。</li>
+        </ol>
+        <p><strong>答え：反射角 30°、入射光線と反射光線のなす角 60°</strong>。</p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">例題2：身長 150 cm の人が、平面鏡の 2.0 m 前に立った。像はどこにでき、大きさはどれだけか。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>像の位置は、鏡をはさんで物体と対称な位置、つまり鏡の後ろ 2.0 m です。</li>
+          <li>像の大きさは物体と等しく、150 cm です（等倍）。</li>
+          <li>この像は正立の虚像で、左右が入れ替わって見えます。</li>
+        </ol>
+        <p><strong>答え：鏡の後ろ 2.0 m の位置に、大きさ 150 cm の正立の虚像ができる</strong>。人と像の間の距離は 4.0 m になります。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>姿見や洗面所の鏡</h3>
+    <p>平面鏡の像が「鏡の後ろに同じ距離・同じ大きさ」でできることは、姿見の設置そのままの話です。鏡から離れても像の大きさ自体は変わりませんが、視角が小さくなるため小さく見えます。全身を映すには身長の半分の高さの鏡で足りることも、像と物体の対称関係から導けます。</p>
+    <h3>潜望鏡</h3>
+    <p>潜水艦の潜望鏡や、塀越しに見るための道具は、45° に傾けた2枚の平面鏡で光の進路を折り曲げる仕組みです。各鏡での反射角＝入射角という関係を使って、光路を正確に設計します。</p>
+    <h3>万華鏡</h3>
+    <p>万華鏡は、角度をつけて向かい合わせた鏡の間で反射を繰り返し、像が何重にも広がって見える仕組みです。鏡のなす角を変えると像の数が変わるのも、反射の法則と対称な像のでき方の組み合わせで説明できます。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p>反射の法則は古代ギリシャで既に知られていました。紀元前3世紀頃、<strong>ユークリッド</strong>は著書『カトプトリカ（反射光学）』で鏡による反射を幾何学としてまとめ、1世紀頃の<strong>ヘロン</strong>は「光は最短の道筋を進む」ことから入射角と反射角が等しくなることを示しました。光の進路を幾何学で扱う方法は、その後のレンズや望遠鏡の光学の土台になりました。</p>
+  </section>
+
+  <a class="linkcard" href="calc-light-reflection-and-mirror-image.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">光の反射と平面鏡の像 計算機：入射角から反射角と光線のなす角を求める計算と、平面鏡の像の位置と大きさを求める計算ができます。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>レンズで光を集めて像を作る仕組みについては「<a href="lens-imaging-formula.html">レンズの写像公式</a>」をご覧ください。光も波の一種であり、波の基本量は「<a href="wave-basics.html">波の基本量</a>」で扱います。<a href="./">物理ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「物理ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
