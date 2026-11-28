@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>リンとケイ素の化合物｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="リンの同素体である黄リンと赤リンの性質の違い、十酸化四リンとリン酸、肥料の三要素と過リン酸石灰、半導体の原料となるケイ素単体、二酸化ケイ素・水ガラス・シリカゲルの性質を、考え方・手順・例題で解説。マッチや太陽電池など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="リンとケイ素の化合物｜化学ツール集">
+<meta property="og:description" content="黄リンと赤リンの違い、リン酸と肥料、ケイ素と半導体、水ガラスとシリカゲルの性質を、手順・例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/phosphorus-silicon.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">リンとケイ素</span>の化合物</h1>
+    <p>化学の考え方辞典 ― 無機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 無機化学 ＞ リンとケイ素の化合物</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">無機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    肥料の三要素の一つであるリンと、半導体の主原料であるケイ素について、その単体と化合物の性質を見分けるときに使う。黄リンと赤リンでは毒性と発火性が正反対で、十酸化四リンは強い乾燥作用をもち、リン酸は過リン酸石灰として肥料になる。ケイ素は石英を還元して得る半導体で、二酸化ケイ素からは水ガラスやシリカゲルが得られる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>15族の<strong>リン</strong>と14族の<strong>ケイ素</strong>について、単体と代表的な化合物の性質を整理するときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>黄リンと赤リンの性質（色・毒性・発火性・保存法）の違いを答える問題</li>
+      <li>十酸化四リンが乾燥剤に使える理由や、リン酸と肥料（過リン酸石灰）の関係を説明する問題</li>
+      <li>ケイ素単体の製法の概要と半導体としての利用、二酸化ケイ素・ケイ酸・水ガラス・シリカゲルの関係を答える問題</li>
+    </ul>
+    <p>ポイントは、どちらの元素も<strong>「単体のかたち」と「酸化物のかたち」で性質が大きく変わる</strong>ことです。リンは同素体どうしで毒性が正反対になり、ケイ素は単体が半導体、酸化物がガラスや乾燥剤の原料になります。物質名ではなく、かたちと性質をセットで押さえます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>リンの同素体：黄リンと赤リン</h3>
+    <p>リンには同素体があり、代表的なものが<strong>黄リン</strong>と<strong>赤リン</strong>です。同じ元素からできていながら、性質は正反対に近いほど違います。</p>
+    <ul>
+      <li><strong>黄リン</strong>（P<sub>4</sub>）：淡黄色の固体で、<strong>猛毒</strong>です。発火点が低く、空気中で自然発火しやすいため、空気に触れないよう<strong>水中で保存</strong>します。水には溶けません。暗所では青白く光る（燐光）性質があります</li>
+      <li><strong>赤リン</strong>：赤褐色の粉末で、毒性はなく、空気中でも自然発火しません。マッチ箱の側面の摩擦面（側薬）に使われ、頭薬の酸化剤とこすれ合うことで発火します（安全マッチの仕組み）</li>
+    </ul>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>十酸化四リンとリン酸</h3>
+    <p>リンを空気中で燃やすと、白色の<strong>十酸化四リン</strong> P<sub>4</sub>O<sub>10</sub> が生じます。</p>
+    <div class="formula">P<sub>4</sub> ＋ 5O<sub>2</sub> → P<sub>4</sub>O<sub>10</sub></div>
+    <p>十酸化四リンは水と激しく反応して<strong>リン酸</strong> H<sub>3</sub>PO<sub>4</sub> になるため、水を強く奪う性質があり、気体の<strong>乾燥剤</strong>に使われます。ただし酸性の物質なので、塩基性のアンモニアなど、反応してしまう気体の乾燥には使えません。</p>
+    <div class="formula">P<sub>4</sub>O<sub>10</sub> ＋ 6H<sub>2</sub>O → 4H<sub>3</sub>PO<sub>4</sub></div>
+    <p>リン酸は3価の酸で、肥料や食品の酸味料などに広く使われます。</p>
+    <h3>肥料の三要素と過リン酸石灰</h3>
+    <p>植物の生育に多量に必要な<strong>肥料の三要素</strong>は、窒素 N・リン P・カリウム K です。リンの原料はリン鉱石（主成分はリン酸カルシウム Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>）ですが、リン酸カルシウムは水に溶けにくく、そのままでは植物が吸収しにくいのが難点です。そこで硫酸で処理して水に溶けやすいリン酸二水素カルシウム Ca(H<sub>2</sub>PO<sub>4</sub>)<sub>2</sub> に変えたものが、肥料の<strong>過リン酸石灰</strong>です（硫酸カルシウムとの混合物として得られます）。</p>
+    <div class="formula">Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub> ＋ 2H<sub>2</sub>SO<sub>4</sub> → Ca(H<sub>2</sub>PO<sub>4</sub>)<sub>2</sub> ＋ 2CaSO<sub>4</sub></div>
+    <h3>ケイ素単体と半導体</h3>
+    <p>ケイ素 Si は、地殻中で酸素に次いで多く存在する元素です。単体は、原料の石英（二酸化ケイ素 SiO<sub>2</sub>）を電気炉でコークス（炭素）とともに強熱し、還元して得ます（教科書レベルの概要）。</p>
+    <div class="formula">SiO<sub>2</sub> ＋ 2C → Si ＋ 2CO</div>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <p>こうして得たケイ素をさらに精製した高純度の単結晶は<strong>半導体</strong>で、集積回路（IC）や太陽電池の材料になります。純粋なケイ素に微量のホウ素 B を加えると p 型半導体、微量のリン P を加えると n 型半導体になり、この2種を組み合わせることが電子回路の基本になっています。リンとケイ素は、半導体の材料としても結びついているのです。</p>
+    <h3>二酸化ケイ素・ケイ酸・水ガラス・シリカゲル</h3>
+    <p><strong>二酸化ケイ素</strong> SiO<sub>2</sub> は石英・水晶・ケイ砂の主成分で、水にもほとんどの酸にも溶けませんが、フッ化水素酸 HF には溶けます（ガラスがフッ化水素酸で腐食されるのはこのためです）。また、水酸化ナトリウムと反応してケイ酸ナトリウム Na<sub>2</sub>SiO<sub>3</sub> になります。</p>
+    <div class="formula">SiO<sub>2</sub> ＋ 2NaOH → Na<sub>2</sub>SiO<sub>3</sub> ＋ H<sub>2</sub>O</div>
+    <p>ケイ酸ナトリウムの濃い水溶液が<strong>水ガラス</strong>です。水ガラスに二酸化炭素（または塩酸）を作用させると、白色ゲル状の<strong>ケイ酸</strong> H<sub>2</sub>SiO<sub>3</sub> が析出します。</p>
+    <div class="formula">Na<sub>2</sub>SiO<sub>3</sub> ＋ CO<sub>2</sub> ＋ H<sub>2</sub>O → H<sub>2</sub>SiO<sub>3</sub> ＋ Na<sub>2</sub>CO<sub>3</sub></div>
+    <p>ケイ酸を乾燥させて水分を除いた多孔質の固体が<strong>シリカゲル</strong>で、表面積が大きく水をよく吸着するため、乾燥剤に使われます。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>単体か化合物か、かたちを確認する。</strong>リンなら黄リンか赤リンか、ケイ素なら単体か二酸化ケイ素かで、性質はまったく変わります。</li>
+      <li><strong>危険性と保存法は同素体ごとに見る。</strong>黄リンは猛毒で自然発火しやすいため水中保存、赤リンは毒性がなくマッチの側薬、と対にして覚えます。</li>
+      <li><strong>水との反応でつなげる。</strong>十酸化四リンは水を奪ってリン酸になる（だから乾燥剤）、二酸化ケイ素は水に溶けない、という対比で整理します。</li>
+      <li><strong>用途から逆に物質を特定する。</strong>肥料ならリン酸系（過リン酸石灰）、半導体ならケイ素単体、乾燥剤なら十酸化四リンやシリカゲル、と用途が物質名の手がかりになります。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：リンの同素体 A は淡黄色の固体で猛毒であり、水中で保存される。同素体 B は赤褐色の粉末で毒性がなく、マッチ箱の側面の摩擦面に使われる。A・B はそれぞれ何か。問題2：十酸化四リンは気体の乾燥剤に使われるが、アンモニアの乾燥には使えない。その理由を述べよ。問題3：リン鉱石の主成分リン酸カルシウムをそのまま肥料にしにくい理由と、過リン酸石灰に加工する目的を述べよ。問題4：水ガラスに二酸化炭素を通すと白色ゲル状の物質が析出した。この物質の名称と、それを乾燥させて得られる乾燥剤の名称を答えよ。問題5：純粋なケイ素に微量のリンまたはホウ素を加えると半導体の性質が変わる。それぞれ何型半導体になるか。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：水中保存が必要なのは、空気中で自然発火しやすい黄リンです。マッチ箱の側面に使われるのは赤リンで、A が黄リン、B が赤リンです。同素体どうしでも毒性と発火性が正反対であることが要点です。</li>
+          <li>問題2：十酸化四リンは酸性の酸化物であり、水だけでなく塩基性の物質とも反応します。アンモニアは塩基性なので、乾燥剤と反応して吸収されてしまい、乾燥できません。</li>
+          <li>問題3：リン酸カルシウム Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub> は水に溶けにくく、植物が吸収しにくいからです。硫酸で処理して水に溶けやすいリン酸二水素カルシウム Ca(H<sub>2</sub>PO<sub>4</sub>)<sub>2</sub> に変えることで、植物がリンを吸収できるようにするのが過リン酸石灰への加工の目的です。</li>
+          <li>問題4：水ガラス（ケイ酸ナトリウム水溶液）に二酸化炭素を通すと、ケイ酸 H<sub>2</sub>SiO<sub>3</sub> が析出します。これを乾燥させると多孔質のシリカゲルが得られます。</li>
+          <li>問題5：リンを加えると n 型半導体、ホウ素を加えると p 型半導体になります。価電子の数がケイ素より1つ多いリンは電子を余らせ、1つ少ないホウ素は電子の不足（正孔）を作るためです。</li>
+        </ol>
+        <p><strong>答え：問題1は A＝黄リン、B＝赤リン。問題2は十酸化四リンが塩基性のアンモニアと反応してしまうため。問題3はリン酸カルシウムが水に溶けにくいためで、加工の目的は水に溶けやすい形に変えること。問題4はケイ酸とシリカゲル。問題5はリンが n 型、ホウ素が p 型</strong>。性質の対比（黄リン⇔赤リン、単体ケイ素⇔二酸化ケイ素）で整理すると判定しやすくなります。</p>
+      </details>
+    </div>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>リン酸肥料（過リン酸石灰）と農業</h3>
+    <p>リンは窒素・カリウムと並ぶ肥料の三要素で、根の成長や開花・結実に欠かせません。リン鉱石を硫酸で処理した過リン酸石灰は、水に溶けやすいリン酸を含む肥料として世界中で使われてきました。リン鉱石は産地が偏る有限の資源であるため、肥料としてのリンの確保は食料生産を支える産業基盤の一つになっています。</p>
+    <h3>半導体シリコンと太陽電池</h3>
+    <p>石英を還元して得たケイ素を高純度に精製した単結晶は、コンピュータの集積回路（IC）やメモリの材料であり、現代の電子機器はすべてこのシリコン半導体の上に成り立っています。同じシリコンは太陽電池の材料でもあり、発電パネルの主原料になっています。ドーピングに使うリンも、半導体製造では欠かせない元素です。</p>
+    <h3>シリカゲルの乾燥剤</h3>
+    <p>お菓子や海苔、医薬品の包装に小袋で入っている乾燥剤の多くはシリカゲルです。水ガラスから作るケイ酸を乾燥させた多孔質の固体で、水分を吸着して食品の湿気を防ぎます。加熱すると吸着した水を放出するため、再生して繰り返し使える種類もあります。</p>
+    <h3>安全マッチ</h3>
+    <p>安全マッチは、頭薬（酸化剤など）と、マッチ箱の側面に塗った赤リンを分けておき、こすり合わせたときだけ発火する仕組みです。かつて黄リンを使ったマッチは、自然発火の危険や工場労働者への毒性が問題になりましたが、毒性のない赤リンを使う安全マッチへの切り替えで解決しました。同素体の性質の違いが、そのまま製品の安全性の違いになった例です。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ヘニッヒ・ブラント</strong>（1630年頃〜1710年頃、ドイツの錬金術師）、<strong>アントン・フォン・シュレーター</strong>（1802〜1875、オーストリアの化学者）</p>
+    <p>リンは1669年、ドイツの錬金術師<strong>ヘニッヒ・ブラント</strong>（1630年頃〜1710年頃）が、尿を蒸発・加熱する実験の中で発見しました。暗所で光るこの物質が黄リンで、その危険な性質も含めて、リンの化学はここから始まりました。赤リンは1845年、オーストリアの化学者<strong>アントン・フォン・シュレーター</strong>（1802〜1875）が、黄リンを空気を断って加熱すると赤い粉末に変わることを見いだしたものです。毒性のない赤リンの発見が、のちの安全マッチの実用化につながりました。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>同じ肥料の三要素である窒素については<a href="nitrogen-ammonia.html">窒素とアンモニア・ハーバー法</a>、同じ14族の炭素は<a href="carbon-carbonates.html">炭素と炭酸塩</a>、二酸化ケイ素を主成分とする材料は<a href="ceramics-glass.html">セラミックスとガラス</a>、肥料と土壌の関係は<a href="fertilizer-soil-chemistry.html">肥料と土壌の化学</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

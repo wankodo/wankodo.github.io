@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>遷移元素と錯イオン・炎色反応｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="遷移元素と錯イオン・炎色反応を、公式・手順・例題で解説。複数の酸化数や色のあるイオン、触媒などの特徴、テトラアンミン銅（II）イオンなど代表的な錯イオンの組成と色、Li・Na・K・Ca・Sr・Ba・Cuの炎色反応と花火や工業触媒など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="遷移元素と錯イオン・炎色反応｜化学ツール集">
+<meta property="og:description" content="遷移元素の特徴（複数の酸化数・色のあるイオン・触媒・錯イオン）と、代表的な錯イオンの色、炎色反応と花火への応用を例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/transition-metals.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">遷移元素</span>と<span class="accent">錯イオン</span>・<span class="accent">炎色反応</span></h1>
+    <p>化学の考え方辞典 ― 無機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 無機化学 ＞ 遷移元素と錯イオン・炎色反応</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">無機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    周期表の3族から12族に並ぶ遷移元素は、酸化数が複数ある、水溶液が色づくイオンが多い、触媒として働くものが多い、錯イオンをつくりやすい、という共通の特徴をもつ。金属イオンにアンモニアなどが配位した錯イオンは特有の色を示し、金属元素を炎で熱すると元素ごとに決まった色の光を出す炎色反応は、花火の色や元素の検出に使われる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>鉄・銅・コバルトなどの<strong>遷移元素</strong>に共通する性質と、色で元素を見分ける手がかりを扱うときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>「遷移元素の特徴を挙げよ」という問題で、複数の酸化数・色のあるイオン・触媒・錯イオンの4点を押さえる場面</li>
+      <li>テトラアンミン銅（II）イオン [Cu(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup> のような代表的な錯イオンについて、組成式と色を答える問題</li>
+      <li>水溶液の色から、Cu<sup>2+</sup>・Fe<sup>2+</sup>・Fe<sup>3+</sup> などのイオンを推定する問題</li>
+      <li>炎色反応の色（Li は紅、Na は黄、K は紫など）から元素を判定する問題や、花火の色がどの元素によるものかを説明する問題</li>
+    </ul>
+    <p>ポイントは、遷移元素の性質を「酸化数・色・触媒・錯イオン」の4点で整理し、色については「イオンの色の表」と「炎色反応の表」をそれぞれ元素と結びつけて覚えることです。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>遷移元素とは</h3>
+    <p>周期表の<strong>3族から12族</strong>に位置する元素を<strong>遷移元素</strong>（遷移金属）といいます。鉄 Fe、銅 Cu、銀 Ag、金 Au、コバルト Co、ニッケル Ni、クロム Cr、マンガン Mn など、金属らしい金属が並ぶグループです。典型元素（1・2族と13〜18族）とは対照的に、次のような共通の特徴があります。</p>
+    <ul>
+      <li><strong>複数の酸化数をとる</strong>：典型元素の金属（Na は +1、Ca は +2 など）は酸化数がほぼ1つに決まりますが、遷移元素は Fe が +2 と +3、Cu が +1 と +2、Mn が +2・+4・+7 など、複数の酸化数をとります。化合物の名前で酸化数を（II）（III）と断るのはこのためです</li>
+      <li><strong>色のあるイオン・化合物が多い</strong>：水溶液が色づくイオンが多く、化合物にも色のついたものが多くあります</li>
+      <li><strong>触媒として働くものが多い</strong>：Fe、Pt、Ni、V<sub>2</sub>O<sub>5</sub> など、工業的に重要な触媒の多くが遷移元素とその化合物です</li>
+      <li><strong>錯イオンをつくりやすい</strong>：金属イオンに分子やイオンが配位結合した錯イオンを、多くの遷移元素がつくります</li>
+    </ul>
+    <h3>色のあるイオン</h3>
+    <p>代表的なイオンの水溶液の色は次の通りです。色はイオンの種類だけでなく、まわりに配位しているものによっても変わります。</p>
+    <ul>
+      <li>Cu<sup>2+</sup>：<strong>青色</strong></li>
+      <li>Fe<sup>2+</sup>：<strong>淡緑色</strong></li>
+      <li>Fe<sup>3+</sup>：<strong>黄褐色</strong></li>
+      <li>Ni<sup>2+</sup>：<strong>緑色</strong></li>
+      <li>Co<sup>2+</sup>：<strong>赤色</strong></li>
+      <li>Mn<sup>2+</sup>：<strong>淡赤色</strong></li>
+      <li>Cr<sup>3+</sup>：<strong>緑色</strong></li>
+      <li>MnO<sub>4</sub><sup>−</sup>（過マンガン酸イオン）：<strong>赤紫色</strong></li>
+      <li>Cr<sub>2</sub>O<sub>7</sub><sup>2−</sup>（二クロム酸イオン）：<strong>橙色</strong>、CrO<sub>4</sub><sup>2−</sup>（クロム酸イオン）：<strong>黄色</strong></li>
+    </ul>
+    <p>一方で、Ag<sup>+</sup> や Zn<sup>2+</sup> のように無色のイオンもあります。「遷移元素のイオンは色づくものが多い」であって、すべてが色づくわけではありません。</p>
+    <h3>代表的な錯イオン</h3>
+    <p>錯イオンの電荷は、中心金属イオンと配位子の電荷の合計で決まります（詳しいつくりは関連項目「配位結合と錯イオン」参照）。</p>
+    <div class="formula">錯イオンの電荷 ＝ 中心金属イオンの電荷 ＋（配位子の電荷 × 個数）の合計</div>
+    <ul>
+      <li>[Cu(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup>：<strong>テトラアンミン銅（II）イオン</strong>。<strong>深青色</strong>。硫酸銅（II）水溶液（青色）にアンモニア水を過剰に加えると生じ、色が一段と深くなります</li>
+      <li>[Co(NH<sub>3</sub>)<sub>6</sub>]<sup>3+</sup>：<strong>ヘキサアンミンコバルト（III）イオン</strong>。配位子 NH<sub>3</sub> は電荷0なので、電荷 +3 がそのままコバルトの酸化数 +3 を表します。その塩は<strong>橙黄色</strong>を示します</li>
+      <li>[Ag(NH<sub>3</sub>)<sub>2</sub>]<sup>+</sup>：<strong>ジアンミン銀（I）イオン</strong>。<strong>無色</strong>。塩化銀の白色沈殿がアンモニア水に溶けるのは、この錯イオンが生じるためです</li>
+      <li>[Fe(CN)<sub>6</sub>]<sup>3−</sup>：<strong>ヘキサシアニド鉄（III）酸イオン</strong>。鉄の酸化数を x とすると x ＋ (−1)×6 ＝ −3 より x ＝ +3 です。カリウム塩 K<sub>3</sub>[Fe(CN)<sub>6</sub>] は赤色の結晶で、<strong>赤血塩</strong>とも呼ばれます</li>
+    </ul>
+    <h3>炎色反応</h3>
+    <p>金属元素を含む化合物を炎の中で強く熱すると、その元素に特有の色の光を放ちます。これを<strong>炎色反応</strong>といいます。熱でエネルギーを受けた原子が、元素ごとに決まった色の光を出すため、色を見れば元素の種類が判定できます。代表的な対応は次の通りです。</p>
+    <ul>
+      <li>Li：<strong>紅色</strong></li>
+      <li>Na：<strong>黄色</strong></li>
+      <li>K：<strong>紫色</strong></li>
+      <li>Ca：<strong>橙赤色</strong></li>
+      <li>Sr：<strong>紅色</strong></li>
+      <li>Ba：<strong>黄緑色</strong></li>
+      <li>Cu：<strong>青緑色</strong></li>
+    </ul>
+    <p>Li と Sr はともに赤系の色で肉眼では区別しにくいことがあります。その場合は、光を分光器で分けて輝線（光の帯）の位置を見ることで区別できます。また、Na の黄色は非常に強く出るため、少量のナトリウムが混ざると他の元素の色が見えにくくなることも知られています。有名な覚え方に「リアカー（Li・赤）無き（Na・黄）K村（K・紫）動力（Cu・緑）借るとう（Ca・橙）するもくれない（Sr・紅）馬力（Ba・緑）」という語呂合わせがあります。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>遷移元素かどうかを見分ける。</strong>周期表の3〜12族の元素なら遷移元素です。特徴を問われたら「複数の酸化数」「色のあるイオンが多い」「触媒になるものが多い」「錯イオンをつくりやすい」の4点で答えます。</li>
+      <li><strong>錯イオンは部品に分解する。</strong>角括弧 [ ] の中の金属が中心金属イオン、まわりの分子・イオンが配位子です。電荷は中心金属の電荷と配位子の電荷×個数の合計で確かめ、中心金属の酸化数が分からなければ（錯イオンの電荷）−（配位子の電荷の合計）で逆算します。</li>
+      <li><strong>色は対応表と結びつける。</strong>水溶液の色ならイオンの色の表（Cu<sup>2+</sup> は青、Fe<sup>3+</sup> は黄褐色など）、錯イオンなら代表例（テトラアンミン銅（II）イオンは深青色など）と照合します。</li>
+      <li><strong>炎色反応は色から元素を逆引きする。</strong>黄緑なら Ba、紫なら K、青緑なら Cu のように、炎色の表を逆向きに使います。赤系（Li・Sr・Ca）が候補に複数残るときは、色の微妙な違い（紅か橙赤か）や他の性質で絞り込みます。</li>
+      <li><strong>触媒の例は反応とセットで思い出す。</strong>ハーバー法の Fe、接触法の V<sub>2</sub>O<sub>5</sub>、過酸化水素水の分解の MnO<sub>2</sub> のように、反応名と触媒を対にして押さえます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：ある金属元素を含む試料を炎に入れると、試料Aは黄緑色、試料Bは紫色、試料Cは青緑色の炎になった。それぞれどの元素による炎色反応か。問題2：青色の硫酸銅（II）水溶液にアンモニア水を過剰に加えると、深い青色の溶液になった。生じた錯イオンの組成式と名前、その色を答えよ。問題3：[Fe(CN)<sub>6</sub>]<sup>3−</sup> と [Co(NH<sub>3</sub>)<sub>6</sub>]<sup>3+</sup> について、中心金属の酸化数をそれぞれ求めよ。問題4：花火の赤色にはストロンチウムの化合物が使われる。炎色反応の対応をもとに、その理由を説明せよ。また、緑色の花火に使われる元素を1つ挙げよ。問題5：アンモニアの工業的製法（ハーバー法）と、硫酸の工業的製法（接触法）で使われる触媒をそれぞれ答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：炎色反応の表を逆引きします。黄緑色は <strong>Ba（バリウム）</strong>、紫色は <strong>K（カリウム）</strong>、青緑色は <strong>Cu（銅）</strong>です。</li>
+          <li>問題2：Cu<sup>2+</sup> に NH<sub>3</sub> が4つ配位結合して <strong>[Cu(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup></strong> が生じます。名前は<strong>テトラアンミン銅（II）イオン</strong>で、色はもとの水溶液の青色より深い<strong>深青色</strong>です。電荷は +2 ＋ 0×4 ＝ +2 で、式の右上の 2+ と一致します。</li>
+          <li>問題3：[Fe(CN)<sub>6</sub>]<sup>3−</sup> では、配位子 CN<sup>−</sup> が6つで電荷の合計は −6 です。鉄の酸化数を x とすると x ＋ (−6) ＝ −3 より x ＝ <strong>+3</strong> です。[Co(NH<sub>3</sub>)<sub>6</sub>]<sup>3+</sup> では配位子 NH<sub>3</sub> の電荷が0なので、コバルトの酸化数は錯イオンの電荷そのままで <strong>+3</strong> です。</li>
+          <li>問題4：Sr（ストロンチウム）は炎色反応で<strong>紅色</strong>を示すため、その化合物を火薬に混ぜると燃焼時の炎が赤く色づき、赤い花火になります。緑色の花火には、黄緑色の炎色を示す <strong>Ba（バリウム）</strong>の化合物が使われます（青緑色の Cu の化合物が青色系に使われることもあります）。</li>
+          <li>問題5：ハーバー法の触媒は<strong>鉄（Fe を主成分とする触媒）</strong>、接触法の触媒は<strong>酸化バナジウム（V）V<sub>2</sub>O<sub>5</sub></strong> です。どちらも遷移元素（の化合物）が触媒として働く代表例です。</li>
+        </ol>
+        <p><strong>答え：問題1は A＝Ba、B＝K、C＝Cu。問題2は [Cu(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup>、テトラアンミン銅（II）イオン、深青色。問題3は Fe が +3、Co が +3。問題4は Sr の炎色が紅色だからで、緑色は Ba。問題5はハーバー法が Fe、接触法が V<sub>2</sub>O<sub>5</sub>。</strong></p>
+      </details>
+    </div>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>花火の色（炎色反応そのもの）</h3>
+    <p>花火の色は炎色反応の応用そのものです。火薬に金属化合物を混ぜておくと、燃焼の高温で金属元素が特有の色の光を放ちます。赤はストロンチウムの化合物、緑はバリウムの化合物、青は銅の化合物、黄はナトリウムの化合物が担います。打ち上げ花火の鮮やかな色の違いは、元素ごとの炎色の違いを職人が配合で使い分けた結果です。</p>
+    <h3>元素分析と分光（炎色反応の発展形）</h3>
+    <p>炎色反応は、試料に含まれる金属元素を見分ける検出法として実験室で使われてきました。これを精密化したのが、光を波長ごとに分けて輝線の位置から元素を特定する分光分析で、現在の発光分光分析など元素分析法の出発点になっています。天文学でも、星の光を分光して輝線・吸収線を調べることで、遠くの星を構成する元素が分かるようになりました。</p>
+    <h3>工業触媒（遷移元素の触媒作用）</h3>
+    <p>アンモニアを作るハーバー法では鉄を主成分とする触媒、硫酸を作る接触法では酸化バナジウム（V）V<sub>2</sub>O<sub>5</sub> が触媒として使われます。自動車の排気ガスを浄化する三元触媒には白金 Pt・パラジウム Pd・ロジウム Rh が、油脂に水素を付加してマーガリンなどを作る水素化にはニッケル Ni が使われます。化学工業の要所で、遷移元素の触媒作用が活躍しています。</p>
+    <h3>顔料とガラスの色（色のある化合物）</h3>
+    <p>遷移元素の化合物の色は、着色材料にも利用されます。コバルトの化合物はガラスや陶磁器の青色の着色に使われ、顔料の紺青（プルシアンブルー）は鉄を含む錯体です。イオンや化合物の「色」は、見分ける手がかりであると同時に、材料の色そのものとしても役立っています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ロベルト・ブンゼン</strong>（1811〜1899、ドイツの化学者）と<strong>グスタフ・キルヒホッフ</strong>（1824〜1887、ドイツの物理学者）</p>
+    <p>炎色反応を元素を見分ける精密な方法に高めたのは、ドイツの化学者<strong>ロベルト・ブンゼン</strong>（1811〜1899）と物理学者<strong>グスタフ・キルヒホッフ</strong>（1824〜1887）です。ブンゼンは、色のつかない高温の炎を出すガスバーナー（ブンゼンバーナー）を工夫し、試料の炎色を邪魔なく観察できるようにしました。2人は1859年ごろ、炎の光をプリズムで分ける分光器を組み立て、元素ごとに輝線の位置が決まっていることを突き止めます。この方法で、1860年にセシウム、1861年にルビジウムという新元素を、炎の輝線を手がかりに発見しました。炎色反応はここから分光分析へと発展し、元素の検出法の基礎になりました。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>錯イオンのつくり・配位数・命名は<a href="coordinate-bonding-complex-ions.html">配位結合と錯イオン</a>、触媒の考え方は<a href="catalysts.html">触媒</a>が役立ちます。酸化数の数え方は<a href="oxidation-number.html">酸化数</a>、遷移元素の周期表での位置は<a href="periodic-table.html">周期表</a>、沈殿の色でイオンを見分ける方法は<a href="precipitation-ion-detection.html">沈殿反応とイオンの検出</a>もあわせてどうぞ。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

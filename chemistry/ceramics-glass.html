@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>セラミックスとガラス｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="セラミックスとガラスの使い方を、公式・手順・例題で解説。ソーダ石灰ガラス・鉛ガラス・ホウケイ酸ガラス・石英ガラスの違い、非晶質というガラスの特徴、陶磁器の原料と焼成、アルミナやジルコニアなどファインセラミックスの性質、セメントの原料と硬化の入口、現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="セラミックスとガラス｜化学ツール集">
+<meta property="og:description" content="ガラスの種類と組成、陶磁器とファインセラミックスの性質、セメントの入口を、例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/ceramics-glass.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">セラミックス</span>とガラス</h1>
+    <p>化学の考え方辞典 ― 無機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 無機化学 ＞ セラミックスとガラス</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">無機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    窓ガラスや陶磁器、コンクリートのように、ケイ酸塩を中心とする無機材料の組成と性質を選ぶときに使う。ガラスは結晶のような規則的な並びをもたない非晶質で、原料の組み合わせでソーダ石灰ガラス・鉛ガラス・ホウケイ酸ガラス・石英ガラスを使い分け、セラミックスは粘土などを焼き固めた陶磁器から、アルミナやジルコニアなどのファインセラミックスまで、硬さ・耐熱性・電気絶縁性を活かして選ぶ。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>ガラス・陶磁器・セメントといった<strong>ケイ酸塩を中心とする無機材料</strong>について、原料・組成と性質・用途を結びつけて考える解法です。次のような場面で使います。</p>
+    <ul>
+      <li>ソーダ石灰ガラス・鉛ガラス・ホウケイ酸ガラス・石英ガラスの組成の違いと用途を答える問題</li>
+      <li>ガラスが結晶ではなく<strong>非晶質</strong>であることや、はっきりした融点をもたないことを説明する問題</li>
+      <li>陶磁器の原料（粘土・長石・ケイ石）と焼成の役割を答える問題</li>
+      <li>アルミナ・ジルコニア・窒化ケイ素などの<strong>ファインセラミックス</strong>の性質と用途を選ぶ問題</li>
+      <li>セメントの原料と、水と混ぜると固まる硬化の入口を説明する問題</li>
+    </ul>
+    <p>ポイントは、材料名を丸暗記するのではなく、<strong>「何を加えた（何だけで作った）材料か → その結果どんな性質になるか → だからどの用途に向くか」</strong>の順で読むことです。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>1. ガラスの骨格は二酸化ケイ素</h3>
+    <p>ガラスの主成分は二酸化ケイ素 SiO<sub>2</sub> です。ケイ素原子と酸素原子が網目状につながった構造が骨格になり、この網目が規則正しく並ばず乱れたまま固まったものがガラスです。粒子が規則正しく配列した固体を結晶というのに対して、このような乱れた配列のまま固まった固体を<strong>非晶質（アモルファス）</strong>といいます。非晶質にははっきりした融点がなく、温度を上げると徐々に軟らかくなっていくのが特徴で、ガラス細工やガラス成形はこの性質を利用しています。</p>
+    <h3>2. ソーダ石灰ガラス ― 最も一般的なガラス</h3>
+    <p>窓ガラスやビンに使われる最も普通のガラスが<strong>ソーダ石灰ガラス</strong>です。原料はケイ砂（主成分 SiO<sub>2</sub>）、炭酸ナトリウム Na<sub>2</sub>CO<sub>3</sub>、炭酸カルシウム CaCO<sub>3</sub>（石灰石）で、これらを高温で融かして作ります。</p>
+    <div class="formula">原料：SiO<sub>2</sub> ＋ Na<sub>2</sub>CO<sub>3</sub> ＋ CaCO<sub>3</sub> → ソーダ石灰ガラス</div>
+    <p>各原料の役割は次の通りです。SiO<sub>2</sub> だけでは融ける温度が非常に高く加工しにくいため、Na<sub>2</sub>CO<sub>3</sub> を加えて融けやすくします。ただしナトリウム分だけでは水に溶けやすくなってしまうので、CaCO<sub>3</sub> 由来のカルシウム分を加えて水に溶けにくくしています。安価で大量生産しやすく、窓ガラス・ビン・食器など日用品の大部分はこのガラスです。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>3. ガラスの種類と使い分け</h3>
+    <ul>
+      <li><strong>鉛ガラス（クリスタルガラス）</strong>：ソーダ石灰ガラスのカルシウム分の一部を酸化鉛（II）PbO に置き換えたもの。屈折率が大きく光をよく屈折・分散させるため輝きが強く、重い。装飾品・高級食器・レンズなどに使われます。</li>
+      <li><strong>ホウケイ酸ガラス</strong>：SiO<sub>2</sub> に酸化ホウ素 B<sub>2</sub>O<sub>3</sub> を加えたもの。熱膨張が小さく、急に加熱・冷却しても割れにくい（耐熱性・耐熱衝撃性が高い）。ビーカーやフラスコなどの理化学器具、耐熱食器に使われます。</li>
+      <li><strong>石英ガラス</strong>：SiO<sub>2</sub> だけを原料とするガラス。耐熱性が非常に高く、紫外線もよく通します。半導体製造の炉心管や紫外線ランプの管など、特殊な用途に使われますが、高価です。</li>
+    </ul>
+    <h3>4. セラミックスと陶磁器</h3>
+    <p><strong>セラミックス</strong>は、金属以外の無機物を高温で焼き固めた材料の総称です。代表が陶磁器で、原料は<strong>粘土・長石・ケイ石（石英）</strong>です。粘土は成形しやすくする役割、長石は焼成のときに融けて粒子同士を結びつける役割、ケイ石は骨格となって形を保つ役割を担います。これらを混ぜて成形し、高温で焼き固めることを<strong>焼成</strong>といい、焼成によって硬く、水に溶けない製品になります。低温で焼いた多孔質のものが陶器、高温で焼いてガラス質が進み緻密になったものが磁器です。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>5. ファインセラミックス</h3>
+    <p>原料の純度や粒の大きさ、焼成条件を精密に制御して作る高性能なセラミックスを<strong>ファインセラミックス</strong>といいます。共通する性質は、硬い、耐熱性が高い、薬品に侵されにくい、電気を通しにくい（絶縁性が高い）などで、反面、強い衝撃で割れやすい（もろい）弱点があります。</p>
+    <ul>
+      <li><strong>アルミナ</strong>（酸化アルミニウム Al<sub>2</sub>O<sub>3</sub>）：硬く絶縁性が高い。電子部品の基板や碍子（がいし）、研磨材などに使われます。</li>
+      <li><strong>ジルコニア</strong>（二酸化ジルコニウム ZrO<sub>2</sub>）：セラミックスの中では割れにくく丈夫で、熱を伝えにくい。セラミック包丁、はさみ、人工歯などに使われます。</li>
+      <li><strong>窒化ケイ素</strong>（Si<sub>3</sub>N<sub>4</sub>）：高温でも強度が落ちにくく、熱衝撃にも強い。エンジン部品やベアリングの球などに使われます。</li>
+      <li><strong>炭化ケイ素</strong>（SiC）：非常に硬く、耐熱性も高い。研磨材や耐熱材料のほか、半導体材料としても使われます。</li>
+    </ul>
+    <h3>6. セメント ― ケイ酸塩が固まる材料</h3>
+    <p><strong>セメント</strong>（ポルトランドセメント）の原料は石灰石（CaCO<sub>3</sub>）と粘土で、これらを高温で焼いて作ります。セメントは水と混ぜると、ケイ酸カルシウムなどの成分が水と反応して針状の結晶を生じながら固まる性質（水和反応による硬化）をもちます。セメントに砂と水を混ぜたものがモルタル、さらに砂利を加えたものがコンクリートです。石灰石と炭酸塩の化学は「炭素と炭酸塩」の項目とつながっています。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <p>なお、この項目は材料の組成と性質の対応が中心で、数値計算に使う定数はありません。各記号の意味は、SiO<sub>2</sub> が二酸化ケイ素、Na<sub>2</sub>CO<sub>3</sub> が炭酸ナトリウム、CaCO<sub>3</sub> が炭酸カルシウム、Al<sub>2</sub>O<sub>3</sub> が酸化アルミニウム、ZrO<sub>2</sub> が二酸化ジルコニウム、Si<sub>3</sub>N<sub>4</sub> が窒化ケイ素です。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>まずガラスかセラミックスかを見分ける。</strong>原料を融かして固めた透明な材料ならガラス、粉末や粘土を成形して焼き固めた材料ならセラミックスです。</li>
+      <li><strong>ガラスなら組成を確認する。</strong>基本は SiO<sub>2</sub> ＋ Na<sub>2</sub>CO<sub>3</sub> ＋ CaCO<sub>3</sub> のソーダ石灰ガラスです。PbO を含めば鉛ガラス、B<sub>2</sub>O<sub>3</sub> を含めばホウケイ酸ガラス、SiO<sub>2</sub> だけなら石英ガラスと判定します。</li>
+      <li><strong>セラミックスなら原料と製法を確認する。</strong>粘土・長石・ケイ石を焼成したものが陶磁器、純度の高い酸化物・窒化物・炭化物を精密に焼き固めたものがファインセラミックスです。化学式からアルミナ（Al<sub>2</sub>O<sub>3</sub>）、ジルコニア（ZrO<sub>2</sub>）、窒化ケイ素（Si<sub>3</sub>N<sub>4</sub>）などを読み取ります。</li>
+      <li><strong>性質と用途を結びつけて答える。</strong>「熱膨張が小さい → 急熱・急冷に強い → 理化学器具」「屈折率が大きい → 輝きが強い → 装飾品」のように、組成から性質、性質から用途の順で説明します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：ケイ砂、炭酸ナトリウム、炭酸カルシウムを原料として作られる、窓ガラスやビンに使われる最も一般的なガラスの名称を答えよ。また、3つの原料それぞれの主成分の化学式も書け。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>ケイ砂の主成分は二酸化ケイ素 SiO<sub>2</sub> で、ガラスの網目構造の骨格になります。</li>
+          <li>炭酸ナトリウムは Na<sub>2</sub>CO<sub>3</sub> で、SiO<sub>2</sub> が融ける温度を下げて加工しやすくする役割があります。</li>
+          <li>炭酸カルシウムは CaCO<sub>3</sub> で、カルシウム分がガラスを水に溶けにくくする役割があります。</li>
+        </ol>
+        <p><strong>答え：ソーダ石灰ガラス。化学式は SiO<sub>2</sub>、Na<sub>2</sub>CO<sub>3</sub>、CaCO<sub>3</sub></strong>。3つの原料の組み合わせが、そのままガラスの名前（ソーダ＝炭酸ナトリウム、石灰＝炭酸カルシウム）になっています。</p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題2：次の用途に最も適するガラスを、ソーダ石灰ガラス・鉛ガラス・ホウケイ酸ガラス・石英ガラスから1つずつ選べ。（ア）急に加熱しても割れにくいことが求められるビーカー（イ）紫外線をよく通し、高温にも耐えるランプの管（ウ）輝きを活かした高級な装飾グラス（エ）安価な窓ガラス</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>（ア）熱膨張が小さく急熱・急冷に強いのは、酸化ホウ素 B<sub>2</sub>O<sub>3</sub> を含むホウケイ酸ガラスです。</li>
+          <li>（イ）SiO<sub>2</sub> だけからなり、耐熱性が高く紫外線も通すのは石英ガラスです。</li>
+          <li>（ウ）酸化鉛（II）PbO を含み屈折率が大きく輝くのは鉛ガラスです。</li>
+          <li>（エ）最も安価で一般的なのはソーダ石灰ガラスです。</li>
+        </ol>
+        <p><strong>答え：（ア）ホウケイ酸ガラス（イ）石英ガラス（ウ）鉛ガラス（エ）ソーダ石灰ガラス</strong>。用途のキーワード（急熱に強い・紫外線・輝き・安価）から組成を逆にたどるのが判定の型です。</p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題3：ガラスは結晶か非晶質か答えよ。また、ガラスをはっきりした融点をもたないことと結びつけて説明せよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>結晶は粒子が規則正しく配列した固体ですが、ガラスは SiO<sub>2</sub> の網目構造が規則的に並ばないまま固まっています。</li>
+          <li>規則的な配列をもたない固体を非晶質（アモルファス）といいます。</li>
+          <li>結晶は決まった温度で一斉に融けますが、非晶質にはそのような決まった融点がなく、温度が上がると徐々に軟らかくなります。</li>
+        </ol>
+        <p><strong>答え：ガラスは非晶質である</strong>。はっきりした融点がなく徐々に軟らかくなる性質は、ガラスを熱して成形する加工のしやすさにもつながっています。</p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題4：陶磁器の原料を3つ挙げ、それぞれの役割を述べよ。また、原料を成形した後に行う、硬く固めるための処理の名称も答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>粘土は水と混ぜると粘りが出て、形を作りやすくします。</li>
+          <li>長石は加熱すると融け、粒子同士を結びつけて固めます。</li>
+          <li>ケイ石（石英）は骨格となり、焼いても形が崩れないように保ちます。</li>
+          <li>成形したものを高温で焼き固める処理を焼成といいます。</li>
+        </ol>
+        <p><strong>答え：粘土（成形しやすくする）、長石（融けて結びつける）、ケイ石（骨格になる）。処理の名称は焼成</strong>。焼成によって、もろい粘土の塊が硬くて水に溶けない陶磁器に変わります。</p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題5：次のファインセラミックスと用途の組み合わせとして正しいものを選べ。（ア）Al<sub>2</sub>O<sub>3</sub> ― 電子部品の基板（イ）ZrO<sub>2</sub> ― セラミック包丁（ウ）Si<sub>3</sub>N<sub>4</sub> ― 高温でも強度が求められるエンジン部品。誤りがあれば理由も述べよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>（ア）Al<sub>2</sub>O<sub>3</sub> はアルミナで、硬く電気絶縁性が高いため電子部品の基板に使われます。正しい組み合わせです。</li>
+          <li>（イ）ZrO<sub>2</sub> はジルコニアで、セラミックスの中では割れにくく丈夫なため包丁やはさみに使われます。正しい組み合わせです。</li>
+          <li>（ウ）Si<sub>3</sub>N<sub>4</sub> は窒化ケイ素で、高温でも強度が落ちにくいためエンジン部品などに使われます。正しい組み合わせです。</li>
+        </ol>
+        <p><strong>答え：（ア）（イ）（ウ）はいずれも正しい</strong>。化学式から物質名（Al<sub>2</sub>O<sub>3</sub>＝アルミナ、ZrO<sub>2</sub>＝ジルコニア、Si<sub>3</sub>N<sub>4</sub>＝窒化ケイ素）を読み取り、代表的な性質と結びつけるのが判定の型です。</p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題6：セメントの原料を2つ挙げよ。また、セメントに砂と水を混ぜたもの、さらに砂利を加えたものの名称をそれぞれ答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>セメント（ポルトランドセメント）の原料は石灰石（CaCO<sub>3</sub>）と粘土で、高温で焼いて作られます。</li>
+          <li>セメントは水と反応して固まる性質をもち、砂と水を混ぜたものがモルタルです。</li>
+          <li>モルタルにさらに砂利を加えたものがコンクリートです。</li>
+        </ol>
+        <p><strong>答え：原料は石灰石と粘土。砂と水を混ぜたものはモルタル、砂利も加えたものはコンクリート</strong>。セメント自体は「固める成分」であり、砂や砂利は強度と量を担う材料です。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>建築と土木 ― 窓ガラスとコンクリート</h3>
+    <p>建物の窓には安価で透明なソーダ石灰ガラスが使われ、骨組みにはセメントを原料とするコンクリートが使われます。どちらも主成分がケイ酸塩化合物であり、砂や石灰石というありふれた原料から大量に作れることが、社会インフラを支える材料になっている理由です。</p>
+    <h3>実験室と工場 ― ホウケイ酸ガラスと石英ガラス</h3>
+    <p>ビーカーやフラスコなどの理化学器具には、急な加熱・冷却に強いホウケイ酸ガラスが標準的に使われます。半導体工場では、高純度のシリコンを扱う炉の部品に、耐熱性が高く不純物の少ない石英ガラスが使われています。</p>
+    <h3>電子部品と機械部品 ― ファインセラミックス</h3>
+    <p>アルミナの基板は絶縁性と放熱性を活かして電子回路の土台に使われ、窒化ケイ素の球は鋼製より軽くて丈夫なベアリングとして使われます。圧電セラミックス（圧力を加えると電圧が生じ、電圧を加えると変形するセラミックス）は、ライターの着火素子や超音波センサーなどに使われており、これは物理コーナーの圧電効果とつながる応用です。</p>
+    <h3>日用品 ― 陶磁器とセラミック包丁</h3>
+    <p>食器やタイル、衛生陶器（便器など）は陶磁器の代表的な製品です。ジルコニア製のセラミック包丁は、金属ではないためさびず、硬さを活かして切れ味が長持ちする日用品として使われています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who">特定の考案者はいない（ガラスと陶磁器は古代から受け継がれた技術で、ファインセラミックスやセメントは近代以降の材料科学の中で発展した）</p>
+    <p>ガラスと陶磁器は、特定の個人が考え出したものではなく、古代から人々が砂や粘土を焼いて作り続けてきた技術です。ソーダ石灰ガラスのような組成の工夫や、陶磁器の焼成技術は、長い年月をかけて職人や技術者の手で改良されてきました。近代以降は、組成と性質の関係を化学として整理する材料科学が発展し、原料の純度や焼成条件を精密に制御するファインセラミックスや、水と反応して固まるセメントのような材料が工業的に作られるようになりました。この項目は、1人の発見者ではなく、組成を変えると性質が変わるという材料設計の考え方そのものを扱う項目です。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>ケイ素そのものの化合物は<a href="phosphorus-silicon.html">リンとケイ素の化合物</a>、ガラスの原料になる炭酸ナトリウムの製法は<a href="sodium-solvay.html">ナトリウムとアンモニアソーダ法</a>、セメントと石灰石の循環は<a href="carbon-carbonates.html">炭素と炭酸塩</a>、結晶と非晶質の区別の土台は<a href="crystal-types.html">結晶の種類と性質</a>が役立ちます。物理コーナーでは、圧電セラミックスの原理である<a href="https://wankodo.github.io/physics/piezoelectric-effect.html">圧電効果</a>もあわせて読めます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

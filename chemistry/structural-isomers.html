@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>構造式と異性体｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="構造式と異性体を、公式・手順・例題で解説。構造異性体（連鎖・位置・官能基）と立体異性体（シス・トランス）の分類、C₄H₁₀やC₄H₈の異性体の系統的な数え方、2-ブテンのシス・トランスの性質の違い、物質の同定や分離など実際の現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="構造式と異性体｜化学ツール集">
+<meta property="og:description" content="構造異性体とシス・トランス異性体の分類、C₄H₁₀・C₄H₈の数え方と構造式を、例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/structural-isomers.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">構造式</span>と<span class="accent">異性体</span></h1>
+    <p>化学の考え方辞典 ― 有機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 有機化学 ＞ 構造式と異性体</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">有機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    分子式が同じでも、原子のつながり方が違えば別の物質になる。このような物質どうしを異性体といい、つながり方の違いによる構造異性体（連鎖・位置・官能基）と、つながり方は同じで立体的な配置が違う立体異性体（シス・トランスなどの幾何異性体）に分けられる。異性体は炭素骨格から系統的に書き出すことで漏れなく数えられ、融点・沸点などの性質の違いで区別できる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>有機化合物では、炭素原子の数が増えるにつれて、1つの分子式に対してたくさんの<strong>構造式</strong>が考えられるようになります。次のような場面で使う考え方です。</p>
+    <ul>
+      <li>C<sub>4</sub>H<sub>10</sub>、C<sub>4</sub>H<sub>8</sub> のように、分子式だけが与えられたときに異性体を漏れなく数え上げる問題</li>
+      <li>数え上げた異性体の構造式を描き、それぞれの名前を答える問題</li>
+      <li>2-ブテンのシス形・トランス形のように、二重結合まわりの配置の違いを区別し、融点・沸点の違いを説明する問題</li>
+      <li>構造決定の問題で、候補になる構造を絞り込む最初の段階（この先は<a href="degree-of-unsaturation.html">不飽和度と構造の推定</a>や<a href="organic-structure-determination.html">元素分析と構造決定</a>と組み合わせます）</li>
+    </ul>
+    <p>ポイントは「分子式が同じ＝同じ物質」ではないことです。分子式は原子の個数しか教えてくれず、物質の性質は<strong>つながり方（構造式）と立体的な配置</strong>で決まります。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p><strong>異性体</strong>とは、分子式が同じでありながら、構造や性質が異なる化合物どうしのことです。異性体は大きく2つに分けられます。</p>
+    <ul>
+      <li><strong>構造異性体</strong>：原子のつながり方（結合の順序）が違うもの。さらに3種類に分けられます</li>
+      <li><strong>立体異性体</strong>：つながり方は同じだが、原子の立体的な配置が違うもの。二重結合まわりの<strong>幾何異性体（シス・トランス異性体）</strong>と、鏡像の関係にある光学異性体があります</li>
+    </ul>
+    <div class="formula">異性体 ＝ 構造異性体（連鎖・位置・官能基）＋ 立体異性体（幾何異性体・光学異性体）</div>
+    <p>この式は計算式ではなく分類の全体像です。数え上げの問題では、まず構造異性体を書き出し、そのうえで立体異性体が存在するものを探す、という順序で考えます。</p>
+    <h3>構造異性体（1）連鎖異性体 ― 炭素骨格の枝分かれが違う</h3>
+    <p>炭素骨格の形が違う異性体です。C<sub>4</sub>H<sub>10</sub> には、直鎖の<strong>ブタン</strong>と、枝分かれした<strong>2-メチルプロパン</strong>の2種類があります。枝分かれが多いほど分子どうしが密に重なりにくく、沸点は低くなる傾向があります（ブタンの沸点は約 −0.5 ℃、2-メチルプロパンは約 −11.7 ℃）。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 150" width="520" height="150" role="img" aria-label="ブタンと2-メチルプロパンの構造式" style="max-width:100%;height:auto;">
+        <text x="130" y="24" text-anchor="middle" font-size="13" fill="currentColor">ブタン（直鎖）</text>
+        <text x="35" y="76" text-anchor="middle" font-size="15" fill="currentColor">CH₃</text>
+        <line x1="56" y1="71" x2="76" y2="71" stroke="currentColor" stroke-width="2"/>
+        <text x="97" y="76" text-anchor="middle" font-size="15" fill="currentColor">CH₂</text>
+        <line x1="118" y1="71" x2="138" y2="71" stroke="currentColor" stroke-width="2"/>
+        <text x="159" y="76" text-anchor="middle" font-size="15" fill="currentColor">CH₂</text>
+        <line x1="180" y1="71" x2="200" y2="71" stroke="currentColor" stroke-width="2"/>
+        <text x="221" y="76" text-anchor="middle" font-size="15" fill="currentColor">CH₃</text>
+        <text x="130" y="112" text-anchor="middle" font-size="12" fill="currentColor">炭素が4個まっすぐにつながる</text>
+        <text x="395" y="24" text-anchor="middle" font-size="13" fill="currentColor">2-メチルプロパン（枝分かれ）</text>
+        <text x="395" y="52" text-anchor="middle" font-size="15" fill="currentColor">CH₃</text>
+        <line x1="395" y1="58" x2="395" y2="76" stroke="currentColor" stroke-width="2"/>
+        <text x="322" y="96" text-anchor="middle" font-size="15" fill="currentColor">CH₃</text>
+        <line x1="343" y1="91" x2="372" y2="91" stroke="currentColor" stroke-width="2"/>
+        <text x="395" y="96" text-anchor="middle" font-size="15" fill="currentColor">CH</text>
+        <line x1="414" y1="91" x2="443" y2="91" stroke="currentColor" stroke-width="2"/>
+        <text x="468" y="96" text-anchor="middle" font-size="15" fill="currentColor">CH₃</text>
+        <text x="395" y="128" text-anchor="middle" font-size="12" fill="currentColor">中央のCHからCH₃が3方向に出る</text>
+      </svg>
+      <p>C<sub>4</sub>H<sub>10</sub> の構造異性体はこの2種類だけです。炭素5個の C<sub>5</sub>H<sub>12</sub> では3種類、炭素数が増えるほど異性体の数は急激に増えていきます。</p>
+    </div>
+    <h3>構造異性体（2）位置異性体 ― 二重結合や官能基の位置が違う</h3>
+    <p>炭素骨格は同じでも、二重結合や官能基の付く位置が違う異性体です。たとえば C<sub>4</sub>H<sub>8</sub> のアルケンでは、二重結合が端にある 1-ブテンと、中央にある 2-ブテンは位置異性体の関係にあります（構造式は例題2の図を参照）。</p>
+    <h3>構造異性体（3）官能基異性体 ― 官能基の種類が違う</h3>
+    <p>同じ分子式でも、もっている官能基の種類自体が違う異性体です。C<sub>2</sub>H<sub>6</sub>O には、ヒドロキシ基をもつ<strong>エタノール</strong>（アルコール）と、酸素が炭素の間に入った<strong>ジメチルエーテル</strong>（エーテル）の2種類があります。エタノールは水素結合をするため沸点が約78 ℃と高い液体ですが、ジメチルエーテルは沸点が約 −24 ℃の気体で、官能基の違いが性質の大きな違いに直結します。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 120" width="520" height="120" role="img" aria-label="エタノールとジメチルエーテルの構造式" style="max-width:100%;height:auto;">
+        <text x="130" y="24" text-anchor="middle" font-size="13" fill="currentColor">エタノール（アルコール）</text>
+        <text x="55" y="66" text-anchor="middle" font-size="15" fill="currentColor">CH₃</text>
+        <line x1="76" y1="61" x2="96" y2="61" stroke="currentColor" stroke-width="2"/>
+        <text x="117" y="66" text-anchor="middle" font-size="15" fill="currentColor">CH₂</text>
+        <line x1="138" y1="61" x2="158" y2="61" stroke="currentColor" stroke-width="2"/>
+        <text x="178" y="66" text-anchor="middle" font-size="15" fill="currentColor">OH</text>
+        <text x="130" y="98" text-anchor="middle" font-size="12" fill="currentColor">−OH（ヒドロキシ基）をもつ</text>
+        <text x="395" y="24" text-anchor="middle" font-size="13" fill="currentColor">ジメチルエーテル（エーテル）</text>
+        <text x="320" y="66" text-anchor="middle" font-size="15" fill="currentColor">CH₃</text>
+        <line x1="341" y1="61" x2="366" y2="61" stroke="currentColor" stroke-width="2"/>
+        <text x="380" y="66" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="394" y1="61" x2="419" y2="61" stroke="currentColor" stroke-width="2"/>
+        <text x="445" y="66" text-anchor="middle" font-size="15" fill="currentColor">CH₃</text>
+        <text x="395" y="98" text-anchor="middle" font-size="12" fill="currentColor">Oが炭素と炭素の間に入る</text>
+      </svg>
+      <p>どちらも C<sub>2</sub>H<sub>6</sub>O ですが、つながり方が違うため全く別の物質です。官能基で化合物を分類する考え方は<a href="functional-groups.html">官能基と化合物の分類</a>で詳しく扱います。</p>
+    </div>
+    <h3>立体異性体 ― シス・トランス異性体（幾何異性体）</h3>
+    <p>C＝C 二重結合は単結合と違って自由に回転できません。そのため、二重結合の両側に付いた基の配置が固定され、同じ基が<strong>同じ側</strong>にある<strong>シス形</strong>と、<strong>反対側</strong>にある<strong>トランス形</strong>が別の物質になります。2-ブテン（CH<sub>3</sub>−CH＝CH−CH<sub>3</sub>）がその代表例です。なお、二重結合の一方の炭素に同じ基が2つ付いている場合（1-ブテンの端の炭素など）は、ひっくり返しても同じ構造になるため、シス・トランスの区別は生じません。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 190" width="520" height="190" role="img" aria-label="シス-2-ブテンとトランス-2-ブテンの構造式" style="max-width:100%;height:auto;">
+        <text x="135" y="22" text-anchor="middle" font-size="13" fill="currentColor">シス-2-ブテン（CH₃が同じ側）</text>
+        <text x="52" y="58" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+        <line x1="66" y1="66" x2="88" y2="90" stroke="currentColor" stroke-width="2"/>
+        <text x="102" y="110" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="116" y1="99" x2="154" y2="99" stroke="currentColor" stroke-width="2"/>
+        <line x1="116" y1="107" x2="154" y2="107" stroke="currentColor" stroke-width="2"/>
+        <text x="168" y="110" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="182" y1="90" x2="204" y2="66" stroke="currentColor" stroke-width="2"/>
+        <text x="218" y="58" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+        <line x1="92" y1="112" x2="72" y2="134" stroke="currentColor" stroke-width="2"/>
+        <text x="62" y="152" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <line x1="178" y1="112" x2="198" y2="134" stroke="currentColor" stroke-width="2"/>
+        <text x="208" y="152" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="135" y="178" text-anchor="middle" font-size="12" fill="currentColor">沸点 約4 ℃／融点 約−139 ℃</text>
+        <text x="395" y="22" text-anchor="middle" font-size="13" fill="currentColor">トランス-2-ブテン（CH₃が反対側）</text>
+        <text x="312" y="58" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+        <line x1="326" y1="66" x2="348" y2="90" stroke="currentColor" stroke-width="2"/>
+        <text x="362" y="110" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="376" y1="99" x2="414" y2="99" stroke="currentColor" stroke-width="2"/>
+        <line x1="376" y1="107" x2="414" y2="107" stroke="currentColor" stroke-width="2"/>
+        <text x="428" y="110" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="418" y1="90" x2="438" y2="68" stroke="currentColor" stroke-width="2"/>
+        <text x="448" y="60" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <line x1="352" y1="112" x2="332" y2="134" stroke="currentColor" stroke-width="2"/>
+        <text x="322" y="152" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <line x1="438" y1="112" x2="458" y2="134" stroke="currentColor" stroke-width="2"/>
+        <text x="472" y="152" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+        <text x="395" y="178" text-anchor="middle" font-size="12" fill="currentColor">沸点 約1 ℃／融点 約−106 ℃</text>
+      </svg>
+      <p>シス形とトランス形は性質が異なります。シス-2-ブテンは CH<sub>3</sub> が同じ側に偏るため分子にわずかな極性があり、沸点はトランス形（約1 ℃）より高い約4 ℃です。一方、融点は対称性の高いトランス形の方が結晶に詰まりやすく、約 −106 ℃と、シス形（約 −139 ℃）より高くなります。「沸点はシスが高く、融点はトランスが高い」は幾何異性体の典型的なパターンです。</p>
+    </div>
+    <p>立体異性体にはもう1つ、右手と左手のように鏡に映した像と重ね合わせられない<strong>光学異性体</strong>があります。これは4つの異なる基が付いた炭素（不斉炭素原子）を中心とする配置の違いで、生体内の分子や医薬品では効き方が大きく変わることがあります。光学異性体は<a href="optical-isomers.html">光学異性体と不斉炭素</a>で独立に扱うので、ここでは「立体異性体には幾何異性体と光学異性体がある」という橋渡しまでにとどめます。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>炭素骨格を長い順に書き出す。</strong>まず最も長い直鎖を描き、次に主鎖を1個短くして余った炭素を枝（メチル基など）として付けます。枝の位置を端から順にずらして、骨格の候補を系統的に列挙します。これが連鎖異性体の数え上げです。</li>
+      <li><strong>二重結合・官能基の位置をずらす。</strong>各骨格について、二重結合や官能基の位置を端から順に変えたものを書き、位置異性体を列挙します。番号付けは小さい数字になる向きを正とし、左右をひっくり返すと同じになるものは重複として除きます。</li>
+      <li><strong>官能基の種類と環の可能性をチェックする。</strong>同じ分子式で別の官能基をもつもの（アルコールとエーテルなど）や、環状の骨格（シクロアルカンなど）が作れないかを確認します。不飽和度が1なら「二重結合1個」か「環1個」のどちらかです。</li>
+      <li><strong>重複を消す。</strong>描いた構造を回転・反転させて既出のものと重ならないか1つずつ照合します。「名前が違うのに同じ構造」や「端から数え直すと同じ構造」が重複の典型です。</li>
+      <li><strong>立体異性体を探す。</strong>C＝C の両側の炭素に、それぞれ異なる2つの基が付いているものがあれば、シス形とトランス形の2種類に分かれます。最後に構造異性体の数と立体異性体の増分を合わせて答えます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：C<sub>4</sub>H<sub>10</sub> の構造異性体をすべて構造式で描き、数を答えよ（図は「公式・考え方」のブタンと2-メチルプロパンの図を参照）。問題2：C<sub>4</sub>H<sub>8</sub> の構造異性体をすべて描き、数を答えよ。さらに立体異性体まで含めると全部で何種類になるかも答えよ。問題3：2-ブテンのシス形とトランス形について、沸点が高いのはどちらか、融点が高いのはどちらかを答え、その理由を述べよ。問題4：C<sub>2</sub>H<sub>6</sub>O の構造異性体をすべて描き（図は「公式・考え方」のエタノールとジメチルエーテルの図を参照）、片方だけが液体で沸点が高い理由を述べよ。</p>
+      <div class="tri-fig">
+        <svg viewBox="0 0 520 270" width="520" height="270" role="img" aria-label="C4H8の構造異性体の構造式" style="max-width:100%;height:auto;">
+          <text x="130" y="22" text-anchor="middle" font-size="13" fill="currentColor">1-ブテン</text>
+          <text x="32" y="58" text-anchor="middle" font-size="14" fill="currentColor">CH₂</text>
+          <line x1="52" y1="47" x2="76" y2="47" stroke="currentColor" stroke-width="2"/>
+          <line x1="52" y1="55" x2="76" y2="55" stroke="currentColor" stroke-width="2"/>
+          <text x="90" y="58" text-anchor="middle" font-size="14" fill="currentColor">CH</text>
+          <line x1="106" y1="51" x2="128" y2="51" stroke="currentColor" stroke-width="2"/>
+          <text x="148" y="58" text-anchor="middle" font-size="14" fill="currentColor">CH₂</text>
+          <line x1="168" y1="51" x2="190" y2="51" stroke="currentColor" stroke-width="2"/>
+          <text x="212" y="58" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+          <text x="130" y="86" text-anchor="middle" font-size="12" fill="currentColor">二重結合が端（1位）にある</text>
+          <text x="395" y="22" text-anchor="middle" font-size="13" fill="currentColor">2-メチルプロペン</text>
+          <text x="322" y="66" text-anchor="middle" font-size="14" fill="currentColor">CH₂</text>
+          <line x1="342" y1="55" x2="366" y2="55" stroke="currentColor" stroke-width="2"/>
+          <line x1="342" y1="63" x2="366" y2="63" stroke="currentColor" stroke-width="2"/>
+          <text x="378" y="66" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <line x1="390" y1="59" x2="414" y2="59" stroke="currentColor" stroke-width="2"/>
+          <text x="436" y="66" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+          <line x1="378" y1="72" x2="378" y2="88" stroke="currentColor" stroke-width="2"/>
+          <text x="378" y="106" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+          <text x="395" y="126" text-anchor="middle" font-size="12" fill="currentColor">主鎖3個＋枝のCH₃（下のCH₃が枝）</text>
+          <text x="130" y="140" text-anchor="middle" font-size="13" fill="currentColor">シクロブタン</text>
+          <line x1="80" y1="168" x2="180" y2="168" stroke="currentColor" stroke-width="2"/>
+          <line x1="180" y1="168" x2="180" y2="228" stroke="currentColor" stroke-width="2"/>
+          <line x1="180" y1="228" x2="80" y2="228" stroke="currentColor" stroke-width="2"/>
+          <line x1="80" y1="228" x2="80" y2="168" stroke="currentColor" stroke-width="2"/>
+          <text x="80" y="160" text-anchor="middle" font-size="12" fill="currentColor">CH₂</text>
+          <text x="180" y="160" text-anchor="middle" font-size="12" fill="currentColor">CH₂</text>
+          <text x="80" y="248" text-anchor="middle" font-size="12" fill="currentColor">CH₂</text>
+          <text x="180" y="248" text-anchor="middle" font-size="12" fill="currentColor">CH₂</text>
+          <text x="130" y="266" text-anchor="middle" font-size="12" fill="currentColor">炭素4個の環</text>
+          <text x="395" y="140" text-anchor="middle" font-size="13" fill="currentColor">メチルシクロプロパン</text>
+          <text x="395" y="160" text-anchor="middle" font-size="12" fill="currentColor">CH</text>
+          <line x1="395" y1="166" x2="348" y2="222" stroke="currentColor" stroke-width="2"/>
+          <line x1="395" y1="166" x2="442" y2="222" stroke="currentColor" stroke-width="2"/>
+          <line x1="348" y1="222" x2="442" y2="222" stroke="currentColor" stroke-width="2"/>
+          <text x="340" y="240" text-anchor="middle" font-size="12" fill="currentColor">CH₂</text>
+          <text x="450" y="240" text-anchor="middle" font-size="12" fill="currentColor">CH₂</text>
+          <line x1="395" y1="146" x2="395" y2="132" stroke="currentColor" stroke-width="2"/>
+          <text x="395" y="124" text-anchor="middle" font-size="12" fill="currentColor">CH₃</text>
+          <text x="395" y="266" text-anchor="middle" font-size="12" fill="currentColor">炭素3個の環＋枝のCH₃</text>
+        </svg>
+        <p>問題2の C<sub>4</sub>H<sub>8</sub> のうち、1-ブテン、2-メチルプロペン、シクロブタン、メチルシクロプロパンの構造式です。残る 2-ブテンの構造式は「公式・考え方」のシス・トランスの図に描いてあります。</p>
+      </div>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：炭素骨格は、直鎖（炭素4個）と、主鎖3個＋枝1個の2通りだけです。主鎖2個＋枝2個という骨格は、枝を付け直すと直鎖と同じになるため数えません。よって構造異性体は<strong>ブタンと2-メチルプロパンの2種類</strong>です。</li>
+          <li>問題2：不飽和度が1なので「二重結合1個」または「環1個」で考えます。二重結合をもつものは、直鎖で位置をずらした 1-ブテンと 2-ブテン、枝分かれ骨格の 2-メチルプロペンの3種類。環をもつものは、シクロブタンとメチルシクロプロパンの2種類。構造異性体は合計<strong>5種類</strong>です。このうち 2-ブテンにはシス形とトランス形があるため、立体異性体まで数えると 5 ＋ 1 ＝ <strong>6種類</strong>になります。1-ブテンは二重結合の端の炭素に H が2つ付くためシス・トランスは生じません。</li>
+          <li>問題3：沸点が高いのは<strong>シス形</strong>（約4 ℃、トランス形は約1 ℃）です。シス形は CH<sub>3</sub> が同じ側に偏って分子に極性が生じ、分子間の引力がやや強くなるためです。融点が高いのは<strong>トランス形</strong>（約 −106 ℃、シス形は約 −139 ℃）です。トランス形は対称性が高く、結晶の中で規則正しく詰まるため、融けるのにより大きな熱エネルギーが要るためです。</li>
+          <li>問題4：酸素の入り方は「炭素に −OH が付く」か「炭素と炭素の間に入る」かの2通りで、構造異性体は<strong>エタノールとジメチルエーテルの2種類</strong>です。エタノールだけが液体で沸点が高い（約78 ℃）のは、−OH の水素が分子間で<strong>水素結合</strong>を作り、分子どうしが強く引き合うためです。ジメチルエーテルには −OH がなく水素結合をしないため、沸点は約 −24 ℃で常温では気体です。</li>
+        </ol>
+        <p><strong>答え：問題1は2種類、問題2は構造異性体5種類（立体異性体込みで6種類）、問題3は沸点はシス形・融点はトランス形が高い、問題4は2種類で、沸点の差は水素結合の有無による。</strong>数え上げは「骨格 → 位置 → 官能基・環 → 立体」の順に進めると、漏れと重複の両方を防げます。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>異性体の分離と同定（蒸留・クロマトグラフィー）</h3>
+    <p>異性体は分子式も分子量も同じなので、質量だけでは区別できません。実際の分析では、沸点の違いを利用する蒸留や、カラムへの吸着のしやすさの違いで分けるガスクロマトグラフィーなど、「性質のわずかな違い」を使って異性体を分離・同定します。石油化学の工場でも、蒸留塔の段数や条件は異性体どうしの沸点差をもとに設計されています。</p>
+    <h3>燃料の性質と枝分かれ</h3>
+    <p>ガソリンの燃えやすさ（ノッキングのしにくさ）は、炭化水素の枝分かれの程度で大きく変わります。直鎖のアルカンはノッキングを起こしやすく、枝分かれの多いアルカンは起こしにくいため、燃料の品質管理では異性体の組成が重要な指標になります。連鎖異性体の考え方が、そのまま燃料の性能評価につながっています。</p>
+    <h3>医薬品・材料での幾何異性体の使い分け</h3>
+    <p>シス形とトランス形は、同じつながり方でも形が違うため、体内での作用や材料としての性質が変わります。そのため医薬品や機能性材料の製造では、どちらの幾何異性体ができているかを分析で確認し、目的の形だけを取り分ける工程が欠かせません。「つながり方は同じでも配置が違えば別の物質」という立体異性体の考え方は、品質管理の現場で日常的に使われています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ヨンス・ヤコブ・ベルセリウス</strong>（1779〜1848、スウェーデンの化学者）、<strong>ヤコブス・ヘンリクス・ファントホッフ</strong>（1852〜1911、オランダの化学者）、<strong>ジョゼフ・アシル・ル・ベル</strong>（1847〜1930、フランスの化学者）</p>
+    <p>組成が同じなのに性質が違う物質があることは1820年代に知られるようになり、スウェーデンの化学者<strong>ヨンス・ヤコブ・ベルセリウス</strong>が1830年ごろ、このような物質どうしを「異性体（isomer）」と名付けました。ただし当時は、つながり方や立体配置を描く構造式の考え方がまだ確立しておらず、なぜ同じ組成で違う物質になるのかは謎のままでした。その説明の土台になったのが、オランダの<strong>ヤコブス・ヘンリクス・ファントホッフ</strong>とフランスの<strong>ジョゼフ・アシル・ル・ベル</strong>が1874年にそれぞれ独立に提唱した、炭素の4本の結合が正四面体の頂点の向きに出ているという考え方です。この正四面体モデルによって、原子の立体的な配置の違いで別の物質になる立体異性体の存在が初めて筋道立てて説明できるようになりました。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>有機化合物の全体像は<a href="organic-basics.html">有機化合物の特徴と分類</a>、炭化水素そのものは<a href="hydrocarbons.html">炭化水素（アルカン・アルケン・アルキン）</a>、分子式から環と二重結合の総数を出す方法は<a href="degree-of-unsaturation.html">不飽和度と構造の推定</a>、官能基による分類は<a href="functional-groups.html">官能基と化合物の分類</a>、鏡像の立体異性体は<a href="optical-isomers.html">光学異性体と不斉炭素</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

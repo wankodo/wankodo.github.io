@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アルミニウムとその製錬｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="アルミニウムの性質（酸化被膜・両性・テルミット反応）と、ボーキサイトからバイヤー法・ホール・エルー法で製錬する流れを電極反応式で解説。軽さを生かした航空機・缶・送電線など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="アルミニウムとその製錬｜化学ツール集">
+<meta property="og:description" content="アルミニウムの両性や酸化被膜などの性質と、ボーキサイトから溶融塩電解で製錬するホール・エルー法を、反応式と例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/aluminium.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">アルミニウム</span>とその製錬</h1>
+    <p>化学の考え方辞典 ― 無機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 無機化学 ＞ アルミニウムとその製錬</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">無機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    アルミニウムは軽くて展性・延性に富む金属で、表面の酸化被膜に守られて腐食しにくく、酸とも強塩基とも反応する両性金属である。原料のボーキサイトをバイヤー法で精製して酸化アルミニウム（アルミナ）とし、氷晶石で融点を下げて溶融塩電解するホール・エルー法で製錬され、大量の電力を蓄えた「電気の缶詰」と呼ばれる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>アルミニウム Al の<strong>性質の判定と、鉱石から金属を取り出す製錬の流れ</strong>を扱う項目です。次のような場面で使います。</p>
+    <ul>
+      <li>アルミニウムが軽い・腐食しにくい理由や、展性・延性といった金属としての性質を答える問題</li>
+      <li>酸とも強塩基（水酸化ナトリウム水溶液など）とも反応する<strong>両性</strong>の反応式を書く問題</li>
+      <li>濃硝酸で溶けない理由（不動態）や、表面処理のアルマイトの仕組みを答える問題</li>
+      <li>テルミット反応の反応式と、大きな反応熱を利用する場面を答える問題</li>
+      <li>ボーキサイト → アルミナ → 溶融塩電解という製錬の順序と、各電極の反応式・全体の反応式を書く問題</li>
+      <li>炭素電極が消耗する理由や、「電気の缶詰」と呼ばれる理由を説明する問題</li>
+    </ul>
+    <p>アルミニウムはイオン化傾向が大きい金属です。そのため水溶液を電気分解しても陰極では水が還元されて水素が出るだけで金属は得られず（<a href="electrolysis-products.html">電気分解の生成物</a>参照）、製錬には水を使わない<strong>溶融塩電解</strong>が必要になります。性質と製錬は、この「イオン化傾向が大きいのに、酸化被膜のおかげで腐食しにくい」という一見矛盾した姿でつながっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>アルミニウムの性質</h3>
+    <p>アルミニウムは原子番号13の金属で、密度が約 2.7 g/cm<sup>3</sup> と鉄（約 7.9 g/cm<sup>3</sup>）の3分の1ほどしかない<strong>軽い金属</strong>です。金属結合の自由電子によって電気・熱をよく伝え、薄く広げたり（<strong>展性</strong>、アルミ箔）細く伸ばしたり（<strong>延性</strong>）できます。融点は約 660 ℃です。</p>
+    <p>空気中では、表面が直ちに酸化されて<strong>酸化アルミニウム Al<sub>2</sub>O<sub>3</sub> の緻密な被膜</strong>に覆われます。この被膜が内部を守るため、本来は反応性の高い金属でありながら腐食しにくくなります。同じように表面の被膜で溶けなくなる状態を<strong>不動態</strong>といい、アルミニウムは濃硝酸に入れてもこの被膜のため溶けません。</p>
+    <p>被膜を人工的に厚くしたものが<strong>アルマイト</strong>です。アルミニウムを陽極として希硫酸などを電気分解すると表面の酸化被膜が厚く成長し、硬くて腐食に強い表面が得られます。やかんや窓のサッシなどに使われる表面処理です。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>両性：酸とも強塩基とも反応する</h3>
+    <p>アルミニウムは、塩酸などの酸とも、水酸化ナトリウム水溶液のような強塩基とも反応して水素を発生する<strong>両性金属</strong>です。ただし、ふだんは酸化被膜に守られているため、反応は被膜が溶けてから進みます。</p>
+    <div class="formula">酸との反応： 2Al ＋ 6HCl → 2AlCl<sub>3</sub> ＋ 3H<sub>2</sub></div>
+    <div class="formula">強塩基との反応： 2Al ＋ 2NaOH ＋ 6H<sub>2</sub>O → 2Na[Al(OH)<sub>4</sub>] ＋ 3H<sub>2</sub></div>
+    <p>強塩基との反応では、アルミニウムはテトラヒドロキシドアルミン酸イオン [Al(OH)<sub>4</sub>]<sup>−</sup> になって溶けます。酸化物 Al<sub>2</sub>O<sub>3</sub> や水酸化物 Al(OH)<sub>3</sub> も両性で、酸にも強塩基にも溶けます。</p>
+    <div class="formula">Al<sub>2</sub>O<sub>3</sub> ＋ 6HCl → 2AlCl<sub>3</sub> ＋ 3H<sub>2</sub>O</div>
+    <div class="formula">Al<sub>2</sub>O<sub>3</sub> ＋ 2NaOH ＋ 3H<sub>2</sub>O → 2Na[Al(OH)<sub>4</sub>]</div>
+    <p>各記号・用語の意味は次の通りです。</p>
+    <ul>
+      <li><strong>Al</strong>：アルミニウム。原子量は 27</li>
+      <li><strong>Al<sub>2</sub>O<sub>3</sub></strong>：酸化アルミニウム。精製したものは<strong>アルミナ</strong>とも呼ばれる。融点は約 2,000 ℃と非常に高い</li>
+      <li><strong>[Al(OH)<sub>4</sub>]<sup>−</sup></strong>：テトラヒドロキシドアルミン酸イオン。アルミニウムが強塩基に溶けたときの形</li>
+      <li><strong>両性</strong>：酸とも塩基とも反応する性質。金属では Al・Zn・Sn・Pb が代表例</li>
+    </ul>
+    <h3>テルミット反応</h3>
+    <p>アルミニウム粉末と酸化鉄（III）Fe<sub>2</sub>O<sub>3</sub> の混合物（テルミット）に点火すると、アルミニウムが鉄から酸素を奪い、非常に大きな熱を出して反応します。</p>
+    <div class="formula">2Al ＋ Fe<sub>2</sub>O<sub>3</sub> → Al<sub>2</sub>O<sub>3</sub> ＋ 2Fe</div>
+    <p>発生する熱で生成した鉄が融解するほどの高温になるため、この反応は鉄道レールの溶接などに利用されてきました。アルミニウムの酸素との結びつきの強さ（還元力の強さ）を示す代表的な反応です。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>製錬の流れ：ボーキサイトから金属へ</h3>
+    <p>アルミニウムの原料鉱石は<strong>ボーキサイト</strong>で、主成分は Al<sub>2</sub>O<sub>3</sub> を含む水和物ですが、酸化鉄（III）などの不純物を多く含みます。製錬は大きく2段階に分かれます。</p>
+    <p><strong>第1段階：バイヤー法でアルミナを精製する。</strong>ボーキサイトを高温・高圧の水酸化ナトリウム水溶液で処理すると、両性の Al<sub>2</sub>O<sub>3</sub> だけが [Al(OH)<sub>4</sub>]<sup>−</sup> として溶け出し、両性でない酸化鉄（III）などは溶けずに残ります。ろ過して不純物を取り除き、溶液から水酸化アルミニウム Al(OH)<sub>3</sub> を析出させて焼くと、純粋な Al<sub>2</sub>O<sub>3</sub>（アルミナ）が得られます。ここで使われているのが、まさに上で見た両性の性質です。</p>
+    <div class="formula">2Al(OH)<sub>3</sub> → Al<sub>2</sub>O<sub>3</sub> ＋ 3H<sub>2</sub>O（焼成）</div>
+    <p><strong>第2段階：ホール・エルー法で溶融塩電解する。</strong>Al<sub>2</sub>O<sub>3</sub> は融点が約 2,000 ℃と高すぎるため、そのままでは溶かして電気分解できません。そこで<strong>氷晶石 Na<sub>3</sub>AlF<sub>6</sub></strong> を加えると、混合物は約 1,000 ℃で融解します。この融解液を炭素電極で電気分解すると、陰極に金属アルミニウムが得られます。</p>
+    <div class="formula">陰極： Al<sup>3+</sup> ＋ 3e<sup>−</sup> → Al</div>
+    <div class="formula">陽極： C ＋ 2O<sup>2−</sup> → CO<sub>2</sub> ＋ 4e<sup>−</sup></div>
+    <p>陽極では、融解液中の酸化物イオン O<sup>2−</sup> が炭素電極と反応して二酸化炭素になります。つまり<strong>陽極の炭素は反応で消費されて減っていく</strong>ため、電極は定期的に補充・交換が必要です。両極の反応を電子の数（12個）でそろえて足すと、全体の反応は次のようになります。</p>
+    <div class="formula">全体： 2Al<sub>2</sub>O<sub>3</sub> ＋ 3C → 4Al ＋ 3CO<sub>2</sub></div>
+    <p>この製錬には大量の電力が必要です。電気エネルギーを金属の形で蓄えたようなものだという意味で、アルミニウムは<strong>「電気の缶詰」</strong>と呼ばれます。逆に、使用済みのアルミニウムを溶かして再生するリサイクルに必要なエネルギーは、一般に、鉱石から製錬する場合の数％程度とされます。製錬に大きな電力をかける金属だからこそ、リサイクルの省エネ効果が際立つのです。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>性質の問題は「被膜」と「両性」で考える。</strong>腐食しにくい・濃硝酸で溶けない理由は表面の Al<sub>2</sub>O<sub>3</sub> の被膜（不動態）、酸にも強塩基にも溶けて水素を出す性質は両性、と結びつけます。</li>
+      <li><strong>反応式は生成物の形を確認してから係数をそろえる。</strong>酸なら塩化アルミニウム AlCl<sub>3</sub>、強塩基なら Na[Al(OH)<sub>4</sub>] ができ、どちらも水素が発生します。原子の数と電荷が両辺で合うか検算します。</li>
+      <li><strong>製錬は順序で覚える。</strong>ボーキサイト →（バイヤー法：NaOH 水溶液で両性を利用して分離）→ アルミナ Al<sub>2</sub>O<sub>3</sub> →（氷晶石を加えて約 1,000 ℃で融解し、溶融塩電解）→ 金属 Al、という流れです。</li>
+      <li><strong>電極反応は陰極＝還元、陽極＝酸化で書く。</strong>陰極では Al<sup>3+</sup> が電子を受け取って Al になり、陽極では炭素電極が O<sup>2−</sup> と反応して CO<sub>2</sub> になります。炭素が消費されることが、全体の式に C が入り CO<sub>2</sub> が出る理由です。</li>
+      <li><strong>「電気の缶詰」は電力とリサイクルで説明する。</strong>製錬に大量の電力が必要なこと、使用済み品のリサイクルは製錬の数％程度のエネルギーで済むことをセットで述べます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：アルミニウムに関する次の記述のうち、正しいものをすべて選べ。(a) 密度は鉄より大きく、重い金属である。(b) 空気中で表面に酸化被膜ができるため、腐食しにくい。(c) 濃硝酸には不動態となるため溶けない。(d) 塩酸には溶けるが、水酸化ナトリウム水溶液には溶けない。問題2：次の反応式を完成させよ。(1) アルミニウムと塩酸：2Al ＋ 6HCl → （　） ＋ 3H<sub>2</sub>。(2) 酸化アルミニウムと水酸化ナトリウム水溶液：Al<sub>2</sub>O<sub>3</sub> ＋ 2NaOH ＋ 3H<sub>2</sub>O → （　）。問題3：ホール・エルー法について、(a) 氷晶石を加える目的、(b) 陽極の炭素電極がしだいに減る理由、(c) 全体の反応式、をそれぞれ答えよ。問題4：テルミット反応の反応式を書き、この反応がレールの溶接に使える理由を述べよ。問題5：アルミニウムが「電気の缶詰」と呼ばれる理由を、リサイクルにも触れて説明せよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：(a) 誤り。密度は約 2.7 g/cm<sup>3</sup> で鉄の約3分の1の軽い金属です。(b) 正しい。表面の緻密な Al<sub>2</sub>O<sub>3</sub> の被膜が内部を守ります。(c) 正しい。濃硝酸では被膜によって不動態となり溶けません。(d) 誤り。アルミニウムは両性金属で、強塩基にも溶けて水素を発生します。</li>
+          <li>問題2：(1) 塩化アルミニウム AlCl<sub>3</sub> ができるので、2AlCl<sub>3</sub> です：2Al ＋ 6HCl → 2AlCl<sub>3</sub> ＋ 3H<sub>2</sub>。(2) テトラヒドロキシドアルミン酸ナトリウム Na[Al(OH)<sub>4</sub>] ができるので、2Na[Al(OH)<sub>4</sub>] です。両辺とも Al が2個、Na が2個、O が8個、H が8個でそろいます。</li>
+          <li>問題3：(a) Al<sub>2</sub>O<sub>3</sub> の融点は約 2,000 ℃と高いため、氷晶石を加えて融解する温度を約 1,000 ℃まで下げ、溶融塩電解を可能にするためです。(b) 陽極では C ＋ 2O<sup>2−</sup> → CO<sub>2</sub> ＋ 4e<sup>−</sup> と、電極の炭素自身が酸化物イオンと反応して二酸化炭素になるためです。(c) 陰極 Al<sup>3+</sup> ＋ 3e<sup>−</sup> → Al を4倍、陽極の式を3倍して電子（12個）を消すと、2Al<sub>2</sub>O<sub>3</sub> ＋ 3C → 4Al ＋ 3CO<sub>2</sub> となります。</li>
+          <li>問題4：2Al ＋ Fe<sub>2</sub>O<sub>3</sub> → Al<sub>2</sub>O<sub>3</sub> ＋ 2Fe。アルミニウムの還元力が強く反応熱が非常に大きいため、生成した鉄が融解するほどの高温が得られ、溶けた鉄で継ぎ目を溶接できるからです。</li>
+          <li>問題5：溶融塩電解による製錬には大量の電力が必要で、電気エネルギーを金属の形で蓄えたようなものだからです。一方、使用済みアルミニウムのリサイクルに必要なエネルギーは、一般に製錬の場合の数％程度とされ、大きな省エネになります。</li>
+        </ol>
+        <p><strong>答え：問題1は (b)・(c)。問題2は (1) 2AlCl<sub>3</sub>、(2) 2Na[Al(OH)<sub>4</sub>]。問題3は (a) 融点を約 1,000 ℃まで下げるため、(b) 炭素が CO<sub>2</sub> になって消費されるため、(c) 2Al<sub>2</sub>O<sub>3</sub> ＋ 3C → 4Al ＋ 3CO<sub>2</sub>。問題4は 2Al ＋ Fe<sub>2</sub>O<sub>3</sub> → Al<sub>2</sub>O<sub>3</sub> ＋ 2Fe で、融解した鉄が得られるため。問題5は製錬に大量の電力を要し、リサイクルはその数％程度のエネルギーで済むため</strong>。性質は「被膜・両性・還元力」、製錬は「バイヤー法 → 氷晶石＋溶融塩電解 → 炭素電極の消耗」という流れで整理すると、どの問題にも対応できます。</p>
+      </details>
+    </div>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>軽さを生かす：航空機・車両・飲料缶</h3>
+    <p>アルミニウムとその合金は、軽くて腐食しにくいことから、航空機の機体、鉄道車両や自動車の車体など、軽量化が燃費や速度に直結する場面で広く使われます。飲料缶も代表例で、薄く成形できる展性と、被膜による腐食への強さが、軽い容器を実現しています。</p>
+    <h3>送電線とアルマイト製品</h3>
+    <p>アルミニウムは銅より軽く電気をよく伝えるため、鉄塔の間の架空送電線には、鋼線で補強したアルミニウム線が使われます。また、表面に厚い酸化被膜を作るアルマイト処理は、窓のサッシ、やかんや鍋、スマートフォンの筐体など、腐食への強さと硬さが求められる日用品・建材に使われています。</p>
+    <h3>リサイクルと製錬所の立地</h3>
+    <p>製錬に大量の電力を必要とするため、アルミニウムの製錬は電力の豊富な地域で行われることが多く、金属そのものがエネルギーを運ぶ形になることから「電気の缶詰」と呼ばれます。使用済みの缶などは回収・再生され、リサイクルに必要なエネルギーが製錬の数％程度と小さいため、アルミニウムはリサイクルの省エネ効果が特に大きい金属として、資源循環の中心に置かれています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>チャールズ・マーティン・ホール</strong>（1863〜1914、アメリカの化学者）、<strong>ポール・エルー</strong>（1863〜1914、フランスの化学者）</p>
+    <p>溶融塩電解によるアルミニウムの製錬法は、アメリカの化学者<strong>チャールズ・マーティン・ホール</strong>（1863〜1914）と、フランスの化学者<strong>ポール・エルー</strong>（1863〜1914）が、1886年にそれぞれ独立に見いだしました。2人は同い年で、互いに知らないまま、氷晶石にアルミナを溶かして電気分解するという同じ方法にたどり着いたことで知られます。このホール・エルー法の登場によって、それまで高価だったアルミニウムが工業的に大量生産できるようになり、軽い金属として広く使われる時代が始まりました。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>水溶液の電気分解でアルミニウムが取り出せない理由は<a href="electrolysis-products.html">電気分解の生成物</a>、電気量と析出量の計算は<a href="electrolysis-faraday.html">電気分解とファラデーの法則</a>、イオン化傾向の順序は<a href="metal-reactivity-series.html">金属のイオン化傾向</a>が役立ちます。同じ無機化学の工業的製法では<a href="iron-steelmaking.html">鉄と製鉄・鋼・合金</a>、<a href="copper-silver-refining.html">銅・銀と金属の精錬</a>、リサイクルの全体像は<a href="recycling-material-cycles.html">リサイクルと物質循環</a>も参考になります。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

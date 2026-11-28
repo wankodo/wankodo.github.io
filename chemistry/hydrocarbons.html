@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>炭化水素（アルカン・アルケン・アルキン）｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="炭化水素をアルカン・アルケン・アルキンの3つに分け、一般式と構造式、置換反応・付加反応・マルコフニコフ則・付加重合、アセチレンの製法までを例題で解説。燃料やプラスチック原料など現場での使われ方も紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="炭化水素（アルカン・アルケン・アルキン）｜化学ツール集">
+<meta property="og:description" content="アルカン・アルケン・アルキンの一般式と構造式、置換・付加反応とマルコフニコフ則、付加重合とアセチレンの製法を例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/hydrocarbons.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">炭化水素</span>（アルカン・アルケン・アルキン）</h1>
+    <p>化学の考え方辞典 ― 有機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 有機化学 ＞ 炭化水素（アルカン・アルケン・アルキン）</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">有機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    炭化水素は炭素と水素だけからなる化合物で、炭素どうしの結合の種類によって性質が決まる。単結合だけのアルカンは一般式 CₙH₂ₙ₊₂ で置換反応や燃焼をし、二重結合をもつアルケンは CₙH₂ₙ で付加反応と付加重合をしやすく、三重結合をもつアルキンは CₙH₂ₙ₋₂ で付加反応をする。分子式を一般式と見比べることが、反応の種類と生成物を予測する入口になる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>炭素と水素だけからなる化合物＝<strong>炭化水素</strong>の分類と反応を扱うときの考え方です。有機化学の入口であり、次のような場面で使います。</p>
+    <ul>
+      <li>分子式（C<sub>5</sub>H<sub>12</sub>、C<sub>3</sub>H<sub>6</sub> など）を一般式と照らして、アルカン・アルケン・アルキンのどれに当てはまるかを判定する問題</li>
+      <li>メタンと塩素の置換反応、エチレンへの水素や臭素の付加反応など、反応の種類を区別し、生成物の構造式を書く問題</li>
+      <li>プロペンに臭化水素を付加させたときの主生成物を、マルコフニコフ則で予測する問題</li>
+      <li>エチレンの付加重合でポリエチレンができる仕組みや、アセチレンを炭化カルシウムから作る反応式を書く問題</li>
+    </ul>
+    <p>ポイントは、<strong>炭素どうしの結合が単結合だけか、二重結合を含むか、三重結合を含むか</strong>で3つのグループに分け、それぞれの一般式と代表的な反応を結びつけて覚えることです。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>アルカン：単結合だけの炭化水素</h3>
+    <p><strong>アルカン</strong>は炭素どうしがすべて単結合でつながった鎖状の炭化水素で、一般式は <strong>C<sub>n</sub>H<sub>2n+2</sub></strong> です（n は炭素原子の数）。水素がこれ以上増やせない「飽和」なつくりなので、反応性は低く、代表的な反応は次の2つです。</p>
+    <ul>
+      <li><strong>燃焼</strong>：十分な酸素のもとでは完全に燃えて二酸化炭素と水になります。CH<sub>4</sub> ＋ 2O<sub>2</sub> → CO<sub>2</sub> ＋ 2H<sub>2</sub>O</li>
+      <li><strong>置換反応</strong>：光を当てると、水素原子がハロゲン原子に1つずつ置き換わります。CH<sub>4</sub> ＋ Cl<sub>2</sub> → CH<sub>3</sub>Cl（クロロメタン）＋ HCl</li>
+    </ul>
+    <div class="formula">アルカン：C<sub>n</sub>H<sub>2n+2</sub>（単結合のみ）　例：メタン CH<sub>4</sub>、エタン C<sub>2</sub>H<sub>6</sub>、プロパン C<sub>3</sub>H<sub>8</sub></div>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 150" width="520" height="150" role="img" aria-label="メタン・エタン・プロパンの構造式" style="max-width:100%;height:auto;">
+        <text x="80" y="22" text-anchor="middle" font-size="13" fill="currentColor">メタン CH₄</text>
+        <text x="80" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="80" y1="56" x2="80" y2="36" stroke="currentColor" stroke-width="2"/>
+        <line x1="80" y1="76" x2="80" y2="96" stroke="currentColor" stroke-width="2"/>
+        <line x1="70" y1="62" x2="48" y2="62" stroke="currentColor" stroke-width="2"/>
+        <line x1="90" y1="62" x2="112" y2="62" stroke="currentColor" stroke-width="2"/>
+        <text x="80" y="30" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="80" y="114" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="38" y="67" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="122" y="67" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="260" y="22" text-anchor="middle" font-size="13" fill="currentColor">エタン C₂H₆</text>
+        <text x="238" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="282" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="250" y1="62" x2="270" y2="62" stroke="currentColor" stroke-width="2"/>
+        <line x1="232" y1="54" x2="216" y2="38" stroke="currentColor" stroke-width="2"/>
+        <line x1="228" y1="62" x2="206" y2="62" stroke="currentColor" stroke-width="2"/>
+        <line x1="232" y1="72" x2="216" y2="88" stroke="currentColor" stroke-width="2"/>
+        <line x1="288" y1="54" x2="304" y2="38" stroke="currentColor" stroke-width="2"/>
+        <line x1="292" y1="62" x2="314" y2="62" stroke="currentColor" stroke-width="2"/>
+        <line x1="288" y1="72" x2="304" y2="88" stroke="currentColor" stroke-width="2"/>
+        <text x="210" y="32" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="196" y="67" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="210" y="104" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="310" y="32" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="324" y="67" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="310" y="104" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="440" y="22" text-anchor="middle" font-size="13" fill="currentColor">プロパン C₃H₈</text>
+        <text x="392" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="440" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="488" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="404" y1="62" x2="428" y2="62" stroke="currentColor" stroke-width="2"/>
+        <line x1="452" y1="62" x2="476" y2="62" stroke="currentColor" stroke-width="2"/>
+        <text x="440" y="104" text-anchor="middle" font-size="12" fill="currentColor">両端のCは CH₃、中央は CH₂</text>
+        <text x="260" y="140" text-anchor="middle" font-size="12" fill="currentColor">アルカンは C−C も C−H もすべて単結合</text>
+      </svg>
+      <p>メタン・エタン・プロパンの構造式。炭素は常に4本の結合の手をもち、アルカンではそのすべてが単結合です。炭素が1つ増えるごとに CH<sub>2</sub> が1つ増えるため、一般式が C<sub>n</sub>H<sub>2n+2</sub> になります。</p>
+    </div>
+    <h3>アルケン：二重結合を1つもつ炭化水素</h3>
+    <p><strong>アルケン</strong>は炭素どうしの二重結合を1つもつ鎖状の炭化水素で、一般式は <strong>C<sub>n</sub>H<sub>2n</sub></strong> です。二重結合は単結合より反応しやすく、二重結合の片方が開いて、相手の分子が両側の炭素に分かれて付く<strong>付加反応</strong>が特徴です。</p>
+    <ul>
+      <li>水素の付加（ニッケル触媒）：C<sub>2</sub>H<sub>4</sub> ＋ H<sub>2</sub> → C<sub>2</sub>H<sub>6</sub></li>
+      <li>臭素の付加：C<sub>2</sub>H<sub>4</sub> ＋ Br<sub>2</sub> → C<sub>2</sub>H<sub>4</sub>Br<sub>2</sub>（臭素水の赤褐色が消えるため、二重結合の検出に使われます）</li>
+      <li>水の付加（リン酸触媒・高温・高圧）：C<sub>2</sub>H<sub>4</sub> ＋ H<sub>2</sub>O → C<sub>2</sub>H<sub>5</sub>OH（エタノール）</li>
+      <li>塩化水素などの付加では、<strong>マルコフニコフ則</strong>（後述）が生成物を決めます</li>
+    </ul>
+    <p>また、エチレンの二重結合が次々に開いて多数の分子がつながる<strong>付加重合</strong>では、ポリエチレンができます（n CH<sub>2</sub>＝CH<sub>2</sub> → −(CH<sub>2</sub>−CH<sub>2</sub>)<sub>n</sub>−）。重合そのものは高分子の項目で詳しく扱いますが、その入口はここです。</p>
+    <div class="formula">アルケン：C<sub>n</sub>H<sub>2n</sub>（二重結合1つ）　例：エチレン（エテン）C<sub>2</sub>H<sub>4</sub>、プロペン C<sub>3</sub>H<sub>6</sub></div>
+    <h3>アルキン：三重結合を1つもつ炭化水素</h3>
+    <p><strong>アルキン</strong>は炭素どうしの三重結合を1つもつ鎖状の炭化水素で、一般式は <strong>C<sub>n</sub>H<sub>2n−2</sub></strong> です。代表は<strong>アセチレン（エチン）C<sub>2</sub>H<sub>2</sub></strong>で、三重結合に段階的に付加反応をします（C<sub>2</sub>H<sub>2</sub> ＋ H<sub>2</sub> → C<sub>2</sub>H<sub>4</sub>、さらに ＋ H<sub>2</sub> → C<sub>2</sub>H<sub>6</sub>）。臭素とも付加し、C<sub>2</sub>H<sub>2</sub> ＋ 2Br<sub>2</sub> → C<sub>2</sub>H<sub>2</sub>Br<sub>4</sub> のように臭素水を脱色します。アセチレンは酸素と燃やすと高温の炎が得られ、金属の溶接・切断に使われてきました。</p>
+    <div class="formula">アルキン：C<sub>n</sub>H<sub>2n−2</sub>（三重結合1つ）　例：アセチレン（エチン）C<sub>2</sub>H<sub>2</sub></div>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 170" width="520" height="170" role="img" aria-label="エチレン・プロペン・アセチレンの構造式とポリエチレンの繰り返し単位" style="max-width:100%;height:auto;">
+        <text x="85" y="22" text-anchor="middle" font-size="13" fill="currentColor">エチレン C₂H₄</text>
+        <text x="62" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="108" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="74" y1="58" x2="96" y2="58" stroke="currentColor" stroke-width="2"/>
+        <line x1="74" y1="66" x2="96" y2="66" stroke="currentColor" stroke-width="2"/>
+        <line x1="56" y1="54" x2="42" y2="40" stroke="currentColor" stroke-width="2"/>
+        <line x1="52" y1="66" x2="34" y2="66" stroke="currentColor" stroke-width="2"/>
+        <line x1="114" y1="54" x2="128" y2="40" stroke="currentColor" stroke-width="2"/>
+        <line x1="118" y1="66" x2="136" y2="66" stroke="currentColor" stroke-width="2"/>
+        <text x="36" y="34" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="24" y="71" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="134" y="34" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="146" y="71" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="85" y="100" text-anchor="middle" font-size="12" fill="currentColor">C＝C 二重結合</text>
+        <text x="260" y="22" text-anchor="middle" font-size="13" fill="currentColor">プロペン C₃H₆</text>
+        <text x="206" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="252" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="306" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="218" y1="58" x2="240" y2="58" stroke="currentColor" stroke-width="2"/>
+        <line x1="218" y1="66" x2="240" y2="66" stroke="currentColor" stroke-width="2"/>
+        <line x1="264" y1="62" x2="294" y2="62" stroke="currentColor" stroke-width="2"/>
+        <text x="206" y="40" text-anchor="middle" font-size="12" fill="currentColor">H₂</text>
+        <text x="252" y="40" text-anchor="middle" font-size="12" fill="currentColor">H</text>
+        <text x="306" y="40" text-anchor="middle" font-size="12" fill="currentColor">H₃</text>
+        <text x="260" y="100" text-anchor="middle" font-size="12" fill="currentColor">CH₂＝CH−CH₃ とも書く</text>
+        <text x="430" y="22" text-anchor="middle" font-size="13" fill="currentColor">アセチレン C₂H₂</text>
+        <text x="398" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="462" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="410" y1="56" x2="450" y2="56" stroke="currentColor" stroke-width="2"/>
+        <line x1="410" y1="63" x2="450" y2="63" stroke="currentColor" stroke-width="2"/>
+        <line x1="410" y1="70" x2="450" y2="70" stroke="currentColor" stroke-width="2"/>
+        <line x1="386" y1="62" x2="368" y2="62" stroke="currentColor" stroke-width="2"/>
+        <line x1="474" y1="62" x2="492" y2="62" stroke="currentColor" stroke-width="2"/>
+        <text x="358" y="67" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="502" y="67" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="430" y="100" text-anchor="middle" font-size="12" fill="currentColor">H−C≡C−H（直線形）</text>
+        <text x="260" y="132" text-anchor="middle" font-size="13" fill="currentColor">ポリエチレンの繰り返し単位：−(CH₂−CH₂)ₙ−</text>
+        <text x="260" y="156" text-anchor="middle" font-size="12" fill="currentColor">エチレンの二重結合が開いて単結合で長くつながったもの</text>
+      </svg>
+      <p>エチレンとプロペンは二重結合、アセチレンは三重結合をもちます。多重結合の数が増えるほど、同じ炭素数でも水素の数が減ります（一般式の H の係数 2n＋2／2n／2n−2 の違いはここから来ます）。</p>
+    </div>
+    <h3>マルコフニコフ則（入口）</h3>
+    <p>プロペン CH<sub>2</sub>＝CH−CH<sub>3</sub> のように左右非対称なアルケンに HBr のような H−X 型の分子が付加すると、生成物が2通り考えられます。このとき主生成物は、<strong>H が「すでに H の多い方の炭素」に付く</strong>という経験則（<strong>マルコフニコフ則</strong>）で決まります。プロペン ＋ HBr では H が端の CH<sub>2</sub> に付き、Br が中央の炭素に付いた <strong>2-ブロモプロパン</strong> が主生成物になります（C<sub>3</sub>H<sub>6</sub> ＋ HBr → C<sub>3</sub>H<sub>7</sub>Br）。理由づけ（中間体の安定性）は大学で学びますが、高校では「H は H の多い方へ」で予測できれば十分です。</p>
+    <h3>アセチレンの製法（教科書レベル）</h3>
+    <p>実験室では、<strong>炭化カルシウム（カーバイド）CaC<sub>2</sub> に水を加える</strong>とアセチレンが発生します。</p>
+    <div class="formula">CaC<sub>2</sub> ＋ 2H<sub>2</sub>O → C<sub>2</sub>H<sub>2</sub> ＋ Ca(OH)<sub>2</sub></div>
+    <p>アセチレンは空気と混合すると爆発しやすい可燃性の気体です。発生した気体への引火や、密閉容器での発生には十分な注意が必要です。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>シクロアルカンと芳香族との区別（入口）</h3>
+    <p>炭素が輪（環）になった炭化水素もあります。単結合だけで環を作る<strong>シクロアルカン</strong>は、環の分だけ水素が2個減り、一般式はアルケンと同じ C<sub>n</sub>H<sub>2n</sub> になります。つまり C<sub>3</sub>H<sub>6</sub> はプロペン（アルケン）ともシクロプロパン（シクロアルカン）とも読めるため、<strong>分子式だけでは区別できず、構造式や反応性（臭素水を脱色するかどうか）で判断します</strong>。一方、ベンゼン C<sub>6</sub>H<sub>6</sub> に代表される<strong>芳香族化合物</strong>は、六角形の環の中に二重結合と単結合が交互に並ぶ特別な環構造をもち、付加反応より置換反応をしやすいという別格の性質を示します。芳香族は独立した項目で扱うので、ここでは「環＋多重結合の特別な仲間がいる」ことだけ押さえてください。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 170" width="520" height="170" role="img" aria-label="シクロプロパン・シクロヘキサン・ベンゼンの環構造" style="max-width:100%;height:auto;">
+        <text x="85" y="22" text-anchor="middle" font-size="13" fill="currentColor">シクロプロパン C₃H₆</text>
+        <polygon points="85,44 56,94 114,94" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="85" y="40" text-anchor="middle" font-size="13" fill="currentColor">C</text>
+        <text x="48" y="108" text-anchor="middle" font-size="13" fill="currentColor">C</text>
+        <text x="122" y="108" text-anchor="middle" font-size="13" fill="currentColor">C</text>
+        <text x="85" y="140" text-anchor="middle" font-size="12" fill="currentColor">各Cは CH₂</text>
+        <text x="260" y="22" text-anchor="middle" font-size="13" fill="currentColor">シクロヘキサン C₆H₁₂</text>
+        <polygon points="260,40 294,60 294,96 260,116 226,96 226,60" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="260" y="140" text-anchor="middle" font-size="12" fill="currentColor">6個の CH₂ が環になった形</text>
+        <text x="435" y="22" text-anchor="middle" font-size="13" fill="currentColor">ベンゼン C₆H₆（芳香族）</text>
+        <polygon points="435,40 469,60 469,96 435,116 401,96 401,60" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="435" cy="78" r="17" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="435" y="140" text-anchor="middle" font-size="12" fill="currentColor">環内の円は二重結合の広がりを表す</text>
+        <text x="260" y="162" text-anchor="middle" font-size="12" fill="currentColor">シクロアルカンは単結合の環、ベンゼン環は多重結合を含む特別な環</text>
+      </svg>
+      <p>環構造の例。シクロプロパンとプロペンは分子式が同じ C<sub>3</sub>H<sub>6</sub> でも構造と反応性が違います。ベンゼンの詳しい性質は芳香族化合物の項目で扱います。</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>炭素の数 n を数え、H の数を一般式と比べる。</strong>H が 2n＋2 ならアルカン、2n ならアルケン（またはシクロアルカン）、2n−2 ならアルキンが候補です。</li>
+      <li><strong>構造式で多重結合の有無を確認する。</strong>分子式が C<sub>n</sub>H<sub>2n</sub> のときは、二重結合があるか環があるかでアルケンとシクロアルカンを区別します。</li>
+      <li><strong>反応の種類を決める。</strong>アルカン＋ハロゲン＋光 → 置換反応、アルケン・アルキン＋小分子 → 付加反応、アルケンどうしの連結 → 付加重合、炭化水素＋酸素 → 燃焼、という対応で見分けます。</li>
+      <li><strong>付加反応では、二重・三重結合を開いて相手を両側に分けて付ける。</strong>非対称なアルケンに H−X が付くときは、マルコフニコフ則（H は H の多い方の炭素へ）で主生成物を決めます。</li>
+      <li><strong>反応式の両辺で原子の数を数え直す。</strong>C・H・O・ハロゲンの数が左右で一致しているかを必ず検算します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1（分類）：次の分子式の炭化水素は、アルカン・アルケン・アルキンのどれに当てはまるか。一般式と照らして答えよ。（a）C<sub>5</sub>H<sub>12</sub>（b）C<sub>3</sub>H<sub>6</sub>（c）C<sub>4</sub>H<sub>6</sub></p>
+      <p class="ex-q">問題2（反応の種類と生成物）：次の反応の種類（置換・付加・燃焼・付加重合）を答え、生成物を書け。（a）メタンと塩素の混合物に光を当てる（b）エチレンに臭素を加える（c）エチレンに水を付加させる（d）メタンを十分な酸素で燃やす</p>
+      <p class="ex-q">問題3（マルコフニコフ則）：プロペンに臭化水素 HBr を付加させたときの主生成物の名前と構造を答えよ。</p>
+      <p class="ex-q">問題4（アセチレン）：炭化カルシウムからアセチレンを作る反応式を書け。また、アセチレンに水素を十分に付加させたときの最終生成物を答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：（a）n＝5 のとき 2n＋2＝12 となり H の数が一致するので<strong>アルカン</strong>（ペンタン）。（b）n＝3 のとき 2n＝6 となり<strong>アルケンまたはシクロアルカン</strong>（プロペン、またはシクロプロパン。分子式だけでは決まらず、構造式か反応性で区別します）。（c）n＝4 のとき 2n−2＝6 となり<strong>アルキン</strong>（1-ブチンなど）。</li>
+          <li>問題2：（a）<strong>置換反応</strong>。CH<sub>4</sub> ＋ Cl<sub>2</sub> → CH<sub>3</sub>Cl（クロロメタン）＋ HCl。H が Cl に1つ置き換わります。（b）<strong>付加反応</strong>。C<sub>2</sub>H<sub>4</sub> ＋ Br<sub>2</sub> → C<sub>2</sub>H<sub>4</sub>Br<sub>2</sub>（1,2-ジブロモエタン）。二重結合が開いて Br が両側の炭素に付きます。（c）<strong>付加反応</strong>。C<sub>2</sub>H<sub>4</sub> ＋ H<sub>2</sub>O → C<sub>2</sub>H<sub>5</sub>OH（エタノール）。（d）<strong>燃焼</strong>。CH<sub>4</sub> ＋ 2O<sub>2</sub> → CO<sub>2</sub> ＋ 2H<sub>2</sub>O。どの式も両辺の原子数を数えると C・H・O・Cl・Br の数が一致します（検算済み）。</li>
+          <li>問題3：マルコフニコフ則により、H は H の多い方の炭素（端の CH<sub>2</sub>）に付き、Br は中央の炭素に付きます。よって主生成物は <strong>2-ブロモプロパン</strong> CH<sub>3</sub>−CHBr−CH<sub>3</sub> です。反応式は C<sub>3</sub>H<sub>6</sub> ＋ HBr → C<sub>3</sub>H<sub>7</sub>Br で、両辺とも C<sub>3</sub>H<sub>7</sub>Br となり一致します。</li>
+          <li>問題4：製法は CaC<sub>2</sub> ＋ 2H<sub>2</sub>O → C<sub>2</sub>H<sub>2</sub> ＋ Ca(OH)<sub>2</sub>（両辺とも Ca・C<sub>2</sub>・H<sub>4</sub>・O<sub>2</sub> で一致）。アセチレンへの水素の付加は2段階で進み、C<sub>2</sub>H<sub>2</sub> ＋ H<sub>2</sub> → C<sub>2</sub>H<sub>4</sub>（エチレン）、C<sub>2</sub>H<sub>4</sub> ＋ H<sub>2</sub> → C<sub>2</sub>H<sub>6</sub> となるため、十分な水素のもとでの最終生成物は<strong>エタン C<sub>2</sub>H<sub>6</sub></strong> です。</li>
+        </ol>
+        <p><strong>答え：問題1は（a）アルカン、（b）アルケンまたはシクロアルカン、（c）アルキン。問題2は（a）置換・クロロメタン、（b）付加・1,2-ジブロモエタン、（c）付加・エタノール、（d）燃焼・CO<sub>2</sub> と H<sub>2</sub>O。問題3は 2-ブロモプロパン。問題4は CaC<sub>2</sub> ＋ 2H<sub>2</sub>O → C<sub>2</sub>H<sub>2</sub> ＋ Ca(OH)<sub>2</sub>、最終生成物はエタン。</strong></p>
+        <div class="tri-fig">
+          <svg viewBox="0 0 520 280" width="520" height="280" role="img" aria-label="例題に登場する化合物の構造式" style="max-width:100%;height:auto;">
+            <text x="130" y="22" text-anchor="middle" font-size="13" fill="currentColor">ペンタン C₅H₁₂</text>
+            <text x="130" y="52" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH₂−CH₂−CH₂−CH₃</text>
+            <text x="390" y="22" text-anchor="middle" font-size="13" fill="currentColor">1-ブチン C₄H₆</text>
+            <text x="390" y="52" text-anchor="middle" font-size="14" fill="currentColor">HC≡C−CH₂−CH₃</text>
+            <text x="130" y="92" text-anchor="middle" font-size="13" fill="currentColor">クロロメタン CH₃Cl</text>
+            <text x="118" y="122" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+            <line x1="130" y1="116" x2="150" y2="116" stroke="currentColor" stroke-width="2"/>
+            <text x="168" y="122" text-anchor="middle" font-size="15" fill="currentColor">Cl</text>
+            <text x="118" y="146" text-anchor="middle" font-size="12" fill="currentColor">Cの残り3本は H</text>
+            <text x="390" y="92" text-anchor="middle" font-size="13" fill="currentColor">1,2-ジブロモエタン C₂H₄Br₂</text>
+            <text x="390" y="122" text-anchor="middle" font-size="14" fill="currentColor">Br−CH₂−CH₂−Br</text>
+            <text x="130" y="182" text-anchor="middle" font-size="13" fill="currentColor">エタノール C₂H₅OH</text>
+            <text x="130" y="212" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH₂−OH</text>
+            <text x="390" y="182" text-anchor="middle" font-size="13" fill="currentColor">2-ブロモプロパン C₃H₇Br</text>
+            <text x="390" y="212" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CHBr−CH₃</text>
+            <text x="260" y="242" text-anchor="middle" font-size="13" fill="currentColor">1,1,2,2-テトラブロモエタン C₂H₂Br₄（本文のアセチレン＋臭素の生成物）</text>
+            <text x="260" y="266" text-anchor="middle" font-size="14" fill="currentColor">Br₂CH−CHBr₂</text>
+          </svg>
+          <p>例題に登場する化合物の構造式。ペンタンは問題1（a）、1-ブチンは問題1（c）の候補、クロロメタン・1,2-ジブロモエタン・エタノールは問題2の生成物、2-ブロモプロパンは問題3の主生成物です。問題4のアセチレンとエタンは前掲の図にあります。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>燃料としてのアルカン</h3>
+    <p>天然ガスの主成分はメタンで、都市ガスや発電用燃料として使われます。プロパンとブタンを主成分とする LPガス（液化石油ガス）は家庭用・業務用の燃料やカセットコンロの燃料です。ガソリンは炭素数およそ5〜12の炭化水素の混合物で、アルカンの「燃焼しやすさと反応性の低さ」が燃料としての扱いやすさを支えています。</p>
+    <h3>プラスチック原料としてのアルケンと付加重合</h3>
+    <p>エチレンは石油化学の最も基本的な原料で、付加重合でポリエチレン（袋・容器・フィルム）になり、水の付加でエタノールを作るなど、多くの製品の出発点です。プロペンの付加重合ではポリプロピレン（自動車部品・食品容器・繊維）が得られます。「二重結合が開いてつながる」というこの項目の反応が、そのまま樹脂産業の土台になっています。</p>
+    <h3>アセチレン溶接とエチレンの熟成作用</h3>
+    <p>アセチレンを酸素と燃やす酸素アセチレン炎は約3000 ℃に達し、金属の溶接や切断に使われてきました。発生には炭化カルシウムと水の反応（この項目の製法）が長く使われています。またエチレンは植物ホルモンとして果実の熟成を促す働きがあり、バナナなどの追熟に利用されます。同じ炭化水素でも、結合の種類と分子の形が違えば現場での顔はまったく変わります。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ウラジーミル・マルコフニコフ</strong>（1837〜1904、ロシアの化学者）、<strong>アウグスト・ケクレ</strong>（1829〜1896、ドイツの化学者）</p>
+    <p>付加反応の生成物を予測する経験則は、ロシアの化学者<strong>ウラジーミル・マルコフニコフ</strong>が1869〜1870年ごろに発表した観察に基づき、後に<strong>マルコフニコフ則</strong>と呼ばれるようになりました。「水素は、すでに水素の多い炭素に付く」という本文の規則がその内容です。また、ベンゼンの環構造は、ドイツの化学者<strong>アウグスト・ケクレ</strong>が1865年に六角形の環に単結合と二重結合が交互に並ぶ構造を提案したことが出発点で、芳香族化合物を通常のアルケンとは別の仲間として扱う考え方はここから始まりました。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>有機化合物全体の見取り図は<a href="organic-basics.html">有機化合物の特徴と分類</a>、同じ分子式で構造が違う話は<a href="structural-isomers.html">構造式と異性体</a>、分子式から環と多重結合の数を数える方法は<a href="degree-of-unsaturation.html">不飽和度と構造の推定</a>が役立ちます。ベンゼン環の詳しい性質は<a href="aromatics.html">芳香族化合物</a>、付加重合の計算は<a href="addition-polymerization.html">付加重合と平均分子量</a>、炭化水素の供給源は<a href="petroleum-petrochemicals.html">石油と石油化学</a>で扱います。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

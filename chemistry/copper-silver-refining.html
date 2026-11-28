@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>銅・銀と金属の精錬｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="銅・銀と金属の精錬を、黄銅鉱から粗銅を作る製錬の概要、粗銅を陽極・純銅を陰極とする電解精錬の電極反応と陽極泥からの貴金属回収、硫酸銅（II）などの銅の化合物、臭化銀の感光性を使った写真の化学（現像・定着）で解説。電線や電気接点、写真フィルムなど現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="銅・銀と金属の精錬｜化学ツール集">
+<meta property="og:description" content="銅の電解精錬（陽極・陰極の反応と陽極泥）と、臭化銀の感光性を使う写真の化学を、電極反応式と例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/copper-silver-refining.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">銅・銀</span>と金属の精錬</h1>
+    <p>化学の考え方辞典 ― 無機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 無機化学 ＞ 銅・銀と金属の精錬</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">無機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    銅は黄銅鉱などの鉱石から粗銅を作り、電解精錬で純度を高める。電解精錬では粗銅を陽極、純銅を陰極として硫酸銅（II）水溶液を電気分解し、陽極では銅が溶け出し、陰極では純粋な銅が析出する。イオン化傾向の小さい銀や金は溶けずに陽極泥として沈み、貴金属として回収される。銀は電気・熱の伝導性が金属で最大で、臭化銀などのハロゲン化銀は光で分解する感光性をもち、写真フィルムに使われる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>銅と銀という代表的な金属について、<strong>鉱石から純粋な金属を取り出す精錬の仕組み</strong>と、<strong>化合物や単体の性質の使われ方</strong>を説明するときの項目です。次のような場面で使います。</p>
+    <ul>
+      <li>銅の電解精錬で、粗銅と純銅をどちらの電極につなぐか、各電極で起こる反応を電極反応式で書く問題</li>
+      <li>粗銅に含まれる不純物（亜鉛・鉄・銀・金など）が、電解精錬でどこへ行くかをイオン化傾向から説明する問題</li>
+      <li>硫酸銅（II）や酸化銅など、銅の化合物の色や反応を答える問題</li>
+      <li>臭化銀の感光性をもとに、写真の現像・定着がなぜ必要かを説明する問題</li>
+    </ul>
+    <p>土台になるのは、電気分解で陰極に還元・陽極に酸化が起こることと、金属ごとに異なるイオン化傾向です。生成物の判定の基本は<a href="electrolysis-products.html">電気分解の生成物と優先順位</a>、順序そのものは<a href="metal-reactivity-series.html">金属のイオン化傾向</a>で扱っています。この項目では、その知識を「金属を純粋に取り出す技術」と「銀の感光性を使う写真」に当てはめます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>銅の製錬：黄銅鉱から粗銅へ</h3>
+    <p>銅の主原料は、黄銅鉱 CuFeS<sub>2</sub> を多く含む銅鉱石です。鉱石から銅分を濃縮した精鉱を、高温の炉で酸素を含む気体と反応させる<strong>自溶炉法</strong>などで溶かし、鉄分をスラグ（かす）として分離して、硫化銅（I）Cu<sub>2</sub>S を主成分とする中間物（マット）を得ます。これを転炉でさらに酸化すると、純度 98〜99％ 程度の<strong>粗銅</strong>が得られます。転炉での反応の骨格は、教科書では次のように表されます。</p>
+    <div class="formula">2Cu<sub>2</sub>S ＋ 3O<sub>2</sub> → 2Cu<sub>2</sub>O ＋ 2SO<sub>2</sub></div>
+    <div class="formula">Cu<sub>2</sub>S ＋ 2Cu<sub>2</sub>O → 6Cu ＋ SO<sub>2</sub></div>
+    <p>粗銅には、鉄・亜鉛・鉛・ニッケルなどのほか、銀や金などの貴金属もわずかに含まれています。このままでは電線などに求められる純度に届かないため、次の電解精錬で純度を高めます。ここでは工業的な製錬の流れの概要にとどめます。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>銅の電解精錬</h3>
+    <p>電解精錬では、<strong>陽極（電源の正極側）に粗銅の厚板、陰極（電源の負極側）に純銅の薄板</strong>を入れ、電解液として硫酸銅（II）CuSO<sub>4</sub> 水溶液（硫酸で酸性にしたもの）を使います。各電極の反応は次の通りです。</p>
+    <div class="formula">陽極： Cu → Cu<sup>2+</sup> ＋ 2e<sup>−</sup>（粗銅が溶け出す）</div>
+    <div class="formula">陰極： Cu<sup>2+</sup> ＋ 2e<sup>−</sup> → Cu（純粋な銅が析出）</div>
+    <p>不純物の行き先は、イオン化傾向で決まります。</p>
+    <ul>
+      <li><strong>銅よりイオン化傾向の大きい金属</strong>（亜鉛 Zn、鉄 Fe、ニッケル Ni など）：陽極で銅と一緒にイオンになって溶け出しますが、陰極では Cu<sup>2+</sup> の方が優先して還元されるため、金属として析出せず、溶液中にとどまります</li>
+      <li><strong>銅よりイオン化傾向の小さい金属</strong>（銀 Ag、金 Au、白金 Pt など）：陽極でも溶けず、粗銅が溶けるにつれて電極の下に沈殿します。この沈殿を<strong>陽極泥</strong>といい、貴金属を回収する原料になります</li>
+    </ul>
+    <p>陽極で溶け出す銅の量と陰極で析出する銅の量はほぼ等しいので、電解液中の Cu<sup>2+</sup> の濃度はほぼ一定に保たれます。こうして純度 99.99％ 程度の純銅（電気銅）が得られます。各記号の意味は次の通りです。</p>
+    <ul>
+      <li><strong>e<sup>−</sup></strong>：電子。酸化（陽極）の式では右辺に、還元（陰極）の式では左辺に書く</li>
+      <li><strong>陽極泥</strong>：電解精錬で陽極の下にたまる沈殿。銀・金・白金などの貴金属を含む</li>
+      <li><strong>イオン化傾向</strong>：金属が水溶液中で電子を放出して陽イオンになろうとする性質の大きさ。Zn・Fe は銅より大きく、Ag・Au は銅より小さい</li>
+    </ul>
+    <h3>銅の化合物</h3>
+    <ul>
+      <li><strong>硫酸銅（II）CuSO<sub>4</sub></strong>：五水和物 CuSO<sub>4</sub>・5H<sub>2</sub>O は青色の結晶です。加熱すると水和水を失って白色の無水物になり、水を加えると再び青色に戻るため、水の検出に使われます。水溶液に水酸化ナトリウム水溶液を加えると、青白色の水酸化銅（II）Cu(OH)<sub>2</sub> が沈殿します：Cu<sup>2+</sup> ＋ 2OH<sup>−</sup> → Cu(OH)<sub>2</sub></li>
+      <li><strong>酸化銅</strong>：酸化銅（II）CuO は黒色、酸化銅（I）Cu<sub>2</sub>O は赤色の固体です。水酸化銅（II）を加熱すると、黒色の酸化銅（II）と水に分解します：Cu(OH)<sub>2</sub> → CuO ＋ H<sub>2</sub>O</li>
+      <li><strong>炎色反応</strong>：銅の化合物を炎の中に入れると、炎が<strong>青緑色</strong>になります。銅イオンの検出や、花火の色付けの考え方につながる反応です</li>
+    </ul>
+    <h3>銀の性質と写真の化学</h3>
+    <p>銀 Ag は、金属の中で<strong>電気伝導性・熱伝導性が最大</strong>で、展性・延性にも優れます。一方で、硫黄を含む気体や温泉水などに触れると、黒色の硫化銀 Ag<sub>2</sub>S ができて黒ずみます。硝酸銀 AgNO<sub>3</sub> は光に当たると分解しやすいため、褐色瓶に保存されます。</p>
+    <p>写真に使われるのは、臭化銀 AgBr などの<strong>ハロゲン化銀の感光性</strong>です。ハロゲン化銀は光が当たると分解し、金属銀を生じます。</p>
+    <div class="formula">2AgBr → 2Ag ＋ Br<sub>2</sub>（光による分解）</div>
+    <p>フィルムや印画紙では、臭化銀の微結晶をゼラチンに混ぜた乳剤が支持体に塗られています。撮影で光が当たった部分では、目に見えないほどわずかに銀が生じます（潜像）。ここから写真ができるまでの考え方は、次の2段階です。</p>
+    <ul>
+      <li><strong>現像</strong>：現像液（還元剤を含む液）で処理すると、光が当たって潜像のできた臭化銀の結晶が優先して還元され、黒色の金属銀になります。当たらなかった結晶はほとんど還元されないため、光の強弱が黒さの濃淡として増幅されます。光が当たった部分ほど黒くなるので、フィルム上では明暗が逆転した像（ネガ）ができます</li>
+      <li><strong>定着</strong>：現像後も、光の当たらなかった臭化銀が残ったままでは、光に当てるたびに分解して像が消えてしまいます。そこでチオ硫酸ナトリウム Na<sub>2</sub>S<sub>2</sub>O<sub>3</sub> 水溶液（ハイポ）で処理し、未反応の臭化銀を水に溶ける錯イオンにして溶かし去ります：AgBr ＋ 2S<sub>2</sub>O<sub>3</sub><sup>2−</sup> → [Ag(S<sub>2</sub>O<sub>3</sub>)<sub>2</sub>]<sup>3−</sup> ＋ Br<sup>−</sup>。これで像が光に対して安定します</li>
+    </ul>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>電極のつなぎ方を確認する。</strong>電解精錬では、純度を上げたい粗銅を陽極（電源の正極側）、純銅を取り出す側を陰極（電源の負極側）につなぎます。「溶かしたい側が陽極、付けたい側が陰極」が原則です。</li>
+      <li><strong>両極の電極反応式を書く。</strong>陽極では銅が電子を放出して溶け出し（Cu → Cu<sup>2+</sup> ＋ 2e<sup>−</sup>）、陰極では Cu<sup>2+</sup> が電子を受け取って析出します（Cu<sup>2+</sup> ＋ 2e<sup>−</sup> → Cu）。原子の数と電荷が両辺でそろうか確認します。</li>
+      <li><strong>不純物をイオン化傾向で仕分ける。</strong>銅よりイオン化傾向の大きい金属は「溶けるが析出しない（溶液中にとどまる）」、小さい金属は「溶けずに陽極泥になる」と判定します。</li>
+      <li><strong>写真の問題は「感光→現像→定着」の順で考える。</strong>光でハロゲン化銀が分解して潜像ができ、現像で当たった結晶だけが銀になって増幅され、定着で残りのハロゲン化銀を取り除いて像を固定する、という流れで説明します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：銅の電解精錬では、粗銅と純銅の薄板をそれぞれどちらの電極につなぐか。また、各電極で起こる反応を電極反応式で書け。問題2：粗銅に含まれる亜鉛 Zn と銀 Ag は、電解精錬のあと、それぞれどこへ行くか。イオン化傾向を使って説明せよ。問題3：電解精錬を続けても、電解液中の Cu<sup>2+</sup> の濃度がほぼ変わらないのはなぜか。問題4：写真フィルムで、撮影しただけでは像が見えず、現像と定着の両方が必要なのはなぜか。臭化銀の反応式も使って説明せよ。問題5：硫酸銅（II）水溶液に水酸化ナトリウム水溶液を加えると何が起こるか。また、生じた沈殿を加熱するとどうなるか。反応式も書け。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：粗銅は陽極（電源の正極側）、純銅の薄板は陰極（電源の負極側）につなぎます。陽極では銅が酸化されて溶け出します：Cu → Cu<sup>2+</sup> ＋ 2e<sup>−</sup>。陰極では Cu<sup>2+</sup> が還元されて純粋な銅が析出します：Cu<sup>2+</sup> ＋ 2e<sup>−</sup> → Cu。どちらの式も、原子の数（Cu が両辺1個）と電荷（陽極は左辺0・右辺＋2−2＝0、陰極は左辺＋2−2＝0・右辺0）がそろっています。</li>
+          <li>問題2：亜鉛は銅よりイオン化傾向が大きいので、陽極で Zn<sup>2+</sup> となって銅と一緒に溶け出します。しかし陰極では Cu<sup>2+</sup> の方が優先して還元されるため、亜鉛は金属として析出せず、溶液中にとどまります。銀は銅よりイオン化傾向が小さいので陽極でも溶けず、粗銅が溶けるにつれて陽極の下に陽極泥として沈殿し、貴金属として回収されます。</li>
+          <li>問題3：陽極で粗銅から溶け出す銅の量と、陰極で Cu<sup>2+</sup> が還元されて析出する銅の量が、同じ電気量に対して等しいからです。両極の反応はどちらも電子2個の出入りで銅1個が動くため、溶液中の Cu<sup>2+</sup> は出入りが釣り合って、濃度はほぼ一定に保たれます。</li>
+          <li>問題4：撮影時の光では、臭化銀は 2AgBr → 2Ag ＋ Br<sub>2</sub> と分解しますが、生じる銀は目に見えないほどわずか（潜像）です。現像では、潜像のできた結晶が優先して還元されて黒色の金属銀になり、像が目に見える濃淡に増幅されます。定着では、光の当たらなかった未反応の臭化銀をチオ硫酸ナトリウム水溶液で錯イオンにして溶かし去ります。定着をしないと、残った臭化銀が光で分解し続けて像が黒く消えてしまうため、両方の処理が必要です。</li>
+          <li>問題5：青白色の水酸化銅（II）Cu(OH)<sub>2</sub> が沈殿します：Cu<sup>2+</sup> ＋ 2OH<sup>−</sup> → Cu(OH)<sub>2</sub>。この沈殿を加熱すると分解して、黒色の酸化銅（II）CuO と水になります：Cu(OH)<sub>2</sub> → CuO ＋ H<sub>2</sub>O。</li>
+        </ol>
+        <p><strong>答え：問題1は粗銅が陽極・純銅が陰極で、陽極 Cu → Cu<sup>2+</sup> ＋ 2e<sup>−</sup>、陰極 Cu<sup>2+</sup> ＋ 2e<sup>−</sup> → Cu。問題2は亜鉛が溶液中にとどまり、銀が陽極泥になる。問題3は両極で出入りする銅の量が等しいから。問題4は現像で潜像を銀の像に増幅し、定着で未反応の臭化銀を取り除くため。問題5は青白色の Cu(OH)<sub>2</sub> が沈殿し、加熱で黒色の CuO になる</strong>。電解精錬の問題は「電極の判定→電極反応式→不純物の仕分け」の順で、写真の問題は「感光→現像→定着」の順で考えると整理できます。</p>
+      </details>
+    </div>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>電気銅と電線・電子機器</h3>
+    <p>電解精錬で作られる純度 99.99％ 程度の電気銅は、電気伝導性が高いため、電線・ケーブル、モーターや変圧器の巻線、電子機器の配線やプリント基板の銅箔などに広く使われます。不純物が多いと電気抵抗が増えて伝導性が落ちるため、銅の用途の多くはこの精錬の純度に支えられています。また、電解精錬の副産物である陽極泥は、銀・金・白金族などの貴金属の重要な回収源になっています。</p>
+    <h3>硫酸銅（II）の利用</h3>
+    <p>硫酸銅（II）は、ぶどうなどの病害防除に使われるボルドー液（硫酸銅（II）と消石灰から作る農薬）の原料として知られます。また、五水和物の青色結晶が加熱で白色になり水で青色に戻る性質は、水の存在を確かめる検出に使われます。銅の化合物の青色は、炎色反応の青緑色とあわせて、銅イオンを見分ける手がかりになります。</p>
+    <h3>銀の用途と写真フィルム</h3>
+    <p>銀は電気・熱の伝導性が金属で最大であることから、電気接点やはんだ、電子部品などに使われ、装飾品や食器にも用いられます。臭化銀の感光性は、写真フィルムや印画紙、医療用の X 線フィルムの乳剤に使われてきました。デジタルカメラが主流になった現在でも、映画用フィルムや芸術写真では銀塩写真が使われ続けており、現像・定着という化学処理の流れは写真技術の基礎になっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ルイ・ダゲール</strong>（1787〜1851、フランスの画家・発明家）</p>
+    <p>銀の感光性を実用的な写真技術にした先駆者が、フランスの画家・発明家<strong>ルイ・ダゲール</strong>（1787〜1851）です。1839年に公表された彼のダゲレオタイプは、銀でめっきした銅板の表面にヨウ化銀の感光層を作り、露光後に水銀蒸気で現像し、チオ硫酸ナトリウム水溶液で定着する方式でした。支持体が銅板、感光材がハロゲン化銀、仕上げが定着、という構成は、この項目で扱う銅と銀の化学がそのまま写真の原点になったことを示しています。その後、感光材は臭化銀をゼラチン乳剤に分散させたフィルムへと発展し、銀塩写真の基本の流れ（感光・現像・定着）が確立しました。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>電解精錬の土台になる生成物の判定は<a href="electrolysis-products.html">電気分解の生成物と優先順位</a>、不純物の仕分けに使う順序は<a href="metal-reactivity-series.html">金属のイオン化傾向</a>、電気量と析出量の計算は<a href="electrolysis-faraday.html">電気分解とファラデーの法則</a>が役立ちます。ほかの金属の製錬は<a href="aluminium.html">アルミニウムとその製錬</a>や<a href="iron-steelmaking.html">鉄と製鉄・鋼・合金</a>も参考になります。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

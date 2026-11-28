@@ -383,7 +383,7 @@
 
 ## 化学ツール集
 
-> 中学理科・高校化学基礎・高校化学・大学レベルの考え方辞典と計算機。全103項目、各項目に解説記事があり、計算機つきの項目もあります。トップは [化学ツール集](https://wankodo.github.io/chemistry/) です。
+> 中学理科・高校化学基礎・高校化学・大学レベルの考え方辞典と計算機。全121項目、各項目に解説記事があり、計算機つきの項目もあります。トップは [化学ツール集](https://wankodo.github.io/chemistry/) です。
 
 - [密度と物質の区別｜化学ツール集](https://wankodo.github.io/chemistry/density.html): 質量と体積から密度を求め、浮き沈みの判断や物質の同定に使う。計算機つき。
 - [モルとアボガドロ定数｜化学ツール集](https://wankodo.github.io/chemistry/mole-avogadro.html): 粒子数から物質量（mol）を、物質量から粒子数をアボガドロ定数で換算する。計算機つき。
@@ -488,3 +488,21 @@
 - [金属の腐食と防食｜化学ツール集](https://wankodo.github.io/chemistry/corrosion.html): 鉄のさびが局部電池の仕組みで進む理由と、トタン・ブリキ・不動態・電気防食など防食方法の選び方を、イオン化傾向で判断する。解説記事のみ。
 - [標準電極電位｜化学ツール集](https://wankodo.github.io/chemistry/standard-electrode-potential.html): 標準電極電位の表から電池の標準起電力と反応の向き・自発性を読み取る。計算機つき。
 - [ネルンストの式｜化学ツール集](https://wankodo.github.io/chemistry/nernst-equation.html): 標準電極電位 E° と濃度・温度から、実際の電極電位や電池の起電力をネルンストの式で求める。計算機つき。
+- [気体の性質と製法｜化学ツール集](https://wankodo.github.io/chemistry/common-gases-preparation.html): 代表的な気体について、性質（色・臭い・溶解性・密度）と実験室的製法の反応式・捕集法・乾燥剤を対応づけて判定する。解説記事のみ。
+- [ハロゲンとその化合物｜化学ツール集](https://wankodo.github.io/chemistry/halogens.html): ハロゲンの酸化力の順序を使ってハロゲン同士の置換反応が起こるかを判定し、ハロゲン化水素や次亜塩素酸・さらし粉の性質を説明する。解説記事のみ。
+- [硫黄と硫酸・接触法｜化学ツール集](https://wankodo.github.io/chemistry/sulfur-sulfuric-acid.html): 硫黄の同素体と硫黄化合物の性質、濃硫酸と希硫酸の性質の違い、接触法による硫酸の工業的製法の流れを理解する。解説記事のみ。
+- [窒素とアンモニア・ハーバー法｜化学ツール集](https://wankodo.github.io/chemistry/nitrogen-ammonia.html): 窒素分子が安定な理由、窒素酸化物とアンモニアの性質・検出法、ハーバー・ボッシュ法とオストワルト法の流れを説明する。解説記事のみ。
+- [リンとケイ素の化合物｜化学ツール集](https://wankodo.github.io/chemistry/phosphorus-silicon.html): リンの同素体（黄リン・赤リン）と十酸化四リン・リン酸・過リン酸石灰、ケイ素単体と二酸化ケイ素・ケイ酸・シリカゲルの性質を、毒性・発火性・水への溶け方などから見分ける。解説記事のみ。
+- [炭素と炭酸塩｜化学ツール集](https://wankodo.github.io/chemistry/carbon-carbonates.html): 炭素の同素体の構造と性質・用途の違い、一酸化炭素と二酸化炭素の性質、石灰石・生石灰・消石灰・炭酸カルシウムの循環の反応を判定・説明する。解説記事のみ。
+- [ナトリウムとアンモニアソーダ法｜化学ツール集](https://wankodo.github.io/chemistry/sodium-solvay.html): ナトリウムとその化合物の性質を整理し、アンモニアソーダ法の各工程の反応式とアンモニアが循環する仕組みを説明する。解説記事のみ。
+- [アルミニウムとその製錬｜化学ツール集](https://wankodo.github.io/chemistry/aluminium.html): アルミニウムの性質（両性・不動態・テルミット反応）と、ボーキサイトから溶融塩電解で製錬する流れを説明する。解説記事のみ。
+- [鉄と製鉄・鋼・合金｜化学ツール集](https://wankodo.github.io/chemistry/iron-steelmaking.html): 高炉で酸化鉄が還元される反応、銑鉄・鋳鉄・鋼の炭素量と性質の違い、ステンレス鋼など合金の設計を説明する。解説記事のみ。
+- [銅・銀と金属の精錬｜化学ツール集](https://wankodo.github.io/chemistry/copper-silver-refining.html): 銅の電解精錬で各電極の反応と不純物の行き先を説明し、ハロゲン化銀の感光性による写真の仕組みを理解する。解説記事のみ。
+- [遷移元素と錯イオン・炎色反応｜化学ツール集](https://wankodo.github.io/chemistry/transition-metals.html): 遷移元素の特徴を説明し、代表的な錯イオンの組成と色を答え、炎色反応の色から元素を判定する。解説記事のみ。
+- [沈殿反応とイオンの検出｜化学ツール集](https://wankodo.github.io/chemistry/precipitation-ion-detection.html): 試薬を加えたときに生じる沈殿の色と、酸や過剰の試薬への溶け方から、溶液に含まれるイオンの種類を判定する。解説記事のみ。
+- [陽イオンの定性分析｜化学ツール集](https://wankodo.github.io/chemistry/cation-qualitative-analysis.html): 系統分析の流れ図を読み、各段階でどの陽イオンが何色の沈殿として分離されるかを判断する。解説記事のみ。
+- [セラミックスとガラス｜化学ツール集](https://wankodo.github.io/chemistry/ceramics-glass.html): ガラス・陶磁器・ファインセラミックス・セメントの原料と組成から、用途に合う材料を判定する。解説記事のみ。
+- [有機化合物の特徴と分類｜化学ツール集](https://wankodo.github.io/chemistry/organic-basics.html): 炭素骨格と官能基から有機化合物を分類し、分子式・示性式・構造式を書き分け、飽和・不飽和や異性体の関係を読み取る。解説記事のみ。
+- [炭化水素（アルカン・アルケン・アルキン）｜化学ツール集](https://wankodo.github.io/chemistry/hydrocarbons.html): 分子式を一般式と照らしてアルカン・アルケン・アルキンに分類し、構造式から置換反応・付加反応の種類と生成物を予測する。解説記事のみ。
+- [構造式と異性体｜化学ツール集](https://wankodo.github.io/chemistry/structural-isomers.html): 分子式が同じで構造式や立体配置が異なる異性体を、炭素骨格から系統的に数え上げ、構造式を描いてシス・トランスを区別する。解説記事のみ。
+- [不飽和度と構造の推定｜化学ツール集](https://wankodo.github.io/chemistry/degree-of-unsaturation.html): 分子式から不飽和度を求め、環と多重結合の総数から構造の候補を絞る。計算機つき。

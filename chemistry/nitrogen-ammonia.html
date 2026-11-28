@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>窒素とアンモニア・ハーバー法｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="窒素分子が三重結合で安定な理由と窒素酸化物、アンモニアの性質（水に溶けやすい弱塩基性・噴水実験・白煙による検出）、ハーバー・ボッシュ法と硝酸のオストワルト法を公式・手順・例題で解説。空気から肥料を作る現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="窒素とアンモニア・ハーバー法｜化学ツール集">
+<meta property="og:description" content="窒素の安定さと窒素酸化物、アンモニアの性質と検出法、ハーバー・ボッシュ法からオストワルト法までの流れを例題で解説します。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/nitrogen-ammonia.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>窒素と<span class="accent">アンモニア</span>・ハーバー法</h1>
+    <p>化学の考え方辞典 ― 無機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 無機化学 ＞ 窒素とアンモニア・ハーバー法</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">無機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    窒素は空気の約8割を占めるが、N≡N の三重結合が強く安定で反応しにくい気体であり、窒素酸化物やアンモニアという化合物の形で化学と結びつく。アンモニアは水に非常によく溶ける弱塩基性の気体で、噴水実験や白煙で検出でき、窒素肥料の出発点として、ハーバー・ボッシュ法で空気中の窒素から工業的に作られている。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>窒素とその化合物（窒素酸化物・アンモニア・硝酸）について、<strong>分子の構造から性質を説明し、製法と反応式を結びつける</strong>考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>窒素分子が安定で反応しにくい理由を、N≡N の三重結合から説明する問題</li>
+      <li>一酸化窒素 NO・二酸化窒素 NO<sub>2</sub> の生成（雷・エンジンの高温）と性質を問う問題</li>
+      <li>アンモニアの性質（水への溶解性・弱塩基性）をもとに、噴水実験の原理や捕集法・乾燥剤の適否を判断する問題</li>
+      <li>塩化アンモニウムの白煙によるアンモニアの検出や、実験室的製法の反応式を完成させる問題</li>
+      <li>ハーバー・ボッシュ法の条件と、硝酸のオストワルト法の3段階の流れを説明する問題</li>
+    </ul>
+    <p>ポイントは、<strong>「窒素そのものは安定だが、その化合物は反応性に富む」</strong>ことです。安定な N<sub>2</sub> を反応する形（アンモニア）に変える「窒素固定」が、肥料生産の出発点になっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>窒素 N<sub>2</sub>：三重結合がもたらす安定さ</h3>
+    <p>窒素は空気の約78%（体積比）を占める無色・無臭の気体で、水に溶けにくく、常温ではほかの物質とほとんど反応しません。その理由は、2つの窒素原子が<strong>三重結合 N≡N</strong> で結ばれていることにあります。三重結合の結合エネルギーは約945 kJ/mol と非常に大きく、結合を切って反応させるには大きなエネルギーが必要だからです。だからこそ、窒素は反応を防ぎたい場面で「不活性な気体」として利用されます。</p>
+    <h3>窒素酸化物：高温で生まれる NO と NO<sub>2</sub></h3>
+    <p>安定な窒素も、雷の放電や自動車エンジン内部のような高温のもとでは酸素と反応し、一酸化窒素を生じます（吸熱反応）。</p>
+    <div class="formula">N<sub>2</sub> ＋ O<sub>2</sub> → 2NO</div>
+    <ul>
+      <li><strong>一酸化窒素 NO</strong>：無色の気体で水に溶けにくい。空気に触れると速やかに酸化されて二酸化窒素になります（2NO ＋ O<sub>2</sub> → 2NO<sub>2</sub>）。</li>
+      <li><strong>二酸化窒素 NO<sub>2</sub></strong>：<strong>赤褐色</strong>で刺激臭のある有毒な気体。低温では2分子が結びついた無色の四酸化二窒素 N<sub>2</sub>O<sub>4</sub> と平衡にあります（2NO<sub>2</sub> ⇌ N<sub>2</sub>O<sub>4</sub>）。水と反応して硝酸と一酸化窒素を生じるため、酸性雨の原因物質の一つです。</li>
+    </ul>
+    <div class="formula">3NO<sub>2</sub> ＋ H<sub>2</sub>O → 2HNO<sub>3</sub> ＋ NO</div>
+    <h3>アンモニア NH<sub>3</sub> の性質</h3>
+    <p>アンモニアは無色で<strong>刺激臭</strong>のある気体で、空気より軽く（分子量17）、水に非常によく溶けます（水1体積に約700体積）。水溶液は次のように一部が電離して<strong>弱塩基性</strong>を示します。</p>
+    <div class="formula">NH<sub>3</sub> ＋ H<sub>2</sub>O ⇌ NH<sub>4</sub><sup>＋</sup> ＋ OH<sup>−</sup></div>
+    <ul>
+      <li><strong>噴水実験</strong>：丸底フラスコにアンモニアを満たし、スポイトで少量の水を入れると、アンモニアが水に溶けてフラスコ内の圧力が下がり、ビーカーの水が噴水のように吹き上がります。水溶液は塩基性なので、フェノールフタレイン溶液を入れておくと噴水が赤く染まって見えます。「よく溶ける気体ほど内圧が大きく下がる」ことが原理です。</li>
+      <li><strong>検出（白煙）</strong>：アンモニアに濃塩酸を近づけると、塩化水素 HCl と反応して塩化アンモニウム NH<sub>4</sub>Cl の<strong>白煙</strong>が生じます（NH<sub>3</sub> ＋ HCl → NH<sub>4</sub>Cl）。目に見えない気体の存在を、目に見える固体に変えて確かめる検出法です。</li>
+      <li><strong>捕集と乾燥</strong>：水に溶けやすく空気より軽いので、捕集は<strong>下方置換法</strong>で行います（水上置換法は不可）。乾燥剤には塩基性の生石灰 CaO を使い、酸性の濃硫酸とは反応してしまうため使えず、塩化カルシウム CaCl<sub>2</sub> とも付加物を生じるため使えません。</li>
+      <li><strong>実験室的製法</strong>：塩化アンモニウムと水酸化カルシウムの混合物を加熱して得ます（2NH<sub>4</sub>Cl ＋ Ca(OH)<sub>2</sub> → CaCl<sub>2</sub> ＋ 2NH<sub>3</sub> ＋ 2H<sub>2</sub>O）。弱塩基の塩に強塩基を加えて弱塩基を追い出す、という塩の反応の型です。</li>
+    </ul>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>ハーバー・ボッシュ法：空気からアンモニアを作る</h3>
+    <p>工業的には、窒素と水素から直接アンモニアを合成します（原料の N<sub>2</sub> は空気から、H<sub>2</sub> は主に天然ガスと水蒸気の反応から得ます）。</p>
+    <div class="formula">N<sub>2</sub> ＋ 3H<sub>2</sub> ⇌ 2NH<sub>3</sub> ＋ 92 kJ</div>
+    <p>正反応は発熱で、気体の分子数が 4 mol から 2 mol へ減ります。ルシャトリエの原理からは<strong>低温・高圧</strong>が収率に有利ですが、低温では反応速度が小さすぎます。そこで実際は<strong>約200気圧・約400〜500 ℃・鉄触媒（Fe）</strong>という妥協の条件が選ばれています。それでも反応器を1回通過する間に反応するのは原料の<strong>約15%</strong>にとどまるため、混合ガスを冷却してアンモニアを液化して取り除き、未反応の N<sub>2</sub> と H<sub>2</sub> を反応器へ戻して循環（リサイクル）させ、全体の収率を高めています。条件の詳しい考え方は「平衡と工業」の項目と連携しています。</p>
+    <h3>オストワルト法：アンモニアから硝酸へ</h3>
+    <p>硝酸 HNO<sub>3</sub> は、アンモニアを酸化していく<strong>オストワルト法</strong>で工業的に作られます。流れは3段階です。</p>
+    <ol class="steps">
+      <li><strong>アンモニアの酸化</strong>：白金 Pt を触媒としてアンモニアを空気で酸化し、一酸化窒素を得る（4NH<sub>3</sub> ＋ 5O<sub>2</sub> → 4NO ＋ 6H<sub>2</sub>O）。</li>
+      <li><strong>一酸化窒素の酸化</strong>：一酸化窒素を空気中の酸素で酸化し、二酸化窒素にする（2NO ＋ O<sub>2</sub> → 2NO<sub>2</sub>）。</li>
+      <li><strong>二酸化窒素を水に吸収</strong>：二酸化窒素を水に吸収させて硝酸を得る（3NO<sub>2</sub> ＋ H<sub>2</sub>O → 2HNO<sub>3</sub> ＋ NO）。このとき生じた NO は第2段階に戻して再利用します。</li>
+    </ol>
+    <p>全体を通すと NH<sub>3</sub> ＋ 2O<sub>2</sub> → HNO<sub>3</sub> ＋ H<sub>2</sub>O となり、「ハーバー・ボッシュ法で作ったアンモニアが硝酸の原料になる」というつながりが見えます。ここでは工業的製法の概要に留め、詳細な装置や運転手順には立ち入りません。</p>
+    <p>各量の単位は次の通りです。</p>
+    <ul>
+      <li><strong>結合エネルギー</strong>：kJ/mol（結合1 mol を切るのに必要なエネルギー）</li>
+      <li><strong>圧力</strong>：気圧 [atm]。1 atm ＝ 1.013×10<sup>5</sup> Pa なので、200 atm ≒ 2.0×10<sup>7</sup> Pa</li>
+      <li><strong>反応熱</strong>：92 kJ は N<sub>2</sub> が 1 mol 反応するときに出る熱量 [kJ]</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>窒素の安定さは結合から見る。</strong>N≡N の三重結合の大きさ（約945 kJ/mol）を根拠に、「常温では反応しないが、高温では O<sub>2</sub> と反応して NO を生じる」と整理します。</li>
+      <li><strong>酸化物は生成経路と性質をセットで押さえる。</strong>NO（無色・空気中で酸化される）→ NO<sub>2</sub>（赤褐色・有毒・水と反応して硝酸）の順にたどります。</li>
+      <li><strong>アンモニアの判定は「水への溶けやすさ」と「弱塩基性」で行う。</strong>捕集法（下方置換）、乾燥剤（生石灰）、指示薬の色、噴水実験の原理は、すべてこの2つの性質から導きます。</li>
+      <li><strong>検出は白煙で確認する。</strong>濃塩酸を近づけて NH<sub>4</sub>Cl の白煙が出ればアンモニアと判断します。</li>
+      <li><strong>工業的製法は条件と流れを説明する。</strong>ハーバー・ボッシュ法は「約200気圧・約400〜500 ℃・鉄触媒・未反応ガスを循環」、オストワルト法は「NH<sub>3</sub> → NO → NO<sub>2</sub> → HNO<sub>3</sub>」の3段階で押さえます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1（性質の判定）：次の（ア）〜（エ）のうち、正しいものをすべて選べ。（ア）窒素は空気中で容易に酸素と反応し、酸化物を生じる。（イ）一酸化窒素は空気中に放置すると、赤褐色の二酸化窒素に変わる。（ウ）アンモニアは水に溶けにくいので、水上置換法で捕集する。（エ）アンモニアに濃塩酸を近づけると、塩化アンモニウムの白煙が生じる。問題2（反応式の完成）：次の反応の化学反応式を書け。（1）塩化アンモニウムと水酸化カルシウムを加熱する。（2）アンモニアと塩化水素が反応する。（3）オストワルト法の第1段階（アンモニアの酸化）。（4）二酸化窒素と水が反応する。問題3：標準状態でアンモニア 11.2 L を水に完全に溶かし、全体を 500 mL の水溶液にした。このアンモニア水のモル濃度は何 mol/L か。ただし、標準状態の気体のモル体積は 22.4 L/mol とする。問題4：ハーバー・ボッシュ法で水素 12 kg をすべて反応させると、理論上アンモニアは何 kg 得られるか。また、そのときに必要な窒素は何 kg か。ただし、原子量は H＝1.0、N＝14 とする。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1（ア）：誤り。窒素は N≡N の三重結合が強く安定で、常温では酸素と反応しません。酸化物が生じるのは雷やエンジン内のような高温の場面です。</li>
+          <li>問題1（イ）：正しい。無色の NO は空気中の酸素と反応して 2NO ＋ O<sub>2</sub> → 2NO<sub>2</sub> となり、赤褐色の NO<sub>2</sub> に変わります。</li>
+          <li>問題1（ウ）：誤り。アンモニアは水に非常によく溶けるため水上置換法は使えず、空気より軽いことから下方置換法で捕集します。</li>
+          <li>問題1（エ）：正しい。NH<sub>3</sub> ＋ HCl → NH<sub>4</sub>Cl により、塩化アンモニウムの白煙が生じます。これがアンモニアの検出法です。</li>
+          <li>問題2（1）：2NH<sub>4</sub>Cl ＋ Ca(OH)<sub>2</sub> → CaCl<sub>2</sub> ＋ 2NH<sub>3</sub> ＋ 2H<sub>2</sub>O</li>
+          <li>問題2（2）：NH<sub>3</sub> ＋ HCl → NH<sub>4</sub>Cl</li>
+          <li>問題2（3）：4NH<sub>3</sub> ＋ 5O<sub>2</sub> → 4NO ＋ 6H<sub>2</sub>O（白金触媒）</li>
+          <li>問題2（4）：3NO<sub>2</sub> ＋ H<sub>2</sub>O → 2HNO<sub>3</sub> ＋ NO</li>
+          <li>問題3：アンモニアの物質量は 11.2 L ÷ 22.4 L/mol ＝ 0.50 mol。モル濃度は 0.50 mol ÷ 0.500 L ＝ 1.0 mol/L。</li>
+          <li>問題4：H<sub>2</sub> のモル質量は 2.0 g/mol なので、12 kg ＝ 12,000 g ÷ 2.0 g/mol ＝ 6,000 mol。係数比 H<sub>2</sub>：NH<sub>3</sub> ＝ 3：2 より、生成する NH<sub>3</sub> は 6,000 × 2 ÷ 3 ＝ 4,000 mol。NH<sub>3</sub> のモル質量は 14 ＋ 1.0×3 ＝ 17 g/mol なので、4,000 mol × 17 g/mol ＝ 68,000 g ＝ 68 kg。</li>
+          <li>問題4の窒素：係数比 N<sub>2</sub>：H<sub>2</sub> ＝ 1：3 より、必要な N<sub>2</sub> は 6,000 ÷ 3 ＝ 2,000 mol。N<sub>2</sub> のモル質量は 28 g/mol なので、2,000 mol × 28 g/mol ＝ 56,000 g ＝ 56 kg。検算：56 ＋ 12 ＝ 68 kg で、生成物の質量と一致します（質量保存）。</li>
+        </ol>
+        <p><strong>答え：問題1は（イ）と（エ）。問題2は（1）2NH<sub>4</sub>Cl ＋ Ca(OH)<sub>2</sub> → CaCl<sub>2</sub> ＋ 2NH<sub>3</sub> ＋ 2H<sub>2</sub>O、（2）NH<sub>3</sub> ＋ HCl → NH<sub>4</sub>Cl、（3）4NH<sub>3</sub> ＋ 5O<sub>2</sub> → 4NO ＋ 6H<sub>2</sub>O、（4）3NO<sub>2</sub> ＋ H<sub>2</sub>O → 2HNO<sub>3</sub> ＋ NO。問題3は 1.0 mol/L。問題4はアンモニア 68 kg、必要な窒素 56 kg</strong>。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>窒素肥料の生産（空気から肥料を作る）</h3>
+    <p>ハーバー・ボッシュ法で作られるアンモニアは、硫酸アンモニウム（硫安）や尿素などの窒素肥料の原料です。植物は空気中の N<sub>2</sub> をそのままではほとんど利用できないため、反応する形のアンモニアに変える「窒素固定」が食料生産の出発点になっています。この方法が工業化されたことで、世界の食料生産は大きく増えました。条件選びの考え方は、反応速度と平衡の項目で扱う「平衡の工業利用」と同じです。</p>
+    <h3>硝酸を原料とする化学工業</h3>
+    <p>オストワルト法で作られる硝酸は、肥料の原料であるだけでなく、火薬類や化学繊維などの原料にもなる基礎化学品です。アンモニア → 硝酸という流れは、窒素化合物の工業が一つの鎖としてつながっていることを示しています。</p>
+    <h3>窒素の不活性さの利用と、窒素酸化物の対策</h3>
+    <p>反応しにくい窒素の性質は、食品の酸化を防ぐ包装への窒素充填や、液体窒素による冷却・冷凍保存などに利用されています。一方、エンジンなどの高温燃焼で生じる窒素酸化物（NO<sub>x</sub>）は大気汚染や酸性雨の原因になるため、自動車では排気ガス中の NO<sub>x</sub> を窒素に戻す触媒（三元触媒）で処理されています。「安定な窒素」と「反応する窒素酸化物」の両面が、現場の技術に現れています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>フリッツ・ハーバー</strong>（1868〜1934、ドイツの化学者）、<strong>カール・ボッシュ</strong>（1874〜1940、ドイツの化学者・技術者）</p>
+    <p>ドイツの化学者<strong>フリッツ・ハーバー</strong>（1868〜1934）は、窒素と水素の平衡を詳しく調べ、1909年に約200気圧・約500 ℃の小型の高圧装置でアンモニアを連続的に合成することに成功しました（1918年ノーベル化学賞）。これを工業規模に育てたのが、化学会社 BASF の<strong>カール・ボッシュ</strong>（1874〜1940）です。高圧と水素に耐える反応炉の材料や構造の開発に加え、同僚のアルヴィン・ミタッシュらが数千回に及ぶ触媒の探索を行い、安価な鉄触媒を見つけました。1913年に初の工業プラントが稼働し、ボッシュは高圧化学法の発展により1931年にノーベル化学賞を受賞しています。安定で反応しない窒素を、空気から直接「反応する窒素」に変えたこの仕事が、窒素化学の転換点になりました。なお、アンモニアから硝酸を作るオストワルト法は、ドイツの化学者ヴィルヘルム・オストワルトが確立した方法として知られています。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>ハーバー・ボッシュ法の条件選びを平衡の側から掘り下げるには<a href="equilibrium-industrial-use.html">平衡と工業（ハーバー・ボッシュ法）</a>、平衡移動の原理そのものは<a href="le-chatelier.html">ルシャトリエの原理</a>、鉄触媒や白金触媒の働きは<a href="catalysts.html">触媒</a>が役立ちます。同じ無機化学の工業的製法では、硝酸と並ぶ基礎化学品の<a href="sulfur-sulfuric-acid.html">硫黄と硫酸・接触法</a>もどうぞ。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

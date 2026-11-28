@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鉄と製鉄・鋼・合金｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="鉄と製鉄・鋼・合金を、公式・手順・例題で解説。高炉でコークスから生じる一酸化炭素が酸化鉄を段階的に還元する反応、石灰石とスラグの働き、銑鉄・鋳鉄・鋼の炭素量と性質、転炉での製鋼、ステンレス鋼など合金の設計と、製鉄所や建材など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="鉄と製鉄・鋼・合金｜化学ツール集">
+<meta property="og:description" content="高炉での酸化鉄の還元、銑鉄・鋳鉄・鋼の炭素量と性質、ステンレス鋼など合金の設計を例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/iron-steelmaking.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">鉄</span>と製鉄・鋼・合金</h1>
+    <p>化学の考え方辞典 ― 無機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 無機化学 ＞ 鉄と製鉄・鋼・合金</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">無機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    高炉で鉄鉱石を一酸化炭素で還元して銑鉄を取り出し、転炉で炭素を減らして鋼に変える仕組みと、炭素の量や加える金属で鉄の性質がどう変わるかを読み解くときに使う。炭素が多いほど硬くてもろく、少ないほど粘り強く、クロムなどを加えた合金は目的に合わせて設計される。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>鉄鉱石から金属の鉄を取り出す<strong>還元</strong>の反応と、炭素の量やほかの金属の配合で変わる鉄材料の性質を扱うときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>高炉の中で起こる反応（コークスの燃焼、一酸化炭素の生成、酸化鉄の還元）の反応式を書く・完成させる問題</li>
+      <li>石灰石を入れる理由と、スラグが不純物を取り除く働きを説明する問題</li>
+      <li>銑鉄・鋳鉄・鋼を、炭素の含有量と性質（硬さ・もろさ・粘り強さ）で区別する問題</li>
+      <li>ステンレス鋼がさびにくい理由など、合金の設計の考え方を説明する問題</li>
+    </ul>
+    <p>土台は中学で学んだ<strong>還元（酸化物が酸素を奪われる反応）</strong>です。高炉の還元は、酸化銅を炭素で還元して銅を取り出す実験を、はるかに大きな規模で、一酸化炭素を使って行うものだと考えるとつながります。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>高炉の原料とコークスの働き</h3>
+    <p>製鉄の原料は、鉄鉱石（主成分は酸化鉄(III) Fe<sub>2</sub>O<sub>3</sub> などの酸化鉄）、コークス（石炭を蒸し焼きにした、炭素を主成分とする燃料）、石灰石 CaCO<sub>3</sub> です。これらを高炉の上部から入れ、下部から熱風（高温の空気）を送り込みます。コークスには、炉を高温にする燃料と、酸化鉄から酸素を奪う還元剤を作る原料という、2つの役割があります。</p>
+    <p>炉の下部ではコークスが燃えて二酸化炭素ができ、大きな熱が出ます。</p>
+    <div class="formula">C ＋ O<sub>2</sub> → CO<sub>2</sub></div>
+    <p>できた二酸化炭素は、上へ行く途中で高温のコークスと反応して、還元剤である<strong>一酸化炭素 CO</strong> になります。</p>
+    <div class="formula">CO<sub>2</sub> ＋ C → 2CO</div>
+    <h3>酸化鉄の段階的な還元</h3>
+    <p>一酸化炭素は、炉の上部から下部へ下りてくる酸化鉄から少しずつ酸素を奪います。還元は一気には進まず、Fe<sub>2</sub>O<sub>3</sub> → Fe<sub>3</sub>O<sub>4</sub> → FeO → Fe と、酸素の割合が段階的に減っていきます。各段階の代表的な反応式は次の通りです（いずれも、左辺と右辺で各原子の数がそろっていることを確認してください）。</p>
+    <div class="formula">3Fe<sub>2</sub>O<sub>3</sub> ＋ CO → 2Fe<sub>3</sub>O<sub>4</sub> ＋ CO<sub>2</sub></div>
+    <div class="formula">Fe<sub>3</sub>O<sub>4</sub> ＋ CO → 3FeO ＋ CO<sub>2</sub></div>
+    <div class="formula">FeO ＋ CO → Fe ＋ CO<sub>2</sub></div>
+    <p>全体をまとめると、酸化鉄(III)が一酸化炭素に還元される反応は次の式で表せます。一酸化炭素は酸素を受け取って二酸化炭素になる（酸化される）ので、ここでも酸化と還元が同時に起こっています。</p>
+    <div class="formula">Fe<sub>2</sub>O<sub>3</sub> ＋ 3CO → 2Fe ＋ 3CO<sub>2</sub></div>
+    <p>炉の下部では温度が非常に高くなり、できた鉄は溶けた状態で炉の底にたまります。この溶けた鉄を取り出したものが<strong>銑鉄（せんてつ）</strong>です。</p>
+    <h3>石灰石とスラグの働き</h3>
+    <p>鉄鉱石には、岩石分の不純物（主成分は二酸化ケイ素 SiO<sub>2</sub>）が含まれています。石灰石は、この不純物を<strong>スラグ</strong>として取り除くために入れます。石灰石は炉の中で熱分解して酸化カルシウム CaO になります。</p>
+    <div class="formula">CaCO<sub>3</sub> → CaO ＋ CO<sub>2</sub></div>
+    <p>酸化カルシウムが二酸化ケイ素と反応してできるケイ酸カルシウム CaSiO<sub>3</sub> がスラグです。</p>
+    <div class="formula">CaO ＋ SiO<sub>2</sub> → CaSiO<sub>3</sub></div>
+    <p>スラグは溶けた鉄より密度が小さいため、鉄の上に浮きます。そのため不純物を抱え込んだまま鉄と分けて取り除くことができ、さらに鉄の表面をおおって酸化を防ぐ働きもします。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>銑鉄・鋳鉄・鋼と転炉での製鋼</h3>
+    <p>高炉から出た銑鉄は、炭素を約4％含んでいます（含有量はいずれも質量パーセントの目安です）。炭素が多い鉄は硬い反面、もろくて割れやすい性質があります。銑鉄を溶かし直して型に流し込んで固めたものが<strong>鋳鉄（ちゅうてつ）</strong>で、炭素量は約2〜4％です。複雑な形に作りやすい一方、強い衝撃には弱い性質を生かして使われます。</p>
+    <p>銑鉄の炭素を約2％以下まで減らすと、硬さと粘り強さをあわせ持つ<strong>鋼（こう、はがね）</strong>になります。この工程が製鋼で、代表的な設備が<strong>転炉</strong>です。転炉では、溶けた銑鉄に純粋な酸素を吹き込みます。すると炭素が酸素と化合して一酸化炭素や二酸化炭素となって取り除かれ、ケイ素やリンなどの不純物も酸化されてスラグに移ります。炭素をどこまで減らすか、どんな元素を残す・加えるかを調整することで、用途に合った鋼を作り分けます。</p>
+    <h3>合金の設計</h3>
+    <p>金属にほかの元素を加えて性質を改良したものを<strong>合金</strong>といいます。鉄の合金で代表的なのが<strong>ステンレス鋼</strong>で、鉄にクロム Cr とニッケル Ni を加えた合金です（クロム約18％・ニッケル約8％を含むものが代表例です）。クロムは表面に薄くて緻密な酸化物の膜を作るため、内部が酸素や水に触れにくくなり、さびにくくなります。</p>
+    <p>合金の設計の基本は、「足りない性質を、加える元素で補う」ことです。鋼にマンガンやクロムを加えて硬さや耐摩耗性を上げる、ニッケルを加えて粘り強さや耐食性を上げる、といった具合です。鉄以外の合金でも考え方は同じで、たとえばアルミニウムに銅やマグネシウムを加えたジュラルミンは、軽さはそのままに強度を上げた合金として知られます（アルミニウム側のくわしい話は関連項目の「アルミニウムとその製錬」で扱います）。</p>
+    <p>各言葉の意味は次の通りです。</p>
+    <ul>
+      <li><strong>コークス</strong>：石炭を蒸し焼きにした炭素主体の燃料。高炉では燃料と還元剤（CO）の原料を兼ねる</li>
+      <li><strong>スラグ</strong>：石灰石由来の CaO が不純物の SiO<sub>2</sub> などと反応してできた、溶けた鉄に浮く副産物</li>
+      <li><strong>銑鉄</strong>：高炉で得られる、炭素を約4％含む鉄。硬いがもろい</li>
+      <li><strong>鋳鉄</strong>：銑鉄などを溶かして型に流し込んだ鉄。炭素量は約2〜4％</li>
+      <li><strong>鋼</strong>：炭素を約2％以下に減らした鉄。硬さと粘り強さをあわせ持つ</li>
+      <li><strong>転炉</strong>：溶けた銑鉄に酸素を吹き込んで炭素や不純物を酸化し、鋼を作る炉</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>高炉の反応は「下から上へ」で追う。</strong>下部でコークスが燃える（C ＋ O<sub>2</sub> → CO<sub>2</sub>）→ CO<sub>2</sub> がコークスと反応して CO ができる → CO が酸化鉄を還元する、という流れで整理します。</li>
+      <li><strong>還元は段階で書く。</strong>Fe<sub>2</sub>O<sub>3</sub> → Fe<sub>3</sub>O<sub>4</sub> → FeO → Fe の順に酸素が減ることを確認し、各式で原子の数が左右でそろうか検算します。</li>
+      <li><strong>石灰石の話はスラグで締める。</strong>CaCO<sub>3</sub> → CaO ＋ CO<sub>2</sub>、続いて CaO ＋ SiO<sub>2</sub> → CaSiO<sub>3</sub>（スラグ）とつなげ、「鉄より軽く浮くので分離できる」までセットで答えます。</li>
+      <li><strong>鉄材料は炭素量で見分ける。</strong>約4％なら銑鉄、約2〜4％で型に流したものなら鋳鉄、約2％以下なら鋼、と炭素量から判断し、「炭素が多いほど硬くてもろい」という性質と結びつけます。</li>
+      <li><strong>合金は「何を加えて、何が良くなるか」で答える。</strong>ステンレス鋼なら「Cr と Ni を加える → 表面の酸化物の膜でさびにくくなる」のように、元素と効果をペアにします。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：高炉内の反応式を完成させよ。（ア）CO<sub>2</sub> ＋ C → （　　）（イ）Fe<sub>2</sub>O<sub>3</sub> ＋ 3CO → 2Fe ＋ （　　）問題2：炭素の含有量が（ア）約4％で硬くてもろい鉄、（イ）約0.5％で硬さと粘り強さをあわせ持つ鉄は、それぞれ何と呼ばれるか。問題3：高炉に石灰石を入れる目的を、スラグという言葉を使って説明せよ。また、スラグができる反応式 CaO ＋ SiO<sub>2</sub> → （　　）を完成させよ。問題4：ステンレス鋼がさびにくい理由を、加えられている元素に触れて説明せよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：（ア）は二酸化炭素が高温のコークスと反応する式で、生成物は一酸化炭素 2CO です。係数は C が左辺2個・右辺2個、O が左辺2個・右辺2個でそろいます。（イ）は酸化鉄(III)の還元のまとめの式で、生成物は二酸化炭素 3CO<sub>2</sub> です。Fe は2個、O は左辺 3＋3＝6個・右辺 3×2＝6個、C は3個でそろいます。</li>
+          <li>問題2：（ア）炭素を約4％含む鉄は銑鉄です。炭素が多いため硬い反面、もろくなります。（イ）炭素を約2％以下に減らした鉄は鋼で、約0.5％はその範囲に入ります。転炉で銑鉄に酸素を吹き込み、炭素を酸化して取り除くことで作られます。</li>
+          <li>問題3：石灰石から生じる酸化カルシウム CaO が、鉄鉱石中の不純物である二酸化ケイ素 SiO<sub>2</sub> と反応してスラグ（ケイ酸カルシウム CaSiO<sub>3</sub>）を作り、不純物をスラグとして取り除くためです。完成した式は CaO ＋ SiO<sub>2</sub> → CaSiO<sub>3</sub> で、Ca・Si・O（3個）の数が左右でそろいます。スラグは溶けた鉄より密度が小さく浮くので、鉄と分離できます。</li>
+          <li>問題4：ステンレス鋼にはクロム Cr（とニッケル Ni）が加えられています。クロムが表面に薄くて緻密な酸化物の膜を作り、内部の鉄が酸素や水に触れるのを防ぐため、さびにくくなります。</li>
+        </ol>
+        <p><strong>答え：問題1は（ア）2CO、（イ）3CO<sub>2</sub>。問題2は（ア）銑鉄、（イ）鋼。問題3は不純物 SiO<sub>2</sub> をスラグ CaSiO<sub>3</sub> として取り除くため（式の空欄は CaSiO<sub>3</sub>）。問題4はクロムが表面に緻密な酸化物の膜を作るため</strong>。高炉の反応は「CO を作る → CO が還元する → スラグで不純物を取る」の3段で押さえるのが要点です。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>製鉄所の高炉と転炉</h3>
+    <p>実際の製鉄所では、高さ数十メートルの高炉で鉄鉱石・コークス・石灰石を連続的に投入し、溶けた銑鉄を昼夜休まず取り出しています。銑鉄は転炉へ運ばれ、酸素を吹き込んで炭素量を調整し、自動車のボディー用、建築用など用途別に成分を変えた鋼が作られます。この記事の反応の流れそのものが、製鉄所の工程の骨格です。</p>
+    <h3>建材・レール・自動車の鋼</h3>
+    <p>ビルや橋の鉄骨、鉄道のレール、自動車の車体には、炭素量や合金元素を用途に合わせて調整した鋼が使われます。硬さが要る場所、曲げや衝撃に耐える粘り強さが要る場所で、成分の違う鋼が使い分けられています。</p>
+    <h3>ステンレス鋼の製品</h3>
+    <p>台所の流し台や鍋、医療器具、化学プラントの配管など、水や薬品に触れてもさびにくさが求められる場所ではステンレス鋼が使われます。クロムの作る酸化物の膜がさびを防ぐという性質を、そのまま製品の寿命に生かした例です。</p>
+    <h3>スラグの再利用</h3>
+    <p>高炉で生じるスラグは捨てられるだけのものではなく、冷やして固めたものがセメントの原料や道路の路盤材などに利用されています。不純物を取り除く副産物まで資源として使うことが、製鉄の現場で行われています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ヘンリー・ベッセマー</strong>（1813〜1898、イギリスの技術者）</p>
+    <p>製鉄そのものは古代から各地で行われてきた技術で、特定の1人が考え出したものではありません。その中で、銑鉄から鋼を大量に作る方法の転機を作ったのが、イギリスの技術者<strong>ヘンリー・ベッセマー</strong>（1813〜1898）です。ベッセマーは1850年代に、溶けた銑鉄に空気を吹き込むと、炭素などの不純物が酸化して取り除かれ、鋼が得られる転炉法（ベッセマー法）を考案しました。吹き込む気体を空気から純粋な酸素に変えた現在の転炉は、この方法の発展形です。高炉で銑鉄を作り、転炉で鋼に変えるという今の製鉄の二段構えは、この時代に形が整いました。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>還元の土台は<a href="oxidation-reduction-junior.html">酸化と還元</a>、金属の性質の土台は<a href="metallic-bonding.html">金属結合と金属の性質</a>、さびの仕組みは<a href="corrosion.html">腐食と防食</a>、軽い金属の合金の話は<a href="aluminium.html">アルミニウムとその製錬</a>、ほかの金属の取り出し方は<a href="copper-silver-refining.html">銅・銀と金属の精錬</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

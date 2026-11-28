@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ナトリウムとアンモニアソーダ法｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="ナトリウムと水酸化ナトリウム・炭酸ナトリウム・炭酸水素ナトリウムの性質を整理し、食塩と石灰石から炭酸ナトリウムを作るアンモニアソーダ法（ソルベー法）の各段階の反応式、アンモニアの循環、ガラスやセッケンなど現場での使われ方まで解説します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="ナトリウムとアンモニアソーダ法｜化学ツール集">
+<meta property="og:description" content="ナトリウムの化合物の性質と、アンモニアソーダ法で炭酸ナトリウムを作る流れを、反応式・手順・例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/sodium-solvay.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">ナトリウム</span>とアンモニアソーダ法</h1>
+    <p>化学の考え方辞典 ― 無機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 無機化学 ＞ ナトリウムとアンモニアソーダ法</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">無機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    ナトリウムとその化合物、とくに炭酸ナトリウム Na2CO3 の性質と用途を整理し、食塩と石灰石を原料に、アンモニアを循環させながら炭酸水素ナトリウム NaHCO3 を沈殿させ、それを加熱して Na2CO3 を作るアンモニアソーダ法（ソルベー法）の流れと各段階の反応式を読むための考え方。ガラスやセッケンの原料が、安く手に入る原料から大量に作られる仕組みが分かる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>1族のアルカリ金属である<strong>ナトリウム Na とその化合物の性質</strong>と、炭酸ナトリウムの<strong>工業的製法であるアンモニアソーダ法（ソルベー法）</strong>を扱う項目です。次のような場面で使います。</p>
+    <ul>
+      <li>ナトリウムの単体や、水酸化ナトリウム・炭酸ナトリウム・炭酸水素ナトリウムの性質と用途を答える問題</li>
+      <li>アンモニアソーダ法の各工程について、反応式を完成させたり、工程の順序と役割を説明したりする問題</li>
+      <li>アンモニアがなぜ原料として大量に消費されずに済むのか（循環）、二酸化炭素はどこから来るのか、副生成物の塩化カルシウムがどこで生じるのかを説明する問題</li>
+    </ul>
+    <p>読み方の鍵は、アンモニアソーダ法を<strong>「沈殿させる工程」と「アンモニアを回収する工程」の組み合わせ</strong>として見ることです。工程を一つずつ反応式で追えば、全体の流れは自然に覚えられます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>ナトリウムの単体</h3>
+    <p>ナトリウムは銀白色の軟らかい金属で、密度が水より小さく、水に浮きます。空気や水と反応しやすいため、単体は<strong>石油（灯油）の中に保存</strong>します。水とは激しく反応して水酸化ナトリウムと水素を生じ、反応熱で溶けて球状になりながら水面を走ります。</p>
+    <div class="formula">2Na ＋ 2H<sub>2</sub>O → 2NaOH ＋ H<sub>2</sub></div>
+    <p>ナトリウムやその化合物を炎の中に入れると、炎が<strong>黄色</strong>になります（炎色反応）。これはナトリウムの検出にも使われる特徴です。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>主な化合物の性質と用途</h3>
+    <ul>
+      <li><strong>水酸化ナトリウム NaOH</strong>：白色の固体で、空気中の水分を吸って溶ける<strong>潮解性</strong>があります。水によく溶けて<strong>強塩基性</strong>を示します。セッケンや紙・パルプ、化学薬品の製造などに使われる重要な工業原料です。式量は Na＝23、O＝16、H＝1.0 として 40 です。</li>
+      <li><strong>炭酸ナトリウム Na<sub>2</sub>CO<sub>3</sub></strong>：白色の固体で、水溶液は塩基性を示します。ガラスの原料（ソーダ灰）として、またセッケン・洗剤や紙の製造などに使われます。式量は 23×2＋12＋16×3＝106 です。</li>
+      <li><strong>炭酸水素ナトリウム NaHCO<sub>3</sub></strong>：白色の固体で、水溶液は弱い塩基性を示します。加熱すると分解して炭酸ナトリウムになります。ベーキングパウダー（ふくらし粉）の主成分や、胃薬の制酸成分などに使われます。式量は 23＋1.0＋12＋16×3＝84 です。</li>
+    </ul>
+    <div class="formula">2NaHCO<sub>3</sub> → Na<sub>2</sub>CO<sub>3</sub> ＋ H<sub>2</sub>O ＋ CO<sub>2</sub>（加熱）</div>
+    <p>炭酸水素ナトリウムは塩酸とも反応して二酸化炭素を発生します。</p>
+    <div class="formula">NaHCO<sub>3</sub> ＋ HCl → NaCl ＋ H<sub>2</sub>O ＋ CO<sub>2</sub></div>
+    <h3>アンモニアソーダ法（ソルベー法）の流れ</h3>
+    <p>炭酸ナトリウムの工業的製法が<strong>アンモニアソーダ法（ソルベー法）</strong>です。原料は安く手に入る<strong>塩化ナトリウム（食塩）NaCl と石灰石 CaCO<sub>3</sub></strong>で、アンモニア NH<sub>3</sub> は工程の中を循環します。各段階は次の通りです。</p>
+    <p><strong>（1）二酸化炭素の用意：</strong>石灰石を加熱分解して、二酸化炭素と酸化カルシウム（生石灰）を得ます。</p>
+    <div class="formula">CaCO<sub>3</sub> → CaO ＋ CO<sub>2</sub>（加熱）</div>
+    <p><strong>（2）炭酸水素ナトリウムの沈殿：</strong>塩化ナトリウムの濃い水溶液（食塩水）にアンモニアを吸収させ、さらに二酸化炭素を吹き込むと、水に溶けにくい炭酸水素ナトリウムが沈殿します。段階を分けると、まず炭酸水素アンモニウムができ、それが食塩と反応します。</p>
+    <div class="formula">NH<sub>3</sub> ＋ CO<sub>2</sub> ＋ H<sub>2</sub>O → NH<sub>4</sub>HCO<sub>3</sub></div>
+    <div class="formula">NH<sub>4</sub>HCO<sub>3</sub> ＋ NaCl → NaHCO<sub>3</sub>↓ ＋ NH<sub>4</sub>Cl</div>
+    <p>この2式を合わせると、沈殿工程全体は次の1式になります。</p>
+    <div class="formula">NaCl ＋ NH<sub>3</sub> ＋ CO<sub>2</sub> ＋ H<sub>2</sub>O → NaHCO<sub>3</sub>↓ ＋ NH<sub>4</sub>Cl</div>
+    <p><strong>（3）炭酸ナトリウムの生成：</strong>沈殿をろ過して取り出し、加熱すると炭酸ナトリウムが得られます（上の NaHCO<sub>3</sub> の分解の式）。このとき出る CO<sub>2</sub> は、工程（2）へ戻して再利用されます。</p>
+    <p><strong>（4）アンモニアの回収：</strong>工程（2）で残った塩化アンモニウム NH<sub>4</sub>Cl の水溶液に、工程（1）の CaO を水に溶かして作った水酸化カルシウム Ca(OH)<sub>2</sub> を加えて加熱すると、アンモニアが回収でき、工程（2）へ戻して再利用されます。このとき副生成物として塩化カルシウム CaCl<sub>2</sub> が生じます。</p>
+    <div class="formula">CaO ＋ H<sub>2</sub>O → Ca(OH)<sub>2</sub></div>
+    <div class="formula">2NH<sub>4</sub>Cl ＋ Ca(OH)<sub>2</sub> → CaCl<sub>2</sub> ＋ 2NH<sub>3</sub> ＋ 2H<sub>2</sub>O</div>
+    <p>全工程をまとめると、アンモニアは差し引きでは消費されず、全体の反応は次のように書けます。</p>
+    <div class="formula">2NaCl ＋ CaCO<sub>3</sub> → Na<sub>2</sub>CO<sub>3</sub> ＋ CaCl<sub>2</sub>（全体）</div>
+    <p>各量の意味は次の通りです。</p>
+    <ul>
+      <li><strong>NH<sub>3</sub>（アンモニア）</strong>：沈殿を作るために働き、工程（4）で回収されて循環する。理論上は補給分だけで済む</li>
+      <li><strong>CO<sub>2</sub>（二酸化炭素）</strong>：石灰石の加熱分解で得る。NaHCO<sub>3</sub> の加熱で出る分も工程（2）へ戻される</li>
+      <li><strong>CaCl<sub>2</sub>（塩化カルシウム）</strong>：アンモニア回収の工程で生じる副生成物。融雪剤や乾燥剤などに利用される一方、製品としては引き取り手が限られるため、その扱いがこの製法の課題の一つとされます</li>
+      <li>原子量は H＝1.0、C＝12、N＝14、O＝16、Na＝23、Cl＝35.5、Ca＝40 を使う</li>
+    </ul>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>問われている物質を確認する。</strong>単体の性質か、NaOH・Na<sub>2</sub>CO<sub>3</sub>・NaHCO<sub>3</sub> の性質と用途か、アンモニアソーダ法の工程か、を切り分けます。</li>
+      <li><strong>工程の問題では、まず4段階の順序を置く。</strong>石灰石の加熱分解 → NaHCO<sub>3</sub> の沈殿 → 加熱して Na<sub>2</sub>CO<sub>3</sub> → NH<sub>4</sub>Cl から NH<sub>3</sub> を回収、の順です。</li>
+      <li><strong>各段階の反応式を書き、両辺の原子の数をそろえる。</strong>とくに回収工程は係数 2 が付くので、N・H・Cl の数を左右で検算します。</li>
+      <li><strong>循環する物質をチェックする。</strong>NH<sub>3</sub> は工程（2）で使われ工程（4）で戻り、CO<sub>2</sub> の一部も NaHCO<sub>3</sub> の加熱から戻ります。差し引きで消える物質が循環物質です。</li>
+      <li><strong>副生成物の出どころを確認する。</strong>CaCl<sub>2</sub> はアンモニア回収の工程で Ca(OH)<sub>2</sub> と NH<sub>4</sub>Cl が反応して生じます。全体式 2NaCl ＋ CaCO<sub>3</sub> → Na<sub>2</sub>CO<sub>3</sub> ＋ CaCl<sub>2</sub> とつながるか確かめます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：次の反応式の空欄を埋めて完成させよ。(a) ナトリウムと水：2Na ＋ 2H<sub>2</sub>O → （　） ＋ H<sub>2</sub>　(b) 炭酸水素ナトリウムの加熱：2NaHCO<sub>3</sub> → （　） ＋ H<sub>2</sub>O ＋ CO<sub>2</sub>　(c) アンモニアの回収：2NH<sub>4</sub>Cl ＋ Ca(OH)<sub>2</sub> → （　） ＋ 2NH<sub>3</sub> ＋ 2H<sub>2</sub>O。問題2：アンモニアソーダ法の工程を正しい順序に並べ替えよ。ア：炭酸水素ナトリウムを加熱して炭酸ナトリウムを得る　イ：石灰石を加熱分解して二酸化炭素を得る　ウ：食塩水にアンモニアと二酸化炭素を吹き込み、炭酸水素ナトリウムを沈殿させる　エ：塩化アンモニウムに水酸化カルシウムを加えてアンモニアを回収する。問題3：炭酸水素ナトリウム 168 g を完全に加熱分解したとき、得られる炭酸ナトリウムは何 g か。また、発生する二酸化炭素は何 g か。原子量は H＝1.0、C＝12、O＝16、Na＝23 とする。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1(a)：ナトリウムは水と反応して水酸化ナトリウムと水素を生じるので、空欄は 2NaOH です。両辺とも Na 2個、H 4個、O 2個でそろいます。</li>
+          <li>問題1(b)：加熱で炭酸ナトリウムが生じるので、空欄は Na<sub>2</sub>CO<sub>3</sub> です。両辺とも Na 2個、H 2個、C 2個、O 6個でそろいます。</li>
+          <li>問題1(c)：塩化カルシウムが生じるので、空欄は CaCl<sub>2</sub> です。両辺とも N 2個、H 10個、Cl 2個、Ca 1個、O 2個でそろいます。</li>
+          <li>問題2：石灰石の分解で CO<sub>2</sub> を用意し（イ）、それを食塩水に吹き込んで NaHCO<sub>3</sub> を沈殿させ（ウ）、沈殿を加熱して Na<sub>2</sub>CO<sub>3</sub> にし（ア）、最後に残った NH<sub>4</sub>Cl から NH<sub>3</sub> を回収して循環させます（エ）。順序は イ → ウ → ア → エ です。</li>
+          <li>問題3：NaHCO<sub>3</sub> の式量は 84 なので、168 g は 168÷84＝2.0 mol です。反応式 2NaHCO<sub>3</sub> → Na<sub>2</sub>CO<sub>3</sub> ＋ H<sub>2</sub>O ＋ CO<sub>2</sub> より、2.0 mol の NaHCO<sub>3</sub> から Na<sub>2</sub>CO<sub>3</sub> は 1.0 mol、CO<sub>2</sub> は 1.0 mol 生じます。</li>
+          <li>Na<sub>2</sub>CO<sub>3</sub> の式量は 106 なので 1.0 mol は 106 g、CO<sub>2</sub> の式量は 44 なので 1.0 mol は 44 g です。検算すると、生成物の合計は 106＋18（H<sub>2</sub>O 1.0 mol）＋44＝168 g で、原料の質量と一致します。</li>
+        </ol>
+        <p><strong>答え：問題1は (a) 2NaOH、(b) Na<sub>2</sub>CO<sub>3</sub>、(c) CaCl<sub>2</sub>。問題2は イ → ウ → ア → エ。問題3は炭酸ナトリウム 106 g、二酸化炭素 44 g</strong>。問題1・2は「沈殿 → 加熱 → 回収」の流れと、各式の原子数の検算で確実に解けます。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>ガラス製造の原料（ソーダ灰）</h3>
+    <p>炭酸ナトリウムは「ソーダ灰」とも呼ばれ、ケイ砂（SiO<sub>2</sub>）や石灰石とともに板ガラスやガラスびんの主原料の一つです。炭酸ナトリウムを加えることでケイ砂の融ける温度が下がり、ガラスを工業的に溶かして成形できるようになります。身の回りのガラスの多くは、このソーダ石灰ガラスです。</p>
+    <h3>セッケン・洗剤と水酸化ナトリウム</h3>
+    <p>セッケンは、油脂を水酸化ナトリウムで加水分解（けん化）して作られます。アンモニアソーダ法で作る炭酸ナトリウム自体も、洗剤の成分や水の軟化などに使われます。ガラスとセッケンという日用品の両方にナトリウムの化合物が関わっているのが、この分野が工業の基礎とされる理由です。</p>
+    <h3>炎色反応の利用（花火・検出）</h3>
+    <p>ナトリウムの炎色反応の黄色は、花火の黄色の着色に利用されてきました。また、物質を炎に入れて色を見る炎色反応は、リチウム（赤）・カルシウム（橙赤）・銅（青緑）などと並べて、金属元素を見分ける検出法として分析の現場や学校実験で使われます。</p>
+    <h3>副生成物 CaCl<sub>2</sub> の利用</h3>
+    <p>アンモニアソーダ法で副生する塩化カルシウムは、水によく溶けて凝固点を下げる性質や吸湿性を利用して、道路の融雪剤・凍結防止剤や乾燥剤などに使われます。ただし生産量に対して用途が限られるため、副生成物の扱いはソーダ工業の継続的な課題でもあります。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>エルネスト・ソルベー</strong>（1838〜1922、ベルギーの化学者・実業家）</p>
+    <p>アンモニアソーダ法は、ベルギーの化学者・実業家<strong>エルネスト・ソルベー</strong>（1838〜1922）が1861年に考案し、工業化した製法で、考案者の名前から<strong>ソルベー法</strong>とも呼ばれます。食塩と石灰石という安い原料から炭酸ナトリウムを作り、アンモニアを循環させて無駄を減らした点が革新的で、それまでのルブラン法に代わって世界中に広まりました。ソルベーはこの事業で得た富をもとに、1911年から始まった物理学・化学の国際会議「ソルベー会議」を支援したことでも知られます。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>炭酸カルシウムの循環は<a href="carbon-carbonates.html">炭素と炭酸塩</a>、アンモニアそのものの製法は<a href="nitrogen-ammonia.html">窒素とアンモニア・ハーバー法</a>、ガラスの材料としての話は<a href="ceramics-glass.html">セラミックスとガラス</a>が役立ちます。セッケンの作り方は<a href="fats-soaps-detergents.html">油脂とセッケン・洗剤</a>、塩の水溶液の液性は<a href="salt-hydrolysis.html">塩の加水分解と液性</a>もどうぞ。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

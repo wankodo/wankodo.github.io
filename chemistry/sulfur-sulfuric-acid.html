@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>硫黄と硫酸・接触法｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="硫黄の同素体（斜方硫黄・単斜硫黄・ゴム状硫黄）と硫化水素・二酸化硫黄の性質、濃硫酸の脱水作用・酸化作用と希硫酸の酸性、不動態を解説し、硫酸の工業的製法である接触法の流れと、現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="硫黄と硫酸・接触法｜化学ツール集">
+<meta property="og:description" content="硫黄の同素体、SO2の還元性と漂白作用、濃硫酸の脱水・酸化作用、不動態、そしてV2O5触媒を使う接触法の流れを例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/sulfur-sulfuric-acid.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">硫黄と硫酸</span>・接触法</h1>
+    <p>化学の考え方辞典 ― 無機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 無機化学 ＞ 硫黄と硫酸・接触法</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">無機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    硫黄の同素体と硫化水素・二酸化硫黄の性質、濃硫酸の脱水作用・酸化作用と希硫酸の酸性を整理し、硫酸の工業的製法である接触法の流れを読むときに使う。硫酸は肥料や化学工業の基礎原料として大量に作られるため、その生産量が国の化学工業の規模を示す目安とされ、「工業の母」とも呼ばれる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>硫黄とその化合物――<strong>硫黄の同素体、硫化水素 H<sub>2</sub>S、二酸化硫黄 SO<sub>2</sub>、硫酸 H<sub>2</sub>SO<sub>4</sub></strong>――の性質と、硫酸の工業的製法<strong>接触法</strong>を扱うときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>斜方硫黄・単斜硫黄・ゴム状硫黄の違いと、温度による変化を問う問題</li>
+      <li>SO<sub>2</sub> が還元剤として働く反応と、漂白作用の仕組みを問う問題</li>
+      <li>濃硫酸と希硫酸で性質がどう違うか（脱水作用・酸化作用・酸性・不動態）を判定する問題</li>
+      <li>熱濃硫酸が銅を溶かす反応など、反応式を完成させる問題</li>
+      <li>接触法の各工程の反応式と、SO<sub>3</sub> を水に直接吸収させない理由を説明する問題</li>
+    </ul>
+    <p>ポイントは、<strong>「どの物質が、どの条件で、どの働きをするか」を組にして覚える</strong>ことです。とくに硫酸は、濃いか薄いか、熱しているか冷たいかで働きがまったく変わります。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>硫黄の同素体</h3>
+    <p>硫黄には、同じ元素からできていながら性質の異なる<strong>同素体</strong>があります。いずれも硫黄原子の集まり方の違いによるものです。</p>
+    <ul>
+      <li><strong>斜方硫黄</strong>：常温で安定な黄色の結晶。硫黄原子8個が王冠形に連なった環状分子 S<sub>8</sub> からなる。融点は約113 ℃</li>
+      <li><strong>単斜硫黄</strong>：針状の結晶。約95.5 ℃以上で安定で、斜方硫黄をゆっくり加熱して融点近くで冷やすと得られる。融点は約119 ℃。常温に放置するとしだいに斜方硫黄に戻る。分子は同じく S<sub>8</sub></li>
+      <li><strong>ゴム状硫黄（無定形硫黄）</strong>：暗褐色で弾性のあるゴム状の物質。硫黄を加熱して沸騰させた（沸点は約445 ℃）あと、冷水に注いで急冷すると得られる。S<sub>8</sub> の環が切れて硫黄原子が長く連なった鎖状の構造をもつ。常温に放置するとしだいに斜方硫黄に戻る</li>
+    </ul>
+    <p>硫黄は水に溶けにくく、二硫化炭素 CS<sub>2</sub> によく溶けます。また、硫黄を融点以上に加熱していくと、約160 ℃を超えたあたりから S<sub>8</sub> の環が切れて鎖状につながりはじめるため、液体の粘性が急に大きくなります。</p>
+    <h3>硫化水素 H<sub>2</sub>S</h3>
+    <p>無色で<strong>腐卵臭</strong>のある有毒な気体で、水に少し溶けて弱い酸性を示します。硫黄の酸化数は −2 と最も小さいため、相手を還元する<strong>還元性</strong>をもちます。空気中で燃やすと、酸素が十分なときは SO<sub>2</sub> と水に、酸素が不足すると硫黄と水になります。</p>
+    <div class="formula">2H<sub>2</sub>S ＋ 3O<sub>2</sub> → 2SO<sub>2</sub> ＋ 2H<sub>2</sub>O（酸素十分）／ 2H<sub>2</sub>S ＋ O<sub>2</sub> → 2S ＋ 2H<sub>2</sub>O（酸素不足）</div>
+    <p>また、SO<sub>2</sub> と反応させると硫黄が析出します。この反応でも H<sub>2</sub>S は還元剤として働いています。</p>
+    <div class="formula">SO<sub>2</sub> ＋ 2H<sub>2</sub>S → 3S ＋ 2H<sub>2</sub>O</div>
+    <h3>二酸化硫黄 SO<sub>2</sub></h3>
+    <p>無色で刺激臭のある有毒な気体で、水に溶けやすく、水溶液は弱い酸性（亜硫酸 H<sub>2</sub>SO<sub>3</sub>）を示します。硫黄の酸化数が +4 で中間の値をとるため、相手によって酸化剤にも還元剤にもなりますが、高校化学で中心になるのは<strong>還元性</strong>です。</p>
+    <div class="formula">SO<sub>2</sub> ＋ H<sub>2</sub>O ⇌ H<sub>2</sub>SO<sub>3</sub></div>
+    <p><strong>漂白作用</strong>：SO<sub>2</sub> は色素と結びついて無色の物質に変えるため、漂白作用を示します。この漂白は還元によるもので、時間がたつと空気中の酸素で酸化されて色が戻ることがあります（塩素の酸化による漂白とは仕組みが異なります）。還元剤としての働きは、たとえば過マンガン酸カリウム水溶液の赤紫色を消す反応でも確認できます。</p>
+    <h3>硫酸 H<sub>2</sub>SO<sub>4</sub> の性質</h3>
+    <p>純粋な硫酸は無色で粘性の大きい油状の液体です。市販の濃硫酸は質量パーセント濃度が約98 %で、性質は濃硫酸と希硫酸では大きく異なります。</p>
+    <ul>
+      <li><strong>希硫酸の酸性</strong>：水に溶けて電離し、強い酸性を示す。活発な金属と反応して水素を発生する（例：Zn ＋ H<sub>2</sub>SO<sub>4</sub> → ZnSO<sub>4</sub> ＋ H<sub>2</sub>）。このとき働くのは水素イオン H<sup>+</sup> で、酸化作用は示さない</li>
+      <li><strong>濃硫酸の脱水作用</strong>：水と強く結びつく性質（吸湿性）が強く、有機化合物から水素原子と酸素原子を水として奪う。たとえばスクロース（ショ糖）C<sub>12</sub>H<sub>22</sub>O<sub>11</sub> に濃硫酸を加えると、炭素だけが残って黒く炭化する（C<sub>12</sub>H<sub>22</sub>O<sub>11</sub> → 12C ＋ 11H<sub>2</sub>O）。この性質のため、気体の乾燥剤としても使われる（ただし、アンモニアのような塩基性の気体や、還元性の気体は乾燥できない）</li>
+      <li><strong>熱濃硫酸の酸化作用</strong>：加熱した濃硫酸は強い酸化剤として働き、水素よりイオン化傾向の小さい銅や銀をも溶かす。銅の場合は SO<sub>2</sub> が発生する</li>
+      <li><strong>難揮発性</strong>：沸点が高く揮発しにくい。そのため、食塩に濃硫酸を加えて加熱すると、揮発性の塩化水素 HCl が発生する（NaCl ＋ H<sub>2</sub>SO<sub>4</sub> → NaHSO<sub>4</sub> ＋ HCl）。揮発性の酸を塩から追い出す反応に使われる</li>
+      <li><strong>不動態</strong>：鉄 Fe・アルミニウム Al・ニッケル Ni は、冷たい濃硫酸に触れると表面に緻密な酸化物の被膜ができ、内部が守られて溶けなくなる。この状態を不動態といい、濃硫酸を鉄製のタンクで運べる理由になっている</li>
+    </ul>
+    <div class="formula">Cu ＋ 2H<sub>2</sub>SO<sub>4</sub>（熱濃硫酸） → CuSO<sub>4</sub> ＋ SO<sub>2</sub> ＋ 2H<sub>2</sub>O</div>
+    <p>この式で、濃硫酸2分子のうち1分子は酸化剤として SO<sub>2</sub> に変わり、もう1分子は CuSO<sub>4</sub> を作る酸として働いています。炭素も熱濃硫酸に酸化されます（C ＋ 2H<sub>2</sub>SO<sub>4</sub> → CO<sub>2</sub> ＋ 2SO<sub>2</sub> ＋ 2H<sub>2</sub>O）。なお、濃硫酸を水で薄めるときは大量の熱（溶解熱）が出るため、<strong>水の中に濃硫酸を少しずつ加えて</strong>かき混ぜながら希釈します。逆にすると水が突沸して危険です。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>接触法 ― 硫酸の工業的製法</h3>
+    <p>硫酸は<strong>接触法</strong>で工業的に作られます。流れは4段階です。</p>
+    <ol class="steps">
+      <li><strong>SO<sub>2</sub> を作る</strong>：硫黄を空気中で燃やす（S ＋ O<sub>2</sub> → SO<sub>2</sub>）。原料に黄鉄鉱 FeS<sub>2</sub> を使う場合は、焙焼によって SO<sub>2</sub> を得る（4FeS<sub>2</sub> ＋ 11O<sub>2</sub> → 2Fe<sub>2</sub>O<sub>3</sub> ＋ 8SO<sub>2</sub>）</li>
+      <li><strong>SO<sub>2</sub> を酸化する</strong>：五酸化二バナジウム V<sub>2</sub>O<sub>5</sub> を触媒として、約450 ℃で SO<sub>2</sub> を酸化し、三酸化硫黄 SO<sub>3</sub> にする。この反応は可逆反応で発熱反応のため、低温ほど SO<sub>3</sub> 側に有利だが、反応速度を保つために温度との折り合いがつけられている</li>
+      <li><strong>濃硫酸に吸収させる</strong>：SO<sub>3</sub> を濃硫酸に吸収させて、発煙硫酸（SO<sub>3</sub> を過剰に溶かした硫酸。主成分は二硫酸 H<sub>2</sub>S<sub>2</sub>O<sub>7</sub>）にする</li>
+      <li><strong>水で薄める</strong>：発煙硫酸を水で希釈して、目的の濃度の硫酸にする</li>
+    </ol>
+    <div class="formula">2SO<sub>2</sub> ＋ O<sub>2</sub> ⇌ 2SO<sub>3</sub>（V<sub>2</sub>O<sub>5</sub> 触媒）</div>
+    <div class="formula">SO<sub>3</sub> ＋ H<sub>2</sub>SO<sub>4</sub> → H<sub>2</sub>S<sub>2</sub>O<sub>7</sub>（発煙硫酸）</div>
+    <div class="formula">H<sub>2</sub>S<sub>2</sub>O<sub>7</sub> ＋ H<sub>2</sub>O → 2H<sub>2</sub>SO<sub>4</sub></div>
+    <p><strong>なぜ水に直接吸収させないのか</strong>：SO<sub>3</sub> を水に直接触れさせると、激しく反応して硫酸の細かい霧（ミスト）が大量に発生し、気体に混ざって逃げてしまい、うまく回収できません。そこで、いったん濃硫酸に吸収させて発煙硫酸として取り込み、それを水で薄める二段構えにしています。「接触法」の名は、気体を固体触媒に<strong>接触</strong>させて反応させる工程に由来します。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>物質と条件を組で確認する。</strong>硫酸の問題は「濃いか薄いか」「熱いか冷たいか」で答えが変わります。まず条件を読み取ります。</li>
+      <li><strong>働きを名づける。</strong>酸性（H<sup>+</sup> の働き）か、脱水作用か、酸化作用か、難揮発性による追い出しかを決めます。銅が希硫酸に溶けず熱濃硫酸に溶けるのは、後者だけが酸化作用をもつためです。</li>
+      <li><strong>酸化数で裏づける。</strong>H<sub>2</sub>S の硫黄は −2、SO<sub>2</sub> は +4、SO<sub>3</sub> と硫酸は +6。酸化数が上がる向きにしか進めない物質は還元剤、下がる向きに進める物質は酸化剤として働くと判断できます。</li>
+      <li><strong>反応式は原子の数と電荷を数えて検算する。</strong>とくに接触法と熱濃硫酸の式は、係数を置いたあと S・O・H の数を左右で必ずそろえます。</li>
+      <li><strong>不動態を例外として押さえる。</strong>Fe・Al・Ni が冷たい濃硫酸に溶けないのは、反応しないからではなく、表面の酸化被膜が内部を守るからです。希硫酸には通常どおり溶けて水素を発生します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：次の（a）〜（d）の操作で起こることとして、正しいものをそれぞれ選べ。(a) 銅片に希硫酸を加える。(b) 銅片に熱濃硫酸を加える。(c) 鉄片に冷たい濃硫酸を加える。(d) スクロースに濃硫酸を加える。問題2：反応式の係数を完成させよ。Cu ＋ （ ア ）H<sub>2</sub>SO<sub>4</sub> → CuSO<sub>4</sub> ＋ （ イ ）＋ （ ウ ）H<sub>2</sub>O（熱濃硫酸との反応。イに入る物質の化学式も答えること）。問題3：接触法について答えよ。(a) V<sub>2</sub>O<sub>5</sub> を触媒とする工程の反応式を書け。(b) SO<sub>3</sub> を水に直接吸収させず、濃硫酸に吸収させる理由を述べよ。(c) 硫黄 32 kg を原料とし、すべての工程が完全に進んだとすると、得られる硫酸 H<sub>2</sub>SO<sub>4</sub> は何 kg か（原子量は S ＝ 32、H ＝ 1.0、O ＝ 16 とする）。問題4：SO<sub>2</sub> の性質として正しいものをすべて選べ。(a) 水に溶けると酸性を示す。(b) 還元作用により漂白する。(c) 過マンガン酸カリウム水溶液の赤紫色を消す。(d) 無臭である。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：(a) 銅は水素よりイオン化傾向が小さく、希硫酸の H<sup>+</sup> では酸化できないので<strong>反応しない</strong>。(b) 熱濃硫酸の酸化作用で溶け、<strong>SO<sub>2</sub> が発生</strong>する。(c) 表面に酸化被膜ができて<strong>不動態</strong>となり、溶けない。(d) 濃硫酸の<strong>脱水作用</strong>で水が奪われ、炭素が残って<strong>黒く炭化</strong>する。</li>
+          <li>問題2：生成物は CuSO<sub>4</sub> と SO<sub>2</sub> と H<sub>2</sub>O です。S の数をそろえると H<sub>2</sub>SO<sub>4</sub> は2分子必要で、そのうち1分子が SO<sub>2</sub> に変わります。H をそろえると H<sub>2</sub>O は2分子となり、O の数も左辺 8個 ＝ 右辺 4＋2＋2 ＝ 8個で一致します。よって ア ＝ 2、イ ＝ SO<sub>2</sub>、ウ ＝ 2。</li>
+          <li>問題3：(a) 2SO<sub>2</sub> ＋ O<sub>2</sub> ⇌ 2SO<sub>3</sub>。(b) SO<sub>3</sub> を水に直接触れさせると激しく反応して硫酸の霧が発生し、回収しにくくなるため、まず濃硫酸に吸収させて発煙硫酸にし、それを水で薄める。(c) 硫黄原子は S → SO<sub>2</sub> → SO<sub>3</sub> → H<sub>2</sub>SO<sub>4</sub> と1個ずつ受け継がれるので、S 1 mol から H<sub>2</sub>SO<sub>4</sub> 1 mol が得られます。S 32 kg は 32,000 g ÷ 32 g/mol ＝ 1,000 mol。H<sub>2</sub>SO<sub>4</sub> のモル質量は 1.0×2 ＋ 32 ＋ 16×4 ＝ 98 g/mol なので、98 g/mol × 1,000 mol ＝ 98,000 g ＝ <strong>98 kg</strong>。</li>
+          <li>問題4：(a) 水に溶けて亜硫酸を生じ、弱い酸性を示すので正しい。(b) 色素を還元して無色にする漂白作用があるので正しい。(c) SO<sub>2</sub> が還元剤として働き、過マンガン酸イオンを還元するので正しい（色が消える）。(d) SO<sub>2</sub> は刺激臭のある気体なので誤り。よって正しいのは <strong>(a)(b)(c)</strong>。</li>
+        </ol>
+        <p><strong>答え：問題1は (a) 反応しない、(b) 溶けて SO<sub>2</sub> が発生、(c) 不動態で溶けない、(d) 脱水されて黒く炭化。問題2は ア＝2、イ＝SO<sub>2</sub>、ウ＝2。問題3は (a) 2SO<sub>2</sub> ＋ O<sub>2</sub> ⇌ 2SO<sub>3</sub>、(b) 硫酸の霧ができて回収しにくいため、(c) 98 kg。問題4は (a)(b)(c)。</strong>硫酸の問題は「濃・希」と「熱・冷」の条件の読み取りがすべてです。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>化学肥料の製造 ― 硫酸が「工業の母」と呼ばれる理由</h3>
+    <p>硫酸は、過リン酸石灰や硫安（硫酸アンモニウム）などの化学肥料の製造に大量に使われるほか、化学繊維・染料・医薬品など多くの化学工業の出発原料や処理剤になっています。あまりに多くの産業が硫酸を必要とするため、その生産量は国の化学工業の規模を示す目安とされ、硫酸は「工業の母」と呼ばれます。日本で作られる硫酸の多くは、接触法によって生産されています。</p>
+    <h3>鉛蓄電池の電解液</h3>
+    <p>自動車のバッテリーに使われる鉛蓄電池では、電解液として希硫酸が使われています。放電・充電にともなって硫酸の濃度が変わるため、電解液の密度を測ることで電池の充電状態を調べることができます。希硫酸の酸性と電解質としての性質をそのまま利用した例です。</p>
+    <h3>乾燥剤としての濃硫酸</h3>
+    <p>実験室では、濃硫酸の強い吸湿性を利用して、塩素や二酸化炭素などの気体を乾燥させます。ただし、アンモニアのような塩基性の気体は濃硫酸と中和反応してしまい、二酸化硫黄のような還元性の気体は酸化されてしまうため、これらの乾燥には使えません。「何を乾燥できるか」は性質の理解そのものです。</p>
+    <h3>SO<sub>2</sub> の漂白・保存への利用</h3>
+    <p>二酸化硫黄の漂白作用と抗菌作用は、食品分野でも利用されてきました。ドライフルーツなどの漂白・保存に使われる亜硫酸塩は、水に溶けて SO<sub>2</sub> と同じ働きをする物質で、色素を還元して退色を防ぎます。使用量は食品衛生の基準で定められています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ペレグリン・フィリップス</strong>（イギリスの酢製造業者、1831年に接触法の特許を取得）</p>
+    <p>接触法の出発点は、イギリスの酢製造業者<strong>ペレグリン・フィリップス</strong>が1831年に取得した特許です。フィリップスは、白金を触媒として SO<sub>2</sub> を酸化し SO<sub>3</sub> を得る方法を示しました。当時はそれ以前の鉛室法が主流で、接触法が本格的に工業化されるのは、濃い硫酸を求める染料工業などの需要が高まった19世紀後半になってからです。その後、触媒は高価な白金から、より安く扱いやすい五酸化二バナジウム V<sub>2</sub>O<sub>5</sub> へと置き換わり、現在の接触法の形が整いました。硫黄や硫酸そのものは古代から知られていた物質で、特定の発見者に帰すものではありませんが、今日の大量生産を可能にした転機はフィリップスの特許に求めることができます。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>同じ非金属元素の工業的製法は<a href="nitrogen-ammonia.html">窒素とアンモニア・ハーバー法</a>、気体全般の性質と捕集は<a href="common-gases-preparation.html">気体の性質と製法</a>、漂白・消毒の化学は<a href="halogens.html">ハロゲンとその化合物</a>、V<sub>2</sub>O<sub>5</sub> の働きそのものは<a href="catalysts.html">触媒の働き</a>、SO<sub>2</sub> が関わる環境問題は<a href="air-chemistry-acid-rain.html">大気の化学と酸性雨</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
