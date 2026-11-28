@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>活量とイオン強度｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="活量とイオン強度の使い方を、公式・手順・例題で解説。活量 a＝γ×c/c° とイオン強度 I＝½Σcᵢzᵢ² の定義と計算例、デバイ−ヒュッケル理論の入口、海水や血液など濃度では済まない実在溶液での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="活量とイオン強度｜化学ツール集">
+<meta property="og:description" content="活量 a＝γ×c/c° とイオン強度 I＝½Σcᵢzᵢ² の定義と計算例、デバイ−ヒュッケル理論の入口を、例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/activity-ionic-strength.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">活量</span>と<span class="accent">イオン強度</span></h1>
+    <p>化学の考え方辞典 ― 溶液（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 溶液 ＞ 活量とイオン強度</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">溶液</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    濃い溶液や多価イオンを含む溶液では、イオン同士の引力や反発のために、濃度どおりには反応や平衡が進まない。そこで濃度を活量係数 γ で補正した活量 a＝γ×c/c° を使い、溶液中の全イオンの効き目をイオン強度 I＝½Σcᵢzᵢ² でまとめる。I が大きいほど γ は1から離れ、海水や血液のような実在の溶液ではこの補正が欠かせない。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>高校までの平衡や pH の計算では、濃度をそのまま式に入れても大きな誤差は出ませんでした。しかし濃度が高くなったり、電荷の大きいイオンが混ざったりすると、イオン同士が引き合い・反発し合って「自由に動けるイオン」が減り、濃度どおりの効き目を示さなくなります。この<strong>実在溶液のずれを、活量とイオン強度で補正する</strong>ときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>モル濃度 c と活量係数 γ から、活量 a を求める問題</li>
+      <li>複数のイオンが溶けた溶液について、イオン強度 I を全イオンの合計から求める問題</li>
+      <li>同じ濃度でも、NaCl の溶液と CaCl<sub>2</sub> の溶液でずれの大きさが違う理由を、イオンの電荷で説明する問題</li>
+      <li>デバイ−ヒュッケル理論の極限式を使って、薄い電解質溶液の平均活量係数を概算する問題</li>
+      <li>海水や血液のように塩類を多く含む溶液で、濃度で計算した pH や溶解度が実測と合わない理由を考える問題</li>
+    </ul>
+    <p>ポイントは2つです。1つ目は、平衡定数や pH の式に本当に入るべきなのは濃度ではなく<strong>活量</strong>だということ。2つ目は、その補正の大きさを決めるのが、対象のイオンだけでなく<strong>溶液中の全イオンから決まるイオン強度</strong>だということです。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p><strong>活量</strong> a は、濃度を「実効的な濃度」に直した量です。溶質のモル濃度を c、標準濃度を c°、活量係数を γ（ガンマ）とすると、次のように定義されます。</p>
+    <div class="formula">a ＝ γ × c ÷ c°</div>
+    <p>各記号の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>a</strong>：活量。単位のない量（無次元量）</li>
+      <li><strong>γ</strong>：活量係数。単位のない量。理想的にふるまう極限（無限に薄い溶液）で γ ＝ 1 となり、ずれが大きいほど1から離れる</li>
+      <li><strong>c</strong>：モル濃度 [mol/L]</li>
+      <li><strong>c°</strong>：標準濃度。c° ＝ 1 mol/L と取り、c ÷ c° とすることで活量を単位のない量にする</li>
+    </ul>
+    <p>γ ＝ 1 なら a は c ÷ c° と一致し、濃度そのものを使ってよいことになります。電解質溶液では、陽イオンと陰イオンを別々に測ることはできないため、両方をまとめた<strong>平均活量係数 γ<sub>±</sub></strong> が表として与えられるのが普通です。たとえば 25 ℃の塩酸では、0.001 mol/L で γ<sub>±</sub> ≒ 0.97、0.10 mol/L で γ<sub>±</sub> ≒ 0.80 のように、濃くなるほど1から離れていきます（値は実験で決まる実測値です）。</p>
+    <p>その γ の大きさを左右するのが<strong>イオン強度</strong> I です。溶液中のすべてのイオンについて、濃度に電荷の2乗をかけたものを合計し、半分にしたものと定義されます。</p>
+    <div class="formula">I ＝ ½ Σ c<sub>i</sub> z<sub>i</sub><sup>2</sup></div>
+    <ul>
+      <li><strong>I</strong>：イオン強度 [mol/L]（濃度と同じ単位で表す）</li>
+      <li><strong>c<sub>i</sub></strong>：イオン i のモル濃度 [mol/L]。Σ は溶液中の全イオンについての合計を表す</li>
+      <li><strong>z<sub>i</sub></strong>：イオン i の電荷の数（符号は付けず、Na<sup>+</sup> なら1、Ca<sup>2+</sup> や SO<sub>4</sub><sup>2−</sup> なら2）。2乗されるため、多価イオンほど I への効き目が大きい</li>
+    </ul>
+    <p>電荷が2乗で効くのが要点です。同じ 0.10 mol/L でも、1価どうしの NaCl では I ＝ 0.10 mol/L ですが、CaCl<sub>2</sub> では Ca<sup>2+</sup> の分が4倍に効いて I ＝ 0.30 mol/L になります（例題で計算します）。</p>
+    <p>イオン強度と活量係数を結びつけたのが<strong>デバイ−ヒュッケル理論</strong>です。各イオンのまわりには反対符号のイオンが統計的に集まった「イオン雰囲気」ができ、この雰囲気に引き留められる分だけイオンの効き目が弱まる、という描像です。十分に薄い溶液では、次の<strong>極限式</strong>が成り立ちます。</p>
+    <div class="formula">log<sub>10</sub> γ<sub>±</sub> ＝ −A |z<sub>+</sub> z<sub>−</sub>| √I</div>
+    <ul>
+      <li><strong>γ<sub>±</sub></strong>：平均活量係数</li>
+      <li><strong>z<sub>+</sub>、z<sub>−</sub></strong>：陽イオン・陰イオンの電荷の数。|z<sub>+</sub> z<sub>−</sub>| はその積の絶対値</li>
+      <li><strong>A</strong>：溶媒と温度で決まる定数。水溶液・25 ℃では A ≒ 0.509（I を mol/L で表したとき）</li>
+      <li><strong>√I</strong>：イオン強度の平方根。γ が I そのものではなく √I に比例してずれるのが、この理論の特徴</li>
+    </ul>
+    <p>極限式がそのまま使えるのは I が 0.01 mol/L 程度までの薄い溶液で、それより濃くなると、イオンの大きさを取り入れた拡張式や、さらに経験的な式が必要になります。それでも「I が大きいほど γ は1から離れる」「多価イオンほど効く」という見通しは、濃い溶液でも成り立ちます。</p>
+    <p>活量を使うと、平衡定数は本来、濃度ではなく活量で書くものだと分かります。たとえば溶解度積や酸解離定数を活量で定義し直すと、塩を加えて I が変わっただけで見かけの平衡がずれる現象（塩析・塩溶や、指示薬の色のずれ）も、γ の変化として統一的に説明できます。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>溶けている全イオンを書き出す。</strong>電解質が完全に電離したとみなし、各イオンの濃度を求めます。たとえば CaCl<sub>2</sub> が 0.10 mol/L なら、Ca<sup>2+</sup> が 0.10 mol/L、Cl<sup>−</sup> が 0.20 mol/L です。係数を掛け忘れないことが第一の注意点です。</li>
+      <li><strong>イオン強度を計算する。</strong>各イオンについて c<sub>i</sub> z<sub>i</sub><sup>2</sup> を求めて合計し、最後に ½ をかけます。電荷は2乗するので、符号は考えません。</li>
+      <li><strong>活量係数を決める。</strong>薄い溶液ならデバイ−ヒュッケルの極限式で概算し、それ以外では実測の表や与えられた値を使います。自分で勝手な γ を置かないことが大切です。</li>
+      <li><strong>活量を求める。</strong>a ＝ γ × c ÷ c°（c° ＝ 1 mol/L）に代入します。活量は単位のない量です。</li>
+      <li><strong>平衡や pH の式には活量を入れる。</strong>濃度で計算した値とどれだけずれるかを確認し、I が小さい（薄い）極限では濃度の計算に近づくことも確かめます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：0.10 mol/L の塩化カルシウム CaCl<sub>2</sub> 水溶液のイオン強度 I を求めよ（完全電離とする）。問題2：0.10 mol/L の塩化ナトリウム NaCl と 0.050 mol/L の硫酸マグネシウム MgSO<sub>4</sub> を含む混合溶液のイオン強度 I を求めよ（どちらも完全電離とする）。問題3：0.010 mol/L の NaCl 水溶液について、25 ℃のデバイ−ヒュッケル極限式（A ＝ 0.509）で平均活量係数 γ<sub>±</sub> を概算し、Na<sup>+</sup> の活量（γ は γ<sub>±</sub> で代表させる）を求めよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：CaCl<sub>2</sub> 0.10 mol/L から、Ca<sup>2+</sup> が 0.10 mol/L、Cl<sup>−</sup> が 0.20 mol/L です。I ＝ ½｛0.10 × 2<sup>2</sup> ＋ 0.20 × 1<sup>2</sup>｝＝ ½｛0.40 ＋ 0.20｝＝ ½ × 0.60 ＝ <strong>0.30 mol/L</strong>。同じ 0.10 mol/L の NaCl（I ＝ 0.10 mol/L）の3倍で、2価イオンの効き目の大きさが分かります。</li>
+          <li>問題2：イオンは Na<sup>+</sup> 0.10 mol/L、Cl<sup>−</sup> 0.10 mol/L、Mg<sup>2+</sup> 0.050 mol/L、SO<sub>4</sub><sup>2−</sup> 0.050 mol/L の4種です。I ＝ ½｛0.10 × 1<sup>2</sup> ＋ 0.10 × 1<sup>2</sup> ＋ 0.050 × 2<sup>2</sup> ＋ 0.050 × 2<sup>2</sup>｝＝ ½｛0.10 ＋ 0.10 ＋ 0.20 ＋ 0.20｝＝ ½ × 0.60 ＝ <strong>0.30 mol/L</strong>。対象のイオンだけでなく、混ざっている全イオンが I を決めることがポイントです。</li>
+          <li>問題3：NaCl 0.010 mol/L のイオン強度は I ＝ ½｛0.010 × 1 ＋ 0.010 × 1｝＝ 0.010 mol/L で、√I ＝ 0.10 です。極限式より log<sub>10</sub> γ<sub>±</sub> ＝ −0.509 × |(+1) × (−1)| × 0.10 ＝ −0.0509。よって γ<sub>±</sub> ＝ 10<sup>−0.0509</sup> ≒ <strong>0.89</strong>。活量は a ＝ γ × c ÷ c° ＝ 0.89 × 0.010 ÷ 1 ＝ <strong>0.0089</strong>（単位なし）。濃度 0.010 に対して約1割小さく、これが pH などで効いてくるずれです。</li>
+        </ol>
+        <p><strong>答え：問題1は I ＝ 0.30 mol/L、問題2は I ＝ 0.30 mol/L、問題3は γ<sub>±</sub> ≒ 0.89、活量 a ≒ 0.0089。</strong>イオン強度では「全イオン・電荷は2乗・最後に ½」の3点を、活量では「c° ＝ 1 mol/L で割って単位を消す」ことを、それぞれ検算の観点にしてください。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>海水の化学（海洋学・水質分析）</h3>
+    <p>海水には Na<sup>+</sup> や Cl<sup>−</sup> のほか Mg<sup>2+</sup>、Ca<sup>2+</sup>、SO<sub>4</sub><sup>2−</sup> などが多く溶けており、主なイオンから見積もったイオン強度はおよそ 0.7 mol/L にもなります。この領域では活量係数が1から大きく離れるため、海水の pH 測定や炭酸カルシウムの溶解・析出（サンゴや貝殻の形成、海洋酸性化の評価）では、濃度ではなく活量で扱う補正が欠かせません。海洋化学では海水専用の活量モデルが実務で使われています。</p>
+    <h3>血液・体液と臨床検査</h3>
+    <p>血液や細胞外液には Na<sup>+</sup>、K<sup>+</sup>、Ca<sup>2+</sup>、Cl<sup>−</sup> などの電解質が含まれ、イオン強度はおよそ 0.15 mol/L 前後で保たれています。臨床検査で使うイオン選択電極（血液中の Na<sup>+</sup> や K<sup>+</sup> を測る装置）は、原理的には濃度ではなく活量に応答するため、校正や値の解釈には活量の考え方が組み込まれています。点滴に使う生理食塩水（0.9％の NaCl 水溶液）が体液と等張になるよう設計されているのも、体液の塩類環境を前提にしたものです。</p>
+    <h3>pH 測定と緩衝液の設計</h3>
+    <p>pH メーターのガラス電極が応答するのは、水素イオンの濃度ではなく活量です。そのため、正確な pH 測定では標準緩衝液で校正し、測定対象のイオン強度が緩衝液と大きく違うと誤差が出ることが知られています。分析化学では、試料に多量の不活性な塩を加えてイオン強度をそろえる（イオン強度調整）ことで、活量係数を一定に保ち、濃度と活量の比例関係を固定する工夫が実際に使われます。</p>
+    <h3>水処理・スケール防止</h3>
+    <p>ボイラーや冷却水の配管では、CaCO<sub>3</sub> などの塩が析出する「スケール」が問題になります。析出するかどうかは濃度の積ではなく活量の積と溶解度積の比較で決まり、水のイオン強度が高いほど塩が溶けやすくなる（γ が下がって活量が下がる）効果も見積もる必要があります。水処理の現場では、こうした補正を入れた飽和指数がスケール予測に使われています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ギルバート・ルイス</strong>（1875〜1946、アメリカの物理化学者）、<strong>ピーター・デバイ</strong>（1884〜1966、オランダ出身の物理学者・化学者）、<strong>エーリヒ・ヒュッケル</strong>（1896〜1980、ドイツの物理学者・化学者）</p>
+    <p>活量の概念を導入したのは、アメリカの物理化学者<strong>ギルバート・ルイス</strong>（1875〜1946）で、1907年に、濃度の代わりに熱力学の式へそのまま入れられる「実効濃度」として活量を提案しました。イオン強度という形で溶液中の全イオンの影響をまとめたのも、ルイスが同僚のマール・ランドールとともに体系化した枠組みの中で広まった考え方です。その後、オランダ出身の<strong>ピーター・デバイ</strong>（1884〜1966）とドイツの<strong>エーリヒ・ヒュッケル</strong>（1896〜1980）が1923年に、イオンのまわりの「イオン雰囲気」を静電気学で扱うデバイ−ヒュッケル理論を発表し、薄い溶液で活量係数が √I に比例してずれることを理論から導きました。デバイは1936年にノーベル化学賞を受賞しています。活量とイオン強度は、実在溶液を熱力学で正確に扱うための土台として、今日の物理化学に受け継がれています。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>濃度そのものの表し方は<a href="molarity.html">溶液のモル濃度</a>、活量が効いてくる溶解の限界は<a href="solubility-product-ksp.html">溶解度積</a>、pH の定義と計算は<a href="ph-calculation.html">pHの計算</a>が役立ちます。塩の加わりで平衡がずれる話は<a href="buffer-solutions.html">緩衝液</a>、イオンの効き目を浸透の面から見る話は<a href="osmotic-pressure.html">浸透圧</a>もあわせてどうぞ。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

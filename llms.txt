@@ -383,7 +383,7 @@
 
 ## 化学ツール集
 
-> 中学理科・高校化学基礎・高校化学・大学レベルの考え方辞典と計算機。全47項目、各項目に解説記事があり、計算機つきの項目もあります。トップは [化学ツール集](https://wankodo.github.io/chemistry/) です。
+> 中学理科・高校化学基礎・高校化学・大学レベルの考え方辞典と計算機。全66項目、各項目に解説記事があり、計算機つきの項目もあります。トップは [化学ツール集](https://wankodo.github.io/chemistry/) です。
 
 - [密度と物質の区別｜化学ツール集](https://wankodo.github.io/chemistry/density.html): 質量と体積から密度を求め、浮き沈みの判断や物質の同定に使う。計算機つき。
 - [モルとアボガドロ定数｜化学ツール集](https://wankodo.github.io/chemistry/mole-avogadro.html): 粒子数から物質量（mol）を、物質量から粒子数をアボガドロ定数で換算する。計算機つき。
@@ -432,3 +432,22 @@
 - [収率と純度｜化学ツール集](https://wankodo.github.io/chemistry/yield-and-purity.html): 理論収量と実際の収量から収率を求め、不純物を含む原料の純度を考慮して必要な原料の量を求める。計算機つき。
 - [定比例・倍数比例と原子説の成立｜化学ツール集](https://wankodo.github.io/chemistry/laws-of-composition-dalton.html): 実験データから定比例・倍数比例の法則を読み取り、3つの法則をドルトンの原子説がどう説明するかを理解する。解説記事のみ。
 - [燃焼分析と元素分析｜化学ツール集](https://wankodo.github.io/chemistry/combustion-analysis.html): 有機化合物を完全燃焼させて生じた二酸化炭素と水の質量から、炭素・水素・酸素の物質量比を求めて組成式を決定する。計算機つき。
+- [ボイル・シャルルの法則｜化学ツール集](https://wankodo.github.io/chemistry/gas-laws-boyle-charles.html): 物質量が一定の気体について、圧力の変化からボイルの法則で、温度の変化からシャルルの法則で体積を求める。計算機つき。
+- [気体の状態方程式｜化学ツール集](https://wankodo.github.io/chemistry/ideal-gas-law-chemistry.html): 気体の状態方程式 pV＝nRT を使って、圧力・体積・物質量・絶対温度のうち未知の1つを求める。計算機つき。
+- [気体の捕集と製法の基礎｜化学ツール集](https://wankodo.github.io/chemistry/gas-collection-methods.html): 気体の性質（水への溶けやすさと空気との密度）から水上置換・上方置換・下方置換の捕集法を選び、代表的な製法と対応づける。解説記事のみ。
+- [分圧とドルトンの法則｜化学ツール集](https://wankodo.github.io/chemistry/partial-pressure-dalton.html): 混合気体の分圧をモル分率×全圧で求め、全圧を分圧の和で求め、水上置換では水蒸気圧を差し引く。計算機つき。
+- [混合気体と平均分子量｜化学ツール集](https://wankodo.github.io/chemistry/gas-mixtures-average-molar-mass.html): 混合気体の平均分子量を、各成分の分子量とモル分率（体積比・モル比）から求める。計算機つき。
+- [蒸気圧と沸点｜化学ツール集](https://wankodo.github.io/chemistry/vapor-pressure.html): 飽和蒸気圧から密閉容器内の蒸気の物質量と残る液体の量を求め、蒸気圧と外圧の比較で沸騰するかどうかを判断する。計算機つき。
+- [気体の溶解とヘンリーの法則｜化学ツール集](https://wankodo.github.io/chemistry/henrys-law.html): ヘンリーの法則で、圧力を変えたときに液体に溶ける気体の物質量と標準状態での体積を求める。計算機つき。
+- [実在気体とファンデルワールスの式｜化学ツール集](https://wankodo.github.io/chemistry/real-gases-van-der-waals.html): ファンデルワールスの式で実在気体の圧力・体積・温度を求め、圧縮因子 Z から理想気体からのずれを調べる。計算機つき。
+- [拡散とグレアムの法則｜化学ツール集](https://wankodo.github.io/chemistry/grahams-law-diffusion.html): 2つの気体の拡散・漏出の速さの比を分子量から求め、一方の拡散時間から他方の時間や未知の分子量を求める。計算機つき。
+- [溶解と溶解度｜化学ツール集](https://wankodo.github.io/chemistry/solubility.html): 溶解度曲線を読み取り、ある温度で水に溶ける物質の量や、冷やしたときに析出する量を求める。計算機つき。
+- [希釈と混合の濃度計算｜化学ツール集](https://wankodo.github.io/chemistry/dilution-mixing.html): 希釈後の濃度や必要な原液量、2つの溶液を混合した後の濃度を、溶質の物質量の保存から求める。計算機つき。
+- [電解質と電離度｜化学ツール集](https://wankodo.github.io/chemistry/electrolytes-dissociation-degree.html): 電解質の電離度 α を求める、α と濃度からイオン濃度や電離定数 Ka を求める。計算機つき。
+- [コロイド溶液｜化学ツール集](https://wankodo.github.io/chemistry/colloids.html): 直径1〜100 nm のコロイド粒子の性質（チンダル現象・ブラウン運動・透析・凝析・塩析）を理解し、身の回りのコロイドを見分ける。解説記事のみ。
+- [浸透圧｜化学ツール集](https://wankodo.github.io/chemistry/osmotic-pressure.html): モル濃度と温度から浸透圧を求め、浸透圧の測定値から溶質の分子量を求める。計算機つき。
+- [沸点上昇と凝固点降下｜化学ツール集](https://wankodo.github.io/chemistry/boiling-freezing-point.html): 質量モル濃度から沸点上昇度・凝固点降下度を求める、凝固点降下の測定値から溶質の分子量を求める。計算機つき。
+- [蒸気圧降下とラウールの法則｜化学ツール集](https://wankodo.github.io/chemistry/raoults-law.html): 不揮発性溶質を溶かした溶液の蒸気圧降下をラウールの法則で求める。計算機つき。
+- [溶解平衡と溶解度積｜化学ツール集](https://wankodo.github.io/chemistry/solubility-product-ksp.html): 溶解度積 Ksp から溶解度を求める、イオン積 Q と Ksp の比較で沈殿が生じるかを予測する。計算機つき。
+- [分配の法則と抽出｜化学ツール集](https://wankodo.github.io/chemistry/partition-extraction.html): 分配係数から両層の濃度比を求める、抽出回数と溶媒量から水層に残る溶質の割合を求める。解説記事のみ。
+- [活量とイオン強度｜化学ツール集](https://wankodo.github.io/chemistry/activity-ionic-strength.html): 活量係数を使って活量を求める、溶液中の全イオンからイオン強度を求める、濃度だけでは平衡や pH がずれる理由を説明する。解説記事のみ。

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>コロイド溶液｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="コロイド溶液を、粒子の大きさ（1〜100 nm）・チンダル現象・ブラウン運動・透析・凝析と塩析の考え方で解説。親水コロイドと疎水コロイドの違いや、人工透析・豆腐作り・浄水処理など実際の現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="コロイド溶液｜化学ツール集">
+<meta property="og:description" content="直径1〜100 nm の粒子が散らばったコロイド溶液の性質を、チンダル現象・透析・凝析と塩析の例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/colloids.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">コロイド</span>溶液</h1>
+    <p>化学の考え方辞典 ― 溶液（高校化学・2年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 溶液 ＞ コロイド溶液</p>
+  <p><span class="badge badge-lv">高校化学・2年</span> <span class="badge badge-genre">溶液</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    牛乳や墨汁、霧のように、直径1〜100 nm の粒子が液体や気体の中に散らばった状態がコロイドで、その性質を知りたいときに使う。コロイドは光を散乱してチンダル現象を示し、半透膜を通らないため透析で精製でき、電解質を加えると凝析・塩析で沈殿する。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>ふつうの溶液（真の溶液）と懸濁液の中間にあたる<strong>コロイド</strong>の性質を扱うときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>粒子の大きさから、真の溶液・コロイド溶液・懸濁液のどれにあたるかを見分ける問題</li>
+      <li>チンダル現象やブラウン運動が起こる理由を説明する問題</li>
+      <li>透析でコロイドを精製する仕組みや、半透膜を通る・通らないを判断する問題</li>
+      <li>電解質を加えたときの凝析と塩析の違い、親水コロイドと疎水コロイドの違いを問う問題</li>
+    </ul>
+    <p>ポイントは、コロイドの性質のほとんどが「粒子の大きさ」と「粒子と水とのなじみ方」の2つで説明できることです。大きさが効くのがチンダル現象と透析、なじみ方が効くのが凝析と塩析です。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>コロイド粒子（分散している粒子）の直径は、真の溶液の溶質粒子と懸濁液の粒子の中間です。</p>
+    <div class="formula">コロイド粒子の直径：約 1〜100 nm（＝ 10<sup>−9</sup>〜10<sup>−7</sup> m）</div>
+    <ul>
+      <li><strong>真の溶液</strong>（食塩水など）：溶質粒子の直径はおよそ 1 nm 以下。イオンや分子が均一に混ざっている</li>
+      <li><strong>コロイド溶液</strong>：粒子の直径が約 1〜100 nm。ろ紙は通り抜けるが、セロハンなどの<strong>半透膜は通り抜けられない</strong></li>
+      <li><strong>懸濁液</strong>（泥水など）：粒子の直径は 100 nm より大きく、やがて沈殿する</li>
+      <li>nm は長さの単位で、1 nm ＝ 10<sup>−9</sup> m</li>
+    </ul>
+    <p><strong>チンダル現象</strong>：コロイド溶液に横から強い光を当てると、粒子が光を散乱するため、光の道筋が明るく見えます。真の溶液では粒子が小さすぎて散乱が弱く、道筋は見えません。霧の中の車のヘッドライトの光が筋になって見えるのも同じ現象です。</p>
+    <p><strong>ブラウン運動</strong>：コロイド粒子を顕微鏡で見ると、粒子が不規則に動き続けています。これは、まわりの溶媒分子が熱運動で粒子に衝突し、その当たり方が方向ごとに偏るためです。粒子が小さいほど激しく動きます。</p>
+    <p><strong>透析</strong>：コロイド溶液を半透膜（セロハンなど）の袋に入れて水に浸すと、膜の小さな穴を通れるイオンや小さい分子だけが外へ出て、コロイド粒子は中にとどまります。これを利用してコロイドから不純物を取り除く操作が透析です。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <p><strong>親水コロイドと疎水コロイド</strong>：デンプンやゼラチン、タンパク質のように、粒子が水和して水によくなじむものを<strong>親水コロイド</strong>といい、安定で沈殿しにくい性質があります。水酸化鉄(III)のコロイドのように水となじみにくいものは<strong>疎水コロイド</strong>で、粒子がイオンを吸着して同じ符号の電荷を帯び、その反発で分散を保っています。疎水コロイドに親水コロイドを加えると、親水コロイドが粒子を包んで沈殿を防ぐことがあり、このような親水コロイドを<strong>保護コロイド</strong>といいます。</p>
+    <p><strong>凝析と塩析</strong>：疎水コロイドに少量の電解質を加えると、電解質のイオンが粒子の電荷を打ち消し、粒子どうしがくっついて沈殿します（<strong>凝析</strong>）。凝析させる力は、粒子の電荷と反対符号のイオンの価数が大きいほど強くなります。親水コロイドは水和しているため安定で、沈殿させるには多量の電解質が必要で、この沈殿を<strong>塩析</strong>といいます。</p>
+    <p><strong>身の回りのコロイド</strong>：分散している粒子と、それを分散させている物質（分散媒）の組み合わせで姿が変わります。霧は液体の粒子が気体に、煙は固体の粒子が気体に分散したものです。牛乳やマヨネーズは液体が液体に分散したもので<strong>エマルション（乳濁液）</strong>と呼ばれ、墨汁は固体の炭素粒子が液体に分散したものです。流動性のあるコロイド溶液を<strong>ゾル</strong>、冷やすなどして流動性を失い固まった状態を<strong>ゲル</strong>といい、ゼリーや寒天、豆腐がゲルの例です。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>粒子の大きさを確かめる。</strong>直径が約 1〜100 nm ならコロイド、1 nm 以下なら真の溶液、100 nm より大きければ懸濁液と判断します。</li>
+      <li><strong>現象の原因を大きさで説明する。</strong>光の道筋が見えるなら粒子による光の散乱（チンダル現象）、粒子が勝手に動き続けるなら溶媒分子の衝突（ブラウン運動）です。</li>
+      <li><strong>膜を通るかどうかは穴の大きさと比べる。</strong>ろ紙の穴はコロイド粒子より大きいので通りますが、半透膜の穴はコロイド粒子より小さいので通りません。イオンや小さい分子は半透膜も通ります。</li>
+      <li><strong>沈殿の問題は親水・疎水で分ける。</strong>疎水コロイド＋少量の電解質なら凝析、親水コロイド＋多量の電解質なら塩析です。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：直径約 50 nm の粒子が水に分散した液体に横から光を当てると、光の道筋が見えた。この液体は何に分類され、道筋が見える現象を何というか。問題2：直径 100 nm のコロイド粒子と直径 1 nm の溶質粒子では、体積はおよそ何倍違うか。問題3：デンプンとグルコースが混ざった水溶液をセロハンの袋に入れて水に浸した。袋の外に出てくるのはどちらか。また、水酸化鉄(III)コロイドに少量の食塩水を加えたときと、デンプンのコロイドに多量の食塩水を加えたときの沈殿は、それぞれ何と呼ばれるか。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：粒子の直径 50 nm は 1〜100 nm の範囲内なので<strong>コロイド溶液</strong>です。粒子が光を散乱して道筋が見える現象は<strong>チンダル現象</strong>です。</li>
+          <li>問題2：直径の比は 100 nm ÷ 1 nm ＝ 100 倍。球の体積は直径の3乗に比例するので、体積の比は 100<sup>3</sup> ＝ 10<sup>6</sup>、すなわち<strong>およそ100万倍</strong>です。コロイド粒子は、分子やイオンに比べて桁違いに大きな塊であることが分かります。</li>
+          <li>問題3：グルコースは小さい分子で半透膜（セロハン）を通れるので袋の外へ出てきます。デンプンはコロイド粒子で半透膜を通れないため、袋の中にとどまります。これが透析による精製です。</li>
+          <li>水酸化鉄(III)コロイドは疎水コロイドなので、少量の電解質で電荷が打ち消されて沈殿する<strong>凝析</strong>が起こります。デンプンは親水コロイドなので、多量の電解質でようやく沈殿する<strong>塩析</strong>が起こります。</li>
+        </ol>
+        <p><strong>答え：問題1はコロイド溶液・チンダル現象、問題2はおよそ10<sup>6</sup>倍（100万倍）、問題3は外に出るのはグルコース、沈殿はそれぞれ凝析と塩析。</strong>大きさで判断する問題（問題1・2）と、親水・疎水で判断する問題（問題3の後半）を区別するのがこの単元の要点です。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>人工透析（血液透析）</h3>
+    <p>腎臓の働きが低下した患者の血液を体外の装置に通し、半透膜を介して尿素などの老廃物（小さい分子）だけを除き、タンパク質や血球（大きな粒子）は血液中に残す治療です。コロイドの精製法である透析の原理が、そのまま医療技術に応用されています。</p>
+    <h3>豆腐作り</h3>
+    <p>豆乳はタンパク質のコロイドです。にがり（主成分は塩化マグネシウムなどの電解質）を加えると、電解質の作用でタンパク質が凝固して豆腐になります。コロイドを電解質で沈殿・凝固させる凝析の仕組みを、昔から食品作りが利用してきた例です。</p>
+    <h3>浄水場の凝集沈殿</h3>
+    <p>川の水には、目に見えない泥や粘土のコロイド粒子が浮遊していて、そのままでは沈みません。浄水場では硫酸アルミニウムやポリ塩化アルミニウム（PAC）などの凝集剤を加え、電解質のイオンで粒子を凝集させて大きな塊にしてから沈殿・ろ過で取り除きます。凝析を大規模に応用した仕組みです。</p>
+    <h3>墨汁の保護コロイド</h3>
+    <p>墨汁は炭素の微粒子を水に分散させたコロイドで、そのままでは炭素粒子が沈殿してしまいます。伝統的な墨には膠（にかわ）が含まれ、この親水コロイドが炭素粒子を包む保護コロイドとして働くため、長く安定に分散し続けます。塗料や印刷インクでも、顔料を安定に分散させるために同じ考え方が使われます。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>トーマス・グレアム</strong>（1805〜1869、イギリス・化学者）、<strong>ジョン・チンダル</strong>（1820〜1893、アイルランド・物理学者）、<strong>ロバート・ブラウン</strong>（1773〜1858、イギリス・植物学者）</p>
+    <p>コロイドという概念を打ち立てたのは、イギリスの化学者<strong>トーマス・グレアム</strong>（1805〜1869）です。1861年、グレアムは物質を、半透膜を通りやすい「クリスタロイド（晶質）」と、通りにくく拡散の遅い「コロイド（膠質）」に分け、ギリシャ語の「膠（にかわ）」を意味する kolla からコロイドと名づけました。半透膜でコロイドを精製する透析も、グレアムが考案した方法です。チンダル現象は、アイルランドの物理学者<strong>ジョン・チンダル</strong>（1820〜1893）がコロイドに光を当てたときの散乱を詳しく調べたことから名がつきました。ブラウン運動は、イギリスの植物学者<strong>ロバート・ブラウン</strong>（1773〜1858）が1827年に、花粉から出た微粒子が水中で不規則に動き続ける様子を顕微鏡で観察して報告したものです。この運動は後に、分子が熱運動していることの証拠として理論的に説明されました。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>ふつうの溶液の濃さの表し方は<a href="molarity.html">モル濃度</a>と<a href="mass-percent-concentration.html">質量パーセント濃度</a>、溶けきれなくなった溶質が固体になる話は<a href="solubility-precipitation-amount.html">溶解度と析出量</a>、物質が水に溶ける・溶けないの原理は<a href="polarity-and-solubility.html">極性と溶解性</a>、混合物を分ける方法の全体像は<a href="mixtures-and-separation.html">純物質と混合物・分離の方法</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

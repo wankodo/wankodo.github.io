@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>沸点上昇と凝固点降下｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="沸点上昇と凝固点降下の使い方を、公式・手順・例題で解説。Δt＝K×m（質量モル濃度）で沸点・凝固点の変化を求める方法や、凝固点降下から分子量を測定する方法、凍結防止剤や融雪剤など実際の現場での使われ方まで紹介します。Δt と分子量を求める計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="沸点上昇と凝固点降下｜化学ツール集">
+<meta property="og:description" content="Δt＝K×m で沸点上昇と凝固点降下を求める方法と、凝固点降下による分子量測定を、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/boiling-freezing-point.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">沸点上昇</span>と<span class="accent">凝固点降下</span></h1>
+    <p>化学の考え方辞典 ― 溶液（高校化学・2年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 溶液 ＞ 沸点上昇と凝固点降下</p>
+  <p><span class="badge badge-lv">高校化学・2年</span> <span class="badge badge-genre">溶液</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    不揮発性の溶質を溶かすと、溶液の沸点は純溶媒より上がり、凝固点は下がる。その変化量 Δt は溶質の種類によらず質量モル濃度に比例し（Δt＝K×m）、水ではモル沸点上昇が 0.52 K・kg/mol、モル凝固点降下が 1.85 K・kg/mol で、凝固点降下を測れば未知の溶質の分子量も求められる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>溶質を溶かした溶液の<strong>沸点・凝固点が、純溶媒からどれだけずれるか</strong>を扱うときの解法です。次のような場面で使います。</p>
+    <ul>
+      <li>質量モル濃度から、沸点上昇度・凝固点降下度 Δt を求める問題</li>
+      <li>溶液の沸点・凝固点そのものを求める問題（水なら沸点は 100 ℃＋Δt、凝固点は 0 ℃−Δt）</li>
+      <li>凝固点降下の測定値から、未知の溶質の<strong>分子量</strong>を求める問題</li>
+      <li>電解質の水溶液で、イオンの総濃度から Δt を求める問題</li>
+    </ul>
+    <p>ポイントは、使う濃度が溶液の体積基準のモル濃度 [mol/L] ではなく、<strong>溶媒の質量基準の質量モル濃度 [mol/kg]</strong> であることです。温度が変わっても溶媒の質量は変わらないため、この性質の計算では質量モル濃度を使います。また Δt は溶質の種類ではなく溶けている<strong>粒子の数（濃度）</strong>だけで決まるため、こうした性質を<strong>束一的性質</strong>と呼びます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>希薄溶液では、沸点上昇度・凝固点降下度 Δt は質量モル濃度 m に比例します。</p>
+    <div class="formula">Δt ＝ K × m</div>
+    <p>各記号の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>Δt</strong>：沸点上昇度または凝固点降下度 [K]（温度の差なので ℃ で表した差と数値は同じ）</li>
+      <li><strong>K</strong>：溶媒ごとに決まる定数 [K・kg/mol]。沸点上昇では<strong>モル沸点上昇</strong>、凝固点降下では<strong>モル凝固点降下</strong>を使う</li>
+      <li><strong>m</strong>：質量モル濃度 [mol/kg]。溶媒 1 kg あたりに溶けている溶質の物質量</li>
+    </ul>
+    <p>溶媒が<strong>水</strong>の場合の定数は次の値です（この記事と計算機ではこの値を使います）。</p>
+    <ul>
+      <li>モル沸点上昇：<strong>0.52 K・kg/mol</strong></li>
+      <li>モル凝固点降下：<strong>1.85 K・kg/mol</strong></li>
+    </ul>
+    <p>質量モル濃度は、溶質の質量 w [g]、分子量 M [g/mol]、溶媒の質量 W [g] から次のように求めます。</p>
+    <div class="formula">m [mol/kg] ＝ （w ÷ M）÷（W ÷ 1000）</div>
+    <p><strong>電解質の場合</strong>は、電離して生じるイオンを含めた<strong>粒子の総濃度</strong>で効きます。たとえば塩化ナトリウム NaCl は水の中で Na<sup>+</sup> と Cl<sup>−</sup> に電離するので、粒子の濃度は溶質の濃度のおよそ2倍になり、Δt もおよそ2倍になります。塩化カルシウム CaCl<sub>2</sub> では Ca<sup>2+</sup> と 2個の Cl<sup>−</sup> でおよそ3倍です（実際は完全には電離しきらないため、実測値はこれよりやや小さくなります）。逆に、凝固点降下から分子量を求める式は Δt＝K×m を変形したもので、m＝Δt÷K から物質量、分子量へとたどります。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>質量モル濃度 m を求める。</strong>溶質の物質量（質量÷分子量）を、溶媒の質量 [kg] で割ります。溶媒の質量は g から kg へ直すのを忘れずに。</li>
+      <li><strong>電解質なら粒子の総濃度に直す。</strong>電離で生じるイオンの数を数え、粒子の濃度として計算します。</li>
+      <li><strong>Δt＝K×m に代入する。</strong>沸点上昇ならモル沸点上昇（水では 0.52 K・kg/mol）、凝固点降下ならモル凝固点降下（水では 1.85 K・kg/mol）を使います。</li>
+      <li><strong>沸点・凝固点が問われていれば純溶媒の値に足し引きする。</strong>水なら沸点は 100 ℃＋Δt、凝固点は 0 ℃−Δt です。</li>
+      <li><strong>分子量を求める場合は逆にたどる。</strong>m＝Δt÷K、物質量＝m×溶媒の質量 [kg]、分子量＝溶質の質量÷物質量、の順に計算します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：質量モル濃度 0.50 mol/kg のグルコース水溶液の凝固点降下度 Δt と凝固点を求めよ。水のモル凝固点降下は 1.85 K・kg/mol とする。問題2：ある非電解質 1.80 g を水 100 g に溶かしたところ、凝固点が 0.185 K 下がった。この溶質の分子量を求めよ。問題3：質量モル濃度 0.50 mol/kg の塩化ナトリウム水溶液の凝固点降下度を、NaCl が完全に電離するとして求めよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：グルコースは非電解質なので、Δt ＝ K×m ＝ 1.85 K・kg/mol × 0.50 mol/kg ＝ 0.925 K。凝固点は 0 ℃ − 0.925 K ＝ −0.925 ℃。</li>
+          <li>問題2：m ＝ Δt ÷ K ＝ 0.185 K ÷ 1.85 K・kg/mol ＝ 0.10 mol/kg。</li>
+          <li>溶媒の水は 100 g ＝ 0.100 kg なので、溶質の物質量は n ＝ 0.10 mol/kg × 0.100 kg ＝ 0.010 mol。</li>
+          <li>分子量は M ＝ 1.80 g ÷ 0.010 mol ＝ 180 g/mol（グルコースの分子量に一致します）。</li>
+          <li>問題3：NaCl は Na<sup>+</sup> と Cl<sup>−</sup> に電離し、粒子の濃度は 0.50 × 2 ＝ 1.0 mol/kg として効くので、Δt ＝ 1.85 × 1.0 ＝ 1.85 K。</li>
+        </ol>
+        <p><strong>答え：問題1は Δt ＝ 0.925 K、凝固点 −0.925 ℃。問題2は分子量 180 g/mol。問題3は Δt ＝ 1.85 K</strong>。同じ質量モル濃度でも、電解質では粒子の総濃度ぶんだけ Δt が大きくなる点が要点です。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>凍結防止剤（自動車の冷却水・航空機の防氷）</h3>
+    <p>自動車のエンジン冷却水にはエチレングリコールなどを混ぜた不凍液（ロングライフクーラント）が使われ、凝固点降下によって冬場でも冷却水が凍らないようにしています。空港で航空機の翼に吹き付ける防氷剤・除氷剤も、同じ仕組みで氷点下でも液体の膜を保ち、氷の付着を防ぎます。</p>
+    <h3>融雪剤・凍結防止剤（道路）</h3>
+    <p>雪国では、路面に塩化カルシウムや塩化ナトリウムを散布します。雪や氷が溶けてできた水に塩が溶けると凝固点が下がり、氷点下でも路面の氷が融け、再凍結も防げます。塩化カルシウムは Ca<sup>2+</sup> と 2個の Cl<sup>−</sup> に電離して粒子数が多くなるうえ、水に溶けるときの溶解熱も大きいため、速効性の融雪剤として使われます。</p>
+    <h3>分子量の測定と、牛乳の検査（凝固点降下法）</h3>
+    <p>分子量が未知の物質は、凝固点降下を精密に測ることで分子量を決めることができ、質量分析が発達する以前は分子量測定の主要な方法の一つでした。同じ原理は今も食品検査で使われており、牛乳の凝固点を測る検査（クリオスコープ法）では、水で薄められた牛乳は凝固点が純粋な牛乳より 0 ℃ に近づくことから、加水の有無を判定します。</p>
+    <h3>氷と塩で作る寒剤</h3>
+    <p>氷に食塩を混ぜると、氷が融けてできた水に塩が溶けて凝固点が下がり、0 ℃ よりずっと低い温度の冷たい混合物（寒剤）が得られます。手回し式のアイスクリーム製造や、実験室での低温浴に使われてきた仕組みです。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>チャールズ・ブラグデン</strong>（1748〜1820、イギリスの医師・科学者）、<strong>フランソワ＝マリー・ラウール</strong>（1830〜1901、フランスの化学者）</p>
+    <p>凝固点が溶かした物質の量に比例して下がることは、イギリスの<strong>チャールズ・ブラグデン</strong>が1788年に塩の水溶液などで見いだしました（ブラグデンの法則）。これをさまざまな溶質・溶媒で系統的に研究し、希薄溶液では降下量が溶質の種類によらず物質量で決まることを1880年代に確立したのが、フランスの<strong>フランソワ＝マリー・ラウール</strong>です。ラウールは蒸気圧降下の法則でも知られ、凝固点降下から分子量を求める方法もこの研究から生まれました。電解質の溶液で Δt が予想より大きくなる異常は、オランダの<strong>ヤコブス・ヘンリクス・ファントホッフ</strong>が補正係数（ファントホッフ係数）を導入し、スウェーデンの<strong>スヴァンテ・アレニウス</strong>の電離説によって説明されました。</p>
+  </section>
+
+  <a class="linkcard" href="calc-boiling-freezing-point.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">沸点上昇と凝固点降下 計算機：凝固点降下・沸点上昇・凝固点降下から分子量、の3モードで、Δt や分子量を解き方の手順つきで表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>同じ束一的性質である<a href="osmotic-pressure.html">浸透圧</a>、沸点上昇・凝固点降下の土台になる<a href="raoults-law.html">蒸気圧降下とラウールの法則</a>、純溶媒の沸騰の条件は<a href="vapor-pressure.html">蒸気圧と沸点</a>が役立ちます。濃度の表し方の確認には<a href="molarity.html">溶液のモル濃度</a>もどうぞ。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

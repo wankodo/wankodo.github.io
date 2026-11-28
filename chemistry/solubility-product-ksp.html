@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>溶解平衡と溶解度積｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="溶解平衡と溶解度積 Ksp の使い方を、公式・手順・例題で解説。Ksp と溶解度の換算（AB型・AB2型など）、イオン積 Q との比較による沈殿の予測、共通イオン効果や、水質分析や定性分析など実際の現場での使われ方まで紹介します。Ksp と溶解度を換算し沈殿を予測する計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="溶解平衡と溶解度積｜化学ツール集">
+<meta property="og:description" content="Ksp と溶解度の換算、イオン積 Q との比較による沈殿予測、共通イオン効果を、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/solubility-product-ksp.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>溶解平衡と<span class="accent">溶解度積</span></h1>
+    <p>化学の考え方辞典 ― 溶液（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 溶液 ＞ 溶解平衡と溶解度積</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">溶液</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    難溶性の塩が水に溶ける溶解平衡では、飽和溶液中のイオン濃度の積が温度ごとに決まった値になり、この値が溶解度積 Ksp である。Ksp が分かれば塩の型（AB型・AB2型など）ごとに溶解度へ換算でき、実際のイオン濃度の積であるイオン積 Q と Ksp を比べれば沈殿が生じるかを予測でき、共通イオンがあると溶解度が下がる共通イオン効果も説明できる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>難溶性の塩（水にごくわずかしか溶けない塩）が飽和溶液中でつり合う<strong>溶解平衡</strong>を扱う解法です。次のような場面で使います。</p>
+    <ul>
+      <li>溶解度積 Ksp から、その塩が水にどれだけ溶けるか（モル溶解度）を求める問題</li>
+      <li>測った溶解度から、逆に Ksp を求める問題</li>
+      <li>2つのイオンを含む溶液を混ぜたときに、沈殿が生じるかどうかを予測する問題</li>
+      <li>共通イオンを含む溶液中で、溶解度がどれだけ下がるかを求める問題（共通イオン効果）</li>
+    </ul>
+    <p>沈殿が実際にどんな色で生じ、どのイオンの検出に使われるかは<a href="precipitation-ion-detection.html">沈殿反応とイオンの検出</a>の項目と連携しています。この記事では、その沈殿が「生じるかどうか・どれだけ溶けるか」を数値で決める考え方を扱います。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>難溶性の塩 AB が水に溶けると、一部がイオンに分かれ、やがて「溶ける速さ」と「固体に戻る速さ」がつり合います。この溶解平衡は次のように書けます。</p>
+    <div class="formula">AB（固体） ⇌ A<sup>+</sup> ＋ B<sup>−</sup></div>
+    <p>飽和溶液（これ以上溶けない溶液）では、イオン濃度の積が温度ごとに決まった一定値になります。この値が<strong>溶解度積 Ksp</strong> です。一般に塩 A<sub>m</sub>B<sub>n</sub> については次の式になります。</p>
+    <div class="formula">Ksp ＝ [A]<sup>m</sup> × [B]<sup>n</sup>（飽和溶液中、温度一定）</div>
+    <p>各記号の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>[A]、[B]</strong>：飽和溶液中の各イオンのモル濃度 [mol/L]</li>
+      <li><strong>Ksp</strong>：溶解度積。温度によって変わる定数で、この記事の値はすべて 25 ℃ のもの</li>
+      <li><strong>s</strong>：モル溶解度 [mol/L]。塩が 1 L の水に何 mol 溶けるかを表す</li>
+      <li><strong>Q</strong>：イオン積。今その溶液で実際に成り立っているイオン濃度の積（Ksp と同じ形の式で計算する）</li>
+    </ul>
+    <h3>Ksp と溶解度 s の換算（塩の型ごと）</h3>
+    <p>純粋な水に塩を溶かした場合、溶けた塩の量 s から各イオンの濃度が決まるため、Ksp と s は塩の組成（型）ごとに次のように換算できます。</p>
+    <ul>
+      <li><strong>AB型</strong>（AgCl、BaSO<sub>4</sub> など）：[A] ＝ [B] ＝ s なので <strong>Ksp ＝ s<sup>2</sup></strong>、s ＝ √Ksp</li>
+      <li><strong>AB<sub>2</sub>型</strong>（CaF<sub>2</sub>、PbCl<sub>2</sub> など）：[A] ＝ s、[B] ＝ 2s なので <strong>Ksp ＝ s × (2s)<sup>2</sup> ＝ 4s<sup>3</sup></strong>、s ＝ (Ksp ÷ 4)<sup>1/3</sup></li>
+      <li><strong>A<sub>2</sub>B型</strong>（Ag<sub>2</sub>CrO<sub>4</sub> など）：[A] ＝ 2s、[B] ＝ s なので AB<sub>2</sub>型と同じく <strong>Ksp ＝ 4s<sup>3</sup></strong></li>
+      <li><strong>AB<sub>3</sub>型</strong>（Fe(OH)<sub>3</sub> など）：[A] ＝ s、[B] ＝ 3s なので <strong>Ksp ＝ s × (3s)<sup>3</sup> ＝ 27s<sup>4</sup></strong>、s ＝ (Ksp ÷ 27)<sup>1/4</sup></li>
+      <li><strong>A<sub>3</sub>B<sub>2</sub>型</strong>（Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub> など）：[A] ＝ 3s、[B] ＝ 2s なので <strong>Ksp ＝ (3s)<sup>3</sup> × (2s)<sup>2</sup> ＝ 108s<sup>5</sup></strong></li>
+    </ul>
+    <p>注意点として、Ksp の大小はそのまま溶解度の大小にはなりません。型が違う塩どうしでは、換算して s で比べる必要があります（例題2を参照）。</p>
+    <h3>代表的な塩の Ksp（25 ℃）</h3>
+    <ul>
+      <li>塩化銀 AgCl：<strong>1.8×10<sup>−10</sup></strong>（AB型）</li>
+      <li>臭化銀 AgBr：<strong>5.0×10<sup>−13</sup></strong>（AB型）</li>
+      <li>ヨウ化銀 AgI：<strong>8.3×10<sup>−17</sup></strong>（AB型）</li>
+      <li>硫酸バリウム BaSO<sub>4</sub>：<strong>1.1×10<sup>−10</sup></strong>（AB型）</li>
+      <li>炭酸カルシウム CaCO<sub>3</sub>：<strong>3.8×10<sup>−9</sup></strong>（AB型）</li>
+      <li>フッ化カルシウム CaF<sub>2</sub>：<strong>3.9×10<sup>−11</sup></strong>（AB<sub>2</sub>型）</li>
+      <li>水酸化カルシウム Ca(OH)<sub>2</sub>：<strong>5.5×10<sup>−6</sup></strong>（AB<sub>2</sub>型）</li>
+      <li>水酸化マグネシウム Mg(OH)<sub>2</sub>：<strong>5.6×10<sup>−12</sup></strong>（AB<sub>2</sub>型）</li>
+      <li>塩化鉛(II) PbCl<sub>2</sub>：<strong>1.7×10<sup>−5</sup></strong>（AB<sub>2</sub>型）</li>
+      <li>水酸化鉄(III) Fe(OH)<sub>3</sub>：<strong>2.8×10<sup>−39</sup></strong>（AB<sub>3</sub>型）</li>
+    </ul>
+    <p>Ksp の値は資料によって多少異なることがあります。計算では、問題やページで示された値を使うのが原則です。</p>
+    <h3>イオン積 Q と Ksp の比較による沈殿予測</h3>
+    <p>今の溶液のイオン濃度から Ksp と同じ形の積 <strong>Q</strong> を計算し、Ksp と比べます。</p>
+    <ul>
+      <li><strong>Q ＞ Ksp</strong>：飽和を超えている（過飽和）ので、Q が Ksp に等しくなるまで<strong>沈殿が生じる</strong></li>
+      <li><strong>Q ＝ Ksp</strong>：ちょうど飽和。沈殿は生じない（平衡状態）</li>
+      <li><strong>Q ＜ Ksp</strong>：まだ溶ける余裕がある（不飽和）ので、<strong>沈殿は生じない</strong></li>
+    </ul>
+    <p>溶液どうしを混ぜる問題では、混合によって各イオンの濃度が薄まる（体積が増える）ことを忘れずに、混合後の濃度で Q を計算します。</p>
+    <h3>共通イオン効果</h3>
+    <p>塩と共通のイオンをすでに含む溶液では、ルシャトリエの原理により溶解平衡が固体側へ寄り、溶解度が下がります。これが<strong>共通イオン効果</strong>です。AB型の塩で共通イオン B<sup>−</sup> の濃度 c が溶解度 s よりずっと大きい場合、[B] ≒ c と近似でき、<strong>s ≒ Ksp ÷ c</strong> で見積もれます。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>塩の型を確認する。</strong>化学式から AB型・AB<sub>2</sub>型などの型を決め、Ksp と s の換算式を選びます。</li>
+      <li><strong>Ksp から s を求める。</strong>型ごとの式（AB型なら s ＝ √Ksp、AB<sub>2</sub>型なら s ＝ (Ksp ÷ 4)<sup>1/3</sup> など）に代入します。</li>
+      <li><strong>沈殿予測では Q を計算する。</strong>実際の（混合後なら混合後の）イオン濃度を Ksp と同じ形の積に入れて Q を求め、Ksp と大小を比べます。</li>
+      <li><strong>共通イオンがある場合は近似を使う。</strong>共通イオン濃度 c が s より十分大きいとき、そのイオンの濃度を c のままとして s を求めます。</li>
+      <li><strong>結果の向きを確認する。</strong>Ksp が小さい塩ほど s は小さく、共通イオンがあると s は純水中より小さくなるはずです。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：塩化銀 AgCl の Ksp ＝ 1.8×10<sup>−10</sup>（25 ℃）である。純粋な水に対する AgCl のモル溶解度 s [mol/L] を求めよ。問題2：フッ化カルシウム CaF<sub>2</sub> の Ksp ＝ 3.9×10<sup>−11</sup>（25 ℃）である。モル溶解度 s を求め、AgCl とどちらが溶けやすいか比べよ。問題3：[Ag<sup>+</sup>] ＝ 1.0×10<sup>−4</sup> mol/L、[Cl<sup>−</sup>] ＝ 1.0×10<sup>−3</sup> mol/L の溶液では、AgCl の沈殿が生じるか。問題4：0.010 mol/L の塩化物イオンを含む溶液に対する AgCl のモル溶解度を求めよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：AgCl は AB型なので Ksp ＝ s<sup>2</sup>。s ＝ √(1.8×10<sup>−10</sup>) ＝ 1.3×10<sup>−5</sup> mol/L。</li>
+          <li>問題2：CaF<sub>2</sub> は AB<sub>2</sub>型なので Ksp ＝ 4s<sup>3</sup>。s ＝ (3.9×10<sup>−11</sup> ÷ 4)<sup>1/3</sup> ＝ (9.75×10<sup>−12</sup>)<sup>1/3</sup> ＝ 2.1×10<sup>−4</sup> mol/L。Ksp は CaF<sub>2</sub> の方が小さいのに、溶解度は CaF<sub>2</sub> の方が約16倍大きい。型が違う塩は Ksp の大小だけで溶けやすさを比べられません。</li>
+          <li>問題3：Q ＝ [Ag<sup>+</sup>][Cl<sup>−</sup>] ＝ 1.0×10<sup>−4</sup> × 1.0×10<sup>−3</sup> ＝ 1.0×10<sup>−7</sup>。Ksp ＝ 1.8×10<sup>−10</sup> より Q が大きいので、沈殿が生じます。</li>
+          <li>問題4：共通イオン Cl<sup>−</sup> の濃度 0.010 mol/L は s より十分大きいので [Cl<sup>−</sup>] ≒ 0.010 mol/L と近似でき、s ≒ Ksp ÷ 0.010 ＝ 1.8×10<sup>−10</sup> ÷ 1.0×10<sup>−2</sup> ＝ 1.8×10<sup>−8</sup> mol/L。純粋な水のとき（1.3×10<sup>−5</sup> mol/L）の約740分の1まで下がります。これが共通イオン効果です。</li>
+        </ol>
+        <p><strong>答え：問題1は s ＝ 1.3×10<sup>−5</sup> mol/L、問題2は s ＝ 2.1×10<sup>−4</sup> mol/L で CaF<sub>2</sub> の方が溶けやすい、問題3は沈殿が生じる、問題4は s ＝ 1.8×10<sup>−8</sup> mol/L</strong>。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>イオンの定性分析と分離</h3>
+    <p>金属イオンの混合物から特定のイオンだけを沈殿させて分ける定性分析は、Ksp の違いを利用しています。たとえば塩化物イオンを加えると Ag<sup>+</sup> などが塩化物として沈殿し、pH を調整すると水酸化物の Ksp の違いでイオンごとに沈殿する順序を制御できます。沈殿の色や溶け方の観察と組み合わせる方法は<a href="precipitation-ion-detection.html">沈殿反応とイオンの検出</a>で扱っています。</p>
+    <h3>水質・環境分析での硫酸イオンの定量</h3>
+    <p>試料水に塩化バリウムを加え、硫酸バリウム BaSO<sub>4</sub>（Ksp ＝ 1.1×10<sup>−10</sup>）として沈殿させて、その質量から硫酸イオンの量を求める重量分析は、水質検査などで使われる古典的な定量法です。BaSO<sub>4</sub> の Ksp が非常に小さいため、硫酸イオンをほぼ完全に沈殿させられることがこの方法の根拠になっています。</p>
+    <h3>医療用造影剤の硫酸バリウム</h3>
+    <p>消化管の X 線検査で使われるバリウム造影剤は硫酸バリウム BaSO<sub>4</sub> です。バリウムイオン自体には毒性がありますが、BaSO<sub>4</sub> は Ksp が 1.1×10<sup>−10</sup> と極めて小さく、水にも胃酸にもほとんど溶けないため、イオンとして吸収されずに使えます。溶解度積の小ささそのものが安全性を支えている例です。</p>
+    <h3>水道水の軟水化とスケール防止</h3>
+    <p>カルシウムイオンを多く含む水を加熱すると、炭酸カルシウム CaCO<sub>3</sub>（Ksp ＝ 3.8×10<sup>−9</sup>）が沈殿してボイラーや配管の内側にスケール（湯あか状の付着物）としてたまります。水処理では、炭酸カルシウムなどをあらかじめ沈殿させて取り除く沈殿軟化法が使われており、どの条件で沈殿が始まるかの判断に Ksp と Q の比較が使われます。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ヴァルター・ネルンスト</strong>（1864〜1941、ドイツの物理化学者）</p>
+    <p>溶解度積の考え方は、ドイツの物理化学者<strong>ヴァルター・ネルンスト</strong>（1864〜1941）が1889年に提唱したとされます。難溶性塩の飽和溶液ではイオン濃度の積が一定になるという「溶解度積の原理」で、沈殿が生じる条件を数値で予測できるようになりました。その土台には、平衡時の濃度の関係を定式化したギュルドベリとボーゲの質量作用の法則（1864〜1867年）があります。ネルンストは電極電位のネルンストの式でも知られ、1920年にノーベル化学賞を受賞しました。</p>
+  </section>
+
+  <a class="linkcard" href="calc-solubility-product-ksp.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">溶解平衡と溶解度積 計算機：Ksp から溶解度、溶解度から Ksp、イオン積 Q との比較による沈殿予測、共通イオン効果の4モードで、解き方の手順つきで表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>沈殿の色とイオンの検出は<a href="precipitation-ion-detection.html">沈殿反応とイオンの検出</a>、平衡そのものの考え方は<a href="chemical-equilibrium-kc.html">化学平衡と平衡定数</a>、平衡が動く向きは<a href="le-chatelier.html">ルシャトリエの原理</a>、濃度の表し方は<a href="molarity.html">溶液のモル濃度</a>、温度で変わる溶解の量は<a href="solubility-precipitation-amount.html">溶解度と析出量</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

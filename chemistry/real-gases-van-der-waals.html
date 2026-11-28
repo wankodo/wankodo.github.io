@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>実在気体とファンデルワールスの式｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="実在気体とファンデルワールスの式の使い方を、公式・手順・例題で解説。理想気体からのずれと圧縮因子 Z、補正項 a（分子間力）と b（分子の体積）の意味、代表気体の a・b の値、高圧ガスや超臨界二酸化炭素など実際の現場での使われ方まで紹介します。理想気体との差も出す計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="実在気体とファンデルワールスの式｜化学ツール集">
+<meta property="og:description" content="理想気体からのずれを圧縮因子 Z と2つの補正 a・b で表す方法を、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/real-gases-van-der-waals.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">実在気体</span>とファンデルワールスの式</h1>
+    <p>化学の考え方辞典 ― 気体（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 気体 ＞ 実在気体とファンデルワールスの式</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">気体</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    高圧や低温で理想気体からずれる実在気体のふるまいを、分子間力と分子自身の体積の2つの補正で表すときに使う。圧縮因子 Z が1からどれだけ離れているかでずれの大きさが分かり、ファンデルワールスの式を使えば圧力・体積・温度を理想気体より現実に近く見積もれる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>気体の状態方程式 pV ＝ nRT は、分子を大きさのない点で、分子どうしに力が働かないと仮定した<strong>理想気体</strong>の式です。実際の気体（<strong>実在気体</strong>）は、低圧・高温ではよく理想気体に近づきますが、高圧や低温ではこの仮定が崩れて答えがずれます。次のような場面で使います。</p>
+    <ul>
+      <li>高圧に圧縮した気体の圧力を、理想気体の式より現実に近く求める問題</li>
+      <li>圧縮因子 Z ＝ pV ÷ (nRT) を求めて、ずれの向きと大きさを判断する問題</li>
+      <li>定数 a・b から臨界温度・臨界圧力を見積もる問題</li>
+    </ul>
+    <p>ずれの向きには決まった傾向があります。分子間の引力が効く条件では、分子が内側へ引かれて壁への衝突が弱まるため、圧力は理想気体より<strong>小さく</strong>なり Z ＜ 1 になります。逆に、非常に高圧で分子自身の体積が無視できない条件では、動ける空間が減るため圧力は理想気体より<strong>大きく</strong>なり Z ＞ 1 になります。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>理想気体の式に2つの補正を入れたものが<strong>ファンデルワールスの式</strong>（ファン・デル・ワールスの式）です。</p>
+    <div class="formula">(p ＋ a n<sup>2</sup> ÷ V<sup>2</sup>)(V − n b) ＝ n R T</div>
+    <p>各記号の意味と単位は次の通りです。本ページと計算機では、圧力を [Pa]、体積を [L] でそろえた単位系を使います。</p>
+    <ul>
+      <li><strong>p</strong>：圧力 [Pa]</li>
+      <li><strong>V</strong>：体積 [L]</li>
+      <li><strong>n</strong>：物質量 [mol]</li>
+      <li><strong>T</strong>：絶対温度 [K]</li>
+      <li><strong>R</strong>：気体定数。R ＝ 8.31×10<sup>3</sup> Pa・L/(mol・K)（＝ 8.31 J/(mol・K)）</li>
+      <li><strong>a</strong>：分子間力の補正を表す定数 [Pa・L<sup>2</sup>/mol<sup>2</sup>]。圧力の補正項 a n<sup>2</sup> ÷ V<sup>2</sup> は、分子間の引力で圧力が理想気体より小さくなる分を表します。引力の強い気体ほど a は大きくなります</li>
+      <li><strong>b</strong>：分子自身の体積の補正を表す定数 [L/mol]。体積の補正項 n b は、分子自身が占めて分子が動けない体積を表し、1 mol あたりおよそ分子の実体積の4倍の大きさです。分子が大きい気体ほど b は大きくなります</li>
+    </ul>
+    <p>ずれの大きさは<strong>圧縮因子 Z</strong> で表します。</p>
+    <div class="formula">Z ＝ p V ÷ (n R T)</div>
+    <p>理想気体では常に Z ＝ 1 で、実在気体では Z が 1 から離れるほどずれが大きいことを示します。</p>
+    <p>代表的な気体の a・b の値は次の通りです（a は [Pa・L<sup>2</sup>/mol<sup>2</sup>]、b は [L/mol]）。</p>
+    <ul>
+      <li>ヘリウム He：a ＝ 3.46×10<sup>3</sup>、b ＝ 0.0237</li>
+      <li>水素 H<sub>2</sub>：a ＝ 2.44×10<sup>4</sup>、b ＝ 0.0266</li>
+      <li>酸素 O<sub>2</sub>：a ＝ 1.38×10<sup>5</sup>、b ＝ 0.0318</li>
+      <li>窒素 N<sub>2</sub>：a ＝ 1.39×10<sup>5</sup>、b ＝ 0.0391</li>
+      <li>アルゴン Ar：a ＝ 1.36×10<sup>5</sup>、b ＝ 0.0322</li>
+      <li>メタン CH<sub>4</sub>：a ＝ 2.28×10<sup>5</sup>、b ＝ 0.0428</li>
+      <li>二酸化炭素 CO<sub>2</sub>：a ＝ 3.64×10<sup>5</sup>、b ＝ 0.0427</li>
+      <li>アンモニア NH<sub>3</sub>：a ＝ 4.23×10<sup>5</sup>、b ＝ 0.0371</li>
+      <li>水蒸気 H<sub>2</sub>O：a ＝ 5.54×10<sup>5</sup>、b ＝ 0.0305</li>
+    </ul>
+    <p>水やアンモニアのように分子間の引力が強い気体ほど a が大きく、液化しやすいことと対応しています。なお a・b の値は資料によって末尾の桁が少し異なることがあります。</p>
+    <p>ファンデルワールスの式からは、気体が液化できる限界である臨界点の値も導けます。臨界温度 T<sub>c</sub> ＝ 8a ÷ (27Rb)、臨界圧力 p<sub>c</sub> ＝ a ÷ (27b<sup>2</sup>) です。CO<sub>2</sub> で計算すると T<sub>c</sub> ≒ 304 K、p<sub>c</sub> ≒ 7.40×10<sup>6</sup> Pa となり、実測の臨界温度 304 K・臨界圧力 7.38×10<sup>6</sup> Pa に近い値が得られます。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>気体の a・b を確認する。</strong>気体の種類から a・b の値を読み取ります。単位は a が [Pa・L<sup>2</sup>/mol<sup>2</sup>]、b が [L/mol] でそろえます。</li>
+      <li><strong>求める量について式を変形する。</strong>圧力なら p ＝ nRT ÷ (V − nb) − a n<sup>2</sup> ÷ V<sup>2</sup>、温度なら T ＝ (p ＋ a n<sup>2</sup> ÷ V<sup>2</sup>)(V − nb) ÷ (nR) と解きます。体積を求める場合は三次方程式になるため、数値計算で解きます（計算機はこの解法です）。</li>
+      <li><strong>値を代入する。</strong>その際、V が nb より大きいことを確認します。V ≦ nb は、分子自身の体積だけで容器が埋まった状態で、物理的にありえません。</li>
+      <li><strong>理想気体の値と比べ、Z を求める。</strong>Z ＝ pV ÷ (nRT) を計算し、1 より小さいか大きいかで、引力が支配的か、分子の体積が支配的かを判断します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：二酸化炭素（a ＝ 3.64×10<sup>5</sup> Pa・L<sup>2</sup>/mol<sup>2</sup>、b ＝ 0.0427 L/mol）1.00 mol を、体積 1.00 L、温度 300 K の容器に入れたときの圧力を、ファンデルワールスの式と理想気体の式でそれぞれ求め、圧縮因子 Z も求めよ。問題2：同じ二酸化炭素 1.00 mol を 300 K で 0.300 L まで圧縮すると、圧力と Z はどうなるか。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：p ＝ nRT ÷ (V − nb) − a n<sup>2</sup> ÷ V<sup>2</sup> ＝ 1.00 × 8.31×10<sup>3</sup> × 300 ÷ (1.00 − 1.00 × 0.0427) − 3.64×10<sup>5</sup> × 1.00<sup>2</sup> ÷ 1.00<sup>2</sup> ＝ 2.604×10<sup>6</sup> − 3.64×10<sup>5</sup> ＝ 2.240×10<sup>6</sup> Pa。</li>
+          <li>理想気体では p ＝ nRT ÷ V ＝ 1.00 × 8.31×10<sup>3</sup> × 300 ÷ 1.00 ＝ 2.493×10<sup>6</sup> Pa。実在気体の圧力は約10 % 低くなります。</li>
+          <li>Z ＝ pV ÷ (nRT) ＝ 2.240×10<sup>6</sup> × 1.00 ÷ (1.00 × 8.31×10<sup>3</sup> × 300) ≒ 0.899。Z ＜ 1 なので、この条件では分子間の引力が支配的です。</li>
+          <li>問題2：p ＝ 1.00 × 8.31×10<sup>3</sup> × 300 ÷ (0.300 − 0.0427) − 3.64×10<sup>5</sup> ÷ 0.300<sup>2</sup> ＝ 9.689×10<sup>6</sup> − 4.044×10<sup>6</sup> ＝ 5.645×10<sup>6</sup> Pa。理想気体では 8.31×10<sup>6</sup> Pa なので、Z ≒ 0.679 とずれはさらに大きくなります。</li>
+        </ol>
+        <p><strong>答え：問題1は 2.240×10<sup>6</sup> Pa（理想気体では 2.493×10<sup>6</sup> Pa、Z ≒ 0.899）、問題2は 5.645×10<sup>6</sup> Pa（Z ≒ 0.679）</strong>。体積が小さい（＝圧力が高い）ほど、理想気体からのずれが大きくなることが分かります。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>高圧ガスボンベ・ガスタンクの充填量の見積もり</h3>
+    <p>酸素や窒素、水素などを高圧で詰めるガスボンベや貯蔵タンクでは、圧力から中身の量を求めるときに理想気体の式だけでは誤差が大きくなります。実務では圧縮因子 Z を取り入れた状態方程式で補正して、充填量や残量を見積もります。ファンデルワールスの式は、その補正の考え方の出発点です。</p>
+    <h3>液化天然ガス（LNG）と気体の液化</h3>
+    <p>天然ガスを冷やして液化する LNG のプラントや、空気を液化して酸素・窒素を分離する装置では、低温・高圧で理想気体から大きくずれる気体を扱います。液化できる限界を示す臨界温度の考え方は、どの気体をどの条件で液化できるかを判断する基礎になっています。</p>
+    <h3>超臨界二酸化炭素による抽出</h3>
+    <p>二酸化炭素を臨界点（約 304 K、約 7.38×10<sup>6</sup> Pa）より高温・高圧にすると、気体と液体の中間の性質をもつ超臨界流体になり、コーヒー豆からカフェインを抜く脱カフェイン処理などの抽出溶媒として使われます。この領域は理想気体から最も大きくずれる条件であり、実在気体としての扱いが欠かせません。</p>
+    <h3>冷凍・空調の冷媒と圧縮機</h3>
+    <p>冷蔵庫やエアコンは、冷媒を圧縮・膨張させて熱を運びます。圧縮機や熱交換器の設計では、冷媒が気体・液体の境界近くで大きく非理想的にふるまうため、実在気体の状態方程式による圧力・体積・温度の見積もりが使われます。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ヨハネス・ディーデリク・ファン・デル・ワールス</strong>（1837〜1923、オランダの物理学者）</p>
+    <p>オランダの物理学者<strong>ヨハネス・ディーデリク・ファン・デル・ワールス</strong>（1837〜1923）は、1873年の学位論文「液体と気体の連続性について」で、分子間の引力と分子自身の体積という2つの補正を理想気体の式に入れた状態方程式を発表しました。この式は気体が液化するふるまいまで説明でき、分子の間に働く弱い引力は今も「ファンデルワールス力」と呼ばれています。この業績により、1910年にノーベル物理学賞を受賞しました。</p>
+  </section>
+
+  <a class="linkcard" href="calc-real-gases-van-der-waals.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">実在気体とファンデルワールスの式 計算機：定数 a・b と条件から圧力・温度・体積を求め、理想気体の値と圧縮因子 Z を手順つきで表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>出発点になる理想気体の式は<a href="ideal-gas-law-chemistry.html">気体の状態方程式</a>、気体の拡散の速さは<a href="grahams-law-diffusion.html">グレアムの法則（拡散・漏出）</a>、気体が液体に溶ける量は<a href="henrys-law.html">ヘンリーの法則</a>が役立ちます。分子間の引力そのものについては<a href="intermolecular-forces.html">分子間力</a>、物理コーナーの<a href="https://wankodo.github.io/physics/ideal-gas-equation.html">気体の状態方程式</a>もあわせてどうぞ。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

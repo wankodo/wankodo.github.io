@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>電解質と電離度｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="電解質と電離度の使い方を、公式・手順・例題で解説。電離度 α の定義と計算、強電解質と弱電解質の違い、イオン濃度の求め方や、電池の電解液や水質管理など実際の現場での使われ方まで紹介します。α からイオン濃度、濃度から α を求める計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="電解質と電離度｜化学ツール集">
+<meta property="og:description" content="電離度 α の定義と計算、強電解質と弱電解質の違いを、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/electrolytes-dissociation-degree.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">電解質</span>と電離度</h1>
+    <p>化学の考え方辞典 ― 溶液（高校化学・2年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 溶液 ＞ 電解質と電離度</p>
+  <p><span class="badge badge-lv">高校化学・2年</span> <span class="badge badge-genre">溶液</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    水に溶けてイオンに分かれる物質を電解質といい、溶かした量のうちどれだけが電離したかを表す割合が電離度 α である。α は電離した物質量÷溶かした物質量で求め、イオンの濃度はもとの濃度に α を掛けて求める。強電解質は α≒1 でほぼ完全に電離し、弱電解質は α が小さく、電離平衡の考え方（電離定数）につながる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>電解質の水溶液について、<strong>電離度 α とイオンの濃度の関係</strong>を扱うときの解法です。次のような場面で使います。</p>
+    <ul>
+      <li>溶かした物質量と電離した物質量から、電離度 α を求める問題</li>
+      <li>モル濃度 C と電離度 α から、生じたイオンの濃度を求める問題（弱酸の [H<sup>+</sup>] など）</li>
+      <li>イオンの濃度とモル濃度から、逆に電離度 α を求める問題</li>
+      <li>強電解質と弱電解質の違いを、α の大きさで説明する問題</li>
+    </ul>
+    <p>ポイントは、α は<strong>割合（0〜1の無次元の数）</strong>だということです。パーセントで答える指定がなければ、0.013 のように割合のまま答えます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>水に溶けるとイオンに分かれる（<strong>電離</strong>する）物質を<strong>電解質</strong>、電離しない物質を<strong>非電解質</strong>といいます。溶かした電解質のうち、電離した割合が<strong>電離度 α</strong> です。</p>
+    <div class="formula">α ＝ 電離した物質量 [mol] ÷ 溶かした物質量 [mol]</div>
+    <p>モル濃度 C [mol/L] の1価の弱酸 HA（HA ⇌ H<sup>+</sup> ＋ A<sup>−</sup>）では、電離で生じるイオンの濃度は C に α を掛けて求めます。</p>
+    <div class="formula">[H<sup>+</sup>] ＝ C × α</div>
+    <p>弱電解質の電離は可逆反応で、平衡状態になっています。この平衡を表す定数が<strong>電離定数</strong>で、弱酸 HA では次式で定義され、α と C から求められます（オストワルトの希釈律）。</p>
+    <div class="formula">K<sub>a</sub> ＝ Cα<sup>2</sup> ÷ (1 − α)　[mol/L]</div>
+    <p>各記号の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>α（電離度）</strong>：電離した割合。単位なし（無次元）で、0 ＜ α ≦ 1</li>
+      <li><strong>C</strong>：溶かした電解質のモル濃度 [mol/L]</li>
+      <li><strong>[H<sup>+</sup>]</strong>：水素イオン濃度 [mol/L]。塩基の場合は [OH<sup>−</sup>] など、注目するイオンの濃度に読み替える</li>
+      <li><strong>K<sub>a</sub></strong>：酸の電離定数 [mol/L]。温度が決まれば一定の値になる（酢酸では 25 ℃ で約 1.8×10<sup>−5</sup> mol/L）</li>
+    </ul>
+    <p><strong>強電解質</strong>（塩酸・水酸化ナトリウム・塩化ナトリウムなど）は水に溶けるとほぼ完全に電離し、α ≒ 1 です。<strong>弱電解質</strong>（酢酸・アンモニアなど）は一部しか電離せず、α は小さくなります。たとえば 0.10 mol/L の酢酸の α は約 0.013 で、100個の分子のうち1個ほどしか電離していません。弱電解質は薄めるほど α が大きくなる（希釈律）ことも特徴です。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>α の定義を確認する。</strong>α ＝ 電離した mol ÷ 溶かした mol です。濃度で考える場合は、体積が共通なので濃度の比で考えられます。</li>
+      <li><strong>求める量に応じて式を選ぶ。</strong>イオン濃度なら [イオン] ＝ Cα、α なら α ＝ [イオン] ÷ C、電離定数なら K<sub>a</sub> ＝ Cα<sup>2</sup> ÷ (1 − α) を使います。</li>
+      <li><strong>式に代入して計算する。</strong>α は割合のまま（パーセントにしない）で代入します。</li>
+      <li><strong>結果の大きさを確認する。</strong>α が 1 を超えていたら計算ミスです。強電解質なら α ≒ 1、弱電解質なら α が小さい値になるはずです。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：0.10 mol/L の酢酸水溶液の電離度 α は 0.013 である。水素イオン濃度 [H<sup>+</sup>] と、酢酸の電離定数 K<sub>a</sub> を求めよ。問題2：0.050 mol/L の弱酸 HA の水溶液で、[H<sup>+</sup>] ＝ 3.0×10<sup>−4</sup> mol/L であった。電離度 α を求めよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：[H<sup>+</sup>] ＝ Cα ＝ 0.10 × 0.013 ＝ 1.3×10<sup>−3</sup> mol/L。</li>
+          <li>K<sub>a</sub> ＝ Cα<sup>2</sup> ÷ (1 − α) ＝ 0.10 × 0.013<sup>2</sup> ÷ (1 − 0.013) ＝ 1.69×10<sup>−5</sup> ÷ 0.987 ≒ 1.7×10<sup>−5</sup> mol/L。酢酸の電離定数の実測値（25 ℃ で約 1.8×10<sup>−5</sup> mol/L）とよく合います。</li>
+          <li>問題2：α ＝ [H<sup>+</sup>] ÷ C ＝ 3.0×10<sup>−4</sup> ÷ 0.050 ＝ 6.0×10<sup>−3</sup>。割合で表すと 0.0060、つまり溶かした HA のうち 0.60 % しか電離していない弱電解質です。</li>
+        </ol>
+        <p><strong>答え：問題1は [H<sup>+</sup>] ＝ 1.3×10<sup>−3</sup> mol/L、K<sub>a</sub> ≒ 1.7×10<sup>−5</sup> mol/L。問題2は α ＝ 6.0×10<sup>−3</sup></strong>。α が 1 よりはるかに小さいことが、弱電解質の目印です。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>電池の電解液</h3>
+    <p>電池の内部で電気を運ぶのは、電解液の中で電離したイオンです。鉛蓄電池では硫酸が電離してイオンが生じ、リチウムイオン電池でも電解液中のリチウム塩が電離して Li<sup>+</sup> が移動します。イオンの濃度や動きやすさが、電池の出力や内部抵抗に直結します。</p>
+    <h3>電気伝導率による水質管理</h3>
+    <p>水溶液の電気伝導率（導電率）は、溶けているイオンの量の目安になります。浄水場やボイラー水、農業用水の管理では、導電率を測ることで水に溶けた電解質のおおよその量をその場で把握しています。「電解質はイオンに分かれるから電気を通す」という性質そのものの応用です。</p>
+    <h3>点滴・経口補水液の電解質補給</h3>
+    <p>体液には Na<sup>+</sup> や K<sup>+</sup> などの電解質イオンが一定の濃度で含まれていて、そのバランスが崩れると体調に大きく影響します。点滴や経口補水液は、失われた水分と電解質を、体液に近い濃度で補うように設計されています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>スヴァンテ・アレニウス</strong>（1859〜1927、スウェーデンの物理化学者）、<strong>フリードリヒ・オストワルト</strong>（1853〜1932、ドイツの物理化学者）</p>
+    <p>「電解質は水に溶けるとイオンに分かれている」という<strong>電離説</strong>を提唱したのは、スウェーデンの<strong>スヴァンテ・アレニウス</strong>（1859〜1927）で、1884年の学位論文に始まり、1887年に本格的に発表しました。当初は「溶ける前からイオンに分かれている」という考えが受け入れられず評価は低かったのですが、ドイツの<strong>フリードリヒ・オストワルト</strong>（1853〜1932）らと共に物理化学の基礎を築き、アレニウスは1903年にノーベル化学賞を受賞しました。オストワルトは1888年に、弱電解質の電離度と濃度の関係（希釈律）を導き、電離定数と α を結びつける式を与えました。電離度 α という考え方は、この電離説の枠組みの中で生まれたものです。</p>
+  </section>
+
+  <a class="linkcard" href="calc-electrolytes-dissociation-degree.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">電解質と電離度 計算機：α からイオン濃度、イオン濃度から α、α と濃度から電離定数 Ka の3モードで、解き方の手順つきで表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>濃度の表し方は<a href="molarity.html">モル濃度</a>、薄めたときの濃度変化は<a href="dilution-mixing.html">希釈と混合</a>が役立ちます。電離平衡をさらに進めると<a href="ph-calculation.html">pHの計算</a>や<a href="chemical-equilibrium-kc.html">化学平衡と平衡定数</a>につながります。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

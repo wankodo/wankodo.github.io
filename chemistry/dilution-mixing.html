@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>希釈と混合の濃度計算｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="希釈と混合の濃度計算を、公式・手順・例題で解説。希釈では溶質の物質量が保存されること（C1V1＝C2V2）を使った求め方や、消毒液の調製など実際の現場での使われ方まで紹介します。希釈・原液量・混合の3モード計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="希釈と混合の濃度計算｜化学ツール集">
+<meta property="og:description" content="希釈と混合の濃度計算を、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/dilution-mixing.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">希釈と混合</span>の濃度計算</h1>
+    <p>化学の考え方辞典 ― 溶液（高校化学基礎・1年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 溶液 ＞ 希釈と混合の濃度計算</p>
+  <p><span class="badge badge-lv">高校化学基礎・1年</span> <span class="badge badge-genre">溶液</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    溶液を薄めたり混ぜたりした後の濃度を求めるときに使う。希釈では加えた水に溶質は含まれないので溶質の物質量が保存され、濃度と体積の積が前後で等しくなる。混合では、2液の溶質の物質量の合計を全体積で割ると混合後の濃度になる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>溶液の<strong>希釈（薄めること）</strong>と<strong>混合（混ぜること）</strong>のあとのモル濃度を扱うときの解法です。次のような場面で使います。</p>
+    <ul>
+      <li>濃い溶液（原液）に水を加えて薄めたときの、希釈後の濃度を求める問題</li>
+      <li>目標の濃度の溶液を決まった量だけ作るために、必要な原液の体積を求める問題</li>
+      <li>濃度の違う2つの溶液を混ぜたときの、混合後の濃度を求める問題</li>
+    </ul>
+    <p>共通する考え方はただ一つ、<strong>溶質の物質量 [mol] ＝ モル濃度 [mol/L] × 体積 [L]</strong> です。希釈で加える水や、混合で相手になる溶液の中の溶質まで、溶質の mol がどこからどれだけ来たかを追えば、どの問題も同じ型で解けます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>希釈では、水を加えても溶質の物質量は変わりません（加えた水に溶質は含まれないため）。希釈前の溶質の物質量と希釈後の溶質の物質量が等しいことから、次の式が成り立ちます。</p>
+    <div class="formula">C<sub>1</sub>V<sub>1</sub> ＝ C<sub>2</sub>V<sub>2</sub></div>
+    <p>2つの溶液を混ぜるときは、溶質の物質量の合計を、混合後の全体積で割ります。</p>
+    <div class="formula">混合後の濃度 ＝ （C<sub>A</sub>V<sub>A</sub> ＋ C<sub>B</sub>V<sub>B</sub>） ÷ （V<sub>A</sub> ＋ V<sub>B</sub>）</div>
+    <p>各記号の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>C<sub>1</sub></strong>：希釈前の濃度（原液のモル濃度）[mol/L]</li>
+      <li><strong>V<sub>1</sub></strong>：希釈前の体積（原液の体積）[L]（[mL] でそろえてもよい）</li>
+      <li><strong>C<sub>2</sub></strong>：希釈後の濃度 [mol/L]</li>
+      <li><strong>V<sub>2</sub></strong>：希釈後の全体積 [L]（V<sub>1</sub> と同じ単位でそろえる）</li>
+      <li><strong>C<sub>A</sub>・V<sub>A</sub>、C<sub>B</sub>・V<sub>B</sub></strong>：混合する溶液A・Bそれぞれの濃度 [mol/L] と体積 [L]</li>
+    </ul>
+    <p>注意点は2つあります。1つ目は、V<sub>2</sub> は「加えた水の量」ではなく<strong>希釈後の全体積</strong>だということです。2つ目は、混合では体積が単純に足し合わせられると近似しています（液体の組み合わせによっては体積がわずかに変化しますが、高校の計算では足し合わせで扱います）。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>溶質の物質量に注目する。</strong>希釈なら「前後で mol が同じ」、混合なら「mol の合計」と置きます。</li>
+      <li><strong>単位をそろえる。</strong>体積は両辺で [L] 同士または [mL] 同士にそろえます（比の計算なので、そろっていれば [mL] のままで計算できます）。</li>
+      <li><strong>式に代入し、未知数について解く。</strong>希釈後の濃度なら C<sub>2</sub> ＝ C<sub>1</sub>V<sub>1</sub> ÷ V<sub>2</sub>、必要な原液量なら V<sub>1</sub> ＝ C<sub>2</sub>V<sub>2</sub> ÷ C<sub>1</sub> です。</li>
+      <li><strong>結果の向きを確認する。</strong>希釈すれば濃度は必ず下がり、混合後の濃度は2液の濃度の間の値になるはずです。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：2.0 mol/L の溶液 50 mL を水で薄めて全体積を 500 mL にすると、濃度は何 mol/L になるか。問題2：1.0 mol/L の原液から 0.10 mol/L の溶液を 1,000 mL 作るには、原液は何 mL 必要か。問題3：0.40 mol/L の溶液 300 mL と 0.10 mol/L の溶液 200 mL を混ぜると、濃度は何 mol/L になるか。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：希釈では溶質の mol が保存されるので、C<sub>2</sub> ＝ C<sub>1</sub>V<sub>1</sub> ÷ V<sub>2</sub> ＝ 2.0 × 50 ÷ 500 ＝ 0.20 mol/L。体積が10倍になったので濃度は10分の1です。</li>
+          <li>問題2：C<sub>1</sub>V<sub>1</sub> ＝ C<sub>2</sub>V<sub>2</sub> より、V<sub>1</sub> ＝ C<sub>2</sub>V<sub>2</sub> ÷ C<sub>1</sub> ＝ 0.10 × 1,000 ÷ 1.0 ＝ 100 mL。原液 100 mL を取り、水を加えて全体積を 1,000 mL にします（加える水はおよそ 900 mL です）。</li>
+          <li>問題3：溶質の mol の合計は 0.40 × 300 ÷ 1,000 ＋ 0.10 × 200 ÷ 1,000 ＝ 0.12 ＋ 0.02 ＝ 0.14 mol。全体積は 500 mL ＝ 0.500 L なので、濃度は 0.14 ÷ 0.500 ＝ 0.28 mol/L。2液の濃度（0.10〜0.40）の間の値になっています。</li>
+        </ol>
+        <p><strong>答え：問題1は 0.20 mol/L、問題2は 100 mL、問題3は 0.28 mol/L</strong>。問題2で「水を 1,000 mL 加える」と考えてしまうのが典型的な間違いで、正しくは「全体積が 1,000 mL になるまで水を加える」です。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>消毒液の調製</h3>
+    <p>市販の消毒用製品には、原液を水で決まった倍率に薄めて使うタイプがあります。使用濃度が決まっているため、作りたい量から必要な原液量を逆算する計算はまさに C<sub>1</sub>V<sub>1</sub> ＝ C<sub>2</sub>V<sub>2</sub> で、医療・介護や食品を扱う現場では製品の表示に従って希釈調製が行われます。</p>
+    <h3>実験室での標準溶液の調製</h3>
+    <p>化学の実験では、濃度が正確に分かっている濃い保存溶液（ストック溶液）を用意しておき、使うたびに必要な濃度へ希釈して使う方法が広く取られます。滴定に使う標準溶液の調製でも、原液の濃度と目標の濃度・体積から取るべき原液量を計算します。</p>
+    <h3>飲料・食品のブレンド</h3>
+    <p>濃度の違う原液同士を混ぜて味や成分の濃さを調整するブレンドでは、混合後の濃度は「成分の総量 ÷ 全体積」で決まります。果汁飲料の果汁割合の調整など、濃いものと薄いものを混ぜて狙いの濃度に合わせる考え方は、混合の濃度計算そのものです。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who">特定の「考え出した人」はいない（溶質の物質量の保存に基づく基本的な計算方法）</p>
+    <p>希釈と混合の濃度計算は、特定の誰かが発明した法則ではなく、<strong>溶質の物質量が保存される</strong>という当たり前の事実から導かれる基本計算です。モル濃度という表し方が19世紀以降の化学で広く使われるようになるにつれて、濃度と体積の積で溶質の量を追うこの計算は、実験室の標準的な手法として定着しました。法則の名前こそありませんが、ほぼすべての溶液調製の土台になっています。</p>
+  </section>
+
+  <a class="linkcard" href="calc-dilution-mixing.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">希釈と混合の濃度計算 計算機：希釈後の濃度・必要な原液量・2液混合後の濃度の3モードで、解き方の手順つきで表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>濃度そのものの定義は<a href="molarity.html">モル濃度</a>、質量パーセント濃度との換算は<a href="concentration-conversion.html">濃度の換算</a>、質量で表す濃度は<a href="mass-percent-concentration.html">質量パーセント濃度</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

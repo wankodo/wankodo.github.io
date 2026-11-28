@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蒸気圧と沸点｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="蒸気圧と沸点の関係を、公式・手順・例題で解説。飽和蒸気圧と温度の関係、沸騰の条件（蒸気圧＝外圧）、密閉容器内で余った液体が蒸発しない理由や、圧力鍋や高地での調理など実際の現場での使われ方まで紹介します。蒸気の物質量と残る液体量を求める計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="蒸気圧と沸点｜化学ツール集">
+<meta property="og:description" content="飽和蒸気圧と沸騰の条件を、公式・手順・例題と「現場での使われ方」で解説。密閉容器内の蒸気量を出す計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/vapor-pressure.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">蒸気圧</span>と沸点</h1>
+    <p>化学の考え方辞典 ― 気体（高校化学・2年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 気体 ＞ 蒸気圧と沸点</p>
+  <p><span class="badge badge-lv">高校化学・2年</span> <span class="badge badge-genre">気体</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    密閉容器に液体を入れると、蒸発した蒸気が示す圧力は温度だけで決まる飽和蒸気圧までしか上がらず、余った液体は蒸発しない。蒸気の物質量は状態方程式から求め、液体が沸騰するのは飽和蒸気圧が外圧と等しくなったときだと判断するときに使う。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>液体とその蒸気が共存する場面で、<strong>蒸気が示す圧力（蒸気圧）</strong>を扱うときの解法です。次のような場面で使います。</p>
+    <ul>
+      <li>密閉容器に液体を入れたとき、蒸発する蒸気の物質量と、蒸発せずに残る液体の量を求める問題</li>
+      <li>液体の量が少ない場合に、全部蒸発するのか、一部が液体で残るのかを判断する問題</li>
+      <li>外圧が変わった場所（高地や圧力鍋の中）で、沸点が何 ℃ になるか・沸騰するかどうかを判断する問題</li>
+    </ul>
+    <p>ポイントは2つです。第一に、液体が残っている限り蒸気圧は<strong>飽和蒸気圧</strong>で頭打ちになり、容器の体積や液体の量では変わらず、温度だけで決まります。第二に、入れた液体が少ないと全部蒸発してしまい、その場合は蒸気圧は飽和蒸気圧に達しません。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>密閉容器の中で液体と蒸気がつり合っている（気液平衡）ときの蒸気圧を<strong>飽和蒸気圧</strong>といいます。飽和状態の蒸気の物質量 n<sub>sat</sub> は、気体の状態方程式 pV ＝ nRT を n について解いて求めます。</p>
+    <div class="formula">n<sub>sat</sub> ＝ p<sub>sat</sub>V ÷ (RT)</div>
+    <p>入れた液体の物質量が n<sub>sat</sub> 以上なら、蒸気は n<sub>sat</sub> だけできて残りは液体のままです（余った液体は蒸発しません）。n<sub>sat</sub> より少なければ全部蒸発し、蒸気圧は p ＝ nRT ÷ V で飽和蒸気圧より低くなります。</p>
+    <p>また、液体内部からも蒸発が起こる<strong>沸騰</strong>は、飽和蒸気圧が外圧と等しくなったときに起こります。これが沸点の定義そのものです。</p>
+    <div class="formula">沸騰の条件：p<sub>sat</sub> ＝ 外圧</div>
+    <p>各記号の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>p<sub>sat</sub></strong>：飽和蒸気圧 [Pa]。温度だけで決まる</li>
+      <li><strong>V</strong>：容器の体積 [L]</li>
+      <li><strong>T</strong>：絶対温度 [K]。T [K] ＝ t [℃] ＋ 273</li>
+      <li><strong>R</strong>：気体定数 ＝ 8.31×10<sup>3</sup> Pa・L/(mol・K)</li>
+      <li><strong>n<sub>sat</sub></strong>：飽和状態で蒸気になれる物質量 [mol]</li>
+    </ul>
+    <p>水の飽和蒸気圧は温度とともに急激に大きくなります。代表的な値は次の通りで、計算ではこの表の値を問題に明示して使います。</p>
+    <ul>
+      <li>20 ℃：2.3×10<sup>3</sup> Pa</li>
+      <li>25 ℃：3.2×10<sup>3</sup> Pa</li>
+      <li>30 ℃：4.2×10<sup>3</sup> Pa</li>
+      <li>40 ℃：7.4×10<sup>3</sup> Pa</li>
+      <li>50 ℃：1.23×10<sup>4</sup> Pa</li>
+      <li>60 ℃：1.99×10<sup>4</sup> Pa</li>
+      <li>70 ℃：3.12×10<sup>4</sup> Pa</li>
+      <li>80 ℃：4.74×10<sup>4</sup> Pa</li>
+      <li>90 ℃：7.01×10<sup>4</sup> Pa</li>
+      <li>100 ℃：1.013×10<sup>5</sup> Pa（＝ 大気圧 1.013×10<sup>5</sup> Pa と一致するので、通常の気圧では 100 ℃ が沸点になる）</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>温度を絶対温度に直し、飽和蒸気圧を確認する。</strong>飽和蒸気圧は温度だけで決まるので、まずその温度での値を表や問題文から読み取ります。</li>
+      <li><strong>飽和に必要な蒸気量 n<sub>sat</sub> ＝ p<sub>sat</sub>V ÷ (RT) を計算する。</strong>これが蒸気になれる上限です。</li>
+      <li><strong>入れた液体の量と比べる。</strong>液体が n<sub>sat</sub> 以上あれば、蒸気は n<sub>sat</sub>、残る液体は（入れた量 − n<sub>sat</sub>）、容器内の圧力は飽和蒸気圧です。</li>
+      <li><strong>液体が n<sub>sat</sub> より少なければ全部蒸発と判断する。</strong>その場合の圧力は p ＝ nRT ÷ V で別に計算し、飽和蒸気圧より低くなることを確認します。</li>
+      <li><strong>沸騰の判断は外圧と比べる。</strong>飽和蒸気圧が外圧に等しくなる温度が沸点です。外圧が低ければ沸点は下がり、外圧が高ければ沸点は上がります。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：30 ℃ で体積 6.0 L の密閉容器に水 0.050 mol を入れて放置した。水の 30 ℃ での飽和蒸気圧を 4.2×10<sup>3</sup> Pa として、蒸気になった水の物質量と、残る液体の水の物質量・質量を求めよ。問題2：同じ容器・温度で水 0.0050 mol だけを入れた場合、容器内の圧力はいくらになるか。問題3：外圧が 5.0×10<sup>4</sup> Pa の高地では、水は何 ℃ で沸騰するか、飽和蒸気圧の表からおよその値を求めよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：絶対温度は T ＝ 30 ＋ 273 ＝ 303 K。飽和に必要な蒸気量は n<sub>sat</sub> ＝ p<sub>sat</sub>V ÷ (RT) ＝ 4.2×10<sup>3</sup> × 6.0 ÷ (8.31×10<sup>3</sup> × 303) ≒ 0.010 mol。</li>
+          <li>入れた水 0.050 mol は n<sub>sat</sub> より多いので、蒸気になるのは 0.010 mol までで、残りの液体は 0.050 − 0.010 ＝ 0.040 mol。余った液体は蒸発しません。質量は水のモル質量 18 g/mol より 0.040 × 18 ＝ 0.72 g。容器内の圧力は飽和蒸気圧の 4.2×10<sup>3</sup> Pa です。</li>
+          <li>問題2：入れた水 0.0050 mol は n<sub>sat</sub> ＝ 0.010 mol より少ないので全部蒸発します。圧力は p ＝ nRT ÷ V ＝ 0.0050 × 8.31×10<sup>3</sup> × 303 ÷ 6.0 ≒ 2.1×10<sup>3</sup> Pa で、飽和蒸気圧より低くなります。</li>
+          <li>問題3：沸騰は飽和蒸気圧が外圧 5.0×10<sup>4</sup> Pa と等しくなる温度で起こります。表では 80 ℃ で 4.74×10<sup>4</sup> Pa、90 ℃ で 7.01×10<sup>4</sup> Pa なので、その間で 5.0×10<sup>4</sup> Pa になるのは約 81 ℃ です。</li>
+        </ol>
+        <p><strong>答え：問題1は蒸気 0.010 mol、残る液体 0.040 mol（0.72 g）。問題2は約 2.1×10<sup>3</sup> Pa。問題3は約 81 ℃</strong>。問題1と問題2の分かれ目は「入れた量が n<sub>sat</sub> を超えるかどうか」で、ここを見落とすと蒸気量を多く見積もりすぎます。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>圧力鍋と高圧蒸気滅菌（オートクレーブ）</h3>
+    <p>圧力鍋は密閉して内部の圧力を上げることで水の沸点を 100 ℃ より高くし、高温で短時間に調理する道具です。医療器具の滅菌に使うオートクレーブも同じ原理で、圧力を上げて飽和蒸気の温度を約 121 ℃ まで高め、蒸気の熱で滅菌します。どちらも「外圧が上がれば沸点が上がる」ことの応用です。</p>
+    <h3>高地での調理</h3>
+    <p>標高の高い場所では気圧が低く、水の沸点が 100 ℃ より下がります。沸騰していても温度が低いため、米や麺が芯まで火を通しにくく、調理時間の調整や圧力鍋の利用が勧められるのはこのためです。</p>
+    <h3>湿度と結露の予測</h3>
+    <p>空気中に含める水蒸気の上限は、その温度での飽和蒸気圧で決まります。天気予報の湿度（相対湿度）は実際の水蒸気圧を飽和蒸気圧で割った割合で、気温が下がって飽和蒸気圧が下がると、余った水蒸気が結露します。窓の結露や露点の考え方は、飽和蒸気圧の温度依存性そのものです。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ジョン・ダルトン</strong>（1766〜1844、イギリスの化学者・物理学者）、<strong>ルイ・シャルル・アントワン</strong>（1825〜1898、フランスの技術者）</p>
+    <p>蒸気圧の研究はイギリスの<strong>ジョン・ダルトン</strong>（1766〜1844）が切り開きました。ダルトンは1801年に、蒸気が示す圧力や混合気体の分圧に関する研究を発表し、飽和蒸気圧が温度で決まることを実験で調べました。のちにフランスの技術者<strong>ルイ・シャルル・アントワン</strong>（1825〜1898）が1888年、飽和蒸気圧と温度の関係を簡単な式で表すアントワン式を提案し、蒸留などの化学工学の設計計算に今も使われています。</p>
+  </section>
+
+  <a class="linkcard" href="calc-vapor-pressure.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">蒸気圧と沸点 計算機：飽和蒸気圧・容器の体積・温度・入れた液体の量から、蒸気の物質量・残る液体量・容器内の圧力を手順つきで表示します。飽和蒸気圧と外圧の比較による沸騰の判定もできます。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>不揮発性の溶質を溶かした溶液では蒸気圧が下がる現象を<a href="raoults-law.html">ラウールの法則と蒸気圧降下</a>で、気体が液体に溶ける量は<a href="henrys-law.html">ヘンリーの法則</a>で、混合気体の圧力の分け方は<a href="partial-pressure-dalton.html">ドルトンの分圧の法則</a>で扱います。沸点上昇そのものは<a href="boiling-freezing-point.html">沸点上昇と凝固点降下</a>、蒸気量の計算の土台は<a href="ideal-gas-law-chemistry.html">気体の状態方程式</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
