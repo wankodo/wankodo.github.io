@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>電池の原理（ボルタ電池・ダニエル電池）｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="電池の原理（ボルタ電池・ダニエル電池）を、半反応式・手順・例題で解説。負極・正極で起こる酸化還元反応、イオン化傾向と起電力（ダニエル電池で約1.1 V）、分極の仕組みや、乾電池や犠牲陽極による防食など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="電池の原理（ボルタ電池・ダニエル電池）｜化学ツール集">
+<meta property="og:description" content="ボルタ電池とダニエル電池の負極・正極の反応を半反応式で解説。イオン化傾向と起電力約1.1 V、分極の仕組みを例題と「現場での使われ方」で紹介。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/galvanic-cells.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">電池</span>の原理（ボルタ電池・ダニエル電池）</h1>
+    <p>化学の考え方辞典 ― 酸化還元・電池と電気分解（高校化学基礎・1年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 酸化還元・電池と電気分解 ＞ 電池の原理（ボルタ電池・ダニエル電池）</p>
+  <p><span class="badge badge-lv">高校化学基礎・1年</span> <span class="badge badge-genre">酸化還元・電池と電気分解</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    化学反応のエネルギーを電気エネルギーに変える装置（電池）の仕組みを知りたいときに使う。イオン化傾向の異なる2種の金属を電解質の溶液に入れると、イオン化傾向の大きい金属が負極で溶けて電子を放出し、その電子が導線を通って正極へ移動することで電流が流れる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>電池の中で起こる<strong>酸化還元反応</strong>を、負極と正極に分けて扱うときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>ボルタ電池・ダニエル電池の負極・正極で起こる反応を、半反応式（電子 e<sup>−</sup> を含む反応式）で書く問題</li>
+      <li>2種の金属の組み合わせから、どちらが負極・正極になるかをイオン化傾向で判断する問題</li>
+      <li>電池全体の反応式を書く問題や、電極が溶けた量から発生する気体の量を求める問題</li>
+      <li>ボルタ電池の起電力がすぐに低下する理由（分極）を説明する問題</li>
+    </ul>
+    <p>ポイントは、<strong>負極では酸化（電子を放出）、正極では還元（電子を受け取る）</strong>が起こることです。電子は導線を通って負極から正極へ移動し、電流はその逆向きに流れます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>金属が水溶液中で電子を放出して陽イオンになろうとする性質を<strong>イオン化傾向</strong>といい、主な金属では次の順に大きくなります。</p>
+    <div class="formula">K ＞ Ca ＞ Na ＞ Mg ＞ Al ＞ Zn ＞ Fe ＞ Ni ＞ Sn ＞ Pb ＞（H）＞ Cu ＞ Hg ＞ Ag ＞ Pt ＞ Au</div>
+    <p>イオン化傾向の異なる2種の金属を電解質の溶液に入れて導線でつなぐと、<strong>イオン化傾向の大きい金属が負極</strong>になって溶け出し（酸化）、小さい金属が正極になって、その表面で還元が起こります。2種の金属のイオン化傾向の差が大きいほど、電池の起電力（電圧 [V]）は大きくなります。</p>
+    <h3>ボルタ電池</h3>
+    <p>亜鉛板 Zn と銅板 Cu を希硫酸 H<sub>2</sub>SO<sub>4</sub> に入れた電池です。各電極の反応は次の通りです。</p>
+    <div class="formula">負極（Zn）： Zn → Zn<sup>2+</sup> ＋ 2e<sup>−</sup>（酸化）</div>
+    <div class="formula">正極（Cu）： 2H<sup>+</sup> ＋ 2e<sup>−</sup> → H<sub>2</sub>（還元）</div>
+    <p>起電力は約 1.1 V ですが、放電を続けると正極の銅板の表面が水素の泡で覆われて電流が流れにくくなり、起電力が急に低下します。この現象を<strong>分極</strong>といい、ボルタ電池の欠点です。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>ダニエル電池</h3>
+    <p>分極を防ぐために、亜鉛板を硫酸亜鉛 ZnSO<sub>4</sub> 水溶液に、銅板を硫酸銅 CuSO<sub>4</sub> 水溶液に入れ、2つの水溶液を素焼き板（多孔質の隔壁）で仕切った電池です。素焼き板はイオンを通すので回路はつながりますが、2液がすぐには混ざり合いません。各電極の反応は次の通りです。</p>
+    <div class="formula">負極（Zn）： Zn → Zn<sup>2+</sup> ＋ 2e<sup>−</sup>（酸化）</div>
+    <div class="formula">正極（Cu）： Cu<sup>2+</sup> ＋ 2e<sup>−</sup> → Cu（還元）</div>
+    <p>両辺の電子を消すと、電池全体の反応は次のようになります。</p>
+    <div class="formula">全体： Zn ＋ Cu<sup>2+</sup> → Zn<sup>2+</sup> ＋ Cu</div>
+    <p>正極では水素が発生しないので分極が起こらず、起電力は約 1.1 V で安定しています。放電が進むと負極の ZnSO<sub>4</sub> 水溶液では Zn<sup>2+</sup> が増え、正極の CuSO<sub>4</sub> 水溶液では Cu<sup>2+</sup> が減るため、電気的中性を保つように素焼き板を通ってイオン（SO<sub>4</sub><sup>2−</sup> など）が移動します。</p>
+    <p>各記号の意味は次の通りです。</p>
+    <ul>
+      <li><strong>e<sup>−</sup></strong>：電子。半反応式では、酸化では右辺に、還元では左辺に書く</li>
+      <li><strong>起電力</strong>：電池が電流を流そうとする力の大きさ [V]。ダニエル電池では約 1.1 V</li>
+      <li><strong>負極・正極</strong>：電池では、電子を放出する極が負極、電子を受け取る極が正極</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>負極と正極を決める。</strong>イオン化傾向の大きい金属が負極、小さい金属（または正極で反応するイオン）が正極です。</li>
+      <li><strong>負極の半反応式を書く。</strong>金属が電子を放出して陽イオンになる酸化反応（例：Zn → Zn<sup>2+</sup> ＋ 2e<sup>−</sup>）を書きます。</li>
+      <li><strong>正極の半反応式を書く。</strong>溶液中のイオンが電子を受け取る還元反応（ボルタ電池では 2H<sup>+</sup> ＋ 2e<sup>−</sup> → H<sub>2</sub>、ダニエル電池では Cu<sup>2+</sup> ＋ 2e<sup>−</sup> → Cu）を書きます。</li>
+      <li><strong>全体の反応式が必要なら、電子の数をそろえて2式を足す。</strong>電子は両辺で消え、残った式が電池全体の反応になります。</li>
+      <li><strong>量の計算では電子の物質量を経由する。</strong>電極が溶けた物質量から電子の物質量を求め、正極で反応する物質の物質量に換算します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：ダニエル電池について、負極・正極で起こる反応を半反応式で書き、電池全体の反応式も書け。問題2：ボルタ電池を使い続けると、起電力が急に低下するのはなぜか。問題3：ボルタ電池で亜鉛板が 0.65 g 溶けたとき、正極で発生する水素は標準状態（0 ℃、1.013×10<sup>5</sup> Pa）で何 L か。ただし、亜鉛の原子量は 65、標準状態の気体のモル体積は 22.4 L/mol とする。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：イオン化傾向は Zn ＞ Cu なので、亜鉛が負極、銅が正極です。負極では Zn → Zn<sup>2+</sup> ＋ 2e<sup>−</sup>、正極では Cu<sup>2+</sup> ＋ 2e<sup>−</sup> → Cu。電子の数がそろっているので2式をそのまま足すと、全体の反応は Zn ＋ Cu<sup>2+</sup> → Zn<sup>2+</sup> ＋ Cu となります。</li>
+          <li>問題2：正極の銅板の表面で発生した水素の泡が銅板を覆い、H<sup>+</sup> が電子を受け取りにくくなるためです。この現象を分極といいます。</li>
+          <li>問題3：溶けた亜鉛は 0.65 g ÷ 65 g/mol ＝ 0.010 mol。負極の反応 Zn → Zn<sup>2+</sup> ＋ 2e<sup>−</sup> より、放出される電子は 0.010 × 2 ＝ 0.020 mol。</li>
+          <li>正極の反応 2H<sup>+</sup> ＋ 2e<sup>−</sup> → H<sub>2</sub> より、電子 0.020 mol で発生する水素は 0.020 ÷ 2 ＝ 0.010 mol。体積は 0.010 mol × 22.4 L/mol ＝ 0.224 L です。</li>
+        </ol>
+        <p><strong>答え：問題1は負極 Zn → Zn<sup>2+</sup> ＋ 2e<sup>−</sup>、正極 Cu<sup>2+</sup> ＋ 2e<sup>−</sup> → Cu、全体 Zn ＋ Cu<sup>2+</sup> → Zn<sup>2+</sup> ＋ Cu。問題2は分極のため。問題3は約 0.22 L</strong>。ダニエル電池の起電力は約 1.1 V で、ボルタ電池とほぼ同じ大きさですが、分極がない分だけ安定して使えます。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>乾電池・リチウムイオン電池などの実用電池</h3>
+    <p>身の回りの電池はすべて、酸化還元反応の化学エネルギーを電気エネルギーに変える仕組みの応用です。マンガン乾電池では亜鉛の容器が負極として溶け、自動車の鉛蓄電池やスマートフォンのリチウムイオン電池（充電できる二次電池）でも、負極の酸化と正極の還元という基本構造はボルタ電池・ダニエル電池と同じです。</p>
+    <h3>犠牲陽極による金属の防食</h3>
+    <p>イオン化傾向の差を利用して、守りたい金属よりイオン化傾向の大きい金属をくっつけて先に腐食させる方法が、船舶の船体や海中の鋼構造物、給湯器のタンクなどの防食に使われています。身代わりに溶ける金属は「犠牲陽極」と呼ばれ、電池の負極が溶ける原理そのものを逆に利用した技術です。</p>
+    <h3>燃料電池</h3>
+    <p>水素と酸素を反応させて電気を取り出す燃料電池も、負極で水素が電子を放出し（酸化）、正極で酸素が電子を受け取る（還元）という電池の原理の応用です。発電と同時に水ができるクリーンな発電方法として、自動車や家庭用発電に実用化されています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>アレッサンドロ・ボルタ</strong>（1745〜1827、イタリアの物理学者）、<strong>ジョン・フレデリック・ダニエル</strong>（1790〜1845、イギリスの化学者）</p>
+    <p>電池の出発点は、イタリアの物理学者<strong>アレッサンドロ・ボルタ</strong>（1745〜1827）が1800年に発表した「電堆（でんたい）」です。亜鉛と銅（または銀）の円板を、塩水を含ませた布をはさんで交互に積み重ねることで、続けて電流を取り出すことに成功しました。同じ溶液に2種の金属を入れたボルタ電池はその原型で、電圧の単位ボルト [V] は彼の名に由来します。ただしボルタ電池は分極のために電圧が長続きしませんでした。この欠点を改良したのがイギリスの化学者<strong>ジョン・フレデリック・ダニエル</strong>（1790〜1845）で、1836年に2種類の金属塩水溶液を素焼き板で仕切るダニエル電池を発表し、安定した電圧を長時間取り出せるようにしました。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>電池と逆に、電気エネルギーで化学反応を起こす仕組みは<a href="electrolysis-faraday.html">電気分解とファラデーの法則</a>、反応で出入りするエネルギーの大きさは<a href="reaction-heat-thermochemical-equations.html">反応熱と熱化学方程式</a>が役立ちます。電流や電圧の基本は物理コーナーの<a href="https://wankodo.github.io/physics/current-and-ohms-law.html">電流とオームの法則</a>も参考になります。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
