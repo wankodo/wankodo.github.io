@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アルコールとエーテル｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="アルコールを第一級・第二級・第三級に分け、酸化の段階（第一級→アルデヒド→カルボン酸、第二級→ケトン）、ナトリウムとの反応、温度で変わる脱水反応（アルケンとエーテル）とジエチルエーテルの性質を、構造式と例題で解説。燃料や消毒液など現場での使われ方も紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="アルコールとエーテル｜化学ツール集">
+<meta property="og:description" content="アルコールの分類と酸化の段階、脱水反応の温度条件、エーテルの性質を構造式と例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/alcohols-ethers.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">アルコール</span>とエーテル</h1>
+    <p>化学の考え方辞典 ― 有機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 有機化学 ＞ アルコールとエーテル</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">有機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    アルコールはヒドロキシ基 −OH をもつ化合物で、−OH の付いた炭素に付く炭素の数で第一級・第二級・第三級に分かれ、酸化のされ方が変わる。第一級はアルデヒドを経てカルボン酸に、第二級はケトンになり、第三級は酸化されにくい。エタノールを濃硫酸と加熱すると、約170 ℃では分子内脱水でエチレン、約140 ℃では分子間脱水でジエチルエーテルができ、温度が生成物を決める。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>ヒドロキシ基（−OH）をもつ化合物＝<strong>アルコール</strong>と、酸素が炭素鎖の間に入った <strong>R−O−R 型のエーテル</strong>の性質と反応を扱うときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>構造式を見て、第一級・第二級・第三級アルコールのどれかを判定する問題</li>
+      <li>各アルコールを酸化したときの生成物（アルデヒド・カルボン酸・ケトン、または反応しにくい）を予測する問題</li>
+      <li>エタノールを濃硫酸と加熱したとき、温度によってエチレンとジエチルエーテルのどちらができるかを答える問題</li>
+      <li>アルコールと金属ナトリウムの反応式を書き、水素の発生を説明する問題</li>
+      <li>グリセリンやフェノールが、ふつうのアルコールとどこが違うかを区別する問題</li>
+    </ul>
+    <p>ポイントは2つです。<strong>酸化は「−OH の付いた炭素に H が何個残っているか」で決まり</strong>、<strong>脱水は「温度」で分子内か分子間かが決まります</strong>。この2つの物差しで、生成物の予測問題はほぼ解けます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>アルコールとは：ヒドロキシ基 −OH</h3>
+    <p><strong>アルコール</strong>は、炭化水素の水素原子1個をヒドロキシ基 <strong>−OH</strong> で置き換えた化合物で、一般式は <strong>C<sub>n</sub>H<sub>2n+1</sub>OH</strong>（鎖状で −OH が1個の場合）と書けます。−OH があるため分子どうしに水素結合がはたらき、同じくらいの分子量の炭化水素より沸点が高く、炭素数の少ないものは水によく溶けます。炭素数が増えるほど炭化水素の部分が大きくなり、水に溶けにくくなります。</p>
+    <div class="formula">代表例：メタノール CH<sub>3</sub>OH（沸点約65 ℃）、エタノール C<sub>2</sub>H<sub>5</sub>OH（沸点約78 ℃）</div>
+    <h3>分類：第一級・第二級・第三級</h3>
+    <p>−OH が付いた炭素原子に、<strong>ほかの炭素原子が何個付いているか</strong>で分類します。その炭素に付いた炭素が1個（または0個）なら第一級、2個なら第二級、3個なら第三級です。メタノールは −OH の炭素にほかの炭素が付いていないため、第一級の仲間として扱います。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 200" width="560" height="200" role="img" aria-label="メタノール・エタノール・1-プロパノール・2-プロパノール・2-メチル-2-プロパノールの構造式" style="max-width:100%;height:auto;">
+        <text x="62" y="22" text-anchor="middle" font-size="13" fill="currentColor">メタノール CH₃OH</text>
+        <text x="62" y="58" text-anchor="middle" font-size="14" fill="currentColor">CH₃−OH</text>
+        <text x="62" y="84" text-anchor="middle" font-size="12" fill="currentColor">第一級の仲間</text>
+        <text x="178" y="22" text-anchor="middle" font-size="13" fill="currentColor">エタノール C₂H₅OH</text>
+        <text x="178" y="58" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH₂−OH</text>
+        <text x="178" y="84" text-anchor="middle" font-size="12" fill="currentColor">第一級</text>
+        <text x="330" y="22" text-anchor="middle" font-size="13" fill="currentColor">1-プロパノール C₃H₇OH</text>
+        <text x="330" y="58" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH₂−CH₂−OH</text>
+        <text x="330" y="84" text-anchor="middle" font-size="12" fill="currentColor">第一級（−OHは端の炭素）</text>
+        <text x="110" y="122" text-anchor="middle" font-size="13" fill="currentColor">2-プロパノール C₃H₇OH</text>
+        <text x="96" y="158" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH−CH₃</text>
+        <line x1="128" y1="150" x2="128" y2="170" stroke="currentColor" stroke-width="2"/>
+        <text x="142" y="176" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <text x="110" y="196" text-anchor="middle" font-size="12" fill="currentColor">第二級（−OHは中央の炭素）</text>
+        <text x="400" y="122" text-anchor="middle" font-size="13" fill="currentColor">2-メチル-2-プロパノール C₄H₉OH</text>
+        <text x="360" y="158" text-anchor="middle" font-size="14" fill="currentColor">CH₃−C−CH₃</text>
+        <line x1="386" y1="146" x2="386" y2="132" stroke="currentColor" stroke-width="2"/>
+        <text x="386" y="126" text-anchor="middle" font-size="13" fill="currentColor">CH₃</text>
+        <line x1="386" y1="156" x2="386" y2="170" stroke="currentColor" stroke-width="2"/>
+        <text x="400" y="186" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <text x="470" y="158" text-anchor="middle" font-size="12" fill="currentColor">第三級</text>
+      </svg>
+      <p>代表的なアルコールの構造式。1-プロパノールと2-プロパノールは分子式が同じ C<sub>3</sub>H<sub>7</sub>OH でも −OH の位置が違い、級数も酸化生成物も変わります。2-メチル-2-プロパノールでは、−OH の付いた炭素に炭素が3個付き、その炭素に水素が残っていません。</p>
+    </div>
+    <h3>酸化の段階：級数で行き先が決まる</h3>
+    <p>アルコールの酸化は、−OH の付いた炭素から水素が失われる反応として見ると整理できます。</p>
+    <ul>
+      <li><strong>第一級アルコール</strong>：その炭素に H が2個あるため、まず <strong>アルデヒド</strong> になり、さらに酸化されると <strong>カルボン酸</strong> になります。エタノールなら CH<sub>3</sub>CH<sub>2</sub>OH → CH<sub>3</sub>CHO（アセトアルデヒド）→ CH<sub>3</sub>COOH（酢酸）の順です。</li>
+      <li><strong>第二級アルコール</strong>：その炭素の H は1個だけなので、酸化は <strong>ケトン</strong> で止まります。2-プロパノールならアセトン（プロパノン）CH<sub>3</sub>COCH<sub>3</sub> ができます。</li>
+      <li><strong>第三級アルコール</strong>：その炭素に H がないため、温和な条件では<strong>酸化されにくく</strong>、対応するカルボニル化合物はできません。</li>
+    </ul>
+    <div class="formula">第一級 → アルデヒド → カルボン酸　／　第二級 → ケトン　／　第三級 → 酸化されにくい</div>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 190" width="560" height="190" role="img" aria-label="酸化生成物アセトアルデヒド・酢酸・プロパナール・プロピオン酸・アセトンの構造式" style="max-width:100%;height:auto;">
+        <text x="90" y="22" text-anchor="middle" font-size="13" fill="currentColor">アセトアルデヒド CH₃CHO</text>
+        <text x="78" y="56" text-anchor="middle" font-size="14" fill="currentColor">CH₃−C−H</text>
+        <line x1="104" y1="48" x2="120" y2="40" stroke="currentColor" stroke-width="2"/>
+        <line x1="106" y1="54" x2="122" y2="46" stroke="currentColor" stroke-width="2"/>
+        <text x="130" y="44" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="90" y="80" text-anchor="middle" font-size="12" fill="currentColor">C＝O と H（アルデヒド）</text>
+        <text x="280" y="22" text-anchor="middle" font-size="13" fill="currentColor">酢酸 CH₃COOH</text>
+        <text x="268" y="56" text-anchor="middle" font-size="14" fill="currentColor">CH₃−C−OH</text>
+        <line x1="294" y1="48" x2="310" y2="40" stroke="currentColor" stroke-width="2"/>
+        <line x1="296" y1="54" x2="312" y2="46" stroke="currentColor" stroke-width="2"/>
+        <text x="320" y="44" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="280" y="80" text-anchor="middle" font-size="12" fill="currentColor">−COOH（カルボン酸）</text>
+        <text x="460" y="22" text-anchor="middle" font-size="13" fill="currentColor">アセトン（プロパノン）CH₃COCH₃</text>
+        <text x="460" y="56" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CO−CH₃</text>
+        <text x="460" y="80" text-anchor="middle" font-size="12" fill="currentColor">C＝O が鎖の途中（ケトン）</text>
+        <text x="140" y="118" text-anchor="middle" font-size="13" fill="currentColor">プロパナール CH₃CH₂CHO</text>
+        <text x="140" y="150" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH₂−CHO</text>
+        <text x="140" y="174" text-anchor="middle" font-size="12" fill="currentColor">1-プロパノールの一段目の酸化</text>
+        <text x="400" y="118" text-anchor="middle" font-size="13" fill="currentColor">プロピオン酸 CH₃CH₂COOH</text>
+        <text x="400" y="150" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH₂−COOH</text>
+        <text x="400" y="174" text-anchor="middle" font-size="12" fill="currentColor">プロパナールのさらなる酸化</text>
+      </svg>
+      <p>酸化生成物の構造式。アルデヒドとカルボン酸では C＝O をもつ炭素が鎖の端にあり、ケトンでは鎖の途中にあります。アルデヒド・ケトン・カルボン酸の詳しい性質は、それぞれの項目で扱います。</p>
+    </div>
+    <h3>メタノールとエタノールの性質と用途</h3>
+    <p><strong>メタノール</strong> CH<sub>3</sub>OH は無色の液体で、水とよく混ざります。燃料や有機合成の原料として使われますが、<strong>毒性が強く、飲むと失明や死亡のおそれがある</strong>ため、飲用アルコールとは厳重に区別されます。工業用アルコールにメタノールが混ぜてあるのも、飲用への転用を防ぐ目的があります。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <p><strong>エタノール</strong> C<sub>2</sub>H<sub>5</sub>OH も無色の液体で水とよく混ざり、酒類の主成分であるほか、消毒用アルコールや燃料、化粧品・医薬品の溶媒として広く使われます。実験室では、炭化水素の項目で見たようにエチレンへの水の付加でも作られます。</p>
+    <h3>ナトリウムとの反応</h3>
+    <p>アルコールは金属ナトリウムと反応して<strong>水素を発生</strong>し、<strong>アルコキシド</strong>（エタノールならナトリウムエトキシド C<sub>2</sub>H<sub>5</sub>ONa）を生じます。水とナトリウムの反応よりは穏やかです。</p>
+    <div class="formula">2C<sub>2</sub>H<sub>5</sub>OH ＋ 2Na → 2C<sub>2</sub>H<sub>5</sub>ONa ＋ H<sub>2</sub></div>
+    <p>メタノールでも同様に、2CH<sub>3</sub>OH ＋ 2Na → 2CH<sub>3</sub>ONa（ナトリウムメトキシド）＋ H<sub>2</sub> となります。どちらの式も、両辺で C・H・O・Na の数が一致します（検算済み）。−OH の水素が金属と置き換わる反応であり、アルコールがごく弱い酸性を示す証拠でもあります。ナトリウムは水や空気と激しく反応する金属なので、扱いには注意が必要です。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>脱水反応：温度で生成物が変わる</h3>
+    <p>エタノールを<strong>濃硫酸</strong>と加熱すると、水が取れる<strong>脱水反応</strong>が起こります。進み方は温度で変わります。</p>
+    <ul>
+      <li><strong>約170 ℃（分子内脱水）</strong>：1分子の中で −OH と隣の炭素の H が水として取れ、二重結合ができて<strong>エチレン</strong>が生じます。C<sub>2</sub>H<sub>5</sub>OH → C<sub>2</sub>H<sub>4</sub> ＋ H<sub>2</sub>O</li>
+      <li><strong>約140 ℃（分子間脱水）</strong>：2分子の間で水が1分子取れ、酸素でつながった<strong>ジエチルエーテル</strong>が生じます。2C<sub>2</sub>H<sub>5</sub>OH → C<sub>2</sub>H<sub>5</sub>OC<sub>2</sub>H<sub>5</sub> ＋ H<sub>2</sub>O</li>
+    </ul>
+    <p>どちらの式も両辺の原子数が一致します（170 ℃側は C<sub>2</sub>H<sub>6</sub>O ＝ C<sub>2</sub>H<sub>4</sub>＋H<sub>2</sub>O、140 ℃側は C<sub>4</sub>H<sub>12</sub>O<sub>2</sub> ＝ C<sub>4</sub>H<sub>10</sub>O＋H<sub>2</sub>O。検算済み）。他のアルコールでも分子内脱水は起こり、たとえば2-プロパノールからはプロペンができます（C<sub>3</sub>H<sub>8</sub>O → C<sub>3</sub>H<sub>6</sub> ＋ H<sub>2</sub>O）。濃硫酸は強い脱水作用と腐食性をもつ薬品です。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>エーテル：R−O−R の化合物</h3>
+    <p><strong>エーテル</strong>は、酸素原子が2つの炭化水素基にはさまれた R−O−R の構造をもつ化合物です。代表の<strong>ジエチルエーテル</strong> C<sub>2</sub>H<sub>5</sub>OC<sub>2</sub>H<sub>5</sub> は沸点約35 ℃の無色の液体で、水にはあまり溶けず、有機化合物をよく溶かすため溶媒として使われてきました。−OH をもたないので水素結合による分子どうしの結びつきが弱く、アルコールより沸点が低くなります。引火性が非常に強く、蒸気が空気と混ざると爆発のおそれもあるため、火気のない場所での保管と取り扱いが必須です。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>グリセリン・フェノールとの区別の入口</h3>
+    <p>−OH をもつ化合物はアルコールだけではありません。<strong>グリセリン</strong>は炭素3個に −OH が3個付いた<strong>多価アルコール</strong>で、ねばりけのある液体です。−OH が多いため水と非常によく混ざり、保湿剤や食品・化粧品に使われます。油脂の加水分解で得られる化合物でもあります。一方、<strong>フェノール</strong>はベンゼン環に −OH が直接付いた化合物で、アルコールとは別の仲間（芳香族化合物）として扱います。フェノールの −OH は弱い酸性を示し、水酸化ナトリウム水溶液に溶けるなど、性質がアルコールとははっきり違います。見分けの物差しは「−OH が炭素鎖に付いているか（アルコール）、ベンゼン環に直接付いているか（フェノール）」です。詳しくはフェノールの項目で扱います。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 210" width="560" height="210" role="img" aria-label="エチレン・ジエチルエーテル・プロペン・グリセリン・フェノールの構造式" style="max-width:100%;height:auto;">
+        <text x="80" y="22" text-anchor="middle" font-size="13" fill="currentColor">エチレン（エテン）C₂H₄</text>
+        <text x="80" y="56" text-anchor="middle" font-size="14" fill="currentColor">CH₂＝CH₂</text>
+        <text x="80" y="80" text-anchor="middle" font-size="12" fill="currentColor">170 ℃の分子内脱水</text>
+        <text x="270" y="22" text-anchor="middle" font-size="13" fill="currentColor">ジエチルエーテル C₂H₅OC₂H₅</text>
+        <text x="270" y="56" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH₂−O−CH₂−CH₃</text>
+        <text x="270" y="80" text-anchor="middle" font-size="12" fill="currentColor">140 ℃の分子間脱水</text>
+        <text x="460" y="22" text-anchor="middle" font-size="13" fill="currentColor">プロペン C₃H₆</text>
+        <text x="460" y="56" text-anchor="middle" font-size="14" fill="currentColor">CH₂＝CH−CH₃</text>
+        <text x="460" y="80" text-anchor="middle" font-size="12" fill="currentColor">2-プロパノールの脱水</text>
+        <text x="150" y="118" text-anchor="middle" font-size="13" fill="currentColor">グリセリン C₃H₅(OH)₃</text>
+        <text x="150" y="150" text-anchor="middle" font-size="14" fill="currentColor">HO−CH₂−CH(OH)−CH₂−OH</text>
+        <text x="150" y="174" text-anchor="middle" font-size="12" fill="currentColor">−OH が3個の多価アルコール</text>
+        <text x="410" y="118" text-anchor="middle" font-size="13" fill="currentColor">フェノール C₆H₅OH</text>
+        <polygon points="382,138 398,148 398,166 382,176 366,166 366,148" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="382" cy="157" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="398" y1="148" x2="414" y2="140" stroke="currentColor" stroke-width="2"/>
+        <text x="432" y="144" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <text x="410" y="196" text-anchor="middle" font-size="12" fill="currentColor">ベンゼン環に −OH が直接付く</text>
+      </svg>
+      <p>脱水生成物と、区別の入口になる化合物の構造式。エチレンとジエチルエーテルは、同じエタノールから温度だけで分かれてできます。グリセリンはアルコールの仲間ですが、フェノールはベンゼン環をもつ別グループです。</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>−OH の付いた炭素を見て級数を決める。</strong>その炭素に付いているほかの炭素の数を数え、1個以下なら第一級、2個なら第二級、3個なら第三級と判定します。</li>
+      <li><strong>酸化なら、級数から行き先を当てる。</strong>第一級はアルデヒド→カルボン酸、第二級はケトン、第三級は酸化されにくい、という対応に当てはめ、炭素骨格は変えずに生成物の構造を書きます。</li>
+      <li><strong>脱水なら、反応条件（温度）を見る。</strong>エタノール＋濃硫酸では約170 ℃で分子内脱水（アルケン）、約140 ℃で分子間脱水（エーテル）と判断します。</li>
+      <li><strong>ナトリウムとの反応では、−OH の H が Na に置き換わると考える。</strong>アルコキシドと水素ができ、係数は 2：2：2：1 になります。</li>
+      <li><strong>反応式の両辺で原子の数を数え直す。</strong>C・H・O・Na の数が左右で一致しているかを必ず検算します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1（酸化生成物の予測）：次のアルコールを十分に酸化したときの最終生成物を答えよ。（a）1-プロパノール（b）2-プロパノール（c）2-メチル-2-プロパノール。また（a）では、酸化の途中で生じる化合物も答えよ。</p>
+      <p class="ex-q">問題2（脱水生成物の予測）：エタノールを濃硫酸と加熱したとき、（a）約170 ℃、（b）約140 ℃で生じる有機化合物をそれぞれ答え、反応式を書け。また、2-プロパノールを分子内脱水させたときの生成物を答えよ。</p>
+      <p class="ex-q">問題3（ナトリウムとの反応）：メタノールとエタノールにそれぞれ金属ナトリウムを加えたときの反応式を書け。発生する気体は何か。</p>
+      <p class="ex-q">問題4（区別）：グリセリンとフェノールは、どちらも −OH をもつ。グリセリンがアルコールの仲間に入り、フェノールが入らない理由を、構造の違いから説明せよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：（a）1-プロパノールは第一級なので、途中で<strong>プロパナール</strong> CH<sub>3</sub>CH<sub>2</sub>CHO（アルデヒド）が生じ、最終的には<strong>プロピオン酸</strong> CH<sub>3</sub>CH<sub>2</sub>COOH（カルボン酸）になります。（b）2-プロパノールは第二級なので<strong>アセトン（プロパノン）</strong> CH<sub>3</sub>COCH<sub>3</sub>（ケトン）で止まります。（c）2-メチル-2-プロパノールは第三級で、−OH の炭素に H がないため、温和な条件では<strong>酸化されにくく、生成物はできません</strong>。</li>
+          <li>問題2：（a）約170 ℃では分子内脱水で<strong>エチレン</strong>。C<sub>2</sub>H<sub>5</sub>OH → C<sub>2</sub>H<sub>4</sub> ＋ H<sub>2</sub>O（両辺とも C<sub>2</sub>H<sub>6</sub>O）。（b）約140 ℃では分子間脱水で<strong>ジエチルエーテル</strong>。2C<sub>2</sub>H<sub>5</sub>OH → C<sub>2</sub>H<sub>5</sub>OC<sub>2</sub>H<sub>5</sub> ＋ H<sub>2</sub>O（両辺とも C<sub>4</sub>H<sub>12</sub>O<sub>2</sub>）。2-プロパノールの分子内脱水では<strong>プロペン</strong> C<sub>3</sub>H<sub>6</sub> ができます（C<sub>3</sub>H<sub>8</sub>O → C<sub>3</sub>H<sub>6</sub> ＋ H<sub>2</sub>O、両辺とも C<sub>3</sub>H<sub>8</sub>O）。</li>
+          <li>問題3：2CH<sub>3</sub>OH ＋ 2Na → 2CH<sub>3</sub>ONa ＋ H<sub>2</sub>、2C<sub>2</sub>H<sub>5</sub>OH ＋ 2Na → 2C<sub>2</sub>H<sub>5</sub>ONa ＋ H<sub>2</sub>。発生する気体は<strong>水素</strong>で、生成物はそれぞれナトリウムメトキシド、ナトリウムエトキシドです。両式とも両辺の原子数が一致します（検算済み）。</li>
+          <li>問題4：グリセリンは −OH が炭素鎖（炭素3個の鎖）の炭素に付いているためアルコールです。一方フェノールは −OH が<strong>ベンゼン環に直接</strong>付いており、性質も弱い酸性を示すなど異なるため、芳香族化合物としてアルコールとは区別します。</li>
+        </ol>
+        <p><strong>答え：問題1は（a）プロパナールを経てプロピオン酸、（b）アセトン、（c）酸化されにくい。問題2は（a）エチレン、（b）ジエチルエーテル、2-プロパノールからはプロペン。問題3はどちらの反応でも水素が発生し、アルコキシドができる。問題4は、−OH が炭素鎖に付くかベンゼン環に直接付くかの違い。</strong></p>
+        <div class="tri-fig">
+          <svg viewBox="0 0 560 190" width="560" height="190" role="img" aria-label="例題の生成物ナトリウムメトキシドとナトリウムエトキシドの構造式" style="max-width:100%;height:auto;">
+            <text x="140" y="30" text-anchor="middle" font-size="13" fill="currentColor">ナトリウムメトキシド CH₃ONa</text>
+            <text x="140" y="66" text-anchor="middle" font-size="14" fill="currentColor">CH₃−O−Na</text>
+            <text x="140" y="92" text-anchor="middle" font-size="12" fill="currentColor">メタノール ＋ Na の生成物</text>
+            <text x="400" y="30" text-anchor="middle" font-size="13" fill="currentColor">ナトリウムエトキシド C₂H₅ONa</text>
+            <text x="400" y="66" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH₂−O−Na</text>
+            <text x="400" y="92" text-anchor="middle" font-size="12" fill="currentColor">エタノール ＋ Na の生成物</text>
+            <text x="280" y="130" text-anchor="middle" font-size="12" fill="currentColor">例題のそのほかの化合物（1-プロパノール、2-プロパノール、2-メチル-2-プロパノール、</text>
+            <text x="280" y="152" text-anchor="middle" font-size="12" fill="currentColor">プロパナール、プロピオン酸、アセトン、エチレン、ジエチルエーテル、プロペン、</text>
+            <text x="280" y="174" text-anchor="middle" font-size="12" fill="currentColor">グリセリン、フェノール）の構造式は、本文の各図にあります。</text>
+          </svg>
+          <p>問題3の生成物の構造式。−OH の水素がナトリウムに置き換わった形です。例題に登場するそのほかの化合物の構造式は、本文の図（分類・酸化生成物・脱水生成物と区別）にすべて描いてあります。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>燃料と消毒液としてのエタノール</h3>
+    <p>エタノールはガソリンに混ぜるバイオエタノール燃料の成分として使われ、サトウキビやトウモロコシの発酵で作られます。医療・衛生の現場では、濃度およそ70〜80%のエタノール水溶液が手指や器具の消毒に使われます。アルコールランプの燃料や、化粧品・香料の溶媒としても身近な存在です。</p>
+    <h3>メタノール燃料と原料としての利用</h3>
+    <p>メタノールは燃料電池の燃料や、有機合成の原料に使われる工業的に重要なアルコールです。レーシングカーの燃料として使われた歴史もあり、燃焼してもすすが少ない性質が利用されました。ただし毒性が強いため、取り扱いは工業の管理のもとに限られます。</p>
+    <h3>溶媒としてのエーテルと麻酔の歴史</h3>
+    <p>ジエチルエーテルは有機化合物をよく溶かす溶媒として実験室や工業で使われてきました。19世紀には吸入麻酔薬として外科手術に使われ、麻酔の実用化の出発点になりました。現在は引火性の強さなどから、より安全な麻酔薬や溶媒に置き換わっていますが、「アルコールの脱水でできるエーテル」が医療の歴史を変えた例として知られています。</p>
+    <h3>グリセリンの保湿利用</h3>
+    <p>グリセリンは −OH を3個もち水を抱え込む性質が強いため、ハンドクリームや化粧水の保湿成分、食品の保湿・甘味、医薬品の基材として広く使われます。石けん作り（油脂のけん化）で副産物として得られることでも知られ、油脂の項目とつながります。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ヴァレリウス・コルドゥス</strong>（1515〜1544、ドイツの医師・植物学者）、<strong>ウィリアム・モートン</strong>（1819〜1868、アメリカの歯科医師）</p>
+    <p>ジエチルエーテルの作り方は、ドイツの医師・植物学者<strong>ヴァレリウス・コルドゥス</strong>が1540年に発表した記録が最初期のものとして知られ、エタノールと酸から得られる液体として紹介されました。そのエーテルを外科手術の麻酔に応用したのが、アメリカの歯科医師<strong>ウィリアム・モートン</strong>で、1846年にボストンでエーテル麻酔の公開実験を成功させました。本文で見た「エタノールの分子間脱水でエーテルができる」という反応が、溶媒と麻酔薬の両方で歴史に残った背景です。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>酸化の行き先であるカルボニル化合物は<a href="aldehydes-ketones.html">アルデヒドとケトン</a>、カルボン酸とエステル化は<a href="carboxylic-acids-esters.html">カルボン酸とエステル</a>、官能基全体の整理は<a href="functional-groups.html">官能基と化合物の分類</a>が役立ちます。エチレンの付加でエタノールができる話は<a href="hydrocarbons.html">炭化水素（アルカン・アルケン・アルキン）</a>、グリセリンを生む油脂の反応は<a href="fats-soaps-detergents.html">油脂とセッケン・洗剤</a>、フェノールの詳しい性質は<a href="phenols-aromatic-acids.html">フェノールと芳香族カルボン酸</a>で扱います。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

@@ -383,7 +383,7 @@
 
 ## 化学ツール集
 
-> 中学理科・高校化学基礎・高校化学・大学レベルの考え方辞典と計算機。全121項目、各項目に解説記事があり、計算機つきの項目もあります。トップは [化学ツール集](https://wankodo.github.io/chemistry/) です。
+> 中学理科・高校化学基礎・高校化学・大学レベルの考え方辞典と計算機。全135項目、各項目に解説記事があり、計算機つきの項目もあります。トップは [化学ツール集](https://wankodo.github.io/chemistry/) です。
 
 - [密度と物質の区別｜化学ツール集](https://wankodo.github.io/chemistry/density.html): 質量と体積から密度を求め、浮き沈みの判断や物質の同定に使う。計算機つき。
 - [モルとアボガドロ定数｜化学ツール集](https://wankodo.github.io/chemistry/mole-avogadro.html): 粒子数から物質量（mol）を、物質量から粒子数をアボガドロ定数で換算する。計算機つき。
@@ -506,3 +506,17 @@
 - [炭化水素（アルカン・アルケン・アルキン）｜化学ツール集](https://wankodo.github.io/chemistry/hydrocarbons.html): 分子式を一般式と照らしてアルカン・アルケン・アルキンに分類し、構造式から置換反応・付加反応の種類と生成物を予測する。解説記事のみ。
 - [構造式と異性体｜化学ツール集](https://wankodo.github.io/chemistry/structural-isomers.html): 分子式が同じで構造式や立体配置が異なる異性体を、炭素骨格から系統的に数え上げ、構造式を描いてシス・トランスを区別する。解説記事のみ。
 - [不飽和度と構造の推定｜化学ツール集](https://wankodo.github.io/chemistry/degree-of-unsaturation.html): 分子式から不飽和度を求め、環と多重結合の総数から構造の候補を絞る。計算機つき。
+- [官能基と化合物の分類｜化学ツール集](https://wankodo.github.io/chemistry/functional-groups.html): 構造式・示性式から官能基を読み取って化合物を分類し、酸性・塩基性・水素結合・沸点・溶解性などの性質を予測する。解説記事のみ。
+- [アルコールとエーテル｜化学ツール集](https://wankodo.github.io/chemistry/alcohols-ethers.html): ヒドロキシ基をもつ化合物をアルコールの級数で分類し、酸化生成物と脱水生成物（アルケンかエーテルか）を反応条件から予測する。解説記事のみ。
+- [アルデヒドとケトン｜化学ツール集](https://wankodo.github.io/chemistry/aldehydes-ketones.html): アルデヒド基とケトンのカルボニル基の構造の違いから還元性の有無を判断し、銀鏡反応・フェーリング反応・ヨードホルム反応で化合物を見分ける。解説記事のみ。
+- [カルボン酸とエステル｜化学ツール集](https://wankodo.github.io/chemistry/carboxylic-acids-esters.html): カルボン酸とアルコールからエステル化の生成物を書き、エステルの酸性・塩基性加水分解の生成物と、炭酸水素ナトリウムによるカルボン酸の区別を判断する。解説記事のみ。
+- [油脂とセッケン・洗剤｜化学ツール集](https://wankodo.github.io/chemistry/fats-soaps-detergents.html): 油脂の平均分子量や二重結合の数から、けん化価とヨウ素価を求める。計算機つき。
+- [芳香族化合物｜化学ツール集](https://wankodo.github.io/chemistry/aromatics.html): ベンゼンの構造と安定性を説明し、ニトロ化・スルホン化・ハロゲン化・アルキル化の生成物と、キシレンの位置異性体やクメン法の生成物を予測する。解説記事のみ。
+- [フェノールと芳香族カルボン酸｜化学ツール集](https://wankodo.github.io/chemistry/phenols-aromatic-acids.html): フェノールの弱酸性と検出反応（塩化鉄(III)・臭素水）を読み取り、安息香酸・サリチル酸の性質と、サリチル酸からサリチル酸メチル・アスピリンへの合成経路をたどる。解説記事のみ。
+- [アニリンとアゾ染料｜化学ツール集](https://wankodo.github.io/chemistry/aniline-azo-dyes.html): ニトロベンゼンからアニリンを合成する経路とアニリンの検出反応を説明し、ジアゾ化とカップリングでアゾ染料ができる仕組みと生成物を予測する。解説記事のみ。
+- [有機化合物の分離と精製｜化学ツール集](https://wankodo.github.io/chemistry/organic-separation.html): 酸性・塩基性・中性の有機化合物の混合物に試薬を順に加えたとき、どの成分が塩になって水層へ移り、どの成分が有機層に残るかを、酸の強さの順序から判断する。解説記事のみ。
+- [元素分析と構造決定｜化学ツール集](https://wankodo.github.io/chemistry/organic-structure-determination.html): 有機化合物の燃焼分析の結果と分子量から組成式・分子式を決め、不飽和度と官能基の検出反応で構造式を絞り込む。計算機つき。
+- [光学異性体と不斉炭素｜化学ツール集](https://wankodo.github.io/chemistry/optical-isomers.html): 構造式を見て不斉炭素原子を判定し、乳酸などの鏡像異性体（エナンチオマー）の存在と旋光性・ラセミ体、生体内での作用の違いを説明する。解説記事のみ。
+- [反応経路図の読み方｜化学ツール集](https://wankodo.github.io/chemistry/organic-reaction-pathways.html): 反応経路図の矢印と試薬・条件を読み取り、原料から生成物までの合成の順序をたどり、目的物から逆向きに原料と手順を考える。解説記事のみ。
+- [石油と石油化学｜化学ツール集](https://wankodo.github.io/chemistry/petroleum-petrochemicals.html): 原油の分留で得られる留分と用途を沸点（炭素数）の違いから読み取り、ナフサの熱分解・接触改質で得られる基礎原料と石油化学製品を結びつける。解説記事のみ。
+- [医薬品の化学｜化学ツール集](https://wankodo.github.io/chemistry/pharmaceutical-chemistry.html): 医薬品の構造式から官能基と分子式を読み取り、サリチル酸からアスピリンへのアセチル化のような合成の変化を構造の変化として説明する。解説記事のみ。

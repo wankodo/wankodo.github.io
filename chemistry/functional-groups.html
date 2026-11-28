@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>官能基と化合物の分類｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="官能基と化合物の分類を、公式・手順・例題で解説。ヒドロキシ基・カルボキシ基・ホルミル基・カルボニル基・エステル結合・エーテル結合・アミノ基・アミド結合・ニトロ基・ベンゼン環の一覧と代表化合物、各官能基が決める性質、同じ炭素数での沸点と溶解性の違い、香料や医薬品など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="官能基と化合物の分類｜化学ツール集">
+<meta property="og:description" content="主要な官能基の一覧と代表化合物を構造式の図で解説。官能基が決める酸性・水素結合・酸化されやすさと、沸点や溶解性の違いを例題で扱う。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/functional-groups.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">官能基</span>と化合物の分類</h1>
+    <p>化学の考え方辞典 ― 有機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 有機化学 ＞ 官能基と化合物の分類</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">有機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    有機化合物の性質は、炭素骨格よりも、骨格に付いた官能基によって大きく決まる。ヒドロキシ基をもてば水素結合で沸点が上がって水に溶けやすくなり、カルボキシ基をもてば酸性を示す、というように、官能基を見れば化合物の分類と性質の見通しが立つ。同じ炭素数でも官能基が違えば沸点や溶解性は大きく変わるため、構造式ではまず官能基を探すのが基本になる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>示性式や構造式を見て、<strong>どの官能基をもつかから化合物を分類し、性質を予測する</strong>ときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>−OH、−COOH、−CHO、−COO−、−NH<sub>2</sub> などの官能基を構造式・示性式から読み取り、アルコール、カルボン酸、アルデヒド、エステル、アミンなどに分類する問題</li>
+      <li>同じ分子式・同じ炭素数の化合物どうしで、沸点の高低や水への溶けやすさの違いを官能基で説明する問題</li>
+      <li>酸性・塩基性、酸化されやすさ、水素結合の有無など、性質の違いを官能基に結びつけて答える問題</li>
+      <li>ベンゼン環をもつ芳香族化合物と、鎖式の化合物とを区別する問題</li>
+    </ul>
+    <p>炭素骨格は分子の「大きさと形」を決めますが、反応する場所や水とのなじみ方のような<strong>化学的な性格は官能基が決めます</strong>。この項目では、主要な官能基を一通り並べ、それぞれがどの性質を決めるかを整理します。各官能基の詳しい反応は後続の項目で扱います。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>官能基とは</h3>
+    <p><strong>官能基</strong>とは、有機化合物の性質を決める、特定の構造をもつ原子の集まりのことです。同じ官能基をもつ化合物は、炭素骨格が多少違っても似た性質・似た反応を示すため、官能基ごとにまとめたものが化合物の分類（アルコール、カルボン酸など）になります。</p>
+    <div class="formula">化合物の分類と性質 ＝ 炭素骨格（大きさ・形）＋ 官能基（化学的な性格）</div>
+    <h3>主要な官能基の一覧</h3>
+    <table>
+      <tr><th>官能基（示性式）</th><th>化合物の分類</th><th>代表化合物</th><th>どの性質を決めるか</th></tr>
+      <tr><td>ヒドロキシ基 −OH</td><td>アルコール</td><td>エタノール C<sub>2</sub>H<sub>5</sub>OH</td><td>O−H が水素結合を作るため沸点が高く、水に溶けやすい。酸化されるとアルデヒド、さらにカルボン酸になる</td></tr>
+      <tr><td>カルボキシ基 −COOH</td><td>カルボン酸</td><td>酢酸 CH<sub>3</sub>COOH</td><td>水溶液中で一部が電離して<strong>酸性</strong>を示す。分子どうしが水素結合で強く結びつく（二量体）ため沸点が高い。塩基と中和し、アルコールとエステルを作る</td></tr>
+      <tr><td>ホルミル基 −CHO（アルデヒド基）</td><td>アルデヒド</td><td>アセトアルデヒド CH<sub>3</sub>CHO</td><td><strong>酸化されやすく</strong>、カルボン酸になりやすい。還元性をもつのが特徴で、ケトンとの区別に使われる</td></tr>
+      <tr><td>カルボニル基 C＝O（ケトンのもの）</td><td>ケトン</td><td>アセトン（プロパノン）CH<sub>3</sub>COCH<sub>3</sub></td><td>C＝O の極性で水と水素結合できるため水に溶けるものがあるが、自分どうしでは水素結合しないのでアルコールより沸点は低い。アルデヒドと違い、穏やかな条件では酸化されにくい</td></tr>
+      <tr><td>エステル結合 −COO−</td><td>エステル</td><td>酢酸エチル CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub></td><td>水素結合の供与体（O−H）をもたないため、同じくらいの分子量のカルボン酸より沸点が低い。果物のような香りの成分が多く、加水分解でカルボン酸とアルコールに戻る</td></tr>
+      <tr><td>エーテル結合 −O−</td><td>エーテル</td><td>ジメチルエーテル CH<sub>3</sub>OCH<sub>3</sub></td><td>O−H をもたないため分子どうしの水素結合がなく、沸点が低い。反応性が低く、溶媒として使われるものがある</td></tr>
+      <tr><td>アミノ基 −NH<sub>2</sub></td><td>アミン</td><td>エチルアミン C<sub>2</sub>H<sub>5</sub>NH<sub>2</sub></td><td>窒素の非共有電子対が H<sup>+</sup> を受け取るため<strong>塩基性</strong>を示す。N−H で水素結合も作る</td></tr>
+      <tr><td>アミド結合 −CONH−（−CONH<sub>2</sub> を含む）</td><td>アミド</td><td>アセトアミド CH<sub>3</sub>CONH<sub>2</sub></td><td>N−H と C＝O で強い水素結合を作るため、融点・沸点が高い。タンパク質のペプチド結合もアミド結合であり、生体分子の形を保つ要になっている</td></tr>
+      <tr><td>ニトロ基 −NO<sub>2</sub></td><td>ニトロ化合物</td><td>ニトロメタン CH<sub>3</sub>NO<sub>2</sub></td><td>酸素を多く含む強い極性の基で、ニトロ化合物には爆発性をもつものがある。還元するとアミノ基に変わる</td></tr>
+      <tr><td>ベンゼン環 C<sub>6</sub>H<sub>5</sub>−</td><td>芳香族化合物</td><td>ベンゼン C<sub>6</sub>H<sub>6</sub>、フェノール C<sub>6</sub>H<sub>5</sub>OH</td><td>環の電子が全体に広がって安定なため、二重結合をもつ見かけに反して付加反応より<strong>置換反応</strong>を起こしやすい。水になじみにくい（疎水性）</td></tr>
+    </table>
+    <p>なお、フェノールのようにベンゼン環に直接 −OH が付いた化合物は、アルコールとは性質が違い（弱い酸性を示すなど）、芳香族化合物として別に扱います。同じ −OH でも、付いている相手によって性格が変わる点に注意してください。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 340" width="520" height="340" role="img" aria-label="エタノール、酢酸、アセトアルデヒド、アセトンの構造式" style="max-width:100%;height:auto;">
+        <text x="130" y="24" text-anchor="middle" font-size="13" fill="currentColor">エタノール（アルコール）</text>
+        <text x="55" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="67" y1="80" x2="98" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="110" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="122" y1="80" x2="153" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="165" y="86" text-anchor="middle" font-size="16" fill="currentColor">O</text>
+        <line x1="177" y1="80" x2="203" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="215" y="86" text-anchor="middle" font-size="16" fill="currentColor">H</text>
+        <text x="130" y="118" text-anchor="middle" font-size="12" fill="currentColor">−OH（ヒドロキシ基）</text>
+        <text x="390" y="24" text-anchor="middle" font-size="13" fill="currentColor">酢酸（カルボン酸）</text>
+        <text x="295" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="307" y1="80" x2="338" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="350" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="347" y1="92" x2="347" y2="118" stroke="currentColor" stroke-width="2"/>
+        <line x1="354" y1="92" x2="354" y2="118" stroke="currentColor" stroke-width="2"/>
+        <text x="350" y="140" text-anchor="middle" font-size="16" fill="currentColor">O</text>
+        <line x1="362" y1="80" x2="393" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="405" y="86" text-anchor="middle" font-size="16" fill="currentColor">O</text>
+        <line x1="417" y1="80" x2="443" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="455" y="86" text-anchor="middle" font-size="16" fill="currentColor">H</text>
+        <text x="390" y="162" text-anchor="middle" font-size="12" fill="currentColor">−COOH（カルボキシ基）</text>
+        <text x="130" y="196" text-anchor="middle" font-size="13" fill="currentColor">アセトアルデヒド（アルデヒド）</text>
+        <text x="55" y="258" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="67" y1="252" x2="98" y2="252" stroke="currentColor" stroke-width="2"/>
+        <text x="110" y="258" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="107" y1="264" x2="107" y2="290" stroke="currentColor" stroke-width="2"/>
+        <line x1="114" y1="264" x2="114" y2="290" stroke="currentColor" stroke-width="2"/>
+        <text x="110" y="312" text-anchor="middle" font-size="16" fill="currentColor">O</text>
+        <line x1="122" y1="252" x2="153" y2="252" stroke="currentColor" stroke-width="2"/>
+        <text x="165" y="258" text-anchor="middle" font-size="16" fill="currentColor">H</text>
+        <text x="130" y="334" text-anchor="middle" font-size="12" fill="currentColor">−CHO（ホルミル基）</text>
+        <text x="390" y="196" text-anchor="middle" font-size="13" fill="currentColor">アセトン（ケトン）</text>
+        <text x="295" y="258" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="307" y1="252" x2="338" y2="252" stroke="currentColor" stroke-width="2"/>
+        <text x="350" y="258" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="347" y1="264" x2="347" y2="290" stroke="currentColor" stroke-width="2"/>
+        <line x1="354" y1="264" x2="354" y2="290" stroke="currentColor" stroke-width="2"/>
+        <text x="350" y="312" text-anchor="middle" font-size="16" fill="currentColor">O</text>
+        <line x1="362" y1="252" x2="393" y2="252" stroke="currentColor" stroke-width="2"/>
+        <text x="405" y="258" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <text x="390" y="334" text-anchor="middle" font-size="12" fill="currentColor">C＝O（カルボニル基）が炭素鎖の内側にある</text>
+      </svg>
+      <p>エタノール、酢酸、アセトアルデヒド、アセトン（プロパノン）の構造式。アルデヒドとケトンはどちらも C＝O をもちますが、−CHO のように鎖の末端で水素と結びついたものがアルデヒド、鎖の内側で両側を炭素に挟まれたものがケトンです。水素は官能基に関わるものだけを示し、炭素に付いた水素は省略しています（以下の図も同じ）。</p>
+    </div>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 340" width="520" height="340" role="img" aria-label="酢酸エチル、ジメチルエーテル、エチルアミン、アセトアミドの構造式" style="max-width:100%;height:auto;">
+        <text x="150" y="24" text-anchor="middle" font-size="13" fill="currentColor">酢酸エチル（エステル）</text>
+        <text x="35" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="47" y1="80" x2="73" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="85" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="82" y1="92" x2="82" y2="118" stroke="currentColor" stroke-width="2"/>
+        <line x1="89" y1="92" x2="89" y2="118" stroke="currentColor" stroke-width="2"/>
+        <text x="85" y="140" text-anchor="middle" font-size="16" fill="currentColor">O</text>
+        <line x1="97" y1="80" x2="123" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="135" y="86" text-anchor="middle" font-size="16" fill="currentColor">O</text>
+        <line x1="147" y1="80" x2="173" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="185" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="197" y1="80" x2="223" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="235" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <text x="150" y="162" text-anchor="middle" font-size="12" fill="currentColor">−COO−（エステル結合）</text>
+        <text x="400" y="24" text-anchor="middle" font-size="13" fill="currentColor">ジメチルエーテル（エーテル）</text>
+        <text x="330" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="342" y1="80" x2="373" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="385" y="86" text-anchor="middle" font-size="16" fill="currentColor">O</text>
+        <line x1="397" y1="80" x2="428" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="440" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <text x="400" y="118" text-anchor="middle" font-size="12" fill="currentColor">C−O−C（エーテル結合）</text>
+        <text x="130" y="196" text-anchor="middle" font-size="13" fill="currentColor">エチルアミン（アミン）</text>
+        <text x="55" y="258" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="67" y1="252" x2="98" y2="252" stroke="currentColor" stroke-width="2"/>
+        <text x="110" y="258" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="122" y1="252" x2="153" y2="252" stroke="currentColor" stroke-width="2"/>
+        <text x="168" y="258" text-anchor="middle" font-size="16" fill="currentColor">N</text>
+        <line x1="183" y1="252" x2="204" y2="252" stroke="currentColor" stroke-width="2"/>
+        <text x="222" y="258" text-anchor="middle" font-size="16" fill="currentColor">H₂</text>
+        <text x="130" y="290" text-anchor="middle" font-size="12" fill="currentColor">−NH₂（アミノ基）</text>
+        <text x="390" y="196" text-anchor="middle" font-size="13" fill="currentColor">アセトアミド（アミド）</text>
+        <text x="295" y="258" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="307" y1="252" x2="338" y2="252" stroke="currentColor" stroke-width="2"/>
+        <text x="350" y="258" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="347" y1="264" x2="347" y2="290" stroke="currentColor" stroke-width="2"/>
+        <line x1="354" y1="264" x2="354" y2="290" stroke="currentColor" stroke-width="2"/>
+        <text x="350" y="312" text-anchor="middle" font-size="16" fill="currentColor">O</text>
+        <line x1="362" y1="252" x2="388" y2="252" stroke="currentColor" stroke-width="2"/>
+        <text x="403" y="258" text-anchor="middle" font-size="16" fill="currentColor">N</text>
+        <line x1="418" y1="252" x2="439" y2="252" stroke="currentColor" stroke-width="2"/>
+        <text x="457" y="258" text-anchor="middle" font-size="16" fill="currentColor">H₂</text>
+        <text x="390" y="334" text-anchor="middle" font-size="12" fill="currentColor">−CONH₂（アミド結合を含む）</text>
+      </svg>
+      <p>酢酸エチル、ジメチルエーテル、エチルアミン、アセトアミドの構造式。エステル結合 −COO− とエーテル結合 −O− は見た目が似ていますが、C＝O を含むかどうかが区別の決め手です。アミドは C＝O と窒素が直接結びついた −CONH− の構造が目印です。</p>
+    </div>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 190" width="520" height="190" role="img" aria-label="ニトロメタン、ベンゼン、フェノールの構造式" style="max-width:100%;height:auto;">
+        <text x="90" y="24" text-anchor="middle" font-size="13" fill="currentColor">ニトロメタン（ニトロ化合物）</text>
+        <text x="45" y="96" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="57" y1="90" x2="83" y2="90" stroke="currentColor" stroke-width="2"/>
+        <text x="98" y="96" text-anchor="middle" font-size="16" fill="currentColor">N</text>
+        <line x1="95" y1="102" x2="95" y2="128" stroke="currentColor" stroke-width="2"/>
+        <line x1="102" y1="102" x2="102" y2="128" stroke="currentColor" stroke-width="2"/>
+        <text x="98" y="150" text-anchor="middle" font-size="16" fill="currentColor">O</text>
+        <line x1="113" y1="90" x2="139" y2="90" stroke="currentColor" stroke-width="2"/>
+        <text x="154" y="96" text-anchor="middle" font-size="16" fill="currentColor">O</text>
+        <text x="90" y="178" text-anchor="middle" font-size="12" fill="currentColor">−NO₂（ニトロ基）</text>
+        <text x="280" y="24" text-anchor="middle" font-size="13" fill="currentColor">ベンゼン（芳香族）</text>
+        <polygon points="280,52 310,69 310,103 280,120 250,103 250,69" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="280" cy="86" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="280" y="150" text-anchor="middle" font-size="12" fill="currentColor">ベンゼン環（円で表す表記）</text>
+        <text x="430" y="24" text-anchor="middle" font-size="13" fill="currentColor">フェノール（芳香族）</text>
+        <polygon points="430,52 460,69 460,103 430,120 400,103 400,69" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="430" cy="86" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="438" y1="56" x2="458" y2="38" stroke="currentColor" stroke-width="2"/>
+        <text x="472" y="36" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <text x="430" y="150" text-anchor="middle" font-size="12" fill="currentColor">環に直接 −OH が付く</text>
+      </svg>
+      <p>ニトロメタン、ベンゼン、フェノールの構造式。ニトロ基は窒素に酸素が2つ結びついた −NO<sub>2</sub> が目印です。フェノールはベンゼン環に −OH が直接付いた化合物で、アルコールとは区別します。</p>
+    </div>
+    <h3>同じ炭素数でも官能基で変わる沸点と溶解性</h3>
+    <p>性質の違いが最もはっきり出るのが、沸点と水への溶け方です。鍵は<strong>水素結合</strong>です。O−H や N−H のように、電気陰性度の大きい原子に付いた水素は、隣の分子の酸素や窒素と水素結合を作ります。水素結合があると、分子どうしを引き離す（＝沸騰させる）のに余分なエネルギーが要るため沸点が上がり、水とも水素結合で結びつくため溶けやすくなります。</p>
+    <ul>
+      <li><strong>炭素数2の化合物で比べる</strong>：エタン C<sub>2</sub>H<sub>6</sub> の沸点は約 −89 ℃、ジメチルエーテル CH<sub>3</sub>OCH<sub>3</sub> は約 −24 ℃、エタノール C<sub>2</sub>H<sub>5</sub>OH は約 78 ℃。ジメチルエーテルとエタノールは分子式が同じ C<sub>2</sub>H<sub>6</sub>O の異性体ですが、−OH をもち分子どうしが水素結合するエタノールの沸点が約100 ℃も高くなります</li>
+      <li><strong>水への溶け方</strong>：エタンは水にほとんど溶けません。エタノールは −OH が水と水素結合するため水と任意の割合で混ざります。酢酸やアセトンも水によく溶けますが、エステルやベンゼン環だけをもつ化合物は水に溶けにくく、炭素骨格（疎水性の部分）が大きくなるほど溶けにくくなります</li>
+      <li><strong>カルボン酸の沸点が高い理由</strong>：酢酸の沸点は約 118 ℃ で、分子量の近い化合物の中でも高めです。カルボキシ基どうしが2か所で水素結合してペア（二量体）を作り、見かけの分子量が2倍になるためです</li>
+    </ul>
+    <p>つまり、沸点や溶解性を問われたら、まず「O−H や N−H があるか（水素結合の供与体）」「C＝O や −O− のように水素結合を受け取る原子があるか」「疎水性の炭素骨格がどれだけ大きいか」の順に官能基を見ていくのが基本です。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>酸素・窒素などのヘテロ原子を探す。</strong>官能基は炭素と水素以外の原子（O、N など）を含むことが多いので、まず構造式・示性式の中で C と H 以外の原子に注目します。ベンゼン環の有無もここで確認します。</li>
+      <li><strong>官能基の形を読み取る。</strong>−OH ならアルコール、−COOH ならカルボン酸、末端の −CHO ならアルデヒド、内側の C＝O ならケトン、−COO− ならエステル、C−O−C ならエーテル、−NH<sub>2</sub> ならアミン、−CONH− ならアミド、−NO<sub>2</sub> ならニトロ化合物、と対応づけます。−COOH や −COO− の中にも C＝O が含まれますが、より大きなまとまり（カルボキシ基・エステル結合）として読み取るのが原則です。</li>
+      <li><strong>付いている相手を確認する。</strong>−OH がベンゼン環に直接付いていればフェノール類であり、アルコールとは性質が違うことに注意します。</li>
+      <li><strong>官能基から性質を予測する。</strong>酸性ならカルボキシ基（とフェノール）、塩基性ならアミノ基、酸化されやすいのはアルデヒド（と第一級アルコール）、水素結合で沸点が高いのは −OH や −NH をもつもの、というように結びつけます。</li>
+      <li><strong>比べる問題では分子量・炭素数をそろえる。</strong>沸点や溶解性の比較は、大きさが近い化合物どうしで官能基だけの違いを見るのが筋道です。異性体どうしの比較が典型です。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 260" width="520" height="260" role="img" aria-label="1-プロパノール、プロパナール、プロピオン酸の構造式" style="max-width:100%;height:auto;">
+        <text x="140" y="24" text-anchor="middle" font-size="13" fill="currentColor">1-プロパノール CH₃CH₂CH₂OH</text>
+        <text x="35" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="47" y1="80" x2="73" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="85" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="97" y1="80" x2="123" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="135" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="147" y1="80" x2="173" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="185" y="86" text-anchor="middle" font-size="16" fill="currentColor">O</text>
+        <line x1="197" y1="80" x2="218" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="230" y="86" text-anchor="middle" font-size="16" fill="currentColor">H</text>
+        <text x="390" y="24" text-anchor="middle" font-size="13" fill="currentColor">プロパナール CH₃CH₂CHO</text>
+        <text x="295" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="307" y1="80" x2="333" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="345" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="357" y1="80" x2="383" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="395" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="392" y1="92" x2="392" y2="118" stroke="currentColor" stroke-width="2"/>
+        <line x1="399" y1="92" x2="399" y2="118" stroke="currentColor" stroke-width="2"/>
+        <text x="395" y="140" text-anchor="middle" font-size="16" fill="currentColor">O</text>
+        <line x1="407" y1="80" x2="433" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="445" y="86" text-anchor="middle" font-size="16" fill="currentColor">H</text>
+        <text x="260" y="180" text-anchor="middle" font-size="13" fill="currentColor">プロピオン酸 CH₃CH₂COOH</text>
+        <text x="165" y="232" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="177" y1="226" x2="203" y2="226" stroke="currentColor" stroke-width="2"/>
+        <text x="215" y="232" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="227" y1="226" x2="253" y2="226" stroke="currentColor" stroke-width="2"/>
+        <text x="265" y="232" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="262" y1="238" x2="262" y2="252" stroke="currentColor" stroke-width="2"/>
+        <line x1="269" y1="238" x2="269" y2="252" stroke="currentColor" stroke-width="2"/>
+        <text x="265" y="259" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="277" y1="226" x2="303" y2="226" stroke="currentColor" stroke-width="2"/>
+        <text x="315" y="232" text-anchor="middle" font-size="16" fill="currentColor">O</text>
+        <line x1="327" y1="226" x2="348" y2="226" stroke="currentColor" stroke-width="2"/>
+        <text x="360" y="232" text-anchor="middle" font-size="16" fill="currentColor">H</text>
+      </svg>
+      <p>例題1で使う 1-プロパノール、プロパナール、プロピオン酸の構造式。プロパノン（アセトン）の構造式は本文の図にあります。プロピオン酸の C＝O の酸素は炭素の下に示しています。</p>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題1：炭素数3の次の化合物について、もつ官能基と分類をそれぞれ答えよ。（ア）1-プロパノール CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>OH　（イ）プロパナール CH<sub>3</sub>CH<sub>2</sub>CHO　（ウ）プロパノン CH<sub>3</sub>COCH<sub>3</sub>　（エ）プロピオン酸 CH<sub>3</sub>CH<sub>2</sub>COOH</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>示性式の末尾や中央のまとまりに注目します。（ア）は −OH をもつので<strong>ヒドロキシ基・アルコール</strong>。（イ）は鎖の末端に −CHO をもつので<strong>ホルミル基・アルデヒド</strong>。（ウ）は鎖の内側に C＝O があり両側が炭素なので<strong>カルボニル基・ケトン</strong>。（エ）は −COOH をもつので<strong>カルボキシ基・カルボン酸</strong>です。（イ）と（ウ）はどちらも C＝O を含み分子式も同じ C<sub>3</sub>H<sub>6</sub>O ですが、C＝O の位置（末端か内側か）でアルデヒドとケトンに分かれ、酸化されやすさが違います。</p>
+        <p><strong>答え：（ア）ヒドロキシ基・アルコール、（イ）ホルミル基・アルデヒド、（ウ）カルボニル基・ケトン、（エ）カルボキシ基・カルボン酸。</strong></p>
+      </details>
+    </div>
+    <div class="tri-fig">
+      <svg viewBox="0 0 300 130" width="300" height="130" role="img" aria-label="エタンの構造式" style="max-width:100%;height:auto;">
+        <text x="150" y="24" text-anchor="middle" font-size="13" fill="currentColor">エタン C₂H₆（官能基なし）</text>
+        <text x="110" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="122" y1="80" x2="158" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="170" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <text x="150" y="118" text-anchor="middle" font-size="12" fill="currentColor">C と H だけの炭化水素</text>
+      </svg>
+      <p>例題2で使うエタンの構造式。ジメチルエーテルとエタノールの構造式は本文の図にあります。</p>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題2：エタン（沸点約 −89 ℃）、ジメチルエーテル（沸点約 −24 ℃）、エタノール（沸点約 78 ℃）について、沸点がこの順に高くなる理由を官能基の言葉で説明せよ。また、水に最も溶けやすいのはどれか答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>3つは大きさが近い分子です。エタンは C と H だけの炭化水素で、分子間には弱いファンデルワールス力しか働かないため沸点が最も低くなります。ジメチルエーテルは酸素を含むため分子の極性が大きくなり、エタンより沸点が上がりますが、O−H をもたないので分子どうしの水素結合はできません。エタノールは −OH をもち、分子どうしが<strong>水素結合</strong>で結びつくため、引き離すのに大きなエネルギーが要り、沸点が際立って高くなります。水への溶け方も同じ理由で、−OH が水と水素結合するエタノールが最も溶けやすく（水と任意の割合で混ざる）、エタンはほとんど溶けません。</p>
+        <p><strong>答え：沸点の差は主に水素結合の有無による。エタン＜ジメチルエーテル＜エタノールの順に分子間の引力が強くなる。水に最も溶けやすいのはエタノール。</strong></p>
+      </details>
+    </div>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 190" width="520" height="190" role="img" aria-label="アニリンとニトロベンゼンの構造式" style="max-width:100%;height:auto;">
+        <text x="150" y="24" text-anchor="middle" font-size="13" fill="currentColor">アニリン C₆H₅NH₂</text>
+        <polygon points="150,52 180,69 180,103 150,120 120,103 120,69" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="150" cy="86" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="158" y1="56" x2="180" y2="38" stroke="currentColor" stroke-width="2"/>
+        <text x="205" y="36" text-anchor="middle" font-size="14" fill="currentColor">NH₂</text>
+        <text x="150" y="150" text-anchor="middle" font-size="12" fill="currentColor">ベンゼン環＋アミノ基</text>
+        <text x="390" y="24" text-anchor="middle" font-size="13" fill="currentColor">ニトロベンゼン C₆H₅NO₂</text>
+        <polygon points="390,52 420,69 420,103 390,120 360,103 360,69" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="390" cy="86" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="398" y1="56" x2="418" y2="40" stroke="currentColor" stroke-width="2"/>
+        <text x="438" y="38" text-anchor="middle" font-size="14" fill="currentColor">NO₂</text>
+        <text x="390" y="150" text-anchor="middle" font-size="12" fill="currentColor">ベンゼン環＋ニトロ基</text>
+      </svg>
+      <p>例題3で使うアニリンとニトロベンゼンの構造式。どちらもベンゼン環に官能基が1つ付いた芳香族化合物です。</p>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題3：アニリン C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub> とニトロベンゼン C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub> について、（1）共通する骨格と、それぞれがもつ官能基を答えよ。（2）塩基性を示すのはどちらか、理由とともに答えよ。（3）ニトロベンゼンを還元すると何になるか答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>（1）どちらも<strong>ベンゼン環</strong>をもつ芳香族化合物で、アニリンは<strong>アミノ基 −NH<sub>2</sub></strong>、ニトロベンゼンは<strong>ニトロ基 −NO<sub>2</sub></strong>をもちます。（2）塩基性を示すのは<strong>アニリン</strong>です。アミノ基の窒素がもつ非共有電子対が H<sup>+</sup> を受け取るためで、酸と塩を作ります（ただしベンゼン環の影響で、脂肪族のアミンより塩基性は弱い）。ニトロ基にはその働きはありません。（3）ニトロ基は還元されるとアミノ基に変わるので、ニトロベンゼンを還元すると<strong>アニリン</strong>が得られます。この「ニトロベンゼン→アニリン」の変換は、染料の原料を作る出発点として知られています。</p>
+        <p><strong>答え：（1）共通の骨格はベンゼン環。アニリンはアミノ基、ニトロベンゼンはニトロ基。（2）アニリン（アミノ基の窒素が H<sup>+</sup> を受け取るため）。（3）アニリン。</strong></p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>香料・食品の香りの設計</h3>
+    <p>果物や花の香りの成分の多くはエステルで、酢酸エチルのようなエステルは香料や溶剤として使われています。どのエステル結合をもつかで香りが変わるため、香料の設計は「官能基はそのままに、炭素骨格を少し変える」という発想で行われます。官能基で分類する考え方が、そのまま製品の設計図になっています。</p>
+    <h3>医薬品の効き方と官能基</h3>
+    <p>医薬品の有効成分では、カルボキシ基をもつものは酸性、アミノ基をもつものは塩基性というように、官能基が体内での溶け方や標的への結びつき方を左右します。開発の現場では、骨格は保ったまま官能基を付け替え、効き目と副作用のバランスを調整する作業が日常的に行われています。</p>
+    <h3>染料とアニリン</h3>
+    <p>アニリンはアミノ基をもつ芳香族化合物で、アゾ染料など多くの染料の出発原料です。ニトロベンゼンを還元してアニリンを得て、そこから色のもとになる構造を作るという流れは、官能基を変換しながら目的の化合物へ近づける有機合成の典型例です。</p>
+    <h3>洗剤・消毒など日用品の読み解き</h3>
+    <p>消毒用エタノールはアルコール、食酢はカルボン酸、漂白や消毒に使う製品の成分表示にも官能基をもつ化合物が並びます。成分名から官能基を思い浮かべられると、「酸性だから塩基性の汚れに効く」「アルコールだから脂に混ざりやすい」といった働きの見通しが立ち、製品ラベルの理解に直結します。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ユストゥス・フォン・リービッヒ</strong>（1803〜1873、ドイツの化学者）、<strong>シャルル・ジェラール</strong>（1816〜1856、フランスの化学者）</p>
+    <p>官能基という考え方は、特定の1人が一度に作ったものではなく、19世紀の有機化学の中で段階的に育ちました。ドイツの化学者<strong>ユストゥス・フォン・リービッヒ</strong>は、フリードリヒ・ヴェーラーとともに1832年、反応の前後でまとまって行動する原子の集まり（ベンゾイル基）の存在を示しました。これは「原子の集まりが化合物の性格を担う」という根基説（ラジカル説）として知られ、官能基の考え方の源流の1つです。その後、フランスの化学者<strong>シャルル・ジェラール</strong>は1850年代に、有機化合物をいくつかの「型」に分類して整理する型説を唱え、化合物を構造のまとまりで分類する見方を進めました。こうした積み重ねの上に、今日の「官能基で分類し、性質を読む」という方法が成り立っています。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>有機化合物の全体像は<a href="organic-basics.html">有機化合物の特徴と分類</a>、官能基ごとの詳しい性質と反応は<a href="alcohols-ethers.html">アルコールとエーテル</a>、<a href="aldehydes-ketones.html">アルデヒドとケトン</a>、<a href="carboxylic-acids-esters.html">カルボン酸とエステル</a>、ベンゼン環をもつ化合物は<a href="aromatics.html">芳香族化合物</a>と<a href="phenols-aromatic-acids.html">フェノールと芳香族カルボン酸</a>、アミノ基をもつ芳香族は<a href="aniline-azo-dyes.html">アニリンとアゾ染料</a>が役立ちます。アミド結合とタンパク質は<a href="amino-acids-proteins.html">アミノ酸とタンパク質</a>、水素結合そのものは<a href="intermolecular-forces.html">分子間力と水素結合</a>、水への溶け方は<a href="polarity-and-solubility.html">極性と溶解性</a>で扱います。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

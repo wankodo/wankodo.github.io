@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>石油と石油化学｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="原油の分留で得られる石油ガス・ナフサ・灯油・軽油・重油・アスファルトの用途と、ナフサの熱分解・接触改質で得られるエチレン・プロペン・ブタジエン・ベンゼンなど石油化学の基礎原料と製品へのつながりを、構造式と例題で解説。製油所や石油化学コンビナートなど現場での使われ方も紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="石油と石油化学｜化学ツール集">
+<meta property="og:description" content="原油の分留の留分と用途、ナフサの熱分解・接触改質で得られるエチレン・プロペン・ブタジエン・ベンゼンなど石油化学の基礎原料と製品を、構造式と例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/petroleum-petrochemicals.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">石油</span>と石油化学</h1>
+    <p>化学の考え方辞典 ― 有機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 有機化学 ＞ 石油と石油化学</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">有機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    石油は、原油を沸点の違いで分ける分留によって、石油ガス・ナフサ・灯油・軽油・重油・アスファルトなどの留分に分けられる。中でもナフサを熱分解するとエチレン・プロペン・1,3-ブタジエンなどが得られ、接触改質ではベンゼンなどの芳香族化合物が得られる。これらの基礎原料から、プラスチック・合成繊維・合成ゴムなど多様な石油化学製品が生まれる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>原油から燃料や化学製品がどう作られるかを扱うときの考え方です。有機化学と高分子化学をつなぐ位置にあり、次のような場面で使います。</p>
+    <ul>
+      <li>分留で得られる留分（石油ガス・ナフサ・灯油・軽油・重油・アスファルト）を、沸点の低い順に並べ、それぞれの用途と結びつける問題</li>
+      <li>ナフサの熱分解で得られるエチレン・プロペン・1,3-ブタジエンと、接触改質で得られるベンゼンなどの芳香族化合物を区別する問題</li>
+      <li>エチレン→ポリエチレン、1,3-ブタジエン→合成ゴムのように、基礎原料と石油化学製品のつながりを答える問題</li>
+    </ul>
+    <p>ポイントは、<strong>「分留は沸点の違いで分ける物理的な分離」</strong>であり、<strong>「熱分解・接触改質は分子そのものを作り替える化学変化」</strong>だという区別です。この2段階を分けて考えると、石油化学全体の流れが見通せます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>原油と分留：沸点の違いで分ける</h3>
+    <p><strong>原油</strong>は、地下から産出する炭化水素の混合物です。炭素数が多い分子ほど分子間力が強く、<strong>沸点が高く</strong>なります。製油所では原油を加熱して蒸気にし、温度が上ほど低くなる<strong>分留塔</strong>に通します。蒸気は塔を上るにつれて冷え、自分の沸点以下になった段で液体に戻るため、沸点の低い（炭素数の少ない）成分ほど塔の上の方から、沸点の高い成分ほど下の方から取り出せます。この操作を<strong>分留（分別蒸留）</strong>といい、得られる各部分を<strong>留分</strong>と呼びます。分留は混合物を分ける操作であり、分子そのものは変化しません。</p>
+    <div class="formula">沸点の低い順（＝炭素数の少ない順）：石油ガス ＜ ナフサ ＜ 灯油 ＜ 軽油 ＜ 重油 ＜ アスファルト（残油）</div>
+    <ul>
+      <li><strong>石油ガス</strong>（炭素数およそ1〜4）：プロパン・ブタンが主成分。液化したものが LPガス（液化石油ガス）で、家庭用・業務用燃料やカセットコンロに使われます</li>
+      <li><strong>ナフサ</strong>（炭素数およそ5〜12）：粗製ガソリンとも呼ばれます。ガソリンの原料になるとともに、石油化学の最も重要な原料です</li>
+      <li><strong>灯油</strong>（炭素数およそ10〜16）：ストーブなどの暖房用燃料、ジェット燃料に使われます</li>
+      <li><strong>軽油</strong>（炭素数およそ14〜20）：ディーゼルエンジン（トラック・バス・船舶など）の燃料に使われます</li>
+      <li><strong>重油</strong>（炭素数およそ20以上）：火力発電所や大型船舶の燃料、工場のボイラー燃料に使われます</li>
+      <li><strong>アスファルト</strong>（残油）：分留の最後に残る高沸点の残り。道路の舗装や防水材に使われます</li>
+    </ul>
+    <p>留分の境目は製油所や教科書によって多少異なり、炭素数や沸点の範囲は重なり合います。ここに挙げた炭素数は目安として捉えてください。大切なのは絶対値ではなく、<strong>「炭素数が増えるほど沸点が上がり、塔の下から取り出される」</strong>という順序の関係です。</p>
+    <h3>ナフサの熱分解：基礎原料を作る</h3>
+    <p>ナフサをそのまま燃料にするだけでは、プラスチックなどの原料は得られません。そこでナフサを高温（およそ800 ℃）の水蒸気とともに加熱し、大きな分子の結合を切って小さな分子に変える<strong>熱分解（クラッキング）</strong>を行います。熱分解では、炭素どうしの二重結合をもつ<strong>エチレン C<sub>2</sub>H<sub>4</sub></strong> と<strong>プロペン C<sub>3</sub>H<sub>6</sub></strong>、二重結合を2つもつ <strong>1,3-ブタジエン C<sub>4</sub>H<sub>6</sub></strong> などが得られます。これらは反応性の高い二重結合をもち、重合や付加反応の出発点になるため、<strong>石油化学の基礎原料</strong>と呼ばれます。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>接触改質：芳香族化合物を得る</h3>
+    <p>ナフサを白金などの触媒の存在下で反応させる<strong>接触改質（リフォーミング）</strong>では、鎖状の炭化水素が環状の<strong>芳香族化合物</strong>に作り替えられ、<strong>ベンゼン C<sub>6</sub>H<sub>6</sub></strong>・<strong>トルエン</strong>・<strong>キシレン</strong>（頭文字をとって BTX とも呼ばれます）が得られます。接触改質はもともとガソリンの性能（オクタン価）を高めるために発達した技術で、ここで得られる芳香族化合物も重要な基礎原料です。つまり基礎原料の供給は、<strong>熱分解がアルケン類、接触改質が芳香族類</strong>という分担になっています。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 190" width="520" height="190" role="img" aria-label="エチレン・プロペン・1,3-ブタジエンの構造式" style="max-width:100%;height:auto;">
+        <text x="85" y="22" text-anchor="middle" font-size="13" fill="currentColor">エチレン C₂H₄</text>
+        <text x="62" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="108" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="74" y1="58" x2="96" y2="58" stroke="currentColor" stroke-width="2"/>
+        <line x1="74" y1="66" x2="96" y2="66" stroke="currentColor" stroke-width="2"/>
+        <line x1="56" y1="54" x2="42" y2="40" stroke="currentColor" stroke-width="2"/>
+        <line x1="52" y1="66" x2="34" y2="66" stroke="currentColor" stroke-width="2"/>
+        <line x1="114" y1="54" x2="128" y2="40" stroke="currentColor" stroke-width="2"/>
+        <line x1="118" y1="66" x2="136" y2="66" stroke="currentColor" stroke-width="2"/>
+        <text x="36" y="34" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="24" y="71" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="134" y="34" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="146" y="71" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="85" y="100" text-anchor="middle" font-size="12" fill="currentColor">C＝C 二重結合</text>
+        <text x="255" y="22" text-anchor="middle" font-size="13" fill="currentColor">プロペン C₃H₆</text>
+        <text x="201" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="247" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="301" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="213" y1="58" x2="235" y2="58" stroke="currentColor" stroke-width="2"/>
+        <line x1="213" y1="66" x2="235" y2="66" stroke="currentColor" stroke-width="2"/>
+        <line x1="259" y1="62" x2="289" y2="62" stroke="currentColor" stroke-width="2"/>
+        <text x="201" y="40" text-anchor="middle" font-size="12" fill="currentColor">H₂</text>
+        <text x="247" y="40" text-anchor="middle" font-size="12" fill="currentColor">H</text>
+        <text x="301" y="40" text-anchor="middle" font-size="12" fill="currentColor">H₃</text>
+        <text x="255" y="100" text-anchor="middle" font-size="12" fill="currentColor">CH₂＝CH−CH₃ とも書く</text>
+        <text x="430" y="22" text-anchor="middle" font-size="13" fill="currentColor">1,3-ブタジエン C₄H₆</text>
+        <text x="430" y="60" text-anchor="middle" font-size="14" fill="currentColor">CH₂＝CH−CH＝CH₂</text>
+        <text x="430" y="100" text-anchor="middle" font-size="12" fill="currentColor">二重結合を2つもつ</text>
+        <text x="260" y="140" text-anchor="middle" font-size="13" fill="currentColor">ポリエチレンの繰り返し単位：−(CH₂−CH₂)ₙ−</text>
+        <text x="260" y="164" text-anchor="middle" font-size="12" fill="currentColor">エチレンの二重結合が開いて単結合で長くつながったもの</text>
+      </svg>
+      <p>熱分解で得られる基礎原料の構造式。いずれも二重結合をもつことが共通点で、この二重結合が開いてつながる付加重合が、プラスチックや合成ゴムへの入口になります。</p>
+    </div>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 180" width="520" height="180" role="img" aria-label="ベンゼン・トルエン・p-キシレン・スチレンの構造式" style="max-width:100%;height:auto;">
+        <text x="80" y="22" text-anchor="middle" font-size="13" fill="currentColor">ベンゼン C₆H₆</text>
+        <polygon points="80,42 114,62 114,98 80,118 46,98 46,62" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="80" cy="80" r="17" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="80" y="146" text-anchor="middle" font-size="12" fill="currentColor">環内の円は二重結合の広がり</text>
+        <text x="205" y="22" text-anchor="middle" font-size="13" fill="currentColor">トルエン C₆H₅CH₃</text>
+        <polygon points="205,42 239,62 239,98 205,118 171,98 171,62" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="205" cy="80" r="17" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="205" y1="42" x2="205" y2="30" stroke="currentColor" stroke-width="2"/>
+        <text x="205" y="146" text-anchor="middle" font-size="12" fill="currentColor">環に CH₃ が1つ付いた形</text>
+        <text x="330" y="22" text-anchor="middle" font-size="13" fill="currentColor">p-キシレン C₆H₄(CH₃)₂</text>
+        <polygon points="330,48 364,68 364,104 330,124 296,104 296,68" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="330" cy="86" r="17" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="330" y1="48" x2="330" y2="36" stroke="currentColor" stroke-width="2"/>
+        <line x1="330" y1="124" x2="330" y2="136" stroke="currentColor" stroke-width="2"/>
+        <text x="330" y="158" text-anchor="middle" font-size="12" fill="currentColor">向かい合う位置に CH₃ が2つ</text>
+        <text x="450" y="22" text-anchor="middle" font-size="13" fill="currentColor">スチレン C₆H₅CH＝CH₂</text>
+        <polygon points="450,48 479,65 479,101 450,118 421,101 421,65" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="450" cy="83" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="450" y="146" text-anchor="middle" font-size="12" fill="currentColor">ベンゼンから作られる</text>
+        <text x="450" y="164" text-anchor="middle" font-size="12" fill="currentColor">ポリスチレンの原料</text>
+      </svg>
+      <p>接触改質で得られる芳香族の基礎原料（ベンゼン・トルエン・キシレン）と、ベンゼンから作られるスチレンの構造式。ベンゼン環の詳しい性質は芳香族化合物の項目で扱います。</p>
+    </div>
+    <h3>基礎原料から石油化学製品へ</h3>
+    <p>基礎原料は、重合や付加反応を経て多様な製品になります。代表的なつながりは次の通りです。</p>
+    <ul>
+      <li><strong>エチレン</strong> → 付加重合で<strong>ポリエチレン</strong>（袋・フィルム・容器）。水の付加でエタノールにもなります</li>
+      <li><strong>プロペン</strong> → 付加重合で<strong>ポリプロピレン</strong>（食品容器・自動車部品・繊維）</li>
+      <li><strong>1,3-ブタジエン</strong> → スチレンと共重合させた SBR など<strong>合成ゴム</strong>（タイヤ）の原料</li>
+      <li><strong>ベンゼン</strong> → <strong>スチレン</strong>を経てポリスチレン（発泡スチロール・食品トレイ）。また、ナイロン66の原料であるアジピン酸やヘキサメチレンジアミンの出発物質にもなります</li>
+      <li><strong>p-キシレン</strong> → テレフタル酸を経て、PET（ペットボトル）やポリエステル繊維の原料になります</li>
+    </ul>
+    <p>プラスチック・合成繊維・合成ゴムそのものの性質や作り方は高分子の項目で詳しく扱います。ここでは、<strong>それらの出発点がすべて原油の分留とナフサの変換にある</strong>という全体像をつかむことが目標です。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>留分は「炭素数→沸点→取り出す位置→用途」の順に結びつける。</strong>炭素数が少ないほど沸点が低く、分留塔の上から取り出されます。</li>
+      <li><strong>分留と化学変化を区別する。</strong>分留は沸点の違いによる分離（分子は不変）、熱分解と接触改質は分子を作り替える化学変化です。</li>
+      <li><strong>基礎原料の出所で整理する。</strong>熱分解からはエチレン・プロペン・1,3-ブタジエン（アルケン類）、接触改質からはベンゼン・トルエン・キシレン（芳香族類）が得られます。</li>
+      <li><strong>製品へのつながりは「二重結合が開いてつながる」付加重合でたどる。</strong>エチレン→ポリエチレン、プロペン→ポリプロピレン、ブタジエン→合成ゴム、ベンゼン→スチレン→ポリスチレン、という代表例を押さえます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1（留分と用途）：次の用途に最も適する留分を、石油ガス・ナフサ・灯油・軽油・重油・アスファルトから選べ。（a）カセットコンロの燃料（液化されたもの）（b）石油化学製品の原料として熱分解される留分（c）ジェット燃料やストーブの燃料（d）ディーゼルエンジンの燃料（e）道路舗装の材料</p>
+      <p class="ex-q">問題2（沸点の順序）：次の留分を沸点の低い順に並べよ。軽油、石油ガス、重油、灯油、ナフサ</p>
+      <p class="ex-q">問題3（基礎原料と製品）：次の製品の原料となる基礎原料を答えよ。（a）ポリエチレン（b）ポリプロピレン（c）タイヤなどに使われる合成ゴム（主原料の1つ）（d）ポリスチレン（ベンゼンから作られる中間の物質を経由する）</p>
+      <p class="ex-q">問題4（熱分解と接触改質）：ベンゼン・トルエン・キシレンが主に得られるのは、ナフサの熱分解と接触改質のどちらか。また、エチレンが主に得られるのはどちらか。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：（a）<strong>石油ガス</strong>。プロパン・ブタンを液化した LPガスが燃料です。（b）<strong>ナフサ</strong>。熱分解されてエチレンなどの基礎原料になります。（c）<strong>灯油</strong>。（d）<strong>軽油</strong>。（e）<strong>アスファルト</strong>。分留で最後に残る残油です。</li>
+          <li>問題2：炭素数が少ないほど沸点が低いので、<strong>石油ガス → ナフサ → 灯油 → 軽油 → 重油</strong> の順です。分留塔ではこの順に上から下へ取り出されます。</li>
+          <li>問題3：（a）<strong>エチレン</strong> C<sub>2</sub>H<sub>4</sub> の付加重合でポリエチレンができます。（b）<strong>プロペン</strong> C<sub>3</sub>H<sub>6</sub> の付加重合でポリプロピレンができます。（c）<strong>1,3-ブタジエン</strong> C<sub>4</sub>H<sub>6</sub>。スチレンと共重合させた SBR が代表的な合成ゴムです。（d）ベンゼンから<strong>スチレン</strong>が作られ、その付加重合でポリスチレンができます。</li>
+          <li>問題4：ベンゼン・トルエン・キシレン（芳香族化合物）は主に<strong>接触改質</strong>で得られ、エチレン（アルケン類）は主に<strong>熱分解</strong>で得られます。「熱分解＝アルケン、接触改質＝芳香族」と対で覚えるのが要点です。</li>
+        </ol>
+        <p><strong>答え：問題1は（a）石油ガス、（b）ナフサ、（c）灯油、（d）軽油、（e）アスファルト。問題2は石油ガス→ナフサ→灯油→軽油→重油。問題3は（a）エチレン、（b）プロペン、（c）1,3-ブタジエン、（d）スチレン（ベンゼンから作られる）。問題4は芳香族が接触改質、エチレンが熱分解。</strong>例題に登場する基礎原料の構造式は、本文の図（エチレン・プロペン・1,3-ブタジエン／ベンゼン・トルエン・p-キシレン・スチレン）にすべて示してあります。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>製油所の分留塔と石油化学コンビナート</h3>
+    <p>原油はタンカーで製油所に運ばれ、巨大な分留塔で留分ごとに分けられます。製油所の近くには石油化学工場が集まったコンビナートが作られることが多く、パイプラインで送られたナフサが熱分解装置（エチレンプラント）で基礎原料に変えられ、さらに下流の工場でプラスチックや合成繊維の原料に加工されます。エチレンの生産量は、その国の石油化学工業の規模を示す目安として使われます。</p>
+    <h3>燃料の使い分け</h3>
+    <p>留分は性質に合わせて燃料として使い分けられます。ガソリンは自動車の火花点火エンジン、軽油はディーゼルエンジン、灯油は暖房とジェット燃料、重油は発電所や大型船舶、LPガスは家庭・業務用と、沸点と燃え方の違いがそのまま用途の違いになっています。身近な燃料の名前は、分留の留分の名前とほぼ対応しています。</p>
+    <h3>身の回りの石油化学製品</h3>
+    <p>ペットボトル（PET）、発泡スチロール、衣料のポリエステルやナイロン、自動車のタイヤ（合成ゴム）、プラスチック容器や袋など、身の回りの製品の多くは石油化学製品です。これらはすべて「原油→分留→ナフサ→基礎原料→重合」というこの項目の流れの先にあります。一方で、プラスチックごみや二酸化炭素排出の問題から、リサイクルや植物由来原料への置き換えも進められています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who">特定の発明者はいない ― 原油の分留と石油化学は、19世紀後半から20世紀にかけて多くの技術者・企業によって発展した工業技術である</p>
+    <p>石油の利用は、1859年にアメリカ・ペンシルベニア州で<strong>エドウィン・ドレーク</strong>が油井の掘削に成功し、ランプ用燃料としての灯油の需要が広がったことから本格化しました。当初は灯油以外の留分はあまり活用されませんでしたが、自動車の普及でガソリンの需要が増え、1913年には<strong>ウィリアム・バートン</strong>らが重質油を熱で分解してガソリンを増やす熱分解（クラッキング）の工業化に成功しました。その後、接触改質やナフサの熱分解による基礎原料の生産が発達し、20世紀半ば以降、燃料のためだった石油精製が、プラスチック・合成繊維・合成ゴムを生む石油化学工業へと広がっていきました。特定の一人の発明ではなく、精製技術と触媒技術の積み重ねの上に成り立つ技術です。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>基礎原料そのものの性質は<a href="hydrocarbons.html">炭化水素（アルカン・アルケン・アルキン）</a>、ベンゼン環の詳しい性質は<a href="aromatics.html">芳香族化合物</a>が役立ちます。製品側の話は<a href="polymers-basics.html">高分子化合物と重合の基礎</a>、<a href="synthetic-fibers-plastics.html">合成繊維とプラスチック</a>、<a href="rubber-vulcanization.html">天然ゴムと合成ゴム・加硫</a>へ進んでください。混合物を沸点の違いで分ける操作の基礎は<a href="mixtures-and-separation.html">純物質と混合物・分離の方法</a>で扱います。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

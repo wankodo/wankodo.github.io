@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>油脂とセッケン・洗剤｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="油脂とセッケン・洗剤の仕組みを、油脂の構造・けん化価とヨウ素価の公式・手順・例題で解説。グリセリンと脂肪酸のエステルである油脂の性質、ミセルで汚れを落とすセッケンの働きや合成洗剤との違い、食品や洗剤の品質表示など実際の現場での使われ方まで紹介します。けん化価・ヨウ素価の計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="油脂とセッケン・洗剤｜化学ツール集">
+<meta property="og:description" content="油脂の構造とけん化価・ヨウ素価の求め方、セッケンがミセルで汚れを落とす仕組みを、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/fats-soaps-detergents.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">油脂</span>とセッケン・洗剤</h1>
+    <p>化学の考え方辞典 ― 有機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 有機化学 ＞ 油脂とセッケン・洗剤</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">有機化学</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    油脂はグリセリンと脂肪酸3分子がエステル結合した化合物で、その性質は脂肪酸の種類で決まる。油脂1 gのけん化に必要なKOHのmg数であるけん化価からは平均分子量が、油脂100 gに付加するヨウ素のg数であるヨウ素価からは二重結合の多さが分かる。油脂をけん化して得られるセッケンは、親水基と疎水基をもちミセルを作って汚れを落とす。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>油脂は、3価アルコールの<strong>グリセリン</strong>と、高級脂肪酸3分子が脱水縮合（エステル化）した<strong>エステル</strong>です。天然の油脂は1種類の分子ではなく、さまざまな脂肪酸の組み合わせの混合物なので、分子量は「平均分子量」で扱います。この項目は次のような場面で使います。</p>
+    <ul>
+      <li>油脂の構造式を見て、グリセリン部分と脂肪酸部分（R−）を読み取る問題</li>
+      <li><strong>けん化価</strong>（油脂1 g のけん化に必要な KOH の mg 数）から油脂の平均分子量を求める問題、その逆の計算</li>
+      <li><strong>ヨウ素価</strong>（油脂100 g に付加する I<sub>2</sub> の g 数）から二重結合の数を読み取る問題、その逆の計算</li>
+      <li>セッケンが汚れを落とす仕組み（ミセル）や、硬水で泡立ちにくい理由を説明する問題</li>
+    </ul>
+    <div class="tri-fig">
+      <svg viewBox="0 0 340 170" width="340" height="170" role="img" aria-label="油脂の構造式（グリセリンと脂肪酸3分子のエステル）">
+        <text x="10" y="30" font-size="13">CH<tspan baseline-shift="sub" font-size="9">2</tspan>−O−CO−R<tspan baseline-shift="sub" font-size="9">1</tspan></text>
+        <text x="22" y="55" font-size="13">|</text>
+        <text x="10" y="82" font-size="13">CH−O−CO−R<tspan baseline-shift="sub" font-size="9">2</tspan></text>
+        <text x="22" y="107" font-size="13">|</text>
+        <text x="10" y="134" font-size="13">CH<tspan baseline-shift="sub" font-size="9">2</tspan>−O−CO−R<tspan baseline-shift="sub" font-size="9">3</tspan></text>
+        <text x="185" y="30" font-size="12">← エステル結合 −O−CO−</text>
+        <text x="185" y="82" font-size="12">R は脂肪酸の炭化水素基</text>
+        <text x="185" y="134" font-size="12">左側がグリセリン部分</text>
+        <text x="10" y="162" font-size="12">油脂（トリグリセリド）：グリセリン1分子＋脂肪酸3分子−水3分子</text>
+      </svg>
+      <p>油脂1分子にはエステル結合が3個あります。R<sub>1</sub>・R<sub>2</sub>・R<sub>3</sub> は同じ脂肪酸のことも、互いに違う脂肪酸のこともあります。</p>
+    </div>
+    <p>油脂を水酸化ナトリウム水溶液と加熱すると、エステル結合が加水分解されてグリセリンと脂肪酸のナトリウム塩に分かれます。この反応を<strong>けん化</strong>といい、脂肪酸のナトリウム塩が<strong>セッケン</strong>です。</p>
+    <div class="formula">油脂 ＋ 3 NaOH → グリセリン ＋ 脂肪酸ナトリウム（セッケン）3分子</div>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>脂肪酸の種類と油脂の性質</h2>
+    <p>油脂の性質は、結合している脂肪酸の種類で決まります。炭素鎖に二重結合を含まない脂肪酸を<strong>飽和脂肪酸</strong>、二重結合を含む脂肪酸を<strong>不飽和脂肪酸</strong>といいます。</p>
+    <ul>
+      <li><strong>ステアリン酸</strong> C<sub>17</sub>H<sub>35</sub>COOH：飽和脂肪酸。二重結合がなく炭素鎖がまっすぐ伸びるため、分子どうしが密に並びやすく、融点が高い</li>
+      <li><strong>オレイン酸</strong> C<sub>17</sub>H<sub>33</sub>COOH：不飽和脂肪酸。二重結合が1個あり、そこで炭素鎖が折れ曲がるため、分子が密に並びにくく、融点が低い</li>
+      <li><strong>リノール酸</strong> C<sub>17</sub>H<sub>31</sub>COOH：不飽和脂肪酸。二重結合が2個ある</li>
+    </ul>
+    <div class="tri-fig">
+      <svg viewBox="0 0 340 150" width="340" height="150" role="img" aria-label="ステアリン酸とオレイン酸の構造式">
+        <polyline points="15,45 40,30 65,45 90,30 115,45 140,30 165,45 190,30" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="195" y="42" font-size="12">−COOH</text>
+        <text x="15" y="72" font-size="12">ステアリン酸：二重結合なし（飽和）。鎖がまっすぐで融点が高い</text>
+        <polyline points="15,105 40,90 65,105 90,90" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="90" y1="86" x2="115" y2="101" stroke="currentColor" stroke-width="2"/>
+        <line x1="90" y1="94" x2="115" y2="109" stroke="currentColor" stroke-width="2"/>
+        <polyline points="115,105 140,120 165,105 190,120" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="195" y="112" font-size="12">−COOH</text>
+        <text x="15" y="142" font-size="12">オレイン酸：二重結合1個（＝で表示）。鎖が折れ曲がり融点が低い</text>
+      </svg>
+      <p>飽和脂肪酸を多く含む牛脂などは常温で固体の「脂肪」、不飽和脂肪酸を多く含む植物油などは常温で液体の「油」になりやすい、という違いにつながります。</p>
+    </div>
+    <p>二重結合の多い油脂は、空気中の酸素と反応して固まりやすい性質があります。ヨウ素価が大きい（目安として130以上）油を<strong>乾性油</strong>といい、あまに油などがこれにあたります。乾性油は塗料や印刷インキなど、塗ったあとに乾いて固まることが求められる用途に使われます。ヨウ素価が中くらいの油は半乾性油、小さい油は不乾性油と呼ばれます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>けん化価</h3>
+    <p><strong>けん化価</strong>は、油脂1 g を完全にけん化するのに必要な水酸化カリウム KOH の質量を mg で表した値です。油脂1分子にはエステル結合が3個あるので、油脂1 mol のけん化には KOH が3 mol 必要です。KOH の式量は <strong>56</strong> です。</p>
+    <div class="formula">けん化価 ＝ 3 × 56 × 1000 ÷ 油脂の平均分子量 ＝ 168000 ÷ M［mg/g］</div>
+    <ul>
+      <li><strong>M</strong>：油脂の平均分子量［g/mol］</li>
+      <li><strong>3</strong>：油脂1分子あたりのエステル結合（＝必要な KOH）の数［mol/mol］</li>
+      <li><strong>56</strong>：KOH の式量［g/mol］。3 mol 分で 168 g、これを mg に直すと 168000 mg</li>
+      <li>けん化価が大きいほど平均分子量は小さい（短い脂肪酸が多い）油脂だと分かる</li>
+      <li>実験で求める場合は、けん化価 ＝ 使った KOH の質量［mg］÷ 油脂の質量［g］</li>
+    </ul>
+    <h3>ヨウ素価</h3>
+    <p><strong>ヨウ素価</strong>は、油脂100 g に付加できるヨウ素 I<sub>2</sub> の質量を g で表した値です。二重結合 C＝C 1個に I<sub>2</sub> が1分子付加するので、二重結合の数が多い油脂ほどヨウ素価は大きくなります。I<sub>2</sub> の式量は <strong>254</strong> です。</p>
+    <div class="formula">ヨウ素価 ＝ 二重結合の数 n × 254 × 100 ÷ 油脂の平均分子量 M ＝ 25400n ÷ M［g/100 g］</div>
+    <ul>
+      <li><strong>n</strong>：油脂1分子に含まれる二重結合 C＝C の総数［個］</li>
+      <li><strong>254</strong>：I<sub>2</sub> の式量［g/mol］</li>
+      <li><strong>100</strong>：定義が「油脂100 g あたり」であるための係数</li>
+      <li>ヨウ素価が大きいほど二重結合が多く、乾性油のように固まりやすい油脂だと分かる</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>何を求めるかを確認する。</strong>けん化価なら「KOH が3 mol 必要」という係数、ヨウ素価なら「二重結合1個に I<sub>2</sub> が1分子」という対応が鍵です。</li>
+      <li><strong>油脂1 mol あたりで考える。</strong>けん化なら KOH 3 mol＝168 g、ヨウ素付加なら I<sub>2</sub> が n mol＝254n g が、油脂 M g に対応します。</li>
+      <li><strong>定義の基準量に直す。</strong>けん化価は油脂1 g あたり（mg 表示）、ヨウ素価は油脂100 g あたり（g 表示）に換算します。単位の取り違えが最も多いミスです。</li>
+      <li><strong>逆算も同じ式で。</strong>けん化価が分かれば M ＝ 168000 ÷ けん化価、ヨウ素価と M が分かれば n ＝ ヨウ素価 × M ÷ 25400 で戻せます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：平均分子量880の油脂のけん化価を求めよ。問題2：平均分子量884で、1分子あたり二重結合を合計3個含む油脂のヨウ素価を求めよ。問題3：油脂2.00 gを完全にけん化するのにKOHが382 mg必要だった。この油脂のけん化価を求めよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：油脂1 mol（880 g）のけん化には KOH が3 mol 必要です。KOH の式量は56なので 3×56＝168 g＝168000 mg。油脂1 g あたりに直すと、けん化価 ＝ 168000 ÷ 880 ＝ 190.909… ≒ 191。</li>
+          <li>問題2：油脂1 mol（884 g）には二重結合が3 mol 分あり、付加する I<sub>2</sub> は 3 mol＝3×254＝762 g。油脂100 g あたりに直すと、ヨウ素価 ＝ 762 × 100 ÷ 884 ＝ 86.199… ≒ 86.2。二重結合3個は、オレイン酸を3分子含む油脂（トリオレイン型）に相当します。</li>
+          <li>問題3：けん化価は油脂1 g あたりの KOH の mg 数なので、382 mg ÷ 2.00 g ＝ 191 mg/g。問題1と同じ油脂だとすれば、平均分子量880と矛盾しない値です。</li>
+        </ol>
+        <p><strong>答え：問題1はけん化価 約191、問題2はヨウ素価 約86.2、問題3はけん化価 191</strong>。けん化価は分子量と反比例し、ヨウ素価は二重結合の数に比例する、という関係が読み取れます。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>セッケンと合成洗剤</h2>
+    <p>セッケン（脂肪酸ナトリウム R−COONa）は、水になじむ<strong>親水基</strong> −COO<sup>−</sup> と、油になじむ<strong>疎水基</strong>（炭化水素基 R−）を1分子の中にあわせもつ<strong>界面活性剤</strong>です。水に溶けると、疎水基を内側に向けて油汚れを取り囲み、親水基を外側に向けた球状の集合体<strong>ミセル</strong>を作ります。油汚れはミセルの内部に取り込まれて水中に分散し、すすぎで流れ落ちます。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 340 160" width="340" height="160" role="img" aria-label="セッケン分子とミセルの模式図">
+        <line x1="15" y1="35" x2="75" y2="35" stroke="currentColor" stroke-width="3"/>
+        <circle cx="92" cy="35" r="12" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="84" y="40" font-size="11">−</text>
+        <text x="15" y="18" font-size="12">疎水基 R−（油になじむ）</text>
+        <text x="60" y="68" font-size="12">親水基 −COO−（水になじむ）　セッケン R−COONa</text>
+        <circle cx="255" cy="105" r="34" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="255" cy="105" r="13" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="255" y="109" text-anchor="middle" font-size="10">油汚れ</text>
+        <text x="255" y="152" text-anchor="middle" font-size="12">ミセル：疎水基が内側、親水基が外側</text>
+        <text x="15" y="105" font-size="12">水の中で油汚れを</text>
+        <text x="15" y="125" font-size="12">包み込んで分散させる</text>
+      </svg>
+      <p>ミセルの外側は親水基で覆われて水になじむため、油汚れごと水に分散して洗い流せます。</p>
+    </div>
+    <ul>
+      <li><strong>硬水で泡立ちにくい理由</strong>：セッケンは Ca<sup>2+</sup> や Mg<sup>2+</sup> を多く含む硬水では、これらのイオンと結びついて水に溶けにくい脂肪酸のカルシウム塩・マグネシウム塩（いわゆる金属セッケン）を作り、界面活性剤として働けなくなります</li>
+      <li><strong>セッケン水が塩基性を示す理由</strong>：脂肪酸は弱酸なので、その塩であるセッケンは水溶液中で加水分解して弱い塩基性を示します</li>
+      <li><strong>合成洗剤との違い</strong>：合成洗剤の界面活性剤（直鎖アルキルベンゼンスルホン酸ナトリウムなど）は石油などを原料に人工的に作られ、親水基がスルホ基 −SO<sub>3</sub><sup>−</sup> などの強い酸の塩になっています。Ca<sup>2+</sup> と結びついても溶けにくい塩を作りにくいため、硬水でも泡立ちがよいのが特徴です。一方、セッケンは天然の油脂が原料で、微生物に分解されやすい（生分解性が高い）という長所があります</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>油脂の品質検査と規格</h3>
+    <p>食用油や化粧品原料の油脂では、けん化価とヨウ素価が品質を表す基本の指標として規格に定められ、検査で測定されます。けん化価から脂肪酸の長さ（平均分子量）の目安が分かり、ヨウ素価からは二重結合の多さ、つまり酸化されやすさや乾きやすさが読み取れます。原料の油脂が表示どおりの種類かどうかを確かめる手がかりにもなります。</p>
+    <h3>セッケンと洗剤の製品設計</h3>
+    <p>洗濯用・台所用などの洗剤は、汚れの種類と水の硬度に合わせて界面活性剤の種類と配合が設計されています。硬水の地域向けには Ca<sup>2+</sup> の影響を受けにくい合成洗剤が、環境への負荷を抑えたい用途には生分解性の高いセッケンが、というように、親水基と疎水基の性質の違いが製品選びの根拠になっています。</p>
+    <h3>乾性油の塗料・インキ</h3>
+    <p>ヨウ素価の大きい乾性油は、空気中の酸素で固まる性質を利用して、油絵具や油性塗料、印刷インキの原料に使われてきました。二重結合の多さがそのまま「乾いて固まる」性能につながる、ヨウ素価の考え方の実用例です。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ミシェル＝ウジェーヌ・シュヴルール</strong>（1786年〜1889年、フランスの化学者／油脂化学の研究者）</p>
+    <p>フランスの化学者シュヴルールは、動物性油脂を系統的に研究し、油脂がグリセリンと脂肪酸からできていること、けん化によって油脂がグリセリンと脂肪酸の塩（セッケン）に分かれることを明らかにしました。ステアリン酸やオレイン酸などの脂肪酸を取り出して性質を調べ、1823年に油脂の研究書を出版しています。油脂を「得体の知れない油」から、成分と反応で説明できる化合物へ変えた研究で、現代の油脂化学とセッケン工業の土台を築きました。けん化価やヨウ素価といった指標は、その後の分析化学の中で、油脂の種類や品質を数値で表す方法として整えられていきました。</p>
+  </section>
+
+  <a class="linkcard" href="calc-fats-soaps-detergents.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">油脂とセッケン・洗剤 計算機：平均分子量からけん化価、KOHの量と油脂の質量からけん化価、二重結合の数と分子量からヨウ素価を、手順つきで表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>エステル化と加水分解の基礎は<a href="carboxylic-acids-esters.html">カルボン酸とエステル</a>、油脂原料の炭素骨格は<a href="hydrocarbons.html">炭化水素（アルカン・アルケン・アルキン）</a>、二重結合の数え方は<a href="degree-of-unsaturation.html">不飽和度と構造の推定</a>が役立ちます。「似たものは似たものを溶かす」という溶解の考え方は<a href="polarity-and-solubility.html">極性と溶解性</a>、セッケン水が塩基性になる理由は<a href="salt-hydrolysis.html">塩の加水分解と液性</a>、水の硬度と洗濯の関係は<a href="water-hardness.html">水の硬度と水質</a>へ進んでください。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>反応経路図の読み方｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="エチレンとベンゼンを起点とする反応経路図の読み方を、矢印上の試薬・条件の読み取りと、目的物から逆向きにたどる考え方、空欄を埋める例題で解説。合成ルートの組み立て方や医薬品原料の製造など現場での使われ方も紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="反応経路図の読み方｜化学ツール集">
+<meta property="og:description" content="エチレンとベンゼンを起点とする反応経路図の読み方、矢印上の試薬・条件の読み取りと逆向きにたどる合成の考え方を例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/organic-reaction-pathways.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">反応経路図</span>の読み方</h1>
+    <p>化学の考え方辞典 ― 有機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 有機化学 ＞ 反応経路図の読み方</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">有機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    反応経路図は、有機化合物どうしを反応の矢印でつないだ合成の地図である。箱が化合物、矢印が反応を表し、矢印の上に試薬や条件が書かれる。エチレンやベンゼンのような基本原料から目的の化合物まで、矢印を順にたどれば合成の順序が読み取れ、目的物から逆向きにたどれば原料と手順を組み立てられる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>たくさんの有機反応を、1枚の地図として整理して読み取るための考え方です。個々の反応をばらばらに暗記するのではなく、<strong>「どの化合物が、どの反応で、何に変わるか」のつながり</strong>で覚えるのが目的で、次のような場面で使います。</p>
+    <ul>
+      <li>経路図の空欄（化合物名や試薬・条件）を埋める問題</li>
+      <li>ある原料から目的の化合物を作るのに、どの矢印をどの順にたどればよいかを答える問題（合成経路を選ぶ問題）</li>
+      <li>矢印の上に書かれた試薬・条件から、反応の種類（付加・酸化・還元・置換・脱水など）を読み取る問題</li>
+      <li>目的物しか示されていないときに、経路を逆向きにたどって原料までさかのぼる問題</li>
+    </ul>
+    <p>ポイントは、経路図を「左から右へ読む本」ではなく、<strong>駅と路線でできた路線図</strong>として見ることです。化合物が駅、矢印が路線にあたり、出発駅（原料）と到着駅（目的物）が決まれば、乗り換えの順序は図の上でたどれます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>経路図の3つの約束事</h3>
+    <ul>
+      <li><strong>箱（枠）＝化合物</strong>：箱の中には化合物の名前や構造式が書かれます。同じ化合物が図の離れた場所に2回出てくることもあります。</li>
+      <li><strong>矢印＝反応</strong>：矢印の向きが反応の進む向きです。原料から生成物へ向かいます。可逆な反応（エステル化など）では両向きの矢印 ⇌ で書かれることもあります。</li>
+      <li><strong>矢印の上（下）の文字＝試薬と条件</strong>：加える試薬（H<sub>2</sub>O、O<sub>2</sub>、濃硫酸など）、触媒、温度・圧力、「酸化」「還元」のような反応の種類が書かれます。この文字がないと反応は進まない、という意味で、矢印そのものと同じくらい重要です。</li>
+    </ul>
+    <div class="formula">読み方：原料 ―（試薬・条件）→ 生成物　／　逆読み：目的物 ←（必要な試薬・条件）― 原料</div>
+    <p>矢印の上の言葉と反応の種類の対応は、次のように読み替えます。</p>
+    <ul>
+      <li><strong>付加</strong>：二重結合が開いて、相手の分子が両側の炭素に分かれて付く（エチレン ＋ H<sub>2</sub>O → エタノール など）</li>
+      <li><strong>酸化</strong>：酸素が付く、または水素が取れる方向の変化（エタノール → アセトアルデヒド → 酢酸 の階段）</li>
+      <li><strong>還元</strong>：水素が付く、または酸素が取れる方向の変化（ニトロベンゼン → アニリン など）</li>
+      <li><strong>置換</strong>：原子や原子団が別のものと入れ替わる（ベンゼン → ニトロベンゼン、ベンゼン → クロロベンゼン など）</li>
+      <li><strong>脱水</strong>：分子内や分子間で水が取れる（エタノール → エチレン、エタノール2分子 → ジエチルエーテル など）。温度で生成物が変わることがある</li>
+      <li><strong>エステル化</strong>：カルボン酸とアルコールから水が取れてエステルができる（酢酸 ＋ エタノール ⇌ 酢酸エチル ＋ 水）</li>
+    </ul>
+    <h3>地図1：エチレンを起点とする経路</h3>
+    <p>エチレン CH<sub>2</sub>＝CH<sub>2</sub> は二重結合をもつため付加反応の入口が広く、脂肪族化合物の多くはここからたどれます。中心の道は「エチレン → エタノール → アセトアルデヒド → 酢酸」という<strong>酸化の階段</strong>で、酢酸とエタノールが出会うと酢酸エチルができます。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 300" width="520" height="300" role="img" aria-label="エチレンを起点とする反応経路図" style="max-width:100%;height:auto;">
+        <defs>
+          <marker id="ah1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="currentColor"/></marker>
+        </defs>
+        <rect x="10" y="30" width="110" height="34" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="65" y="52" text-anchor="middle" font-size="14" fill="currentColor">ポリエチレン</text>
+        <rect x="180" y="30" width="92" height="34" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="226" y="52" text-anchor="middle" font-size="14" fill="currentColor">エタン</text>
+        <rect x="360" y="30" width="130" height="34" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="425" y="52" text-anchor="middle" font-size="14" fill="currentColor">ジエチルエーテル</text>
+        <rect x="10" y="120" width="92" height="34" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="56" y="142" text-anchor="middle" font-size="14" fill="currentColor">エチレン</text>
+        <rect x="180" y="120" width="92" height="34" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="226" y="142" text-anchor="middle" font-size="14" fill="currentColor">エタノール</text>
+        <rect x="360" y="120" width="118" height="34" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="419" y="142" text-anchor="middle" font-size="14" fill="currentColor">アセトアルデヒド</text>
+        <rect x="10" y="210" width="130" height="34" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="75" y="232" text-anchor="middle" font-size="13" fill="currentColor">1,2-ジブロモエタン</text>
+        <rect x="180" y="210" width="110" height="34" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="235" y="232" text-anchor="middle" font-size="14" fill="currentColor">酢酸エチル</text>
+        <rect x="360" y="210" width="92" height="34" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="406" y="232" text-anchor="middle" font-size="14" fill="currentColor">酢酸</text>
+        <line x1="56" y1="120" x2="56" y2="68" stroke="currentColor" stroke-width="2" marker-end="url(#ah1)"/>
+        <text x="62" y="98" font-size="11" fill="currentColor">付加重合</text>
+        <line x1="102" y1="128" x2="176" y2="56" stroke="currentColor" stroke-width="2" marker-end="url(#ah1)"/>
+        <text x="118" y="82" font-size="11" fill="currentColor">H₂ 付加（Ni触媒）</text>
+        <line x1="102" y1="137" x2="176" y2="137" stroke="currentColor" stroke-width="2" marker-end="url(#ah1)"/>
+        <text x="112" y="128" font-size="11" fill="currentColor">H₂O 付加</text>
+        <line x1="56" y1="154" x2="56" y2="206" stroke="currentColor" stroke-width="2" marker-end="url(#ah1)"/>
+        <text x="62" y="184" font-size="11" fill="currentColor">Br₂ 付加</text>
+        <line x1="272" y1="128" x2="356" y2="56" stroke="currentColor" stroke-width="2" marker-end="url(#ah1)"/>
+        <text x="278" y="82" font-size="11" fill="currentColor">脱水（濃硫酸・140 ℃）</text>
+        <line x1="272" y1="137" x2="356" y2="137" stroke="currentColor" stroke-width="2" marker-end="url(#ah1)"/>
+        <text x="292" y="128" font-size="11" fill="currentColor">酸化</text>
+        <line x1="419" y1="154" x2="419" y2="206" stroke="currentColor" stroke-width="2" marker-end="url(#ah1)"/>
+        <text x="425" y="184" font-size="11" fill="currentColor">酸化</text>
+        <line x1="360" y1="227" x2="294" y2="227" stroke="currentColor" stroke-width="2" marker-end="url(#ah1)"/>
+        <text x="296" y="218" font-size="11" fill="currentColor">エステル化 ⇌</text>
+        <line x1="235" y1="154" x2="235" y2="206" stroke="currentColor" stroke-width="2" marker-end="url(#ah1)"/>
+        <text x="241" y="184" font-size="11" fill="currentColor">エステル化（濃硫酸）</text>
+        <text x="260" y="282" text-anchor="middle" font-size="12" fill="currentColor">エタノールは濃硫酸・170 ℃の脱水でエチレンに戻る（図では省略）。酢酸エチルは酢酸とエタノールの両方から作る</text>
+      </svg>
+      <p>エチレンを起点とする経路図の例。酢酸エチルの箱には、酢酸からの矢印とエタノールからの矢印の2本が入っています。これは「原料が2つある反応（エステル化）」の書き方で、両方の原料がそろって初めて生成物ができることを表します。</p>
+    </div>
+    <p>この地図に現れる反応式は次の通りです。いずれも両辺の原子数が一致することを検算してあります。</p>
+    <ul>
+      <li>水の付加：C<sub>2</sub>H<sub>4</sub> ＋ H<sub>2</sub>O → C<sub>2</sub>H<sub>5</sub>OH（リン酸触媒・高温・高圧）</li>
+      <li>水素の付加：C<sub>2</sub>H<sub>4</sub> ＋ H<sub>2</sub> → C<sub>2</sub>H<sub>6</sub>（ニッケル触媒）</li>
+      <li>臭素の付加：C<sub>2</sub>H<sub>4</sub> ＋ Br<sub>2</sub> → C<sub>2</sub>H<sub>4</sub>Br<sub>2</sub></li>
+      <li>付加重合：n CH<sub>2</sub>＝CH<sub>2</sub> → −(CH<sub>2</sub>−CH<sub>2</sub>)<sub>n</sub>−</li>
+      <li>エタノールの酸化：C<sub>2</sub>H<sub>5</sub>OH ＋ [O] → CH<sub>3</sub>CHO ＋ H<sub>2</sub>O（[O] は酸化剤から受け取る酸素を表す略記）</li>
+      <li>アセトアルデヒドの酸化：CH<sub>3</sub>CHO ＋ [O] → CH<sub>3</sub>COOH</li>
+      <li>エタノールの分子間脱水：2C<sub>2</sub>H<sub>5</sub>OH → C<sub>2</sub>H<sub>5</sub>OC<sub>2</sub>H<sub>5</sub> ＋ H<sub>2</sub>O（濃硫酸・140 ℃）</li>
+      <li>エタノールの分子内脱水：C<sub>2</sub>H<sub>5</sub>OH → C<sub>2</sub>H<sub>4</sub> ＋ H<sub>2</sub>O（濃硫酸・170 ℃）</li>
+      <li>エステル化：CH<sub>3</sub>COOH ＋ C<sub>2</sub>H<sub>5</sub>OH ⇌ CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> ＋ H<sub>2</sub>O（濃硫酸・加熱）</li>
+    </ul>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 300" width="520" height="300" role="img" aria-label="エチレンを起点とする経路に登場する化合物の構造式" style="max-width:100%;height:auto;">
+        <text x="85" y="22" text-anchor="middle" font-size="13" fill="currentColor">エチレン C₂H₄</text>
+        <text x="62" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="108" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="74" y1="58" x2="96" y2="58" stroke="currentColor" stroke-width="2"/>
+        <line x1="74" y1="66" x2="96" y2="66" stroke="currentColor" stroke-width="2"/>
+        <text x="85" y="92" text-anchor="middle" font-size="12" fill="currentColor">CH₂＝CH₂・各CにHが2個</text>
+        <text x="260" y="22" text-anchor="middle" font-size="13" fill="currentColor">エタン C₂H₆</text>
+        <text x="260" y="60" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH₃</text>
+        <text x="435" y="22" text-anchor="middle" font-size="13" fill="currentColor">エタノール C₂H₅OH</text>
+        <text x="435" y="60" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH₂−OH</text>
+        <text x="85" y="122" text-anchor="middle" font-size="13" fill="currentColor">アセトアルデヒド CH₃CHO</text>
+        <text x="52" y="166" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="104" y="166" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="64" y1="162" x2="92" y2="162" stroke="currentColor" stroke-width="2"/>
+        <line x1="104" y1="154" x2="104" y2="134" stroke="currentColor" stroke-width="2"/>
+        <line x1="110" y1="154" x2="110" y2="134" stroke="currentColor" stroke-width="2"/>
+        <text x="107" y="128" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="85" y="192" text-anchor="middle" font-size="12" fill="currentColor">左のCは CH₃、右のCは Hも1個もつ（−CHO）</text>
+        <text x="260" y="122" text-anchor="middle" font-size="13" fill="currentColor">酢酸 CH₃COOH</text>
+        <text x="260" y="160" text-anchor="middle" font-size="14" fill="currentColor">CH₃−C(=O)−OH</text>
+        <text x="435" y="122" text-anchor="middle" font-size="13" fill="currentColor">酢酸エチル CH₃COOC₂H₅</text>
+        <text x="435" y="160" text-anchor="middle" font-size="14" fill="currentColor">CH₃−C(=O)−O−CH₂−CH₃</text>
+        <text x="85" y="222" text-anchor="middle" font-size="13" fill="currentColor">ジエチルエーテル C₂H₅OC₂H₅</text>
+        <text x="85" y="260" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH₂−O−CH₂−CH₃</text>
+        <text x="260" y="222" text-anchor="middle" font-size="13" fill="currentColor">1,2-ジブロモエタン C₂H₄Br₂</text>
+        <text x="260" y="260" text-anchor="middle" font-size="14" fill="currentColor">Br−CH₂−CH₂−Br</text>
+        <text x="435" y="222" text-anchor="middle" font-size="13" fill="currentColor">ポリエチレン（繰り返し単位）</text>
+        <text x="435" y="260" text-anchor="middle" font-size="14" fill="currentColor">−(CH₂−CH₂)ₙ−</text>
+      </svg>
+      <p>地図1に登場する化合物の構造式。エタノール → アセトアルデヒド → 酢酸の階段は、−CH<sub>2</sub>OH → −CHO → −COOH と、炭素に付いた酸素の数が増えていく「酸化の階段」として構造式でも読み取れます。</p>
+    </div>
+    <h3>地図2：ベンゼンを起点とする経路</h3>
+    <p>ベンゼン C<sub>6</sub>H<sub>6</sub> の環は安定で、付加反応より<strong>置換反応</strong>（環の水素が別の原子団と入れ替わる反応）が中心です。代表的な分岐は、ニトロ化からアニリンへ向かう道と、クロロ化からフェノールへ向かう道、そしてフェノールからサリチル酸・アセチルサリチル酸（アスピリン）へ向かう道です。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 300" width="520" height="300" role="img" aria-label="ベンゼンを起点とする反応経路図" style="max-width:100%;height:auto;">
+        <defs>
+          <marker id="ah2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="currentColor"/></marker>
+        </defs>
+        <rect x="10" y="120" width="92" height="34" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="56" y="142" text-anchor="middle" font-size="14" fill="currentColor">ベンゼン</text>
+        <rect x="180" y="30" width="118" height="34" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="239" y="52" text-anchor="middle" font-size="14" fill="currentColor">ニトロベンゼン</text>
+        <rect x="180" y="120" width="118" height="34" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="239" y="142" text-anchor="middle" font-size="14" fill="currentColor">クロロベンゼン</text>
+        <rect x="390" y="30" width="92" height="34" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="436" y="52" text-anchor="middle" font-size="14" fill="currentColor">アニリン</text>
+        <rect x="390" y="120" width="92" height="34" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="436" y="142" text-anchor="middle" font-size="14" fill="currentColor">フェノール</text>
+        <rect x="180" y="210" width="150" height="34" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="255" y="232" text-anchor="middle" font-size="13" fill="currentColor">ナトリウムフェノキシド</text>
+        <rect x="390" y="210" width="92" height="34" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="436" y="232" text-anchor="middle" font-size="14" fill="currentColor">サリチル酸</text>
+        <rect x="10" y="210" width="140" height="34" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="80" y="232" text-anchor="middle" font-size="13" fill="currentColor">アセチルサリチル酸</text>
+        <line x1="102" y1="128" x2="176" y2="56" stroke="currentColor" stroke-width="2" marker-end="url(#ah2)"/>
+        <text x="104" y="82" font-size="11" fill="currentColor">HNO₃（濃硫酸）置換</text>
+        <line x1="102" y1="137" x2="176" y2="137" stroke="currentColor" stroke-width="2" marker-end="url(#ah2)"/>
+        <text x="108" y="128" font-size="11" fill="currentColor">Cl₂（Fe触媒）置換</text>
+        <line x1="298" y1="47" x2="386" y2="47" stroke="currentColor" stroke-width="2" marker-end="url(#ah2)"/>
+        <text x="306" y="38" font-size="11" fill="currentColor">還元（Sn・HCl）</text>
+        <line x1="298" y1="137" x2="386" y2="137" stroke="currentColor" stroke-width="2" marker-end="url(#ah2)"/>
+        <text x="300" y="128" font-size="11" fill="currentColor">NaOH水溶液・高温高圧</text>
+        <line x1="436" y1="154" x2="330" y2="222" stroke="currentColor" stroke-width="2" marker-end="url(#ah2)"/>
+        <text x="352" y="182" font-size="11" fill="currentColor">NaOH（塩にする）</text>
+        <line x1="330" y1="227" x2="386" y2="227" stroke="currentColor" stroke-width="2" marker-end="url(#ah2)"/>
+        <text x="322" y="218" font-size="11" fill="currentColor">CO₂ → HCl</text>
+        <line x1="390" y1="227" x2="154" y2="227" stroke="currentColor" stroke-width="2" marker-end="url(#ah2)"/>
+        <text x="216" y="218" font-size="11" fill="currentColor">無水酢酸（アセチル化）</text>
+        <text x="260" y="282" text-anchor="middle" font-size="12" fill="currentColor">ベンゼン環は置換反応で骨格を保ったまま、付いた原子団（官能基）だけが変わっていく</text>
+      </svg>
+      <p>ベンゼンを起点とする経路図の例。アニリンへの道は「置換（ニトロ化）→ 還元」、フェノールへの道は「置換（クロロ化）→ 置換（−Cl を −OH に）」というように、矢印の上の言葉を並べるだけで合成の手順書になります。</p>
+    </div>
+    <p>この地図に現れる反応式は次の通りです（いずれも検算済み）。</p>
+    <ul>
+      <li>ニトロ化：C<sub>6</sub>H<sub>6</sub> ＋ HNO<sub>3</sub> → C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub> ＋ H<sub>2</sub>O（濃硫酸・約60 ℃）</li>
+      <li>ニトロベンゼンの還元：C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub> ＋ 6[H] → C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub> ＋ 2H<sub>2</sub>O（スズと塩酸。[H] は還元剤から受け取る水素を表す略記）</li>
+      <li>クロロ化：C<sub>6</sub>H<sub>6</sub> ＋ Cl<sub>2</sub> → C<sub>6</sub>H<sub>5</sub>Cl ＋ HCl（鉄触媒）</li>
+      <li>クロロベンゼンからフェノール：C<sub>6</sub>H<sub>5</sub>Cl ＋ NaOH → C<sub>6</sub>H<sub>5</sub>OH ＋ NaCl（高温・高圧）</li>
+      <li>フェノールの塩の生成：C<sub>6</sub>H<sub>5</sub>OH ＋ NaOH → C<sub>6</sub>H<sub>5</sub>ONa ＋ H<sub>2</sub>O</li>
+      <li>サリチル酸の生成（コルベ・シュミット反応の全体）：C<sub>6</sub>H<sub>5</sub>ONa ＋ CO<sub>2</sub> ＋ HCl → C<sub>6</sub>H<sub>4</sub>(OH)COOH ＋ NaCl（二酸化炭素を反応させた後、塩酸で酸性にして取り出す）</li>
+      <li>アセチルサリチル酸の生成：C<sub>6</sub>H<sub>4</sub>(OH)COOH ＋ (CH<sub>3</sub>CO)<sub>2</sub>O → C<sub>6</sub>H<sub>4</sub>(OCOCH<sub>3</sub>)COOH ＋ CH<sub>3</sub>COOH（サリチル酸 ＋ 無水酢酸 → アセチルサリチル酸 ＋ 酢酸）</li>
+    </ul>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 320" width="520" height="320" role="img" aria-label="ベンゼンを起点とする経路に登場する化合物の構造式" style="max-width:100%;height:auto;">
+        <text x="85" y="22" text-anchor="middle" font-size="13" fill="currentColor">ベンゼン C₆H₆</text>
+        <polygon points="85,36 112,52 112,84 85,100 58,84 58,52" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="85" cy="68" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="260" y="22" text-anchor="middle" font-size="13" fill="currentColor">ニトロベンゼン C₆H₅NO₂</text>
+        <polygon points="235,36 262,52 262,84 235,100 208,84 208,52" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="235" cy="68" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="235" y1="36" x2="235" y2="24" stroke="currentColor" stroke-width="2"/>
+        <text x="262" y="18" text-anchor="middle" font-size="13" fill="currentColor">NO₂</text>
+        <text x="435" y="22" text-anchor="middle" font-size="13" fill="currentColor">アニリン C₆H₅NH₂</text>
+        <polygon points="410,36 437,52 437,84 410,100 383,84 383,52" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="410" cy="68" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="410" y1="36" x2="410" y2="24" stroke="currentColor" stroke-width="2"/>
+        <text x="440" y="18" text-anchor="middle" font-size="13" fill="currentColor">NH₂</text>
+        <text x="85" y="132" text-anchor="middle" font-size="13" fill="currentColor">クロロベンゼン C₆H₅Cl</text>
+        <polygon points="85,146 112,162 112,194 85,210 58,194 58,162" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="85" cy="178" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="85" y1="146" x2="85" y2="134" stroke="currentColor" stroke-width="2"/>
+        <text x="102" y="128" text-anchor="middle" font-size="13" fill="currentColor">Cl</text>
+        <text x="260" y="132" text-anchor="middle" font-size="13" fill="currentColor">フェノール C₆H₅OH</text>
+        <polygon points="235,146 262,162 262,194 235,210 208,194 208,162" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="235" cy="178" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="235" y1="146" x2="235" y2="134" stroke="currentColor" stroke-width="2"/>
+        <text x="254" y="128" text-anchor="middle" font-size="13" fill="currentColor">OH</text>
+        <text x="435" y="132" text-anchor="middle" font-size="13" fill="currentColor">ナトリウムフェノキシド C₆H₅ONa</text>
+        <polygon points="410,146 437,162 437,194 410,210 383,194 383,162" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="410" cy="178" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="410" y1="146" x2="410" y2="134" stroke="currentColor" stroke-width="2"/>
+        <text x="440" y="128" text-anchor="middle" font-size="13" fill="currentColor">ONa</text>
+        <text x="85" y="242" text-anchor="middle" font-size="13" fill="currentColor">サリチル酸 C₇H₆O₃</text>
+        <polygon points="85,256 112,272 112,304 85,320 58,304 58,272" fill="none" stroke="currentColor" stroke-width="2" transform="translate(0,-14)"/>
+        <circle cx="85" cy="274" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="85" y1="242" x2="85" y2="230" stroke="currentColor" stroke-width="2"/>
+        <text x="104" y="224" text-anchor="middle" font-size="13" fill="currentColor">OH</text>
+        <line x1="112" y1="258" x2="126" y2="248" stroke="currentColor" stroke-width="2"/>
+        <text x="152" y="244" text-anchor="middle" font-size="13" fill="currentColor">COOH</text>
+        <text x="260" y="242" text-anchor="middle" font-size="12" fill="currentColor">アセチルサリチル酸 C₉H₈O₄</text>
+        <text x="260" y="282" text-anchor="middle" font-size="13" fill="currentColor">ベンゼン環−OCOCH₃</text>
+        <text x="260" y="302" text-anchor="middle" font-size="13" fill="currentColor">ベンゼン環−COOH（隣り合う位置）</text>
+        <text x="435" y="242" text-anchor="middle" font-size="13" fill="currentColor">無水酢酸 (CH₃CO)₂O</text>
+        <text x="435" y="282" text-anchor="middle" font-size="14" fill="currentColor">CH₃−C(=O)−O−C(=O)−CH₃</text>
+      </svg>
+      <p>地図2に登場する化合物の構造式。六角形がベンゼン環（環内の円は二重結合の広がりを表す）で、環から出た線の先が置換した原子団です。サリチル酸では −OH と −COOH が隣り合う位置（オルト位）に付き、アセチルサリチル酸ではその −OH が −OCOCH<sub>3</sub> に変わります。</p>
+    </div>
+    <h3>逆向きにたどる考え方（目的物から原料へ）</h3>
+    <p>合成の問題では、原料ではなく<strong>目的物だけが先に決まっている</strong>ことが普通です。その場合は地図を逆向きに読みます。手順は「目的物の1つ手前を探す」ことの繰り返しです。たとえばアセチルサリチル酸を作りたいなら、まず「何に無水酢酸を反応させればよいか」を考えてサリチル酸にさかのぼり、次に「サリチル酸は何から作るか」でフェノール（の塩）に、さらにクロロベンゼン、ベンゼンへとたどります。矢印を逆にたどるときは、<strong>矢印の上の試薬・条件も一緒に逆向きに読む</strong>のがコツです。「還元で得られるなら、出発側は酸化された形（ニトロ基）だったはずだ」というように、官能基の変化から1つ手前を推測できます。この「ゴールから逆向きに組み立てる」考え方は、実際の有機合成の設計でも基本の手順になっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>出発点とゴールを丸で囲む。</strong>原料（エチレンやベンゼンなどの基本化合物）と目的物を先に特定します。</li>
+      <li><strong>矢印の上の言葉から反応の種類を読む。</strong>試薬名だけでなく、「酸化」「還元」「付加」「置換」「脱水」といった種類に読み替えると、官能基がどう変わるかが見えます。</li>
+      <li><strong>順向きにたどれるか試す。</strong>原料から矢印を1本ずつ進み、各段階の生成物を構造式で確認しながらゴールへ向かいます。</li>
+      <li><strong>行き詰まったら逆向きにたどる。</strong>目的物の1つ手前（何をどう変えれば目的物になるか）から考え、原料までさかのぼって道をつなぎます。</li>
+      <li><strong>条件の違いに注意する。</strong>同じ原料・同じ試薬でも、温度などの条件で生成物が変わる矢印（エタノールの脱水：140 ℃ではジエチルエーテル、170 ℃ではエチレン）があります。条件まで含めて1つの矢印として覚えます。</li>
+      <li><strong>各矢印の反応式を書き、原子数を検算する。</strong>C・H・O・N・Cl などの数が両辺で一致しているかを確認すれば、生成物の書き間違いに気づけます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1（エチレンの経路図の空欄埋め）：エチレンを出発点とする次の経路で、A〜E に当てはまる化合物名を答えよ。エチレン ―（H<sub>2</sub>O 付加）→ A ―（酸化）→ B ―（酸化）→ C。A と C を濃硫酸と加熱すると D ができる。また、エチレンどうしが多数つながると E ができる。</p>
+      <p class="ex-q">問題2（ベンゼンの経路図の空欄埋めと条件）：ベンゼンからアニリンを作る経路「ベンゼン → F → アニリン」について、F の化合物名と、各矢印の上に書くべき試薬・条件（反応の種類も含む）を答えよ。</p>
+      <p class="ex-q">問題3（逆向きにたどる）：酢酸エチルをエチレンだけを炭素源として作りたい。経路図を逆向きにたどり、必要な手順を順番に述べよ。</p>
+      <p class="ex-q">問題4（合成経路を選ぶ）：フェノールからサリチル酸を作るには、フェノールに直接 CO<sub>2</sub> を反応させるのではなく、ある手順を挟む。経路図をもとに、その手順と理由を答えよ。また、サリチル酸からアセチルサリチル酸を作るときの試薬も答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：A は水の付加でできる<strong>エタノール</strong>、B はその酸化でできる<strong>アセトアルデヒド</strong>、C はさらに酸化された<strong>酢酸</strong>です。D は酢酸とエタノールのエステル化でできる<strong>酢酸エチル</strong>（CH<sub>3</sub>COOH ＋ C<sub>2</sub>H<sub>5</sub>OH ⇌ CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> ＋ H<sub>2</sub>O、両辺とも C<sub>4</sub>H<sub>10</sub>O<sub>3</sub> で一致）。E は付加重合でできる<strong>ポリエチレン</strong>です。「酸化の階段」をたどる問題は、−OH → −CHO → −COOH という官能基の変化で見分けます。</li>
+          <li>問題2：F は<strong>ニトロベンゼン</strong>です。1本目の矢印は「濃硝酸（混酸：濃硝酸と濃硫酸）・約60 ℃」で、反応の種類は<strong>置換（ニトロ化）</strong>：C<sub>6</sub>H<sub>6</sub> ＋ HNO<sub>3</sub> → C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub> ＋ H<sub>2</sub>O。2本目の矢印は「スズ（または鉄）と塩酸」で、反応の種類は<strong>還元</strong>：C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub> ＋ 6[H] → C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub> ＋ 2H<sub>2</sub>O（両辺とも C<sub>6</sub>H<sub>11</sub>NO<sub>2</sub> で一致）。アニリンの −NH<sub>2</sub> は、ニトロ基 −NO<sub>2</sub> を還元して作るのが基本の道です。</li>
+          <li>問題3：目的物の酢酸エチルから逆向きにたどります。酢酸エチルは酢酸とエタノールのエステル化でできるので、原料は酢酸とエタノールの2つに分かれます。エタノールはエチレンへの水の付加で得られ、酢酸はエタノールを2段階酸化（エタノール → アセトアルデヒド → 酢酸）して得られます。よって手順は「(1) エチレンに水を付加してエタノールを作る。(2) その一部を酸化して酢酸を作る。(3) 酢酸と残りのエタノールを濃硫酸と加熱してエステル化する」となります。逆向きにたどると、必要な原料が途中で枝分かれすることに気づけるのがポイントです。</li>
+          <li>問題4：フェノールはまず水酸化ナトリウムで<strong>ナトリウムフェノキシド</strong>（塩）に変えてから CO<sub>2</sub> を反応させ、その後塩酸で酸性にしてサリチル酸を取り出します（コルベ・シュミット反応）。塩の形（−ONa）にすると環が反応しやすくなり、−COOH が −ONa の隣の位置に入るためです。全体の式は C<sub>6</sub>H<sub>5</sub>ONa ＋ CO<sub>2</sub> ＋ HCl → C<sub>6</sub>H<sub>4</sub>(OH)COOH ＋ NaCl（両辺とも C<sub>7</sub>H<sub>6</sub>O<sub>3</sub>NaCl で一致）。サリチル酸からアセチルサリチル酸を作る試薬は<strong>無水酢酸</strong>で、−OH が −OCOCH<sub>3</sub> に変わります（C<sub>7</sub>H<sub>6</sub>O<sub>3</sub> ＋ C<sub>4</sub>H<sub>6</sub>O<sub>3</sub> → C<sub>9</sub>H<sub>8</sub>O<sub>4</sub> ＋ C<sub>2</sub>H<sub>4</sub>O<sub>2</sub>、両辺とも C<sub>11</sub>H<sub>12</sub>O<sub>6</sub> で一致）。</li>
+        </ol>
+        <p><strong>答え：問題1は A エタノール、B アセトアルデヒド、C 酢酸、D 酢酸エチル、E ポリエチレン。問題2は F ニトロベンゼン、矢印は混酸による置換（ニトロ化）と Sn・HCl による還元。問題3は エチレン → エタノール →（一部を酸化して）酢酸、酢酸＋エタノール → 酢酸エチル。問題4は NaOH で塩（ナトリウムフェノキシド）にしてから CO<sub>2</sub>、次いで HCl。アセチル化の試薬は無水酢酸。</strong></p>
+        <div class="tri-fig">
+          <svg viewBox="0 0 520 240" width="520" height="240" role="img" aria-label="例題に登場する化合物の構造式" style="max-width:100%;height:auto;">
+            <text x="130" y="22" text-anchor="middle" font-size="13" fill="currentColor">エタノール（A）</text>
+            <text x="130" y="52" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH₂−OH</text>
+            <text x="390" y="22" text-anchor="middle" font-size="13" fill="currentColor">アセトアルデヒド（B）</text>
+            <text x="390" y="52" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CHO（−C(=O)−H）</text>
+            <text x="130" y="92" text-anchor="middle" font-size="13" fill="currentColor">酢酸（C）</text>
+            <text x="130" y="122" text-anchor="middle" font-size="14" fill="currentColor">CH₃−C(=O)−OH</text>
+            <text x="390" y="92" text-anchor="middle" font-size="13" fill="currentColor">酢酸エチル（D・問題3の目的物）</text>
+            <text x="390" y="122" text-anchor="middle" font-size="14" fill="currentColor">CH₃−C(=O)−O−CH₂−CH₃</text>
+            <text x="130" y="162" text-anchor="middle" font-size="13" fill="currentColor">ポリエチレン（E）</text>
+            <text x="130" y="192" text-anchor="middle" font-size="14" fill="currentColor">−(CH₂−CH₂)ₙ−</text>
+            <text x="390" y="162" text-anchor="middle" font-size="13" fill="currentColor">ニトロベンゼン（F）</text>
+            <text x="390" y="192" text-anchor="middle" font-size="14" fill="currentColor">ベンゼン環−NO₂</text>
+            <text x="260" y="226" text-anchor="middle" font-size="12" fill="currentColor">問題4のナトリウムフェノキシド・サリチル酸・アセチルサリチル酸・無水酢酸は前掲のベンゼン経路の図にあります</text>
+          </svg>
+          <p>例題に登場する化合物の構造式。A〜C は酸化の階段（−CH<sub>2</sub>OH → −CHO → −COOH）、D はその合流点、F はベンゼン環に −NO<sub>2</sub> が付いた形です。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>石油化学コンビナートの「地図」そのもの</h3>
+    <p>エチレンは石油化学の最も基本的な原料で、工場ではエチレンからエタノール、酢酸、酢酸エチル、ポリエチレンなどが実際にこの経路図の矢印どおりに生産されています。コンビナートでは、ある工場の生成物が隣の工場の原料になるようにプラントが配置されており、経路図はそのまま産業の配置図になっています。どの矢印（反応）をどの規模で動かすかが、製品の供給量を決めます。</p>
+    <h3>医薬品の合成ルート設計</h3>
+    <p>アセチルサリチル酸（アスピリン）は、ベンゼンからクロロベンゼン、フェノール、サリチル酸を経て作る道が教科書の経路図そのままにたどれます。医薬品の開発では、目的の化合物から逆向きに原料へさかのぼる「逆向きにたどる考え方」が合成ルート設計の基本手順として使われており、安く手に入る原料まで何段階でたどり着けるかが、製造コストを大きく左右します。</p>
+    <h3>染料・香料などのファインケミカル</h3>
+    <p>アニリンは染料や医薬品の中間体（原料と製品の間にある化合物）として大量に使われ、「ベンゼン → ニトロベンゼン → アニリン」の2段階はその代表的な供給ルートです。酢酸エチルは塗料や接着剤の溶剤、マニキュアの除光液などに使われる身近な製品で、こちらも経路図の合流点にあたる化合物です。身の回りの製品名を経路図の上で探すと、どの駅（化合物）から来たものかが見えてきます。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who">特定の考案者はいない（反応経路図は、19世紀以降に蓄積された個々の有機反応を、合成の手順として整理し直した図の書き方）</p>
+    <p>反応経路図そのものは、特定の個人が発明した法則ではありません。ニトロ化・還元・酸化・エステル化といった個々の反応は19世紀以降、多くの化学者の研究によって1つずつ確立され、それらが教科書や工場の設計の中で「原料から製品までの地図」として整理されるようになりました。本文で扱った反応のうち、フェノールの塩に二酸化炭素を反応させてサリチル酸を得る方法は、ドイツの化学者<strong>ヘルマン・コルベ</strong>が1860年頃に示し、後に改良されたことから<strong>コルベ・シュミット反応</strong>と呼ばれます。経路図は、こうした個別の反応の集積を、順向きにも逆向きにも読める形に並べ直したものだと言えます。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>経路図の各駅にあたる化合物は、<a href="alcohols-ethers.html">アルコールとエーテル</a>、<a href="aldehydes-ketones.html">アルデヒドとケトン</a>、<a href="carboxylic-acids-esters.html">カルボン酸とエステル</a>、<a href="aromatics.html">芳香族化合物</a>、<a href="phenols-aromatic-acids.html">フェノールと芳香族カルボン酸</a>、<a href="aniline-azo-dyes.html">アニリンとアゾ染料</a>でそれぞれ詳しく扱います。出発点のエチレンの供給源は<a href="petroleum-petrochemicals.html">石油と石油化学</a>、付加重合の先は<a href="polymers-basics.html">高分子化合物と重合の基礎</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

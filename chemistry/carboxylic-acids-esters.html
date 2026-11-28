@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カルボン酸とエステル｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="カルボン酸（ギ酸・酢酸）の弱酸性と二量体、炭酸より強いことの確認法から、エステル化と加水分解（けん化との違い）、果物や湿布の香りのエステルまでを構造式と例題で解説。食酢や香料など現場での使われ方も紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="カルボン酸とエステル｜化学ツール集">
+<meta property="og:description" content="ギ酸・酢酸の性質、エステル化と加水分解、香りのエステルを構造式と例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/carboxylic-acids-esters.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">カルボン酸</span>とエステル</h1>
+    <p>化学の考え方辞典 ― 有機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 有機化学 ＞ カルボン酸とエステル</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">有機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    カルボン酸はカルボキシ基 −COOH をもつ弱酸で、炭酸より強い酸であることは炭酸水素ナトリウム水溶液での発泡で確かめられる。カルボン酸とアルコールを濃硫酸触媒で加熱すると水が取れてエステルができ（エステル化）、エステルに水を加えると逆向きに分解する（加水分解）。この往き来の向きと生成物を読み分けることが、食酢や果物の香り、セッケンづくりに通じる反応を理解する入口になる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>カルボキシ基をもつ<strong>カルボン酸</strong>と、そのカルボン酸とアルコールが結びついた<strong>エステル</strong>の性質と反応を扱うときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>ギ酸・酢酸などのカルボン酸が弱酸である理由や、水素結合で二量体を作ること、炭酸より強い酸であることを説明する問題</li>
+      <li>カルボン酸とアルコールの組み合わせから、エステル化でできるエステルの名前と構造式を書く問題</li>
+      <li>エステルを酸性条件・塩基性条件で加水分解したときの生成物を書く問題（けん化との違いを含む）</li>
+      <li>炭酸水素ナトリウム水溶液との発泡を使って、カルボン酸とエステル（やフェノール類）を区別する問題</li>
+    </ul>
+    <p>ポイントは、<strong>カルボキシ基 −COOH の「酸としての顔」と、アルコールの −OH と脱水して結びつく「エステル化の顔」</strong>を分けて考えることです。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>カルボン酸：カルボキシ基をもつ弱酸</h3>
+    <p><strong>カルボン酸</strong>は、カルボキシ基 <strong>−COOH</strong>（示性式では −C(=O)OH とも書く）をもつ化合物の総称です。代表は、炭素数1の<strong>ギ酸 HCOOH</strong>と、炭素数2の<strong>酢酸 CH<sub>3</sub>COOH</strong>です。ギ酸はアリの毒液などに含まれる最も簡単なカルボン酸で、名前はラテン語のアリ（formica）に由来します。酢酸は食酢の主成分で、純粋な酢酸は冬場に凍ることから<strong>氷酢酸</strong>とも呼ばれます。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 150" width="520" height="150" role="img" aria-label="ギ酸と酢酸の構造式" style="max-width:100%;height:auto;">
+        <text x="130" y="22" text-anchor="middle" font-size="13" fill="currentColor">ギ酸 HCOOH</text>
+        <text x="130" y="76" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="124" y1="60" x2="124" y2="40" stroke="currentColor" stroke-width="2"/>
+        <line x1="136" y1="60" x2="136" y2="40" stroke="currentColor" stroke-width="2"/>
+        <text x="130" y="32" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="118" y1="70" x2="94" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="84" y="76" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <line x1="142" y1="70" x2="166" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="182" y="76" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <text x="130" y="112" text-anchor="middle" font-size="12" fill="currentColor">炭素に H が直接ついた最も簡単なカルボン酸</text>
+        <text x="390" y="22" text-anchor="middle" font-size="13" fill="currentColor">酢酸 CH₃COOH</text>
+        <text x="308" y="76" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+        <line x1="330" y1="70" x2="352" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="365" y="76" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="359" y1="60" x2="359" y2="40" stroke="currentColor" stroke-width="2"/>
+        <line x1="371" y1="60" x2="371" y2="40" stroke="currentColor" stroke-width="2"/>
+        <text x="365" y="32" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="377" y1="70" x2="401" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="417" y="76" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <text x="390" y="112" text-anchor="middle" font-size="12" fill="currentColor">CH₃− のついたカルボン酸（食酢の主成分）</text>
+        <text x="260" y="140" text-anchor="middle" font-size="12" fill="currentColor">どちらも右端の −COOH がカルボキシ基</text>
+      </svg>
+      <p>ギ酸と酢酸の構造式。カルボキシ基は「C＝O」と「C−OH」が同じ炭素についた部分で、この −OH の水素が電離して酸性を示します。ギ酸はカルボキシ基の炭素に水素が直接ついている点が酢酸と違い、還元性を示すことでも知られます。</p>
+    </div>
+    <p>カルボン酸は水中で次のようにわずかに電離する<strong>弱酸</strong>です（強酸のようにほぼ完全には電離しません）。</p>
+    <div class="formula">CH<sub>3</sub>COOH ⇌ CH<sub>3</sub>COO<sup>−</sup> ＋ H<sup>＋</sup></div>
+    <p>ただし「弱酸」といっても、<strong>炭酸よりは強い酸</strong>です。そのため、カルボン酸に炭酸水素ナトリウム NaHCO<sub>3</sub> 水溶液を加えると、二酸化炭素を発生して発泡します。これはカルボン酸の検出・区別に使われる重要な反応です（フェノールは炭酸より弱い酸なので発泡せず、この点で区別できます。フェノール類は別の項目で扱います）。</p>
+    <div class="formula">CH<sub>3</sub>COOH ＋ NaHCO<sub>3</sub> → CH<sub>3</sub>COONa ＋ H<sub>2</sub>O ＋ CO<sub>2</sub></div>
+    <p>また、カルボン酸の分子どうしは、カルボキシ基の間で<strong>水素結合</strong>を作り、2分子が向かい合った<strong>二量体</strong>として存在することがあります。気体状態や無極性溶媒中ではこの二量体ができやすく、酢酸では見かけの分子量が約2倍（60×2＝120）に観測される原因になります。沸点が同程度の分子量の化合物より高いことも、この水素結合で説明できます。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 170" width="520" height="170" role="img" aria-label="酢酸の二量体の構造" style="max-width:100%;height:auto;">
+        <text x="260" y="22" text-anchor="middle" font-size="13" fill="currentColor">酢酸の二量体（水素結合は点線）</text>
+        <text x="96" y="86" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+        <line x1="118" y1="80" x2="140" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="152" y="86" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="147" y1="66" x2="162" y2="48" stroke="currentColor" stroke-width="2"/>
+        <line x1="153" y1="70" x2="168" y2="52" stroke="currentColor" stroke-width="2"/>
+        <text x="176" y="44" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="164" y1="80" x2="188" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="200" y="86" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="212" y1="80" x2="230" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="240" y="86" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="424" y="86" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+        <line x1="380" y1="80" x2="402" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="368" y="86" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="352" y1="52" x2="367" y2="70" stroke="currentColor" stroke-width="2"/>
+        <line x1="358" y1="48" x2="373" y2="66" stroke="currentColor" stroke-width="2"/>
+        <text x="344" y="44" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="332" y1="80" x2="356" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="320" y="86" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="290" y1="80" x2="308" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="280" y="86" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <line x1="182" y1="50" x2="272" y2="74" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/>
+        <line x1="338" y1="50" x2="248" y2="74" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/>
+        <text x="260" y="122" text-anchor="middle" font-size="12" fill="currentColor">2本の水素結合で向かい合い、環のような形で結びつく</text>
+        <text x="260" y="146" text-anchor="middle" font-size="12" fill="currentColor">二量体では見かけの分子量が酢酸1分子（60）の約2倍になる</text>
+      </svg>
+      <p>酢酸の二量体。一方の分子のカルボキシ基の水素が、もう一方の C＝O の酸素と水素結合し、それが2か所で起こるため、2分子がしっかり向かい合います。</p>
+    </div>
+    <h3>エステル化：カルボン酸＋アルコール ⇌ エステル＋水</h3>
+    <p>カルボン酸とアルコールを、少量の<strong>濃硫酸を触媒</strong>として加熱すると、カルボン酸の −OH とアルコールの −OH の水素が水として取れ（脱水）、<strong>エステル</strong>ができます。この反応を<strong>エステル化</strong>といい、酸触媒で行うものは<strong>フィッシャーエステル化</strong>とも呼ばれます。エステルの名前は「（カルボン酸名の語幹）＋（アルコール由来の基の名）」の順で付けます。たとえば酢酸とエタノールからは<strong>酢酸エチル</strong>ができます。</p>
+    <div class="formula">CH<sub>3</sub>COOH ＋ C<sub>2</sub>H<sub>5</sub>OH ⇌ CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> ＋ H<sub>2</sub>O（濃硫酸触媒・加熱）</div>
+    <p>この反応は<strong>可逆反応（平衡反応）</strong>で、生成した水を取り除いたり、どちらかの原料を過剰に使ったりすると、エステルが得られる割合（収率）が上がります。濃硫酸には触媒の働きに加えて、生成した水を吸収して平衡をエステル側へ寄せる働きもあります。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 150" width="560" height="150" role="img" aria-label="エタノールと酢酸エチルの構造式" style="max-width:100%;height:auto;">
+        <text x="110" y="22" text-anchor="middle" font-size="13" fill="currentColor">エタノール C₂H₅OH</text>
+        <text x="45" y="76" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+        <line x1="67" y1="70" x2="87" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="107" y="76" text-anchor="middle" font-size="14" fill="currentColor">CH₂</text>
+        <line x1="129" y1="70" x2="149" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="166" y="76" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <text x="110" y="112" text-anchor="middle" font-size="12" fill="currentColor">−OH の水素がエステル化で水になる側</text>
+        <text x="390" y="22" text-anchor="middle" font-size="13" fill="currentColor">酢酸エチル CH₃COOC₂H₅</text>
+        <text x="252" y="76" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+        <line x1="274" y1="70" x2="292" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="304" y="76" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="298" y1="60" x2="298" y2="40" stroke="currentColor" stroke-width="2"/>
+        <line x1="310" y1="60" x2="310" y2="40" stroke="currentColor" stroke-width="2"/>
+        <text x="304" y="32" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="316" y1="70" x2="334" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="346" y="76" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="358" y1="70" x2="378" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="398" y="76" text-anchor="middle" font-size="14" fill="currentColor">CH₂</text>
+        <line x1="420" y1="70" x2="440" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="462" y="76" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+        <text x="390" y="112" text-anchor="middle" font-size="12" fill="currentColor">−COO− の部分がエステル結合</text>
+      </svg>
+      <p>エタノールと酢酸エチルの構造式。エステルの中央にある <strong>−COO−</strong> のつながりが<strong>エステル結合</strong>です。酢酸の −OH とエタノールの H が水として取れ、残り同士がこの結合で結びついた形になっています。</p>
+    </div>
+    <h3>加水分解：エステルをカルボン酸とアルコールに戻す</h3>
+    <p>エステルに水を加えて分解し、もとのカルボン酸とアルコールに戻す反応を<strong>加水分解</strong>といい、エステル化の逆反応です。条件によって生成物が変わります。</p>
+    <ul>
+      <li><strong>酸性条件（希硫酸など）</strong>：エステル化とまったく逆向きの平衡反応です。酢酸エチルなら酢酸とエタノールに戻ります。CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> ＋ H<sub>2</sub>O ⇌ CH<sub>3</sub>COOH ＋ C<sub>2</sub>H<sub>5</sub>OH</li>
+      <li><strong>塩基性条件（水酸化ナトリウム水溶液など）</strong>：できたカルボン酸が塩基と中和して<strong>カルボン酸の塩</strong>になるため、反応はほぼ一方的に進みます。酢酸エチルなら酢酸ナトリウムとエタノールができます。CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> ＋ NaOH → CH<sub>3</sub>COONa ＋ C<sub>2</sub>H<sub>5</sub>OH</li>
+    </ul>
+    <p>塩基性条件の加水分解と似た言葉に<strong>けん化</strong>があります。けん化は本来、<strong>油脂</strong>（高級脂肪酸とグリセリンのエステル）を水酸化ナトリウム水溶液で加水分解して、セッケン（脂肪酸のナトリウム塩）とグリセリンを得る反応を指す言葉です。つまり、エステルの塩基性加水分解という仕組み自体は共通ですが、「けん化」は油脂からセッケンを作る場合に使う呼び名で、油脂とセッケンは次の項目で詳しく扱います。</p>
+    <h3>代表的なエステルの香り</h3>
+    <p>エステルの多くは果物や花を思わせる甘い香りをもち、香料や食品の香りづけに使われます。カルボン酸とアルコールの組み合わせを変えると香りが変わるのが特徴です。</p>
+    <ul>
+      <li><strong>酢酸エチル</strong>：果実のような香り。香料のほか、塗料やマニキュアの除光液などの溶剤としても使われます</li>
+      <li><strong>酢酸イソアミル（酢酸3-メチルブチル）</strong>：バナナのような香り。清涼飲料や菓子の香料に使われます</li>
+      <li><strong>酪酸エチル</strong>：パイナップルのような香り。果実系の香料に使われます</li>
+      <li><strong>サリチル酸メチル</strong>：湿布薬の独特のにおいの主成分。サリチル酸とメタノールのエステルで、サリチル酸はベンゼン環に −OH と −COOH の両方をもつ芳香族化合物です。詳しくはフェノールと芳香族カルボン酸の項目への橋渡しとして、ここでは香りの代表例として名前を押さえてください</li>
+    </ul>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 250" width="520" height="250" role="img" aria-label="香りのあるエステルの構造式" style="max-width:100%;height:auto;">
+        <text x="30" y="34" font-size="13" fill="currentColor">酢酸イソアミル（バナナの香り）</text>
+        <text x="30" y="62" font-size="14" fill="currentColor">CH₃−CO−O−CH₂−CH₂−CH(CH₃)₂</text>
+        <text x="30" y="104" font-size="13" fill="currentColor">酪酸エチル（パイナップルの香り）</text>
+        <text x="30" y="132" font-size="14" fill="currentColor">CH₃−CH₂−CH₂−CO−O−CH₂−CH₃</text>
+        <text x="30" y="174" font-size="13" fill="currentColor">サリチル酸メチル（湿布の香り）</text>
+        <polygon points="70,192 96,207 96,237 70,252 44,237 44,207" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="70" cy="222" r="14" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="70" y1="192" x2="70" y2="176" stroke="currentColor" stroke-width="2"/>
+        <text x="70" y="170" text-anchor="middle" font-size="13" fill="currentColor">OH</text>
+        <line x1="96" y1="207" x2="116" y2="200" stroke="currentColor" stroke-width="2"/>
+        <text x="122" y="205" font-size="14" fill="currentColor">−COOCH₃</text>
+        <text x="230" y="228" font-size="12" fill="currentColor">ベンゼン環に −OH と −COOCH₃ が隣り合ってついた構造</text>
+        <text x="260" y="244" text-anchor="middle" font-size="12" fill="currentColor">どのエステルにも共通して −COO−（エステル結合）が入っている</text>
+      </svg>
+      <p>香りのあるエステルの構造式（縮合した示性式で表記）。サリチル酸メチルは、サリチル酸の −COOH とメタノールがエステル化したもので、ベンゼン環側の −OH はそのまま残っています。</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>官能基を見分ける。</strong>−COOH があればカルボン酸、−COO− で炭素鎖がつながっていればエステルです。名前の前半分がカルボン酸側、後ろ半分がアルコール側を表します。</li>
+      <li><strong>エステル化では、カルボン酸の −OH とアルコールの H を取り除いてつなぐ。</strong>残りを −COO− で結び、水 H<sub>2</sub>O を生成物に書き添えます。触媒は濃硫酸、反応は可逆（⇌）です。</li>
+      <li><strong>加水分解では、エステル結合 −COO− のところで切り、水を分けて戻す。</strong>カルボン酸側には −OH、アルコール側には H が付いて、もとの2物質に戻ります。</li>
+      <li><strong>塩基性条件では、カルボン酸を塩に直す。</strong>NaOH で加水分解すると、生成物はカルボン酸そのものではなくカルボン酸のナトリウム塩になり、反応は一方向（→）に進みます。</li>
+      <li><strong>反応式の両辺で原子の数を数え直す。</strong>C・H・O（と Na）の数が左右で一致しているかを必ず検算します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1（エステル化）：酢酸とエタノールを濃硫酸触媒で加熱したときの反応式を書き、生成するエステルの名前を答えよ。</p>
+      <p class="ex-q">問題2（エステル化の組み合わせ）：プロパン酸 CH<sub>3</sub>CH<sub>2</sub>COOH とメタノール CH<sub>3</sub>OH をエステル化させると、どんなエステルができるか。名前と分子式を答えよ。</p>
+      <p class="ex-q">問題3（加水分解）：酢酸エチルについて、（a）酸性条件で加水分解したときの生成物、（b）水酸化ナトリウム水溶液で加水分解したときの生成物を、それぞれ反応式で書け。また（b）と「けん化」の関係を一言で述べよ。</p>
+      <p class="ex-q">問題4（区別）：無色の液体A（酢酸）と液体B（酢酸エチル）がある。炭酸水素ナトリウム水溶液を加える方法で区別するとき、結果とその理由を答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：酢酸の −OH とエタノールの H が水として取れ、残りがエステル結合で結びつきます。CH<sub>3</sub>COOH ＋ C<sub>2</sub>H<sub>5</sub>OH ⇌ CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> ＋ H<sub>2</sub>O。生成物は<strong>酢酸エチル</strong>です。原子数を数えると、左辺は C<sub>4</sub>H<sub>10</sub>O<sub>3</sub>、右辺も酢酸エチル C<sub>4</sub>H<sub>8</sub>O<sub>2</sub> と水 H<sub>2</sub>O の合計で C<sub>4</sub>H<sub>10</sub>O<sub>3</sub> となり一致します（検算済み）。</li>
+          <li>問題2：カルボン酸がプロパン酸、アルコールがメタノールなので、エステルの名前は「プロパン酸メチル」です。構造は CH<sub>3</sub>CH<sub>2</sub>COOCH<sub>3</sub> で、炭素は 3＋1＝4 個、水素は 5＋3＝8 個、酸素は 2 個なので分子式は <strong>C<sub>4</sub>H<sub>8</sub>O<sub>2</sub></strong> です。反応式 C<sub>3</sub>H<sub>6</sub>O<sub>2</sub> ＋ CH<sub>4</sub>O ⇌ C<sub>4</sub>H<sub>8</sub>O<sub>2</sub> ＋ H<sub>2</sub>O も両辺とも C<sub>4</sub>H<sub>10</sub>O<sub>3</sub> で一致します（検算済み）。</li>
+          <li>問題3：（a）酸性条件ではエステル化の逆反応が起こり、CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> ＋ H<sub>2</sub>O ⇌ <strong>CH<sub>3</sub>COOH（酢酸）＋ C<sub>2</sub>H<sub>5</sub>OH（エタノール）</strong>。（b）塩基性条件では、できた酢酸が NaOH と中和して塩になるため、CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> ＋ NaOH → <strong>CH<sub>3</sub>COONa（酢酸ナトリウム）＋ C<sub>2</sub>H<sub>5</sub>OH（エタノール）</strong>と一方向に進みます。どちらの式も両辺の原子数が一致します（検算済み）。（b）はエステルの塩基性加水分解であり、けん化はこの仕組みを油脂に適用してセッケンを作る場合の呼び名です。</li>
+          <li>問題4：NaHCO<sub>3</sub> 水溶液を加えると、<strong>A（酢酸）だけが CO<sub>2</sub> を発生して発泡し、B（酢酸エチル）は発泡しません</strong>。理由は、カルボン酸が炭酸より強い酸で炭酸水素イオンから水素イオンを奪い、炭酸を経て CO<sub>2</sub> を発生させるのに対し、エステルには電離する −COOH がないからです。反応式は CH<sub>3</sub>COOH ＋ NaHCO<sub>3</sub> → CH<sub>3</sub>COONa ＋ H<sub>2</sub>O ＋ CO<sub>2</sub> で、両辺とも C<sub>3</sub>H<sub>5</sub>O<sub>5</sub>Na となり一致します（検算済み）。</li>
+        </ol>
+        <p><strong>答え：問題1は CH<sub>3</sub>COOH ＋ C<sub>2</sub>H<sub>5</sub>OH ⇌ CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> ＋ H<sub>2</sub>O、エステルは酢酸エチル。問題2はプロパン酸メチル、C<sub>4</sub>H<sub>8</sub>O<sub>2</sub>。問題3は（a）酢酸とエタノール、（b）酢酸ナトリウムとエタノールで、けん化は油脂版の塩基性加水分解。問題4は酢酸だけが発泡する。</strong></p>
+        <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+        <div class="tri-fig">
+          <svg viewBox="0 0 520 250" width="520" height="250" role="img" aria-label="例題に登場する化合物の構造式" style="max-width:100%;height:auto;">
+            <text x="130" y="22" text-anchor="middle" font-size="13" fill="currentColor">プロパン酸 C₃H₆O₂</text>
+            <text x="130" y="52" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH₂−COOH</text>
+            <text x="390" y="22" text-anchor="middle" font-size="13" fill="currentColor">メタノール CH₃OH</text>
+            <text x="390" y="52" text-anchor="middle" font-size="14" fill="currentColor">CH₃−OH</text>
+            <text x="130" y="92" text-anchor="middle" font-size="13" fill="currentColor">プロパン酸メチル C₄H₈O₂</text>
+            <text x="130" y="122" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH₂−CO−O−CH₃</text>
+            <text x="390" y="92" text-anchor="middle" font-size="13" fill="currentColor">酢酸ナトリウム CH₃COONa</text>
+            <text x="390" y="122" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CO−O⁻ Na⁺</text>
+            <text x="260" y="162" text-anchor="middle" font-size="13" fill="currentColor">炭酸水素ナトリウム NaHCO₃（問題4の試薬）</text>
+            <text x="260" y="192" text-anchor="middle" font-size="14" fill="currentColor">Na⁺ HCO₃⁻（水溶液中で炭酸より弱い酸の塩として働く）</text>
+            <text x="260" y="232" text-anchor="middle" font-size="12" fill="currentColor">問題1・3の酢酸、エタノール、酢酸エチルは前掲の図にあります</text>
+          </svg>
+          <p>例題に登場する化合物の構造式。プロパン酸とメタノールは問題2の原料、プロパン酸メチルはその生成物、酢酸ナトリウムは問題3（b）と問題4の生成物です。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>食酢と食品の酸味・保存</h3>
+    <p>食酢の主成分は酢酸で、その酸性が味の酸味になるだけでなく、食品の腐敗を抑える保存の働きもします。酢酸菌がエタノールを酸化して酢酸を作る仕組みが、酒から酢を作る醸造酢の土台です。カルボン酸が「弱酸だが炭酸より強い」というこの項目の性質が、食品の現場でそのまま効いています。</p>
+    <h3>香料・溶剤としてのエステル</h3>
+    <p>果物の香りの多くはエステルによるもので、酢酸イソアミルのバナナ香、酪酸エチルのパイナップル香のように、天然の香りの成分をエステル化で合成して清涼飲料や菓子の香料に使います。酢酸エチルは香りづけだけでなく、塗料や接着剤、マニキュアの除光液の溶剤としても広く使われる工業的に重要なエステルです。</p>
+    <h3>湿布薬とセッケンへのつながり</h3>
+    <p>サリチル酸メチルは消炎鎮痛の湿布薬や塗り薬の有効成分で、あの独特のにおいはこのエステルの香りです。また、エステルの塩基性加水分解を油脂に適用したけん化はセッケン製造の中心反応で、次に学ぶ油脂とセッケンの項目につながります。エステル化と加水分解の往き来は、香り・薬・洗剤という身近な製品の裏側に共通する仕組みです。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>エミール・フィッシャー</strong>（1852〜1919、ドイツの化学者）、<strong>ジョン・レイ</strong>（1627〜1705、イギリスの博物学者）</p>
+    <p>酸を触媒とするエステル化は、ドイツの化学者<strong>エミール・フィッシャー</strong>が1895年にアルトゥル・シュパイアーとともに報告した方法に基づき、<strong>フィッシャーエステル化</strong>と呼ばれます。本文の濃硫酸触媒によるエステル化がこれにあたります。また、ギ酸はアリを蒸留して得られた酸として古くから知られ、イギリスの博物学者<strong>ジョン・レイ</strong>が1671年にアリからこの酸を取り出したとされ、名前もラテン語のアリ（formica）に由来します。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>エステル化のもう一方の原料は<a href="alcohols-ethers.html">アルコールとエーテル</a>、カルボン酸の手前の酸化段階は<a href="aldehydes-ketones.html">アルデヒドとケトン</a>が役立ちます。けん化とセッケンの計算は<a href="fats-soaps-detergents.html">油脂とセッケン・洗剤</a>、サリチル酸の詳しい性質は<a href="phenols-aromatic-acids.html">フェノールと芳香族カルボン酸</a>、酸・塩基の性質を使った分離は<a href="organic-separation.html">有機化合物の分離と精製</a>で扱います。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

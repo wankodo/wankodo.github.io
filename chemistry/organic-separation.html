@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>有機化合物の分離と精製｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="安息香酸・フェノール・アニリン・トルエンの混合物を、炭酸水素ナトリウム水溶液・水酸化ナトリウム水溶液・塩酸を順に使って分液ろうとで分ける定番の流れを、構造式と例題で解説。酸の強さの順序が分かれ目になる理由、蒸留・再結晶・抽出・クロマトグラフィーの入口と、現場での使われ方も紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="有機化合物の分離と精製｜化学ツール集">
+<meta property="og:description" content="酸性・塩基性・中性の有機化合物を、NaHCO₃・NaOH・塩酸を順に使って分液分離する流れと、酸の強さの順序が分かれ目になる理由を構造式と例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/organic-separation.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>有機化合物の<span class="accent">分離</span>と<span class="accent">精製</span></h1>
+    <p>化学の考え方辞典 ― 有機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 有機化学 ＞ 有機化合物の分離と精製</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">有機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    有機化合物の混合物は、酸性・塩基性・中性という性質の違いを利用して分けることができる。酸性の強いカルボン酸は炭酸水素ナトリウム水溶液で、フェノールは水酸化ナトリウム水溶液で、それぞれ塩になって水層へ移り、塩基性のアニリンは塩酸で塩になって水層へ移る。酸の強さの順序（カルボン酸＞炭酸＞フェノール）が、どの試薬でどの成分が分かれるかを決める。残った中性の成分は有機層に残り、水層に移した成分は酸や塩基を加えて元の化合物に戻して回収する。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>性質の似た有機化合物どうしの混合物を、成分ごとに分けて取り出すときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>安息香酸・フェノール・アニリン・トルエンなどの混合物に試薬を順に加えたとき、<strong>どの成分がどの層（水層・有機層）に移るか</strong>を答える分離の流れ図問題</li>
+      <li>炭酸水素ナトリウム水溶液では安息香酸だけが分かれ、フェノールが分かれない理由を、<strong>酸の強さの順序</strong>で説明する問題</li>
+      <li>水層に塩として移した成分を、酸や塩基を加えて<strong>元の化合物に戻して回収する操作</strong>を答える問題</li>
+      <li>蒸留・再結晶・抽出・クロマトグラフィーのうち、混合物の性質に合った<strong>分離・精製法を選ぶ</strong>問題</li>
+    </ul>
+    <p>ポイントは、「酸性の化合物は塩基と反応して塩になると水に溶けるようになる」「塩基性の化合物は酸と反応して塩になると水に溶けるようになる」という<strong>溶解性の切り替え</strong>を、試薬の強さの順に使い分けることです。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>鍵は「塩にすると水に溶ける」こと</h3>
+    <p>安息香酸・フェノール・アニリン・トルエンはいずれもベンゼン環をもち、水にはほとんど溶けませんが、ジエチルエーテルのような有機溶媒にはよく溶けます。ところが、酸性の化合物を塩基と反応させて<strong>塩（イオン性の物質）</strong>に変えると、水に溶けるようになります。塩基性の化合物も、酸と反応させて塩にすれば水に溶けます。そこで、混合物を有機溶媒に溶かして<strong>分液ろうと</strong>に入れ、水溶液の試薬を加えてよく振り混ぜると、塩になった成分だけが水層へ移り、残りの成分は有機層（エーテル層）に残ります。この操作を<strong>抽出（分液）</strong>といいます。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 185" width="520" height="185" role="img" aria-label="安息香酸・フェノール・アニリン・トルエンの構造式" style="max-width:100%;height:auto;">
+        <text x="65" y="20" text-anchor="middle" font-size="13" fill="currentColor">安息香酸</text>
+        <text x="65" y="48" text-anchor="middle" font-size="14" fill="currentColor">COOH</text>
+        <line x1="65" y1="54" x2="65" y2="66" stroke="currentColor" stroke-width="2"/>
+        <polygon points="65,66 99,85 99,123 65,142 31,123 31,85" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="65" cy="104" r="16" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="65" y="164" text-anchor="middle" font-size="12" fill="currentColor">C₆H₅COOH（酸性・強め）</text>
+        <text x="195" y="20" text-anchor="middle" font-size="13" fill="currentColor">フェノール</text>
+        <text x="195" y="48" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <line x1="195" y1="54" x2="195" y2="66" stroke="currentColor" stroke-width="2"/>
+        <polygon points="195,66 229,85 229,123 195,142 161,123 161,85" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="195" cy="104" r="16" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="195" y="164" text-anchor="middle" font-size="12" fill="currentColor">C₆H₅OH（酸性・弱い）</text>
+        <text x="325" y="20" text-anchor="middle" font-size="13" fill="currentColor">アニリン</text>
+        <text x="325" y="48" text-anchor="middle" font-size="14" fill="currentColor">NH₂</text>
+        <line x1="325" y1="54" x2="325" y2="66" stroke="currentColor" stroke-width="2"/>
+        <polygon points="325,66 359,85 359,123 325,142 291,123 291,85" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="325" cy="104" r="16" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="325" y="164" text-anchor="middle" font-size="12" fill="currentColor">C₆H₅NH₂（塩基性）</text>
+        <text x="455" y="20" text-anchor="middle" font-size="13" fill="currentColor">トルエン</text>
+        <text x="455" y="48" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+        <line x1="455" y1="54" x2="455" y2="66" stroke="currentColor" stroke-width="2"/>
+        <polygon points="455,66 489,85 489,123 455,142 421,123 421,85" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="455" cy="104" r="16" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="455" y="164" text-anchor="middle" font-size="12" fill="currentColor">C₆H₅CH₃（中性）</text>
+      </svg>
+      <p>分離の定番混合物の4成分。官能基が違えば酸性・塩基性・中性の性質が違い、その違いがそのまま分離の手がかりになります。環内の円はベンゼン環を表します。</p>
+    </div>
+    <h3>酸の強さの順序が分かれ目になる</h3>
+    <p>酸性の化合物を塩にするには、その酸より<strong>弱い酸の塩である塩基</strong>でも反応が進むかどうかが問題になります。関係する酸の強さは次の順です。</p>
+    <div class="formula">酸の強さ：カルボン酸（安息香酸など）＞ 炭酸 ＞ フェノール</div>
+    <p>炭酸水素ナトリウム NaHCO<sub>3</sub> は炭酸の塩なので、炭酸より強い酸（カルボン酸）とは反応して塩を作りますが、炭酸より弱いフェノールとは反応しません。一方、水酸化ナトリウム NaOH は強い塩基なので、フェノールとも反応して塩を作ります。つまり、<strong>弱い試薬（NaHCO<sub>3</sub> 水溶液）から先に使うと、強い酸だけを先に抜き取ることができる</strong>のです。順番を逆にして NaOH 水溶液を先に加えると、安息香酸とフェノールの両方が一度に水層へ移ってしまい、両者を分けることができません。</p>
+    <ul>
+      <li>安息香酸 ＋ NaHCO<sub>3</sub> → 安息香酸ナトリウム（水層へ）＋ H<sub>2</sub>O ＋ CO<sub>2</sub>↑：C<sub>6</sub>H<sub>5</sub>COOH ＋ NaHCO<sub>3</sub> → C<sub>6</sub>H<sub>5</sub>COONa ＋ H<sub>2</sub>O ＋ CO<sub>2</sub></li>
+      <li>フェノール ＋ NaOH → ナトリウムフェノキシド（水層へ）＋ H<sub>2</sub>O：C<sub>6</sub>H<sub>5</sub>OH ＋ NaOH → C<sub>6</sub>H<sub>5</sub>ONa ＋ H<sub>2</sub>O</li>
+      <li>アニリン ＋ HCl → 塩化アニリニウム（水層へ）：C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub> ＋ HCl → C<sub>6</sub>H<sub>5</sub>NH<sub>3</sub>Cl</li>
+      <li>トルエン：どの試薬とも反応しない中性の化合物なので、最後まで有機層に残ります</li>
+    </ul>
+    <p>なお、フェノールは NaHCO<sub>3</sub> とは反応しませんが、金属ナトリウムとは反応して水素を発生します（C<sub>6</sub>H<sub>5</sub>OH はアルコールと同じく −OH をもつため）。「フェノールは酸性だが、カルボン酸よりずっと弱い」という位置づけが、分離の成否を分けます。</p>
+    <h3>分離以外の精製法の入口</h3>
+    <ul>
+      <li><strong>蒸留</strong>：沸点の差を利用して液体の混合物を分ける方法。沸点の差が小さい混合物では、蒸気を何度も凝縮・蒸発させる<strong>分留（精留）</strong>を行います。有機層に残ったトルエンのように、溶媒と沸点が離れた成分の回収にも使います。</li>
+      <li><strong>再結晶</strong>：温度による溶解度の差を利用する方法。高温の溶媒に溶かし、冷却すると純度の高い結晶が析出します。回収した安息香酸の純度を上げる仕上げなどに使います。</li>
+      <li><strong>抽出</strong>：この項目の分液も抽出の一種で、2つの混ざらない溶媒への溶けやすさの差（分配）を利用します。水層と有機層の組み合わせを変えて繰り返すと、分離の精度が上がります。</li>
+      <li><strong>クロマトグラフィー</strong>：固定相（シリカゲルやろ紙など）への吸着のしやすさや、移動相への溶けやすさの差で分ける方法。少量の混合物の分析や精製に強く、カラムクロマトグラフィー・薄層クロマトグラフィー・ペーパークロマトグラフィーなどの形があります。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>各成分を酸性・塩基性・中性に分類する。</strong>−COOH をもてば酸性（カルボン酸）、フェノール性の −OH は弱い酸性、−NH<sub>2</sub> をもてば塩基性、どれでもなければ中性です。</li>
+      <li><strong>試薬は「弱いものから順に」当てる。</strong>まず NaHCO<sub>3</sub> 水溶液でカルボン酸だけを、次に NaOH 水溶液でフェノールを、最後に希塩酸でアニリンを、それぞれ塩として水層へ移します。</li>
+      <li><strong>各操作で「塩になった成分は水層、ならなかった成分は有機層」と書き分ける。</strong>流れ図では、水層と有機層を分けて取り出すたびに、残りの混合物がどう変わるかを追います。</li>
+      <li><strong>水層に移した成分は、逆の性質の試薬で元に戻す。</strong>カルボン酸やフェノールの塩の水溶液には塩酸を加えて元の酸を遊離させ、アニリンの塩の水溶液には NaOH 水溶液を加えてアニリンを遊離させます。</li>
+      <li><strong>有機層に残った中性成分は、溶媒を蒸留で取り除いて回収する。</strong>固体の成分は再結晶で、液体どうしは蒸留で仕上げる、という使い分けも確認します。</li>
+    </ol>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1（分離の流れ図）：安息香酸・フェノール・アニリン・トルエンの混合物をジエチルエーテルに溶かし、分液ろうとに入れた。（a）炭酸水素ナトリウム水溶液を加えてよく振ると、水層に移る成分はどれか。また、そのときに発生する気体を答えよ。（b）有機層に残った混合物に水酸化ナトリウム水溶液を加えると、水層に移る成分はどれか。（c）さらに有機層に残った混合物に希塩酸を加えると、水層に移る成分はどれか。（d）最後に有機層に残る成分と、その回収方法を答えよ。</p>
+      <p class="ex-q">問題2（酸の強さと分かれ目）：安息香酸とフェノールだけの混合物に炭酸水素ナトリウム水溶液を加えても、フェノールは水層に移らない。その理由を酸の強さの順序を使って説明せよ。また、フェノールを水層に移すにはどの試薬を使えばよいか。</p>
+      <p class="ex-q">問題3（回収の操作）：問題1で水層に移した各成分を、元の化合物として取り出したい。（a）安息香酸ナトリウムを含む水溶液、（b）ナトリウムフェノキシドを含む水溶液、（c）塩化アニリニウムを含む水溶液に、それぞれ何を加えればよいか。さらに（d）ナトリウムフェノキシドの水溶液に二酸化炭素を吹き込んでもフェノールが遊離する理由を、酸の強さの順序で説明せよ。</p>
+      <p class="ex-q">問題4（塩基性でない成分）：アニリンとニトロベンゼンの混合物に希塩酸を加えてよく振ると、水層に移るのはどちらか。理由も答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：（a）<strong>安息香酸</strong>。炭酸より強い酸である安息香酸だけが NaHCO<sub>3</sub> と反応し、安息香酸ナトリウム C<sub>6</sub>H<sub>5</sub>COONa になって水層へ移ります。このとき<strong>二酸化炭素 CO<sub>2</sub></strong> が発生します（泡の発生が、カルボン酸が抜けた目印になります）。（b）<strong>フェノール</strong>。強い塩基である NaOH と反応し、ナトリウムフェノキシド C<sub>6</sub>H<sub>5</sub>ONa になって水層へ移ります。（c）<strong>アニリン</strong>。塩基性のアニリンが HCl と反応し、塩化アニリニウム C<sub>6</sub>H<sub>5</sub>NH<sub>3</sub>Cl になって水層へ移ります。（d）<strong>トルエン</strong>。中性でどの試薬とも反応しないため最後まで有機層に残り、ジエチルエーテルを蒸留で取り除く（またはトルエンを蒸留で分ける）ことで回収します。</li>
+          <li>問題2：酸の強さは<strong>カルボン酸 ＞ 炭酸 ＞ フェノール</strong>の順です。炭酸水素ナトリウムは炭酸の塩であり、炭酸より強い酸とは中和反応が進みますが、炭酸より弱いフェノールとは反応が進みません。そのためフェノールは塩にならず、有機層に残ります。フェノールを水層に移すには、より強い塩基である<strong>水酸化ナトリウム水溶液</strong>を使います。</li>
+          <li>問題3：（a）<strong>塩酸（希塩酸）を加える</strong>と、安息香酸ナトリウムが安息香酸に戻り、水に溶けにくいため固体として析出します（ろ過し、再結晶で精製できます）。C<sub>6</sub>H<sub>5</sub>COONa ＋ HCl → C<sub>6</sub>H<sub>5</sub>COOH ＋ NaCl。（b）<strong>塩酸を加える</strong>とフェノールが遊離します。C<sub>6</sub>H<sub>5</sub>ONa ＋ HCl → C<sub>6</sub>H<sub>5</sub>OH ＋ NaCl。（c）<strong>水酸化ナトリウム水溶液を加える</strong>とアニリンが遊離します。C<sub>6</sub>H<sub>5</sub>NH<sub>3</sub>Cl ＋ NaOH → C<sub>6</sub>H<sub>5</sub>NH<sub>2</sub> ＋ NaCl ＋ H<sub>2</sub>O。（d）炭酸はフェノールより強い酸なので、フェノールの塩に炭酸（CO<sub>2</sub> ＋ H<sub>2</sub>O）を作用させると、より弱い酸であるフェノールが押し出されて遊離します。「強い酸が弱い酸の塩から弱い酸を遊離させる」という一般原則の現れです。</li>
+          <li>問題4：水層に移るのは<strong>アニリン</strong>です。アニリンは −NH<sub>2</sub> をもつ塩基性化合物で、HCl と反応して塩化アニリニウムとなり水に溶けます。一方、ニトロベンゼンの −NO<sub>2</sub>（ニトロ基）は塩基性を示さないため、ニトロベンゼンは塩酸と反応せず有機層に残ります。「窒素を含む＝塩基性」とは限らず、官能基の種類で判断するのが要点です。</li>
+        </ol>
+        <p><strong>答え：問題1は（a）安息香酸・CO<sub>2</sub>、（b）フェノール、（c）アニリン、（d）トルエン（蒸留で回収）。問題2は「フェノールは炭酸より弱い酸だから反応しない」、試薬は NaOH 水溶液。問題3は（a）塩酸、（b）塩酸、（c）NaOH 水溶液、（d）炭酸＞フェノールの順序のため。問題4はアニリン（ニトロベンゼンは塩基性でない）。</strong></p>
+        <div class="tri-fig">
+          <svg viewBox="0 0 520 320" width="520" height="320" role="img" aria-label="例題に登場する塩とニトロベンゼン・ジエチルエーテルの構造式" style="max-width:100%;height:auto;">
+            <text x="90" y="20" text-anchor="middle" font-size="13" fill="currentColor">安息香酸ナトリウム</text>
+            <text x="90" y="48" text-anchor="middle" font-size="13" fill="currentColor">COO⁻ Na⁺</text>
+            <line x1="90" y1="54" x2="90" y2="66" stroke="currentColor" stroke-width="2"/>
+            <polygon points="90,66 124,85 124,123 90,142 56,123 56,85" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="90" cy="104" r="16" fill="none" stroke="currentColor" stroke-width="2"/>
+            <text x="90" y="164" text-anchor="middle" font-size="12" fill="currentColor">C₆H₅COONa（水層へ）</text>
+            <text x="260" y="20" text-anchor="middle" font-size="13" fill="currentColor">ナトリウムフェノキシド</text>
+            <text x="260" y="48" text-anchor="middle" font-size="13" fill="currentColor">O⁻ Na⁺</text>
+            <line x1="260" y1="54" x2="260" y2="66" stroke="currentColor" stroke-width="2"/>
+            <polygon points="260,66 294,85 294,123 260,142 226,123 226,85" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="260" cy="104" r="16" fill="none" stroke="currentColor" stroke-width="2"/>
+            <text x="260" y="164" text-anchor="middle" font-size="12" fill="currentColor">C₆H₅ONa（水層へ）</text>
+            <text x="430" y="20" text-anchor="middle" font-size="13" fill="currentColor">塩化アニリニウム</text>
+            <text x="430" y="48" text-anchor="middle" font-size="13" fill="currentColor">NH₃⁺ Cl⁻</text>
+            <line x1="430" y1="54" x2="430" y2="66" stroke="currentColor" stroke-width="2"/>
+            <polygon points="430,66 464,85 464,123 430,142 396,123 396,85" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="430" cy="104" r="16" fill="none" stroke="currentColor" stroke-width="2"/>
+            <text x="430" y="164" text-anchor="middle" font-size="12" fill="currentColor">C₆H₅NH₃Cl（水層へ）</text>
+            <text x="130" y="196" text-anchor="middle" font-size="13" fill="currentColor">ニトロベンゼン</text>
+            <text x="130" y="224" text-anchor="middle" font-size="14" fill="currentColor">NO₂</text>
+            <line x1="130" y1="230" x2="130" y2="242" stroke="currentColor" stroke-width="2"/>
+            <polygon points="130,242 164,261 164,299 130,318 96,299 96,261" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="130" cy="280" r="16" fill="none" stroke="currentColor" stroke-width="2"/>
+            <text x="390" y="196" text-anchor="middle" font-size="13" fill="currentColor">ジエチルエーテル（溶媒）</text>
+            <text x="390" y="252" text-anchor="middle" font-size="15" fill="currentColor">CH₃CH₂−O−CH₂CH₃</text>
+            <text x="390" y="282" text-anchor="middle" font-size="12" fill="currentColor">有機層を作る溶媒。成分はここに溶けた状態から出発する</text>
+          </svg>
+          <p>例題に登場する化合物の構造式。上段は塩になって水層へ移る3つの塩（安息香酸ナトリウム・ナトリウムフェノキシド・塩化アニリニウム）、下段は問題4のニトロベンゼンと、混合物を溶かすジエチルエーテルです。4成分そのものの構造式は前掲の図にあります。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>医薬品・化学製品の製造での精製工程</h3>
+    <p>有機合成では、目的の化合物は副生成物や未反応の原料と混ざった状態で得られます。工場や研究室では、反応後の混合物を水と有機溶媒で分液し、酸性・塩基性の不純物を塩として水層へ洗い流す操作が日常的に行われます。この項目の「塩にすると水に溶ける」という切り替えは、スケールが大きくなってもそのまま使われる精製の基本操作です。</p>
+    <h3>再結晶と蒸留による仕上げ</h3>
+    <p>分液で大まかに分けたあとの仕上げには、固体なら再結晶、液体なら蒸留（分留）が使われます。医薬品の原薬製造では、再結晶によって純度を規格まで高める工程が品質管理の要になっています。沸点の差で分ける分留は、石油精製でガソリン・灯油・軽油などを分ける操作としても大規模に使われています。</p>
+    <h3>クロマトグラフィーによる分析と分取</h3>
+    <p>クロマトグラフィーは、食品や医薬品の成分分析、環境中の微量物質の検出など、分析化学の中心技術です。薄層クロマトグラフィーで反応の進み具合を確認し、カラムクロマトグラフィーで目的物を分取する流れは、有機合成の実験室の標準的な手順になっています。液体クロマトグラフィーを高速化した HPLC は、製薬・食品分野の品質検査に広く使われています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who">分液・抽出に特定の発明者はいない ― クロマトグラフィーは <strong>ミハイル・ツヴェット</strong>（1872〜1919、ロシアの植物学者）</p>
+    <p>分液ろうとを使った抽出や、蒸留・再結晶といった分離操作は、長い時間をかけて多くの実験者の手で磨かれてきた技術で、特定の発明者に帰せられるものではありません。一方、クロマトグラフィーは、ロシアの植物学者<strong>ミハイル・ツヴェット</strong>が1900年代初頭に、植物の色素（クロロフィルなど）を炭酸カルシウムのカラムで分離した実験から考案した方法です。色素が色の帯に分かれて流れたことから、ギリシャ語の「色（クロマ）」と「書く（グラフォ）」を組み合わせて名づけられました。酸・塩基の強弱で成分を振り分ける分液の考え方は、酸と塩基の理論が整う19世紀後半以降、分析化学と有機合成の発展とともに現在の定番の形にまとまっていきました。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>フェノールと芳香族カルボン酸の性質そのものは<a href="phenols-aromatic-acids.html">フェノールと芳香族カルボン酸</a>、アニリンの性質は<a href="aniline-azo-dyes.html">アニリンとアゾ染料</a>、ベンゼン環の基本は<a href="aromatics.html">芳香族化合物</a>が役立ちます。酸の強弱と電離の考え方は<a href="acid-strength-dissociation.html">酸と塩基の強弱と電離度</a>、抽出の原理である分配は<a href="partition-extraction.html">分配の法則と抽出</a>、分離法全体の入口は<a href="mixtures-and-separation.html">純物質と混合物・分離の方法</a>で扱います。分けた成分の構造を確かめる流れは<a href="organic-structure-determination.html">元素分析と構造決定</a>へ続きます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

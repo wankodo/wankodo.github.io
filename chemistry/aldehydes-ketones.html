@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アルデヒドとケトン｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="アルデヒド基とケトンのカルボニル基の違い、還元性の有無、銀鏡反応・フェーリング反応・ヨードホルム反応による見分け方を、ホルムアルデヒド・アセトアルデヒド・アセトンの構造式と例題で解説。鏡や除光液など現場での使われ方も紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="アルデヒドとケトン｜化学ツール集">
+<meta property="og:description" content="アルデヒドとケトンの構造の違いと還元性、銀鏡反応・フェーリング反応・ヨードホルム反応による見分け方を構造式と例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/aldehydes-ketones.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">アルデヒド</span>とケトン</h1>
+    <p>化学の考え方辞典 ― 有機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 有機化学 ＞ アルデヒドとケトン</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">有機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    アルデヒドとケトンはどちらもカルボニル基 C＝O をもつが、アルデヒドではカルボニル炭素に水素が付いたアルデヒド基 −CHO が分子の端にあり、ケトンではカルボニル炭素が2つの炭素にはさまれている。この違いでアルデヒドは酸化されやすく還元性を示すがケトンは示さず、銀鏡反応・フェーリング反応が陽性かどうかで両者を見分けられる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>炭素と酸素の二重結合（カルボニル基）をもつ化合物＝<strong>アルデヒド</strong>と<strong>ケトン</strong>の区別と検出を扱うときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>構造式を見て、アルデヒド基 −CHO があるか、カルボニル炭素が炭素にはさまれているかで、アルデヒドとケトンに分類する問題</li>
+      <li>銀鏡反応・フェーリング反応が陽性かどうかから、未知の化合物がアルデヒドかどうかを判定する問題</li>
+      <li>ヨードホルム反応が陽性かどうかから、CH<sub>3</sub>CO− の構造（メチルケトンやアセトアルデヒド）をもつかを判定する問題</li>
+      <li>ホルムアルデヒド・アセトアルデヒド・アセトンなど代表的な化合物の性質や用途を答える問題</li>
+    </ul>
+    <p>ポイントは、<strong>「カルボニル炭素に H が付いているか」</strong>の1点です。H が付けばアルデヒドで還元性あり、両側が炭素ならケトンで還元性なし、と構造から性質まで一続きで読めます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>アルデヒド基とカルボニル基：構造の違い</h3>
+    <p>炭素原子と酸素原子が二重結合でつながった <strong>C＝O</strong> を<strong>カルボニル基</strong>といいます。カルボニル基の炭素（カルボニル炭素）に<strong>水素原子が1つ付いた −CHO</strong> を<strong>アルデヒド基（ホルミル基）</strong>といい、この基をもつ化合物が<strong>アルデヒド</strong>です。アルデヒド基は必ず炭素鎖の<strong>端</strong>に来ます（端でないと H が付けないため）。一般式は R−CHO と書けます（R は炭化水素基。R が H のものがホルムアルデヒドです）。</p>
+    <p>一方、カルボニル炭素の<strong>両側に炭素が付いた</strong>化合物が<strong>ケトン</strong>で、一般式は R−CO−R′ と書けます。カルボニル基は分子の<strong>途中</strong>にあります。</p>
+    <div class="formula">アルデヒド：R−CHO（−CHO が端、カルボニル炭素に H あり）　ケトン：R−CO−R′（カルボニル炭素の両側が炭素）</div>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 150" width="520" height="150" role="img" aria-label="アルデヒド基とケトンのカルボニル基の一般構造" style="max-width:100%;height:auto;">
+        <text x="130" y="22" text-anchor="middle" font-size="13" fill="currentColor">アルデヒド R−CHO</text>
+        <text x="52" y="76" text-anchor="middle" font-size="15" fill="currentColor">R</text>
+        <line x1="66" y1="72" x2="92" y2="72" stroke="currentColor" stroke-width="2"/>
+        <text x="108" y="76" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="108" y1="62" x2="108" y2="40" stroke="currentColor" stroke-width="2"/>
+        <line x1="116" y1="62" x2="116" y2="40" stroke="currentColor" stroke-width="2"/>
+        <text x="112" y="34" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="122" y1="72" x2="148" y2="72" stroke="currentColor" stroke-width="2"/>
+        <text x="162" y="76" text-anchor="middle" font-size="15" fill="currentColor">H</text>
+        <text x="130" y="112" text-anchor="middle" font-size="12" fill="currentColor">カルボニル炭素に H が付く（端）</text>
+        <text x="390" y="22" text-anchor="middle" font-size="13" fill="currentColor">ケトン R−CO−R′</text>
+        <text x="292" y="76" text-anchor="middle" font-size="15" fill="currentColor">R</text>
+        <line x1="306" y1="72" x2="332" y2="72" stroke="currentColor" stroke-width="2"/>
+        <text x="348" y="76" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="348" y1="62" x2="348" y2="40" stroke="currentColor" stroke-width="2"/>
+        <line x1="356" y1="62" x2="356" y2="40" stroke="currentColor" stroke-width="2"/>
+        <text x="352" y="34" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="362" y1="72" x2="388" y2="72" stroke="currentColor" stroke-width="2"/>
+        <text x="404" y="76" text-anchor="middle" font-size="15" fill="currentColor">R′</text>
+        <text x="390" y="112" text-anchor="middle" font-size="12" fill="currentColor">カルボニル炭素の両側が炭素（途中）</text>
+        <text x="260" y="140" text-anchor="middle" font-size="12" fill="currentColor">どちらも C＝O（カルボニル基）をもつ。違いはカルボニル炭素に H があるかどうか</text>
+      </svg>
+      <p>アルデヒド基とケトンの一般構造。アルデヒド基の炭素には H・R・＝O が付き、ケトンのカルボニル炭素には R・R′・＝O が付きます。</p>
+    </div>
+    <h3>還元性の有無：性質の違いはここから来る</h3>
+    <p>アルデヒド基のカルボニル炭素に付いた H は取れやすく、アルデヒドは<strong>弱い酸化剤でも酸化されてカルボン酸になります</strong>（R−CHO → R−COOH）。自分が酸化されるということは、相手を還元する働き＝<strong>還元性</strong>があるということです。</p>
+    <p>ケトンのカルボニル炭素には H がなく、炭素−炭素結合を切らないと酸化が進まないため、通常の弱い酸化剤では酸化されません。つまり<strong>ケトンに還元性はありません</strong>。この差が、次の2つの検出反応の分かれ目になります。</p>
+    <div class="formula">アルデヒド：還元性あり（酸化されてカルボン酸に）　ケトン：還元性なし（弱い酸化剤では反応しない）</div>
+    <h3>銀鏡反応（トレンス試薬）</h3>
+    <p><strong>アンモニア性硝酸銀水溶液</strong>（硝酸銀水溶液にアンモニア水を加えたもの。銀イオンがジアンミン銀(I)イオン [Ag(NH<sub>3</sub>)<sub>2</sub>]<sup>+</sup> として溶けています）にアルデヒドを加えて温めると、アルデヒドが銀イオン Ag<sup>+</sup> を還元し、<strong>金属銀 Ag が試験管の内壁に鏡のように析出</strong>します。これが<strong>銀鏡反応</strong>です。教科書では酸化銀 Ag<sub>2</sub>O を酸化剤とする形で次のようにまとめられます（両辺の原子数が一致することを確認してください）。</p>
+    <div class="formula">R−CHO ＋ Ag<sub>2</sub>O → R−COOH ＋ 2Ag</div>
+    <p>たとえばアセトアルデヒドでは CH<sub>3</sub>CHO ＋ Ag<sub>2</sub>O → CH<sub>3</sub>COOH ＋ 2Ag（左辺：C<sub>2</sub>H<sub>4</sub>O<sub>2</sub>Ag<sub>2</sub>、右辺：C<sub>2</sub>H<sub>4</sub>O<sub>2</sub>Ag<sub>2</sub> で一致）となります。ケトンは還元性がないので銀鏡反応を示しません。したがって銀鏡反応は<strong>アルデヒドの検出</strong>に使えます。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>フェーリング反応</h3>
+    <p><strong>フェーリング液</strong>（硫酸銅(II)水溶液と、酒石酸塩を含む水酸化ナトリウム水溶液を混ぜた深青色の液）にアルデヒドを加えて加熱すると、アルデヒドが銅(II)イオン Cu<sup>2+</sup> を還元し、<strong>酸化銅(I) Cu<sub>2</sub>O の赤色沈殿</strong>が生じます。これが<strong>フェーリング反応</strong>です。イオン反応式では次のように書けます。</p>
+    <div class="formula">R−CHO ＋ 2Cu<sup>2+</sup> ＋ 5OH<sup>−</sup> → R−COO<sup>−</sup> ＋ Cu<sub>2</sub>O ＋ 3H<sub>2</sub>O</div>
+    <p>アセトアルデヒドで検算すると、左辺は CH<sub>3</sub>CHO（C<sub>2</sub>H<sub>4</sub>O）に 2Cu<sup>2+</sup> と 5OH<sup>−</sup>（O<sub>5</sub>H<sub>5</sub>）を加えて C<sub>2</sub>H<sub>9</sub>O<sub>6</sub>Cu<sub>2</sub>、電荷は ＋4−5＝−1。右辺は CH<sub>3</sub>COO<sup>−</sup>（C<sub>2</sub>H<sub>3</sub>O<sub>2</sub>、電荷−1）に Cu<sub>2</sub>O（Cu<sub>2</sub>O）と 3H<sub>2</sub>O（H<sub>6</sub>O<sub>3</sub>）で C<sub>2</sub>H<sub>9</sub>O<sub>6</sub>Cu<sub>2</sub>、電荷−1 となり、原子数も電荷も一致します。ケトンはフェーリング反応も示さないため、こちらも<strong>アルデヒドの検出</strong>に使えます。なお、ホルムアルデヒドは還元性が特に強く、フェーリング反応では Cu<sub>2</sub>O をさらに還元して金属銅を生じることがあります。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>代表的なアルデヒドとケトン</h3>
+    <p><strong>ホルムアルデヒド HCHO</strong> は最も簡単なアルデヒドで、刺激臭のある無色の気体です。水によく溶け、その約37％水溶液は<strong>ホルマリン</strong>と呼ばれ、生物標本の保存液や消毒に使われてきました。還元性が強く、銀鏡反応・フェーリング反応のどちらも示します。ホルムアルデヒドは人体に有害で、建材などから放出されると目やのどの刺激などの健康影響（シックハウス症候群の原因物質の1つ）が問題になるため、取り扱いと換気に注意が必要です。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <p><strong>アセトアルデヒド CH<sub>3</sub>CHO</strong> は刺激臭のある無色の液体で、エタノールの酸化で生じます。体内でアルコールが分解されるときにも生じ、悪酔いや二日酔いの原因物質とされます。アルデヒドなので還元性を示します。</p>
+    <p><strong>アセトン CH<sub>3</sub>COCH<sub>3</sub></strong> は最も簡単なケトンで、特有のにおいのある無色の液体です。水にも油にもよく溶けるため有機溶媒として広く使われ、マニキュアの<strong>除光液</strong>の主成分でもあります。ケトンなので還元性はなく、銀鏡反応・フェーリング反応は示しません。また、引火性の高い液体なので火気の近くでは使わない注意が必要です。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 160" width="520" height="160" role="img" aria-label="ホルムアルデヒド・アセトアルデヒド・アセトンの構造式" style="max-width:100%;height:auto;">
+        <text x="85" y="22" text-anchor="middle" font-size="13" fill="currentColor">ホルムアルデヒド HCHO</text>
+        <text x="85" y="76" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="85" y1="62" x2="85" y2="40" stroke="currentColor" stroke-width="2"/>
+        <line x1="93" y1="62" x2="93" y2="40" stroke="currentColor" stroke-width="2"/>
+        <text x="89" y="34" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="72" y1="78" x2="52" y2="94" stroke="currentColor" stroke-width="2"/>
+        <line x1="98" y1="78" x2="118" y2="94" stroke="currentColor" stroke-width="2"/>
+        <text x="44" y="110" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="126" y="110" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="85" y="140" text-anchor="middle" font-size="12" fill="currentColor">R が H のアルデヒド</text>
+        <text x="260" y="22" text-anchor="middle" font-size="13" fill="currentColor">アセトアルデヒド CH₃CHO</text>
+        <text x="218" y="76" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="218" y="50" text-anchor="middle" font-size="12" fill="currentColor">H₃</text>
+        <line x1="232" y1="72" x2="258" y2="72" stroke="currentColor" stroke-width="2"/>
+        <text x="274" y="76" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="274" y1="62" x2="274" y2="40" stroke="currentColor" stroke-width="2"/>
+        <line x1="282" y1="62" x2="282" y2="40" stroke="currentColor" stroke-width="2"/>
+        <text x="278" y="34" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="288" y1="72" x2="308" y2="72" stroke="currentColor" stroke-width="2"/>
+        <text x="320" y="76" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="260" y="112" text-anchor="middle" font-size="12" fill="currentColor">CH₃−CHO と書く</text>
+        <text x="435" y="22" text-anchor="middle" font-size="13" fill="currentColor">アセトン CH₃COCH₃</text>
+        <text x="382" y="76" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="382" y="50" text-anchor="middle" font-size="12" fill="currentColor">H₃</text>
+        <line x1="396" y1="72" x2="422" y2="72" stroke="currentColor" stroke-width="2"/>
+        <text x="438" y="76" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="438" y1="62" x2="438" y2="40" stroke="currentColor" stroke-width="2"/>
+        <line x1="446" y1="62" x2="446" y2="40" stroke="currentColor" stroke-width="2"/>
+        <text x="442" y="34" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="452" y1="72" x2="478" y2="72" stroke="currentColor" stroke-width="2"/>
+        <text x="494" y="76" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="494" y="50" text-anchor="middle" font-size="12" fill="currentColor">H₃</text>
+        <text x="435" y="112" text-anchor="middle" font-size="12" fill="currentColor">CH₃−CO−CH₃ と書く</text>
+        <text x="260" y="148" text-anchor="middle" font-size="12" fill="currentColor">ホルムアルデヒドとアセトアルデヒドは −CHO をもつアルデヒド、アセトンはケトン</text>
+      </svg>
+      <p>代表的な3つの化合物の構造式。アセトアルデヒドの −CHO の炭素には H が1つ残っていますが、アセトンのカルボニル炭素には H がなく、両側とも CH<sub>3</sub> です。</p>
+    </div>
+    <h3>ヨードホルム反応：CH<sub>3</sub>CO− の検出</h3>
+    <p>もう1つの検出反応が<strong>ヨードホルム反応</strong>です。水酸化ナトリウム水溶液中でヨウ素と反応させると、<strong>CH<sub>3</sub>CO− の構造をもつ化合物</strong>は、特有のにおいのある<strong>ヨードホルム CHI<sub>3</sub> の黄色沈殿</strong>を生じます。</p>
+    <div class="formula">CH<sub>3</sub>CHO ＋ 3I<sub>2</sub> ＋ 4NaOH → CHI<sub>3</sub> ＋ HCOONa ＋ 3NaI ＋ 3H<sub>2</sub>O</div>
+    <p>アセトアルデヒドの式は、左辺が C<sub>2</sub>H<sub>8</sub>O<sub>5</sub>I<sub>6</sub>Na<sub>4</sub>、右辺も CHI<sub>3</sub>・HCOONa・3NaI・3H<sub>2</sub>O を合わせると C<sub>2</sub>H<sub>8</sub>O<sub>5</sub>I<sub>6</sub>Na<sub>4</sub> となり一致します（検算済み）。アセトンでも同様に CH<sub>3</sub>COCH<sub>3</sub> ＋ 3I<sub>2</sub> ＋ 4NaOH → CHI<sub>3</sub> ＋ CH<sub>3</sub>COONa ＋ 3NaI ＋ 3H<sub>2</sub>O と進みます。</p>
+    <p>注意点は、ヨードホルム反応はアルデヒドとケトンの区別には使えないことです。アセトアルデヒド（アルデヒド）とアセトン（ケトン）の<strong>両方が陽性</strong>になります。さらに、酸化されると CH<sub>3</sub>CO− になる <strong>CH<sub>3</sub>CH(OH)− の構造をもつアルコール</strong>（エタノールや2-プロパノールなど）も陽性になります。使い分けは「銀鏡・フェーリング＝アルデヒドの検出」「ヨードホルム＝CH<sub>3</sub>CO−（と CH<sub>3</sub>CH(OH)−）の検出」です。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>カルボニル炭素に H があるかを見る。</strong>−CHO があればアルデヒド、両側が炭素ならケトンと分類します。</li>
+      <li><strong>還元性を予測する。</strong>アルデヒドは還元性あり、ケトンはなしです。</li>
+      <li><strong>検出反応に当てはめる。</strong>銀鏡反応（銀の析出）とフェーリング反応（Cu<sub>2</sub>O の赤色沈殿）はアルデヒドだけが陽性です。</li>
+      <li><strong>CH<sub>3</sub>CO− があるかも確認する。</strong>あればヨードホルム反応で CHI<sub>3</sub> の黄色沈殿が生じます。CH<sub>3</sub>CH(OH)− をもつアルコールも陽性になる点に注意します。</li>
+      <li><strong>反応式は原子数と電荷を数え直す。</strong>特にフェーリング反応のイオン反応式は、電荷の釣り合い（両辺 −1）まで確認します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1（分類と還元性）：次の化合物はアルデヒドかケトンか。また、還元性を示すかどうかも答えよ。（a）プロパナール CH<sub>3</sub>CH<sub>2</sub>CHO（b）ブタン-2-オン CH<sub>3</sub>COCH<sub>2</sub>CH<sub>3</sub>（c）ペンタン-3-オン CH<sub>3</sub>CH<sub>2</sub>COCH<sub>2</sub>CH<sub>3</sub></p>
+      <p class="ex-q">問題2（銀鏡・フェーリング反応の判定）：ホルムアルデヒド、アセトアルデヒド、アセトンのそれぞれについて、銀鏡反応とフェーリング反応が陽性か陰性かを答えよ。</p>
+      <p class="ex-q">問題3（ヨードホルム反応の判定）：次の化合物のうち、ヨードホルム反応で CHI<sub>3</sub> の黄色沈殿を生じるものをすべて選べ。（a）アセトアルデヒド（b）アセトン（c）ブタン-2-オン（d）ペンタン-3-オン（e）エタノール CH<sub>3</sub>CH<sub>2</sub>OH（f）1-プロパノール CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>OH（g）2-プロパノール CH<sub>3</sub>CH(OH)CH<sub>3</sub></p>
+      <p class="ex-q">問題4（見分け方）：アセトアルデヒドとアセトンが別々の試験管に入っているが、ラベルがはがれてしまった。1種類の試薬で見分ける方法を、試薬名・操作・観察される結果とともに答えよ。また、ヨードホルム反応では見分けられない理由も答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：（a）末端に −CHO があるので<strong>アルデヒド</strong>で、還元性を<strong>示す</strong>。（b）カルボニル炭素の両側が炭素（CH<sub>3</sub> と CH<sub>2</sub>CH<sub>3</sub>）なので<strong>ケトン</strong>で、還元性を<strong>示さない</strong>。（c）カルボニル炭素の両側がどちらも CH<sub>2</sub>CH<sub>3</sub> なので<strong>ケトン</strong>で、還元性を<strong>示さない</strong>。</li>
+          <li>問題2：ホルムアルデヒドとアセトアルデヒドはアルデヒドなので、銀鏡反応・フェーリング反応とも<strong>陽性</strong>（銀が析出／Cu<sub>2</sub>O の赤色沈殿）。アセトンはケトンなので、どちらも<strong>陰性</strong>（変化なし）です。</li>
+          <li>問題3：CH<sub>3</sub>CO− をもつ（a）（b）（c）は陽性です。（d）ペンタン-3-オンは CH<sub>3</sub>CO− をもたない（カルボニル炭素に付くのは CH<sub>2</sub>CH<sub>3</sub>）ので陰性。（e）エタノールと（g）2-プロパノールは CH<sub>3</sub>CH(OH)− の構造をもち、反応中に酸化されて CH<sub>3</sub>CO− を生じるため陽性です。（f）1-プロパノールは CH<sub>3</sub>CH(OH)− をもたないので陰性。よって陽性は <strong>（a）（b）（c）（e）（g）</strong> です。</li>
+          <li>問題4：たとえば<strong>アンモニア性硝酸銀水溶液（トレンス試薬）を加えて温める</strong>と、アセトアルデヒドの試験管では銀鏡反応が起こり内壁に銀が析出しますが、アセトンの試験管では変化しません。フェーリング液を加えて加熱する方法でもよく、その場合はアセトアルデヒド側だけに Cu<sub>2</sub>O の赤色沈殿が生じます。ヨードホルム反応では、アセトアルデヒドもアセトンも CH<sub>3</sub>CO−（アセトアルデヒドは CH<sub>3</sub>−CHO の中に CH<sub>3</sub>CO の並び）をもつため両方とも CHI<sub>3</sub> の黄色沈殿を生じ、区別できません。</li>
+        </ol>
+        <p><strong>答え：問題1は（a）アルデヒド・還元性あり、（b）ケトン・なし、（c）ケトン・なし。問題2はホルムアルデヒドとアセトアルデヒドが両反応とも陽性、アセトンは両方とも陰性。問題3は（a）（b）（c）（e）（g）。問題4は銀鏡反応（またはフェーリング反応）を使い、陽性側がアセトアルデヒド。</strong></p>
+        <div class="tri-fig">
+          <svg viewBox="0 0 520 330" width="520" height="330" role="img" aria-label="例題に登場する化合物の構造式" style="max-width:100%;height:auto;">
+            <text x="130" y="22" text-anchor="middle" font-size="13" fill="currentColor">プロパナール C₃H₆O</text>
+            <text x="130" y="52" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH₂−CHO</text>
+            <text x="390" y="22" text-anchor="middle" font-size="13" fill="currentColor">ブタン-2-オン C₄H₈O</text>
+            <text x="390" y="52" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CO−CH₂−CH₃</text>
+            <text x="130" y="92" text-anchor="middle" font-size="13" fill="currentColor">ペンタン-3-オン C₅H₁₀O</text>
+            <text x="130" y="122" text-anchor="middle" font-size="14" fill="currentColor">CH₃CH₂−CO−CH₂CH₃</text>
+            <text x="390" y="92" text-anchor="middle" font-size="13" fill="currentColor">エタノール C₂H₆O</text>
+            <text x="390" y="122" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH₂−OH</text>
+            <text x="130" y="162" text-anchor="middle" font-size="13" fill="currentColor">1-プロパノール C₃H₈O</text>
+            <text x="130" y="192" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH₂−CH₂−OH</text>
+            <text x="390" y="162" text-anchor="middle" font-size="13" fill="currentColor">2-プロパノール C₃H₈O</text>
+            <text x="390" y="192" text-anchor="middle" font-size="14" fill="currentColor">CH₃−CH(OH)−CH₃</text>
+            <text x="260" y="232" text-anchor="middle" font-size="13" fill="currentColor">ヨードホルム CHI₃</text>
+            <text x="260" y="258" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+            <line x1="248" y1="254" x2="228" y2="254" stroke="currentColor" stroke-width="2"/>
+            <text x="214" y="259" text-anchor="middle" font-size="14" fill="currentColor">I</text>
+            <line x1="272" y1="254" x2="292" y2="254" stroke="currentColor" stroke-width="2"/>
+            <text x="306" y="259" text-anchor="middle" font-size="14" fill="currentColor">I</text>
+            <line x1="260" y1="242" x2="260" y2="226" stroke="currentColor" stroke-width="2"/>
+            <text x="260" y="220" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+            <line x1="260" y1="270" x2="260" y2="286" stroke="currentColor" stroke-width="2"/>
+            <text x="260" y="302" text-anchor="middle" font-size="14" fill="currentColor">I</text>
+            <text x="260" y="322" text-anchor="middle" font-size="12" fill="currentColor">ホルムアルデヒド・アセトアルデヒド・アセトンは前掲の図にあります</text>
+          </svg>
+          <p>例題に登場する化合物の構造式。プロパナールは問題1（a）、ブタン-2-オンは問題1（b）と問題3（c）、ペンタン-3-オンは問題1（c）と問題3（d）、エタノール・1-プロパノール・2-プロパノールは問題3の選択肢、ヨードホルムは問題3の生成物です。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>銀鏡反応と鏡・銀めっき</h3>
+    <p>銀鏡反応は、ガラスの表面に均一な銀の薄膜を作る反応として、鏡の製造に使われてきた原理です。アルデヒド（工業的にはグルコースなどの還元糖も使われます）が銀イオンを還元してガラス面に銀を析出させる仕組みは、この項目の反応そのものです。魔法瓶の内壁の銀めっきにも同じ原理が応用されてきました。</p>
+    <h3>ホルマリンと標本保存・消毒</h3>
+    <p>ホルムアルデヒドの水溶液であるホルマリンは、タンパク質を変性させて腐敗を防ぐ働きがあるため、生物標本の保存液や消毒剤として使われてきました。一方で有害性も知られており、現在は濃度や使用場所に規制があり、代替の保存方法も広がっています。「還元性が強く反応しやすい」という性質が、保存にも毒性にもつながっています。</p>
+    <h3>アセトンと除光液・溶媒</h3>
+    <p>アセトンは水にも油にも混ざり、多くの有機物を溶かすため、実験室や工場で広く使われる溶媒です。マニキュアを落とす除光液は、樹脂や色素を溶かすアセトンのこの性質を利用しています。ケトンで反応性が穏やかな（還元性を示さず、穏やかな酸化剤では変化しない）ことも、溶媒として扱いやすい理由の1つです。ただし引火性が高いため、保管と使用は火気から離して行います。</p>
+    <h3>フェーリング反応と糖の検出</h3>
+    <p>フェーリング反応はもともと糖の検出に使われてきた反応で、還元性をもつ糖（還元糖）を加えて加熱すると同じ Cu<sub>2</sub>O の赤色沈殿が生じます。尿中の糖を調べる古典的な検査にもこの原理が使われました。「アルデヒド基をもつものは Cu<sup>2+</sup> を還元する」というこの項目の考え方が、糖の分析にもそのままつながっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ヘルマン・フォン・フェーリング</strong>（1812〜1885、ドイツの化学者）、<strong>ベルンハルト・トレンス</strong>（1841〜1918、ドイツの化学者）</p>
+    <p>フェーリング液は、ドイツの化学者<strong>ヘルマン・フォン・フェーリング</strong>が1849年に発表した、糖などを検出するための試薬です。銅(II)を含む深青色の液が還元性の物質で赤色の酸化銅(I)に変わる現象を利用したもので、本文のフェーリング反応はこの試薬による反応です。銀鏡反応に使うアンモニア性硝酸銀は、ドイツの化学者<strong>ベルンハルト・トレンス</strong>がアルデヒドの検出法として広めたことから<strong>トレンス試薬</strong>とも呼ばれます。どちらの試薬も「アルデヒドは還元性をもつ」という性質を、目に見える銀の析出と赤色沈殿に変えて確かめる工夫です。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>アルデヒドの手前の段階は<a href="alcohols-ethers.html">アルコールとエーテル</a>、酸化が進んだ先は<a href="carboxylic-acids-esters.html">カルボン酸とエステル</a>、官能基全体の整理は<a href="functional-groups.html">官能基と化合物の分類</a>が役立ちます。還元糖とのつながりは<a href="carbohydrates.html">糖類</a>、還元性の土台になる考え方は<a href="half-reactions.html">酸化剤と還元剤・半反応式</a>で扱います。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

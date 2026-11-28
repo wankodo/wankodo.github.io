@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>医薬品の化学｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="医薬品の化学を、公式・手順・例題で解説。アスピリン（アセチルサリチル酸）の構造とサリチル酸からの合成、サリチル酸メチルとパラセタモール（アセトアミノフェン）の構造、官能基と働きの関係、光学異性体への入口、製薬の現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="医薬品の化学｜化学ツール集">
+<meta property="og:description" content="アスピリンを中心に、医薬品の構造式から官能基と働きを読む考え方を、構造式の図と例題で解説。サリチル酸メチルやパラセタモールの構造も扱う。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/pharmaceutical-chemistry.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">医薬品</span>の化学</h1>
+    <p>化学の考え方辞典 ― 有機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 有機化学 ＞ 医薬品の化学</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">有機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    医薬品の多くは有機化合物であり、その働きは分子の構造、とくに官能基の種類と並び方で決まる。アスピリン（アセチルサリチル酸）は、サリチル酸のフェノール性ヒドロキシ基を無水酢酸でアセチル化して得られる化合物で、カルボキシ基とエステル結合をあわせもつ。構造式から官能基を読み取り、分子式とモル質量を押さえることが、医薬品を化学として理解する入口になる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>医薬品として知られる有機化合物を、<strong>構造式と官能基の観点から読み解く</strong>ときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>アスピリンやサリチル酸などの構造式を見て、含まれる官能基（カルボキシ基、エステル結合、ヒドロキシ基など）を指摘する問題</li>
+      <li>構造式から分子式を数え、モル質量や物質量を求める問題</li>
+      <li>サリチル酸からアスピリンを合成する反応で、分子のどの部分がどう変わったかを説明する問題</li>
+      <li>よく似た構造の化合物（サリチル酸、サリチル酸メチル、アスピリン）を、構造の違いから区別する問題</li>
+      <li>光学異性体をもつ医薬品について、不斉炭素原子を見つける問題</li>
+    </ul>
+    <p>この項目では医療上の効能を断定することはせず、<strong>「構造がどうなっていて、どんな反応で作られ、官能基がどう働きに関わるか」という化学の側面</strong>に軸を置きます。前提となるサリチル酸の性質は「フェノールと芳香族カルボン酸」、エステル化の基礎は「カルボン酸とエステル」で扱っています。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>アスピリン ― サリチル酸のアセチル化</h3>
+    <p><strong>サリチル酸</strong>は、ベンゼン環にカルボキシ基 −COOH とフェノール性ヒドロキシ基 −OH が隣り合って（オルト位に）付いた芳香族化合物で、分子式は C<sub>7</sub>H<sub>6</sub>O<sub>3</sub> です。このヒドロキシ基を<strong>無水酢酸</strong>で<strong>アセチル化</strong>（アセチル基 CH<sub>3</sub>CO− を導入すること）すると、ヒドロキシ基がエステル結合 −OCOCH<sub>3</sub> に変わり、<strong>アスピリン（アセチルサリチル酸）</strong>が得られます。副生成物は酢酸です。</p>
+    <div class="formula">サリチル酸 C<sub>7</sub>H<sub>6</sub>O<sub>3</sub> ＋ 無水酢酸 C<sub>4</sub>H<sub>6</sub>O<sub>3</sub> → アスピリン C<sub>9</sub>H<sub>8</sub>O<sub>4</sub> ＋ 酢酸 C<sub>2</sub>H<sub>4</sub>O<sub>2</sub></div>
+    <p>原子の数を両辺で比べると、C は 7＋4＝11 と 9＋2＝11、H は 6＋6＝12 と 8＋4＝12、O は 3＋3＝6 と 4＋2＝6 でそろいます。アスピリンの分子式 C<sub>9</sub>H<sub>8</sub>O<sub>4</sub> からモル質量を計算すると、C＝12、H＝1.0、O＝16 を使って 12×9＋1.0×8＋16×4＝<strong>180 g/mol</strong> です。アスピリンは一般に解熱鎮痛薬の有効成分として知られ、その働きについては、体内で痛みや発熱に関わる物質プロスタグランジンの合成を担う酵素の働きを阻害することによる、と一般に説明されています。化学の観点で重要なのは、<strong>サリチル酸の −OH をエステルに変えるという小さな構造の変更が、化合物の性質（水への溶けやすさや体内での振る舞い）を変える</strong>という点です。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 380" width="560" height="380" role="img" aria-label="サリチル酸と無水酢酸からアスピリンと酢酸ができる反応の構造式" style="max-width:100%;height:auto;">
+        <text x="110" y="24" text-anchor="middle" font-size="13" fill="currentColor">サリチル酸</text>
+        <polygon points="110,62 139,79 139,112 110,129 81,112 81,79" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="110" cy="95" r="16" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="110" y1="62" x2="110" y2="42" stroke="currentColor" stroke-width="2"/>
+        <text x="110" y="36" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <line x1="139" y1="79" x2="163" y2="66" stroke="currentColor" stroke-width="2"/>
+        <text x="190" y="70" text-anchor="middle" font-size="14" fill="currentColor">COOH</text>
+        <text x="110" y="152" text-anchor="middle" font-size="12" fill="currentColor">C₇H₆O₃（−OH と −COOH が隣り合う）</text>
+        <text x="255" y="102" text-anchor="middle" font-size="20" fill="currentColor">＋</text>
+        <text x="400" y="24" text-anchor="middle" font-size="13" fill="currentColor">無水酢酸</text>
+        <text x="312" y="105" text-anchor="middle" font-size="14" fill="currentColor">H₃C</text>
+        <line x1="332" y1="98" x2="350" y2="98" stroke="currentColor" stroke-width="2"/>
+        <text x="362" y="105" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="358" y1="86" x2="358" y2="68" stroke="currentColor" stroke-width="2"/>
+        <line x1="366" y1="86" x2="366" y2="68" stroke="currentColor" stroke-width="2"/>
+        <text x="362" y="60" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="374" y1="98" x2="392" y2="98" stroke="currentColor" stroke-width="2"/>
+        <text x="404" y="105" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="416" y1="98" x2="434" y2="98" stroke="currentColor" stroke-width="2"/>
+        <text x="446" y="105" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="442" y1="86" x2="442" y2="68" stroke="currentColor" stroke-width="2"/>
+        <line x1="450" y1="86" x2="450" y2="68" stroke="currentColor" stroke-width="2"/>
+        <text x="446" y="60" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="458" y1="98" x2="476" y2="98" stroke="currentColor" stroke-width="2"/>
+        <text x="496" y="105" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+        <text x="400" y="152" text-anchor="middle" font-size="12" fill="currentColor">C₄H₆O₃（アセチル化に使う試薬）</text>
+        <text x="280" y="212" text-anchor="middle" font-size="22" fill="currentColor">↓</text>
+        <text x="110" y="196" text-anchor="middle" font-size="12" fill="currentColor">−OH が −OCOCH₃ に変わる（アセチル化）</text>
+        <text x="110" y="238" text-anchor="middle" font-size="13" fill="currentColor">アスピリン（アセチルサリチル酸）</text>
+        <text x="110" y="262" text-anchor="middle" font-size="13" fill="currentColor">CH₃COO</text>
+        <line x1="110" y1="268" x2="110" y2="282" stroke="currentColor" stroke-width="2"/>
+        <polygon points="110,282 139,299 139,332 110,349 81,332 81,299" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="110" cy="315" r="16" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="139" y1="299" x2="163" y2="286" stroke="currentColor" stroke-width="2"/>
+        <text x="190" y="290" text-anchor="middle" font-size="14" fill="currentColor">COOH</text>
+        <text x="110" y="372" text-anchor="middle" font-size="12" fill="currentColor">C₉H₈O₄（エステル結合とカルボキシ基をもつ）</text>
+        <text x="255" y="322" text-anchor="middle" font-size="20" fill="currentColor">＋</text>
+        <text x="375" y="238" text-anchor="middle" font-size="13" fill="currentColor">酢酸</text>
+        <text x="312" y="320" text-anchor="middle" font-size="14" fill="currentColor">H₃C</text>
+        <line x1="332" y1="313" x2="350" y2="313" stroke="currentColor" stroke-width="2"/>
+        <text x="362" y="320" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="358" y1="301" x2="358" y2="283" stroke="currentColor" stroke-width="2"/>
+        <line x1="366" y1="301" x2="366" y2="283" stroke="currentColor" stroke-width="2"/>
+        <text x="362" y="275" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="374" y1="313" x2="392" y2="313" stroke="currentColor" stroke-width="2"/>
+        <text x="404" y="320" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="416" y1="313" x2="432" y2="313" stroke="currentColor" stroke-width="2"/>
+        <text x="442" y="320" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="375" y="352" text-anchor="middle" font-size="12" fill="currentColor">C₂H₄O₂（副生成物）</text>
+      </svg>
+      <p>サリチル酸と無水酢酸からアスピリンと酢酸ができる反応の構造式。変わるのはサリチル酸のフェノール性ヒドロキシ基の部分だけで、ベンゼン環とカルボキシ基はそのまま残ります。図中の CH<sub>3</sub>COO− は、環に近い側の O がエステル結合の酸素です。</p>
+    </div>
+    <h3>サリチル酸メチルとパラセタモール</h3>
+    <p>サリチル酸の仲間には、もう1つの代表的な化合物があります。<strong>サリチル酸メチル</strong>は、サリチル酸のカルボキシ基 −COOH の H がメチル基 −CH<sub>3</sub> に置き換わったエステルで、分子式は C<sub>8</sub>H<sub>8</sub>O<sub>3</sub> です。フェノール性ヒドロキシ基はそのまま残っています。アスピリンと比べると、「サリチル酸のどちらの −OH 側をエステルにしたか」が逆の関係にあり、構造の違いを読み比べる良い練習になります。サリチル酸メチルは、湿布薬などの外用剤の成分として配合されていることで知られます。</p>
+    <p><strong>パラセタモール（アセトアミノフェン）</strong>は、ベンゼン環にヒドロキシ基 −OH とアミド結合 −NHCOCH<sub>3</sub> が向かい合って（パラ位に）付いた化合物で、分子式は C<sub>8</sub>H<sub>9</sub>NO<sub>2</sub> です。解熱鎮痛を目的とする医薬品の成分として広く知られますが、構造の上ではアスピリンと大きく違い、カルボキシ基もエステル結合ももたず、窒素を含む<strong>アミド結合</strong>をもつ点が特徴です。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 220" width="560" height="220" role="img" aria-label="サリチル酸メチルとパラセタモールの構造式" style="max-width:100%;height:auto;">
+        <text x="110" y="24" text-anchor="middle" font-size="13" fill="currentColor">サリチル酸メチル</text>
+        <polygon points="110,62 139,79 139,112 110,129 81,112 81,79" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="110" cy="95" r="16" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="110" y1="62" x2="110" y2="42" stroke="currentColor" stroke-width="2"/>
+        <text x="110" y="36" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <line x1="139" y1="79" x2="163" y2="66" stroke="currentColor" stroke-width="2"/>
+        <text x="206" y="70" text-anchor="middle" font-size="13" fill="currentColor">COOCH₃</text>
+        <text x="110" y="160" text-anchor="middle" font-size="12" fill="currentColor">C₈H₈O₃</text>
+        <text x="110" y="182" text-anchor="middle" font-size="12" fill="currentColor">−COOH 側がエステルになった形</text>
+        <text x="390" y="24" text-anchor="middle" font-size="13" fill="currentColor">パラセタモール（アセトアミノフェン）</text>
+        <polygon points="428,100 409,133 371,133 352,100 371,67 409,67" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="390" cy="100" r="16" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="352" y1="100" x2="330" y2="100" stroke="currentColor" stroke-width="2"/>
+        <text x="314" y="105" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <line x1="428" y1="100" x2="450" y2="100" stroke="currentColor" stroke-width="2"/>
+        <text x="497" y="105" text-anchor="middle" font-size="13" fill="currentColor">NHCOCH₃</text>
+        <text x="390" y="160" text-anchor="middle" font-size="12" fill="currentColor">C₈H₉NO₂</text>
+        <text x="390" y="182" text-anchor="middle" font-size="12" fill="currentColor">−OH と −NHCOCH₃ がパラ位に付く</text>
+      </svg>
+      <p>サリチル酸メチルとパラセタモールの構造式。サリチル酸メチルはサリチル酸のカルボキシ基側をエステル化した形、パラセタモールはアミド結合をもち窒素を含む点がアスピリンとの大きな違いです。</p>
+    </div>
+    <h3>官能基と働きの関係、光学異性体への入口</h3>
+    <p>医薬品の分子は、体内の特定のタンパク質（酵素や受容体）などに結びついて働くことが多く、その結びつきやすさは分子の形と官能基の種類・位置で決まります。だから医薬品の開発では、骨格は保ったまま官能基を1つ変え、性質の変化を比べる、という進め方が基本になります。サリチル酸→アスピリンの変更は、その最も有名な例の1つです。</p>
+    <p>もう1つ重要なのが<strong>立体構造</strong>です。4つの異なる原子・原子団と結びついた炭素（<strong>不斉炭素原子</strong>）をもつ分子には、鏡に映した関係にある2つの<strong>光学異性体（鏡像異性体）</strong>が存在します。生体内のタンパク質も不斉な環境をもつため、光学異性体どうしで体内での振る舞いが異なる場合があることが知られており、医薬品では異性体を分けて作る・調べることが重要になります。例えば解熱鎮痛成分として知られる<strong>イブプロフェン</strong>（分子式 C<sub>13</sub>H<sub>18</sub>O<sub>2</sub>）は不斉炭素原子を1つもち、光学異性体の組が存在します。詳しくは「光学異性体と不斉炭素」で扱います。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 170" width="560" height="170" role="img" aria-label="イブプロフェンの構造式" style="max-width:100%;height:auto;">
+        <text x="280" y="24" text-anchor="middle" font-size="13" fill="currentColor">イブプロフェン</text>
+        <polygon points="318,85 299,118 261,118 242,85 261,52 299,52" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="280" cy="85" r="16" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="242" y1="85" x2="216" y2="85" stroke="currentColor" stroke-width="2"/>
+        <text x="210" y="90" text-anchor="end" font-size="13" fill="currentColor">(CH₃)₂CHCH₂</text>
+        <line x1="318" y1="85" x2="344" y2="85" stroke="currentColor" stroke-width="2"/>
+        <text x="350" y="90" text-anchor="start" font-size="13" fill="currentColor">CH(CH₃)COOH</text>
+        <text x="356" y="70" text-anchor="middle" font-size="16" fill="currentColor">*</text>
+        <text x="280" y="150" text-anchor="middle" font-size="12" fill="currentColor">C₁₃H₁₈O₂（＊印の炭素が不斉炭素原子）</text>
+      </svg>
+      <p>イブプロフェンの構造式。ベンゼン環の向かい合う位置（パラ位）に2つの置換基が付き、右側の置換基の付け根の炭素（＊印）が、H、CH<sub>3</sub>、COOH、ベンゼン環側の4つの異なる原子団と結びついた不斉炭素原子です。</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>ベンゼン環と置換基を分けて見る。</strong>環に付いている原子団を1つずつ切り離し、それぞれが何の官能基かを当てます（−COOH はカルボキシ基、−COO− はエステル結合、環に直接付いた −OH はフェノール性ヒドロキシ基、−NHCO− はアミド結合）。</li>
+      <li><strong>原子の数を数えて分子式を作る。</strong>環の炭素6個と水素（置換された位置の分だけ減る）に、置換基の原子を足し合わせます。炭素の手が4本にそろうかも検算します。</li>
+      <li><strong>モル質量を求める。</strong>原子量（H＝1.0、C＝12、N＝14、O＝16）を分子式に当てはめて合計し、物質量や理論収量の計算につなげます。</li>
+      <li><strong>反応前後で変わった部分だけを比べる。</strong>合成反応では、骨格のうち変化した官能基だけに注目し、「どの基が何に変わったか」を言葉で表します。</li>
+      <li><strong>不斉炭素原子がないか探す。</strong>4つの異なる原子・原子団と結びついた炭素があれば、光学異性体の存在を検討します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：アスピリンの構造式（上の図）について、（1）含まれる官能基をすべて答えよ。（2）分子式を答えよ。（3）モル質量を求めよ。原子量は H＝1.0、C＝12、O＝16 とする。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>（1）ベンゼン環には −COOH と −OCOCH<sub>3</sub> が付いています。−COOH は<strong>カルボキシ基</strong>、−OCOCH<sub>3</sub> の −COO− の部分は<strong>エステル結合</strong>です。サリチル酸にあったフェノール性ヒドロキシ基は、アセチル化によってエステルに変わっているため残っていません。（2）環の C が6個・H が4個、−COOH が C1個・H1個・O2個、−OCOCH<sub>3</sub> が C2個・H3個・O2個で、合計は C<sub>9</sub>H<sub>8</sub>O<sub>4</sub> です。（3）モル質量は 12×9＋1.0×8＋16×4＝108＋8＋64＝<strong>180 g/mol</strong> です。</p>
+        <p><strong>答え：（1）カルボキシ基とエステル結合。（2）C<sub>9</sub>H<sub>8</sub>O<sub>4</sub>。（3）180 g/mol。</strong></p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題2：サリチル酸メチルの構造式（上の図）について、（1）含まれる官能基をすべて答えよ。（2）分子式を答えよ。（3）アスピリンとの構造上の違いを、どちらの化合物もサリチル酸と関係づけて説明せよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>（1）ベンゼン環には −OH と −COOCH<sub>3</sub> が付いています。環に直接付いた −OH は<strong>フェノール性ヒドロキシ基</strong>、−COOCH<sub>3</sub> の −COO− の部分は<strong>エステル結合</strong>です。カルボキシ基そのものは、H が CH<sub>3</sub> に置き換わってエステルになっているため含まれません。（2）環の C6個・H4個、−OH が H1個・O1個、−COOCH<sub>3</sub> が C2個・H3個・O2個で、合計は <strong>C<sub>8</sub>H<sub>8</sub>O<sub>3</sub></strong> です。（3）アスピリンはサリチル酸の<strong>ヒドロキシ基側</strong>をアセチル化してエステルにしたものでカルボキシ基が残り、サリチル酸メチルはサリチル酸の<strong>カルボキシ基側</strong>をメチルエステルにしたものでヒドロキシ基が残ります。同じサリチル酸から出発しても、変える場所が逆の関係です。</p>
+        <p><strong>答え：（1）フェノール性ヒドロキシ基とエステル結合。（2）C<sub>8</sub>H<sub>8</sub>O<sub>3</sub>。（3）アスピリンは −OH 側、サリチル酸メチルは −COOH 側をエステル化したもの。</strong></p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題3：パラセタモールの構造式（上の図）について、（1）含まれる官能基をすべて答えよ。（2）分子式を答えよ。（3）カルボキシ基とエステル結合は含まれるか答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>（1）ベンゼン環には −OH と −NHCOCH<sub>3</sub> がパラ位に付いています。−OH は<strong>フェノール性ヒドロキシ基</strong>、−NHCOCH<sub>3</sub> の −NHCO− の部分は<strong>アミド結合</strong>です。（2）環の C6個・H4個、−OH が H1個・O1個、−NHCOCH<sub>3</sub> が C2個・H4個（NH の H が1個と CH<sub>3</sub> の H が3個）・N1個・O1個で、合計は <strong>C<sub>8</sub>H<sub>9</sub>NO<sub>2</sub></strong> です。窒素を含む点が、アスピリンやサリチル酸メチルとの違いです。（3）−COOH の形はなく、アミド結合の C＝O はエステル結合（−COO−）とは別物なので、<strong>カルボキシ基もエステル結合も含まれません</strong>。</p>
+        <p><strong>答え：（1）フェノール性ヒドロキシ基とアミド結合。（2）C<sub>8</sub>H<sub>9</sub>NO<sub>2</sub>。（3）どちらも含まれない。</strong></p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題4：サリチル酸 1.38 g をすべてアスピリンに変えることができたとすると、得られるアスピリンは何 g か。また、アスピリン 0.90 g は何 mol か。サリチル酸のモル質量は 138 g/mol、アスピリンのモル質量は 180 g/mol とする。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>反応式ではサリチル酸1 mol からアスピリン1 mol が得られるので、物質量はそのまま引き継がれます。サリチル酸 1.38 g は 1.38÷138＝0.0100 mol なので、得られるアスピリンも 0.0100 mol で、質量は 0.0100×180＝<strong>1.80 g</strong> です（これが理論上の最大量＝理論収量です）。アスピリン 0.90 g の物質量は 0.90÷180＝0.0050 mol、つまり <strong>5.0×10<sup>−3</sup> mol</strong> です。</p>
+        <p><strong>答え：理論収量は 1.80 g、アスピリン 0.90 g は 5.0×10<sup>−3</sup> mol。</strong></p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題5：イブプロフェンの構造式（上の図）について、（1）不斉炭素原子はどれか答えよ。（2）アスピリンとサリチル酸メチルには光学異性体が存在するか答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>（1）右側の置換基 −CH(CH<sub>3</sub>)COOH の付け根の炭素（図の＊印）が、H、CH<sub>3</sub>、COOH、ベンゼン環側の原子団という<strong>4つの異なる原子・原子団</strong>と結びついているため、不斉炭素原子です。したがってイブプロフェンには、鏡像の関係にある1組の光学異性体が存在します。（2）アスピリンとサリチル酸メチルの炭素は、ベンゼン環の炭素（平面構造）と、同じ原子団を複数もつ炭素（CH<sub>3</sub> の炭素など）だけで、4つの異なる原子団と結びついた炭素はありません。よって<strong>どちらにも光学異性体は存在しません</strong>。</p>
+        <p><strong>答え：（1）−CH(CH<sub>3</sub>)COOH の CH の炭素。（2）どちらも存在しない。</strong></p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>製薬工場での合成と品質管理</h3>
+    <p>アスピリンの工業的な製造は、サリチル酸をアセチル化するという、ここで学ぶ反応そのものを大規模に行うものです。工場では反応の進み具合だけでなく、できた製品の純度や、未反応のサリチル酸がどれだけ残っているかといった品質の確認が欠かせません。構造式から官能基を読み、モル質量から収量を見積もる計算は、製造と分析の実務の土台になっています。</p>
+    <h3>医薬品の研究開発と構造の改良</h3>
+    <p>新しい医薬品の開発では、効き目に関わる骨格は保ちながら、官能基を1つずつ変えた化合物を多数合成し、性質の違いを比べる方法が取られます。水に溶けやすいか、体内で分解されにくいかといった性質は官能基で大きく変わるため、「官能基と働きの関係」を読む力は研究開発の入口の知識です。また、光学異性体をもつ化合物では、異性体ごとに分けて合成・評価する工程が必要になる場合があります。</p>
+    <h3>薬局と成分表示の読み取り</h3>
+    <p>市販薬のパッケージには、アスピリン、アセトアミノフェン、イブプロフェン、サリチル酸メチルといった成分名が表示されています。これらはいずれも有機化合物の名前であり、構造式と結びつけて理解できると、「同じ解熱鎮痛の目的でも構造の違う成分がある」「外用剤にはサリチル酸の仲間が使われている」といった、成分表示の背景を化学の言葉で読み解けるようになります。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>フェリックス・ホフマン</strong>（1868〜1946、ドイツの化学者）</p>
+    <p>アスピリンの合成に成功したのは、ドイツの製薬会社バイエルに勤めていた化学者<strong>フェリックス・ホフマン</strong>（1868〜1946）です。ホフマンは1897年、サリチル酸を無水酢酸でアセチル化する方法によって、純度の高いアセチルサリチル酸を得ることに成功しました。サリチル酸そのものは解熱鎮痛の作用をもつ物質として知られていましたが扱いに課題があり、そのヒドロキシ基をエステルに変えるという構造上の工夫が、製品化への道を開きました。バイエルはこの化合物を「アスピリン」の名で1899年に発売し、アスピリンは世界で最も広く知られる医薬品の1つになりました。「官能基を1つ変えて性質を改良する」という発想は、現代の医薬品開発にも通じる基本の考え方です。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>サリチル酸の性質とアスピリンへの道筋は<a href="phenols-aromatic-acids.html">フェノールと芳香族カルボン酸</a>、エステル化と加水分解の基礎は<a href="carboxylic-acids-esters.html">カルボン酸とエステル</a>、官能基の全体像は<a href="functional-groups.html">官能基と化合物の分類</a>が役立ちます。立体構造の話は<a href="optical-isomers.html">光学異性体と不斉炭素</a>、ベンゼン環の基礎は<a href="aromatics.html">芳香族化合物</a>、合成の全体像の読み方は<a href="organic-reaction-pathways.html">反応経路図の読み方</a>へ進んでください。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

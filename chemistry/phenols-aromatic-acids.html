@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>フェノールと芳香族カルボン酸｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="フェノールと芳香族カルボン酸を、公式・手順・例題で解説。フェノールの弱酸性（NaOHに溶けてNaHCO3に溶けない理由）、塩化鉄(III)での紫色呈色と臭素水での白色沈殿、安息香酸・サリチル酸の性質、サリチル酸メチルとアスピリンの合成、クメン法の概要、湿布や解熱鎮痛薬など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="フェノールと芳香族カルボン酸｜化学ツール集">
+<meta property="og:description" content="フェノールの弱酸性と検出反応、安息香酸・サリチル酸からアスピリンへの道を、構造式の図と例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/phenols-aromatic-acids.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">フェノール</span>と芳香族カルボン酸</h1>
+    <p>化学の考え方辞典 ― 有機化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 有機化学 ＞ フェノールと芳香族カルボン酸</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">有機化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    フェノールはベンゼン環にヒドロキシ基 −OH が直接付いた化合物で、アルコールの −OH とは違い弱い酸性を示し、水酸化ナトリウムには溶けるが炭酸水素ナトリウムには溶けない。塩化鉄(III)水溶液で紫色を呈し、臭素水では白色沈殿を生じるのが検出の手がかりになる。ベンゼン環にカルボキシ基が付いた安息香酸や、そのオルト位に −OH をもつサリチル酸も同じ芳香族の酸で、サリチル酸からは湿布の香りのサリチル酸メチルや、解熱鎮痛薬アスピリン（アセチルサリチル酸）が作られる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>ベンゼン環に −OH や −COOH が付いた芳香族化合物について、<strong>酸としての強さと検出反応、合成の流れ</strong>を扱うときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>フェノールが水酸化ナトリウム水溶液には溶けるのに、炭酸水素ナトリウム水溶液には溶けない理由を、酸の強さの順序で説明する問題</li>
+      <li>塩化鉄(III)水溶液での呈色や臭素水での白色沈殿から、フェノール類を検出・区別する問題</li>
+      <li>安息香酸・サリチル酸・フェノールを、炭酸水素ナトリウムへの溶け方などで見分ける問題</li>
+      <li>サリチル酸からサリチル酸メチルやアスピリン（アセチルサリチル酸）を作る合成経路と、その量的関係を問う問題</li>
+    </ul>
+    <p>カギは、<strong>「ベンゼン環に直接付いた −OH は、アルコールの −OH とは別物」</strong>という点です。付いている場所が違うだけで、酸性も反応も大きく変わります。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>フェノール ― ベンゼン環に直接付いた −OH</h3>
+    <p><strong>フェノール</strong> C<sub>6</sub>H<sub>5</sub>OH は、ベンゼン環の炭素にヒドロキシ基 −OH が直接結合した化合物です。ベンゼン環に −OH が直接付いた化合物の総称を<strong>フェノール類</strong>といいます。無色の結晶で、水には少しだけ溶け、水溶液は弱い酸性を示します。特有の臭い（消毒薬のような臭い）があり、<strong>皮膚に付くとただれるなど毒性がある</strong>ため、取り扱いには注意が必要です。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 190" width="520" height="190" role="img" aria-label="フェノールとナトリウムフェノキシドの構造式" style="max-width:100%;height:auto;">
+        <text x="130" y="24" text-anchor="middle" font-size="13" fill="currentColor">フェノール C₆H₅OH</text>
+        <polygon points="130,62 163,81 163,119 130,138 97,119 97,81" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="130" cy="100" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="130" y1="62" x2="130" y2="42" stroke="currentColor" stroke-width="2"/>
+        <text x="130" y="36" text-anchor="middle" font-size="15" fill="currentColor">OH</text>
+        <text x="390" y="24" text-anchor="middle" font-size="13" fill="currentColor">ナトリウムフェノキシド C₆H₅ONa</text>
+        <polygon points="390,62 423,81 423,119 390,138 357,119 357,81" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="390" cy="100" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="390" y1="62" x2="390" y2="42" stroke="currentColor" stroke-width="2"/>
+        <text x="398" y="36" text-anchor="middle" font-size="15" fill="currentColor">O⁻ Na⁺</text>
+        <text x="260" y="172" text-anchor="middle" font-size="12" fill="currentColor">フェノールが塩基と中和すると、水によく溶けるフェノキシドの塩になる</text>
+      </svg>
+      <p>フェノールとナトリウムフェノキシドの構造式。−OH がベンゼン環の炭素に直接付いているのがフェノール類の特徴です。</p>
+    </div>
+    <h3>弱酸性 ― アルコールとの違いと「炭酸より弱い酸」</h3>
+    <p>エタノールのようなアルコールの −OH は中性で、酸としてはほとんど働きません。これに対してフェノールの −OH は、ベンゼン環と結びついているため水素イオン H<sup>+</sup> をわずかに放出し、<strong>弱い酸性</strong>を示します。ただし、その酸性は<strong>炭酸よりも弱い</strong>のが決定的なポイントです。酸の強さの順序は次の通りです。</p>
+    <div class="formula">カルボン酸（安息香酸・酢酸など） ＞ 炭酸 ＞ フェノール ＞ アルコール（エタノールなど）</div>
+    <p>この順序から、フェノールの溶け方が決まります。</p>
+    <ul>
+      <li><strong>水酸化ナトリウム水溶液には溶ける</strong>：強塩基と中和して、水に溶けやすい塩（ナトリウムフェノキシド）になるため。C<sub>6</sub>H<sub>5</sub>OH ＋ NaOH → C<sub>6</sub>H<sub>5</sub>ONa ＋ H<sub>2</sub>O</li>
+      <li><strong>炭酸水素ナトリウム水溶液には溶けない</strong>：炭酸水素イオン HCO<sub>3</sub><sup>−</sup> は炭酸の塩であり、フェノールは炭酸より弱い酸なので、フェノールが HCO<sub>3</sub><sup>−</sup> から塩を作る反応（中和）は起こりません。二酸化炭素も発生しません</li>
+      <li><strong>カルボン酸は炭酸より強い酸</strong>なので、炭酸水素ナトリウムと反応して CO<sub>2</sub> を発生しながら溶けます。ここがフェノールとカルボン酸を見分ける分かれ目です</li>
+    </ul>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 200" width="560" height="200" role="img" aria-label="エタノール、酢酸、炭酸の構造式" style="max-width:100%;height:auto;">
+        <text x="90" y="24" text-anchor="middle" font-size="13" fill="currentColor">エタノール C₂H₅OH（中性）</text>
+        <text x="36" y="76" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="48" y1="70" x2="72" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="84" y="76" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="96" y1="70" x2="120" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="132" y="76" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="144" y1="70" x2="162" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="172" y="76" text-anchor="middle" font-size="15" fill="currentColor">H</text>
+        <text x="90" y="106" text-anchor="middle" font-size="12" fill="currentColor">炭素鎖に付いた −OH は酸にならない</text>
+        <text x="280" y="24" text-anchor="middle" font-size="13" fill="currentColor">酢酸 CH₃COOH（カルボン酸）</text>
+        <text x="222" y="76" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="234" y1="70" x2="258" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="270" y="76" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="270" y1="56" x2="270" y2="38" stroke="currentColor" stroke-width="2"/>
+        <line x1="277" y1="56" x2="277" y2="38" stroke="currentColor" stroke-width="2"/>
+        <text x="274" y="32" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="282" y1="70" x2="306" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="318" y="76" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="330" y1="70" x2="348" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="358" y="76" text-anchor="middle" font-size="15" fill="currentColor">H</text>
+        <text x="280" y="106" text-anchor="middle" font-size="12" fill="currentColor">−COOH は炭酸より強い酸</text>
+        <text x="470" y="24" text-anchor="middle" font-size="13" fill="currentColor">炭酸 H₂CO₃</text>
+        <text x="418" y="76" text-anchor="middle" font-size="15" fill="currentColor">H</text>
+        <line x1="428" y1="70" x2="446" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="458" y="76" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="470" y1="70" x2="488" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="500" y="76" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="500" y1="56" x2="500" y2="38" stroke="currentColor" stroke-width="2"/>
+        <line x1="507" y1="56" x2="507" y2="38" stroke="currentColor" stroke-width="2"/>
+        <text x="504" y="32" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="512" y1="70" x2="530" y2="70" stroke="currentColor" stroke-width="2"/>
+        <text x="542" y="76" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="542" y="100" text-anchor="middle" font-size="13" fill="currentColor">H</text>
+        <text x="470" y="130" text-anchor="middle" font-size="12" fill="currentColor">フェノールより強い酸</text>
+        <text x="280" y="182" text-anchor="middle" font-size="12" fill="currentColor">酸の強さ：酢酸などのカルボン酸 ＞ 炭酸 ＞ フェノール ＞ エタノール</text>
+      </svg>
+      <p>酸の強さを比べる相手の構造式。−OH の付いている相手（炭素鎖か、ベンゼン環か、カルボニル基の隣か）で酸の強さが変わります。</p>
+    </div>
+    <h3>フェノールの検出反応</h3>
+    <ul>
+      <li><strong>塩化鉄(III)水溶液で紫色</strong>：フェノール水溶液に塩化鉄(III) FeCl<sub>3</sub> 水溶液を加えると、紫色（青紫色）に呈色します。フェノール類に共通する検出反応です</li>
+      <li><strong>臭素水で白色沈殿</strong>：フェノール水溶液に臭素水を加えると、ベンゼン環の −OH の両隣（オルト位）と向かい側（パラ位）の水素が臭素に置換され、<strong>2,4,6-トリブロモフェノール</strong>の白色沈殿が生じます。C<sub>6</sub>H<sub>5</sub>OH ＋ 3Br<sub>2</sub> → C<sub>6</sub>H<sub>2</sub>Br<sub>3</sub>OH ↓ ＋ 3HBr（ベンゼンそのものは臭素水とこのようには反応しない点も対比になります）</li>
+    </ul>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 300 220" width="300" height="220" role="img" aria-label="2,4,6-トリブロモフェノールの構造式" style="max-width:100%;height:auto;">
+        <text x="150" y="24" text-anchor="middle" font-size="13" fill="currentColor">2,4,6-トリブロモフェノール（白色沈殿）</text>
+        <polygon points="150,72 183,91 183,129 150,148 117,129 117,91" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="150" cy="110" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="150" y1="72" x2="150" y2="52" stroke="currentColor" stroke-width="2"/>
+        <text x="150" y="46" text-anchor="middle" font-size="15" fill="currentColor">OH</text>
+        <line x1="183" y1="91" x2="203" y2="79" stroke="currentColor" stroke-width="2"/>
+        <text x="216" y="76" text-anchor="middle" font-size="15" fill="currentColor">Br</text>
+        <line x1="117" y1="91" x2="97" y2="79" stroke="currentColor" stroke-width="2"/>
+        <text x="84" y="76" text-anchor="middle" font-size="15" fill="currentColor">Br</text>
+        <line x1="150" y1="148" x2="150" y2="168" stroke="currentColor" stroke-width="2"/>
+        <text x="150" y="190" text-anchor="middle" font-size="15" fill="currentColor">Br</text>
+        <text x="150" y="212" text-anchor="middle" font-size="12" fill="currentColor">−OH から見て 2・4・6 の位置（オルト位とパラ位）に Br が入る</text>
+      </svg>
+      <p>2,4,6-トリブロモフェノールの構造式。フェノールのベンゼン環は置換反応を受けやすく、臭素水を加えるだけで3か所が臭素に置き換わります。</p>
+    </div>
+    <h3>芳香族カルボン酸 ― 安息香酸とサリチル酸</h3>
+    <p>ベンゼン環にカルボキシ基 −COOH が付いた化合物を<strong>芳香族カルボン酸</strong>といいます。代表は<strong>安息香酸</strong> C<sub>6</sub>H<sub>5</sub>COOH で、無色の結晶、水には溶けにくい弱酸ですが、フェノールとは違い<strong>炭酸より強い酸</strong>なので、炭酸水素ナトリウム水溶液に CO<sub>2</sub> を発生しながら溶けます。C<sub>6</sub>H<sub>5</sub>COOH ＋ NaHCO<sub>3</sub> → C<sub>6</sub>H<sub>5</sub>COONa ＋ CO<sub>2</sub> ＋ H<sub>2</sub>O</p>
+    <p><strong>サリチル酸</strong>は、安息香酸のオルト位（−COOH の隣）に −OH が付いた化合物です。分子内に −COOH とフェノール性の −OH の両方をもつため、<strong>カルボン酸としての性質とフェノール類としての性質をあわせもちます</strong>。つまり、炭酸水素ナトリウムに CO<sub>2</sub> を発生しながら溶け（−COOH の性質）、塩化鉄(III)水溶液で紫色に呈色します（フェノール性 −OH の性質）。この「二つの顔」が、サリチル酸を見分ける問題の核心です。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 210" width="560" height="210" role="img" aria-label="安息香酸とサリチル酸の構造式" style="max-width:100%;height:auto;">
+        <text x="140" y="24" text-anchor="middle" font-size="13" fill="currentColor">安息香酸 C₆H₅COOH</text>
+        <polygon points="140,72 173,91 173,129 140,148 107,129 107,91" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="140" cy="110" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="140" y1="72" x2="140" y2="54" stroke="currentColor" stroke-width="2"/>
+        <text x="140" y="50" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="134" y1="38" x2="122" y2="24" stroke="currentColor" stroke-width="2"/>
+        <line x1="140" y1="36" x2="130" y2="20" stroke="currentColor" stroke-width="2"/>
+        <text x="114" y="22" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="152" y1="42" x2="170" y2="42" stroke="currentColor" stroke-width="2"/>
+        <text x="184" y="48" text-anchor="middle" font-size="15" fill="currentColor">OH</text>
+        <text x="420" y="24" text-anchor="middle" font-size="13" fill="currentColor">サリチル酸（オルト位に −OH）</text>
+        <polygon points="420,72 453,91 453,129 420,148 387,129 387,91" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="420" cy="110" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="420" y1="72" x2="420" y2="54" stroke="currentColor" stroke-width="2"/>
+        <text x="420" y="50" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="414" y1="38" x2="402" y2="24" stroke="currentColor" stroke-width="2"/>
+        <line x1="420" y1="36" x2="410" y2="20" stroke="currentColor" stroke-width="2"/>
+        <text x="394" y="22" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="432" y1="42" x2="450" y2="42" stroke="currentColor" stroke-width="2"/>
+        <text x="464" y="48" text-anchor="middle" font-size="15" fill="currentColor">OH</text>
+        <line x1="453" y1="91" x2="473" y2="79" stroke="currentColor" stroke-width="2"/>
+        <text x="488" y="84" text-anchor="middle" font-size="15" fill="currentColor">OH</text>
+        <text x="280" y="196" text-anchor="middle" font-size="12" fill="currentColor">サリチル酸は −COOH とフェノール性 −OH の両方をもつ</text>
+      </svg>
+      <p>安息香酸とサリチル酸の構造式。サリチル酸では、−COOH の隣（オルト位）にもう1つの −OH が付いています。</p>
+    </div>
+    <h3>サリチル酸から広がる2つの薬 ― サリチル酸メチルとアスピリン</h3>
+    <p>サリチル酸の −COOH をエステル化すると、用途の違う2つの物質が得られます。</p>
+    <ul>
+      <li><strong>サリチル酸メチル</strong>：サリチル酸にメタノールを濃硫酸とともに反応させると（エステル化）、サリチル酸メチルが得られます。特有の香りをもち、湿布薬（貼り薬）の香りの成分として知られます。C<sub>7</sub>H<sub>6</sub>O<sub>3</sub> ＋ CH<sub>3</sub>OH → C<sub>8</sub>H<sub>8</sub>O<sub>3</sub> ＋ H<sub>2</sub>O</li>
+      <li><strong>アセチルサリチル酸（アスピリン）</strong>：サリチル酸のフェノール性 −OH を無水酢酸でアセチル化すると、アセチルサリチル酸が得られます。これが解熱鎮痛薬<strong>アスピリン</strong>です。C<sub>7</sub>H<sub>6</sub>O<sub>3</sub> ＋ (CH<sub>3</sub>CO)<sub>2</sub>O → C<sub>9</sub>H<sub>8</sub>O<sub>4</sub> ＋ CH<sub>3</sub>COOH</li>
+    </ul>
+    <p>どちらの反応で −COOH と −OH のどちらが変わるのかを、構造式で追うのがポイントです。サリチル酸メチルでは −COOH 側が、 アスピリンでは −OH 側が反応しています。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 300" width="560" height="300" role="img" aria-label="メタノール、無水酢酸、サリチル酸メチル、アセチルサリチル酸の構造式" style="max-width:100%;height:auto;">
+        <text x="110" y="24" text-anchor="middle" font-size="13" fill="currentColor">メタノール CH₃OH</text>
+        <text x="62" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="74" y1="60" x2="98" y2="60" stroke="currentColor" stroke-width="2"/>
+        <text x="110" y="66" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="122" y1="60" x2="140" y2="60" stroke="currentColor" stroke-width="2"/>
+        <text x="150" y="66" text-anchor="middle" font-size="15" fill="currentColor">H</text>
+        <text x="400" y="24" text-anchor="middle" font-size="13" fill="currentColor">無水酢酸 (CH₃CO)₂O</text>
+        <text x="272" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="284" y1="60" x2="308" y2="60" stroke="currentColor" stroke-width="2"/>
+        <text x="320" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="320" y1="46" x2="320" y2="30" stroke="currentColor" stroke-width="2"/>
+        <line x1="327" y1="46" x2="327" y2="30" stroke="currentColor" stroke-width="2"/>
+        <text x="324" y="26" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="332" y1="60" x2="356" y2="60" stroke="currentColor" stroke-width="2"/>
+        <text x="368" y="66" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="380" y1="60" x2="404" y2="60" stroke="currentColor" stroke-width="2"/>
+        <text x="416" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="416" y1="46" x2="416" y2="30" stroke="currentColor" stroke-width="2"/>
+        <line x1="423" y1="46" x2="423" y2="30" stroke="currentColor" stroke-width="2"/>
+        <text x="420" y="26" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="428" y1="60" x2="452" y2="60" stroke="currentColor" stroke-width="2"/>
+        <text x="470" y="66" text-anchor="middle" font-size="15" fill="currentColor">CH₃</text>
+        <text x="248" y="66" text-anchor="middle" font-size="15" fill="currentColor">CH₃</text>
+        <text x="140" y="130" text-anchor="middle" font-size="13" fill="currentColor">サリチル酸メチル（湿布の香り）</text>
+        <polygon points="140,172 173,191 173,229 140,248 107,229 107,191" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="140" cy="210" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="140" y1="172" x2="140" y2="154" stroke="currentColor" stroke-width="2"/>
+        <text x="140" y="150" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="134" y1="138" x2="122" y2="124" stroke="currentColor" stroke-width="2"/>
+        <line x1="140" y1="136" x2="130" y2="120" stroke="currentColor" stroke-width="2"/>
+        <text x="114" y="122" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="152" y1="142" x2="170" y2="142" stroke="currentColor" stroke-width="2"/>
+        <text x="182" y="148" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="194" y1="142" x2="212" y2="142" stroke="currentColor" stroke-width="2"/>
+        <text x="230" y="148" text-anchor="middle" font-size="15" fill="currentColor">CH₃</text>
+        <line x1="173" y1="191" x2="193" y2="179" stroke="currentColor" stroke-width="2"/>
+        <text x="208" y="184" text-anchor="middle" font-size="15" fill="currentColor">OH</text>
+        <text x="420" y="130" text-anchor="middle" font-size="13" fill="currentColor">アセチルサリチル酸（アスピリン）</text>
+        <polygon points="420,172 453,191 453,229 420,248 387,229 387,191" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="420" cy="210" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="420" y1="172" x2="420" y2="154" stroke="currentColor" stroke-width="2"/>
+        <text x="420" y="150" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="414" y1="138" x2="402" y2="124" stroke="currentColor" stroke-width="2"/>
+        <line x1="420" y1="136" x2="410" y2="120" stroke="currentColor" stroke-width="2"/>
+        <text x="394" y="122" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="432" y1="142" x2="450" y2="142" stroke="currentColor" stroke-width="2"/>
+        <text x="464" y="148" text-anchor="middle" font-size="15" fill="currentColor">OH</text>
+        <line x1="453" y1="191" x2="471" y2="180" stroke="currentColor" stroke-width="2"/>
+        <text x="482" y="185" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="492" y1="176" x2="508" y2="164" stroke="currentColor" stroke-width="2"/>
+        <text x="518" y="168" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="518" y1="150" x2="518" y2="134" stroke="currentColor" stroke-width="2"/>
+        <line x1="525" y1="150" x2="525" y2="134" stroke="currentColor" stroke-width="2"/>
+        <text x="522" y="128" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="528" y1="158" x2="542" y2="148" stroke="currentColor" stroke-width="2"/>
+        <text x="552" y="146" text-anchor="middle" font-size="13" fill="currentColor">CH₃</text>
+        <text x="280" y="286" text-anchor="middle" font-size="12" fill="currentColor">サリチル酸メチルは −COOH 側、アスピリンは −OH 側が変わっている</text>
+      </svg>
+      <p>反応に使うメタノールと無水酢酸、そして生成物のサリチル酸メチルとアセチルサリチル酸（アスピリン）の構造式。サリチル酸（前の図）と見比べると、どちらの官能基が変化したかが分かります。</p>
+    </div>
+    <h3>フェノールの工業的製法 ― クメン法の概要</h3>
+    <p>フェノールの工業的製法の主流は<strong>クメン法</strong>です。ベンゼンにプロペンを付加させてクメン（イソプロピルベンゼン）とし、クメンを空気で酸化してクメンヒドロペルオキシドに変え、これを希硫酸で分解すると、フェノールとアセトンが同時に得られます。副生成物のアセトンも溶剤などに使われる有用な物質で、無駄の少ない製法です（ベンゼンからフェノールまでの全体の流れは「芳香族化合物」で扱うため、ここではクメン以降の肝心な部分だけを示します）。</p>
+    <div class="formula">クメン C<sub>9</sub>H<sub>12</sub> ＋ O<sub>2</sub> → クメンヒドロペルオキシド C<sub>9</sub>H<sub>12</sub>O<sub>2</sub> →（希硫酸で分解）→ フェノール C<sub>6</sub>H<sub>6</sub>O ＋ アセトン C<sub>3</sub>H<sub>6</sub>O</div>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 200" width="520" height="200" role="img" aria-label="クメンとアセトンの構造式" style="max-width:100%;height:auto;">
+        <text x="140" y="24" text-anchor="middle" font-size="13" fill="currentColor">クメン（イソプロピルベンゼン）C₉H₁₂</text>
+        <polygon points="140,72 173,91 173,129 140,148 107,129 107,91" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="140" cy="110" r="20" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="140" y1="72" x2="140" y2="54" stroke="currentColor" stroke-width="2"/>
+        <text x="140" y="50" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="130" y1="40" x2="112" y2="28" stroke="currentColor" stroke-width="2"/>
+        <text x="94" y="30" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+        <line x1="150" y1="40" x2="168" y2="28" stroke="currentColor" stroke-width="2"/>
+        <text x="188" y="30" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+        <text x="140" y="172" text-anchor="middle" font-size="12" fill="currentColor">ベンゼン環にイソプロピル基 −CH(CH₃)₂ が付いた構造（C の残りの手は H）</text>
+        <text x="390" y="24" text-anchor="middle" font-size="13" fill="currentColor">アセトン C₃H₆O（副生成物）</text>
+        <text x="322" y="96" text-anchor="middle" font-size="15" fill="currentColor">CH₃</text>
+        <line x1="342" y1="90" x2="364" y2="90" stroke="currentColor" stroke-width="2"/>
+        <text x="376" y="96" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="376" y1="76" x2="376" y2="58" stroke="currentColor" stroke-width="2"/>
+        <line x1="383" y1="76" x2="383" y2="58" stroke="currentColor" stroke-width="2"/>
+        <text x="380" y="50" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="388" y1="90" x2="410" y2="90" stroke="currentColor" stroke-width="2"/>
+        <text x="430" y="96" text-anchor="middle" font-size="15" fill="currentColor">CH₃</text>
+        <text x="390" y="130" text-anchor="middle" font-size="12" fill="currentColor">フェノールと一緒に得られる</text>
+      </svg>
+      <p>クメンとアセトンの構造式。クメン法では、クメンの酸化と分解によってフェノールとアセトンが1:1の物質量で得られます。</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>官能基を確認する。</strong>ベンゼン環に直接付いた −OH があればフェノール類、−COOH があればカルボン酸です。両方あればサリチル酸のように両方の性質を示します。</li>
+      <li><strong>酸の強さの順序に当てはめる。</strong>カルボン酸 ＞ 炭酸 ＞ フェノール ＞ アルコールの順序から、炭酸水素ナトリウムに溶けるか（CO<sub>2</sub> が出るか）、水酸化ナトリウムに溶けるかを判断します。</li>
+      <li><strong>検出反応を選ぶ。</strong>フェノール性の −OH の確認には塩化鉄(III)水溶液（紫色）と臭素水（白色沈殿）を使います。サリチル酸も −OH をもつため紫色を示すので、区別には炭酸水素ナトリウムへの溶け方を組み合わせます。</li>
+      <li><strong>合成では「どちらの官能基が変わるか」を構造式で追う。</strong>サリチル酸メチルは −COOH のエステル化、アスピリンは −OH のアセチル化です。量的計算は反応式の係数比（すべて1:1）から物質量でつなぎます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：フェノール、エタノール、酢酸、安息香酸の4つについて、酸として強い順に並べよ。また、この4つのうち、炭酸水素ナトリウム水溶液に二酸化炭素を発生しながら溶けるものをすべて答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>酸の強さの物差しは「カルボン酸 ＞ 炭酸 ＞ フェノール ＞ アルコール」です。酢酸と安息香酸はどちらもカルボン酸で炭酸より強く、フェノールは炭酸より弱く、エタノールはほぼ中性です。したがって強い順は <strong>安息香酸・酢酸（カルボン酸）＞ フェノール ＞ エタノール</strong> です（酢酸と安息香酸はどちらもカルボン酸のグループに入ります）。炭酸水素ナトリウムと反応して CO<sub>2</sub> を出すのは、炭酸より強い酸だけなので、<strong>酢酸と安息香酸</strong>です。フェノールは炭酸より弱いため反応せず溶けず、エタノールは酸ではないため反応しません。なお、4つとも水酸化ナトリウム水溶液とは、フェノールも含めて中和して溶けます（エタノールは水とよく混ざるため、この比較では扱いません）。</p>
+        <p><strong>答え：強い順に 安息香酸・酢酸 ＞ フェノール ＞ エタノール。炭酸水素ナトリウムに CO<sub>2</sub> を発生しながら溶けるのは酢酸と安息香酸。</strong></p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題2：フェノールとサリチル酸の固体がそれぞれ入った2本の試験管がある。塩化鉄(III)水溶液を加えると、どちらも紫色になった。この2つを区別するには、次にどのような操作をすればよいか答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>どちらも紫色になったのは、フェノールもサリチル酸もフェノール性の −OH をもつためで、塩化鉄(III)の呈色だけでは区別できません。そこで、もう一方の官能基の違いを使います。サリチル酸には −COOH があり炭酸より強い酸ですが、フェノールには −COOH がありません。<strong>炭酸水素ナトリウム水溶液を加えると、二酸化炭素の泡を出しながら溶ける方がサリチル酸、変化しない方がフェノール</strong>です。「両方に共通する性質では区別できないので、片方だけがもつ官能基の反応を使う」のが、見分け問題の基本の考え方です。</p>
+        <p><strong>答え：炭酸水素ナトリウム水溶液を加え、CO<sub>2</sub> を発生しながら溶ける方がサリチル酸、溶けない方がフェノール。</strong></p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題3：サリチル酸 13.8 g をすべてアセチルサリチル酸（アスピリン）に変えたとすると、理論上何 g のアスピリンが得られるか。原子量は H＝1.0、C＝12、O＝16 とする。また、同じ量のサリチル酸からサリチル酸メチルを作る場合の理論上の質量も答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>サリチル酸 C<sub>7</sub>H<sub>6</sub>O<sub>3</sub> の分子量は 12×7 ＋ 1.0×6 ＋ 16×3 ＝ 138。13.8 g は 13.8 ÷ 138 ＝ 0.100 mol です。</li>
+          <li>アスピリンの合成 C<sub>7</sub>H<sub>6</sub>O<sub>3</sub> ＋ (CH<sub>3</sub>CO)<sub>2</sub>O → C<sub>9</sub>H<sub>8</sub>O<sub>4</sub> ＋ CH<sub>3</sub>COOH は係数比1:1なので、アスピリンも 0.100 mol 得られます。アスピリン C<sub>9</sub>H<sub>8</sub>O<sub>4</sub> の分子量は 12×9 ＋ 1.0×8 ＋ 16×4 ＝ 180 なので、質量は 0.100 × 180 ＝ 18.0 g です。</li>
+          <li>サリチル酸メチル C<sub>8</sub>H<sub>8</sub>O<sub>3</sub> の分子量は 12×8 ＋ 1.0×8 ＋ 16×3 ＝ 152。エステル化も1:1なので 0.100 mol、質量は 0.100 × 152 ＝ 15.2 g です。</li>
+        </ol>
+        <p><strong>答え：アスピリンは 18.0 g、サリチル酸メチルは 15.2 g。</strong>原料より生成物の方が重くなるのは、アセチル化でアセチル基 C<sub>2</sub>H<sub>3</sub>O（質量43）が付き、水素（質量1）と差し引き42増えるためで、180 − 138 ＝ 42 と一致します。</p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題4：フェノール 0.94 g に十分な量の臭素水を加えて、すべて 2,4,6-トリブロモフェノールに変えた。得られる白色沈殿は何 g か。原子量は H＝1.0、C＝12、O＝16、Br＝80 とする。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>フェノール C<sub>6</sub>H<sub>6</sub>O の分子量は 12×6 ＋ 1.0×6 ＋ 16 ＝ 94。0.94 g は 0.94 ÷ 94 ＝ 0.010 mol です。</li>
+          <li>反応式 C<sub>6</sub>H<sub>5</sub>OH ＋ 3Br<sub>2</sub> → C<sub>6</sub>H<sub>2</sub>Br<sub>3</sub>OH ＋ 3HBr より、フェノールとトリブロモフェノールの物質量比は1:1なので、生成物も 0.010 mol です（臭素はフェノールの3倍の 0.030 mol 必要です）。</li>
+          <li>2,4,6-トリブロモフェノール C<sub>6</sub>H<sub>3</sub>Br<sub>3</sub>O の分子量は 12×6 ＋ 1.0×3 ＋ 80×3 ＋ 16 ＝ 331。質量は 0.010 × 331 ＝ 3.31 g です。</li>
+        </ol>
+        <p><strong>答え：3.31 g。</strong>水素3個（質量3）が臭素3個（質量240）に置き換わるため、生成物は原料の3.5倍ほどの重さになります。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>解熱鎮痛薬アスピリン</h3>
+    <p>アセチルサリチル酸は、商品名アスピリンとして知られる解熱鎮痛薬の成分です。サリチル酸そのものにも解熱鎮痛の働きがありましたが、酸性が強く胃を荒らしやすいため、フェノール性の −OH をアセチル化して刺激を抑えたアセチルサリチル酸が薬として使われるようになりました。「官能基を1つ変えると性質が変わる」という有機化学の考え方が、そのまま薬の改良につながった代表例です。</p>
+    <h3>湿布薬の香り ― サリチル酸メチル</h3>
+    <p>サリチル酸メチルは、肩こりや筋肉痛の湿布薬（貼り薬）・塗り薬に配合される成分で、あの独特の「湿布の香り」のもとです。皮膚から吸収されて痛みや炎症を抑える働きがあり、香りそのものが「効きそう」という印象と結びついています。エステルの香りが製品の顔になっている例です。</p>
+    <h3>フェノール樹脂と消毒の歴史</h3>
+    <p>フェノールとホルムアルデヒドを反応させて作るフェノール樹脂（ベークライト）は、初期のプラスチックの代表で、電気の絶縁部品や調理器具の取っ手などに使われてきました。また、フェノールには殺菌作用があり、かつて消毒薬として使われた歴史があります（現在の医療現場では、より安全で効果的な消毒薬に置き換わっています）。クメン法で作られるフェノールは、こうした樹脂や医薬品の原料として大量に使われています。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>フェリックス・ホフマン</strong>（1868〜1946、ドイツの化学者／バイエル社の研究者）</p>
+    <p>ドイツの化学者<strong>フェリックス・ホフマン</strong>は、製薬会社バイエル社の研究者だった1897年、サリチル酸をアセチル化してアセチルサリチル酸を純粋な形で合成しました。サリチル酸は解熱鎮痛の効果が知られていましたが胃への刺激が強く、ホフマンの合成したアセチルサリチル酸はその欠点を抑えた薬として、1899年にバイエル社から「アスピリン」の名で発売されました。アスピリンは世界で最も広く使われてきた薬の1つとなり、サリチル酸という植物由来の物質の研究から生まれた合成医薬の象徴とされています。本項目の「サリチル酸からアスピリンへの道」は、このホフマンの仕事がゴールになっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>ベンゼンからフェノールまでの全体の反応経路は<a href="aromatics.html">芳香族化合物</a>、エステル化と加水分解の基礎は<a href="carboxylic-acids-esters.html">カルボン酸とエステル</a>、−OH をもつ化合物の基本は<a href="alcohols-ethers.html">アルコールとエーテル</a>が役立ちます。酸の強弱の考え方は<a href="acid-strength-dissociation.html">酸と塩基の強弱と電離度</a>、酸・塩基の性質を使った分離は<a href="organic-separation.html">有機化合物の分離と精製</a>、アスピリンを含む医薬品全体は<a href="pharmaceutical-chemistry.html">医薬品の化学</a>へ進んでください。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
