@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分子間力と水素結合｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="分子間力と水素結合を、ファンデルワールス力の仕組みと、水素結合ができる条件（F・O・Nと結びついたH）から解説。水の異常に高い沸点や、氷が水に浮く理由を分子の結びつきで説明し、DNAや紙・接着剤など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="分子間力と水素結合｜化学ツール集">
+<meta property="og:description" content="分子間力（ファンデルワールス力）と水素結合の違いと、水の高い沸点・氷が浮く理由を、沸点の比較と密度の例題、現場での使われ方で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/intermolecular-forces.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">分子間力</span>と水素結合</h1>
+    <p>化学の考え方辞典 ― 化学結合（高校化学基礎・1年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 化学結合 ＞ 分子間力と水素結合</p>
+  <p><span class="badge badge-lv">高校化学基礎・1年</span> <span class="badge badge-genre">化学結合</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    分子どうしを引き合う弱い力を考えることで、物質の沸点や融点の違いを説明するときに使う。すべての分子の間にはたらくファンデルワールス力に加え、フッ素・酸素・窒素と結びついた水素がある分子では特に強い水素結合がはたらくため、水のように分子量が小さいのに沸点が異常に高くなったり、氷が水に浮いたりする。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>分子の中の共有結合ではなく、<strong>分子と分子の間にはたらく引力</strong>から物質の性質を説明するときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>分子量が近いのに沸点が大きく違う物質（水とメタンなど）を比べ、その理由を説明する問題</li>
+      <li>ある分子が水素結合をするかどうかを、分子式や構造から判断する問題</li>
+      <li>氷が水に浮く理由や、水が 4 ℃ で密度が最大になるといった、水の変わった性質を説明する問題</li>
+    </ul>
+    <p>ポイントは、<strong>分子間力は「分子の中の結合」ではなく「分子どうしの結びつき」</strong>だということです。沸騰や融解で切れるのは主にこの分子どうしの結びつきで、分子の中の共有結合が切れるわけではありません。だから分子間力の強さが、そのまま沸点・融点の高さに表れます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>分子間力は、分子どうしにはたらく引力の総称です。代表的なものが次の2つです。</p>
+    <div class="formula">分子間力 ＝ ファンデルワールス力 ＋（条件を満たす分子では）水素結合</div>
+    <h3>1．ファンデルワールス力 ― すべての分子の間にはたらく弱い引力</h3>
+    <ul>
+      <li><strong>仕組み</strong>：分子の中の電子の分布は、瞬間ごとにわずかに偏ります。その偏りが隣の分子にも偏りを誘い、プラスの部分とマイナスの部分が引き合います。極性のある分子では、もともとの電気的な偏りによる引力も加わります</li>
+      <li><strong>はたらく相手</strong>：無極性分子どうしを含む、<strong>すべての分子</strong>の間にはたらく</li>
+      <li><strong>強さの目安</strong>：一般に、分子量が大きい（電子が多い・分子の表面積が大きい）分子ほど強い。電子が多く大きく偏りやすいためで、分子量が大きい物質ほど沸点が高い傾向はここから来る</li>
+      <li><strong>例</strong>：メタン CH<sub>4</sub> の沸点は −161 ℃、分子量の大きいヨウ素 I<sub>2</sub> は常温で固体。どちらも水素結合はせず、違いはファンデルワールス力の強さによる</li>
+    </ul>
+    <h3>2．水素結合 ― 特定の分子の間だけにはたらく、特に強い引力</h3>
+    <ul>
+      <li><strong>できる条件</strong>：電気陰性度の大きい<strong>フッ素 F・酸素 O・窒素 N</strong> の原子と共有結合した水素原子 H が、隣の分子の F・O・N の非共有電子対（共有結合に使われていない電子のペア）と引き合うこと。覚え方は「<strong>F・O・N（フォン）と結びついた H</strong>」</li>
+      <li><strong>仕組み</strong>：F・O・N は電子を強く引き寄せるため、それと結びついた H は電子を奪われて大きくプラスに偏る。その H が、隣の分子の電子の豊富な F・O・N に強く引き寄せられる</li>
+      <li><strong>強さの目安</strong>：ファンデルワールス力よりずっと強いが、共有結合やイオン結合よりは弱い。そのため水素結合をする物質は、分子量から予想されるより沸点・融点がはるかに高くなる</li>
+      <li><strong>例</strong>：水 H<sub>2</sub>O（沸点 100 ℃）、フッ化水素 HF（沸点 約 19.5 ℃）、アンモニア NH<sub>3</sub>（沸点 −33 ℃）。いずれも分子量は 17〜20 程度と小さいのに、水素結合をしないメタン CH<sub>4</sub>（分子量 16、沸点 −161 ℃）より沸点がはるかに高い</li>
+    </ul>
+    <h3>水の異常な性質は、どちらも水素結合で説明できる</h3>
+    <ul>
+      <li><strong>沸点が異常に高い</strong>：同族の水素化合物で比べると、硫化水素 H<sub>2</sub>S の沸点は −60 ℃、セレン化水素 H<sub>2</sub>Se は −41 ℃、テルル化水素 H<sub>2</sub>Te は −2 ℃ と、分子量が大きいほど沸点が上がる並びになっている。ところが一番分子量の小さい水だけが 100 ℃ と飛び抜けて高い。水素結合を切って分子をばらばらにするのに、余分な熱が要るためである</li>
+      <li><strong>氷が水に浮く（固体より液体の方が密度が大きい）</strong>：液体の水では水素結合が絶えず切れたりできたりして、分子が比較的詰まって並べる。ところが氷になると、各水分子がまわりの4つの水分子と水素結合で固定され、すき間の大きい立体的な構造（四面体形の網目）になる。すき間が多い分、同じ質量でも体積が大きくなり、密度が小さくなる。氷の密度は約 0.92 g/cm<sup>3</sup> で、0 ℃ の水の約 1.00 g/cm<sup>3</sup> より小さいため、氷は水に浮く。多くの物質では固体になると詰まって密度が大きくなり沈むので、これは水の例外的な性質である</li>
+      <li><strong>4 ℃ で密度が最大になる</strong>：氷が融けた直後は網目構造の名残ですき間が残るが、温度を上げると構造が崩れて分子が詰まる効果が勝ち、4 ℃ までは密度が大きくなる。それより上では熱運動で分子の間隔が広がる効果が勝ち、密度は小さくなっていく</li>
+    </ul>
+    <p>なお、水素結合は「結合」という名前が付いていますが、分子の中の共有結合とは別物で、あくまで分子間力の一種です。試験でもこの区別が問われます。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>水素結合の条件をチェックする。</strong>分子の中に「F・O・N と直接結びついた H」があるかを確認します。炭素 C と結びついた H（メタンや炭化水素の H）では水素結合はできません。</li>
+      <li><strong>水素結合の有無でまず大きく分ける。</strong>水素結合をする物質は、分子量が近くて水素結合をしない物質より、沸点・融点がはるかに高くなります。</li>
+      <li><strong>同じグループの中では分子量で比べる。</strong>水素結合の有無が同じなら、分子量が大きいほどファンデルワールス力が強く、沸点・融点は高くなります。</li>
+      <li><strong>固体と液体の密度が問われたら、氷の構造を思い出す。</strong>氷は水素結合によるすき間の大きい構造なので、融けると体積が減って密度が大きくなります。質量と密度から体積を出す計算（体積 ＝ 質量 ÷ 密度）で確かめられます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：次の分子のうち、水素結合をするものをすべて選べ。水 H<sub>2</sub>O、メタン CH<sub>4</sub>、アンモニア NH<sub>3</sub>、フッ化水素 HF。問題2：水（分子量 18、沸点 100 ℃）とメタン（分子量 16、沸点 −161 ℃）は分子量が近いのに、沸点が大きく違う理由を説明せよ。問題3：0 ℃ の水 100 g（密度 約 1.00 g/cm<sup>3</sup>）がすべて氷（密度 約 0.92 g/cm<sup>3</sup>）になると、体積は何 cm<sup>3</sup> になるか。約何％増えるかも答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：水素結合の条件は「F・O・N と結びついた H があること」です。水は O と結びついた H、アンモニアは N と結びついた H、フッ化水素は F と結びついた H をもつので、3つとも水素結合をします。メタンは C と結びついた H しかもたないため、水素結合はせず、ファンデルワールス力だけがはたらきます。</li>
+          <li>問題2：水の分子の間には水素結合という強い引力がはたらくため、沸騰させて分子をばらばらにするには大きな熱エネルギーが要ります。一方メタンは弱いファンデルワールス力しかはたらかないため、わずかな熱で分子が離れて気体になります。分子量の差はわずか（18 と 16）で、ファンデルワールス力の強さはほぼ同じはずなので、この 261 ℃ もの沸点の差（100 −（−161）＝ 261）は水素結合によるものと説明できます。</li>
+          <li>問題3：水の体積は 100 g ÷ 1.00 g/cm<sup>3</sup> ＝ 100 cm<sup>3</sup>。氷になると質量は変わらないので、体積は 100 g ÷ 0.92 g/cm<sup>3</sup> ＝ 108.69… ≒ 109 cm<sup>3</sup>。増えた割合は（109 − 100）÷ 100 ≒ 0.09、つまり約 9％ です。凍ると体積が増えるため、密閉した容器で水を凍らせると容器が割れることがあります。</li>
+        </ol>
+        <p><strong>答え：問題1は水・アンモニア・フッ化水素。問題2は水には水素結合がはたらき、メタンには弱いファンデルワールス力しかはたらかないため。問題3は約 109 cm<sup>3</sup> で、約 9％ 増える</strong>。問題3の結果が「氷の密度（0.92）が水の密度（1.00）より小さい」こととつながり、氷が水に浮く理由そのものです。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>DNA の二重らせんとタンパク質の形</h3>
+    <p>DNA の2本の鎖は、塩基どうしの水素結合で結びついています。水素結合は共有結合より弱いため、細胞が DNA を複製するときに鎖をほどいて読み取ることができ、それでいて普段は情報を保てるちょうどよい強さになっています。タンパク質が決まった立体構造に折りたたまれる（αへリックスやβシート）ときにも、鎖の中の水素結合が形を支えています。</p>
+    <h3>紙・木綿・ナイロンの強さ</h3>
+    <p>紙や木綿の主成分であるセルロースは、分子の間に多数の水素結合ができるため、繊維どうしが結びついて強度が出ます。紙が水に濡れると弱くなるのは、水の分子が入り込んでセルロースどうしの水素結合を断ち切るためです。合成繊維のナイロンも、鎖と鎖の間の水素結合が強さと弾力のもとになっています。</p>
+    <h3>ヤモリの足と接着・粘着</h3>
+    <p>ヤモリが壁や天井を歩けるのは、足の裏の無数の細かい毛が壁の表面に密着し、ファンデルワールス力が毛の本数分だけ積み重なって強い引力になるためだと確かめられています。この仕組みは、糊を使わずに貼って剥がせる粘着材や、壁を登るロボットの足裏の研究に応用されています。身近なセロハンテープや接着剤のくっつく力にも、分子間力が土台として関わっています。</p>
+    <h3>湖が表面から凍り、水中の生き物が冬を越すこと</h3>
+    <p>氷が水より軽く表面に浮くため、湖や池は表面から凍り、氷の層が断熱材になって下の水は凍りにくくなります。さらに水は 4 ℃ で密度が最大になるため、冷えた水は底に沈んで底の水温は約 4 ℃ に保たれ、魚などの水生生物が凍った湖の下で冬を越せます。もし氷が水に沈む物質だったら、湖は底から凍りついてしまうはずです。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ヨハネス・ファンデルワールス</strong>（1837〜1923、オランダの物理学者）、<strong>ウェンデル・ラティマー</strong>（1893〜1955、アメリカの化学者）、<strong>ワース・ローデブッシュ</strong>（1887〜1959、アメリカの化学者）</p>
+    <p>分子の間に引力がはたらくことを初めに理論に取り入れたのが、オランダの物理学者<strong>ヨハネス・ファンデルワールス</strong>（1837〜1923）です。1873年の博士論文で、気体の法則が実在の気体でずれる理由を「分子には大きさがあり、分子どうしが引き合う」ためだと考え、その引力が今のファンデルワールス力と呼ばれるようになりました。この気体と液体の状態の研究で、1910年にノーベル物理学賞を受賞しています。一方、水素結合の考え方は、アメリカの化学者<strong>ウェンデル・ラティマー</strong>（1893〜1955）と<strong>ワース・ローデブッシュ</strong>（1887〜1959）が1920年に論文で示したものが土台です。水素の原子核が2つの原子の電子の集まりに挟まれて弱い「結合」を作る、という説明で、水やフッ化水素の異常な性質を初めて筋道立てて説明しました。その後この考え方は広まり、水の性質だけでなく、DNA やタンパク質の構造を理解する鍵になっていきます。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>分子結晶の中でこの力がどうはたらくかは<a href="crystal-types.html">結晶の種類と性質</a>、分子の電気的な偏りのもとは<a href="covalent-bonding-molecular-shape.html">共有結合と分子の形</a>、極性と溶けやすさの関係は<a href="polarity-and-solubility.html">極性と溶解性</a>、結合の極性を決める数値は<a href="electronegativity.html">電気陰性度と結合の極性</a>が役立ちます。固体・液体・気体の変化そのものは<a href="states-of-matter.html">物質の三態と状態変化</a>へ進んでください。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>定比例・倍数比例と原子説の成立｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="定比例の法則・倍数比例の法則・質量保存の法則という3つの実験法則から、ドルトンの原子説（1803年）がどう導かれたかを、公式・手順・例題で解説。法則どうしの歴史と論理のつながり、元素分析など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="定比例・倍数比例と原子説の成立｜化学ツール集">
+<meta property="og:description" content="定比例・倍数比例の法則と質量保存の法則からドルトンの原子説へ至る道を、例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/laws-of-composition-dalton.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">定比例・倍数比例</span>と原子説の成立</h1>
+    <p>化学の考え方辞典 ― モルと量的関係（高校化学基礎・1年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ モルと量的関係 ＞ 定比例・倍数比例と原子説の成立</p>
+  <p><span class="badge badge-lv">高校化学基礎・1年</span> <span class="badge badge-genre">モルと量的関係</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    化合物の成分元素の質量比がいつも一定になる定比例の法則と、2つの元素が複数の化合物をつくるとき一方の元素の質量が簡単な整数比になる倍数比例の法則を確認し、質量保存の法則とあわせた3つの法則が、ドルトンの原子説によってどう一つの仕組みとして説明されるかをたどるときに使う。法則の暗記ではなく、「なぜ原子を考えると法則が成り立つのか」という論理のつながりをつかむことが目的である。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>18世紀末から19世紀初めにかけて実験で積み上げられた<strong>「化合の法則」から、原子説がなぜ必要になったか</strong>を読み解く項目です。次のような場面で使います。</p>
+    <ul>
+      <li>実験データから、ある化合物の成分元素の質量比が一定かどうかを確認する問題（定比例の法則）</li>
+      <li>同じ2元素からなる複数の化合物を比べて、倍数比例の法則が成り立つかを確かめる問題</li>
+      <li>質量保存・定比例・倍数比例の3法則を、原子説のどの主張が説明するかを対応づける問題</li>
+      <li>「原子が存在する証拠は何か」という、科学史・論理の問題</li>
+    </ul>
+    <p>質量保存と定比例の法則そのものの計算は中学でも扱います。この項目では、そこから一歩進んで<strong>倍数比例の法則が原子の存在を強く示唆した</strong>という論理の流れを中心に扱います。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>出発点は、化学反応の前後で質量の総和が変わらないという<strong>質量保存の法則</strong>（ラボアジエ、1789年）です。</p>
+    <div class="formula">反応前の物質の質量の合計 ＝ 反応後の物質の質量の合計</div>
+    <p>次に、化合物をどこでどう作っても、その成分元素の質量比は一定であるという<strong>定比例の法則</strong>（プルースト、1799年頃）です。たとえば水はいつでも水素：酸素 ＝ 1：8、酸化銅(II)はいつでも銅：酸素 ＝ 4：1（64：16）という質量比になります。</p>
+    <div class="formula">定比例の法則：1つの化合物について、成分元素の質量比は常に一定</div>
+    <p>そして決め手になったのが<strong>倍数比例の法則</strong>（ドルトン、1803年頃）です。2つの元素 A・B が2種類以上の化合物をつくるとき、B の一定質量と化合する A の質量（またはその逆）は、化合物どうしで比べると簡単な整数比になります。炭素と酸素の化合物で見ると、炭素 12 g と化合する酸素は、一酸化炭素では 16 g、二酸化炭素では 32 g で、その比は 16：32 ＝ 1：2 です。</p>
+    <div class="formula">倍数比例の法則：一方の元素の質量をそろえると、もう一方の元素の質量は簡単な整数比になる</div>
+    <p>ドルトンの<strong>原子説</strong>（1803年に唱え、1808年の著書で公表）は、この3法則を一つの仕組みで説明しました。主張の骨格は次の通りです。</p>
+    <ul>
+      <li><strong>物質は、それ以上分けられない粒子「原子」からできている</strong></li>
+      <li><strong>同じ元素の原子は質量が等しく、元素が違えば原子の質量も違う</strong></li>
+      <li><strong>化合物は、原子が簡単な整数比で結びついてできている</strong></li>
+      <li><strong>化学反応は原子の組み替えであり、原子そのものは生まれたり消えたりしない</strong></li>
+    </ul>
+    <p>対応づけると、原子が消えないから質量保存が成り立ち、化合物ごとに原子の個数の比が決まっているから定比例が成り立ち、個数の比が 1：1 や 1：2 のような簡単な整数になるから倍数比例が成り立ちます。特に倍数比例の「簡単な整数比」は、物質が連続的に混ざるのではなく、<strong>数えられる粒子の個数の比</strong>だと考えなければ出てこない特徴で、原子説の最も強い根拠になりました。</p>
+    <ul>
+      <li><strong>質量比</strong>：成分元素の質量 [g] どうしの比。単位は約分されて消えるため、比そのものに単位はない</li>
+      <li><strong>原子量</strong>：原子説をもとにドルトンが作り始めた、元素ごとの原子の相対質量（水素を 1 とする表が最初期のもの）</li>
+    </ul>
+    <p>なお、定比例の法則には例外もあります。酸化鉄の一部（ウスタイト Fe<sub>1−x</sub>O のように組成が幅をもつもの）のような<strong>不定比化合物</strong>が20世紀に確認され、プルーストと論争したベルトレーの側にも一分の理があったことが分かっています。ただし高校化学の範囲では、通常の化合物では定比例が成り立つものとして扱います。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>比べる化合物をそろえる。</strong>倍数比例を確かめるときは、同じ2元素からなる化合物どうし（CO と CO<sub>2</sub> など）を選びます。</li>
+      <li><strong>一方の元素の質量をそろえる。</strong>たとえば炭素を 12 g にそろえ、それぞれと化合している酸素の質量を読み取ります。もとのデータの質量がそろっていないときは、比例計算でそろえます。</li>
+      <li><strong>もう一方の元素の質量の比を、最も簡単な整数比に直す。</strong>16 g と 32 g なら 1：2 です。割り切れない大きな比になったら、データの読み違いか法則の対象外の組み合わせを疑います。</li>
+      <li><strong>原子の個数の比として解釈する。</strong>質量の整数比は、そのまま原子の個数の比（CO は炭素原子1個に酸素原子1個、CO<sub>2</sub> は炭素原子1個に酸素原子2個）に対応すると考えます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1（定比例）：水を分解すると水素と酸素が質量比 1：8 で得られる。水 36 g を完全に分解すると、水素と酸素はそれぞれ何 g 得られるか。問題2（倍数比例）：一酸化炭素は炭素 12 g と酸素 16 g、二酸化炭素は炭素 12 g と酸素 32 g からできている。倍数比例の法則が成り立つことを示せ。問題3（倍数比例）：窒素 14 g と化合する酸素の質量は、一酸化二窒素 N<sub>2</sub>O では 8 g、一酸化窒素 NO では 16 g、二酸化窒素 NO<sub>2</sub> では 32 g である。酸素の質量の比を最も簡単な整数比で表せ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：質量比の合計は 1 ＋ 8 ＝ 9。水素は 36 × (1/9) ＝ 4 g、酸素は 36 × (8/9) ＝ 32 g。合計 4 ＋ 32 ＝ 36 g で、質量保存とも一致します。水の出どころによらずこの比が変わらないことが定比例の法則です。</li>
+          <li>問題2：炭素の質量を 12 g にそろえると、化合する酸素は 16 g と 32 g。その比は 16：32 ＝ 1：2 という簡単な整数比になるため、倍数比例の法則が成り立ちます。</li>
+          <li>問題3：窒素 14 g にそろえた酸素の質量は 8 g、16 g、32 g で、比は 8：16：32 ＝ 1：2：4。簡単な整数比になっています。</li>
+          <li>問題2・3の整数比は、酸素原子が「1個、2個、4個」という個数の比で結びついていると考えると自然に説明できます。これがドルトンが原子説に確信を持った根拠です。</li>
+        </ol>
+        <p><strong>答え：問題1は水素 4 g・酸素 32 g、問題2は酸素の質量比 1：2 で倍数比例が成り立つ、問題3は 1：2：4</strong>。倍数比例の確認では「一方の元素の質量をそろえる」ことが手順の核心です。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>元素分析による組成の決定</h3>
+    <p>新しい化合物や未知の試料を調べる元素分析（有機化合物の C・H・N 分析など）では、成分元素の質量比を測り、定比例の法則を前提に組成式（実験式）を決めます。「同じ物質なら組成比は一定」という前提なしには、分析結果から物質を特定できません。</p>
+    <h3>定量分析と品質管理の土台</h3>
+    <p>滴定や重量分析といった定量分析は、質量保存と定比例が成り立つことを土台に、試料中の成分量を割り出します。医薬品・食品・工業材料の品質管理で成分量を検査できるのは、製品ロットが変わっても化合物の組成比が一定だからです。</p>
+    <h3>原子量表と周期表への発展</h3>
+    <p>原子説は、元素ごとに原子の相対質量（原子量）を定める作業を生み、各地の化学者が質量比のデータから原子量表を作り上げました。その蓄積が、やがて元素を原子量順に並べる周期表の発見につながっていきます。質量比を測るという地道な実験が、現代化学の部品表である周期表の出発点でした。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>アントワーヌ・ラボアジエ</strong>（1743〜1794、フランスの化学者）、<strong>ジョゼフ・ルイ・プルースト</strong>（1754〜1826、フランスの化学者）、<strong>ジョン・ドルトン</strong>（1766〜1844、イギリスの化学者）</p>
+    <p>質量保存の法則は、フランスの化学者<strong>アントワーヌ・ラボアジエ</strong>（1743〜1794）が精密な秤量実験を積み重ね、1789年の著書『化学原論』で示したものです。定比例の法則は、フランスの化学者<strong>ジョゼフ・ルイ・プルースト</strong>（1754〜1826）が1799年頃に唱えました。化合物の組成は連続的に変わると主張するクロード・ルイ・ベルトレーとの論争（1801〜1808年頃）にプルーストが実験データで応じ、法則として認められました。そしてイギリスの化学者<strong>ジョン・ドルトン</strong>（1766〜1844）は、炭化水素などの気体の研究から倍数比例の関係に気づき、1803年に原子説を唱えて、1808年の著書『化学哲学の新体系』で公表しました。初期の原子説には、水の組成を H と O が1個ずつ（HO）とみなすなど後世に修正される部分もありましたが、「原子の組み合わせで法則を説明する」という枠組みそのものが、その後の化学全体の土台になりました。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>中学での法則の計算は<a href="mass-conservation-definite-proportions.html">化学反応と質量保存・定比例</a>、原子と化学式の入口は<a href="atoms-and-molecules.html">原子と分子・元素記号</a>が役立ちます。原子説から量の計算へ進むには<a href="mole-avogadro.html">物質量モルとアボガドロ数</a>、質量比から組成式を求める計算は<a href="empirical-molecular-formula.html">組成式と分子式</a>へ進んでください。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

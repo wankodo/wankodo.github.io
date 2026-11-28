@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>配位結合と錯イオン｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="配位結合と錯イオンを、公式・手順・例題で解説。非共有電子対の提供による配位結合のでき方、テトラアンミン銅（II）イオンなどの命名と配位数、電荷と酸化数の求め方、錯イオンの色、金属イオンの分析やヘモグロビンなど現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="配位結合と錯イオン｜化学ツール集">
+<meta property="og:description" content="配位結合のでき方と、テトラアンミン銅（II）イオンなど錯イオンの命名・配位数・電荷・色を、例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/coordinate-bonding-complex-ions.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">配位結合</span>と<span class="accent">錯イオン</span></h1>
+    <p>化学の考え方辞典 ― 化学結合（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 化学結合 ＞ 配位結合と錯イオン</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">化学結合</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    一方の原子がもつ非共有電子対を、もう一方の原子が受け取って共有する結合が配位結合で、金属イオンに分子やイオンが配位結合で結びついたイオンが錯イオンである。中心の金属イオンに直接結びついた原子の数が配位数で、配位子の種類と数、中心金属の酸化数によって錯イオンの名前と電荷が決まり、遷移元素の錯イオンは特有の色を示すものが多い。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>アンモニアや水のような分子が金属イオンに結びついてできる<strong>錯イオン</strong>の、つくり・名前・電荷・色を扱うときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>配位結合が通常の共有結合とどう違うかを、非共有電子対の出どころで説明する問題</li>
+      <li>テトラアンミン銅（II）イオン [Cu(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup> のような錯イオンについて、配位数・名前・電荷を求める問題</li>
+      <li>中心金属イオンの酸化数を、錯イオン全体の電荷と配位子の電荷から逆算する問題</li>
+      <li>硫酸銅（II）水溶液にアンモニア水を加えたときの色の変化のように、錯イオンの生成と色を結びつける問題（遷移元素の性質とセットで出題される）</li>
+    </ul>
+    <p>ポイントは、錯イオンを「中心の金属イオン＋まわりの配位子」という組み立てで読み、電荷は部品の電荷の合計として数えることです。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>通常の共有結合では、2つの原子が電子を1個ずつ出し合って電子対を作ります。これに対して<strong>配位結合</strong>は、<strong>一方の原子がもつ非共有電子対（孤立電子対）を、もう一方の原子がそっくり受け取って共有する</strong>結合です。たとえばアンモニウムイオン NH<sub>4</sub><sup>+</sup> では、アンモニア NH<sub>3</sub> の窒素原子の非共有電子対が水素イオン H<sup>+</sup> に提供され、N−H 結合が1本できます。いったんできてしまえば、その結合は他の3本の N−H 結合と区別がつきません。</p>
+    <p>金属イオンに、非共有電子対をもつ分子やイオンが配位結合でいくつか結びついたイオンを<strong>錯イオン</strong>といいます。中心にある金属イオンを<strong>中心金属イオン</strong>、結びつく分子・イオンを<strong>配位子</strong>といい、中心金属イオンに直接結びついた原子の数を<strong>配位数</strong>といいます。配位子が結びつくのは、配位子側に非共有電子対があるからです。</p>
+    <div class="formula">錯イオンの電荷 ＝ 中心金属イオンの電荷 ＋（配位子の電荷 × 個数）の合計</div>
+    <p>代表的な配位子と、その電荷は次の通りです。分子である配位子は電荷が0、陰イオンである配位子はそのイオンの電荷をもちます。</p>
+    <ul>
+      <li><strong>アンモニア NH<sub>3</sub></strong>：配位子名は「アンミン」、電荷0。窒素の非共有電子対で結びつく</li>
+      <li><strong>水 H<sub>2</sub>O</strong>：配位子名は「アクア」、電荷0。酸素の非共有電子対で結びつく</li>
+      <li><strong>シアン化物イオン CN<sup>−</sup></strong>：配位子名は「シアニド」、電荷 −1</li>
+      <li><strong>塩化物イオン Cl<sup>−</sup></strong>：配位子名は「クロリド」、電荷 −1</li>
+      <li><strong>水酸化物イオン OH<sup>−</sup></strong>：配位子名は「ヒドロキシド」、電荷 −1</li>
+    </ul>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 240" width="520" height="240" role="img" aria-label="テトラアンミン銅（II）イオンのつくり" style="max-width:100%;height:auto;">
+        <defs>
+          <marker id="arw" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#c2410c"/></marker>
+        </defs>
+        <circle cx="260" cy="120" r="30" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="260" y="126" text-anchor="middle" font-size="16" fill="currentColor">Cu²⁺</text>
+        <line x1="196" y1="120" x2="226" y2="120" stroke="#c2410c" stroke-width="2" marker-end="url(#arw)"/>
+        <line x1="324" y1="120" x2="294" y2="120" stroke="#c2410c" stroke-width="2" marker-end="url(#arw)"/>
+        <line x1="260" y1="56" x2="260" y2="86" stroke="#c2410c" stroke-width="2" marker-end="url(#arw)"/>
+        <line x1="260" y1="184" x2="260" y2="154" stroke="#c2410c" stroke-width="2" marker-end="url(#arw)"/>
+        <text x="168" y="126" text-anchor="middle" font-size="15" fill="currentColor">H₃N</text>
+        <text x="352" y="126" text-anchor="middle" font-size="15" fill="currentColor">NH₃</text>
+        <text x="260" y="44" text-anchor="middle" font-size="15" fill="currentColor">NH₃</text>
+        <text x="260" y="206" text-anchor="middle" font-size="15" fill="currentColor">NH₃</text>
+        <text x="260" y="232" text-anchor="middle" font-size="12" fill="currentColor">矢印は NH₃ の窒素の非共有電子対が Cu²⁺ へ提供される向き（配位結合）</text>
+      </svg>
+      <p>テトラアンミン銅（II）イオン [Cu(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup> のつくり。4つの NH<sub>3</sub> が、それぞれ窒素の非共有電子対を Cu<sup>2+</sup> に提供して配位結合しています。配位数は、中心金属に直接結びついた窒素原子の数で4です。</p>
+    </div>
+    <p>錯イオンの名前は、<strong>配位子の数（ギリシャ数詞）＋配位子名＋中心金属名＋（酸化数をローマ数字で）＋イオン</strong>の順に組み立てます。数の数え方は、1＝（通常省略）、2＝ジ、3＝トリ、4＝テトラ、5＝ペンタ、6＝ヘキサです。錯イオン全体が陰イオンのときは、金属名の後ろに「酸」を付けて「〜酸イオン」とします。</p>
+    <ul>
+      <li>[Cu(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup>：<strong>テトラアンミン銅（II）イオン</strong>。配位数は4。電荷は Cu<sup>2+</sup> の +2 と NH<sub>3</sub> の 0×4 の合計で +2。深い青色を示す</li>
+      <li>[Ag(NH<sub>3</sub>)<sub>2</sub>]<sup>+</sup>：<strong>ジアンミン銀（I）イオン</strong>。配位数は2。電荷は Ag<sup>+</sup> の +1 と 0×2 の合計で +1。無色</li>
+      <li>[Zn(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup>：<strong>テトラアンミン亜鉛（II）イオン</strong>。配位数は4。無色</li>
+      <li>[Fe(CN)<sub>6</sub>]<sup>4−</sup>：<strong>ヘキサシアニド鉄（II）酸イオン</strong>。配位数は6。電荷 −4 から逆算すると鉄の酸化数は +2（+2 ＋ (−1)×6 ＝ −4）</li>
+      <li>[Al(OH)<sub>4</sub>]<sup>−</sup>：<strong>テトラヒドロキシドアルミン酸イオン</strong>。配位数は4。電荷は Al<sup>3+</sup> の +3 と OH<sup>−</sup> の (−1)×4 の合計で −1</li>
+    </ul>
+    <p>配位数と立体的な形には対応があり、配位数2では<strong>直線形</strong>（[Ag(NH<sub>3</sub>)<sub>2</sub>]<sup>+</sup>）、配位数4では<strong>正四面体形</strong>（[Zn(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup>）や平面正方形、配位数6では<strong>正八面体形</strong>（[Fe(CN)<sub>6</sub>]<sup>4−</sup>）が代表的です。</p>
+    <p>色については、遷移元素のイオンは水溶液中で水分子が配位した錯イオンとして存在し、特有の色を示します。Cu<sup>2+</sup> の水溶液が青色なのはアクア錯イオンの色で、ここにアンモニアが配位すると、より深い青色のテトラアンミン銅（II）イオンに変わります。配位子が替わると吸収する光の色が変わるため、錯イオンの色は配位子の種類でも変化します。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>中心金属イオンと配位子を切り分ける。</strong>角括弧 [ ] の中身が錯イオンで、金属が中心、まわりの分子・イオンが配位子です。括弧の外のイオンは相手イオンで、錯イオンの一部ではありません。</li>
+      <li><strong>配位数を数える。</strong>中心金属に直接結びついた原子の数です。ここで挙げた配位子はどれも原子1個で結びつくので、配位子の個数＝配位数になります。</li>
+      <li><strong>電荷を部品ごとに合計する。</strong>中心金属イオンの電荷に、配位子の電荷×個数を足します。分子の配位子（NH<sub>3</sub>、H<sub>2</sub>O）は0、陰イオンの配位子（CN<sup>−</sup>、Cl<sup>−</sup>、OH<sup>−</sup>）はその電荷で計算します。合計が角括弧の右上の電荷と一致するか確認します。</li>
+      <li><strong>酸化数を逆算する。</strong>中心金属の酸化数が分からないときは、（錯イオンの電荷）−（配位子の電荷の合計）を計算します。これが名前の（II）や（III）に入る数です。</li>
+      <li><strong>名前を組み立てる。</strong>「数の数詞＋配位子名＋金属名＋（酸化数）＋イオン」の順に並べ、錯イオン全体が陰イオンなら金属名の後に「酸」を付けます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：硫酸銅（II）の青色水溶液にアンモニア水を少量加えると水酸化銅（II）の青白色（淡青色）の沈殿が生じ、さらに過剰に加えると沈殿が溶けて深い青色の溶液になる。この深い青色のイオンの化学式・名前・配位数を答えよ。問題2：[Ag(NH<sub>3</sub>)<sub>2</sub>]<sup>+</sup> の名前と配位数を答え、電荷が +1 になることを部品の電荷から確かめよ。問題3：[Fe(CN)<sub>6</sub>]<sup>4−</sup> について、鉄の酸化数と配位数を求め、名前を答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：過剰のアンモニアの中で Cu<sup>2+</sup> に NH<sub>3</sub> が4つ配位結合し、<strong>[Cu(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup></strong> が生じます。配位子はアンミン、数は4で「テトラ」、銅の酸化数は +2 のままなので、名前は<strong>テトラアンミン銅（II）イオン</strong>、配位数は<strong>4</strong>です。電荷は +2 ＋ 0×4 ＝ +2 で、式の右上の 2+ と一致します。</li>
+          <li>問題2：配位子アンミンが2つなので「ジ」アンミン、銀の酸化数は +1 だから、名前は<strong>ジアンミン銀（I）イオン</strong>、配位数は<strong>2</strong>です。電荷は Ag<sup>+</sup> の +1 ＋ NH<sub>3</sub> の 0×2 ＝ +1 で、式の + と一致します。</li>
+          <li>問題3：鉄の酸化数を x とすると、配位子 CN<sup>−</sup> が6つで電荷の合計は −6 です。x ＋ (−6) ＝ −4 より x ＝ +2、つまり酸化数は<strong>+2（II）</strong>です。配位数は<strong>6</strong>で、錯イオン全体が陰イオンなので金属名の後に「酸」を付け、名前は<strong>ヘキサシアニド鉄（II）酸イオン</strong>です。</li>
+        </ol>
+        <p><strong>答え：問題1は [Cu(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup>、テトラアンミン銅（II）イオン、配位数4。問題2はジアンミン銀（I）イオン、配位数2（電荷は +1＋0×2＝+1）。問題3は酸化数 +2、配位数6、ヘキサシアニド鉄（II）酸イオン。</strong>どの問題も「電荷の合計が式の右上と合うか」を最後に確かめることが検算になります。</p>
+      </details>
+    </div>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>金属イオンの検出・分析（沈殿を錯イオンで溶かす）</h3>
+    <p>塩化銀 AgCl の白色沈殿は水に溶けませんが、アンモニア水を加えるとジアンミン銀（I）イオン [Ag(NH<sub>3</sub>)<sub>2</sub>]<sup>+</sup> を生じて溶けます。この「沈殿が錯イオンになって溶ける」性質は、陽イオンの系統分析で銀イオンを確認する手がかりとして実際に使われます。また、ジアンミン銀（I）イオンを含む溶液（トレンス試薬／アンモニア性硝酸銀溶液）は、アルデヒドと反応して銀を析出させる銀鏡反応の試薬として、分析や教材実験で使われます。</p>
+    <h3>血液と光合成を担う錯体（ヘモグロビンとクロロフィル）</h3>
+    <p>血液中で酸素を運ぶヘモグロビンは、中心に鉄イオンをもつ錯体（ヘム）を含み、鉄に酸素分子が配位結合することで酸素を運びます。植物の光合成色素クロロフィル（葉緑素）は、中心にマグネシウムイオンをもつ錯体です。生体の中で金属イオンに分子が配位する仕組みそのものが、生命活動の土台になっています。</p>
+    <h3>医薬とめっき・触媒（シスプラチンと錯塩）</h3>
+    <p>抗がん剤のシスプラチンは、白金に塩化物イオンとアンモニアが配位した錯体で、配位子が平面正方形に並んだ構造が薬効と結びついています。また、金や銀のめっきでは、シアン化物イオンと金属の錯イオンを含むめっき液が使われてきました。錯イオンにすることで金属イオンの濃度や析出のしかたを細かく制御できる点が、工業的に利用されています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>アルフレート・ウェルナー</strong>（1866〜1919、スイスの化学者）</p>
+    <p>錯イオンの構造を体系的に説明したのは、スイスの化学者<strong>アルフレート・ウェルナー</strong>（1866〜1919）です。それまでの化学では、金属塩にアンモニアなどが結びついた化合物（錯塩）のつくりをうまく説明できませんでした。ウェルナーは1893年に、中心の金属原子のまわりに配位子が決まった数だけ立体的に並ぶという<strong>配位説</strong>を提唱し、配位数や立体構造の考え方を打ち立てました。この業績により、ウェルナーは1913年にノーベル化学賞を受賞しています。今日の「配位数」「配位子」という言葉と、錯イオンを立体的に捉える見方は、ウェルナーの理論が土台になっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>配位結合のもとになる電子対の共有は<a href="covalent-bonding-molecular-shape.html">共有結合と分子の形</a>、錯イオンの色や触媒としての働きは<a href="transition-metals.html">遷移元素と錯イオン・炎色反応</a>が役立ちます。前後の項目として、結晶中の配位数を扱う<a href="unit-cell-packing.html">単位格子と充填率</a>、結合をエネルギーの面から見る<a href="bond-energy.html">結合エネルギー</a>もあわせてどうぞ。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

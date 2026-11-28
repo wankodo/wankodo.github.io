@@ -383,7 +383,7 @@
 
 ## 化学ツール集
 
-> 中学理科・高校化学基礎・高校化学・大学レベルの考え方辞典と計算機。全32項目、各項目に解説記事があり、計算機つきの項目もあります。トップは [化学ツール集](https://wankodo.github.io/chemistry/) です。
+> 中学理科・高校化学基礎・高校化学・大学レベルの考え方辞典と計算機。全47項目、各項目に解説記事があり、計算機つきの項目もあります。トップは [化学ツール集](https://wankodo.github.io/chemistry/) です。
 
 - [密度と物質の区別｜化学ツール集](https://wankodo.github.io/chemistry/density.html): 質量と体積から密度を求め、浮き沈みの判断や物質の同定に使う。計算機つき。
 - [モルとアボガドロ定数｜化学ツール集](https://wankodo.github.io/chemistry/mole-avogadro.html): 粒子数から物質量（mol）を、物質量から粒子数をアボガドロ定数で換算する。計算機つき。
@@ -417,3 +417,18 @@
 - [共有結合と分子の形｜化学ツール集](https://wankodo.github.io/chemistry/covalent-bonding-molecular-shape.html): 電子式・構造式を書いて単結合・二重結合・三重結合を区別し、電子対の反発から分子の形（直線形・正四面体形など）と結合角を求める。解説記事のみ。
 - [金属結合と金属の性質｜化学ツール集](https://wankodo.github.io/chemistry/metallic-bonding.html): 金属結合の仕組みを自由電子のモデルで理解し、展性・延性・電気伝導・熱伝導・金属光沢などの金属の性質を説明する。解説記事のみ。
 - [結晶の種類と性質｜化学ツール集](https://wankodo.github.io/chemistry/crystal-types.html): 物質をイオン結晶・分子結晶・共有結合結晶・金属結晶に分類し、構成粒子と結合から融点・電気伝導・硬さなどの性質を説明する。解説記事のみ。
+- [分子間力と水素結合｜化学ツール集](https://wankodo.github.io/chemistry/intermolecular-forces.html): 分子間力と水素結合の違いを説明し、物質の沸点・融点の違いや、水の高い沸点と氷が水に浮く理由を分子どうしの結びつきから説明する。解説記事のみ。
+- [極性と溶解性｜化学ツール集](https://wankodo.github.io/chemistry/polarity-and-solubility.html): 分子の極性の有無から、物質が水と無極性溶媒のどちらに溶けやすいかを予想する。解説記事のみ。
+- [電気陰性度と結合の極性｜化学ツール集](https://wankodo.github.io/chemistry/electronegativity.html): 電気陰性度の差から結合のイオン性・共有性と分子の極性を判断する。解説記事のみ。
+- [単位格子と充填率｜化学ツール集](https://wankodo.github.io/chemistry/unit-cell-packing.html): 金属結晶の単位格子について、配位数・単位格子中の原子数・充填率を求め、格子定数と原子半径・密度の関係を計算する。計算機つき。
+- [配位結合と錯イオン｜化学ツール集](https://wankodo.github.io/chemistry/coordinate-bonding-complex-ions.html): 配位結合のでき方を説明し、錯イオンの配位数・名前・電荷と中心金属イオンの酸化数を求める。解説記事のみ。
+- [結合エネルギーと結合の強さ｜化学ツール集](https://wankodo.github.io/chemistry/bond-energy.html): 結合解離エネルギーの大きさから結合の強さと長さを比べ、切る結合と作る結合のエネルギーの合計の差から反応熱を見積もる。計算機つき。
+- [混成軌道と分子軌道の入口｜化学ツール集](https://wankodo.github.io/chemistry/hybridization-molecular-orbitals.html): 中心原子の電子対の数から混成の種類と分子の形を決め、σ結合とπ結合の数を数え、分子軌道の電子配置から結合次数と不対電子の数を求める。解説記事のみ。
+- [モル質量と物質量の換算｜化学ツール集](https://wankodo.github.io/chemistry/molar-mass-conversion.html): 質量から物質量（mol）を、物質量から質量や粒子数をモル質量とアボガドロ定数で換算する。計算機つき。
+- [気体のモル体積と密度｜化学ツール集](https://wankodo.github.io/chemistry/molar-volume-gas-density.html): 標準状態の気体の体積と物質量をモル体積 22.4 L/mol で換算し、気体の密度と分子量を行き来する。計算機つき。
+- [化学反応と質量保存・定比例｜化学ツール集](https://wankodo.github.io/chemistry/mass-conservation-definite-proportions.html): 化学変化の前後での質量の変化を考え、銅やマグネシウムが酸素と化合するときの質量の比から、酸素や酸化物の質量を求める。計算機つき。
+- [化学反応式と気体の発生量｜化学ツール集](https://wankodo.github.io/chemistry/gas-evolution-stoichiometry.html): 化学反応式の係数比から、発生する気体の物質量と標準状態での体積・質量を求める。計算機つき。
+- [濃度の換算（モル濃度⇔質量％）｜化学ツール集](https://wankodo.github.io/chemistry/concentration-conversion.html): 質量パーセント濃度からモル濃度を求める、モル濃度から質量パーセント濃度を求める。計算機つき。
+- [収率と純度｜化学ツール集](https://wankodo.github.io/chemistry/yield-and-purity.html): 理論収量と実際の収量から収率を求め、不純物を含む原料の純度を考慮して必要な原料の量を求める。計算機つき。
+- [定比例・倍数比例と原子説の成立｜化学ツール集](https://wankodo.github.io/chemistry/laws-of-composition-dalton.html): 実験データから定比例・倍数比例の法則を読み取り、3つの法則をドルトンの原子説がどう説明するかを理解する。解説記事のみ。
+- [燃焼分析と元素分析｜化学ツール集](https://wankodo.github.io/chemistry/combustion-analysis.html): 有機化合物を完全燃焼させて生じた二酸化炭素と水の質量から、炭素・水素・酸素の物質量比を求めて組成式を決定する。計算機つき。

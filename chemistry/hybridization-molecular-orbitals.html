@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>混成軌道と分子軌道の入口｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="混成軌道と分子軌道を、公式・手順・例題で解説。sp³・sp²・sp混成と分子の形、σ結合とπ結合、結合性・反結合性軌道と結合次数、ルイス構造では説明できないO₂の常磁性、有機材料の設計や常磁性式酸素濃度計など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="混成軌道と分子軌道の入口｜化学ツール集">
+<meta property="og:description" content="sp³・sp²・sp混成と分子の形、σ結合とπ結合、分子軌道による結合次数とO₂の常磁性を、例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/hybridization-molecular-orbitals.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">混成軌道</span>と<span class="accent">分子軌道</span>の入口</h1>
+    <p>化学の考え方辞典 ― 化学結合（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 化学結合 ＞ 混成軌道と分子軌道の入口</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">化学結合</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    炭素が4本の等しい結合を作る理由は、s軌道とp軌道が混ざって混成軌道を作ることで説明でき、sp³なら正四面体形、sp²なら三角平面形、spなら直線形になる。二重結合・三重結合はσ結合とπ結合の組み合わせであり、原子軌道の重なりを分子全体に広げた分子軌道で考えると、結合次数や、酸素分子が不対電子をもって常磁性を示す理由まで説明できる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>ルイス構造（電子式・構造式）と電子対反発（VSEPR）で分子の形は予測できましたが、「なぜ炭素は4本の等しい結合を作れるのか」「二重結合と単結合では何が違うのか」「なぜ酸素分子は磁石に引かれるのか」には答えられません。その一段先を扱うときの考え方が、<strong>混成軌道</strong>と<strong>分子軌道</strong>です。次のような場面で使います。</p>
+    <ul>
+      <li>中心原子のまわりの電子対の数から、sp<sup>3</sup>・sp<sup>2</sup>・sp のどの混成かを決め、分子の形と結合角を予測する問題</li>
+      <li>分子の中の σ（シグマ）結合と π（パイ）結合の数を数える問題</li>
+      <li>分子軌道のエネルギー準位図に電子を詰め、結合次数と不対電子の数を求める問題</li>
+      <li>O<sub>2</sub> の常磁性のように、ルイス構造では説明できない性質を分子軌道で説明する問題</li>
+    </ul>
+    <p>ポイントは、混成軌道は「1つの原子の中で軌道を混ぜて、結合の向きをそろえる」考え方（原子価結合法の入口）、分子軌道は「分子全体に広がる軌道に電子を詰める」考え方で、2つは対立するものではなく、見る範囲の違う説明道具だということです。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>混成軌道 ― s軌道とp軌道を混ぜて結合の向きを作る</h3>
+    <p>炭素の基底状態の電子配置は 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>2</sup> で、不対電子は2個しかありません。これでは4本の結合は作れません。そこで原子価結合法では、2s 軌道と 2p 軌道を混ぜ合わせて、同じ形・同じエネルギーの新しい軌道を作ると考えます。これが<strong>混成軌道</strong>です。混ぜた軌道の数と、できる混成軌道の数は必ず一致します。</p>
+    <div class="formula">1個の s軌道 ＋ n個の p軌道 → (n＋1) 個の sp<sup>n</sup> 混成軌道</div>
+    <ul>
+      <li><strong>sp<sup>3</sup> 混成</strong>（s 1個＋p 3個＝4個）：4本の軌道が正四面体の頂点の向きに出る。結合角は約109.5°。例：メタン CH<sub>4</sub> の C。非共有電子対も混成軌道1本を占めるため、アンモニア NH<sub>3</sub> の N や水 H<sub>2</sub>O の O も sp<sup>3</sup> で、原子だけの形はそれぞれ三角錐形・折れ線形になる</li>
+      <li><strong>sp<sup>2</sup> 混成</strong>（s 1個＋p 2個＝3個）：3本の軌道が同じ平面内で120°に広がる（三角平面形）。混ぜなかった p軌道が1本、平面に垂直に残る。例：エテン（エチレン）C<sub>2</sub>H<sub>4</sub> の C、三フッ化ホウ素 BF<sub>3</sub> の B</li>
+      <li><strong>sp 混成</strong>（s 1個＋p 1個＝2個）：2本の軌道が正反対の向きに出る（直線形、結合角180°）。混ぜなかった p軌道が2本残る。例：エチン（アセチレン）C<sub>2</sub>H<sub>2</sub> の C、二酸化炭素 CO<sub>2</sub> の C</li>
+    </ul>
+    <p>混成の種類は、中心原子のまわりの<strong>電子対の置き場所の数（σ結合の相手の数＋非共有電子対の数）</strong>で決まります。置き場所が4か所なら sp<sup>3</sup>、3か所なら sp<sup>2</sup>、2か所なら sp です。二重結合・三重結合も、置き場所としては1か所と数えます。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 170" width="520" height="170" role="img" aria-label="sp3・sp2・sp混成と分子の形" style="max-width:100%;height:auto;">
+        <text x="90" y="24" text-anchor="middle" font-size="13" fill="currentColor">sp³ 正四面体形（約109.5°）</text>
+        <text x="90" y="72" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="90" y1="62" x2="90" y2="40" stroke="currentColor" stroke-width="2"/>
+        <text x="90" y="34" text-anchor="middle" font-size="13" fill="currentColor">H</text>
+        <line x1="82" y1="76" x2="58" y2="92" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3"/>
+        <text x="50" y="106" text-anchor="middle" font-size="13" fill="currentColor">H</text>
+        <polygon points="98,74 122,92 110,96" fill="currentColor" opacity="0.55"/>
+        <text x="128" y="108" text-anchor="middle" font-size="13" fill="currentColor">H</text>
+        <line x1="84" y1="78" x2="72" y2="102" stroke="currentColor" stroke-width="2"/>
+        <text x="66" y="120" text-anchor="middle" font-size="13" fill="currentColor">H</text>
+        <text x="90" y="150" text-anchor="middle" font-size="12" fill="currentColor">CH₄ など</text>
+        <text x="260" y="24" text-anchor="middle" font-size="13" fill="currentColor">sp² 三角平面形（120°）</text>
+        <text x="260" y="72" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="260" y1="62" x2="260" y2="42" stroke="currentColor" stroke-width="2"/>
+        <text x="260" y="36" text-anchor="middle" font-size="13" fill="currentColor">H</text>
+        <line x1="252" y1="74" x2="228" y2="90" stroke="currentColor" stroke-width="2"/>
+        <line x1="268" y1="74" x2="292" y2="90" stroke="currentColor" stroke-width="2"/>
+        <text x="220" y="104" text-anchor="middle" font-size="13" fill="currentColor">H</text>
+        <text x="300" y="104" text-anchor="middle" font-size="13" fill="currentColor">C</text>
+        <ellipse cx="260" cy="52" rx="26" ry="7" fill="none" stroke="#c2410c" stroke-width="1.6" stroke-dasharray="3 3"/>
+        <text x="260" y="150" text-anchor="middle" font-size="12" fill="currentColor">C₂H₄ の各C（破線は残った p軌道）</text>
+        <text x="430" y="24" text-anchor="middle" font-size="13" fill="currentColor">sp 直線形（180°）</text>
+        <text x="382" y="72" text-anchor="middle" font-size="13" fill="currentColor">H</text>
+        <line x1="392" y1="66" x2="418" y2="66" stroke="currentColor" stroke-width="2"/>
+        <text x="430" y="72" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="442" y1="66" x2="468" y2="66" stroke="currentColor" stroke-width="2"/>
+        <text x="480" y="72" text-anchor="middle" font-size="13" fill="currentColor">C</text>
+        <text x="430" y="150" text-anchor="middle" font-size="12" fill="currentColor">C₂H₂・CO₂ の C など</text>
+      </svg>
+      <p>混成軌道の本数と向きが、そのまま分子の基本の形になります。sp<sup>2</sup> と sp では、混成に使われなかった p軌道が残り、それが次の π結合の材料になります。</p>
+    </div>
+    <h3>σ結合とπ結合 ― 軌道の重なり方の2種類</h3>
+    <p>軌道どうしの重なり方には2種類あります。</p>
+    <ul>
+      <li><strong>σ結合</strong>：2つの原子を結ぶ軸（結合軸）の上で、軌道が正面から重なる結合。軸のまわりに回しても重なりが変わらないため、σ結合は自由に回転できます。すべての結合はまず1本の σ結合から始まります</li>
+      <li><strong>π結合</strong>：結合軸の上下（または前後）で、p軌道どうしが横向きに重なる結合。回転させると重なりが切れてしまうため、π結合を含む二重結合は回転できません。これが、エテンの平面構造や、二重結合まわりのシス・トランス異性体が生まれる理由です</li>
+    </ul>
+    <div class="formula">単結合 ＝ σ 1本 ／ 二重結合 ＝ σ 1本 ＋ π 1本 ／ 三重結合 ＝ σ 1本 ＋ π 2本</div>
+    <p>混成との対応で見ると、混成軌道どうし（または混成軌道と相手の軌道）の正面の重なりが σ結合を作り、sp<sup>2</sup> で残った p軌道1本が π結合を1本、sp で残った p軌道2本が π結合を2本作ります。つまり、混成の種類が決まれば、作れる π結合の数も決まります。</p>
+    <h3>分子軌道 ― 軌道を分子全体に広げる</h3>
+    <p>混成軌道が「原子の中」で完結する説明なのに対し、<strong>分子軌道（MO）</strong>は、電子が分子全体に広がった軌道に入ると考える方法です。2つの原子軌道が重なると、必ず2つの分子軌道ができます。</p>
+    <ul>
+      <li><strong>結合性軌道</strong>：原子核の間に電子が集まり、2つの核を結びつける。元の原子軌道よりエネルギーが低い（安定）。記号は σ、π など</li>
+      <li><strong>反結合性軌道</strong>：原子核の間に電子の存在確率が0になる面（節）があり、核どうしを引き離す方向に働く。元の原子軌道よりエネルギーが高い（不安定）。記号は σ*、π* のように *（スター）を付ける</li>
+    </ul>
+    <p>電子は原子軌道のときと同じ決まり（エネルギーの低い順に入る・1軌道に2個まで・同じエネルギーの軌道には1個ずつ入る）で分子軌道に詰めます。結合の強さの目安は<strong>結合次数</strong>で表します。</p>
+    <div class="formula">結合次数 ＝ （結合性軌道の電子数 − 反結合性軌道の電子数）÷ 2</div>
+    <p>結合次数が大きいほど結合は短く強くなり、0 なら安定な結合はできません。たとえばヘリウム分子 He<sub>2</sub> は、結合性軌道に2個・反結合性軌道に2個の電子が入るため結合次数は （2−2）÷2 ＝ 0 で、安定な分子として存在しません。</p>
+    <h3>O<sub>2</sub> の常磁性 ― 分子軌道の代表的な成功例</h3>
+    <p>酸素分子 O<sub>2</sub> のルイス構造は O＝O で、すべての電子が対になっているように見えます。ところが実際には、液体酸素は磁石に引き寄せられる<strong>常磁性</strong>を示し、不対電子の存在を意味します。分子軌道で考えると、この事実が自然に説明できます。O<sub>2</sub> の価電子は12個で、エネルギーの低い分子軌道から詰めていくと、最後の2個が、エネルギーの等しい2つの反結合性 π* 軌道にフントの規則どおり1個ずつ入ります。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 330" width="520" height="330" role="img" aria-label="酸素分子O2の分子軌道エネルギー準位図" style="max-width:100%;height:auto;">
+        <text x="70" y="22" text-anchor="middle" font-size="12" fill="currentColor">O原子の軌道</text>
+        <text x="260" y="22" text-anchor="middle" font-size="12" fill="currentColor">O₂ の分子軌道</text>
+        <text x="450" y="22" text-anchor="middle" font-size="12" fill="currentColor">O原子の軌道</text>
+        <text x="488" y="60" text-anchor="middle" font-size="11" fill="currentColor">エネルギー</text>
+        <text x="488" y="76" text-anchor="middle" font-size="11" fill="currentColor">高 ↑</text>
+        <line x1="230" y1="52" x2="290" y2="52" stroke="currentColor" stroke-width="2"/>
+        <text x="260" y="42" text-anchor="middle" font-size="12" fill="currentColor">σ*2p（空）</text>
+        <line x1="212" y1="96" x2="248" y2="96" stroke="#c2410c" stroke-width="2"/>
+        <line x1="272" y1="96" x2="308" y2="96" stroke="#c2410c" stroke-width="2"/>
+        <text x="230" y="86" text-anchor="middle" font-size="13" fill="#c2410c">↑</text>
+        <text x="290" y="86" text-anchor="middle" font-size="13" fill="#c2410c">↑</text>
+        <text x="260" y="120" text-anchor="middle" font-size="12" fill="currentColor">π*2p（不対電子が1個ずつ）</text>
+        <line x1="212" y1="152" x2="248" y2="152" stroke="currentColor" stroke-width="2"/>
+        <line x1="272" y1="152" x2="308" y2="152" stroke="currentColor" stroke-width="2"/>
+        <text x="230" y="142" text-anchor="middle" font-size="13" fill="currentColor">↑↓</text>
+        <text x="290" y="142" text-anchor="middle" font-size="13" fill="currentColor">↑↓</text>
+        <text x="260" y="176" text-anchor="middle" font-size="12" fill="currentColor">π2p</text>
+        <line x1="230" y1="198" x2="290" y2="198" stroke="currentColor" stroke-width="2"/>
+        <text x="260" y="188" text-anchor="middle" font-size="13" fill="currentColor">↑↓</text>
+        <text x="260" y="222" text-anchor="middle" font-size="12" fill="currentColor">σ2p</text>
+        <line x1="230" y1="248" x2="290" y2="248" stroke="currentColor" stroke-width="2"/>
+        <text x="260" y="238" text-anchor="middle" font-size="13" fill="currentColor">↑↓</text>
+        <text x="260" y="272" text-anchor="middle" font-size="12" fill="currentColor">σ*2s</text>
+        <line x1="230" y1="294" x2="290" y2="294" stroke="currentColor" stroke-width="2"/>
+        <text x="260" y="284" text-anchor="middle" font-size="13" fill="currentColor">↑↓</text>
+        <text x="260" y="318" text-anchor="middle" font-size="12" fill="currentColor">σ2s</text>
+        <line x1="48" y1="120" x2="92" y2="120" stroke="currentColor" stroke-width="1.6"/>
+        <text x="70" y="110" text-anchor="middle" font-size="12" fill="currentColor">2p ↑↓ ↑ ↑</text>
+        <line x1="48" y1="270" x2="92" y2="270" stroke="currentColor" stroke-width="1.6"/>
+        <text x="70" y="260" text-anchor="middle" font-size="12" fill="currentColor">2s ↑↓</text>
+        <line x1="428" y1="120" x2="472" y2="120" stroke="currentColor" stroke-width="1.6"/>
+        <text x="450" y="110" text-anchor="middle" font-size="12" fill="currentColor">2p ↑↓ ↑ ↑</text>
+        <line x1="428" y1="270" x2="472" y2="270" stroke="currentColor" stroke-width="1.6"/>
+        <text x="450" y="260" text-anchor="middle" font-size="12" fill="currentColor">2s ↑↓</text>
+      </svg>
+      <p>O<sub>2</sub> の分子軌道図（価電子12個分のみ）。結合性軌道の電子は σ2s に2個・σ2p に2個・π2p に4個の計8個、反結合性軌道の電子は σ*2s に2個・π*2p に2個の計4個です。π*2p の2個は対にならず、1個ずつ別々の軌道に入ります。</p>
+    </div>
+    <p>この図から、結合次数は （8−4）÷2 ＝ 2 となり、ルイス構造の二重結合と一致します。そのうえで、π* 軌道に<strong>不対電子が2個</strong>あるため、O<sub>2</sub> は常磁性を示します。「結合次数はルイス構造と一致するのに、磁性はルイス構造では説明できない」――この両方を1つの図で説明できることが、分子軌道法の強みです。なお、電子が詰まった最も高い軌道を <strong>HOMO</strong>（最高被占軌道）、その1つ上の空の軌道を <strong>LUMO</strong>（最低空軌道）と呼び、反応の起こりやすさや光の吸収を考えるときの主役になります。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>混成を決める。</strong>中心原子について、σ結合の相手の数と非共有電子対の数を合計します。4か所なら sp<sup>3</sup>、3か所なら sp<sup>2</sup>、2か所なら sp です。</li>
+      <li><strong>形と π結合の数を読み取る。</strong>混成軌道の向きが基本の形（正四面体・三角平面・直線）で、非共有電子対の分だけ原子の形が崩れます。混成に使われなかった p軌道の数が、その原子が作れる π結合の数です。</li>
+      <li><strong>σとπを数える。</strong>すべての結合に σ が1本ずつあり、二重結合には π が1本、三重結合には π が2本加わります。分子全体で合計します。</li>
+      <li><strong>分子軌道では価電子の総数を数える。</strong>O<sub>2</sub> なら 6×2 ＝ 12個、N<sub>2</sub> なら 5×2 ＝ 10個です。</li>
+      <li><strong>エネルギーの低い分子軌道から電子を詰める。</strong>1軌道に2個まで（パウリの排他原理）、同じエネルギーの軌道（π軌道など）にはスピンをそろえて1個ずつ先に入れます（フントの規則）。</li>
+      <li><strong>結合次数と不対電子を数える。</strong>結合次数 ＝ （結合性の電子数 − 反結合性の電子数）÷ 2。不対電子があれば常磁性、すべて対になっていれば反磁性です。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：メタン CH<sub>4</sub>、エテン C<sub>2</sub>H<sub>4</sub>、エチン C<sub>2</sub>H<sub>2</sub> について、炭素の混成の種類と、分子全体の σ結合・π結合の数をそれぞれ答えよ。問題2：酸素分子 O<sub>2</sub> と窒素分子 N<sub>2</sub> の結合次数を求め、O<sub>2</sub> が常磁性を示す理由を述べよ（N<sub>2</sub> は価電子10個が結合性軌道に8個・反結合性軌道に2個入る）。問題3：二酸化炭素 CO<sub>2</sub>、三フッ化ホウ素 BF<sub>3</sub>、アンモニア NH<sub>3</sub>、水 H<sub>2</sub>O について、中心原子の混成の種類と分子の形を答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：CH<sub>4</sub> の C は結合の相手が4か所で <strong>sp<sup>3</sup></strong>。結合は C−H の単結合4本だけなので、σ は4本、π は0本です。C<sub>2</sub>H<sub>4</sub> の各 C は結合の相手が3か所（H 2個と C 1個）で <strong>sp<sup>2</sup></strong>。σ は C−H が4本と C−C が1本で計5本、残った p軌道どうしの重なりで π が1本（二重結合 ＝ σ1本＋π1本）です。C<sub>2</sub>H<sub>2</sub> の各 C は結合の相手が2か所で <strong>sp</strong>。σ は C−H が2本と C−C が1本で計3本、残った p軌道2本分で π が2本（三重結合 ＝ σ1本＋π2本）です。</li>
+          <li>問題2：O<sub>2</sub> は価電子12個が、結合性軌道に8個（σ2s に2個、σ2p に2個、π2p に4個）、反結合性軌道に4個（σ*2s に2個、π*2p に2個）入るので、結合次数は （8−4）÷2 ＝ <strong>2</strong> です。π*2p の2個の電子は、エネルギーの等しい2つの軌道にフントの規則で1個ずつ入るため不対電子が2個残り、これが O<sub>2</sub> が磁石に引かれる<strong>常磁性</strong>の理由です。ルイス構造 O＝O ではすべての電子が対に見えるため、この性質は説明できません。N<sub>2</sub> の結合次数は （8−2）÷2 ＝ <strong>3</strong> で、ルイス構造の三重結合と一致し、不対電子はないので反磁性です。</li>
+          <li>問題3：CO<sub>2</sub> の C は結合の相手が2か所（二重結合は1か所と数える）で <strong>sp</strong>、形は<strong>直線形</strong>です。BF<sub>3</sub> の B は結合の相手が3か所で <strong>sp<sup>2</sup></strong>、形は<strong>三角平面形</strong>です。NH<sub>3</sub> の N は結合の相手3か所＋非共有電子対1組で計4か所のため <strong>sp<sup>3</sup></strong>、電子対の配置は正四面体形ですが原子だけの形は<strong>三角錐形</strong>です。H<sub>2</sub>O の O は結合の相手2か所＋非共有電子対2組で計4か所のため <strong>sp<sup>3</sup></strong>、原子だけの形は<strong>折れ線形</strong>です。</li>
+        </ol>
+        <p><strong>答え：問題1は CH<sub>4</sub> が sp<sup>3</sup>・σ4本・π0本、C<sub>2</sub>H<sub>4</sub> が sp<sup>2</sup>・σ5本・π1本、C<sub>2</sub>H<sub>2</sub> が sp・σ3本・π2本。問題2は O<sub>2</sub> の結合次数が2で π*軌道の不対電子2個により常磁性、N<sub>2</sub> の結合次数は3。問題3は CO<sub>2</sub> が sp・直線形、BF<sub>3</sub> が sp<sup>2</sup>・三角平面形、NH<sub>3</sub> が sp<sup>3</sup>・三角錐形、H<sub>2</sub>O が sp<sup>3</sup>・折れ線形。</strong>σ結合の総数は「結合の本数」と、二重・三重結合の中にも σ が1本ずつ含まれることとを合わせて数え直すと検算になります。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>有機材料・色素の設計（HOMO と LUMO）</h3>
+    <p>有機EL（OLED）の発光材料や有機半導体、染料・色素の設計では、分子軌道の HOMO と LUMO のエネルギー差（ギャップ）が、吸収・発光する光の色や電気の流れやすさを決める設計値として使われています。共役した π結合の広がり方を変えてギャップを調整する、という分子軌道の考え方そのものが、材料開発の日常的な設計手順です。</p>
+    <h3>常磁性式の酸素濃度計</h3>
+    <p>多くの気体が反磁性なのに対し、酸素だけが強い常磁性を示す性質は、酸素濃度の測定にそのまま利用されています。常磁性式酸素濃度計は、磁場の中での酸素の引かれ方から濃度を測る装置で、燃焼排ガスの管理や工業プロセスの酸素濃度監視に使われています。O<sub>2</sub> の π* 軌道の不対電子という分子軌道の帰結が、実在の計測技術の原理になっています。</p>
+    <h3>炭素材料の性質の使い分け（sp<sup>2</sup> と sp<sup>3</sup>）</h3>
+    <p>グラファイト（黒鉛）は sp<sup>2</sup> 混成の炭素が平面状につながり、残った p軌道の π電子が平面内を動けるため電気を通します。一方、ダイヤモンドは sp<sup>3</sup> 混成の炭素が立体的に結ばれ、電気を通さず非常に硬くなります。工具のコーティングなどに使われるダイヤモンドライクカーボン（DLC）膜では、sp<sup>2</sup> 結合と sp<sup>3</sup> 結合の比率を調整して硬さや摩擦の性質を作り分けています。混成の種類が、そのまま材料の性質の設計図になっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ライナス・ポーリング</strong>（1901〜1994、アメリカの化学者）、<strong>ロバート・マリケン</strong>（1896〜1986、アメリカの物理化学者）、<strong>フリードリヒ・フント</strong>（1896〜1997、ドイツの物理学者）</p>
+    <p>混成軌道の考え方は、アメリカの化学者<strong>ライナス・ポーリング</strong>が1931年に原子価結合法の論文で打ち出したものです。s軌道とp軌道の混成によって、メタンに代表される結合の向きと強さを量子力学から説明し、化学結合の理解を大きく進めました。ポーリングは化学結合の研究で1954年にノーベル化学賞を受けています。分子軌道法は、ドイツの物理学者<strong>フリードリヒ・フント</strong>とアメリカの物理化学者<strong>ロバート・マリケン</strong>が1920年代後半に分子のスペクトルを説明する中で築いた方法で、「分子軌道」という言葉自体はマリケンが1932年に導入しました。マリケンは分子軌道法への貢献で1966年にノーベル化学賞を受けています。O<sub>2</sub> の常磁性のように原子価結合法では説明しにくい事実を分子軌道法が説明できたことが、2つの方法が競い合いながら化学結合論を深めていく転機になりました。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>ルイス構造と電子対反発による分子の形は<a href="covalent-bonding-molecular-shape.html">共有結合と分子の形</a>、原子軌道と量子数の基礎は<a href="atomic-orbitals-quantum-numbers.html">原子軌道と量子数</a>が役立ちます。電子配置の模式的な扱いは<a href="atomic-structure-electron-configuration.html">原子の構造と電子配置</a>、分子どうしの間に働く弱い力は<a href="intermolecular-forces.html">分子間力と水素結合</a>で扱います。物理コーナーでは、波動方程式そのものを<a href="https://wankodo.github.io/physics/schrodinger-equation.html">シュレーディンガー方程式</a>で扱います。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
