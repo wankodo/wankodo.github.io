@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>共有結合と分子の形｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="共有結合と分子の形を、公式・手順・例題で解説。単結合・二重結合・三重結合、非共有電子対、電子式・構造式の書き方、メタンの正四面体形や水の折れ線形など分子の立体構造、溶媒の選択や医薬品設計など実際の現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="共有結合と分子の形｜化学ツール集">
+<meta property="og:description" content="単結合・二重結合・三重結合と非共有電子対、電子式・構造式の書き方と分子の立体構造を、例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/covalent-bonding-molecular-shape.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">共有結合</span>と<span class="accent">分子の形</span></h1>
+    <p>化学の考え方辞典 ― 化学結合（高校化学基礎・1年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 化学結合 ＞ 共有結合と分子の形</p>
+  <p><span class="badge badge-lv">高校化学基礎・1年</span> <span class="badge badge-genre">化学結合</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    原子どうしが価電子を出し合って電子のペア（共有電子対）を共有し、希ガスと同じ安定な電子配置になる結合が共有結合で、共有する電子対が1組なら単結合、2組なら二重結合、3組なら三重結合になる。分子の形は、中心原子のまわりの電子対（非共有電子対を含む）が互いに反発して最も離れる配置で決まり、メタンは正四面体形、二酸化炭素は直線形、水は折れ線形になる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>非金属元素の原子どうしが結びついてできる<strong>分子</strong>のつくりを扱うときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>水素 H<sub>2</sub>、酸素 O<sub>2</sub>、窒素 N<sub>2</sub> などの分子について、電子式と構造式を書く問題</li>
+      <li>単結合・二重結合・三重結合のどれになるかを、共有電子対の組数から判断する問題</li>
+      <li>メタン CH<sub>4</sub>、アンモニア NH<sub>3</sub>、水 H<sub>2</sub>O、二酸化炭素 CO<sub>2</sub> などの分子の立体構造（形）と結合角を答える問題</li>
+      <li>非共有電子対（孤立電子対）の数が、分子の形にどう影響するかを考える問題</li>
+    </ul>
+    <p>ポイントは、結合そのものは「電子対を何組共有するか」で決まり、分子の形は「中心原子のまわりの電子対どうしの反発」で決まる、という2段構えで考えることです。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>金属元素と非金属元素の間では電子の受け渡し（イオン結合）が起こりますが、<strong>非金属元素どうし</strong>では、どちらの原子も電子を放したがらないため、価電子を出し合って<strong>電子のペアを共有</strong>します。この結合が<strong>共有結合</strong>です。共有されている電子のペアを<strong>共有電子対</strong>、結合に使われず1つの原子のまわりに残っているペアを<strong>非共有電子対（孤立電子対）</strong>といいます。各原子は、共有によって最外殻の電子が希ガスと同じ配置（水素は2個、それ以外は8個：<strong>オクテット</strong>）になると安定になります。</p>
+    <p>原子と価電子を点で表した式を<strong>電子式</strong>、共有電子対を線（価標）で表した式を<strong>構造式</strong>といいます。共有する電子対の組数で結合の名前が変わります。</p>
+    <ul>
+      <li><strong>単結合</strong>：電子対を1組共有する結合。構造式では線1本で書く（例：H−H、CH<sub>4</sub> の C−H 結合）</li>
+      <li><strong>二重結合</strong>：電子対を2組共有する結合。線2本で書く（例：O＝O、CO<sub>2</sub> の C＝O 結合）</li>
+      <li><strong>三重結合</strong>：電子対を3組共有する結合。線3本で書く（例：N≡N）</li>
+    </ul>
+    <div class="formula">単結合 ＝ 共有電子対1組（電子2個）／ 二重結合 ＝ 2組（電子4個）／ 三重結合 ＝ 3組（電子6個）</div>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 190" width="520" height="190" role="img" aria-label="水素・酸素・窒素分子の電子式と構造式" style="max-width:100%;height:auto;">
+        <text x="85" y="24" text-anchor="middle" font-size="13" fill="currentColor">水素 H₂（単結合）</text>
+        <text x="62" y="66" text-anchor="middle" font-size="16" fill="currentColor">H</text>
+        <circle cx="80" cy="56" r="2.4" fill="#c2410c"/>
+        <circle cx="80" cy="70" r="2.4" fill="#c2410c"/>
+        <text x="98" y="66" text-anchor="middle" font-size="16" fill="currentColor">H</text>
+        <line x1="52" y1="96" x2="68" y2="96" stroke="currentColor" stroke-width="2"/>
+        <text x="76" y="101" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <line x1="86" y1="96" x2="102" y2="96" stroke="currentColor" stroke-width="2"/>
+        <text x="76" y="140" text-anchor="middle" font-size="12" fill="currentColor">電子式 H：H</text>
+        <text x="260" y="24" text-anchor="middle" font-size="13" fill="currentColor">酸素 O₂（二重結合）</text>
+        <circle cx="222" cy="46" r="2.4" fill="#c2410c"/>
+        <circle cx="234" cy="46" r="2.4" fill="#c2410c"/>
+        <circle cx="222" cy="84" r="2.4" fill="#c2410c"/>
+        <circle cx="234" cy="84" r="2.4" fill="#c2410c"/>
+        <text x="228" y="70" text-anchor="middle" font-size="16" fill="currentColor">O</text>
+        <circle cx="248" cy="56" r="2.4" fill="#c2410c"/>
+        <circle cx="248" cy="70" r="2.4" fill="#c2410c"/>
+        <circle cx="262" cy="56" r="2.4" fill="#c2410c"/>
+        <circle cx="262" cy="70" r="2.4" fill="#c2410c"/>
+        <circle cx="276" cy="46" r="2.4" fill="#c2410c"/>
+        <circle cx="288" cy="46" r="2.4" fill="#c2410c"/>
+        <circle cx="276" cy="84" r="2.4" fill="#c2410c"/>
+        <circle cx="288" cy="84" r="2.4" fill="#c2410c"/>
+        <text x="282" y="70" text-anchor="middle" font-size="16" fill="currentColor">O</text>
+        <line x1="218" y1="92" x2="244" y2="92" stroke="currentColor" stroke-width="2"/>
+        <line x1="218" y1="100" x2="244" y2="100" stroke="currentColor" stroke-width="2"/>
+        <text x="252" y="101" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="262" y1="92" x2="288" y2="92" stroke="currentColor" stroke-width="2"/>
+        <line x1="262" y1="100" x2="288" y2="100" stroke="currentColor" stroke-width="2"/>
+        <text x="255" y="140" text-anchor="middle" font-size="12" fill="currentColor">各Oは非共有電子対を2組もつ</text>
+        <text x="440" y="24" text-anchor="middle" font-size="13" fill="currentColor">窒素 N₂（三重結合）</text>
+        <circle cx="398" cy="56" r="2.4" fill="#c2410c"/>
+        <circle cx="398" cy="70" r="2.4" fill="#c2410c"/>
+        <text x="390" y="70" text-anchor="middle" font-size="16" fill="currentColor">N</text>
+        <circle cx="412" cy="52" r="2.4" fill="#c2410c"/>
+        <circle cx="412" cy="63" r="2.4" fill="#c2410c"/>
+        <circle cx="412" cy="74" r="2.4" fill="#c2410c"/>
+        <circle cx="426" cy="52" r="2.4" fill="#c2410c"/>
+        <circle cx="426" cy="63" r="2.4" fill="#c2410c"/>
+        <circle cx="426" cy="74" r="2.4" fill="#c2410c"/>
+        <text x="448" y="70" text-anchor="middle" font-size="16" fill="currentColor">N</text>
+        <circle cx="460" cy="56" r="2.4" fill="#c2410c"/>
+        <circle cx="460" cy="70" r="2.4" fill="#c2410c"/>
+        <line x1="392" y1="90" x2="418" y2="90" stroke="currentColor" stroke-width="2"/>
+        <line x1="392" y1="97" x2="418" y2="97" stroke="currentColor" stroke-width="2"/>
+        <line x1="392" y1="104" x2="418" y2="104" stroke="currentColor" stroke-width="2"/>
+        <text x="426" y="101" text-anchor="middle" font-size="14" fill="currentColor">N</text>
+        <line x1="434" y1="90" x2="460" y2="90" stroke="currentColor" stroke-width="2"/>
+        <line x1="434" y1="97" x2="460" y2="97" stroke="currentColor" stroke-width="2"/>
+        <line x1="434" y1="104" x2="460" y2="104" stroke="currentColor" stroke-width="2"/>
+        <text x="426" y="140" text-anchor="middle" font-size="12" fill="currentColor">各Nは非共有電子対を1組もつ</text>
+        <text x="260" y="172" text-anchor="middle" font-size="12" fill="currentColor">電子式の点が共有電子対、構造式の線1本が電子対1組に対応する</text>
+      </svg>
+      <p>H<sub>2</sub> は単結合、O<sub>2</sub> は二重結合、N<sub>2</sub> は三重結合。どの分子でも、各原子のまわりの電子（共有分＋非共有分）が水素なら2個、それ以外なら8個（オクテット）になっています。</p>
+    </div>
+    <p>分子の立体構造は、<strong>中心原子のまわりにある電子対（共有電子対も非共有電子対も）が、互いに反発してできるだけ離れようとする</strong>ことで決まります（電子対反発の考え方。大学では VSEPR 理論として学びます）。電子対の「置き場所」の数が基本の形を決め、非共有電子対は目に見える原子ではないため、原子だけを見た形は基本の形から少し崩れます。</p>
+    <ul>
+      <li><strong>電子対が2組</strong>：正反対の向きに離れる → <strong>直線形</strong>（CO<sub>2</sub>、結合角180°）</li>
+      <li><strong>電子対が3組</strong>：平面上で互いに120°に離れる → <strong>正三角（三角平面）形</strong>（三フッ化ホウ素 BF<sub>3</sub>、結合角120°）</li>
+      <li><strong>電子対が4組</strong>：立体的に最も離れる → <strong>正四面体形</strong>（CH<sub>4</sub>、結合角約109.5°）。ただし非共有電子対が1組あると原子の形は<strong>三角錐形</strong>（NH<sub>3</sub>、結合角約107°）、2組あると<strong>折れ線形</strong>（H<sub>2</sub>O、結合角約104.5°）になります</li>
+    </ul>
+    <p>非共有電子対どうし・非共有電子対と共有電子対の反発は、共有電子対どうしの反発より強いため、非共有電子対が多いほど結合角は基本の109.5°から押し縮められます（CH<sub>4</sub> 約109.5° ＞ NH<sub>3</sub> 約107° ＞ H<sub>2</sub>O 約104.5°）。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 320" width="520" height="320" role="img" aria-label="代表的な分子の立体構造" style="max-width:100%;height:auto;">
+        <text x="90" y="22" text-anchor="middle" font-size="13" fill="currentColor">CO₂ 直線形（180°）</text>
+        <text x="34" y="66" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="48" y1="57" x2="76" y2="57" stroke="currentColor" stroke-width="2"/>
+        <line x1="48" y1="65" x2="76" y2="65" stroke="currentColor" stroke-width="2"/>
+        <text x="90" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="104" y1="57" x2="132" y2="57" stroke="currentColor" stroke-width="2"/>
+        <line x1="104" y1="65" x2="132" y2="65" stroke="currentColor" stroke-width="2"/>
+        <text x="146" y="66" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="260" y="22" text-anchor="middle" font-size="13" fill="currentColor">BF₃ 正三角（三角平面）形（120°）</text>
+        <text x="260" y="52" text-anchor="middle" font-size="15" fill="currentColor">B</text>
+        <line x1="260" y1="56" x2="260" y2="82" stroke="currentColor" stroke-width="2"/>
+        <line x1="254" y1="50" x2="228" y2="66" stroke="currentColor" stroke-width="2"/>
+        <line x1="266" y1="50" x2="292" y2="66" stroke="currentColor" stroke-width="2"/>
+        <text x="260" y="100" text-anchor="middle" font-size="15" fill="currentColor">F</text>
+        <text x="218" y="80" text-anchor="middle" font-size="15" fill="currentColor">F</text>
+        <text x="302" y="80" text-anchor="middle" font-size="15" fill="currentColor">F</text>
+        <text x="430" y="22" text-anchor="middle" font-size="13" fill="currentColor">CH₄ 正四面体形（約109.5°）</text>
+        <text x="430" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="430" y1="56" x2="430" y2="34" stroke="currentColor" stroke-width="2"/>
+        <text x="430" y="28" text-anchor="middle" font-size="15" fill="currentColor">H</text>
+        <line x1="420" y1="70" x2="398" y2="86" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3"/>
+        <text x="390" y="102" text-anchor="middle" font-size="15" fill="currentColor">H</text>
+        <polygon points="438,68 466,88 452,92" fill="currentColor" opacity="0.55"/>
+        <text x="472" y="104" text-anchor="middle" font-size="15" fill="currentColor">H</text>
+        <line x1="424" y1="72" x2="410" y2="98" stroke="currentColor" stroke-width="2"/>
+        <text x="404" y="116" text-anchor="middle" font-size="15" fill="currentColor">H</text>
+        <text x="160" y="160" text-anchor="middle" font-size="13" fill="currentColor">NH₃ 三角錐形（約107°）</text>
+        <circle cx="152" cy="182" r="2.4" fill="#c2410c"/>
+        <circle cx="164" cy="182" r="2.4" fill="#c2410c"/>
+        <text x="158" y="176" text-anchor="middle" font-size="11" fill="currentColor">非共有電子対</text>
+        <text x="158" y="206" text-anchor="middle" font-size="15" fill="currentColor">N</text>
+        <line x1="150" y1="210" x2="118" y2="232" stroke="currentColor" stroke-width="2"/>
+        <line x1="158" y1="212" x2="158" y2="238" stroke="currentColor" stroke-width="2"/>
+        <line x1="166" y1="210" x2="198" y2="232" stroke="currentColor" stroke-width="2"/>
+        <text x="110" y="248" text-anchor="middle" font-size="15" fill="currentColor">H</text>
+        <text x="158" y="256" text-anchor="middle" font-size="15" fill="currentColor">H</text>
+        <text x="206" y="248" text-anchor="middle" font-size="15" fill="currentColor">H</text>
+        <text x="380" y="160" text-anchor="middle" font-size="13" fill="currentColor">H₂O 折れ線形（約104.5°）</text>
+        <circle cx="366" cy="184" r="2.4" fill="#c2410c"/>
+        <circle cx="376" cy="178" r="2.4" fill="#c2410c"/>
+        <circle cx="384" cy="178" r="2.4" fill="#c2410c"/>
+        <circle cx="394" cy="184" r="2.4" fill="#c2410c"/>
+        <text x="380" y="172" text-anchor="middle" font-size="11" fill="currentColor">非共有電子対2組</text>
+        <text x="380" y="206" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="372" y1="210" x2="344" y2="234" stroke="currentColor" stroke-width="2"/>
+        <line x1="388" y1="210" x2="416" y2="234" stroke="currentColor" stroke-width="2"/>
+        <text x="336" y="250" text-anchor="middle" font-size="15" fill="currentColor">H</text>
+        <text x="424" y="250" text-anchor="middle" font-size="15" fill="currentColor">H</text>
+        <text x="260" y="300" text-anchor="middle" font-size="12" fill="currentColor">CH₄ の図で、くさび形は紙面の手前へ、破線は紙面の奥へ出た結合を表す</text>
+      </svg>
+      <p>代表的な分子の形。CO<sub>2</sub> と BF<sub>3</sub> には非共有電子対が中心原子になく、電子対の配置そのままが原子の形になります。NH<sub>3</sub> と H<sub>2</sub>O は電子対の配置は正四面体に近いものの、非共有電子対の分だけ原子の形が崩れ、結合角も小さくなります。</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>各原子の価電子の数を確認する。</strong>H は1個、C は4個、N は5個、O は6個、F は7個です（最外殻の電子数＝周期表の族の情報と対応します）。</li>
+      <li><strong>電子式を書く。</strong>まず原子を価電子の点とともに並べ、原子どうしが電子対を共有して、各原子のまわりが水素なら2個、それ以外なら8個（オクテット）になるように点を配置します。余ったペアが非共有電子対です。</li>
+      <li><strong>構造式に直す。</strong>共有電子対1組を線1本に置き換えます。線が1本なら単結合、2本なら二重結合、3本なら三重結合です。非共有電子対は構造式では通常省略します。</li>
+      <li><strong>中心原子のまわりの電子対の総数を数える。</strong>共有電子対（二重・三重結合はまとめて1か所として数える）と非共有電子対の合計が、2組なら直線形、3組なら三角平面、4組なら正四面体が基本形です。</li>
+      <li><strong>原子だけの形と結合角を答える。</strong>非共有電子対がある場合は、その分を除いた原子の配置で形の名前を言い、結合角は非共有電子対が多いほど基本形より小さくなることを確認します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：メタン CH<sub>4</sub> の電子式・構造式の特徴と、分子の形・H−C−H の結合角を答えよ。問題2：二酸化炭素 CO<sub>2</sub> の構造式と分子の形・結合角を答えよ。問題3：アンモニア NH<sub>3</sub> と水 H<sub>2</sub>O について、中心原子の非共有電子対の数、分子の形、結合角をそれぞれ答え、CH<sub>4</sub> と比べて結合角が小さくなる理由を述べよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：C の価電子は4個、H は1個ずつで、価電子の合計は 4 ＋ 1×4 ＝ 8個です。C が4個の H と電子対を1組ずつ共有すると、C のまわりは8個（オクテット）、各 H のまわりは2個になり、非共有電子対は残りません。構造式は C から4本の単結合が出た形で、中心の C のまわりの電子対は4組なので、分子の形は<strong>正四面体形</strong>、結合角は約109.5°です。</li>
+          <li>問題2：価電子の合計は C の4個 ＋ O の6個×2 ＝ 16個です。C が各 O と電子対を1組だけ共有したのでは C のまわりが4個にしかならないため、各 O と2組ずつ共有する<strong>二重結合</strong>にします（O＝C＝O）。すると C のまわりは8個、各 O のまわりも共有分4個＋非共有電子対2組（4個）で8個になります。中心の C のまわりの電子対の場所は左右2か所なので、分子の形は<strong>直線形</strong>、結合角は180°です。</li>
+          <li>問題3：NH<sub>3</sub> では価電子の合計は 5 ＋ 1×3 ＝ 8個で、N が3個の H と単結合を作ると共有に6個を使い、残り2個が<strong>非共有電子対1組</strong>として N のまわりに残ります。H<sub>2</sub>O では価電子の合計は 6 ＋ 1×2 ＝ 8個で、O が2個の H と単結合を作ると共有に4個を使い、残り4個が<strong>非共有電子対2組</strong>として残ります。どちらも中心原子のまわりの電子対は4組で配置は正四面体に近いものの、原子だけを見ると NH<sub>3</sub> は<strong>三角錐形</strong>（結合角約107°）、H<sub>2</sub>O は<strong>折れ線形</strong>（結合角約104.5°）です。非共有電子対は共有電子対より強く反発して結合を押し縮めるため、非共有電子対が多い H<sub>2</sub>O の方が NH<sub>3</sub> より結合角が小さくなります。</li>
+        </ol>
+        <p><strong>答え：問題1は単結合4本の正四面体形で結合角約109.5°、問題2は O＝C＝O の二重結合2本で直線形・結合角180°、問題3は NH<sub>3</sub> が非共有電子対1組・三角錐形・約107°、H<sub>2</sub>O が非共有電子対2組・折れ線形・約104.5°。</strong>どの分子でも「価電子の合計」と「各原子のまわりが8個（Hは2個）」を数え直すことが検算になります。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>分子の形から分かる極性と、溶媒の選び方</h3>
+    <p>CO<sub>2</sub> は C＝O 結合自体には極性がありますが、分子が直線形で両側の極性が打ち消し合うため、分子全体としては極性が小さい気体です。一方、H<sub>2</sub>O は折れ線形で極性が打ち消されず、強い極性をもつため、食塩のようなイオン結晶をよく溶かす溶媒になります。「形が極性を決め、極性が溶けやすさを決める」という見方は、実験室や工場で溶媒を選ぶときの基本的な判断材料です。CO<sub>2</sub> の直線形で無極性に近い性質は、超臨界二酸化炭素を抽出溶媒として使う技術（コーヒーの脱カフェインなど）にもつながっています。</p>
+    <h3>医薬品の設計（分子の形と受容体）</h3>
+    <p>薬の分子は、体内の標的タンパク質（受容体や酵素）の決まった形のくぼみに、形が合うものだけがはまって作用します。そのため新薬の設計では、共有結合で組み立てた分子の立体構造を予測・調整することが欠かせません。結合角や非共有電子対の向きまで含めた分子の形の理解が、医薬品化学の出発点になっています。</p>
+    <h3>共有結合でできた材料（高分子・ネットワーク固体）</h3>
+    <p>プラスチックや合成ゴムなどの高分子は、炭素原子どうしの共有結合が長くつながった分子です。また、ダイヤモンドは炭素原子が正四面体の向きに共有結合で結ばれたネットワーク固体で、その立体的な結合の網目が極端な硬さの理由になっています。分子の形と結合の組み立て方が、そのまま材料の性質を決めています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ギルバート・N・ルイス</strong>（1875〜1946、アメリカの化学者）、<strong>ロナルド・ギレスピー</strong>（1924〜2021、カナダの化学者）、<strong>ロナルド・ニーホルム</strong>（1917〜1971、オーストラリアの化学者）</p>
+    <p>共有結合の考え方は、アメリカの化学者<strong>ギルバート・N・ルイス</strong>が1916年に発表した電子対の共有による結合モデルが土台で、原子が電子を出し合って希ガスと同じ8個の電子配置（オクテット）になるという見方を示しました。「共有（covalent）」という言葉自体は、アメリカの化学者アーヴィング・ラングミュアが1919年に広めたものです。分子の形を電子対の反発から予測する方法は、イギリスで活動した<strong>ロナルド・ニーホルム</strong>とカナダの<strong>ロナルド・ギレスピー</strong>が1957年に体系化し、後に VSEPR（原子価殻電子対反発）理論と呼ばれるようになりました。高校化学基礎で学ぶ「電子対が最も離れる形が分子の形」という説明は、この理論の考え方そのものです。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>電子の受け渡しでできる結合は<a href="ionic-bonding.html">イオン結合とイオン結晶</a>、金属の結合は<a href="metallic-bonding.html">金属結合と金属の性質</a>、分子どうしの間に働く弱い力は<a href="intermolecular-forces.html">分子間力と水素結合</a>が役立ちます。電子配置の基礎は<a href="atomic-structure-electron-configuration.html">原子の構造と電子配置</a>、この先の詳しい理論は<a href="hybridization-molecular-orbitals.html">混成軌道と分子軌道の入口</a>で扱います。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

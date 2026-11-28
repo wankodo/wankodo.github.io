@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>物質の三態と状態変化｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="物質の三態と状態変化を、公式・手順・例題で解説。融解・蒸発と粒子モデル、状態変化で質量は変わらず体積が変わる理由や、冷却や蒸留など実際の現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="物質の三態と状態変化｜化学ツール集">
+<meta property="og:description" content="融解・蒸発などの状態変化を粒子モデルで解説。質量は変わらず体積が変わる理由を、例題と「現場での使われ方」で紹介。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/states-of-matter.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>物質の<span class="accent">三態</span>と状態変化</h1>
+    <p>化学の考え方辞典 ― 物質の構成・原子と周期表（中学1年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 物質の構成・原子と周期表 ＞ 物質の三態と状態変化</p>
+  <p><span class="badge badge-lv">中学1年</span> <span class="badge badge-genre">物質の構成・原子と周期表</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    物質が固体・液体・気体のどの状態にあるかと、融解や蒸発などの状態変化を、粒子の集まり方と運動で説明するときに使う。状態変化では粒子の種類や数は変わらないので質量は保存されるが、粒子の間隔が変わるため体積と密度は変化する。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>物質の<strong>固体・液体・気体</strong>という3つの状態（物質の三態）と、温度の変化によって状態が移り変わる<strong>状態変化</strong>を扱うときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>融解・凝固・蒸発・凝縮・昇華といった、状態変化の名前と向きを答える問題</li>
+      <li>状態変化の前後で、質量・体積・密度がどうなるかを問う問題</li>
+      <li>純粋な物質を加熱したとき、融点や沸点で温度が一定になる理由を説明する問題</li>
+      <li>氷が水に浮く理由など、身のまわりの現象を粒子のようすで説明する問題</li>
+    </ul>
+    <p>ポイントは、状態変化は<strong>粒子の集まり方が変わるだけ</strong>で、粒子そのものが別のものに変わる化学変化ではない、ということです。ここを取り違えると、質量まで変わってしまうような誤答になります。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>すべての物質は、目に見えない小さな<strong>粒子の集まり</strong>と考えることができます（粒子モデル）。粒子の運動の激しさと間隔の違いが、3つの状態の違いを生みます。</p>
+    <ul>
+      <li><strong>固体</strong>：粒子が規則正しく並び、その場で振動している。形も体積も一定に保たれる</li>
+      <li><strong>液体</strong>：粒子が互いの位置を変えながら動ける。体積はほぼ一定だが、形は容器に合わせて変わる</li>
+      <li><strong>気体</strong>：粒子が空間を自由に飛び回っている。容器全体に広がり、形も体積も容器に合わせて変わる</li>
+    </ul>
+    <p>温度が上がると粒子の運動が激しくなり、粒子どうしの結びつきを振り切って間隔が広がっていきます。状態変化の名前は次の通りです。</p>
+    <div class="formula">固体 ―融解→ 液体 ―蒸発→ 気体</div>
+    <div class="formula">固体 ←凝固― 液体 ←凝縮― 気体</div>
+    <ul>
+      <li><strong>融解</strong>：固体が液体になる変化。逆向き（液体→固体）は<strong>凝固</strong></li>
+      <li><strong>蒸発</strong>：液体が気体になる変化。逆向き（気体→液体）は<strong>凝縮</strong></li>
+      <li><strong>昇華</strong>：固体が液体にならずに直接気体になる変化（ドライアイスが白い煙のような二酸化炭素の気体になる現象が代表例）。気体から直接固体になる変化も昇華と呼ぶ</li>
+      <li><strong>沸騰</strong>：蒸発のうち、液体の表面だけでなく内部からも泡が出て激しく気体になる現象。表面だけで起こる気化は蒸発と呼んで区別する</li>
+    </ul>
+    <p>純粋な物質では、状態変化が起こっているあいだは加えた熱が状態を変えるために使われ、温度は上がりません。固体が融解し始める温度が<strong>融点</strong>、液体が沸騰する温度が<strong>沸点</strong>で、物質ごとに決まっています（水は常圧で融点 0 ℃、沸点 100 ℃）。</p>
+    <p>状態変化の前後の関係は、次の2つが柱です。</p>
+    <div class="formula">状態変化の前後で、質量は変わらない</div>
+    <div class="formula">密度 ＝ 質量 ÷ 体積</div>
+    <ul>
+      <li><strong>質量 [g]</strong>：粒子の種類と数が変わらないので、状態が変わっても保存される</li>
+      <li><strong>体積 [cm<sup>3</sup>]</strong>：粒子の間隔が変わるので変化する。一般に固体・液体・気体の順に体積は大きくなるが、水だけは例外で、氷（固体）になると体積が増える</li>
+      <li><strong>密度 [g/cm<sup>3</sup>]</strong>：質量が一定のまま体積が増えれば密度は小さくなり、体積が減れば密度は大きくなる</li>
+    </ul>
+    <p>氷の密度（約 0.9 g/cm<sup>3</sup>）が水の密度（1.0 g/cm<sup>3</sup>）より小さいのは、水が凝固するときに体積が増えるためで、これが氷が水に浮く理由です。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>変化の向きを確認する。</strong>「固体→液体」なら融解、「液体→気体」なら蒸発というように、変化前と変化後の状態から名前を決めます。</li>
+      <li><strong>粒子のようすで考える。</strong>温度が上がる向きなら粒子の運動が激しくなり間隔が広がる、温度が下がる向きならその逆、と粒子の絵を思い浮かべます。</li>
+      <li><strong>質量は「変わらない」を出発点にする。</strong>粒子の種類と数が変わらないことを根拠にします。</li>
+      <li><strong>体積の変化から密度を判断する。</strong>密度 ＝ 質量 ÷ 体積 の式に当てはめ、質量一定のまま体積が増えたか減ったかで、密度の増減を決めます。水の凝固だけは体積が増える例外として押さえます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：質量 50 g の氷がすべて融解して水になった。できた水の質量は何 g か。また、水の密度を 1.0 g/cm<sup>3</sup> として、できた水の体積は何 cm<sup>3</sup> か。問題2：液体のエタノールを加熱してすべて蒸発させた。このとき、エタノールの質量と体積はそれぞれどうなるか。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：融解は状態変化なので、粒子の種類と数は変わらず、質量は変わりません。よって水の質量は 50 g のままです。</li>
+          <li>体積は、密度 ＝ 質量 ÷ 体積 を変形して、体積 ＝ 質量 ÷ 密度 ＝ 50 ÷ 1.0 ＝ 50 cm<sup>3</sup> です。氷のときは密度が約 0.9 g/cm<sup>3</sup> で体積は 50 ÷ 0.9 ≒ 56 cm<sup>3</sup> だったので、融解すると体積は小さくなります（水の例外的な性質で、凝固すると体積が増える側の変化です）。</li>
+          <li>問題2：蒸発も状態変化なので質量は変わりません。一方、気体になると粒子が容器全体に広がって間隔が大きく広がるため、体積は液体のときよりはるかに大きくなります。</li>
+        </ol>
+        <p><strong>答え：問題1は質量 50 g、体積 50 cm<sup>3</sup>。問題2は質量は変わらず、体積は大きくなる</strong>。状態変化では「質量は保存、体積は変化」が合言葉です。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>冷蔵・冷凍とエアコンの冷媒サイクル</h3>
+    <p>冷蔵庫やエアコンは、冷媒という物質を圧縮して凝縮させたり、膨張させて蒸発させたりする循環を繰り返して熱を運んでいます。液体が蒸発するときにまわりから熱を奪う性質が、冷却の心臓部です。</p>
+    <h3>蒸留による分離</h3>
+    <p>沸点の違いを利用して液体の混合物を蒸発と凝縮で分け取る蒸留は、石油の精製（原油をガソリンや灯油などに分ける）や、酒類の製造、医薬品の精製など、産業の基本操作として広く使われています。</p>
+    <h3>ドライアイスと昇華の利用</h3>
+    <p>ドライアイスは固体の二酸化炭素で、液体にならず昇華して直接気体になるため、食品の輸送用保冷材として使っても水で濡れることがありません。昇華の性質そのものを利用した身近な例です。</p>
+    <h3>凍結による配管の破裂対策</h3>
+    <p>水は凝固すると体積が増える例外的な物質なので、寒冷地では水道管の中の水が凍ると配管が破裂することがあります。水抜き栓で管内の水を抜く凍結防止の仕組みは、この性質への対策です。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who">特定の個人が考え出した法則ではなく、<strong>デモクリトス</strong>（紀元前460年頃〜紀元前370年頃、ギリシャの哲学者）の原子の着想を、<strong>ジョン・ドルトン</strong>（1766〜1844、イギリス、化学者）が科学的な原子論としてよみがえらせた、粒子モデルの成立史として扱う項目</p>
+    <p>物質が小さな粒子の集まりだという考え方は、古代ギリシャの哲学者<strong>デモクリトス</strong>（紀元前460年頃〜紀元前370年頃）が唱えた「アトモス（これ以上分割できないもの）」の着想にまでさかのぼります。ただしこれは観察や実験に基づく科学ではなく、思索によるものでした。これを科学としてよみがえらせたのがイギリスの化学者<strong>ジョン・ドルトン</strong>（1766〜1844）で、1803年ごろに原子論を提唱し、1808年の著書で体系化しました。ドルトンの原子論によって「化学変化では原子の組み合わせが変わるだけ」という見方が生まれ、状態変化を「粒子の集まり方の変化」と捉える粒子モデルも、この流れの上に成り立っています。中学で学ぶ粒子モデルは、特定の誰かの法則ではなく、こうした原子論の成立史を引き継いだ考え方です。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>密度の求め方と物質の区別は<a href="density.html">密度と物質の区別</a>、混合物の分け方は<a href="mixtures-and-separation.html">混合物と分離の方法</a>、粒子そのものの話は<a href="atoms-and-molecules.html">原子と分子</a>が役立ちます。状態変化に必要な熱量の計算は、物理コーナーの<a href="https://wankodo.github.io/physics/latent-heat-phase-change.html">潜熱と物質の三態</a>へどうぞ。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>イオン化エネルギーと電子親和力｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="イオン化エネルギーと電子親和力の定義と、周期表での傾向（同周期・同族での大小）を解説。値の大小から陽イオン・陰イオンへのなりやすさを読み取る方法と、プラズマ分析や電子捕獲型検出器など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="イオン化エネルギーと電子親和力｜化学ツール集">
+<meta property="og:description" content="周期表の右上ほど大きくなる2つの量から、イオンへのなりやすさを読む考え方を例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/ionization-energy-electron-affinity.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">イオン化エネルギー</span>と電子親和力</h1>
+    <p>化学の考え方辞典 ― 物質の構成・原子と周期表（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 物質の構成・原子と周期表 ＞ イオン化エネルギーと電子親和力</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">物質の構成・原子と周期表</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    イオン化エネルギーは原子から電子1個を取り去るのに必要なエネルギー、電子親和力は原子が電子1個を受け取るときに放出されるエネルギーである。どちらも周期表の右上ほど大きくなる傾向があり、この2つを読むと、原子が陽イオンになりやすいか陰イオンになりやすいかを周期表の位置から判断できる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>原子が<strong>電子を手放しやすいか、受け取りやすいか</strong>を、2つの量の大小で判断するときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>複数の元素の第1イオン化エネルギーを、周期表での位置から大小の順に並べる問題</li>
+      <li>どの元素が陽イオンになりやすく、どの元素が陰イオンになりやすいかを説明する問題</li>
+      <li>電子親和力の大小から、ハロゲンどうしの反応性の違いを考える問題</li>
+      <li>第1、第2、第3…と続くイオン化エネルギーの値がどこで急に大きく跳ね上がるかを見て、その元素の価電子の数を当てる問題</li>
+    </ul>
+    <p>ポイントは、2つの量を別々に覚えるのではなく、<strong>「電子をどれだけ強く引きつけるか」という1つの物差しの両面</strong>として読むことです。引きつける力が強い原子ほど、電子を取り去るのに大きなエネルギーが要り（イオン化エネルギーが大きい）、電子を受け取ったときに出るエネルギーも大きくなります（電子親和力が大きい）。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p><strong>イオン化エネルギー</strong>は、気体状態の原子から電子1個を取り去って陽イオンにするために必要な最小のエネルギーです。電子を1個取り去る場合を第1イオン化エネルギーといい、ふつう「イオン化エネルギー」といえばこれを指します。</p>
+    <div class="formula">M（気体） → M<sup>+</sup>（気体） ＋ e<sup>−</sup>　　必要なエネルギーがイオン化エネルギー</div>
+    <p><strong>電子親和力</strong>は、気体状態の原子が電子1個を受け取って陰イオンになるときに放出されるエネルギーです。</p>
+    <div class="formula">M（気体） ＋ e<sup>−</sup> → M<sup>−</sup>（気体） ＋ エネルギー　　放出されるエネルギーが電子親和力</div>
+    <p>各量の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>イオン化エネルギー</strong>：単位は [kJ/mol]。原子1 mol から電子1 mol を取り去るのに必要なエネルギーで表す。<strong>大きいほど電子を取り去りにくく、小さいほど陽イオンになりやすい</strong></li>
+      <li><strong>電子親和力</strong>：単位は [kJ/mol]。原子1 mol が電子1 mol を受け取るときに放出されるエネルギーで表し、日本の教科書では放出量を正の値で書く。<strong>大きいほど電子を受け取りやすく、陰イオンになりやすい</strong></li>
+      <li>どちらも、対象は<strong>気体状態でばらばらになった原子</strong>である点が共通している。固体や液体のままでは、原子どうしの結びつきの影響が混ざってしまうためである</li>
+    </ul>
+    <p>周期表での傾向は、次の2つが基本です。</p>
+    <ul>
+      <li><strong>同じ周期で左から右へ進むと、どちらも大きくなる傾向がある。</strong>原子番号が増えて原子核のプラスの電荷が大きくなる一方、電子は同じ電子殻に入るので原子はあまり大きくならず、電子が強く引きつけられるためである</li>
+      <li><strong>同じ族で上から下へ進むと、どちらも小さくなる傾向がある。</strong>電子殻が増えて最外殻の電子が原子核から遠くなり、内側の電子に遮られて核の引力を受けにくくなるためである</li>
+    </ul>
+    <p>この2つを合わせると、<strong>周期表の右上ほど両方の量が大きく、左下ほど小さい</strong>という大きな地図が描けます。イオンへのなりやすさは、この地図から次のように読めます。</p>
+    <ul>
+      <li>左下の金属元素：イオン化エネルギーが小さい → 電子を手放しやすく、<strong>陽イオンになりやすい</strong></li>
+      <li>右上の非金属元素（とくに17族のハロゲン）：電子親和力が大きい → 電子を受け取りやすく、<strong>陰イオンになりやすい</strong></li>
+      <li>18族の希ガス：イオン化エネルギーが非常に大きく、電子親和力はほぼ0 → 電子も手放さず受け取らず、<strong>イオンにならず安定</strong>である</li>
+    </ul>
+    <p>ただし傾向には小さな例外があります。第3周期では Mg（738 kJ/mol）より Al（578 kJ/mol）の方がイオン化エネルギーが小さく、少し逆転します。Mg の最外電子は満たされた内側に近い配置にあるのに対し、Al で取り去られる電子はそれより外側の1個であり、取り去りやすいためです。電子親和力では、ハロゲンの中で最も上にある F（328 kJ/mol）より、その下の Cl（349 kJ/mol）の方が大きくなります。F は原子が小さいため、入ってくる電子が既にある電子から強い反発を受けてしまうからです。「傾向は大づかみに使い、例外は理由とセットで覚える」のがこの項目の扱い方です。</p>
+    <p>また、電子を続けて取り去る第2、第3イオン化エネルギーはだんだん大きくなりますが、価電子を全部取り去って内側の電子殻の電子を取り始める段階で、値が急に跳ね上がります。この跳ね上がる位置を読むと、その元素の価電子の数（＝何族か）が分かります。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>問われている量を確認する。</strong>電子を取り去る話ならイオン化エネルギー、受け取る話なら電子親和力です。「陽イオンになりやすいか」はイオン化エネルギーの小ささ、「陰イオンになりやすいか」は電子親和力の大きさで判断します。</li>
+      <li><strong>周期表での位置を比べる。</strong>同じ周期なら右にある元素ほど、同じ族なら上にある元素ほど、どちらの量も大きいという傾向を当てはめます。</li>
+      <li><strong>例外に当たっていないかを確認する。</strong>Mg と Al、F と Cl のような有名な逆転が関係する場合は、傾向だけで決めず、実際の値や理由で確かめます。</li>
+      <li><strong>イオンへのなりやすさに翻訳する。</strong>イオン化エネルギーが小さい＝陽イオンになりやすい、電子親和力が大きい＝陰イオンになりやすい、と結論を言い換えて答えます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：第3周期の元素 Na、Mg、Al、Cl の第1イオン化エネルギーは、それぞれ 496、738、578、1251 kJ/mol である。小さい順に並べ、全体の傾向と例外を説明せよ。問題2：1族の Li、Na、K の第1イオン化エネルギーは、それぞれ 520、496、419 kJ/mol である。大小の順と、その理由を答えよ。問題3：電子親和力は F が 328 kJ/mol、Cl が 349 kJ/mol、Br が 325 kJ/mol、I が 295 kJ/mol、O が 141 kJ/mol である。陰イオンに最もなりやすい元素はどれか。また、周期表で最も上にある F が最大にならない理由を答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：値を小さい順に並べると <strong>Na（496）＜ Al（578）＜ Mg（738）＜ Cl（1251）</strong> です。同周期では右へ進むほど大きくなるのが全体の傾向で、左端の Na が最小、右側の Cl が最大になっています。例外は Mg と Al で、本来の並びなら Al が Mg より大きいはずが逆転しています。Al で取り去られる最外電子は Mg の最外電子より外側にあり、取り去りやすいためです。</li>
+          <li>問題2：大きい順に <strong>Li（520）＞ Na（496）＞ K（419）</strong> です。同族では下へ進むほど電子殻が増え、最外電子が原子核から遠くなって引きつける力が弱まるため、イオン化エネルギーは小さくなります。裏を返せば、下にある元素ほど陽イオンになりやすいということでもあります。</li>
+          <li>問題3：電子親和力が最も大きいのは <strong>Cl（349 kJ/mol）</strong> で、陰イオンに最もなりやすい元素です。ハロゲンはいずれも酸素 O（141 kJ/mol）よりはるかに大きく、電子1個を受け取って安定な電子配置になろうとする性質が強いことが分かります。F が最大にならないのは、F の原子が小さく、受け取る電子が既にある電子から強い反発を受けて、放出されるエネルギーが Cl より小さくなるためです。</li>
+        </ol>
+        <p><strong>答え：問題1は Na ＜ Al ＜ Mg ＜ Cl（Mg と Al が傾向から逆転）。問題2は Li ＞ Na ＞ K で、同族では下ほど小さい。問題3は Cl で、F は原子が小さく電子どうしの反発が強いため最大にならない。</strong>大小を比べるときは「同周期は右へ、同族は上へ大きくなる」をまず当てはめ、Mg・Al と F・Cl の2つの逆転だけを例外として確認するのが、この考え方の一番の要点です。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>プラズマを使う元素分析（ICP発光分析・ICP質量分析）</h3>
+    <p>環境水や食品、半導体材料に含まれる微量元素を測る ICP 発光分析や ICP 質量分析では、アルゴンのプラズマの中で試料の原子をイオン化して検出します。元素ごとにイオン化エネルギーが違うため、プラズマの中でイオンになりやすい元素となりにくい元素があり、この違いが検出のされやすさ（感度）の差として現れます。分析条件を設計したり、測りにくい元素のデータを読み解いたりするとき、イオン化エネルギーの表が手がかりになります。</p>
+    <h3>ガスクロマトグラフィーの電子捕獲型検出器（ECD）</h3>
+    <p>農薬などの分析に使われる電子捕獲型検出器は、電子を受け取りやすい（電子親和力の大きい）物質が電子を捕まえることで生じる電流の減少を測る検出器です。塩素などのハロゲンを含む化合物は電子を捕まえやすいため、ごく微量でも高い感度で検出できます。電子親和力の大きさが、そのまま検出器の得意・不得意を決めている例です。</p>
+    <h3>光電子分光による物質の表面分析</h3>
+    <p>物質に紫外線や X 線を当てて飛び出した電子のエネルギーを測る光電子分光は、電子を取り去るのに要したエネルギー、つまりイオン化エネルギーを直接測る方法です。元素ごとに値が違うため、物質の表面にどの元素がどんな結びつきで存在するかを調べる分析法として、材料開発や半導体の研究で使われています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who">特定の個人が考え出した量ではなく、<strong>ジェームズ・フランク</strong>（1882〜1964、ドイツの物理学者）と<strong>グスタフ・ヘルツ</strong>（1887〜1975、ドイツの物理学者）の実験や、<strong>ロバート・マリケン</strong>（1896〜1986、アメリカの化学者）の電気陰性度の定義などを通じて定量化された概念</p>
+    <p>イオン化エネルギーと電子親和力は、誰か一人が発明した法則ではなく、原子から電子を取り去ったり受け取らせたりする実験を通じて、少しずつ正確に測れるようになった量です。1914年、ドイツの<strong>ジェームズ・フランク</strong>（1882〜1964）と<strong>グスタフ・ヘルツ</strong>（1887〜1975）は、水銀蒸気に電子をぶつける実験で、原子が決まった大きさのエネルギーを吸収してイオン化することを示し、原子のエネルギー状態が飛び飛びであることの証拠となりました（2人はこの業績でノーベル物理学賞を受けています）。その後、アメリカの化学者<strong>ロバート・マリケン</strong>（1896〜1986）は、イオン化エネルギーと電子親和力の平均を取ることで、原子が電子を引きつける強さを示す「電気陰性度」の物差しを定義しました。この2つの量が、元素の性質を比べる基本量として化学の中心に置かれているのは、こうした測定と整理の積み重ねによるものです。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>2つの量の傾向が生まれる土台である周期表の並びは<a href="periodic-table.html">周期表と元素の性質</a>、最外殻の電子の入り方そのものは<a href="atomic-structure-electron-configuration.html">原子の構造と電子配置</a>、同位体と原子量の決まり方は<a href="isotopes-atomic-mass.html">同位体と原子量</a>が役立ちます。周期表の並びが電子配置から生まれる理由は、物理コーナーの<a href="https://wankodo.github.io/physics/pauli-exclusion-periodic-table.html">パウリの排他原理と周期表</a>もあわせてどうぞ。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>放射性同位体と年代測定｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="放射性同位体と年代測定の考え方を、公式・手順・例題で解説。炭素14法の原理、大気と生物のあいだの炭素の循環、較正曲線やリザーバー効果などの補正、約5万年という測定の限界や、考古学の年代決定など実際の現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="放射性同位体と年代測定｜化学ツール集">
+<meta property="og:description" content="炭素14法を中心に、放射年代測定の考え方・補正・限界を、例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/radioisotopes-dating.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">放射性同位体</span>と年代測定</h1>
+    <p>化学の考え方辞典 ― 物質の構成・原子と周期表（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 物質の構成・原子と周期表 ＞ 放射性同位体と年代測定</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">物質の構成・原子と周期表</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    放射性同位体は、一定の割合で崩壊していく不安定な同位体で、その代表例が炭素14である。生物が生きている間は大気と炭素をやり取りするため体内の炭素14の割合は大気と等しく保たれるが、死ぬと取り込みが止まり、炭素14だけが半減期5,730年で減っていく。この残り具合から死後の経過時間を読むのが放射年代測定で、測定値への補正と測定の限界を踏まえて、遺跡や化石の年代を決めるときに使う。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>放射性同位体（放射性核種）のうち、<strong>炭素14 <sup>14</sup>C</strong> を使った年代測定（放射性炭素年代測定法）の考え方を扱います。次のような場面で使います。</p>
+    <ul>
+      <li>遺跡から出た木材・炭化物・骨・貝殻などの年代を決める問題</li>
+      <li>測定で得られた年代（放射性炭素年代）を、実際の暦の年代（暦年代）に直す補正の問題</li>
+      <li>「この試料は炭素14法で測れるか」という、測定の限界と適用範囲の判断</li>
+      <li>カリウム・アルゴン法やウラン・鉛法など、ほかの放射性同位体による年代測定との使い分け</li>
+    </ul>
+    <p>ポイントは、半減期そのものの計算は物理の話だということです。半減期から残りの量や経過時間を求める計算は、物理コーナーの<a href="https://wankodo.github.io/physics/radioactive-decay-half-life.html">放射性崩壊と半減期</a>が正本です。この項目では化学の側、つまり<strong>なぜ生物の中の炭素14の割合が一定に保たれるのか、測定値をどう補正するのか、どこまでしか測れないのか</strong>を扱います。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>炭素14は、大気の上層で宇宙線の中性子が窒素14にぶつかって絶えず作られています。</p>
+    <div class="formula"><sup>14</sup>N ＋ n → <sup>14</sup>C ＋ <sup>1</sup>H</div>
+    <p>生まれた <sup>14</sup>C はすぐに酸素と結びついて二酸化炭素 <sup>14</sup>CO<sub>2</sub> になり、大気全体に混ざります。大気中の炭素に占める <sup>14</sup>C の割合は、生成と崩壊がつり合って<strong>約10<sup>−12</sup>（炭素原子およそ1兆個に1個）</strong>でほぼ一定です。植物は光合成でこの CO<sub>2</sub> を取り込み、動物は植物を食べて炭素を受け継ぐため、<strong>生きている生物の体内の <sup>14</sup>C の割合は、大気と等しく保たれます</strong>。これが年代測定の出発点です。</p>
+    <p>ところが <sup>14</sup>C は不安定で、β<sup>−</sup> 崩壊して <sup>14</sup>N に戻ります。</p>
+    <div class="formula"><sup>14</sup>C → <sup>14</sup>N ＋ β<sup>−</sup>（半減期 T ＝ 5,730年）</div>
+    <p>生物が死ぬと炭素の取り込みが止まるので、体内の <sup>14</sup>C だけが半減期ごとに半分ずつ減っていきます。試料に残った <sup>14</sup>C の割合 F（生きている生物の値を1とする）と死後の経過時間 t の関係は次の式です。</p>
+    <div class="formula">F ＝ (1/2)<sup>t ÷ T</sup>　すなわち　t ＝ T × log<sub>2</sub>(1 ÷ F)</div>
+    <p>各記号の意味は次の通りです。</p>
+    <ul>
+      <li><strong>F</strong>：試料の <sup>14</sup>C ÷ <sup>12</sup>C の比を、現代の標準試料の比で割った割合（無単位）</li>
+      <li><strong>T</strong>：<sup>14</sup>C の半減期 [年]。現在の測定値では 5,730年</li>
+      <li><strong>t</strong>：生物が死んでからの経過時間 [年]</li>
+    </ul>
+    <p>ただし、実務の年代測定ではこの式で出した値をそのまま使わず、次のような<strong>約束と補正</strong>を重ねます。ここが化学の側の腕の見せどころです。</p>
+    <ul>
+      <li><strong>放射性炭素年代（BP）</strong>：国際的な約束として、半減期には現在の測定値ではなくリビーが用いた 5,568年を使い、起点を1950年として「○○年 BP（before present）」と表します。研究者どうしで値を比べられるようにするための統一ルールです</li>
+      <li><strong>同位体分別の補正</strong>：光合成などの化学反応では、軽い <sup>12</sup>C の方がわずかに反応しやすく、試料によって <sup>14</sup>C の割合に生まれつきの偏り（同位体分別）が生じます。同時に測った <sup>13</sup>C の偏り（δ<sup>13</sup>C）からこの影響を見積もり、基準値 −25‰ にそろえて補正します</li>
+      <li><strong>暦年較正</strong>：大気中の <sup>14</sup>C の割合は、太陽活動や地球磁場の変化で時代ごとに変動してきました。そのため放射性炭素年代はそのまま暦の年数とは一致しません。年輪年代学で年が確定した木材などを測って作った<strong>較正曲線（IntCal）</strong>と照らし合わせ、暦年代（cal BP）に変換します</li>
+      <li><strong>リザーバー効果</strong>：海水中の炭素は大気との交換が遅く、古い炭素を多く含むため、海の生物の試料は実際より古く（世界平均で約400年）出やすいことが知られています。海洋リザーバー効果と呼ばれ、地域ごとに補正量が調べられています</li>
+      <li><strong>人間の活動の影響</strong>：化石燃料の燃焼は <sup>14</sup>C を含まない CO<sub>2</sub> を大気に足して割合を薄め（スース効果）、1950〜60年代の大気圏核実験は逆に <sup>14</sup>C をほぼ2倍に増やしました（ボムパルス）。較正曲線はこうした変動も織り込んで作られています</li>
+    </ul>
+    <p>測定方法にも化学の工夫があります。もともとは崩壊で出る β 線を数える方法で、グラム単位の試料が必要でした。現在の主流は<strong>加速器質量分析（AMS）</strong>で、加速器と質量分析計を組み合わせて <sup>14</sup>C 原子そのものを数えるため、約1 mg の炭素で測れます。その前段では、試料に酸・アルカリ・酸の順で洗浄する前処理を行い、土壌から染み込んだ有機物（フミン酸）や炭酸塩などの<strong>汚染を取り除いてから</strong>測定します。汚染の除去が不完全だと、年代は大きく狂います（例題2）。</p>
+    <p>なお、炭素14法が使えるのは炭素を含む生物由来の試料だけです。岩石や鉱物の年代には、半減期の長いほかの放射性同位体、たとえば <sup>40</sup>K（半減期約12.5億年）を使うカリウム・アルゴン法や、<sup>238</sup>U・<sup>235</sup>U を使うウラン・鉛法が使われます。「どの同位体で、どの試料を、どの時間の幅で測るか」を選ぶのが年代測定の設計です。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>試料を選ぶ。</strong>炭素14法なら、生物由来で炭素を含む試料（木材・炭・骨・貝殻など）かを確認します。由来の分からない炭素や、汚染の激しい試料は避けます。</li>
+      <li><strong>前処理で汚染を除く。</strong>酸・アルカリ・酸の洗浄などで、後から染み込んだ炭素を取り除き、試料本来の炭素だけを残します。</li>
+      <li><strong><sup>14</sup>C の割合 F を測る。</strong>AMS などで <sup>14</sup>C ÷ <sup>12</sup>C の比を標準試料と比べて測り、同時に δ<sup>13</sup>C も測ります。</li>
+      <li><strong>放射性炭素年代を出す。</strong>同位体分別を補正したうえで、約束の半減期 5,568年と起点1950年で計算し、「○○年 BP」と表します。</li>
+      <li><strong>暦年較正する。</strong>較正曲線（IntCal）と照らし合わせて暦年代に変換します。較正曲線の形によっては、1つの測定値が複数の暦年代の候補に対応することがあります。</li>
+      <li><strong>文脈で点検する。</strong>海産物の試料ならリザーバー効果、出土状況から分かる前後の年代関係などと矛盾しないかを確認して、最終的な年代を決めます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：ある木材試料の <sup>14</sup>C の割合 F が、生きている木の 25% であった。半減期を 5,730年として、この木が枯れてからの経過時間を求めよ。問題2：本当は 40,000年前の試料に、現代の炭素が 1% 混入したとする。見かけの年代はおよそ何年前になるか。問題3：50,000年前の試料では、<sup>14</sup>C の割合 F はおよそ何 % まで下がっているか。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：F ＝ 0.25 ＝ (1/2)<sup>2</sup> なので、半減期が2回分経過しています。t ＝ 2 × 5,730 ＝ <strong>11,460年</strong>です。</li>
+          <li>問題2：まず混入なしの場合、40,000年では F ＝ (1/2)<sup>40,000 ÷ 5,730</sup> ≒ 0.0079（約0.79%）まで減っています。ここに現代炭素（F ＝ 1）が 1% 混ざると、測られる値は 0.99 × 0.0079 ＋ 0.01 × 1 ≒ 0.0178 になります。t ＝ 5,730 × log<sub>2</sub>(1 ÷ 0.0178) ≒ 5,730 × 5.81 ≒ <strong>33,300年</strong>。本当の年代より約6,700年も若く出てしまいます。</li>
+          <li>問題3：F ＝ (1/2)<sup>50,000 ÷ 5,730</sup> ≒ (1/2)<sup>8.73</sup> ≒ <strong>0.0024、つまり約0.24%</strong>です。問題2の通り、わずかな現代炭素の混入でも値が大きく動く水準であり、これが炭素14法の測定限界が約5万年とされる理由です。</li>
+        </ol>
+        <p><strong>答え：問題1は 11,460年、問題2は約33,300年前（約6,700年若く出る）、問題3は約0.24%</strong>。年代測定の難しさは半減期の計算そのものではなく、古い試料ほど効いてくる汚染と補正の扱いにあります。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>考古学の年代決定</h3>
+    <p>遺跡から出土した炭化物・木材・骨などの年代を決める、考古学の基本的なものさしです。土器の型式など相対的な前後関係しか分からなかった遺跡に、絶対的な年数を与えました。約5,300年前のミイラ「アイスマン」の年代決定にも炭素14法が使われています。</p>
+    <h3>トリノの聖骸布の年代測定（1988年）</h3>
+    <p>キリストの遺体を包んだと伝えられてきた亜麻布について、オックスフォード大学・アリゾナ大学・チューリッヒ工科大学の3機関が AMS で独立に測定し、いずれも布の年代は1260〜1390年の範囲（中世）という結果で一致しました。少量の試料で測れる AMS の実力を示した有名な事例です。</p>
+    <h3>水月湖の堆積物と較正曲線</h3>
+    <p>福井県の水月湖の湖底には、1年に1枚ずつ縞模様（年縞）が積もった堆積物が約7万年分残っています。その年縞を数えて年を確定した有機物の <sup>14</sup>C を測ったデータが、国際較正曲線 IntCal の作成に使われました。較正の精度を支える、化学と地質学の共同作業です。</p>
+    <h3>ボムパルスを使った新しい試料の年代判定</h3>
+    <p>大気圏核実験で増えた <sup>14</sup>C は1963年頃をピークに減り続けています。この変化を目盛りにすると、1960年代以降にできた試料、たとえばワインの収穫年や象牙・人体組織の形成時期を、数年単位の細かさで推定できます。ワインの偽造や象牙の密猟時期の判定など、法科学の分野で使われています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ウィラード・リビー</strong>（1908〜1980、アメリカの物理化学者）</p>
+    <p>放射性炭素年代測定法を考案したのは、アメリカの物理化学者<strong>ウィラード・リビー</strong>（1908〜1980）です。1940年代、リビーは「宇宙線が大気中で <sup>14</sup>C を絶えず作っているなら、生きている生物の <sup>14</sup>C の割合は一定のはずで、死後の減少を測れば年代が分かるはずだ」と考えました。1949年には同僚とともに、年代の分かっている古代エジプトの試料などで予測が成り立つことを実証し、方法を発表します。この業績でリビーは1960年にノーベル化学賞を受賞しました。その後、年輪による較正曲線の整備や AMS の発明によって精度と適用範囲が大きく広がり、年代測定は考古学の姿を一変させました。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>同位体そのものの考え方は<a href="isotopes-atomic-mass.html">同位体と原子量</a>、原子核と電子の構造は<a href="atomic-structure-electron-configuration.html">原子の構造と電子配置</a>が役立ちます。半減期から残りの量や経過時間を求める計算は、物理コーナーの<a href="https://wankodo.github.io/physics/radioactive-decay-half-life.html">放射性崩壊と半減期</a>へどうぞ。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

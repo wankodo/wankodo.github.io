@@ -383,7 +383,7 @@
 
 ## 化学ツール集
 
-> 中学理科・高校化学基礎・高校化学・大学レベルの考え方辞典と計算機。全16項目、各項目に解説記事があり、計算機つきの項目もあります。トップは [化学ツール集](https://wankodo.github.io/chemistry/) です。
+> 中学理科・高校化学基礎・高校化学・大学レベルの考え方辞典と計算機。全32項目、各項目に解説記事があり、計算機つきの項目もあります。トップは [化学ツール集](https://wankodo.github.io/chemistry/) です。
 
 - [密度と物質の区別｜化学ツール集](https://wankodo.github.io/chemistry/density.html): 質量と体積から密度を求め、浮き沈みの判断や物質の同定に使う。計算機つき。
 - [モルとアボガドロ定数｜化学ツール集](https://wankodo.github.io/chemistry/mole-avogadro.html): 粒子数から物質量（mol）を、物質量から粒子数をアボガドロ定数で換算する。計算機つき。
@@ -401,3 +401,19 @@
 - [中和滴定と滴定曲線｜化学ツール集](https://wankodo.github.io/chemistry/titration-curves.html): 中和滴定で当量点の pH を読み取り指示薬を選び、中和の条件から中和に必要な酸や塩基の体積を求める。計算機つき。
 - [電池の原理（ボルタ電池・ダニエル電池）｜化学ツール集](https://wankodo.github.io/chemistry/galvanic-cells.html): ボルタ電池とダニエル電池の負極・正極で起こる反応を半反応式で表し、起電力や分極の仕組みを理解する。解説記事のみ。
 - [電気分解とファラデーの法則｜化学ツール集](https://wankodo.github.io/chemistry/electrolysis-faraday.html): 電気分解で流れた電気量から、電子の物質量と電極に析出する物質の質量を求める。計算機つき。
+- [純物質と混合物・分離の方法｜化学ツール集](https://wankodo.github.io/chemistry/mixtures-and-separation.html): 純物質と混合物を区別し、ろ過・蒸留・再結晶などの方法で混合物を分ける。解説記事のみ。
+- [物質の三態と状態変化｜化学ツール集](https://wankodo.github.io/chemistry/states-of-matter.html): 状態変化の種類と、変化の前後で質量・体積・密度がどうなるかを粒子モデルで説明する。解説記事のみ。
+- [原子と分子・元素記号｜化学ツール集](https://wankodo.github.io/chemistry/atoms-and-molecules.html): 原子と分子の違いを理解し、元素記号と化学式を読んで物質の組成を読み取る。解説記事のみ。
+- [原子の構造と電子配置｜化学ツール集](https://wankodo.github.io/chemistry/atomic-structure-electron-configuration.html): 原子番号から陽子・電子の数と電子配置（K殻・L殻・M殻への電子の入り方）を求め、価電子の数を読み取る。解説記事のみ。
+- [同位体と原子量｜化学ツール集](https://wankodo.github.io/chemistry/isotopes-atomic-mass.html): 同位体の存在比から平均原子量（原子量）を求める。計算機つき。
+- [周期表と元素の性質｜化学ツール集](https://wankodo.github.io/chemistry/periodic-table.html): 元素の族と周期の位置から、その元素の性質や反応の傾向を予測する。解説記事のみ。
+- [分子量・式量の求め方｜化学ツール集](https://wankodo.github.io/chemistry/molecular-formula-mass.html): 化学式に出てくる元素の原子量と個数から、分子量・式量を求める。計算機つき。
+- [組成式と分子式の決定｜化学ツール集](https://wankodo.github.io/chemistry/empirical-molecular-formula.html): 組成百分率から組成式を求め、分子量と組成式量の比から分子式を決定する。計算機つき。
+- [イオン化エネルギーと電子親和力｜化学ツール集](https://wankodo.github.io/chemistry/ionization-energy-electron-affinity.html): イオン化エネルギーと電子親和力の大小を周期表の位置から比べ、イオンになりやすさを判断する。解説記事のみ。
+- [質量分析と同位体存在比｜化学ツール集](https://wankodo.github.io/chemistry/mass-spectrometry-isotopes.html): 質量分析のピークの高さから同位体の存在比を求め、平均原子量を計算する。計算機つき。
+- [原子軌道と量子数｜化学ツール集](https://wankodo.github.io/chemistry/atomic-orbitals-quantum-numbers.html): 4つの量子数から原子軌道を特定し、副殻・主殻に入る電子の最大数を求め、原子番号から軌道表記の電子配置を書く。解説記事のみ。
+- [放射性同位体と年代測定｜化学ツール集](https://wankodo.github.io/chemistry/radioisotopes-dating.html): 試料に残る放射性同位体（炭素14）の割合から生物が死んでからの経過時間を読み取り、補正と限界を踏まえて年代を決める。解説記事のみ。
+- [イオン結合とイオン結晶｜化学ツール集](https://wankodo.github.io/chemistry/ionic-bonding.html): 陽イオンと陰イオンの電荷のつり合いから組成式を書き、イオン結晶の性質を説明する。解説記事のみ。
+- [共有結合と分子の形｜化学ツール集](https://wankodo.github.io/chemistry/covalent-bonding-molecular-shape.html): 電子式・構造式を書いて単結合・二重結合・三重結合を区別し、電子対の反発から分子の形（直線形・正四面体形など）と結合角を求める。解説記事のみ。
+- [金属結合と金属の性質｜化学ツール集](https://wankodo.github.io/chemistry/metallic-bonding.html): 金属結合の仕組みを自由電子のモデルで理解し、展性・延性・電気伝導・熱伝導・金属光沢などの金属の性質を説明する。解説記事のみ。
+- [結晶の種類と性質｜化学ツール集](https://wankodo.github.io/chemistry/crystal-types.html): 物質をイオン結晶・分子結晶・共有結合結晶・金属結晶に分類し、構成粒子と結合から融点・電気伝導・硬さなどの性質を説明する。解説記事のみ。
