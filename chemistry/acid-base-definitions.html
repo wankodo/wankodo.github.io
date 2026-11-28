@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>酸と塩基の定義と性質（アレーニウス・ブレンステッド・ルイス）｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="酸と塩基の定義と性質の使い方を、公式・手順・例題で解説。アレーニウス、ブレンステッド・ローリー、ルイスの3つの定義の違いと拡張、共役酸塩基対、アンモニアが塩基になる理由や三フッ化ホウ素がルイス酸になる理由、現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="酸と塩基の定義と性質（アレーニウス・ブレンステッド・ルイス）｜化学ツール集">
+<meta property="og:description" content="アレーニウス、ブレンステッド・ローリー、ルイスの3つの定義で酸と塩基を判定する方法を、例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/acid-base-definitions.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">酸と塩基の定義</span>と性質（アレーニウス・ブレンステッド・ルイス）</h1>
+    <p>化学の考え方辞典 ― 酸と塩基（高校化学基礎・1年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 酸と塩基 ＞ 酸と塩基の定義と性質（アレーニウス・ブレンステッド・ルイス）</p>
+  <p><span class="badge badge-lv">高校化学基礎・1年</span> <span class="badge badge-genre">酸と塩基</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    酸と塩基をどう定義するかによって、説明できる反応の範囲が広がっていくことを整理するときに使う。アレーニウスの定義では水溶液中で水素イオンを出す物質が酸、水酸化物イオンを出す物質が塩基であり、ブレンステッド・ローリーの定義では水素イオンの授受で、ルイスの定義では電子対の授受で酸と塩基を判定する。定義が拡張されるにつれて、アンモニアのような物質や、水素イオンを含まない三フッ化ホウ素まで酸・塩基として説明できるようになる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>ある物質や反応が<strong>酸・塩基のどの定義にあてはまるか</strong>を判定したり、反応の中でどの物質が酸でどれが塩基かを見分けたりするときの解法です。次のような場面で使います。</p>
+    <ul>
+      <li>塩酸や水酸化ナトリウムなどについて、アレーニウスの定義で酸・塩基を判定する問題</li>
+      <li>反応式の中で水素イオン H<sup>+</sup> の授受を追い、ブレンステッド・ローリーの定義で酸・塩基と<strong>共役酸塩基対</strong>を答える問題</li>
+      <li>アンモニア NH<sub>3</sub> のように、化学式の中に OH<sup>−</sup> を含まないのに塩基としてはたらく物質を説明する問題</li>
+      <li>三フッ化ホウ素 BF<sub>3</sub> のように、H<sup>+</sup> をまったく含まない物質がルイスの定義で酸になる理由を説明する問題</li>
+    </ul>
+    <p>ポイントは、定義が1つではないことです。古い定義で説明できない反応が見つかるたびに定義が拡張されてきたので、<strong>「どの定義で判定するか」をはっきりさせてから</strong>答えるのがこの単元の型です。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>1. アレーニウスの定義（水溶液の中だけ）</h3>
+    <p><strong>水に溶けたとき電離して H<sup>+</sup> を出す物質が酸、OH<sup>−</sup> を出す物質が塩基</strong>です。</p>
+    <div class="formula">酸：水溶液中で H<sup>+</sup> を出す物質　／　塩基：水溶液中で OH<sup>−</sup> を出す物質</div>
+    <p>たとえば塩酸と水酸化ナトリウムは次のように電離します。</p>
+    <div class="formula">HCl → H<sup>+</sup> ＋ Cl<sup>−</sup>　　NaOH → Na<sup>+</sup> ＋ OH<sup>−</sup></div>
+    <p>分かりやすい定義ですが、範囲は水溶液に限られます。アンモニアは化学式の中に OH を含まないのに水溶液は塩基性を示すことや、水のないところで起こる酸・塩基の反応は、この定義だけでは説明できません。なお、水溶液中の H<sup>+</sup> は実際には水分子と結びついたオキソニウムイオン H<sub>3</sub>O<sup>+</sup> として存在しますが、高校化学では H<sup>+</sup> と略して書くのが普通です。</p>
+    <h3>2. ブレンステッド・ローリーの定義（H<sup>+</sup> の授受で見る）</h3>
+    <p><strong>H<sup>+</sup>（プロトン）を与える物質が酸、H<sup>+</sup> を受け取る物質が塩基</strong>です。水溶液でなくても、H<sup>+</sup> の移動がある反応なら判定できます。</p>
+    <div class="formula">酸：H<sup>+</sup> を与える物質　／　塩基：H<sup>+</sup> を受け取る物質</div>
+    <p>アンモニアが水に溶ける反応を見ると、アンモニアは水から H<sup>+</sup> を受け取るので塩基、水は H<sup>+</sup> を与えるので酸としてはたらきます。</p>
+    <div class="formula">NH<sub>3</sub> ＋ H<sub>2</sub>O ⇌ NH<sub>4</sub><sup>+</sup> ＋ OH<sup>−</sup></div>
+    <p>このように、アンモニア水が塩基性を示すのは、反応の結果として OH<sup>−</sup> が生じるためだと説明できます。アレーニウスの定義では説明できなかった点が、ここで説明できるようになりました。</p>
+    <p>また、H<sup>+</sup> を1つやり取りして互いに移り変わる酸と塩基の組を<strong>共役酸塩基対</strong>といいます。上の反応では NH<sub>4</sub><sup>+</sup> と NH<sub>3</sub>、H<sub>2</sub>O と OH<sup>−</sup> がそれぞれ共役の対です。酸が H<sup>+</sup> を失うとその共役塩基になり、塩基が H<sup>+</sup> を得るとその共役酸になります。水のように、相手によって酸にも塩基にもなる物質もあります。</p>
+    <h3>3. ルイスの定義（電子対の授受で見る）</h3>
+    <p><strong>電子対を受け取る物質が酸、電子対を与える物質が塩基</strong>です。H<sup>+</sup> の移動がない反応にも使え、3つの定義の中で最も範囲が広くなります。</p>
+    <div class="formula">酸：電子対を受け取る物質　／　塩基：電子対を与える物質</div>
+    <p>三フッ化ホウ素 BF<sub>3</sub> は H<sup>+</sup> を含みませんが、ホウ素原子のまわりには電子対を受け入れる余地があり、アンモニアの窒素原子がもつ非共有電子対を受け取って結合（配位結合）を作ります。</p>
+    <div class="formula">BF<sub>3</sub> ＋ NH<sub>3</sub> → NH<sub>3</sub>→BF<sub>3</sub>（付加物。矢印は電子対の供与の向き）</div>
+    <p>したがって BF<sub>3</sub> はルイス酸、NH<sub>3</sub> はルイス塩基です。金属イオンが水やアンモニアと錯イオンを作る反応も、金属イオンをルイス酸、配位子をルイス塩基として同じ見方で説明できます。ブレンステッドの定義の H<sup>+</sup> 自体も、電子対を受け取るのでルイス酸にあたります。</p>
+    <p>3つの定義の関係をまとめると次の通りです。各記号の意味は、H<sup>+</sup> が水素イオン（プロトン）、OH<sup>−</sup> が水酸化物イオン、電子対が原子やイオンがもつ2個1組の価電子のことです。なお、この項目は定義による判定が中心で、pH計算のような数値計算や定数は使いません。</p>
+    <ul>
+      <li><strong>アレーニウス</strong>：水溶液中で H<sup>+</sup>／OH<sup>−</sup> を出すかどうか。範囲は水溶液のみ</li>
+      <li><strong>ブレンステッド・ローリー</strong>：H<sup>+</sup> を与える／受け取るかどうか。水以外の溶媒や気体どうしの反応にも使える</li>
+      <li><strong>ルイス</strong>：電子対を受け取る／与えるかどうか。H<sup>+</sup> を含まない物質や錯イオンの生成にも使える</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>まず水溶液の電離で考える。</strong>水に溶けて H<sup>+</sup> を出すならアレーニウスの酸、OH<sup>−</sup> を出すならアレーニウスの塩基と判定します。</li>
+      <li><strong>次に H<sup>+</sup> の移動を追う。</strong>反応式の中で、どの物質が H<sup>+</sup> を失い、どの物質が得たかを見ます。失った側がブレンステッドの酸、得た側が塩基です。H<sup>+</sup> を1つ違いで行き来する組を共役酸塩基対として拾います。</li>
+      <li><strong>最後に電子対の移動を追う。</strong>H<sup>+</sup> の移動がない反応では、非共有電子対を与える側がルイス塩基、受け取る側がルイス酸です。金属イオンや BF<sub>3</sub> のような電子不足の物質はルイス酸の候補になります。</li>
+      <li><strong>定義の名前を添えて答える。</strong>「アレーニウスでは説明できないが、ブレンステッドでは塩基」のように、どの定義での判定かを明記して結論を書きます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：塩酸と水酸化ナトリウム水溶液について、電離の式を書き、アレーニウスの定義でそれぞれ酸・塩基のどちらにあたるか答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>塩酸は HCl → H<sup>+</sup> ＋ Cl<sup>−</sup> と電離して H<sup>+</sup> を出すので、アレーニウスの酸です。</li>
+          <li>水酸化ナトリウムは NaOH → Na<sup>+</sup> ＋ OH<sup>−</sup> と電離して OH<sup>−</sup> を出すので、アレーニウスの塩基です。</li>
+        </ol>
+        <p><strong>答え：HCl は酸、NaOH は塩基</strong>。水溶液中で出すイオンの種類だけで判定できるのがアレーニウスの定義です。</p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題2：アンモニアが水に溶ける反応 NH<sub>3</sub> ＋ H<sub>2</sub>O ⇌ NH<sub>4</sub><sup>+</sup> ＋ OH<sup>−</sup> について、ブレンステッド・ローリーの定義で酸と塩基を答え、共役酸塩基対を2組挙げよ。また、アンモニアがアレーニウスの定義では説明しにくい理由も述べよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>H<sup>+</sup> の移動を追うと、H<sub>2</sub>O が H<sup>+</sup> を失って OH<sup>−</sup> になり、NH<sub>3</sub> が H<sup>+</sup> を得て NH<sub>4</sub><sup>+</sup> になっています。</li>
+          <li>H<sup>+</sup> を与えた H<sub>2</sub>O が酸、受け取った NH<sub>3</sub> が塩基です。</li>
+          <li>共役酸塩基対は、H<sup>+</sup> を1つ違いで行き来する組なので、NH<sub>4</sub><sup>+</sup>／NH<sub>3</sub> と H<sub>2</sub>O／OH<sup>−</sup> の2組です。</li>
+          <li>アンモニアの化学式には OH が含まれておらず、それ自体が電離して OH<sup>−</sup> を出すわけではないため、水溶液中で OH<sup>−</sup> を出す物質を塩基とするアレーニウスの定義では、アンモニアが塩基である理由を直接は説明できません。</li>
+        </ol>
+        <p><strong>答え：酸は H<sub>2</sub>O、塩基は NH<sub>3</sub>。共役酸塩基対は NH<sub>4</sub><sup>+</sup>／NH<sub>3</sub> と H<sub>2</sub>O／OH<sup>−</sup></strong>。アンモニア水が塩基性を示すのは、水から H<sup>+</sup> を受け取った結果 OH<sup>−</sup> が残るためです。</p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題3：塩化水素とアンモニアの気体どうしの反応 HCl ＋ NH<sub>3</sub> → NH<sub>4</sub><sup>+</sup> ＋ Cl<sup>−</sup> について、ブレンステッド・ローリーの定義で酸と塩基を答えよ。この反応がアレーニウスの定義で扱えない理由も述べよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>HCl は H<sup>+</sup> を失って Cl<sup>−</sup> になっているので、H<sup>+</sup> を与えた酸です。</li>
+          <li>NH<sub>3</sub> は H<sup>+</sup> を得て NH<sub>4</sub><sup>+</sup> になっているので、H<sup>+</sup> を受け取った塩基です。</li>
+          <li>この反応は水溶液中ではなく気体どうしで起こるため、「水溶液中で電離してイオンを出す」ことを前提とするアレーニウスの定義では扱えません。</li>
+        </ol>
+        <p><strong>答え：酸は HCl、塩基は NH<sub>3</sub></strong>。ブレンステッド・ローリーの定義は H<sup>+</sup> の授受だけを見るので、水のない反応にも広げて使えます。</p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題4：三フッ化ホウ素とアンモニアの反応 BF<sub>3</sub> ＋ NH<sub>3</sub> → NH<sub>3</sub>→BF<sub>3</sub>（付加物）について、ルイスの定義で酸と塩基を答え、その理由を述べよ。また、この反応をブレンステッド・ローリーの定義で説明できない理由も述べよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>NH<sub>3</sub> の窒素原子は非共有電子対をもっており、それを BF<sub>3</sub> のホウ素原子に与えて配位結合を作ります。</li>
+          <li>電子対を与えた NH<sub>3</sub> がルイス塩基、電子対を受け取った BF<sub>3</sub> がルイス酸です。</li>
+          <li>この反応では H<sup>+</sup> がどの物質からどの物質へも移動していないので、H<sup>+</sup> の授受で定義するブレンステッド・ローリーの定義では酸・塩基として説明できません。</li>
+        </ol>
+        <p><strong>答え：ルイス酸は BF<sub>3</sub>、ルイス塩基は NH<sub>3</sub></strong>。BF<sub>3</sub> は H<sup>+</sup> を含まないのに酸としてはたらく代表例で、ルイスの定義まで広げて初めて判定できます。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>中和滴定と水質・食品の分析</h3>
+    <p>酸と塩基の量を測る中和滴定は、H<sup>+</sup> の授受というブレンステッドの見方が土台になっています。河川水や工場排水の水質検査、食酢の酸度のような食品分析では、どの物質が H<sup>+</sup> をどれだけ与え・受け取るかを数えることで濃度を求めます。</p>
+    <h3>ルイス酸触媒による有機合成</h3>
+    <p>塩化アルミニウム AlCl<sub>3</sub> や三フッ化ホウ素 BF<sub>3</sub> は、電子対を受け取るルイス酸として有機合成の触媒に使われます。AlCl<sub>3</sub> を触媒とするフリーデル・クラフツ反応は、芳香族化合物に置換基を導入する基本反応として、医薬品や香料などの原料作りに利用されています。</p>
+    <h3>錯イオンを利用した金属イオンの検出とめっき</h3>
+    <p>金属イオンはルイス酸として、水やアンモニアなどの配位子の電子対を受け取って錯イオンを作ります。銅（II）イオンにアンモニア水を加えると深青色のテトラアンミン銅（II）イオンができる反応は、金属イオンの検出に使われます。めっき液の中でも金属は錯イオンの形で溶けており、配位の強さを調整することで析出のしやすさが制御されています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>スヴァンテ・アレーニウス</strong>（1859〜1927、スウェーデンの化学者）、<strong>ヨハネス・ブレンステッド</strong>（1879〜1947、デンマークの化学者）、<strong>トマス・ローリー</strong>（1874〜1936、イギリスの化学者）、<strong>ギルバート・ルイス</strong>（1875〜1946、アメリカの化学者）</p>
+    <p>スウェーデンの化学者<strong>スヴァンテ・アレーニウス</strong>（1859〜1927）は、1887年に電解質が水溶液中でイオンに分かれるという電離の考え方を示し、その中で酸を H<sup>+</sup> を出す物質、塩基を OH<sup>−</sup> を出す物質と定義しました。デンマークの化学者<strong>ヨハネス・ブレンステッド</strong>（1879〜1947）とイギリスの化学者<strong>トマス・ローリー</strong>（1874〜1936）は、1923年にそれぞれ独立に、酸と塩基を H<sup>+</sup> の授受で定義する考え方を提唱しました。2人の名前を取ってブレンステッド・ローリーの定義と呼ばれます。同じ1923年、アメリカの化学者<strong>ギルバート・ルイス</strong>（1875〜1946）は、電子対の授受で酸と塩基を定義する、さらに広い考え方を示しました。定義が3段階に拡張されたことで、水溶液の反応から錯イオンの生成までを、酸と塩基という1つの物差しでつないで説明できるようになっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>中学での酸とアルカリの入口は<a href="acids-and-alkalis-junior.html">酸とアルカリ</a>、酸と塩基が打ち消し合う反応は<a href="neutralization-and-salts.html">中和と塩</a>、強酸・弱酸の違いは<a href="acid-strength-dissociation.html">酸と塩基の強弱と電離度</a>、液性の強さを数値で表す方法は<a href="ph-calculation.html">pHの計算</a>、ルイスの定義と関わる配位結合は<a href="coordinate-bonding-complex-ions.html">配位結合と錯イオン</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

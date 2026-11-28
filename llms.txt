@@ -383,7 +383,7 @@
 
 ## 化学ツール集
 
-> 中学理科・高校化学基礎・高校化学・大学レベルの考え方辞典と計算機。全83項目、各項目に解説記事があり、計算機つきの項目もあります。トップは [化学ツール集](https://wankodo.github.io/chemistry/) です。
+> 中学理科・高校化学基礎・高校化学・大学レベルの考え方辞典と計算機。全103項目、各項目に解説記事があり、計算機つきの項目もあります。トップは [化学ツール集](https://wankodo.github.io/chemistry/) です。
 
 - [密度と物質の区別｜化学ツール集](https://wankodo.github.io/chemistry/density.html): 質量と体積から密度を求め、浮き沈みの判断や物質の同定に使う。計算機つき。
 - [モルとアボガドロ定数｜化学ツール集](https://wankodo.github.io/chemistry/mole-avogadro.html): 粒子数から物質量（mol）を、物質量から粒子数をアボガドロ定数で換算する。計算機つき。
@@ -468,3 +468,23 @@
 - [反応商と平衡の予測｜化学ツール集](https://wankodo.github.io/chemistry/reaction-quotient.html): 現在の濃度から反応商 Q を求め、平衡定数 K と比べて反応が正反応・逆反応のどちらへ進むか予測する。計算機つき。
 - [一次反応と半減期（速度論）｜化学ツール集](https://wankodo.github.io/chemistry/first-order-kinetics-half-life.html): 一次反応の速度定数と時間から残りの濃度と残存率を、または濃度の変化から速度定数・半減期・経過時間を求める。計算機つき。
 - [酵素反応速度の入口｜化学ツール集](https://wankodo.github.io/chemistry/enzyme-kinetics-intro.html): 基質濃度を変えたときの酵素反応の初速度の変化を、ミカエリス・メンテン式と Km・Vmax で読み、阻害の効果を判断する。解説記事のみ。
+- [酸と塩基の定義と性質（アレーニウス・ブレンステッド・ルイス）｜化学ツール集](https://wankodo.github.io/chemistry/acid-base-definitions.html): 物質や反応がアレーニウス、ブレンステッド・ローリー、ルイスのどの定義で酸・塩基にあたるかを判定する。共役酸塩基対を答える。解説記事のみ。
+- [酸と塩基の強弱と電離度｜化学ツール集](https://wankodo.github.io/chemistry/acid-strength-dissociation.html): 強酸と弱酸の違いを電離度で見分ける、電離度 α と電離定数 Ka から弱酸の pH を求める。計算機つき。
+- [中和反応の量的関係｜化学ツール集](https://wankodo.github.io/chemistry/neutralization-stoichiometry.html): 中和の条件式（酸の価数×酸の物質量＝塩基の価数×塩基の物質量）から、中和に必要な体積・濃度や混合後の過不足を求める。計算機つき。
+- [指示薬と中和滴定の選び方｜化学ツール集](https://wankodo.github.io/chemistry/indicators.html): 中和滴定で、当量点の pH と指示薬の変色域の重なりから、組み合わせに合った指示薬を選ぶ。解説記事のみ。
+- [pHと暮らし・環境｜化学ツール集](https://wankodo.github.io/chemistry/ph-in-daily-life.html): 身近な水溶液の pH から酸性・中性・アルカリ性を判断する、pH の大小を比べて酸性の強さを考える、酸性雨にあたるかどうかを判断する。解説記事のみ。
+- [弱酸・弱塩基のpH｜化学ツール集](https://wankodo.github.io/chemistry/weak-acid-ph.html): 弱酸・弱塩基のモル濃度と電離定数 Ka・Kb から pH を求める、pKa から Ka を換算する。計算機つき。
+- [塩の加水分解と液性｜化学ツール集](https://wankodo.github.io/chemistry/salt-hydrolysis.html): 塩の水溶液の液性を判断する、弱酸・弱塩基からできた塩の水溶液の pH を、加水分解の平衡と Ka・Kb から求める。計算機つき。
+- [緩衝液｜化学ツール集](https://wankodo.github.io/chemistry/buffer-solutions.html): 弱酸とその塩からなる緩衝液の pH を求める、強酸・強塩基を少量加えた後の緩衝液の pH を求める。計算機つき。
+- [多段階電離と両性物質｜化学ツール集](https://wankodo.github.io/chemistry/polyprotic-acids-amphoterism.html): 多価の酸の段階電離の式と Ka1＞Ka2＞Ka3 の理由を説明し、両性イオンの判定と炭酸系の pH による存在割合の変化を読む。計算機つき。
+- [酸化と還元｜化学ツール集](https://wankodo.github.io/chemistry/oxidation-reduction-junior.html): 物質が酸素と化合したか、酸化物が酸素を奪われたかを見て、酸化された物質と還元された物質を判断する。解説記事のみ。
+- [酸化数｜化学ツール集](https://wankodo.github.io/chemistry/oxidation-number.html): 化合物やイオンの中の原子の酸化数を規則から求め、反応前後の変化から酸化・還元と電子の授受数を読み取る。計算機つき。
+- [酸化剤と還元剤・半反応式｜化学ツール集](https://wankodo.github.io/chemistry/half-reactions.html): 酸化剤・還元剤のはたらきを電子を含む半反応式で表し、電子の係数から酸化剤・還元剤の価数を読み取る。解説記事のみ。
+- [酸化還元反応式の作り方｜化学ツール集](https://wankodo.github.io/chemistry/redox-equation-balancing.html): 酸化剤と還元剤の半反応式から電子を消去して、酸化還元反応のイオン反応式と化学反応式を完成させる。計算機つき。
+- [金属のイオン化傾向｜化学ツール集](https://wankodo.github.io/chemistry/metal-reactivity-series.html): イオン化列を使って、金属が水や酸と反応するか、金属同士の置換反応が起こるか、電池でどちらが負極になるかを判定する。解説記事のみ。
+- [実用電池と放電量｜化学ツール集](https://wankodo.github.io/chemistry/practical-batteries.html): 実用電池の電極反応と電圧、用途の違いを理解し、電流と時間や電池容量から放電量（電気量）と電子の物質量、反応する金属の質量を求める。計算機つき。
+- [電気分解の生成物と優先順位｜化学ツール集](https://wankodo.github.io/chemistry/electrolysis-products.html): 電気分解で陰極・陽極に何が析出・発生するかを、イオン化傾向と陰イオン・電極の種類から予測する。解説記事のみ。
+- [酸化還元滴定｜化学ツール集](https://wankodo.github.io/chemistry/redox-titration.html): 酸化還元滴定で、酸化剤と還元剤の電子の授受のつり合いから未知の溶液のモル濃度を求める。計算機つき。
+- [金属の腐食と防食｜化学ツール集](https://wankodo.github.io/chemistry/corrosion.html): 鉄のさびが局部電池の仕組みで進む理由と、トタン・ブリキ・不動態・電気防食など防食方法の選び方を、イオン化傾向で判断する。解説記事のみ。
+- [標準電極電位｜化学ツール集](https://wankodo.github.io/chemistry/standard-electrode-potential.html): 標準電極電位の表から電池の標準起電力と反応の向き・自発性を読み取る。計算機つき。
+- [ネルンストの式｜化学ツール集](https://wankodo.github.io/chemistry/nernst-equation.html): 標準電極電位 E° と濃度・温度から、実際の電極電位や電池の起電力をネルンストの式で求める。計算機つき。

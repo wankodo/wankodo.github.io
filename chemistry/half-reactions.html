@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>酸化剤と還元剤・半反応式｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="酸化剤と還元剤・半反応式を、手順・代表例・例題で解説。過マンガン酸イオンや二クロム酸イオン、硫化水素や二酸化硫黄などの半反応式の作り方（酸化数の確認、H2OとH+で原子数を合わせ、電子で電荷を合わせる）と、電子の係数から読む酸化剤・還元剤の価数、酸化還元滴定など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="酸化剤と還元剤・半反応式｜化学ツール集">
+<meta property="og:description" content="半反応式の作り方を手順と代表例で解説。原子数と電荷の合わせ方、電子の係数から読む酸化剤・還元剤の価数を例題で紹介。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/half-reactions.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>酸化剤と還元剤・<span class="accent">半反応式</span></h1>
+    <p>化学の考え方辞典 ― 酸化還元・電池と電気分解（高校化学基礎・1年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 酸化還元・電池と電気分解 ＞ 酸化剤と還元剤・半反応式</p>
+  <p><span class="badge badge-lv">高校化学基礎・1年</span> <span class="badge badge-genre">酸化還元・電池と電気分解</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    酸化剤が電子を受け取る反応と、還元剤が電子を放出する反応を、それぞれ電子を含む式で表したものが半反応式である。酸化数の変化をもとに、H2O と H+ で原子の数を合わせ、電子で電荷を合わせれば、代表的な酸化剤・還元剤の半反応式を自分で作ることができ、電子の係数から酸化剤・還元剤の価数も読み取れる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>酸化還元反応を、電子を受け取る側（還元）と電子を放出する側（酸化）に分けて表すときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>過マンガン酸イオンや二クロム酸イオンなど、代表的な酸化剤の半反応式を書く問題</li>
+      <li>硫化水素や二酸化硫黄など、代表的な還元剤の半反応式を書く問題</li>
+      <li>半反応式の電子 e<sup>−</sup> の係数から、酸化剤・還元剤の<strong>価数</strong>（1 mol あたり授受する電子の物質量）を読み取る問題</li>
+      <li>2つの半反応式を組み合わせて、酸化還元反応全体の反応式（イオン反応式）を作る問題の下準備</li>
+    </ul>
+    <p>ポイントは、<strong>酸化剤は電子を受け取って自身は還元され、還元剤は電子を放出して自身は酸化される</strong>ことです。酸化剤の半反応式では電子が左辺に、還元剤の半反応式では電子が右辺に来ます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>酸化還元反応では、電子を放出する反応と受け取る反応が必ず対になって起こります。この片方だけを取り出して、電子 e<sup>−</sup> を含む式で表したものを<strong>半反応式</strong>といいます。半反応式では、通常の化学反応式と同じく<strong>原子の数</strong>が両辺で一致することに加えて、電子の電荷も含めた<strong>電荷の総和</strong>も両辺で一致しなければなりません。</p>
+    <h3>代表的な酸化剤の半反応式（酸性条件）</h3>
+    <p>酸化剤は電子を受け取るので、電子は左辺にあります。括弧内は酸化剤の価数（受け取る電子の数）です。</p>
+    <div class="formula">過マンガン酸イオン： MnO<sub>4</sub><sup>−</sup> ＋ 8H<sup>+</sup> ＋ 5e<sup>−</sup> → Mn<sup>2+</sup> ＋ 4H<sub>2</sub>O（価数5）</div>
+    <div class="formula">二クロム酸イオン： Cr<sub>2</sub>O<sub>7</sub><sup>2−</sup> ＋ 14H<sup>+</sup> ＋ 6e<sup>−</sup> → 2Cr<sup>3+</sup> ＋ 7H<sub>2</sub>O（価数6）</div>
+    <div class="formula">過酸化水素： H<sub>2</sub>O<sub>2</sub> ＋ 2H<sup>+</sup> ＋ 2e<sup>−</sup> → 2H<sub>2</sub>O（価数2）</div>
+    <div class="formula">希硝酸： NO<sub>3</sub><sup>−</sup> ＋ 4H<sup>+</sup> ＋ 3e<sup>−</sup> → NO ＋ 2H<sub>2</sub>O（価数3）</div>
+    <div class="formula">濃硝酸： NO<sub>3</sub><sup>−</sup> ＋ 2H<sup>+</sup> ＋ e<sup>−</sup> → NO<sub>2</sub> ＋ H<sub>2</sub>O（価数1）</div>
+    <div class="formula">熱濃硫酸： H<sub>2</sub>SO<sub>4</sub> ＋ 2H<sup>+</sup> ＋ 2e<sup>−</sup> → SO<sub>2</sub> ＋ 2H<sub>2</sub>O（価数2）</div>
+    <div class="formula">酸素： O<sub>2</sub> ＋ 4H<sup>+</sup> ＋ 4e<sup>−</sup> → 2H<sub>2</sub>O（価数4）</div>
+    <p>硝酸は濃さによって生成物が変わります。希硝酸では一酸化窒素 NO が、濃硝酸では二酸化窒素 NO<sub>2</sub> が生じ、受け取る電子の数（価数）も変わります。硫酸が酸化剤として働くのは、熱した濃硫酸の場合に限られます。</p>
+    <h3>代表的な還元剤の半反応式</h3>
+    <p>還元剤は電子を放出するので、電子は右辺にあります。括弧内は還元剤の価数（放出する電子の数）です。</p>
+    <div class="formula">硫化水素： H<sub>2</sub>S → S ＋ 2H<sup>+</sup> ＋ 2e<sup>−</sup>（価数2）</div>
+    <div class="formula">二酸化硫黄： SO<sub>2</sub> ＋ 2H<sub>2</sub>O → SO<sub>4</sub><sup>2−</sup> ＋ 4H<sup>+</sup> ＋ 2e<sup>−</sup>（価数2）</div>
+    <div class="formula">鉄（II）イオン： Fe<sup>2+</sup> → Fe<sup>3+</sup> ＋ e<sup>−</sup>（価数1）</div>
+    <div class="formula">シュウ酸： H<sub>2</sub>C<sub>2</sub>O<sub>4</sub> → 2CO<sub>2</sub> ＋ 2H<sup>+</sup> ＋ 2e<sup>−</sup>（価数2）</div>
+    <div class="formula">過酸化水素： H<sub>2</sub>O<sub>2</sub> → O<sub>2</sub> ＋ 2H<sup>+</sup> ＋ 2e<sup>−</sup>（価数2）</div>
+    <p>過酸化水素 H<sub>2</sub>O<sub>2</sub> は、相手が強い還元剤のときは酸化剤として、相手が強い酸化剤のときは還元剤として働く、両方の顔を持つ物質です。どちらの半反応式を使うかは、反応相手によって決まります。</p>
+    <h3>価数の読み取り</h3>
+    <p>半反応式に現れる電子の係数が、その物質の<strong>価数</strong>です。たとえば MnO<sub>4</sub><sup>−</sup> の半反応式では電子の係数が5なので、MnO<sub>4</sub><sup>−</sup> 1 mol は電子 5 mol を受け取り、酸化剤としての価数は5です。価数は、酸化還元滴定などで「酸化剤と還元剤が何 mol 対何 mol でちょうど反応するか」を決める手がかりになります。</p>
+    <ul>
+      <li><strong>e<sup>−</sup></strong>：電子。電荷は −1。酸化剤の半反応式では左辺、還元剤の半反応式では右辺に書く</li>
+      <li><strong>価数</strong>：物質 1 mol が授受する電子の物質量 [mol]。半反応式の電子の係数と一致する（単位は付けずに「価数5」のように表す）</li>
+      <li><strong>H<sup>+</sup>・H<sub>2</sub>O</strong>：酸性条件で原子の数を合わせるために使う。水素イオンが豊富にある酸性水溶液での反応が前提</li>
+    </ul>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <p>酸性条件での半反応式の作り方です。例として、過マンガン酸イオン MnO<sub>4</sub><sup>−</sup> が Mn<sup>2+</sup> に変化する反応で流れを追います。</p>
+    <ol class="steps">
+      <li><strong>酸化数の変化を確認し、反応物と生成物を書く。</strong>Mn の酸化数は MnO<sub>4</sub><sup>−</sup> 中では ＋7、Mn<sup>2+</sup> では ＋2。酸化数が減るので還元、つまり電子を受け取る反応です。まず MnO<sub>4</sub><sup>−</sup> → Mn<sup>2+</sup> と書きます。</li>
+      <li><strong>酸素原子の数を、H<sub>2</sub>O を加えて合わせる。</strong>左辺に O が4個あるので、右辺に 4H<sub>2</sub>O を加えます。MnO<sub>4</sub><sup>−</sup> → Mn<sup>2+</sup> ＋ 4H<sub>2</sub>O。</li>
+      <li><strong>水素原子の数を、H<sup>+</sup> を加えて合わせる。</strong>右辺に H が8個あるので、左辺に 8H<sup>+</sup> を加えます。MnO<sub>4</sub><sup>−</sup> ＋ 8H<sup>+</sup> → Mn<sup>2+</sup> ＋ 4H<sub>2</sub>O。</li>
+      <li><strong>電荷を電子 e<sup>−</sup> で合わせる。</strong>左辺の電荷は −1＋8 ＝ ＋7、右辺は ＋2。その差の5だけ、左辺に 5e<sup>−</sup> を加えると両辺とも ＋2 になります。MnO<sub>4</sub><sup>−</sup> ＋ 8H<sup>+</sup> ＋ 5e<sup>−</sup> → Mn<sup>2+</sup> ＋ 4H<sub>2</sub>O。</li>
+      <li><strong>検算する。</strong>原子の数（Mn・O・H）と電荷の総和が、両辺で一致しているかを最後に必ず確認します。還元剤の半反応式でも手順は同じで、電子は右辺に現れます。</li>
+    </ol>
+    <p>なお、中性・塩基性条件では H<sup>+</sup> の代わりに H<sub>2</sub>O と OH<sup>−</sup> を使って合わせますが、高校化学基礎で扱う代表的な半反応式は、ほとんどが酸性条件のものです。</p>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：酸性条件で、硫化水素 H<sub>2</sub>S が硫黄 S に変化する半反応式を書け。問題2：酸性条件で、二クロム酸イオン Cr<sub>2</sub>O<sub>7</sub><sup>2−</sup> がクロム（III）イオン Cr<sup>3+</sup> に変化する半反応式を書き、二クロム酸イオンの酸化剤としての価数を答えよ。問題3：二酸化硫黄 SO<sub>2</sub> が硫酸イオン SO<sub>4</sub><sup>2−</sup> に変化する半反応式を書き、二酸化硫黄の還元剤としての価数を答えよ。問題4：鉄（II）イオン Fe<sup>2+</sup> が鉄（III）イオン Fe<sup>3+</sup> に変化する半反応式を書け。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：S の酸化数は H<sub>2</sub>S 中では −2、単体の S では 0。酸化数が増えるので酸化、つまり電子を放出する反応です。H<sub>2</sub>S → S と書き、H を合わせるために右辺へ 2H<sup>+</sup> を加え、電荷を合わせるために右辺へ 2e<sup>−</sup> を加えます。H<sub>2</sub>S → S ＋ 2H<sup>+</sup> ＋ 2e<sup>−</sup>。検算すると、電荷は左辺 0、右辺 ＋2−2 ＝ 0 で一致します。</li>
+          <li>問題2：Cr の酸化数は Cr<sub>2</sub>O<sub>7</sub><sup>2−</sup> 中では ＋6、Cr<sup>3+</sup> では ＋3 で、還元の反応です。Cr<sub>2</sub>O<sub>7</sub><sup>2−</sup> → 2Cr<sup>3+</sup> と書き、O を合わせるため右辺へ 7H<sub>2</sub>O、H を合わせるため左辺へ 14H<sup>+</sup> を加えます。電荷は左辺が −2＋14 ＝ ＋12、右辺が ＋6 なので、左辺へ 6e<sup>−</sup> を加えて両辺とも ＋6 にします。Cr<sub>2</sub>O<sub>7</sub><sup>2−</sup> ＋ 14H<sup>+</sup> ＋ 6e<sup>−</sup> → 2Cr<sup>3+</sup> ＋ 7H<sub>2</sub>O。電子の係数が6なので、価数は6です。</li>
+          <li>問題3：S の酸化数は SO<sub>2</sub> 中では ＋4、SO<sub>4</sub><sup>2−</sup> 中では ＋6 で、酸化の反応です。SO<sub>2</sub> → SO<sub>4</sub><sup>2−</sup> と書き、O を合わせるため左辺へ 2H<sub>2</sub>O、H を合わせるため右辺へ 4H<sup>+</sup> を加えます。電荷は左辺 0、右辺 −2＋4 ＝ ＋2 なので、右辺へ 2e<sup>−</sup> を加えて両辺とも 0 にします。SO<sub>2</sub> ＋ 2H<sub>2</sub>O → SO<sub>4</sub><sup>2−</sup> ＋ 4H<sup>+</sup> ＋ 2e<sup>−</sup>。電子の係数が2なので、価数は2です。</li>
+          <li>問題4：原子の数はすでに合っているので、電荷だけを合わせます。右辺へ e<sup>−</sup> を1つ加えて、Fe<sup>2+</sup> → Fe<sup>3+</sup> ＋ e<sup>−</sup>。電荷は左辺 ＋2、右辺 ＋3−1 ＝ ＋2 で一致します。</li>
+        </ol>
+        <p><strong>答え：問題1は H<sub>2</sub>S → S ＋ 2H<sup>+</sup> ＋ 2e<sup>−</sup>。問題2は Cr<sub>2</sub>O<sub>7</sub><sup>2−</sup> ＋ 14H<sup>+</sup> ＋ 6e<sup>−</sup> → 2Cr<sup>3+</sup> ＋ 7H<sub>2</sub>O で価数6。問題3は SO<sub>2</sub> ＋ 2H<sub>2</sub>O → SO<sub>4</sub><sup>2−</sup> ＋ 4H<sup>+</sup> ＋ 2e<sup>−</sup> で価数2。問題4は Fe<sup>2+</sup> → Fe<sup>3+</sup> ＋ e<sup>−</sup></strong>。どの式も、原子の数と電荷の総和の両方が両辺で一致していることが完成の条件です。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>酸化還元滴定</h3>
+    <p>過マンガン酸カリウム水溶液で鉄（II）イオンやシュウ酸、過酸化水素の量を測る酸化還元滴定は、半反応式の価数にもとづいて計算します。MnO<sub>4</sub><sup>−</sup> の価数5と Fe<sup>2+</sup> の価数1から、両者は物質量比 1：5 でちょうど反応すると分かり、滴定に使った体積から未知の濃度が求まります。製鉄所の品質管理や医薬品の分析などで実際に使われている方法です。</p>
+    <h3>水質検査（COD測定）</h3>
+    <p>河川や排水の汚れの指標である COD（化学的酸素要求量）の測定では、試料水に過マンガン酸カリウムを加え、有機物などの還元性物質が消費する酸化剤の量を半反応式の電子の授受で換算します。半反応式は、水質管理の実務でも量の物差しとして働いています。</p>
+    <h3>電池・電気分解の電極反応の記述</h3>
+    <p>電池の負極・正極や電気分解の陰極・陽極で起こる反応は、どれも半反応式で書かれます。たとえばダニエル電池の負極は Zn → Zn<sup>2+</sup> ＋ 2e<sup>−</sup>、正極は Cu<sup>2+</sup> ＋ 2e<sup>−</sup> → Cu という2つの半反応式の組み合わせです。新しい電池材料の研究でも、電極反応を半反応式で整理することが出発点になります。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who">特定の考案者はいない（電子の授受で酸化還元を表す書き方は、電気化学の発展の中で確立した）</p>
+    <p>半反応式は、特定の誰かが発明したものではありません。その土台を作ったのは、イギリスの科学者<strong>マイケル・ファラデー</strong>（1791〜1867）です。ファラデーは1830年代に電気分解の法則を確立し、流れた電気量と化学変化の量が比例することを示しました。つまり、電子の授受を「数えて」扱えることが、この時点で実験から裏づけられていたのです。その後、19世紀末に電子そのものが粒子として確認されると、酸化還元反応を「電子を受け取る半分」と「電子を放出する半分」に分けて書く半反応式の表し方が、電気化学の共通の書き方として定着しました。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>半反応式を作る前提になる酸化数の求め方は<a href="oxidation-number.html">酸化数</a>、2つの半反応式を足して全体の反応式にする方法は<a href="redox-equation-balancing.html">酸化還元反応式の作り方</a>、半反応式が電極反応として現れる電池の話は<a href="galvanic-cells.html">電池の原理（ボルタ電池・ダニエル電池）</a>、価数を使った滴定の計算は<a href="redox-titration.html">酸化還元滴定</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

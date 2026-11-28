@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中和反応の量的関係｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="中和反応の量的関係の使い方を、公式・手順・例題で解説。酸の価数×物質量＝塩基の価数×物質量という中和の条件式から、必要な体積や濃度、混合後の過不足を求める方法や、滴定による濃度測定など実際の現場での使われ方まで紹介します。計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="中和反応の量的関係｜化学ツール集">
+<meta property="og:description" content="酸の価数×物質量＝塩基の価数×物質量の中和の条件式で、必要な体積・濃度と過不足を求める方法を、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/neutralization-stoichiometry.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">中和反応</span>の量的関係</h1>
+    <p>化学の考え方辞典 ― 酸と塩基（高校化学基礎・1年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 酸と塩基 ＞ 中和反応の量的関係</p>
+  <p><span class="badge badge-lv">高校化学基礎・1年</span> <span class="badge badge-genre">酸と塩基</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    酸と塩基がちょうど中和するときは、酸が出す H+ の物質量と塩基が出す OH- の物質量が等しくなる。モル濃度と体積と価数から、酸の価数×濃度×体積＝塩基の価数×濃度×体積という条件式が立ち、未知の体積や濃度、混合後の過不足までこの1本の式で求められる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>酸と塩基が<strong>ちょうど中和する量の関係</strong>を、濃度と体積で計算するときの解法です。次のような場面で使います。</p>
+    <ul>
+      <li>濃度と体積が分かっている酸を中和するのに、濃度が分かっている塩基が何 mL 必要かを求める問題</li>
+      <li>中和に使った体積から、濃度が未知の酸や塩基のモル濃度を求める問題（中和滴定の計算）</li>
+      <li>硫酸 H<sub>2</sub>SO<sub>4</sub> や水酸化カルシウム Ca(OH)<sub>2</sub> のような、価数が2の酸・塩基が関係する問題</li>
+      <li>酸と塩基を混ぜたあと、どちらがどれだけ余るか（過不足）を求める問題</li>
+    </ul>
+    <p>中学の<a href="neutralization-and-salts.html">中和と塩</a>では「同じ濃さどうしなら体積の比は一定」という比例で扱いましたが、高校では濃度が違う組み合わせや、価数が2以上の酸・塩基も扱うため、物質量にもとづく条件式で計算します。できる塩の種類や液性の話は中学の項目に任せ、ここでは<strong>量の関係だけ</strong>に絞ります。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>中和の実体は、酸が出す水素イオン H<sup>+</sup> と塩基が出す水酸化物イオン OH<sup>−</sup> が結びついて水になる反応です。</p>
+    <div class="formula">H<sup>+</sup> ＋ OH<sup>−</sup> → H<sub>2</sub>O</div>
+    <p>ちょうど中和するときは、H<sup>+</sup> と OH<sup>−</sup> が過不足なく反応するので、<strong>H<sup>+</sup> の物質量 ＝ OH<sup>−</sup> の物質量</strong>が成り立ちます。ここで大切なのが<strong>価数</strong>です。塩酸 HCl は1分子（1 mol）から H<sup>+</sup> を1 mol 出す1価の酸ですが、硫酸 H<sub>2</sub>SO<sub>4</sub> は1 mol から H<sup>+</sup> を2 mol 出す2価の酸です。同じように、水酸化ナトリウム NaOH は1価の塩基、水酸化カルシウム Ca(OH)<sub>2</sub> は1 mol から OH<sup>−</sup> を2 mol 出す2価の塩基です。だから、H<sup>+</sup> の物質量は「酸の価数 × 酸の物質量」、OH<sup>−</sup> の物質量は「塩基の価数 × 塩基の物質量」になります。</p>
+    <div class="formula">酸の価数 a × 酸の物質量 n<sub>1</sub> [mol] ＝ 塩基の価数 b × 塩基の物質量 n<sub>2</sub> [mol]</div>
+    <p>物質量はモル濃度と体積から n ＝ C × V で求められるので、体積を L で表すと、条件式は次の形になります。</p>
+    <div class="formula">a × C<sub>1</sub> × V<sub>1</sub> ＝ b × C<sub>2</sub> × V<sub>2</sub></div>
+    <p>各記号の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>a</strong>：酸の価数（単位なし）。酸1 mol が出す H<sup>+</sup> の物質量 [mol]。HCl は1、H<sub>2</sub>SO<sub>4</sub> は2、酢酸 CH<sub>3</sub>COOH は1</li>
+      <li><strong>b</strong>：塩基の価数（単位なし）。塩基1 mol が出す OH<sup>−</sup> の物質量 [mol]。NaOH は1、Ca(OH)<sub>2</sub> は2、NH<sub>3</sub> は1</li>
+      <li><strong>C<sub>1</sub>・C<sub>2</sub></strong>：酸・塩基のモル濃度 [mol/L]</li>
+      <li><strong>V<sub>1</sub>・V<sub>2</sub></strong>：酸・塩基の体積。物質量を求めるときは [L] で使うが、条件式の両辺で同じ単位なら [mL] のままでも比は変わらない</li>
+      <li><strong>n<sub>1</sub>・n<sub>2</sub></strong>：酸・塩基の物質量 [mol]。n ＝ C [mol/L] × V [L]</li>
+    </ul>
+    <p>価数を掛ける理由を、硫酸で確かめてみます。0.050 mol/L の硫酸が 20 mL あると、硫酸の物質量は 0.050 × 0.020 ＝ 0.0010 mol ですが、H<sup>+</sup> はその2倍の 0.0020 mol 出ます。もし価数を掛け忘れると、必要な塩基の量が半分にずれてしまいます。<strong>「酸そのものの mol」ではなく「H<sup>+</sup> の mol」でそろえる</strong>のが、この条件式の心臓部です。</p>
+    <p>過不足を考えるときも同じです。両辺を計算して比べ、大きい方から小さい方を引いた差が、反応せずに残る H<sup>+</sup> または OH<sup>−</sup> の物質量になります。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>酸と塩基の価数を決める。</strong>化学式を見て、酸は H の数（電離する H<sup>+</sup> の数）、塩基は OH の数（電離する OH<sup>−</sup> の数）を数えます。</li>
+      <li><strong>分かっている濃度と体積を整理する。</strong>物質量を求める場合は体積を mL から L に直し（1000 mL ＝ 1 L）、n ＝ C × V で計算します。</li>
+      <li><strong>条件式 a × C<sub>1</sub> × V<sub>1</sub> ＝ b × C<sub>2</sub> × V<sub>2</sub> を立てる。</strong>未知数が1つになるように、求めたい量を文字のまま残します。</li>
+      <li><strong>未知数について解く。</strong>体積を求めるなら両辺を（価数×相手の濃度）で割り、濃度を求めるなら両辺を（価数×相手の体積）で割ります。</li>
+      <li><strong>過不足の場合は両辺を比べる。</strong>a × C<sub>1</sub> × V<sub>1</sub> と b × C<sub>2</sub> × V<sub>2</sub> を別々に計算し、差を取れば残るイオンの物質量が分かります。等しければちょうど中和です。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：0.10 mol/L の塩酸 20 mL をちょうど中和するには、0.10 mol/L の水酸化ナトリウム水溶液は何 mL 必要か。問題2：0.050 mol/L の硫酸 20 mL をちょうど中和するには、0.10 mol/L の水酸化ナトリウム水溶液は何 mL 必要か。問題3：0.10 mol/L の塩酸 20 mL を、濃度が未知の水酸化ナトリウム水溶液 25 mL でちょうど中和した。この水酸化ナトリウム水溶液の濃度は何 mol/L か。問題4：0.10 mol/L の塩酸 30 mL と 0.10 mol/L の水酸化ナトリウム水溶液 20 mL を混ぜると、どちらが何 mol 残るか。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：塩酸も水酸化ナトリウムも1価です。条件式に代入すると 1 × 0.10 × 20 ＝ 1 × 0.10 × V<sub>2</sub>。よって V<sub>2</sub> ＝ 20 mL。</li>
+          <li>問題2：硫酸は2価なので、価数を掛けます。2 × 0.050 × 20 ＝ 1 × 0.10 × V<sub>2</sub>。左辺は 2.0、よって V<sub>2</sub> ＝ 2.0 ÷ 0.10 ＝ 20 mL。硫酸の物質量は塩酸の半分でも、H<sup>+</sup> の量は同じになるため、必要な塩基は同じ体積になります。</li>
+          <li>問題3：濃度を C<sub>2</sub> として条件式を立てると 1 × 0.10 × 20 ＝ 1 × C<sub>2</sub> × 25。よって C<sub>2</sub> ＝ 2.0 ÷ 25 ＝ 0.080 mol/L。</li>
+          <li>問題4：H<sup>+</sup> の物質量は 1 × 0.10 mol/L × 0.030 L ＝ 0.0030 mol、OH<sup>−</sup> の物質量は 1 × 0.10 mol/L × 0.020 L ＝ 0.0020 mol。差は 0.0010 mol で、H<sup>+</sup> の方が多いので、酸が 0.0010 mol（H<sup>+</sup> として）残ります。</li>
+        </ol>
+        <p><strong>答え：問題1は 20 mL、問題2は 20 mL、問題3は 0.080 mol/L、問題4は酸が H<sup>+</sup> として 0.0010 mol 残る</strong>。一番多い間違いは、2価の酸・塩基で価数を掛け忘れることです。化学式の H や OH の数を最初に確認しましょう。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>中和滴定による食品の濃度測定</h3>
+    <p>食酢に含まれる酢酸の濃度は、濃度が分かっている水酸化ナトリウム水溶液で中和滴定し、ちょうど中和するまでに使った体積を条件式に入れて求めます。食品の成分表示のもとになる分析で、まさに問題3と同じ計算です。</p>
+    <h3>水質検査と排水の中和処理</h3>
+    <p>工場排水や河川水の検査では、試料水を滴定して酸性・アルカリ性の強さを物質量で測ります。排水を中和して放流するときも、排水に含まれる酸の量に対して必要な中和剤の量を、この量的関係から見積もります。</p>
+    <h3>化学工場・製薬での品質管理</h3>
+    <p>製品や原料の濃度が規格通りかどうかを確かめる滴定分析は、化学工場や製薬の品質管理で日常的に行われています。滴下した標準液の体積と濃度から目的成分の量を出す計算の土台が、この条件式です。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ジョゼフ・ルイ・ゲイ＝リュサック</strong>（1778〜1850、フランスの化学者・物理学者／容量分析の基礎を築いた一人）</p>
+    <p>中和の条件式そのものに一人の考案者はいませんが、「濃度が分かっている溶液を測り取り、反応がちょうど終わるまでの体積から相手の量を求める」という<strong>容量分析（滴定による定量法）</strong>の形を作った中心人物が、フランスの<strong>ジョゼフ・ルイ・ゲイ＝リュサック</strong>です。気体の反応に関する法則でも知られる彼は、19世紀前半に滴定による分析法を次々と実用化し、体積を測ることがそのまま量の測定になる方法を化学の現場に広めました。今日の教科書で学ぶ a × C<sub>1</sub> × V<sub>1</sub> ＝ b × C<sub>2</sub> × V<sub>2</sub> という条件式は、モル濃度と価数の考え方が整ったあとで、この容量分析の計算を書き表したものだと言えます。</p>
+  </section>
+
+  <a class="linkcard" href="calc-neutralization-stoichiometry.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">中和反応の量的関係 計算機：酸と塩基の価数・濃度・体積から、中和に必要な相手の体積、必要な相手の濃度、混合後の過不足を、解き方の手順つきで表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>中学での中和の入口は<a href="neutralization-and-salts.html">中和と塩</a>、濃度の表し方そのものは<a href="molarity.html">溶液のモル濃度</a>、滴定の操作と当量点の pH は<a href="titration-curves.html">中和滴定と滴定曲線</a>、酸と塩基の定義は<a href="acid-base-definitions.html">酸と塩基の定義</a>、反応全体の過不足の考え方は<a href="stoichiometry-limiting-reagent.html">量的関係と過不足（制限反応物）</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

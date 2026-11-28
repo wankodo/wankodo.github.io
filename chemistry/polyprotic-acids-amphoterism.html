@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>多段階電離と両性物質｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="多価の酸・塩基と両性物質の考え方を、公式・手順・例題で解説。硫酸・炭酸・リン酸の段階電離と Ka1＞Ka2＞Ka3 の理由、炭酸水素イオンやアミノ酸の双性イオン・等電点、両性酸化物との区別、海水や血液の炭酸系など実際の現場での使われ方まで紹介します。両性イオンの pH・炭酸系の存在比・等電点を計算できる計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="多段階電離と両性物質｜化学ツール集">
+<meta property="og:description" content="硫酸・炭酸・リン酸の段階電離と Ka の大小、両性イオンと等電点、両性酸化物との区別を、例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/polyprotic-acids-amphoterism.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">多段階電離</span>と両性物質</h1>
+    <p>化学の考え方辞典 ― 酸と塩基（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 酸と塩基 ＞ 多段階電離と両性物質</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">酸と塩基</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    水素イオンを複数段階で放出する多価の酸や、酸としても塩基としても働く両性物質を扱うときに使う考え方で、段階ごとの電離定数は Ka1＞Ka2＞Ka3 の順に小さくなる。炭酸水素イオンのように両性イオンの液性や、炭酸系でどの化学種が主に存在するかは、隣り合う段階の Ka の値と溶液の pH を比べることで読み解ける。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>1分子から水素イオン H<sup>+</sup> を2個以上放出できる<strong>多価の酸（多プロトン酸）</strong>と、相手によって酸にも塩基にもなる<strong>両性物質</strong>を扱うときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>硫酸 H<sub>2</sub>SO<sub>4</sub>・炭酸 H<sub>2</sub>CO<sub>3</sub>・リン酸 H<sub>3</sub>PO<sub>4</sub> などの<strong>段階電離（多段階電離）</strong>の式を書き、電離定数 Ka<sub>1</sub>・Ka<sub>2</sub>・Ka<sub>3</sub> の大小を説明する問題</li>
+      <li>HCO<sub>3</sub><sup>−</sup> や H<sub>2</sub>PO<sub>4</sub><sup>−</sup> のようなイオンが「両性」かどうかを判定し、その水溶液の液性を予測する問題</li>
+      <li>アミノ酸の<strong>双性イオン</strong>と<strong>等電点</strong>を問う問題</li>
+      <li>pH が変わったときに、炭酸系（CO<sub>2</sub>／HCO<sub>3</sub><sup>−</sup>／CO<sub>3</sub><sup>2−</sup>）のうちどの化学種が主に存在するかを読み取る問題</li>
+      <li>両性物質・両性イオンと、両性酸化物・両性水酸化物という言葉の区別を問う問題</li>
+    </ul>
+    <p>高校までの酸・塩基では「H<sup>+</sup> を出すのが酸、受け取るのが塩基」という一方向の見方で足りましたが、多価の酸と両性物質では、<strong>同じ化学種が段階ごとに、また相手ごとに役割を変える</strong>ことが要点になります。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>多価の酸の段階電離</h3>
+    <p>多価の酸は、H<sup>+</sup> を一度に全部放出するのではなく、<strong>1個ずつ段階的に</strong>放出します。各段階にそれぞれ電離平衡と電離定数 Ka があります。本記事で使う Ka の値（25 ℃、代表値）は次の通りです。</p>
+    <p><strong>硫酸 H<sub>2</sub>SO<sub>4</sub>（2価）</strong></p>
+    <div class="formula">H<sub>2</sub>SO<sub>4</sub> → H<sup>+</sup> ＋ HSO<sub>4</sub><sup>−</sup>（第1段階はほぼ完全に電離する強酸性の段階）</div>
+    <div class="formula">HSO<sub>4</sub><sup>−</sup> ⇌ H<sup>+</sup> ＋ SO<sub>4</sub><sup>2−</sup>　　Ka<sub>2</sub> ≒ 1.0×10<sup>−2</sup></div>
+    <p><strong>炭酸 H<sub>2</sub>CO<sub>3</sub>（2価）</strong></p>
+    <div class="formula">H<sub>2</sub>CO<sub>3</sub> ⇌ H<sup>+</sup> ＋ HCO<sub>3</sub><sup>−</sup>　　Ka<sub>1</sub> ＝ 4.3×10<sup>−7</sup>（pKa<sub>1</sub> ＝ 6.35）</div>
+    <div class="formula">HCO<sub>3</sub><sup>−</sup> ⇌ H<sup>+</sup> ＋ CO<sub>3</sub><sup>2−</sup>　　Ka<sub>2</sub> ＝ 5.6×10<sup>−11</sup>（pKa<sub>2</sub> ＝ 10.33）</div>
+    <p>なお、水に溶けた二酸化炭素 CO<sub>2</sub> の大部分は H<sub>2</sub>CO<sub>3</sub> にならず CO<sub>2</sub> のまま存在するため、上の Ka<sub>1</sub> は「CO<sub>2</sub>（溶存）＋ H<sub>2</sub>CO<sub>3</sub>」をまとめて扱う見かけの値として用いられることが多い値です。</p>
+    <p><strong>リン酸 H<sub>3</sub>PO<sub>4</sub>（3価）</strong></p>
+    <div class="formula">H<sub>3</sub>PO<sub>4</sub> ⇌ H<sup>+</sup> ＋ H<sub>2</sub>PO<sub>4</sub><sup>−</sup>　　Ka<sub>1</sub> ＝ 7.5×10<sup>−3</sup>（pKa<sub>1</sub> ＝ 2.15）</div>
+    <div class="formula">H<sub>2</sub>PO<sub>4</sub><sup>−</sup> ⇌ H<sup>+</sup> ＋ HPO<sub>4</sub><sup>2−</sup>　　Ka<sub>2</sub> ＝ 6.2×10<sup>−8</sup>（pKa<sub>2</sub> ＝ 7.20）</div>
+    <div class="formula">HPO<sub>4</sub><sup>2−</sup> ⇌ H<sup>+</sup> ＋ PO<sub>4</sub><sup>3−</sup>　　Ka<sub>3</sub> ＝ 4.8×10<sup>−13</sup>（pKa<sub>3</sub> ＝ 12.32）</div>
+    <ul>
+      <li><strong>Ka<sub>1</sub>・Ka<sub>2</sub>・Ka<sub>3</sub></strong>：各段階の酸電離定数（単位は慣例として mol/L を省略して表すことが多い）。大きいほどその段階で H<sup>+</sup> を放出しやすい</li>
+      <li><strong>pKa</strong>：pKa ＝ −log<sub>10</sub> Ka。小さいほど強い酸である</li>
+      <li>水のイオン積は K<sub>w</sub> ＝ 1.0×10<sup>−14</sup> (mol/L)<sup>2</sup>（25 ℃）で、共役な酸と塩基では Ka × Kb ＝ K<sub>w</sub> の関係がある</li>
+    </ul>
+    <h3>なぜ Ka<sub>1</sub> ＞ Ka<sub>2</sub> ＞ Ka<sub>3</sub> なのか</h3>
+    <p>どの多価の酸でも、段階が進むほど Ka は小さくなります。リン酸では Ka<sub>1</sub>：Ka<sub>2</sub>：Ka<sub>3</sub> がおよそ 10<sup>−3</sup>：10<sup>−8</sup>：10<sup>−13</sup> と、段階ごとに約10万倍ずつ小さくなっています。理由は<strong>負電荷</strong>で説明できます。第1段階では中性の分子 H<sub>3</sub>PO<sub>4</sub> からプラスの H<sup>+</sup> が離れますが、第2段階ではすでに −1 の電荷をもつ H<sub>2</sub>PO<sub>4</sub><sup>−</sup> から、第3段階では −2 の HPO<sub>4</sub><sup>2−</sup> から H<sup>+</sup> を引き離さなければなりません。負電荷が大きいほど、プラスの H<sup>+</sup> を静電気的に強く引きつけるため、H<sup>+</sup> は離れにくくなります。つまり<strong>負電荷が増えるほど H<sup>+</sup> が離れにくい</strong>ことが、Ka が段階ごとに小さくなる主因です。</p>
+    <p>このため、通常の希薄な水溶液では、多価の酸の電離は実質的に第1段階が中心で、第2段階以降の寄与は Ka の比が十分大きい（目安として10<sup>4</sup>倍以上離れている）限り小さい、と段階を分けて考えることができます。</p>
+    <h3>両性物質・両性電解質と両性イオン</h3>
+    <p>相手によって酸としても塩基としても働く物質を<strong>両性物質（両性電解質）</strong>といいます。水溶液中のイオンでいえば、H<sup>+</sup> を放出もできれば受け取りもできるイオンが両性です。代表例は、炭酸の第1段階と第2段階の間にいる <strong>HCO<sub>3</sub><sup>−</sup></strong> です。</p>
+    <div class="formula">酸として：HCO<sub>3</sub><sup>−</sup> ⇌ H<sup>+</sup> ＋ CO<sub>3</sub><sup>2−</sup>　　Ka<sub>2</sub> ＝ 5.6×10<sup>−11</sup></div>
+    <div class="formula">塩基として：HCO<sub>3</sub><sup>−</sup> ＋ H<sup>+</sup> ⇌ H<sub>2</sub>CO<sub>3</sub>（共役酸の Ka<sub>1</sub> ＝ 4.3×10<sup>−7</sup> から Kb ＝ K<sub>w</sub> ÷ Ka<sub>1</sub> ≒ 2.3×10<sup>−8</sup>）</div>
+    <p>同じように、リン酸の段階の間にいる <strong>H<sub>2</sub>PO<sub>4</sub><sup>−</sup></strong> と <strong>HPO<sub>4</sub><sup>2−</sup></strong>、水 H<sub>2</sub>O 自身も両性です。両性イオンだけを含む塩（炭酸水素ナトリウム NaHCO<sub>3</sub> など）の水溶液の pH は、濃度にあまりよらず、隣り合う2つの pKa の平均で近似できます。</p>
+    <div class="formula">両性イオンの溶液の pH ≒ （pKa<sub>前</sub> ＋ pKa<sub>後</sub>）÷ 2</div>
+    <ul>
+      <li><strong>pKa<sub>前</sub></strong>：そのイオンが H<sup>+</sup> を受け取ってできる共役酸の段階の pKa</li>
+      <li><strong>pKa<sub>後</sub></strong>：そのイオンが H<sup>+</sup> を放出する段階の pKa</li>
+    </ul>
+    <h3>アミノ酸の双性イオンと等電点</h3>
+    <p>アミノ酸は、塩基性の <strong>−NH<sub>2</sub></strong>（アミノ基）と酸性の <strong>−COOH</strong>（カルボキシ基）を同じ分子にもちます。中性付近の水溶液では、−COOH が H<sup>+</sup> を手放し、−NH<sub>2</sub> がその H<sup>+</sup> を受け取るため、1つの分子の中に −COO<sup>−</sup> と −NH<sub>3</sub><sup>+</sup> の両方の電荷をもつ<strong>双性イオン</strong>の形で主に存在します。最も簡単なアミノ酸グリシンでは、pKa<sub>1</sub> ＝ 2.34（−COOH の段階）、pKa<sub>2</sub> ＝ 9.60（−NH<sub>3</sub><sup>+</sup> の段階）です。</p>
+    <div class="formula">酸性側：<sup>+</sup>H<sub>3</sub>N−CH<sub>2</sub>−COOH ⇌ 中性付近：<sup>+</sup>H<sub>3</sub>N−CH<sub>2</sub>−COO<sup>−</sup>（双性イオン）⇌ 塩基性側：H<sub>2</sub>N−CH<sub>2</sub>−COO<sup>−</sup></div>
+    <p>双性イオンは、正と負の電荷を1個ずつもち、全体の電荷が0です。このように、分子全体の正味の電荷が0になる pH を<strong>等電点（pI）</strong>といい、グリシンでは pI ＝ （2.34 ＋ 9.60）÷ 2 ＝ 5.97 です。等電点では分子どうしの静電気的な反発が最も弱くなるため、アミノ酸やタンパク質は等電点付近で溶解度が小さくなったり、沈殿しやすくなったりします。これが等電点の考え方の入口です。</p>
+    <h3>両性酸化物との言葉の区別</h3>
+    <p>紛らわしい言葉に<strong>両性酸化物・両性水酸化物</strong>があります。こちらは無機化学の用語で、酸とも塩基（強塩基）とも反応して塩を作る酸化物・水酸化物を指します。代表例は酸化アルミニウム Al<sub>2</sub>O<sub>3</sub> と酸化亜鉛 ZnO です。</p>
+    <div class="formula">Al<sub>2</sub>O<sub>3</sub> ＋ 6HCl → 2AlCl<sub>3</sub> ＋ 3H<sub>2</sub>O（酸との反応）</div>
+    <div class="formula">Al<sub>2</sub>O<sub>3</sub> ＋ 2NaOH ＋ 3H<sub>2</sub>O → 2Na[Al(OH)<sub>4</sub>]（強塩基との反応）</div>
+    <div class="formula">ZnO ＋ 2HCl → ZnCl<sub>2</sub> ＋ H<sub>2</sub>O（酸との反応）／ ZnO ＋ 2NaOH ＋ H<sub>2</sub>O → Na<sub>2</sub>[Zn(OH)<sub>4</sub>]（強塩基との反応）</div>
+    <p>水酸化アルミニウム Al(OH)<sub>3</sub> や水酸化亜鉛 Zn(OH)<sub>2</sub> も両性水酸化物です。「両性イオン」が<strong>水溶液中で H<sup>+</sup> の授受の両方ができるイオン</strong>を指すのに対し、「両性酸化物」は<strong>酸とも強塩基とも反応する酸化物という物質分類</strong>を指します。どちらも「相手によって酸・塩基の顔が変わる」という発想は共通していますが、指している対象が違う言葉として区別してください。</p>
+    <h3>炭酸系の存在割合と pH</h3>
+    <p>炭酸系では、pH によって CO<sub>2</sub>（および H<sub>2</sub>CO<sub>3</sub>）・HCO<sub>3</sub><sup>−</sup>・CO<sub>3</sub><sup>2−</sup> の存在割合が入れ替わります。境目は pKa の値です。pH が pKa<sub>1</sub> ＝ 6.35 より十分低ければ CO<sub>2</sub> 側、pKa<sub>1</sub> と pKa<sub>2</sub> ＝ 10.33 の間では HCO<sub>3</sub><sup>−</sup>、pKa<sub>2</sub> より十分高ければ CO<sub>3</sub><sup>2−</sup> が主役になります。2つの化学種の比は、各段階の平衡から次のように読み取れます。</p>
+    <div class="formula">[CO<sub>3</sub><sup>2−</sup>] ÷ [HCO<sub>3</sub><sup>−</sup>] ＝ Ka<sub>2</sub> ÷ [H<sup>+</sup>]</div>
+    <p>たとえば pH 9（[H<sup>+</sup>] ＝ 1.0×10<sup>−9</sup> mol/L）では、この比は 5.6×10<sup>−11</sup> ÷ 1.0×10<sup>−9</sup> ＝ 0.056 となり、HCO<sub>3</sub><sup>−</sup> が約95％を占めます。逆に pH 11 では比が 5.6 となり、CO<sub>3</sub><sup>2−</sup> が主役に入れ替わります。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>段階電離の式を1段ずつ書く。</strong>H<sup>+</sup> は1個ずつ外し、左辺と右辺で原子の数と電荷の合計が合っているか確認します。</li>
+      <li><strong>各段階に Ka を対応させる。</strong>第1段階が Ka<sub>1</sub>、第2段階が Ka<sub>2</sub> の順に割り当て、Ka<sub>1</sub> ＞ Ka<sub>2</sub> ＞ Ka<sub>3</sub> になっているか確かめます。順序の理由は「負電荷が増えるほど H<sup>+</sup> が離れにくい」で説明します。</li>
+      <li><strong>両性かどうかは両方向を見る。</strong>そのイオンが H<sup>+</sup> を放出して1段下の化学種になれるか、受け取って1段上の化学種になれるか、両方できれば両性イオンです。どちらか一方しかできないイオン（例：CO<sub>3</sub><sup>2−</sup> は受け取るだけ、H<sub>3</sub>PO<sub>4</sub> は放出するだけ）は両性ではありません。</li>
+      <li><strong>両性イオンの液性は pKa の平均で見積もる。</strong>pH ≒ （pKa<sub>前</sub> ＋ pKa<sub>後</sub>）÷ 2 を計算し、7より大きいか小さいかで液性を判断します。</li>
+      <li><strong>存在割合は pH と pKa の位置関係で読む。</strong>pH がどの pKa とどの pKa の間にあるかで主役の化学種を決め、必要なら [生成物] ÷ [反応物] ＝ Ka ÷ [H<sup>+</sup>] で比を求めます。</li>
+      <li><strong>言葉の区別を確認する。</strong>イオンの H<sup>+</sup> 授受の話なら「両性イオン」、Al<sub>2</sub>O<sub>3</sub> や ZnO のような酸化物の物質分類の話なら「両性酸化物」と使い分けます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：リン酸 H<sub>3</sub>PO<sub>4</sub> の段階電離の式を3段すべて書き、各段階の Ka の大小関係と、その順序になる理由を述べよ。使用する値は Ka<sub>1</sub> ＝ 7.5×10<sup>−3</sup>、Ka<sub>2</sub> ＝ 6.2×10<sup>−8</sup>、Ka<sub>3</sub> ＝ 4.8×10<sup>−13</sup> とする。問題2：次の化学種のうち、両性イオンはどれか。すべて選べ。(a) CO<sub>3</sub><sup>2−</sup>　(b) HCO<sub>3</sub><sup>−</sup>　(c) H<sub>2</sub>PO<sub>4</sub><sup>−</sup>　(d) H<sub>3</sub>PO<sub>4</sub>　(e) HPO<sub>4</sub><sup>2−</sup>。問題3：炭酸水素ナトリウム NaHCO<sub>3</sub> 水溶液と、リン酸二水素ナトリウム NaH<sub>2</sub>PO<sub>4</sub> 水溶液の pH を、両性イオンの近似式で見積もれ。炭酸の pKa は 6.35 と 10.33、リン酸の pKa は 2.15、7.20、12.32 とする。問題4：炭酸系の水溶液で pH が 9 のときと 11 のとき、HCO<sub>3</sub><sup>−</sup> と CO<sub>3</sub><sup>2−</sup> のうち主役はどちらか。[CO<sub>3</sub><sup>2−</sup>] ÷ [HCO<sub>3</sub><sup>−</sup>] ＝ Ka<sub>2</sub> ÷ [H<sup>+</sup>]、Ka<sub>2</sub> ＝ 5.6×10<sup>−11</sup> を使って比も求めよ。問題5：グリシン（pKa<sub>1</sub> ＝ 2.34、pKa<sub>2</sub> ＝ 9.60）の等電点を求め、pH 2 の溶液中ではグリシンが主にどんな電荷の形で存在するかを答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：H<sub>3</sub>PO<sub>4</sub> ⇌ H<sup>+</sup> ＋ H<sub>2</sub>PO<sub>4</sub><sup>−</sup>、H<sub>2</sub>PO<sub>4</sub><sup>−</sup> ⇌ H<sup>+</sup> ＋ HPO<sub>4</sub><sup>2−</sup>、HPO<sub>4</sub><sup>2−</sup> ⇌ H<sup>+</sup> ＋ PO<sub>4</sub><sup>3−</sup> の3段です。Ka は 7.5×10<sup>−3</sup> ＞ 6.2×10<sup>−8</sup> ＞ 4.8×10<sup>−13</sup> で、段階ごとに約10万倍ずつ小さくなります。理由は、段階が進むほど H<sup>+</sup> を放出する側の負電荷が増え（0 → −1 → −2）、プラスの H<sup>+</sup> を静電気的に引きつける力が強くなって、H<sup>+</sup> が離れにくくなるためです。</li>
+          <li>問題2：両性イオンは、H<sup>+</sup> を放出も受け取りもできるイオンです。(b) HCO<sub>3</sub><sup>−</sup> は放出して CO<sub>3</sub><sup>2−</sup> に、受け取って H<sub>2</sub>CO<sub>3</sub> になれるので両性。(c) H<sub>2</sub>PO<sub>4</sub><sup>−</sup> と (e) HPO<sub>4</sub><sup>2−</sup> も、上下両方の段階へ移れるので両性です。一方 (a) CO<sub>3</sub><sup>2−</sup> は受け取るだけで放出する H<sup>+</sup> がなく、(d) H<sub>3</sub>PO<sub>4</sub> は放出するだけなので、両性イオンではありません。</li>
+          <li>問題3：NaHCO<sub>3</sub> の HCO<sub>3</sub><sup>−</sup> は、炭酸の2つの段階の間にいる両性イオンなので、pH ≒ （6.35 ＋ 10.33）÷ 2 ＝ 8.34。弱い塩基性を示します。NaH<sub>2</sub>PO<sub>4</sub> の H<sub>2</sub>PO<sub>4</sub><sup>−</sup> は、リン酸の第1段階と第2段階の間にいるので、pH ≒ （2.15 ＋ 7.20）÷ 2 ＝ 4.675、すなわち約 4.68。弱い酸性を示します。同じ「酸の途中段階の塩」でも、挟まれている pKa の組み合わせで液性が逆転することがポイントです。</li>
+          <li>問題4：pH 9 では [H<sup>+</sup>] ＝ 1.0×10<sup>−9</sup> mol/L なので、比は 5.6×10<sup>−11</sup> ÷ 1.0×10<sup>−9</sup> ＝ 0.056。CO<sub>3</sub><sup>2−</sup> は HCO<sub>3</sub><sup>−</sup> の約5.6％しかなく、主役は HCO<sub>3</sub><sup>−</sup>（全体の約95％）です。pH 11 では [H<sup>+</sup>] ＝ 1.0×10<sup>−11</sup> mol/L なので、比は 5.6×10<sup>−11</sup> ÷ 1.0×10<sup>−11</sup> ＝ 5.6。主役は CO<sub>3</sub><sup>2−</sup> に入れ替わります。境目が pKa<sub>2</sub> ＝ 10.33 であることと対応しています。</li>
+          <li>問題5：等電点 pI ＝ （2.34 ＋ 9.60）÷ 2 ＝ 5.97。pH 2 は pKa<sub>1</sub> ＝ 2.34 よりも低い（酸性が強い）ため、−COO<sup>−</sup> が H<sup>+</sup> を受け取って −COOH に戻り、分子は <sup>+</sup>H<sub>3</sub>N−CH<sub>2</sub>−COOH の、正味＋1の陽イオンの形が主になります。逆に pH が pKa<sub>2</sub> より高くなると −NH<sub>3</sub><sup>+</sup> が H<sup>+</sup> を手放し、正味−1の陰イオンが主になります。</li>
+        </ol>
+        <p><strong>答え：問題1は3段の式と Ka<sub>1</sub> ＞ Ka<sub>2</sub> ＞ Ka<sub>3</sub>（理由は負電荷の増加）。問題2は (b)(c)(e)。問題3は NaHCO<sub>3</sub> が約 8.34、NaH<sub>2</sub>PO<sub>4</sub> が約 4.68。問題4は pH 9 で HCO<sub>3</sub><sup>−</sup>（比 0.056）、pH 11 で CO<sub>3</sub><sup>2−</sup>（比 5.6）。問題5は等電点 5.97、pH 2 では正味＋1の陽イオンが主。</strong></p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>海水の炭酸系と海洋の炭素吸収</h3>
+    <p>海水の pH はおよそ 8.1 で、これは pKa<sub>1</sub> ＝ 6.35 と pKa<sub>2</sub> ＝ 10.33 の間にあるため、海に溶けた無機炭素の主役は HCO<sub>3</sub><sup>−</sup> です。大気中の CO<sub>2</sub> は海水に溶けると主に HCO<sub>3</sub><sup>−</sup> の形で蓄えられるため、海洋は大きな炭素の貯蔵庫になっています。逆に CO<sub>2</sub> が増えて pH が下がると、CO<sub>3</sub><sup>2−</sup> の割合が減り、サンゴや貝が炭酸カルシウム CaCO<sub>3</sub> の殻・骨格を作りにくくなることが、海洋酸性化の問題として扱われています。存在割合の図が、そのまま環境問題の読み解きに使われています。</p>
+    <h3>血液の pH を保つ炭酸―炭酸水素イオン系</h3>
+    <p>血液の pH は約 7.4 に保たれていますが、その中心的な仕組みが CO<sub>2</sub>／HCO<sub>3</sub><sup>−</sup> の組み合わせによる緩衝作用です。血液中では見かけの pKa が約 6.1 とされ、pH 7.4 では HCO<sub>3</sub><sup>−</sup> が溶存 CO<sub>2</sub> のおよそ20倍の濃度で存在し、酸が入り込むと HCO<sub>3</sub><sup>−</sup> が H<sup>+</sup> を受け取って pH の低下を抑えます。呼吸によって CO<sub>2</sub> の量を調節できることが、この系が体内で特に有効な理由です。HCO<sub>3</sub><sup>−</sup> が両性イオンであることが、緩衝の土台になっています。</p>
+    <h3>リン酸系の緩衝液と等電点の利用</h3>
+    <p>リン酸の pKa<sub>2</sub> ＝ 7.20 は中性付近にあるため、H<sub>2</sub>PO<sub>4</sub><sup>−</sup> と HPO<sub>4</sub><sup>2−</sup> の混合液は、生化学の実験で使う中性付近の緩衝液として広く利用されています。2つの化学種がどちらも両性イオンの系であることが、この用途を支えています。また、タンパク質の精製では、目的のタンパク質の等電点に合わせて pH を調整し、溶解度が下がる性質を利用して分離・沈殿させる手法（等電点沈殿）が使われます。アミノ酸の双性イオンと等電点の考え方の、実験現場での応用です。</p>
+    <h3>両性酸化物の利用 ― アルミニウムと亜鉛の表面</h3>
+    <p>アルミニウムの表面は、空気中で薄い Al<sub>2</sub>O<sub>3</sub> の膜に覆われて内部を守っていますが、この膜は両性酸化物なので、強い酸にも強いアルカリにも溶けます。アルミニウム製品にアルカリ性の強い洗剤が向かないのはこのためです。酸化亜鉛 ZnO は、白色顔料や日焼け止めの成分として使われる一方、両性であるため強酸・強アルカリの環境では溶けてしまいます。材料や製品の「どんな液性で使えるか」は、両性酸化物かどうかの知識で判断できます。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ヨハネス・ニコラウス・ブレンステッド</strong>（1879〜1947、デンマーク・化学者）、<strong>トマス・マーティン・ローリー</strong>（1874〜1936、イギリス・化学者）</p>
+    <p>多価の酸の段階電離や両性物質を統一的に扱えるようにした土台は、酸・塩基を「H<sup>+</sup>（プロトン）の授受」で定義し直したことです。デンマークの化学者<strong>ヨハネス・ニコラウス・ブレンステッド</strong>（1879〜1947）と、イギリスの化学者<strong>トマス・マーティン・ローリー</strong>（1874〜1936）は、1923年にそれぞれ独立にこの定義を発表しました。この定義によって、HCO<sub>3</sub><sup>−</sup> のように「H<sup>+</sup> を出せば酸、受け取れば塩基」という両性イオンの振る舞いが、段階ごとの共役な酸・塩基の組としてすっきり説明できるようになりました。また、アミノ酸が双性イオンの形で存在するという考え方は、デンマークの化学者<strong>ニールス・ビェルム</strong>（1879〜1958）が1923年に提唱したもので、等電点の理解の出発点になっています。</p>
+  </section>
+
+  <a class="linkcard" href="calc-polyprotic-acids-amphoterism.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">多段階電離と両性物質 計算機：両性イオンの pH、炭酸系の存在比、アミノ酸の等電点の3モードで、解き方の手順つきで表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>酸・塩基の定義そのものは<a href="acid-base-definitions.html">酸と塩基の定義</a>、弱酸の電離平衡から pH を出す計算は<a href="weak-acid-ph.html">弱酸・弱塩基のpH</a>、塩の水溶液の液性は<a href="salt-hydrolysis.html">塩の加水分解と液性</a>、pH が保たれる仕組みの中心は<a href="buffer-solutions.html">緩衝液</a>が役立ちます。アミノ酸とタンパク質の詳しい話は<a href="amino-acids-proteins.html">アミノ酸とタンパク質</a>、両性酸化物が登場する金属の性質は<a href="aluminium.html">アルミニウムとその製錬</a>へ進んでください。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>金属の腐食と防食｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="金属の腐食と防食を、鉄の赤さびができる局部電池の仕組みから解説。亜鉛めっきのトタンとスズめっきのブリキで傷がついたときの違い、ステンレス鋼やアルミニウムの不動態、電気防食など、橋や船舶を守る現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="金属の腐食と防食｜化学ツール集">
+<meta property="og:description" content="鉄の赤さびは水と酸素のもとで局部電池ができて進む。トタンとブリキの傷での違い、ステンレス鋼の不動態、電気防食を例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/corrosion.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>金属の<span class="accent">腐食</span>と防食</h1>
+    <p>化学の考え方辞典 ― 酸化還元・電池と電気分解（高校化学・2年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 酸化還元・電池と電気分解 ＞ 金属の腐食と防食</p>
+  <p><span class="badge badge-lv">高校化学・2年</span> <span class="badge badge-genre">酸化還元・電池と電気分解</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    鉄がさびる理由を知りたいときや、めっき・塗装・電気防食など金属を長持ちさせる方法を選びたいときに使う。腐食は水と酸素のもとで金属がイオン化する酸化還元反応であり、イオン化傾向の大小を比べることで、2種の金属のどちらが先に溶けるかと、守るための方法が判断できる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>金属が周囲の水や酸素と反応してイオン化し、少しずつ溶けていく現象を<strong>腐食</strong>といいます。腐食から金属を守ることを<strong>防食</strong>といい、次のような場面で使います。</p>
+    <ul>
+      <li>鉄に赤さびができる仕組みを、局部電池と半反応式で説明する問題</li>
+      <li>トタン（亜鉛めっき）とブリキ（スズめっき）に傷がついたとき、どちらの金属が先に溶けるかをイオン化傾向で判定する問題</li>
+      <li>塗装・油・めっき・合金・電気防食の中から、使う場所に合った防食方法を選ぶ問題</li>
+      <li>ステンレス鋼やアルミニウムがさびにくい理由を、不動態で説明する問題</li>
+    </ul>
+    <p>ポイントは、腐食が<strong>電池と同じ仕組み（局部電池）</strong>で進むことです。イオン化傾向の大きい金属ほど陽極（負極にあたる部分）になって先に溶けます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>鉄のさび（赤さび）ができる仕組み</h3>
+    <p>鉄の表面に水の薄い膜ができると、その水が電解質の溶液の役割を果たします。鉄の表面には不純物や状態の違いによるむらがあるため、場所によってイオン化しやすさが異なり、鉄そのものの表面に小さな電池（<strong>局部電池</strong>）ができます。イオン化しやすい部分では鉄が電子を放出して溶け出し（酸化）、別の部分では水に溶けた酸素がその電子を受け取ります（還元）。</p>
+    <div class="formula">陽極部（鉄が溶ける部分）： Fe → Fe<sup>2+</sup> ＋ 2e<sup>−</sup>（酸化）</div>
+    <div class="formula">陰極部（酸素が電子を受け取る部分）： O<sub>2</sub> ＋ 2H<sub>2</sub>O ＋ 4e<sup>−</sup> → 4OH<sup>−</sup>（還元）</div>
+    <p>溶け出した Fe<sup>2+</sup> は OH<sup>−</sup> と結びついて水酸化鉄(II) Fe(OH)<sub>2</sub> になり、さらに酸素によって酸化されて水酸化鉄(III) Fe(OH)<sub>3</sub> へ変化し、最終的には水を含んだ酸化鉄(III) Fe<sub>2</sub>O<sub>3</sub> を主成分とする赤褐色の<strong>赤さび</strong>になります。</p>
+    <div class="formula">Fe<sup>2+</sup> ＋ 2OH<sup>−</sup> → Fe(OH)<sub>2</sub>　→（酸素で酸化）→ Fe(OH)<sub>3</sub>　→ Fe<sub>2</sub>O<sub>3</sub> を主成分とする赤さび</div>
+    <p>赤さびはもろくてすき間が多く、鉄の表面に密着しません。そのため水や酸素が内部まで届き、さびは表面で止まらずに内側へ進んでいきます。これが、鉄が放っておくとぼろぼろになる理由です。食塩などの電解質が水に溶けていると電流が流れやすくなるため、海の近くや融雪剤のかかる場所では腐食が速く進みます。</p>
+    <p>鉄釘を「乾燥した空気中」「水道水の中」「食塩水の中」「酸素を除いた水の中」など条件を変えて置き、さび方を比べる観察は教科書で扱われる実験です。水と酸素の両方がそろった条件で最もさびやすく、食塩水ではさらに速くなることが確かめられます。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>トタンとブリキ ― めっきの金属で運命が分かれる</h3>
+    <p>鉄の表面をほかの金属で覆うめっきも防食の一つですが、傷がついて鉄がむき出しになったときの振る舞いは、めっきの金属のイオン化傾向で決まります。関係する金属のイオン化傾向は次の順です。</p>
+    <div class="formula">イオン化傾向： Zn ＞ Fe ＞ Sn</div>
+    <ul>
+      <li><strong>トタン（亜鉛 Zn めっき）</strong>：亜鉛は鉄よりイオン化傾向が大きいため、傷がついても亜鉛が陽極になって先に溶け、鉄は陰極として守られます。めっきの金属が身代わりに腐食して鉄を守るこの仕組みを<strong>犠牲防食</strong>といいます。傷の部分でもさびにくいのがトタンの強みです。</li>
+      <li><strong>ブリキ（スズ Sn めっき）</strong>：スズは鉄よりイオン化傾向が小さいため、めっきが無傷の間は鉄を水や空気から遮断して守りますが、傷がつくと今度は鉄の方が陽極になって先に溶けてしまいます。つまりブリキは、傷がつくとむしろ鉄の腐食が進みやすくなります。</li>
+    </ul>
+    <h3>不動態 ― 酸化物の膜が守る金属</h3>
+    <p>金属によっては、表面にち密な酸化物の膜ができ、その膜が内部を水や酸素から守るものがあります。この状態を<strong>不動態</strong>といいます。アルミニウム Al はイオン化傾向が大きい金属ですが、表面が酸化アルミニウム Al<sub>2</sub>O<sub>3</sub> のち密な膜で覆われるため、腐食しにくくなっています。鉄にクロム Cr やニッケル Ni を混ぜた合金である<strong>ステンレス鋼</strong>も、クロムが作るち密な酸化物の膜（不動態）によってさびにくくなっています。鉄の赤さびとは違い、膜が密着して内部への腐食を止める点が決定的な違いです。</p>
+    <h3>電気防食 ― 電流の向きで腐食を止める</h3>
+    <p>守りたい金属を常に陰極の状態に保てば、金属がイオン化して溶け出すことはありません。この考え方を使うのが<strong>電気防食</strong>で、入口として次の2つの方法があります。</p>
+    <ul>
+      <li><strong>流電陽極法</strong>：守りたい金属（鉄など）に、それよりイオン化傾向の大きい金属（亜鉛・マグネシウム・アルミニウムなど）を接続する方法。接続した金属が陽極として身代わりに溶ける犠牲防食そのもので、外部の電源は要りません。</li>
+      <li><strong>外部電源法</strong>：直流電源を使って、守りたい金属に電子を送り込み続け、強制的に陰極の状態に保つ方法。陽極には溶けにくい電極を使います。大きな構造物や長い配管で使われます。</li>
+    </ul>
+    <p>各記号の意味は次の通りです。</p>
+    <ul>
+      <li><strong>e<sup>−</sup></strong>：電子。腐食では、陽極部で金属が放出した電子が金属内部を通って陰極部へ移動する</li>
+      <li><strong>陽極部・陰極部</strong>：局部電池で、金属が溶ける（酸化される）部分が陽極部、酸素が電子を受け取る（還元される）部分が陰極部</li>
+      <li><strong>イオン化傾向</strong>：金属が水溶液中で電子を放出して陽イオンになろうとする性質の強さ。大きい金属ほど先に溶ける</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>腐食の条件をそろえて確認する。</strong>水（電解質の水溶液の膜）と酸素が両方あるかを見ます。どちらか一方でも欠ければ、鉄のさびは進みにくくなります。食塩などの電解質があると速くなります。</li>
+      <li><strong>関係する金属のイオン化傾向を比べる。</strong>2種の金属が接している場合は、イオン化傾向の大きい方が陽極になって先に溶け、小さい方は陰極として守られます（Zn ＞ Fe ＞ Sn が要点）。</li>
+      <li><strong>半反応式で確かめる。</strong>陽極では金属が電子を放出する式（例：Fe → Fe<sup>2+</sup> ＋ 2e<sup>−</sup>）、陰極では酸素が電子を受け取る式（O<sub>2</sub> ＋ 2H<sub>2</sub>O ＋ 4e<sup>−</sup> → 4OH<sup>−</sup>）を書いて、どちらが溶けるかを確認します。</li>
+      <li><strong>防食方法を選ぶ。</strong>水と酸素を遮断する方法（塗装・油・めっき・樹脂被覆）か、表面の膜で守る方法（不動態を持つ合金・金属）か、犠牲防食・電気防食で陰極に保つ方法か、使う場所と傷のつきやすさで選びます。</li>
+      <li><strong>「傷がついたらどうなるか」を最後に点検する。</strong>遮断型の被覆は傷で効果が落ちます。特にブリキのように被覆側のイオン化傾向が小さい場合は、傷の部分から鉄が先に溶ける点を見落とさないようにします。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：トタン板（亜鉛めっきした鉄板）に深い傷がつき、鉄がむき出しになって雨水に濡れている。亜鉛と鉄のどちらが先に腐食するか。問題2：ブリキの缶（スズめっきした鉄板）に傷がついて鉄がむき出しになった。亜鉛めっきの場合と比べて、鉄の腐食はどうなるか。問題3：海水中に沈めた鋼製の構造物を長期間守るため、鋼に亜鉛の塊を取り付けた。亜鉛を取り付ける理由を、イオン化傾向と犠牲防食の語句を使って説明せよ。また、この方法は電気防食のうち流電陽極法・外部電源法のどちらか。問題4：アルミニウム製の鍋やステンレス鋼の流し台が、鉄よりもさびにくいのはなぜか。不動態の語句を使って説明せよ。問題5（防食方法の選択）：屋外で雨にさらされる鉄製の柵と、海底に埋設される鋼管、それぞれに適した防食の考え方を1つずつ挙げよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：イオン化傾向は Zn ＞ Fe なので、傷の部分でも亜鉛が陽極になって Zn → Zn<sup>2+</sup> ＋ 2e<sup>−</sup> と先に溶け、鉄は陰極として守られます。先に腐食するのは<strong>亜鉛</strong>です。</li>
+          <li>問題2：イオン化傾向は Fe ＞ Sn なので、傷の部分では鉄が陽極になって先に溶けます。スズめっきは無傷の間だけ遮断の役目を果たし、傷がつくと鉄の腐食は裸の鉄よりも進みやすくなります。亜鉛めっき（トタン）とは逆の結果です。</li>
+          <li>問題3：イオン化傾向は Zn ＞ Fe なので、亜鉛が陽極となって身代わりに溶け（犠牲防食）、鋼は陰極の状態に保たれて腐食を免れます。電源を使わず、接続した金属が溶けることで電流が流れる方法なので、<strong>流電陽極法</strong>です。亜鉛は少しずつ減っていくため、定期的な交換が必要です。</li>
+          <li>問題4：どちらの金属も、表面にち密で密着した酸化物の膜（アルミニウムでは Al<sub>2</sub>O<sub>3</sub>、ステンレス鋼ではクロムの酸化物の膜）ができ、この不動態の膜が水や酸素の侵入を防いで内部を守るためです。もろくてはがれやすい鉄の赤さびとは対照的です。</li>
+          <li>問題5：鉄製の柵は雨と空気を遮断する<strong>塗装</strong>（必要に応じて亜鉛めっき＝トタンの考え方を組み合わせる）が適します。海底の鋼管は目視や塗り直しが難しいため、塗装などの被覆に加えて、亜鉛やマグネシウムを接続する<strong>流電陽極法</strong>や、電源で陰極に保つ<strong>外部電源法</strong>による電気防食が適します。</li>
+        </ol>
+        <p><strong>答え：問題1は亜鉛が先に腐食し鉄は守られる。問題2は鉄が先に溶け、傷から腐食が進む。問題3は犠牲防食による流電陽極法。問題4は不動態の酸化物の膜が守るため。問題5は柵には塗装、海底の鋼管には電気防食が適する</strong>。判定の軸は一貫して「イオン化傾向の大きい金属が陽極になって先に溶ける」ことと、「被覆は傷がついたらどうなるか」です。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>トタンの屋根・外壁と、ブリキの缶</h3>
+    <p>亜鉛めっき鋼板（トタン）は、屋根や外壁、ガードレールなど屋外の鉄製品に広く使われています。釘穴や切り口で鉄がむき出しになっても、亜鉛の犠牲防食が働いてさびが広がりにくいためです。一方、ブリキ（スズめっき鋼板）は、スズが無毒で食品に触れても比較的安全なことから缶詰の缶などに使われてきました。ただし傷がつくと鉄が先に溶けるため、缶の内面には樹脂の被膜を重ねるなどの工夫がされています。</p>
+    <h3>船舶・港湾・埋設配管の電気防食</h3>
+    <p>船の船体や推進器のまわり、海に立つ桟橋や橋脚、地下に埋められたガス管・水道管などの鋼構造物では、亜鉛やアルミニウムの塊（流電陽極）を取り付ける犠牲防食が実用化されています。身代わりの金属は少しずつ溶けて減るため、点検のたびに残量を確認して交換します。長大なパイプラインや大きな港湾構造物では、外部電源法による電気防食も使われ、電位を測って腐食が止まっているかを確認しながら運用されています。</p>
+    <h3>ステンレス鋼とアルミニウムの材料選び</h3>
+    <p>台所の流し台や鍋、鉄道車両、化学プラントの配管など、水に触れてもさびにくさが求められる場所では、不動態の膜で守られるステンレス鋼が選ばれます。アルミニウムも表面の酸化物の膜で守られるため、窓枠（サッシ）や航空機の機体など、軽さと耐食性の両方が必要な場所で使われます。「腐食しやすい場所では、塗るのではなく材料そのものを変える」というのも防食の大切な考え方です。</p>
+    <h3>橋や鉄塔の塗装と点検</h3>
+    <p>橋梁や送電鉄塔などの大きな鋼構造物は、塗装によって水と酸素を遮断するのが基本の防食です。塗膜は紫外線や雨で少しずつ劣化するため、定期的に点検して塗り直す維持管理とセットで成り立っています。腐食で断面が薄くなると構造物の強度そのものが落ちるため、防食は見た目ではなく安全のための技術です。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ハンフリー・デービー</strong>（1778〜1829、イギリスの化学者） ― 犠牲防食（電気防食）の考え方を1824年に示した</p>
+    <p>腐食そのものは、特定の誰かが「考え出した」現象ではありません。鉄がさびることは古くから知られ、その仕組みは酸化還元と電池の理論が整う中で、多くの研究者によって少しずつ解き明かされてきました。その中で、防食の考え方に一つの転機を与えたのがイギリスの化学者<strong>ハンフリー・デービー</strong>（1778〜1829）です。デービーは1824年、軍艦の船底を覆う銅板を守るため、イオン化傾向の大きい亜鉛や鉄の塊を銅板に接続し、それらを身代わりに腐食させる方法を報告しました。これは、今日の犠牲防食・流電陽極法の出発点とされています。トタンの亜鉛が鉄を守る仕組みも、船体に取り付ける亜鉛の塊も、原理はこのとき示された考え方とつながっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>どちらが先に溶けるかの判定の土台は<a href="metal-reactivity-series.html">金属のイオン化傾向</a>、局部電池の考え方の元になる電池の仕組みは<a href="galvanic-cells.html">電池の原理（ボルタ電池・ダニエル電池）</a>、電位の表で反応の向きを読む発展は<a href="standard-electrode-potential.html">標準電極電位</a>が役立ちます。鉄という材料そのものの話は<a href="iron-steelmaking.html">鉄と製鉄・鋼・合金</a>、不動態で守られるもう一方の主役は<a href="aluminium.html">アルミニウムとその製錬</a>も参考になります。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

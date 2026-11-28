@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>電気分解の生成物と優先順位｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="電気分解の生成物と優先順位を、陰極・陽極の判定の手順と代表例の電極反応式で解説。塩化ナトリウム・硫酸銅（II）・水酸化ナトリウム・塩化銅（II）水溶液で何が発生・析出するかや、銅の電解精錬など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="電気分解の生成物と優先順位｜化学ツール集">
+<meta property="og:description" content="電気分解で陰極・陽極に何が出るかを、イオン化傾向と陰イオン・電極の種類から判定する方法を、代表例の電極反応式と例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/electrolysis-products.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>電気分解の<span class="accent">生成物</span>と優先順位</h1>
+    <p>化学の考え方辞典 ― 酸化還元・電池と電気分解（高校化学・2年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 酸化還元・電池と電気分解 ＞ 電気分解の生成物と優先順位</p>
+  <p><span class="badge badge-lv">高校化学・2年</span> <span class="badge badge-genre">酸化還元・電池と電気分解</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    電気分解で各電極に何が出るかは、陰極では陽イオンのイオン化傾向、陽極では陰イオンの種類と電極の材質で決まる。陰極ではイオン化傾向の小さい金属のイオンが金属として析出し、イオン化傾向の大きい金属のイオンは析出せず、水が還元されて水素が発生する。陽極ではハロゲン化物イオンがハロゲンの単体になり、それ以外の陰イオンの場合は水が酸化されて酸素が発生し、溶けやすい金属電極では電極自身が溶ける。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>電気分解で<strong>各電極に何が析出・発生するか（何が出るか）</strong>を予測するときの判定法です。次のような場面で使います。</p>
+    <ul>
+      <li>水溶液を電気分解したとき、陰極・陽極で発生する気体や析出する金属を答える問題</li>
+      <li>陰極・陽極で起こる反応を、電子 e<sup>−</sup> を含む電極反応式（半反応式）で書く問題</li>
+      <li>電極の材質（白金・炭素か、銅などの金属か）を変えたとき、生成物がどう変わるかを答える問題</li>
+      <li>2つの電極反応式を足して、電気分解全体の反応式を書く問題</li>
+    </ul>
+    <p>この項目は「何が出るか」の判定に特化します。出た物質が<strong>何 g・何 L かという量の計算</strong>は、電気量とファラデーの法則を使う<a href="electrolysis-faraday.html">電気分解とファラデーの法則</a>で扱います。まず生成物を正しく判定し、次に量を計算する、という順序で考えます。</p>
+    <p>大前提として、電気分解では電源の負極につないだ<strong>陰極で還元</strong>（電子を受け取る反応）、電源の正極につないだ<strong>陽極で酸化</strong>（電子を放出する反応）が起こります。陽イオンは陰極へ、陰イオンは陽極へ引き寄せられますが、溶液中に複数の候補があるときは、どれか1つが優先して反応します。その優先順位を覚えるのがこの項目の中心です。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>陰極（還元）の優先順位</h3>
+    <p>陰極では、溶液中の陽イオンが電子を受け取って還元されます。金属イオンについては、その金属の<strong>イオン化傾向</strong>（金属が電子を放出して陽イオンになろうとする性質）の大きさで判定します。イオン化傾向が小さい金属は、イオンのままでいるより金属に戻る方が安定なので、そのまま金属として析出します。逆にイオン化傾向が大きい金属のイオンは水溶液中で安定で、無理に金属に戻そうとしても、代わりに水が還元されて水素が発生します。</p>
+    <div class="formula">陰極：イオン化傾向の小さい金属のイオン → 金属が析出／イオン化傾向の大きい金属のイオン → 水が還元されて H<sub>2</sub> が発生</div>
+    <p>境界の目安は次の通りです。</p>
+    <ul>
+      <li><strong>金属が析出する</strong>：Zn<sup>2+</sup>、Fe<sup>2+</sup>、Ni<sup>2+</sup>、Sn<sup>2+</sup>、Pb<sup>2+</sup>、Cu<sup>2+</sup>、Ag<sup>+</sup> など（イオン化傾向が水素以下の金属のイオン）。代表例：Cu<sup>2+</sup> ＋ 2e<sup>−</sup> → Cu、Ag<sup>+</sup> ＋ e<sup>−</sup> → Ag</li>
+      <li><strong>水素が発生する</strong>：K<sup>+</sup>、Ca<sup>2+</sup>、Na<sup>+</sup>、Mg<sup>2+</sup>、Al<sup>3+</sup> など（イオン化傾向の大きい金属のイオン）。これらの金属は水と激しく反応するほどイオンになりやすいため、水溶液の電気分解では金属として取り出せません</li>
+    </ul>
+    <p>水が還元される反応は、中性・塩基性の水溶液では次の式で書きます。</p>
+    <div class="formula">2H<sub>2</sub>O ＋ 2e<sup>−</sup> → H<sub>2</sub> ＋ 2OH<sup>−</sup></div>
+    <p>このため、水素が発生した陰極のまわりの水溶液は OH<sup>−</sup> が増えて塩基性になります。なお、酸性の水溶液では H<sup>+</sup> が多く存在し、2H<sup>+</sup> ＋ 2e<sup>−</sup> → H<sub>2</sub> と書くこともありますが、起こっていることは同じ水素の発生です。</p>
+    <h3>陽極（酸化）の優先順位</h3>
+    <p>陽極では、溶液中の陰イオンが電子を放出して酸化されます。こちらは陰イオンの種類で判定します。ただし、電極自身が溶ける場合が最優先になることがあるため、<strong>最初に電極の材質を確認</strong>します。</p>
+    <div class="formula">陽極：①溶けやすい金属電極（Cu・Ag など）→ 電極自身が溶ける／②ハロゲン化物イオン → ハロゲンの単体が発生／③それ以外の陰イオン → 水が酸化されて O<sub>2</sub> が発生</div>
+    <ul>
+      <li><strong>①電極自身が溶ける</strong>：陽極が銅 Cu や銀 Ag のような金属の場合、白金 Pt や炭素 C の電極と違って電極自身が酸化されて溶け出します。代表例：Cu → Cu<sup>2+</sup> ＋ 2e<sup>−</sup>。この場合は溶液中の陰イオンは反応しません</li>
+      <li><strong>②ハロゲンの単体が発生する</strong>：Cl<sup>−</sup>、Br<sup>−</sup>、I<sup>−</sup> などのハロゲン化物イオンは電子を放出しやすく、ハロゲンの単体になります。代表例：2Cl<sup>−</sup> → Cl<sub>2</sub> ＋ 2e<sup>−</sup>、2I<sup>−</sup> → I<sub>2</sub> ＋ 2e<sup>−</sup></li>
+      <li><strong>③酸素が発生する</strong>：OH<sup>−</sup>、SO<sub>4</sub><sup>2−</sup>、NO<sub>3</sub><sup>−</sup> の場合は、これらの陰イオン自身は酸化されにくく（OH<sup>−</sup> の場合は下記の通り水の酸化とまとめて書けます）、水が酸化されて酸素が発生します</li>
+    </ul>
+    <p>水が酸化される反応は、酸性・中性の水溶液では次の式で書きます。</p>
+    <div class="formula">2H<sub>2</sub>O → O<sub>2</sub> ＋ 4H<sup>+</sup> ＋ 4e<sup>−</sup></div>
+    <p>このため、酸素が発生した陽極のまわりの水溶液は H<sup>+</sup> が増えて酸性になります。水酸化物イオン OH<sup>−</sup> が多い塩基性の水溶液では、同じ酸素の発生を 4OH<sup>−</sup> → O<sub>2</sub> ＋ 2H<sub>2</sub>O ＋ 4e<sup>−</sup> と書きます。</p>
+    <p>各記号の意味は次の通りです。</p>
+    <ul>
+      <li><strong>e<sup>−</sup></strong>：電子。還元（陰極）の式では左辺に、酸化（陽極）の式では右辺に書く</li>
+      <li><strong>陰極・陽極</strong>：電気分解では、電源の負極につないだ電極が陰極（還元）、正極につないだ電極が陽極（酸化）。電池とは極の符号と反応の対応が逆になる点に注意する</li>
+      <li><strong>イオン化傾向</strong>：金属が水溶液中で電子を放出して陽イオンになろうとする性質の大きさ。K ＞ Ca ＞ Na ＞ Mg ＞ Al ＞ Zn ＞ Fe ＞ Ni ＞ Sn ＞ Pb ＞（H）＞ Cu ＞ Hg ＞ Ag ＞ Pt ＞ Au の順に大きい</li>
+    </ul>
+    <h3>代表例の電極反応式</h3>
+    <p><strong>塩化ナトリウム NaCl 水溶液</strong>（白金または炭素電極）：陰極では Na<sup>+</sup> のイオン化傾向が大きいため金属ナトリウムは析出せず、水が還元されます。陽極では Cl<sup>−</sup> が塩素になります。</p>
+    <div class="formula">陰極： 2H<sub>2</sub>O ＋ 2e<sup>−</sup> → H<sub>2</sub> ＋ 2OH<sup>−</sup>（H<sub>2</sub> が発生）</div>
+    <div class="formula">陽極： 2Cl<sup>−</sup> → Cl<sub>2</sub> ＋ 2e<sup>−</sup>（Cl<sub>2</sub> が発生）</div>
+    <p><strong>硫酸銅（II）CuSO<sub>4</sub> 水溶液・白金電極</strong>：陰極では Cu<sup>2+</sup> が銅として析出します。陽極では SO<sub>4</sub><sup>2−</sup> は反応せず、水が酸化されて酸素が発生します。</p>
+    <div class="formula">陰極： Cu<sup>2+</sup> ＋ 2e<sup>−</sup> → Cu（Cu が析出）</div>
+    <div class="formula">陽極： 2H<sub>2</sub>O → O<sub>2</sub> ＋ 4H<sup>+</sup> ＋ 4e<sup>−</sup>（O<sub>2</sub> が発生）</div>
+    <p><strong>硫酸銅（II）CuSO<sub>4</sub> 水溶液・銅電極</strong>：陰極は白金電極の場合と同じく銅が析出しますが、陽極では水ではなく銅電極自身が溶けます。陽極で溶けた分だけ陰極に銅が析出するので、水溶液中の Cu<sup>2+</sup> の濃度はほぼ変わりません。</p>
+    <div class="formula">陰極： Cu<sup>2+</sup> ＋ 2e<sup>−</sup> → Cu（Cu が析出）</div>
+    <div class="formula">陽極： Cu → Cu<sup>2+</sup> ＋ 2e<sup>−</sup>（Cu 電極が溶ける）</div>
+    <p><strong>水酸化ナトリウム NaOH 水溶液</strong>（白金電極）：陰極では Na<sup>+</sup> は析出せず水が還元され、陽極では OH<sup>−</sup>（水）が酸化されます。全体として水が水素と酸素に分解される反応になります。</p>
+    <div class="formula">陰極： 2H<sub>2</sub>O ＋ 2e<sup>−</sup> → H<sub>2</sub> ＋ 2OH<sup>−</sup>（H<sub>2</sub> が発生）</div>
+    <div class="formula">陽極： 4OH<sup>−</sup> → O<sub>2</sub> ＋ 2H<sub>2</sub>O ＋ 4e<sup>−</sup>（O<sub>2</sub> が発生）</div>
+    <p><strong>塩化銅（II）CuCl<sub>2</sub> 水溶液</strong>（白金または炭素電極）：陰極では銅が析出し、陽極では塩素が発生します。両方の電極反応に溶けている塩のイオンがそのまま使われる、最も単純な例です。</p>
+    <div class="formula">陰極： Cu<sup>2+</sup> ＋ 2e<sup>−</sup> → Cu（Cu が析出）</div>
+    <div class="formula">陽極： 2Cl<sup>−</sup> → Cl<sub>2</sub> ＋ 2e<sup>−</sup>（Cl<sub>2</sub> が発生）</div>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>水溶液中のイオンと電極の材質を書き出す。</strong>溶けている物質が電離してできる陽イオン・陰イオンと、陽極が白金・炭素か、銅などの金属かを確認します。陽極の材質は生成物を変えるので、見落とさないことが第一歩です。</li>
+      <li><strong>陰極を判定する。</strong>陽イオンの金属のイオン化傾向を見ます。小さければ（Zn<sup>2+</sup>、Cu<sup>2+</sup>、Ag<sup>+</sup> など）金属が析出し、大きければ（Na<sup>+</sup>、K<sup>+</sup>、Ca<sup>2+</sup>、Al<sup>3+</sup> など）水が還元されて水素が発生します。</li>
+      <li><strong>陽極を判定する。</strong>まず電極自身が溶けるかどうかを確認し、溶けない電極なら陰イオンを見ます。ハロゲン化物イオン（Cl<sup>−</sup> など）があればハロゲンの単体、それ以外（SO<sub>4</sub><sup>2−</sup>、NO<sub>3</sub><sup>−</sup> など）なら水が酸化されて酸素が発生します。</li>
+      <li><strong>両極の電極反応式を書く。</strong>原子の数と電荷が両辺でそろうように係数を付けます。陰極の式は電子を左辺に、陽極の式は電子を右辺に置きます。</li>
+      <li><strong>必要なら全体の反応式を作る。</strong>両極で出入りする電子の数を最小公倍数でそろえて2式を足すと、電子が消えて電気分解全体の反応式になります。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：塩化ナトリウム NaCl 水溶液を白金電極で電気分解すると、陰極・陽極ではそれぞれ何が発生・析出するか。電極反応式も書け。問題2：硫酸銅（II）CuSO<sub>4</sub> 水溶液を電気分解するとき、(a) 白金電極の場合と (b) 銅電極の場合で、陽極の反応はどう違うか。問題3：水酸化ナトリウム NaOH 水溶液を白金電極で電気分解すると、陰極・陽極ではそれぞれ何が発生するか。問題4：硝酸カリウム KNO<sub>3</sub> 水溶液を白金電極で電気分解すると、陰極・陽極ではそれぞれ何が発生するか。問題5：塩化銅（II）CuCl<sub>2</sub> 水溶液を炭素電極で電気分解したときの、全体の反応式を書け。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：陰極では、Na<sup>+</sup> のイオン化傾向が大きいため金属ナトリウムは析出せず、水が還元されて水素が発生します：2H<sub>2</sub>O ＋ 2e<sup>−</sup> → H<sub>2</sub> ＋ 2OH<sup>−</sup>。陽極では Cl<sup>−</sup> が酸化されて塩素が発生します：2Cl<sup>−</sup> → Cl<sub>2</sub> ＋ 2e<sup>−</sup>。</li>
+          <li>問題2：(a) 白金電極では SO<sub>4</sub><sup>2−</sup> は反応せず、水が酸化されて酸素が発生します：2H<sub>2</sub>O → O<sub>2</sub> ＋ 4H<sup>+</sup> ＋ 4e<sup>−</sup>。(b) 銅電極では電極自身が優先して溶けます：Cu → Cu<sup>2+</sup> ＋ 2e<sup>−</sup>。陰極はいずれの場合も Cu<sup>2+</sup> ＋ 2e<sup>−</sup> → Cu で銅が析出します。</li>
+          <li>問題3：陰極では Na<sup>+</sup> は析出せず、水が還元されて水素が発生します。陽極では OH<sup>−</sup> が酸化されて（水の酸化として）酸素が発生します：4OH<sup>−</sup> → O<sub>2</sub> ＋ 2H<sub>2</sub>O ＋ 4e<sup>−</sup>。全体では水が水素と酸素に分解されます。</li>
+          <li>問題4：K<sup>+</sup> はイオン化傾向が大きく陰極では析出せず、水が還元されて水素が発生します。NO<sub>3</sub><sup>−</sup> はハロゲン化物イオンではないので陽極では反応せず、水が酸化されて酸素が発生します。つまり両極とも水が反応し、陰極で水素、陽極で酸素が発生します。</li>
+          <li>問題5：陰極：Cu<sup>2+</sup> ＋ 2e<sup>−</sup> → Cu、陽極：2Cl<sup>−</sup> → Cl<sub>2</sub> ＋ 2e<sup>−</sup>。電子の数はどちらも2個でそろっているので、そのまま足して電子を消すと、全体の反応は CuCl<sub>2</sub> → Cu ＋ Cl<sub>2</sub> となります。</li>
+        </ol>
+        <p><strong>答え：問題1は陰極で水素、陽極で塩素。問題2は (a) 酸素が発生、(b) 銅電極が溶ける。問題3は陰極で水素、陽極で酸素。問題4は陰極で水素、陽極で酸素。問題5は CuCl<sub>2</sub> → Cu ＋ Cl<sub>2</sub></strong>。判定のコツは、陰極は陽イオンのイオン化傾向、陽極は「電極の材質 → 陰イオンの種類」の順に確認することです。特に問題2のように、電極を変えるだけで陽極の生成物が変わるケースがよく出題されます。</p>
+      </details>
+    </div>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>銅の電解精錬</h3>
+    <p>銅の電解精錬は、陽極に不純物を含む粗銅、陰極に純銅の薄板を使い、硫酸銅（II）水溶液を電気分解する方法です。陽極では銅が Cu → Cu<sup>2+</sup> ＋ 2e<sup>−</sup> と溶け出し、陰極では Cu<sup>2+</sup> ＋ 2e<sup>−</sup> → Cu と純粋な銅が析出します。粗銅に含まれるイオン化傾向の大きい金属（亜鉛や鉄など）の不純物はイオンとして溶け出しても陰極には析出せず、イオン化傾向の小さい金や銀などは陽極の下に沈殿（陽極泥）として回収されます。この項目の優先順位そのものが、純度 99.99％ 級の電気銅を作り分ける仕組みになっています。</p>
+    <h3>アルミニウムの溶融塩電解</h3>
+    <p>アルミニウムはイオン化傾向が大きいため、水溶液を電気分解しても陰極では水が還元されて水素が出るだけで、金属アルミニウムは得られません。そこで工業的には、水溶液ではなく、酸化アルミニウム Al<sub>2</sub>O<sub>3</sub> を高温で溶かした溶融塩（氷晶石を加えて融点を下げたもの）を電気分解し、陰極に金属アルミニウムを取り出します（ホール・エルー法）。水溶液では取り出せない金属は溶融塩電解で作る、という優先順位の裏側の応用です。大量の電力を必要とすることから、アルミニウムは「電気の缶詰」とも呼ばれます。</p>
+    <h3>食塩水の電気分解と電気めっき</h3>
+    <p>塩化ナトリウム水溶液の電気分解は、陽極で塩素、陰極で水素と水酸化ナトリウムが得られる反応で、水酸化ナトリウムや塩素を製造する工業プロセス（イオン交換膜法）の基礎になっています。また、金属イオンが陰極に金属として析出する性質は、装飾品や電子部品の表面に金属の薄膜を付ける電気めっきに使われています。どちらの現場でも、目的の物質だけを出すために、電極の材質や溶液の組み合わせが優先順位をもとに設計されています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>マイケル・ファラデー</strong>（1791〜1867、イギリスの物理学者・化学者）</p>
+    <p>電気分解という現象そのものを体系化したのは、イギリスの物理学者・化学者<strong>マイケル・ファラデー</strong>（1791〜1867）です。1833〜34年に電気分解の法則を実験から見いだし、電極で変化する物質の量が電気量に比例することを示しました。また、「電極（electrode）」「陰極（cathode）」「陽極（anode）」「イオン（ion）」「電気分解（electrolysis）」といった、生成物の判定で今も使う基本用語は、ファラデーが学者ウィリアム・ヒューウェルと相談して作った言葉です。どのイオンがどちらの電極へ向かい、そこで何に変わるかという考え方の土台は、彼の研究によって築かれました。電気量と生成物の量の関係（ファラデーの法則）については、<a href="electrolysis-faraday.html">電気分解とファラデーの法則</a>で詳しく扱います。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>出た物質の量を計算するには<a href="electrolysis-faraday.html">電気分解とファラデーの法則</a>、陰極の判定の土台になる順序は<a href="metal-reactivity-series.html">金属のイオン化傾向</a>、電気分解と逆向きの仕組みは<a href="galvanic-cells.html">電池の原理（ボルタ電池・ダニエル電池）</a>が役立ちます。銅の精錬を詳しく見るには<a href="copper-silver-refining.html">銅・銀と金属の精錬</a>、溶融塩電解で作る金属については<a href="aluminium.html">アルミニウムとその製錬</a>も参考になります。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ネルンストの式｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="ネルンストの式 E＝E°−(RT/nF)lnQ を、公式の意味・25℃での 0.0592 の由来・手順・例題で解説。濃度で電位がどうずれるか（ダニエル電池や亜鉛電極）、pH計のガラス電極など現場での使われ方まで紹介します。計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="ネルンストの式｜化学ツール集">
+<meta property="og:description" content="ネルンストの式で、標準電極電位 E° から実際の濃度・温度での電位を求める。0.0592 の由来とダニエル電池・pH電極への応用を例題で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/nernst-equation.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">ネルンスト</span>の式</h1>
+    <p>化学の考え方辞典 ― 酸化還元・電池と電気分解（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 酸化還元・電池と電気分解 ＞ ネルンストの式</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">酸化還元・電池と電気分解</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    標準電極電位 E° は濃度 1 mol/L のときの値で、実際の溶液では濃度が変わると電位もずれる。そのずれを計算したいときに使うのがネルンストの式で、電位 E は濃度の比（反応商 Q）の対数に比例して E° からずれる。pH計のガラス電極は、このずれが pH に比例することを利用したセンサーである。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>標準電極電位 E° は、すべてのイオン濃度が 1 mol/L、温度 25 ℃という「標準状態」での値です。実際の電池や電極では濃度が 1 mol/L でないことがほとんどで、そのときの電位を求めるのに使います。</p>
+    <ul>
+      <li>金属イオンの濃度が 1 mol/L でないときの、金属電極の電位を求める問題</li>
+      <li>ダニエル電池などで、両極のイオン濃度が変わったときの起電力を求める問題</li>
+      <li>濃度が10倍・100倍と変わると電位が何 V ずれるかを見積もる問題</li>
+      <li>pH電極（ガラス電極）の電位が pH に対してどのように変わるかを説明する問題</li>
+    </ul>
+    <p>ポイントは、ずれの大きさが<strong>濃度そのものではなく、濃度の比の対数</strong>で決まることです。濃度が10倍変わっても、ずれるのは 0.0592÷n [V] だけです。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <div class="formula">E ＝ E° − (RT ÷ nF) ln Q</div>
+    <p>各記号の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>E</strong>：実際の濃度・温度での電位 [V]。半反応の電極電位にも、電池全体の起電力にも同じ形で使える</li>
+      <li><strong>E°</strong>：標準電極電位（半反応の場合）または標準起電力 E°<sub>cell</sub>（電池全体の場合）[V]</li>
+      <li><strong>R</strong>：気体定数。本ページでは R ＝ 8.314 J/(mol・K) を使う</li>
+      <li><strong>T</strong>：絶対温度 [K]。25 ℃ ＝ 298 K</li>
+      <li><strong>n</strong>：半反応（または電池全体の反応）で授受される電子の物質量の係数 [mol]（電子数）</li>
+      <li><strong>F</strong>：ファラデー定数 F ＝ 9.65×10<sup>4</sup> C/mol</li>
+      <li><strong>Q</strong>：反応商。反応式の生成物側の濃度を係数乗して掛けたものを、反応物側で割った比（固体・純液体は 1 として含めない）</li>
+      <li><strong>ln</strong>：自然対数（底 e の対数）。常用対数 log<sub>10</sub> とは ln x ＝ 2.303 log<sub>10</sub> x の関係がある</li>
+    </ul>
+    <h3>半反応での Q の作り方</h3>
+    <p>還元の向きに書いた半反応 酸化体 ＋ ne<sup>−</sup> → 還元体 に対して、Q は次の比になります。</p>
+    <div class="formula">Q ＝ [還元体] ÷ [酸化体]</div>
+    <p>たとえば亜鉛の半反応 Zn<sup>2+</sup> ＋ 2e<sup>−</sup> → Zn では、還元体の Zn は固体なので 1 とし、Q ＝ 1 ÷ [Zn<sup>2+</sup>] です。[Zn<sup>2+</sup>] が 1 mol/L より薄いと Q は 1 より大きくなり、ln Q が正になるため、E は E° より小さく（負に）ずれます。</p>
+    <h3>25 ℃では 0.0592 の形になる</h3>
+    <p>T ＝ 298 K（25 ℃）を入れると、RT÷F × ln10 は次の値になります。</p>
+    <div class="formula">(8.314 × 298 ÷ 9.65×10<sup>4</sup>) × 2.303 ≒ 0.0592 V</div>
+    <p>このため、25 ℃では自然対数を常用対数に直した次の形がよく使われます。</p>
+    <div class="formula">E ＝ E° − (0.0592 ÷ n) log<sub>10</sub> Q（25 ℃）</div>
+    <p>つまり 25 ℃では、<strong>Q が10倍になるごとに電位が 0.0592÷n [V] だけ下がり、Q が 1÷10 になるごとに 0.0592÷n [V] だけ上がります</strong>。温度が変われば係数 0.0592 も温度に比例して変わるので、25 ℃以外の計算ではもとの (RT÷nF) ln Q の形に戻して計算します。</p>
+    <h3>濃度が変わると電位はどうずれるか（ダニエル電池）</h3>
+    <p>ダニエル電池の全体反応 Zn ＋ Cu<sup>2+</sup> → Zn<sup>2+</sup> ＋ Cu では、固体は除くので Q ＝ [Zn<sup>2+</sup>] ÷ [Cu<sup>2+</sup>]、n ＝ 2、E°<sub>cell</sub> ＝ ＋1.10 V です。負極側の Zn<sup>2+</sup> を薄くすると Q が小さくなり、−(0.0592÷2) log<sub>10</sub> Q の項が正に働いて、起電力は 1.10 V より<strong>上がります</strong>。逆に Zn<sup>2+</sup> が濃くなったり、Cu<sup>2+</sup> が薄くなったりすると、起電力は下がります。放電が進むと Zn<sup>2+</sup> は増え Cu<sup>2+</sup> は減るので、ダニエル電池の電圧が使っているうちに少しずつ下がるのは、この式どおりの変化です。</p>
+    <h3>pH電極への応用</h3>
+    <p>水素イオンが関わる半反応では、Q の中に [H<sup>+</sup>] が入ります。たとえば 2H<sup>+</sup> ＋ 2e<sup>−</sup> → H<sub>2</sub> では、電位は [H<sup>+</sup>] の対数、つまり pH に対して直線的に変わり、25 ℃では pH が 1 変わるごとに電位が 0.0592 V ずれます。pH計のガラス電極はこの性質を使ったもので、ガラス膜の内側と外側の水素イオン濃度の差によって生じる電位差が pH に比例するため、電位を測れば pH が分かります。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>半反応（または全体反応）を還元・反応の向きに書き、n を決める。</strong>授受される電子の数が n です。</li>
+      <li><strong>E° を用意する。</strong>半反応なら標準電極電位の表から、電池全体なら E°<sub>cell</sub>（正極の E° − 負極の E°）を使います。</li>
+      <li><strong>Q を作る。</strong>生成物側の濃度の積 ÷ 反応物側の濃度の積とし、係数は指数にします。固体・純液体は 1 として含めません。濃度は標準状態 1 mol/L に対する比として扱うため、Q は無次元の数です。</li>
+      <li><strong>温度を確認する。</strong>25 ℃（298 K）なら E ＝ E° − (0.0592÷n) log<sub>10</sub> Q、それ以外の温度では係数を RT÷F × ln10 から計算し直します。</li>
+      <li><strong>代入して E を求め、ずれの向きを確かめる。</strong>Q ＞ 1 なら E は E° より小さく、Q ＜ 1 なら E は E° より大きくなります。向きが逆になっていないか検算しましょう。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：25 ℃で、Zn<sup>2+</sup> の濃度が 0.010 mol/L の溶液に亜鉛板を入れたときの電極電位を求めよ。亜鉛の標準電極電位は E° ＝ −0.76 V とする。問題2：ダニエル電池（E°<sub>cell</sub> ＝ ＋1.10 V、n ＝ 2）で、[Zn<sup>2+</sup>] ＝ 0.010 mol/L、[Cu<sup>2+</sup>] ＝ 1.0 mol/L のとき、25 ℃での起電力を求めよ。問題3：問題1と同じ亜鉛電極を 37 ℃（310 K）で使うと、電極電位はどうなるか。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：半反応は Zn<sup>2+</sup> ＋ 2e<sup>−</sup> → Zn で n ＝ 2。還元体の Zn は固体なので Q ＝ 1 ÷ [Zn<sup>2+</sup>] ＝ 1 ÷ 0.010 ＝ 100。</li>
+          <li>25 ℃の形に代入すると、E ＝ −0.76 − (0.0592 ÷ 2) × log<sub>10</sub> 100 ＝ −0.76 − 0.0296 × 2 ＝ −0.76 − 0.0592 ＝ −0.8192 V、つまり約 −0.82 V です。濃度が標準状態より薄い分、電位は負の側にずれました。</li>
+          <li>問題2：Q ＝ [Zn<sup>2+</sup>] ÷ [Cu<sup>2+</sup>] ＝ 0.010 ÷ 1.0 ＝ 0.010。E ＝ 1.10 − (0.0592 ÷ 2) × log<sub>10</sub> 0.010 ＝ 1.10 − 0.0296 × (−2) ＝ 1.10 ＋ 0.0592 ＝ 1.1592 V、つまり約 1.16 V です。Zn<sup>2+</sup> を薄くした分、起電力は標準状態より上がりました。</li>
+          <li>問題3：37 ℃では係数が変わります。(RT÷F) × ln10 ＝ (8.314 × 310 ÷ 9.65×10<sup>4</sup>) × 2.303 ≒ 0.0615 V。E ＝ −0.76 − (0.0615 ÷ 2) × log<sub>10</sub> 100 ＝ −0.76 − 0.0615 ＝ −0.8215 V、つまり約 −0.82 V です。温度が上がると係数が大きくなるため、ずれもわずかに大きくなります。</li>
+        </ol>
+        <p><strong>答え：問題1は約 −0.82 V、問題2は約 1.16 V、問題3は約 −0.82 V（25 ℃よりわずかに負にずれる）</strong>。いずれも計算機に同じ値を入力して確かめられます（問題1・3は半反応モード、問題2は電池全体モードで Q ＝ 0.010）。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>pH計（ガラス電極）</h3>
+    <p>pH計はネルンストの式そのものを使った測定器です。ガラス電極の膜に生じる電位差は、25 ℃では pH 1 あたり約 0.0592 V の割合で pH に比例します。pH計が温度補償の機能を持つのは、この傾き（係数）が温度に比例して変わるためで、測定温度に合わせて傾きを直して読み取っています。</p>
+    <h3>イオン選択性電極と血液分析</h3>
+    <p>特定のイオンだけに感応する膜を使ったイオン選択性電極も、電位がイオン濃度の対数に比例するネルンスト応答を利用します。医療現場の血液ガス・電解質分析装置では、Na<sup>+</sup>、K<sup>+</sup>、Ca<sup>2+</sup> などの濃度をこの方法で測定しています。</p>
+    <h3>ORP計（酸化還元電位の測定）</h3>
+    <p>水処理や水質管理で使われる ORP計は、溶液全体の酸化還元電位を測る計器です。多数の半反応が混ざった電位ではありますが、「電位は濃度比の対数で決まる」というネルンストの式の考え方が、塩素消毒の効き具合の管理などの読み取りの土台になっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ヴァルター・ネルンスト</strong>（1864〜1941、ドイツの物理化学者）</p>
+    <p>この式を提案したのは、ドイツの物理化学者<strong>ヴァルター・ネルンスト</strong>（1864〜1941）です。ネルンストは電極電位が溶液の濃度によってどう変わるかを理論的に導き、1889年にこの式を発表しました。電位と濃度・温度を結びつけたこの関係は、電気化学の基礎として今も使われています。ネルンストは熱力学の第三法則（ネルンストの熱定理）でも知られ、1920年にノーベル化学賞を受賞しました。電圧の計算に欠かせないファラデー定数の F は、電気分解の法則を発見したマイケル・ファラデーの名に由来します。</p>
+  </section>
+
+  <a class="linkcard" href="calc-nernst-equation.html">
+    <span class="lc-t">計算機で解く →</span>
+    <span class="lc-d" style="display:block;">E°・電子数 n・酸化体と還元体の濃度（または反応商 Q）と温度を入れて、ネルンストの式から実際の電位 E を計算します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>標準状態での電位の読み方は<a href="standard-electrode-potential.html">標準電極電位</a>、電池そのものの仕組みは<a href="galvanic-cells.html">電池の原理（ボルタ電池・ダニエル電池）</a>、Q と平衡定数 K の比べ方は<a href="reaction-quotient.html">反応商と平衡の予測</a>が役立ちます。ネルンストの式の熱力学的な背景は<a href="gibbs-free-energy.html">エンタルピー・エントロピー・ギブズエネルギー</a>、pH そのものの計算は<a href="ph-calculation.html">pHの計算</a>も参考になります。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

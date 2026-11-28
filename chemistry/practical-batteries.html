@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>実用電池と放電量｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="実用電池と放電量を、マンガン・アルカリ乾電池、酸化銀電池、リチウム一次電池、鉛蓄電池、ニッケル水素電池、リチウムイオン電池、燃料電池の電極反応と電圧の目安、用途の選び分けに加え、電流と時間や電池容量（mAh）から電気量と電子の物質量を求める計算まで例題で解説。自動車やスマートフォンなど現場での使われ方も紹介します。放電量の計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="実用電池と放電量｜化学ツール集">
+<meta property="og:description" content="マンガン乾電池から鉛蓄電池、リチウムイオン電池、燃料電池まで、実用電池の電極反応と電圧の目安、電流と時間や容量から求める放電量（電気量）を例題で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/practical-batteries.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">実用電池</span>と放電量</h1>
+    <p>化学の考え方辞典 ― 酸化還元・電池と電気分解（高校化学・2年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 酸化還元・電池と電気分解 ＞ 実用電池と放電量</p>
+  <p><span class="badge badge-lv">高校化学・2年</span> <span class="badge badge-genre">酸化還元・電池と電気分解</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    リモコンや時計、自動車、スマートフォンなど、用途に合った電池を選んだり、各電池の電極反応を読み解いたりしたいときに使う。実用電池は、充電できない一次電池、充電して繰り返し使える二次電池、燃料を供給し続けて発電する燃料電池に大きく分かれ、電圧や容量、大きさの違いで使い分けられている。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>ボルタ電池・ダニエル電池で学んだ電池の原理（<a href="galvanic-cells.html">電池の原理（ボルタ電池・ダニエル電池）</a>）を、実際に使われている電池に当てはめる項目です。次のような場面で使います。</p>
+    <ul>
+      <li>マンガン乾電池・鉛蓄電池・リチウムイオン電池などの負極・正極で起こる反応を、半反応式で書く問題</li>
+      <li>一次電池・二次電池・燃料電池の違いと、それぞれの代表的な用途を選ぶ問題</li>
+      <li>鉛蓄電池の充電で反応が放電と逆向きに進むことや、放電で硫酸が消費されることを説明する問題</li>
+      <li>各電池の電圧の目安（鉛蓄電池は約 2 V／セル、リチウムイオン電池は約 3.7 V など）から、直列につないだときの電圧を読む問題</li>
+    </ul>
+    <p>どの電池でも共通する骨格は、<strong>負極では酸化（電子を放出）、正極では還元（電子を受け取る）</strong>という点です。電池ごとに「何が酸化され、何が還元されるか」が違うだけです。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>一次電池（充電できない電池）</h3>
+    <p>放電だけができ、充電して元に戻すことを想定していない電池です。代表例の電極反応と電圧の目安は次の通りです（電圧 [V] は公称値の目安で、製品や使用状態で変わります）。</p>
+    <p><strong>マンガン乾電池</strong>（電圧約 1.5 V）：負極は亜鉛 Zn、正極は二酸化マンガン MnO<sub>2</sub>、電解液は塩化アンモニウム NH<sub>4</sub>Cl などの水溶液をしみこませたペーストです。</p>
+    <div class="formula">負極（Zn）： Zn → Zn<sup>2+</sup> ＋ 2e<sup>−</sup></div>
+    <div class="formula">正極（MnO<sub>2</sub>）： 2MnO<sub>2</sub> ＋ 2NH<sub>4</sub><sup>+</sup> ＋ 2e<sup>−</sup> → Mn<sub>2</sub>O<sub>3</sub> ＋ 2NH<sub>3</sub> ＋ H<sub>2</sub>O</div>
+    <p><strong>アルカリ乾電池</strong>（電圧約 1.5 V）：電解液に水酸化カリウム KOH 水溶液を使った乾電池で、マンガン乾電池より大きな電流を取り出せ、長持ちします。</p>
+    <div class="formula">負極（Zn）： Zn ＋ 2OH<sup>−</sup> → ZnO ＋ H<sub>2</sub>O ＋ 2e<sup>−</sup></div>
+    <div class="formula">正極（MnO<sub>2</sub>）： 2MnO<sub>2</sub> ＋ H<sub>2</sub>O ＋ 2e<sup>−</sup> → Mn<sub>2</sub>O<sub>3</sub> ＋ 2OH<sup>−</sup></div>
+    <p><strong>酸化銀電池</strong>（電圧約 1.55 V）：正極に酸化銀 Ag<sub>2</sub>O を使った小型のボタン電池で、放電の終わりまで電圧がほぼ一定に保たれるのが特徴です。腕時計や補聴器など、小さな電流を長く安定して使う機器に向きます。</p>
+    <div class="formula">負極（Zn）： Zn ＋ 2OH<sup>−</sup> → ZnO ＋ H<sub>2</sub>O ＋ 2e<sup>−</sup></div>
+    <div class="formula">正極（Ag<sub>2</sub>O）： Ag<sub>2</sub>O ＋ H<sub>2</sub>O ＋ 2e<sup>−</sup> → 2Ag ＋ 2OH<sup>−</sup></div>
+    <p><strong>リチウム一次電池</strong>（電圧約 3.0 V）：負極にリチウム Li を使った電池で、電圧が高く、軽く、長期間保存できます。負極では Li → Li<sup>+</sup> ＋ e<sup>−</sup> という酸化が起こり、正極に二酸化マンガンを使ったものでは、模式的に MnO<sub>2</sub> ＋ Li<sup>+</sup> ＋ e<sup>−</sup> → LiMnO<sub>2</sub> と書けます。カメラやメモリのバックアップなどに使われます。</p>
+    <h3>二次電池（充電できる電池）</h3>
+    <p>放電の反応を、充電によって逆向きに進められる電池です。</p>
+    <p><strong>鉛蓄電池</strong>（約 2.0 V／セル）：負極は鉛 Pb、正極は酸化鉛（IV）PbO<sub>2</sub>、電解液は希硫酸 H<sub>2</sub>SO<sub>4</sub> です。放電では両極とも硫酸鉛 PbSO<sub>4</sub> になります。</p>
+    <div class="formula">負極（Pb）： Pb ＋ SO<sub>4</sub><sup>2−</sup> → PbSO<sub>4</sub> ＋ 2e<sup>−</sup></div>
+    <div class="formula">正極（PbO<sub>2</sub>）： PbO<sub>2</sub> ＋ SO<sub>4</sub><sup>2−</sup> ＋ 4H<sup>+</sup> ＋ 2e<sup>−</sup> → PbSO<sub>4</sub> ＋ 2H<sub>2</sub>O</div>
+    <div class="formula">全体（放電）： Pb ＋ PbO<sub>2</sub> ＋ 2H<sub>2</sub>SO<sub>4</sub> → 2PbSO<sub>4</sub> ＋ 2H<sub>2</sub>O</div>
+    <p>放電では硫酸が消費されて水ができるため、電解液の硫酸の濃度（密度）が下がり、それに伴って起電力も少しずつ低下します。逆に<strong>充電ではこの反応が逆向きに進み</strong>、両極の PbSO<sub>4</sub> が Pb と PbO<sub>2</sub> に戻り、硫酸の濃度も元に戻ります。1セル約 2.0 V なので、自動車用では6セルを直列につないで約 12 V にしています。</p>
+    <p><strong>ニッケル水素電池</strong>（電圧約 1.2 V）：負極に水素吸蔵合金（水素を吸収する合金）、正極にオキシ水酸化ニッケル NiOOH を使った電池で、乾電池と同じ形の充電池として使われます。M を水素吸蔵合金として、放電の反応は模式的に次のように書けます。</p>
+    <div class="formula">負極： MH ＋ OH<sup>−</sup> → M ＋ H<sub>2</sub>O ＋ e<sup>−</sup></div>
+    <div class="formula">正極： NiOOH ＋ H<sub>2</sub>O ＋ e<sup>−</sup> → Ni(OH)<sub>2</sub> ＋ OH<sup>−</sup></div>
+    <p><strong>リチウムイオン電池</strong>（電圧約 3.7 V）：負極に黒鉛（炭素）などの層状の物質、正極にコバルト酸リチウム LiCoO<sub>2</sub> などのリチウムを含む金属酸化物を使った電池です。放電・充電では、リチウムイオン Li<sup>+</sup> が電極の層のすき間に出入りするだけで、電極そのものの骨格はあまり変わりません。この仕組みを<strong>インターカレーション</strong>といいます。放電の反応は模式的に次のように書けます（正極は CoO<sub>2</sub> と LiCoO<sub>2</sub> の間で組成が変化します）。</p>
+    <div class="formula">負極（黒鉛）： LiC<sub>6</sub> → C<sub>6</sub> ＋ Li<sup>+</sup> ＋ e<sup>−</sup></div>
+    <div class="formula">正極： CoO<sub>2</sub> ＋ Li<sup>+</sup> ＋ e<sup>−</sup> → LiCoO<sub>2</sub></div>
+    <p>放電では Li<sup>+</sup> が負極から正極へ（電子は外部の回路を通って負極から正極へ）移動し、充電では逆に Li<sup>+</sup> が正極から負極へ戻ります。電圧が高く、軽い割に多くの電気を蓄えられるため、スマートフォンやノートパソコン、電気自動車に広く使われています。</p>
+    <h3>燃料電池（燃料を供給して発電する電池）</h3>
+    <p>水素 H<sub>2</sub> と酸素 O<sub>2</sub> を外部から供給し続け、水ができる反応のエネルギーを電気として取り出す装置です。酸性の電解質を使った場合の電極反応は次の通りです。</p>
+    <div class="formula">負極： H<sub>2</sub> → 2H<sup>+</sup> ＋ 2e<sup>−</sup></div>
+    <div class="formula">正極： O<sub>2</sub> ＋ 4H<sup>+</sup> ＋ 4e<sup>−</sup> → 2H<sub>2</sub>O</div>
+    <div class="formula">全体： 2H<sub>2</sub> ＋ O<sub>2</sub> → 2H<sub>2</sub>O</div>
+    <p>生成物が水だけなので、クリーンな発電方法として注目されています。電解質の種類によって、リン酸を使う<strong>リン酸形</strong>、高分子の膜を使う<strong>固体高分子形</strong>などがあり、固体高分子形は燃料電池自動車や家庭用燃料電池に使われています。1セルあたりの電圧は約 0.7〜1 V 程度で、多数のセルを直列につないで必要な電圧を得ます。</p>
+    <p>各記号の意味は次の通りです。</p>
+    <ul>
+      <li><strong>e<sup>−</sup></strong>：電子。半反応式では、酸化では右辺に、還元では左辺に書く</li>
+      <li><strong>セル</strong>：電池の最小単位（単電池）。鉛蓄電池は約 2.0 V／セル、リチウムイオン電池は約 3.7 V／セルが目安</li>
+      <li><strong>一次電池・二次電池</strong>：一次電池は放電専用、二次電池は充電によって放電の反応を逆向きに戻せる電池</li>
+      <li><strong>Q [C]</strong>：電気量（放電量）。単位はクーロン [C]</li>
+      <li><strong>F</strong>：ファラデー定数。電子 1 mol がもつ電気量で、F ＝ 9.65×10<sup>4</sup> C/mol</li>
+    </ul>
+    <h3>放電量（電気量）の計算</h3>
+    <p>電池がどれだけの電気を取り出せるかは、放電で流れた電気量で比べられます。電流 I [A] を t [秒] 流したときの電気量は、電気分解と同じく次の式で求められます。</p>
+    <div class="formula">Q [C] ＝ I [A] × t [秒]</div>
+    <p>電池の容量は [mAh]（ミリアンペア時）で表示されることが多く、1 mAh ＝ 3.6 C（1 Ah ＝ 3600 C）で電気量に換算できます。電気量をファラデー定数 F ＝ 9.65×10<sup>4</sup> C/mol で割れば、放電で流れた電子の物質量 ne [mol] が分かり、電極で反応した物質の量も見積もれます。</p>
+    <div class="formula">ne [mol] ＝ Q [C] ÷ F [C/mol]</div>
+    <p>たとえば 2.0 A の電流を 4825 秒流すと、Q ＝ 2.0 × 4825 ＝ 9650 C で、電子の物質量は 9650 ÷ 9.65×10<sup>4</sup> ＝ 0.10 mol です。容量に直すと 9650 ÷ 3.6 ≒ 2681 mAh になります。また、電気量が 19300 C のとき電子は 0.20 mol 流れるので、鉛蓄電池の負極では Pb が 0.10 mol（原子量 207 より 20.7 g）反応したことになります。</p>
+    <p class="note">※ 電池を分解すると、鉛蓄電池の希硫酸のような有害な電解液に触れたり、リチウム系電池では発熱・発火したりする危険があります。電池は絶対に分解・改造しないでください。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>電池の種類を分ける。</strong>充電できないものは一次電池、充電できるものは二次電池、燃料を供給し続けるものは燃料電池です。</li>
+      <li><strong>負極の反応を書く。</strong>負極では酸化が起こります。金属が溶け出す（Zn → Zn<sup>2+</sup> ＋ 2e<sup>−</sup>）、鉛蓄電池なら PbSO<sub>4</sub> ができる、リチウムイオン電池なら Li<sup>+</sup> が抜け出す、という形を電池ごとに当てはめます。</li>
+      <li><strong>正極の反応を書く。</strong>正極では還元が起こります。MnO<sub>2</sub> や PbO<sub>2</sub>、O<sub>2</sub> などが電子を受け取る式を書きます。</li>
+      <li><strong>原子数と電荷を検算する。</strong>両辺で各原子の数と電荷の合計が一致しているかを必ず確認します。一致しなければ係数か H<sub>2</sub>O・H<sup>+</sup>・OH<sup>−</sup> の付け忘れを疑います。</li>
+      <li><strong>全体の反応や充電の向きが必要なら、電子を消して足す／逆向きに読む。</strong>二次電池の充電は、放電の半反応式をそのまま逆向きに読んだものになります。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：次の用途に最も適した電池を、酸化銀電池・鉛蓄電池・リチウムイオン電池・燃料電池から選べ。（ア）腕時計（小さな電流を長く安定して使う）（イ）自動車のエンジン始動用（大きな電流を短時間流す）（ウ）スマートフォン（軽くて電圧が高く、充電して繰り返し使う）（エ）水素を燃料として走る自動車。問題2：鉛蓄電池の放電について、負極・正極の半反応式と全体の反応式を書け。問題3：鉛蓄電池を充電すると、各電極では何が起こるか。また、放電が進んだ鉛蓄電池では電解液の硫酸の濃度はどうなるか。問題4：燃料電池（酸性の電解質）について、正極の半反応式と全体の反応式を書け。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：（ア）は放電の終わりまで電圧がほぼ一定な酸化銀電池。（イ）は1セル約 2.0 V で大電流を流せる鉛蓄電池。（ウ）は約 3.7 V と電圧が高く軽いリチウムイオン電池。（エ）は水素と酸素から発電する燃料電池です。</li>
+          <li>問題2：負極では Pb ＋ SO<sub>4</sub><sup>2−</sup> → PbSO<sub>4</sub> ＋ 2e<sup>−</sup>、正極では PbO<sub>2</sub> ＋ SO<sub>4</sub><sup>2−</sup> ＋ 4H<sup>+</sup> ＋ 2e<sup>−</sup> → PbSO<sub>4</sub> ＋ 2H<sub>2</sub>O。電子の数がそろっているので2式を足すと、全体は Pb ＋ PbO<sub>2</sub> ＋ 2H<sub>2</sub>SO<sub>4</sub> → 2PbSO<sub>4</sub> ＋ 2H<sub>2</sub>O となります。</li>
+          <li>問題3：充電では放電と逆の反応が起こり、負極では PbSO<sub>4</sub> が Pb に、正極では PbSO<sub>4</sub> が PbO<sub>2</sub> に戻ります。放電では全体の反応式の通り硫酸が消費されて水ができるので、電解液の硫酸の濃度は下がります（充電すると元に戻ります）。</li>
+          <li>問題4：正極では酸素が還元され、O<sub>2</sub> ＋ 4H<sup>+</sup> ＋ 4e<sup>−</sup> → 2H<sub>2</sub>O。負極の H<sub>2</sub> → 2H<sup>+</sup> ＋ 2e<sup>−</sup> を2倍して足すと電子が消え、全体は 2H<sub>2</sub> ＋ O<sub>2</sub> → 2H<sub>2</sub>O となります。</li>
+        </ol>
+        <p><strong>答え：問題1は（ア）酸化銀電池、（イ）鉛蓄電池、（ウ）リチウムイオン電池、（エ）燃料電池。問題2は負極 Pb ＋ SO<sub>4</sub><sup>2−</sup> → PbSO<sub>4</sub> ＋ 2e<sup>−</sup>、正極 PbO<sub>2</sub> ＋ SO<sub>4</sub><sup>2−</sup> ＋ 4H<sup>+</sup> ＋ 2e<sup>−</sup> → PbSO<sub>4</sub> ＋ 2H<sub>2</sub>O、全体 Pb ＋ PbO<sub>2</sub> ＋ 2H<sub>2</sub>SO<sub>4</sub> → 2PbSO<sub>4</sub> ＋ 2H<sub>2</sub>O。問題3は充電で両極の PbSO<sub>4</sub> が Pb と PbO<sub>2</sub> に戻り、放電で硫酸の濃度は下がる。問題4は正極 O<sub>2</sub> ＋ 4H<sup>+</sup> ＋ 4e<sup>−</sup> → 2H<sub>2</sub>O、全体 2H<sub>2</sub> ＋ O<sub>2</sub> → 2H<sub>2</sub>O</strong>。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>乾電池とボタン電池</h3>
+    <p>マンガン乾電池とアルカリ乾電池は、リモコンや懐中電灯、玩具など最も身近な電源です。大きな電流を長く流す用途ではアルカリ乾電池が選ばれます。酸化銀電池は電圧が安定しているため腕時計や補聴器に、リチウム一次電池は軽くて保存が利くためカメラや各種機器のバックアップ電源に使われています。</p>
+    <h3>自動車の鉛蓄電池</h3>
+    <p>自動車のバッテリーは鉛蓄電池で、6セル直列で約 12 V を出し、エンジン始動時に大きな電流を流します。エンジンで発電した電気で充電しながら使う、二次電池の最も古くからの実用例です。放電で硫酸の濃度が下がる性質は、電解液の密度を測って充電状態を調べる点検にも利用されています。</p>
+    <h3>リチウムイオン電池と電気自動車</h3>
+    <p>リチウムイオン電池は、スマートフォンやノートパソコンだけでなく、電気自動車や家庭用蓄電池にも使われています。電圧が約 3.7 V と高く、インターカレーションによって電極の骨格を保ったまま充放電できるため、繰り返し使っても劣化しにくいのが強みです。ニッケル水素電池は、乾電池型の充電池のほか、ハイブリッド車のバッテリーにも使われてきました。</p>
+    <h3>燃料電池</h3>
+    <p>固体高分子形燃料電池は、燃料電池自動車の電源や、都市ガスから取り出した水素で発電と給湯を行う家庭用燃料電池に実用化されています。発電の際にできるのが水だけなので、利用する場所では排気がクリーンな発電方法です。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ジョルジュ・ルクランシェ</strong>（1839〜1882、フランスの技術者）、<strong>ガストン・プランテ</strong>（1834〜1889、フランスの物理学者）</p>
+    <p>乾電池の原型を作ったのは、フランスの技術者<strong>ジョルジュ・ルクランシェ</strong>（1839〜1882）です。1866年に、亜鉛を負極、二酸化マンガンを正極、塩化アンモニウム水溶液を電解液とするルクランシェ電池を発表しました。これを扱いやすい乾電池の形に改良したものが、現在のマンガン乾電池につながっています。一方、二次電池の始まりはフランスの物理学者<strong>ガストン・プランテ</strong>（1834〜1889）で、1859年に鉛と酸化鉛を希硫酸に入れた鉛蓄電池を発明しました。充電して繰り返し使える電池として、基本的な構造は現代の自動車用バッテリーまで受け継がれています。</p>
+  </section>
+
+  <a class="linkcard" href="calc-practical-batteries.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">実用電池と放電量 計算機：電流と時間、電池容量 [mAh]、電気量と金属のモル質量から、電気量と電子の物質量、放電で反応する金属の質量を解き方の手順つきで表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>電池の原理そのものは<a href="galvanic-cells.html">電池の原理（ボルタ電池・ダニエル電池）</a>、電気量と物質の量の関係は<a href="electrolysis-faraday.html">電気分解とファラデーの法則</a>、電極で何が生成するかの予測は<a href="electrolysis-products.html">電気分解の生成物</a>が役立ちます。電圧の基礎は物理コーナーの<a href="https://wankodo.github.io/physics/current-and-ohms-law.html">電流とオームの法則</a>も参考になります。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
