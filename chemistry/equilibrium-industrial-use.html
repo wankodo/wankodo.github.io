@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>平衡と工業（ハーバー・ボッシュ法）｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="平衡の工業利用を、ハーバー・ボッシュ法を例に公式・手順・例題で解説。アンモニア合成で高圧・約400〜500℃の中温・鉄触媒・未反応ガスの循環が選ばれる理由を、ルシャトリエの原理と反応速度の妥協から説明し、接触法（硫酸）との対比や肥料生産など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="平衡と工業（ハーバー・ボッシュ法）｜化学ツール集">
+<meta property="og:description" content="ハーバー・ボッシュ法の条件（高圧・中温・鉄触媒・未反応ガスの循環）は収率と速度の妥協。その理由をルシャトリエの原理と例題で解説し、接触法とも対比します。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/equilibrium-industrial-use.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>平衡と<span class="accent">工業</span>（ハーバー・ボッシュ法）</h1>
+    <p>化学の考え方辞典 ― 反応速度と平衡（高校化学・2年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 反応速度と平衡 ＞ 平衡と工業（ハーバー・ボッシュ法）</p>
+  <p><span class="badge badge-lv">高校化学・2年</span> <span class="badge badge-genre">反応速度と平衡</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    窒素と水素からアンモニアを作るハーバー・ボッシュ法の条件選びの考え方で、反応は発熱で気体の分子数が減るため、平衡だけを見れば低温・高圧が有利だが、低温では反応速度が小さすぎて実用にならない。そこで約400〜500 ℃・約200気圧・鉄触媒という収率と速度の妥協が選ばれ、できたアンモニアを液化して取り除き、未反応のガスを循環させることで全体としての収率を高めている。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>可逆反応を工業生産に使うとき、<strong>平衡の偏り（収率）と反応速度の両方から反応条件を判断する</strong>考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>ハーバー・ボッシュ法で、なぜ高圧・中温（約400〜500 ℃）・鉄触媒が選ばれるのかを説明する問題</li>
+      <li>圧力・温度・触媒・生成物の除去が、アンモニアの収率と反応速度にどう効くかを、ルシャトリエの原理で判断する問題</li>
+      <li>1回の通過で反応する割合や、原料と生成物の物質量・質量の関係を計算する問題</li>
+      <li>硫酸の接触法など、ほかの工業的製法と条件選びを対比する問題</li>
+    </ul>
+    <p>ポイントは、<strong>「平衡が生成物側に偏る条件」と「速く反応が進む条件」は一致しない</strong>ことです。工業条件はその妥協として決まります。また、触媒は反応速度を大きくしますが、平衡の位置（平衡時の組成）は変えません。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>アンモニア合成の反応は可逆反応で、正反応は発熱反応です。熱化学方程式の形で書くと次のようになります。</p>
+    <div class="formula">N<sub>2</sub> ＋ 3H<sub>2</sub> ⇌ 2NH<sub>3</sub> ＋ 92 kJ</div>
+    <p>左辺の気体は 1＋3＝4 mol、右辺は 2 mol で、<strong>正反応では気体の分子数（物質量）が減ります</strong>。ルシャトリエの原理から、条件の影響は次のように整理できます。</p>
+    <ul>
+      <li><strong>圧力</strong>：圧力を高くすると、分子数の少ない側（右辺）へ平衡が移動し、収率が上がります。反応速度も大きくなるので、高圧は両面で有利です。ただし装置の強度や圧縮のコストに限度があり、実際は<strong>約200気圧（約2×10<sup>7</sup> Pa、プラントにより150〜300気圧程度）</strong>が使われます。</li>
+      <li><strong>温度</strong>：発熱反応なので、温度を下げるほど平衡は右へ偏り収率は上がります。しかし低温では反応速度が極端に小さく、平衡に達するまでに時間がかかりすぎて実用になりません。逆に高温にすると速く進みますが、平衡が左へ戻って収率が下がります。そこで<strong>約400〜500 ℃という中間の温度（中温）</strong>が妥協として選ばれています。</li>
+      <li><strong>触媒</strong>：鉄を主成分とする<strong>鉄触媒</strong>（四酸化三鉄 Fe<sub>3</sub>O<sub>4</sub> を還元して作る多孔質の鉄で、酸化カリウム K<sub>2</sub>O や酸化アルミニウム Al<sub>2</sub>O<sub>3</sub> などが助触媒として加えられます）を使います。触媒は正反応・逆反応の両方の速度を大きくし、平衡に達する時間を短くしますが、<strong>平衡の位置は変えません</strong>。触媒があるおかげで、収率を犠牲にしすぎない温度でも実用的な速度が得られます。</li>
+      <li><strong>生成物の除去と循環</strong>：実際の条件では、反応器を1回通過する間に反応するのは原料の一部（<strong>約15%</strong>）にとどまります。そこで、混合ガスを冷却してアンモニアだけを液化して取り除き（生成物を取り除くと平衡が右へ移動し続けます）、未反応の N<sub>2</sub> と H<sub>2</sub> は反応器へ戻して循環させます。これにより、1回あたりの収率は低くても、全体としては原料の大部分をアンモニアに変えられます。</li>
+    </ul>
+    <p>各量の単位は次の通りです。</p>
+    <ul>
+      <li><strong>圧力</strong>：気圧 [atm]。1 atm ＝ 1.013×10<sup>5</sup> Pa なので、200 atm ≒ 2.0×10<sup>7</sup> Pa</li>
+      <li><strong>温度</strong>：℃（摂氏温度）。平衡の向きの判断では値そのものより「上げる・下げる」が重要</li>
+      <li><strong>反応熱</strong>：92 kJ は N<sub>2</sub> が 1 mol 反応するときに出る熱量 [kJ]</li>
+    </ul>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>対比：硫酸の接触法</h3>
+    <p>硫酸 H<sub>2</sub>SO<sub>4</sub> の工業的製法である<strong>接触法</strong>の中心の反応も、発熱の可逆反応です。</p>
+    <div class="formula">2SO<sub>2</sub> ＋ O<sub>2</sub> ⇌ 2SO<sub>3</sub> ＋ 197 kJ</div>
+    <p>気体は左辺 3 mol から右辺 2 mol へ減るので、高圧にすれば平衡は右へ偏ります。しかしこの反応は、常圧に近い圧力でも平衡がすでに十分に右へ偏っているため、高価な高圧装置を使う利点がほとんどありません。実際は<strong>酸化バナジウム(V) V<sub>2</sub>O<sub>5</sub> を触媒として、約450 ℃、ほぼ常圧（1〜2気圧）</strong>で運転されます。温度についてはハーバー・ボッシュ法と同じで、低温が平衡に有利・高温が速度に有利という妥協で約450 ℃が選ばれています。また、生成した SO<sub>3</sub> を濃硫酸に吸収させて取り除く点も、アンモニアを液化して取り除くのと同じ「生成物の除去で平衡を右へ引く」工夫です。<strong>同じ原理でも、反応ごとに平衡の偏り方が違うため、最適な圧力がまったく異なる</strong>のが対比の要点です。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>反応式を確認する。</strong>気体の分子数が左辺と右辺でどちらが多いか、正反応が発熱か吸熱かを見ます。</li>
+      <li><strong>平衡の向きを判定する。</strong>圧力・温度・濃度（生成物の除去）の各操作について、ルシャトリエの原理で平衡がどちらへ移動し、収率がどう変わるかを考えます。</li>
+      <li><strong>速度の向きを判定する。</strong>温度を上げる・触媒を使うと速度は大きくなります。触媒は平衡の位置を変えないこともあわせて確認します。</li>
+      <li><strong>妥協として条件を決める。</strong>収率と速度が食い違う項目（主に温度）は中間の値を選び、装置のコストや安全性も含めて実際の運転条件を説明します。</li>
+      <li><strong>量の計算は反応式の係数比で進める。</strong>N<sub>2</sub>：H<sub>2</sub>：NH<sub>3</sub> ＝ 1：3：2 の物質量比を使い、反応した分・残った分・生成した分を分けて計算します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：ハーバー・ボッシュ法について、次の操作をするとアンモニアの収率と反応速度はどうなるか。（ア）温度を約200 ℃まで下げる。（イ）触媒を取り除く。（ウ）生成したアンモニアを連続的に取り除く。問題2：反応器に N<sub>2</sub> を 10 mol、H<sub>2</sub> を 30 mol 仕込み、1回の通過で仕込んだ N<sub>2</sub> の 15% が反応したとする。生成する NH<sub>3</sub> と、未反応の N<sub>2</sub>・H<sub>2</sub> はそれぞれ何 mol か。問題3：アンモニア 34 kg を作るには、理論上 N<sub>2</sub> と H<sub>2</sub> がそれぞれ何 kg 必要か。ただし、原子量は H＝1.0、N＝14 とする。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1（ア）：正反応は発熱反応なので、低温ほど平衡は右へ偏り、平衡だけ見れば収率は上がります。しかし反応速度が極端に小さくなり、平衡に達するのに時間がかかりすぎるため、工業的には使えません。これが約400〜500 ℃という中温が選ばれる理由です。</li>
+          <li>問題1（イ）：触媒は正・逆両反応の速度を大きくするだけで、平衡の位置は変えません。したがって平衡時の組成（最終的な収率）は変わりませんが、平衡に達するまでの時間が長くなり、実用的な生産量が得られなくなります。</li>
+          <li>問題1（ウ）：生成物 NH<sub>3</sub> の濃度が下がると、ルシャトリエの原理により平衡は右へ移動し続けます。速度そのものは変わりませんが、反応が進み続けるため全体の収率は上がります。液化分離と未反応ガスの循環は、この仕組みを利用しています。</li>
+          <li>問題2：反応する N<sub>2</sub> は 10 mol × 0.15 ＝ 1.5 mol。係数比 N<sub>2</sub>：H<sub>2</sub>：NH<sub>3</sub> ＝ 1：3：2 より、反応する H<sub>2</sub> は 1.5 × 3 ＝ 4.5 mol、生成する NH<sub>3</sub> は 1.5 × 2 ＝ 3.0 mol。</li>
+          <li>問題2の残量：未反応の N<sub>2</sub> は 10 − 1.5 ＝ 8.5 mol、H<sub>2</sub> は 30 − 4.5 ＝ 25.5 mol。これらが分離後に反応器へ戻され、循環します。</li>
+          <li>問題3：NH<sub>3</sub> のモル質量は 14 ＋ 1.0×3 ＝ 17 g/mol なので、34 kg ＝ 34,000 g ÷ 17 g/mol ＝ 2,000 mol。係数比より必要な N<sub>2</sub> は 2,000 ÷ 2 ＝ 1,000 mol、H<sub>2</sub> は 2,000 × 3 ÷ 2 ＝ 3,000 mol。</li>
+          <li>問題3の質量：N<sub>2</sub> は 1,000 mol × 28 g/mol ＝ 28,000 g ＝ 28 kg、H<sub>2</sub> は 3,000 mol × 2.0 g/mol ＝ 6,000 g ＝ 6.0 kg。合計 28 ＋ 6.0 ＝ 34 kg で、生成物の質量と一致します（質量保存）。</li>
+        </ol>
+        <p><strong>答え：問題1は（ア）平衡上は収率が上がるが速度が小さすぎて実用にならない、（イ）平衡時の収率は変わらないが平衡に達するのが遅くなる、（ウ）平衡が右へ移動し続けて全体の収率が上がる。問題2は NH<sub>3</sub> が 3.0 mol、未反応の N<sub>2</sub> が 8.5 mol、H<sub>2</sub> が 25.5 mol。問題3は N<sub>2</sub> が 28 kg、H<sub>2</sub> が 6.0 kg</strong>。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>窒素肥料の生産（アンモニア合成プラント）</h3>
+    <p>ハーバー・ボッシュ法で作られるアンモニアは、硫酸アンモニウム（硫安）や尿素などの窒素肥料の原料です。植物が育つのに必要な窒素は、空気中の N<sub>2</sub> のままではほとんどの作物が利用できません。「空気から肥料を作る」この方法が工業化されたことで、世界の食料生産は大きく増えました。原料の H<sub>2</sub> は主に天然ガス（メタン）と水蒸気の反応で作られ、N<sub>2</sub> は空気から得られます。アンモニアの性質や製法の位置づけは、無機化学の窒素・アンモニアの項目ともつながります。</p>
+    <h3>硫酸の製造（接触法）</h3>
+    <p>接触法は、ハーバー・ボッシュ法と並ぶ「平衡を工業に使う」代表例です。硫酸は肥料・化学繊維・金属の精錬など幅広い産業で使われる基礎化学品で、その生産量の大きさから「化学工業の規模を示す指標」とも言われます。約450 ℃・ほぼ常圧・V<sub>2</sub>O<sub>5</sub> 触媒という条件は、平衡の偏り方の違いが条件選びをどう変えるかを示す好例です。</p>
+    <h3>燃料・水素キャリアとしてのアンモニア</h3>
+    <p>近年は、燃やしても二酸化炭素を出さない燃料として、また水素を液化して運ぶための媒体（水素キャリア）として、アンモニアの利用が進められています。いずれも、ハーバー・ボッシュ法による大量生産と液化しやすい性質が前提になっており、平衡の条件選びから生まれた技術が新しい分野にも広がっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>フリッツ・ハーバー</strong>（1868〜1934、ドイツの化学者）、<strong>カール・ボッシュ</strong>（1874〜1940、ドイツの化学者・技術者）</p>
+    <p>ドイツの化学者<strong>フリッツ・ハーバー</strong>（1868〜1934）は、窒素と水素の平衡を詳しく調べ、1909年に約200気圧・約500 ℃の小型の高圧装置でアンモニアを連続的に合成することに成功しました（1918年ノーベル化学賞）。これを工業規模に育てたのが、化学会社 BASF の<strong>カール・ボッシュ</strong>（1874〜1940）です。高圧と水素に耐える反応炉の材料や構造の開発に加え、同僚のアルヴィン・ミタッシュらが数千回に及ぶ触媒の探索を行い、安価な鉄触媒を見つけました。1913年に初の工業プラントが稼働し、ボッシュは高圧化学法の発展により1931年にノーベル化学賞を受賞しています。実験室の平衡研究を大規模な工業プロセスに変えたこの仕事が、「平衡と工業」の代表例として教科書に残っています。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>平衡がどちらへ動くかを読む原理は<a href="le-chatelier.html">ルシャトリエの原理</a>、平衡そのものの基礎は<a href="chemical-equilibrium-kc.html">化学平衡と平衡定数</a>、触媒が速度と平衡にどう関わるかは<a href="catalysts.html">触媒</a>が役立ちます。物質としての窒素・アンモニアは<a href="nitrogen-ammonia.html">窒素とアンモニア・ハーバー法</a>、対比した硫酸の製法は<a href="sulfur-sulfuric-acid.html">硫黄と硫酸</a>もどうぞ。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

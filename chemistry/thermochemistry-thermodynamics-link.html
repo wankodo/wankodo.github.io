@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>熱化学と熱力学の接続｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="化学の熱化学（反応熱・生成熱）と物理の熱力学（第一法則・内部エネルギー・状態変化）の役割分担を整理し、ΔH＝ΔU＋Δ(pV) による定圧熱量と定積熱量の換算、状態量の考え方を解説。ボンベ熱量計や燃料評価など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="熱化学と熱力学の接続｜化学ツール集">
+<meta property="og:description" content="反応熱を扱う熱化学と、内部エネルギーと仕事を扱う熱力学は、ΔH＝ΔU＋Δ(pV) でつながる。定圧熱量と定積熱量の違いと状態量の考え方を、例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/thermochemistry-thermodynamics-link.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">熱化学</span>と<span class="accent">熱力学</span>の接続</h1>
+    <p>化学の考え方辞典 ― 熱化学（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 熱化学 ＞ 熱化学と熱力学の接続</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">熱化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    化学の熱化学は反応熱・生成熱・結合エネルギーという「反応に伴う熱の出入り」を測って表にする学問で、物理の熱力学は内部エネルギー・仕事・熱を第一法則で結び、状態変化を統一的に扱う学問である。両者はエンタルピー H＝U＋pV でつながり、定圧反応熱は ΔH、定積反応熱は ΔU に等しく、ΔH＝ΔU＋Δ(pV) で相互に換算できる。熱も仕事も経路に依存するが、U や H は初めと終わりの状態だけで決まる状態量である、という見方が両分野に共通する土台になる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>高校化学の熱化学では、熱化学方程式で反応熱を書き、生成熱や結合エネルギーからヘスの法則で反応熱を求めてきました。一方、高校物理・大学の熱力学では、気体の内部エネルギー U、加えた熱 Q、外へした仕事 W を<strong>熱力学第一法則</strong>で結びます。この項目は、<strong>同じ「熱とエネルギー」を扱う2つの分野の言葉と役割分担を対応づけ、行き来できるようにする</strong>接続記事です。次のような場面で使います。</p>
+    <ul>
+      <li>熱化学の反応熱 ΔH と、熱力学の内部エネルギーの変化 ΔU がどう違うのか、どう換算するのかを説明する問題</li>
+      <li>密閉容器（定積）で測った反応熱と、大気圧のもと（定圧）で測った反応熱がずれる理由と、そのずれの大きさを求める問題</li>
+      <li>「熱」や「仕事」は状態量ではないのに、U や H は状態量だと言える理由を説明する問題</li>
+      <li>物理で学んだ気体の状態変化（等温・断熱・定圧・定積）を、化学反応の熱の出入りの言葉で読み替える問題</li>
+    </ul>
+    <p>役割分担を一言でまとめると、<strong>熱化学は「反応ごとに熱の出入りを測り、表（生成熱のデータ集）にまとめる」実測の分野</strong>、<strong>熱力学は「エネルギー保存（第一法則）を軸に、熱・仕事・内部エネルギーをあらゆる変化に共通の枠組みで扱う」理論の分野</strong>です。熱化学で測った ΔH のデータは、熱力学の枠組みの中で ΔU や仕事と結びついて初めて、エンジンの効率や反応が進むかどうかといった議論に使えるようになります。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>出発点は<strong>熱力学第一法則</strong>、すなわちエネルギーの保存です。系（注目する物質や気体）の内部エネルギーの変化 ΔU は、出入りした熱と仕事の合計に等しくなります。物理コーナーでは「気体が外へした仕事」を W として ΔU ＝ Q − W と書きますが、化学（物理化学）では「系へされた仕事」を W とする約束が一般的で、次のように書きます。</p>
+    <div class="formula">ΔU ＝ Q ＋ W</div>
+    <ul>
+      <li><strong>ΔU</strong>：内部エネルギーの変化 [J]（または [kJ]）。内部エネルギー U は、分子の運動エネルギーと分子間力による位置エネルギーの総和</li>
+      <li><strong>Q</strong>：系が吸収した熱 [J]。吸熱なら正、放熱なら負</li>
+      <li><strong>W</strong>：系へされた仕事 [J]。圧縮されて仕事をされれば正、膨張して外へ仕事をすれば負。膨張・圧縮の仕事は W ＝ −pΔV（p は外圧、ΔV は体積変化）</li>
+    </ul>
+    <p>2つの書き方は符号の約束が違うだけで、内容は同じです。物理の W（外へした仕事）は化学の −W にあたるため、ΔU ＝ Q − W<sub>物理</sub> と ΔU ＝ Q ＋ W<sub>化学</sub> は一致します。教科書や問題文がどちらの約束かを確認するのが、両分野を行き来するときの第一の注意点です。</p>
+    <p>化学の反応はふつう大気圧のもと、つまり<strong>定圧</strong>で進みます。定圧では膨張・圧縮の仕事が勝手に決まるため、その分をあらかじめ織り込んだ量として<strong>エンタルピー</strong> H が定義されます。</p>
+    <div class="formula">H ＝ U ＋ pV</div>
+    <ul>
+      <li><strong>H</strong>：エンタルピー [J]。U、p、V のどれも状態だけで決まる量なので、H も状態量（後述）</li>
+      <li><strong>p</strong>：圧力 [Pa]、<strong>V</strong>：体積 [m<sup>3</sup>]。pV の単位は Pa・m<sup>3</sup> ＝ J で、エネルギーと同じ</li>
+    </ul>
+    <p>この定義から、変化量の関係が導かれます。</p>
+    <div class="formula">ΔH ＝ ΔU ＋ Δ(pV)</div>
+    <p>定圧で圧力がほぼ一定なら Δ(pV) ＝ pΔV であり、第一法則と合わせると、<strong>定圧で出入りする熱 Q<sub>p</sub> は ΔH に等しく</strong>なります。これが、熱化学で測る「反応熱」が ΔH で表される理由です。一方、体積の変わらない<strong>定積</strong>では仕事がゼロ（W ＝ −pΔV ＝ 0）なので、<strong>定積で出入りする熱 Q<sub>v</sub> は ΔU に等しく</strong>なります。</p>
+    <ul>
+      <li><strong>定圧反応熱</strong>：Q<sub>p</sub> ＝ ΔH。実験室や工場の反応は大抵こちら（大気圧・開放系）</li>
+      <li><strong>定積反応熱</strong>：Q<sub>v</sub> ＝ ΔU。密閉した丈夫な容器（ボンベ熱量計）で測るのはこちら</li>
+    </ul>
+    <p>気体が関わる反応では、Δ(pV) は気体の状態方程式 pV ＝ nRT を使って、気体の物質量の変化 Δn で書き換えられます（液体・固体は体積が小さく、pV の変化は無視できる）。</p>
+    <div class="formula">ΔH ＝ ΔU ＋ ΔnRT</div>
+    <ul>
+      <li><strong>Δn</strong>：反応前後の気体の物質量の変化 [mol]（生成物側の気体の合計 − 反応物側の気体の合計）</li>
+      <li><strong>R</strong>：気体定数。R ＝ 8.3 J/(mol・K)</li>
+      <li><strong>T</strong>：絶対温度 [K]</li>
+    </ul>
+    <p>Δn ＝ 0 の反応（気体の mol 数が変わらない反応や、液体・固体だけの反応）では ΔH と ΔU はほぼ一致し、差が問題になるのは気体の mol 数が大きく変わる燃焼や分解の反応です。298 K では RT ≒ 2.5 kJ/mol なので、Δn が ±1 でも差は 2.5 kJ 程度、Δn が ±2 なら約 5 kJ が目安になります。</p>
+    <p>最後に、両分野に共通する土台が<strong>状態量</strong>の考え方です。U や H（ほか p、V、T）は、系の状態が決まれば値が1つに決まり、そこへ至る経路にはよりません。対して熱 Q と仕事 W は、変化のさせ方（経路）によって値が変わる量です。ところが第一法則により Q ＋ W ＝ ΔU は経路によらず一定になります。「経路に依存する2つの量の合計が、状態量の変化に等しい」――これが、直接測れない反応熱を迂回路で求める<strong>ヘスの法則</strong>が成り立つ熱力学的な理由です。ヘスの法則は熱化学の法則ですが、その根拠は熱力学の状態量の考え方にある、というのが両分野の接続の核心です。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>条件が定圧か定積かを確認する。</strong>大気圧のもと・開放容器なら定圧で、熱の出入りは ΔH。密閉容器・ボンベ熱量計なら定積で、熱の出入りは ΔU です。</li>
+      <li><strong>気体の物質量の変化 Δn を数える。</strong>反応式の両辺で、気体の化学種だけ係数を合計し、「生成物 − 反応物」を取ります。液体・固体は数えません。</li>
+      <li><strong>ΔH ＝ ΔU ＋ ΔnRT で換算する。</strong>R ＝ 8.3 J/(mol・K)、T は絶対温度 [K] で代入し、単位を kJ にそろえます。Δn が負なら ΔH は ΔU より小さく（より負に）なります。</li>
+      <li><strong>符号の約束を確認する。</strong>仕事 W が「系へされた仕事」か「系が外へした仕事」かで第一法則の形が変わります。発熱反応は ΔH・ΔU ともに負、という熱化学の符号と矛盾しないか検算します。</li>
+      <li><strong>状態量かどうかを切り分ける。</strong>「初めと終わりの状態だけで決まるか」を問い、U・H・p・V・T は状態量、Q・W は経路に依存する量、と整理します。迂回路の計算（ヘスの法則）が使えるのは、求めるものが状態量の変化のときだけです。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：メタン CH<sub>4</sub> の燃焼 CH<sub>4</sub> ＋ 2O<sub>2</sub> → CO<sub>2</sub> ＋ 2H<sub>2</sub>O（液体）の定圧反応熱は ΔH ＝ −890 kJ/mol（298 K）である。内部エネルギーの変化 ΔU を求めよ。問題2：アンモニアの合成 N<sub>2</sub> ＋ 3H<sub>2</sub> → 2NH<sub>3</sub> について、298 K での内部エネルギーの変化が ΔU ＝ −87 kJ（反応式あたり）であるとき、定圧反応熱 ΔH を求めよ。問題3：炭酸カルシウムの熱分解 CaCO<sub>3</sub>（固体）→ CaO（固体）＋ CO<sub>2</sub> の定圧反応熱は ΔH ＝ ＋178 kJ/mol（298 K）である。ΔU を求め、ΔH との差が生じる理由を述べよ。いずれも R ＝ 8.3 J/(mol・K) を使う。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：気体の物質量は、反応物が CH<sub>4</sub> 1 mol ＋ O<sub>2</sub> 2 mol ＝ 3 mol、生成物は CO<sub>2</sub> 1 mol（水は液体なので数えない）で、Δn ＝ 1 − 3 ＝ −2 mol。ΔnRT ＝ (−2) × 8.3 × 298 ＝ −4,947 J ≒ −4.9 kJ。ΔH ＝ ΔU ＋ ΔnRT より、ΔU ＝ ΔH − ΔnRT ＝ −890 − (−4.9) ＝ <strong>−885 kJ/mol</strong>。気体が減る分、定圧では外から圧縮の仕事をされるため、熱として出ていく分が ΔU の減少より約 5 kJ 大きくなります。</li>
+          <li>問題2：気体の物質量は反応物が 1 ＋ 3 ＝ 4 mol、生成物が 2 mol で、Δn ＝ 2 − 4 ＝ −2 mol。ΔnRT ＝ (−2) × 8.3 × 298 ≒ −4.9 kJ。よって ΔH ＝ ΔU ＋ ΔnRT ＝ −87 ＋ (−4.9) ＝ <strong>−92 kJ</strong>（反応式あたり）。アンモニア合成の反応熱として知られる約 −92 kJ と一致します。</li>
+          <li>問題3：気体は生成物の CO<sub>2</sub> 1 mol のみ（固体は数えない）で、Δn ＝ ＋1 mol。ΔnRT ＝ 1 × 8.3 × 298 ＝ 2,473 J ≒ 2.5 kJ。ΔU ＝ ΔH − ΔnRT ＝ 178 − 2.5 ＝ <strong>＋176 kJ/mol</strong>（≒ ＋175.5 kJ/mol）。差が生じる理由は、発生した気体が定圧のもとで周囲を押し広げる膨張の仕事をするためで、加えた熱のうち約 2.5 kJ がその仕事に使われ、内部エネルギーの増加分は ΔH より小さくなります。</li>
+        </ol>
+        <p><strong>答え：問題1は ΔU ≒ −885 kJ/mol、問題2は ΔH ≒ −92 kJ、問題3は ΔU ≒ ＋176 kJ/mol。</strong>いずれも、気体の mol 数の変化 Δn に RT（298 K で約 2.5 kJ/mol）をかけた分だけ ΔH と ΔU がずれる、という見通しで検算できます。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>ボンベ熱量計と食品・燃料の熱量表示</h3>
+    <p>燃料や食品の発熱量を精密に測るボンベ熱量計（ボンブ熱量計）は、丈夫な密閉容器の中で試料を燃やす定積の装置です。そのため直接得られるのは定積反応熱、つまり ΔU です。ところが実際に燃料が使われるのは大気圧のもと（定圧）であり、食品のカロリー表示や燃料の発熱量の規格で必要になるのは ΔH のほうです。実務では、気体の物質量の変化から Δ(pV) の補正を計算し、ΔU を ΔH に換算して表示値にしています。この項目の換算式が、そのまま現場の補正計算になっています。</p>
+    <h3>内燃機関・熱機関のエネルギー収支</h3>
+    <p>エンジンやガスタービンでは、燃料の燃焼で得たエネルギーのうち、どれだけが軸仕事として取り出せ、どれだけが排熱として捨てられるかを、熱力学第一法則の収支で設計します。燃料側の入力は熱化学のデータ（燃料の生成熱・燃焼熱、すなわち ΔH）で与えられ、機関側の仕事と排熱の配分は熱力学の状態変化（断熱膨張・等温変化など）で計算する、という分担が実際の熱設計の姿です。熱化学の表と熱力学のサイクル計算が、エンタルピーという量を通してつながっています。</p>
+    <h3>化学プロセスの熱収支設計（化学プラント）</h3>
+    <p>反応器や蒸留塔を設計する化学工学では、物質収支と並んで熱収支（エネルギーバランス）を取ることが必須です。反応に伴う熱の出入りは生成熱のデータ集から ΔH として引き、流体の加熱・冷却やポンプの仕事は熱力学の枠組みで計算し、両者を1つの収支表に統合します。発熱反応の冷却不足が暴走事故につながるため、この熱収支は安全設計の根拠にもなっています。</p>
+    <h3>気象・大気の熱力学</h3>
+    <p>空気の塊が上昇して膨張するときの温度変化（断熱減率）や、雲の中で水蒸気が凝結して放つ熱（潜熱）の計算は、熱力学第一法則と状態量の考え方そのものです。大気中の水の凝結熱のような「化学的・相変化に伴う熱」は熱化学側のデータで与えられ、それが大気の運動という物理の過程と結びつく点で、気象学は両分野の接続が日常的に使われる分野です。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ゲルマン・ヘス</strong>（1802〜1850、スイス生まれでロシアで活躍した化学者）、<strong>ジェームズ・ジュール</strong>（1818〜1889、イギリスの物理学者）、<strong>ルドルフ・クラウジウス</strong>（1822〜1888、ドイツの物理学者）</p>
+    <p>熱化学の土台を作ったのは、スイス生まれでロシアで活躍した化学者<strong>ゲルマン・ヘス</strong>（1802〜1850）です。1840年に、反応熱の総和は経路によらず一定であるというヘスの法則（総熱量保存の法則）を、数多くの反応熱の実測から帰納しました。一方、熱がエネルギーの一形態であることを実験で示したのがイギリスの<strong>ジェームズ・ジュール</strong>（1818〜1889）で、1840年代に、仕事と熱の換算値（熱の仕事当量）を精密に測り、エネルギー保存則の実験的根拠を与えました。この保存則を理論の形に整え、内部エネルギー U を状態量として位置づけ、熱力学第一法則として定式化したのがドイツの<strong>ルドルフ・クラウジウス</strong>（1822〜1888）です。ヘスの法則は、クラウジウスの枠組みでは「H が状態量であること」の帰結として説明できます。実測の熱化学と理論の熱力学は、こうして19世紀のうちに1つの体系へつながりました。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>化学側の出発点は<a href="reaction-heat-thermochemical-equations.html">反応熱と熱化学方程式</a>、迂回路の計算は<a href="hesss-law.html">ヘスの法則</a>、結合の切断・生成から見積もる方法は<a href="bond-energy.html">結合エネルギー</a>が役立ちます。物理側の土台は<a href="https://wankodo.github.io/physics/first-law-of-thermodynamics.html">熱力学第一法則</a>（物理ツール集）で、気体の変化の種類ごとの熱と仕事の配分は<a href="https://wankodo.github.io/physics/gas-state-changes.html">気体の状態変化</a>、仕事を取り出すサイクルの話は<a href="https://wankodo.github.io/physics/carnot-cycle.html">カルノーサイクル</a>と<a href="https://wankodo.github.io/physics/heat-engine-efficiency.html">熱機関の効率とヒートポンプ</a>、断熱変化の式は<a href="https://wankodo.github.io/physics/adiabatic-process-poisson.html">断熱変化とポアソンの式</a>へ進んでください。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

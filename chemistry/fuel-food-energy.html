@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>燃料の発熱量と食品エネルギー｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="燃料の発熱量と食品エネルギーの使い方を、公式・手順・例題で解説。MJ/kgとkJ/molの換算や質量・物質量からの発熱量の求め方、ガス料金の熱量調整や食品の栄養表示など実際の現場での使われ方まで紹介します。燃料と食品のエネルギーを求める計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="燃料の発熱量と食品エネルギー｜化学ツール集">
+<meta property="og:description" content="燃料の発熱量の換算と食品エネルギーの計算を、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/fuel-food-energy.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">燃料の発熱量</span>と食品エネルギー</h1>
+    <p>化学の考え方辞典 ― 熱化学（高校化学・2年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 熱化学 ＞ 燃料の発熱量と食品エネルギー</p>
+  <p><span class="badge badge-lv">高校化学・2年</span> <span class="badge badge-genre">熱化学</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    燃料が燃えたときに放出される熱量を、質量あたりの発熱量や物質量あたりの燃焼熱から求め、食品のエネルギー表示を三大栄養素の量から計算するときに使う。燃料では MJ/kg と kJ/mol をモル質量で換算し、食品ではアトウォーター係数 4・9・4 kcal/g と 1 kcal＝4.184 kJ を使って kcal と kJ を行き来する。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>燃料の燃焼で出る熱量と、食品がもつエネルギーを、<strong>単位あたりの値 × 量</strong>で求める解法です。次のような場面で使います。</p>
+    <ul>
+      <li>発熱量 [MJ/kg] と燃料の質量 [kg] から、燃料全体が放出する熱量 [MJ] を求める問題</li>
+      <li>燃焼熱 [kJ/mol] と物質量 [mol] から、燃料全体が放出する熱量 [kJ] を求める問題</li>
+      <li>発熱量 [MJ/kg] と燃焼熱 [kJ/mol] を、モル質量 [g/mol] を使って換算する問題</li>
+      <li>たんぱく質・脂質・炭水化物の量 [g] から、食品のエネルギー [kcal] を求める問題</li>
+    </ul>
+    <p>ポイントは単位のそろえ方です。燃料は「1 kg あたり」「1 mol あたり」のどちらの値が与えられているかを確認し、食品では kcal と kJ の換算（1 kcal＝4.184 kJ）を忘れないことが大切です。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>燃料が完全燃焼したときに放出される熱量の大きさを<strong>発熱量</strong>といいます。質量あたりで表す場合と、物質量あたりで表す場合があります。物質量あたりの発熱量は<strong>燃焼熱</strong>と呼ばれます。</p>
+    <div class="formula">総発熱量 [MJ] ＝ 発熱量 [MJ/kg] × 質量 [kg]</div>
+    <div class="formula">総発熱量 [kJ] ＝ 燃焼熱 [kJ/mol] × 物質量 [mol]</div>
+    <p>各記号の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>発熱量</strong>：燃料 1 kg が完全燃焼したときに放出される熱量 [MJ/kg]。このページでは代表例として、プロパン約 50 MJ/kg、ガソリン約 44 MJ/kg を使う</li>
+      <li><strong>燃焼熱</strong>：燃料 1 mol が完全燃焼したときに放出される熱量の大きさ [kJ/mol]。このページではメタンの燃焼熱を 891 kJ/mol とする（発熱なので反応熱としては ΔH＝−891 kJ/mol）</li>
+      <li><strong>質量</strong>：燃料の質量 [kg]、<strong>物質量</strong>：燃料の物質量 [mol]</li>
+      <li>単位換算：1 MJ ＝ 1,000 kJ、1 kcal ＝ 4.184 kJ（このページと計算機で使う値）</li>
+    </ul>
+    <p>発熱量 [MJ/kg] と燃焼熱 [kJ/mol] は、モル質量 [g/mol] を使って換算できます。1 MJ/kg は 1 kJ/g と同じ大きさなので（1 MJ＝1,000 kJ、1 kg＝1,000 g で割り算の結果が等しくなります）、次の式が成り立ちます。</p>
+    <div class="formula">燃焼熱 [kJ/mol] ＝ 発熱量 [MJ/kg] × モル質量 [g/mol]</div>
+    <p>たとえばメタン CH<sub>4</sub>（モル質量 16 g/mol）の発熱量は、891 kJ/mol ÷ 16 g/mol ＝ 約 55.7 kJ/g、つまり約 55.7 MJ/kg です。</p>
+    <p>食品のエネルギーは、体内で利用できるエネルギーを三大栄養素ごとに見積もる<strong>アトウォーター係数</strong>を使って計算します。このページと計算機で使う値は、たんぱく質 4 kcal/g、脂質 9 kcal/g、炭水化物 4 kcal/g です。</p>
+    <div class="formula">食品エネルギー [kcal] ＝ 4 × たんぱく質 [g] ＋ 9 × 脂質 [g] ＋ 4 × 炭水化物 [g]</div>
+    <p>脂質の係数が大きいのは、脂質がたんぱく質や炭水化物より還元された（水素を多く含む）物質で、酸化したときに放出するエネルギーがグラムあたりで大きいためです。なお、食品を実際に燃やして測る燃焼熱は、消化吸収のされ方や体内で完全には酸化されない成分があるため、そのままでは体内で使えるエネルギーと一致しません。アトウォーター係数は、その差を見込んで決められた換算係数です。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>与えられた単位あたりの値を確認する。</strong>[MJ/kg] なら質量、[kJ/mol] なら物質量と組み合わせます。食品なら三大栄養素の量 [g] を確認します。</li>
+      <li><strong>単位あたりの値 × 量を計算する。</strong>燃料は発熱量 × 質量、または燃焼熱 × 物質量。食品は各栄養素に係数（4・9・4 kcal/g）を掛けて足し合わせます。</li>
+      <li><strong>必要なら単位を換算する。</strong>MJ と kJ は 1 MJ＝1,000 kJ、kcal と kJ は 1 kcal＝4.184 kJ で換算します。発熱量と燃焼熱の換算にはモル質量を使います。</li>
+      <li><strong>結果の大きさを確認する。</strong>燃料数 kg の発熱量は数十〜数百 MJ、食品100 g 程度のエネルギーは数十〜数百 kcal のオーダーになることが多いです。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：発熱量 50 MJ/kg の燃料を 2.0 kg 燃やすと、何 MJ の熱が放出されるか。問題2：燃焼熱 891 kJ/mol のメタン CH<sub>4</sub> を 2.0 mol 燃やすと、何 kJ の熱が放出されるか。問題3：たんぱく質 10 g、脂質 5 g、炭水化物 20 g を含む食品のエネルギーは何 kcal か。また何 kJ か。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：総発熱量 ＝ 発熱量 × 質量 ＝ 50 MJ/kg × 2.0 kg ＝ 100 MJ。kJ に直すと 100 × 1,000 ＝ 100,000 kJ です。</li>
+          <li>問題2：総発熱量 ＝ 燃焼熱 × 物質量 ＝ 891 kJ/mol × 2.0 mol ＝ 1,782 kJ。MJ に直すと 1.782 MJ です。</li>
+          <li>問題3：アトウォーター係数より、エネルギー ＝ 4 × 10 ＋ 9 × 5 ＋ 4 × 20 ＝ 40 ＋ 45 ＋ 80 ＝ 165 kcal。kJ に直すと 165 × 4.184 ＝ 690.36 kJ、約 690 kJ です。</li>
+        </ol>
+        <p><strong>答え：問題1は 100 MJ、問題2は 1,782 kJ、問題3は 165 kcal（約 690 kJ）</strong>。問題3では脂質だけ係数が 9 kcal/g である点がポイントです。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>都市ガスの熱量調整とガス料金</h3>
+    <p>都市ガスは原料の産地によって成分が変わり、単位体積あたりの発熱量も変わります。ガス事業者は供給するガスの発熱量（熱量）を規格の範囲に調整し、料金は使用した体積に発熱量を組み合わせて計算されるため、発熱量はガス料金の公平さを支える基礎の値になっています。</p>
+    <h3>発電所・ボイラーの燃料評価</h3>
+    <p>火力発電所や工場のボイラーでは、石炭や重油などの燃料を質量あたりの発熱量で評価し、必要な発電量や蒸気量に対して燃料を何 kg（何トン）投入すべきかを熱量の収支から決めます。燃料の購入価格も発熱量あたりで比較されることがあります。</p>
+    <h3>食品の栄養成分表示</h3>
+    <p>市販食品のパッケージに表示されるエネルギー（kcal）は、たんぱく質・脂質・炭水化物の分析値にアトウォーター係数（4・9・4 kcal/g）を掛けて算出するのが標準的な方法で、食品表示の制度のもとで栄養成分表示の一つとして示されています。もとになる燃焼熱の測定には、密閉容器内で試料を燃やして熱量を測るボンベ熱量計が使われます。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ウィルバー・オリン・アトウォーター</strong>（1844〜1907、アメリカの化学者）、<strong>マルセラン・ベルテロ</strong>（1827〜1907、フランスの化学者）</p>
+    <p>食品エネルギーの換算係数で知られる<strong>ウィルバー・オリン・アトウォーター</strong>（1844〜1907）は、アメリカの化学者です。食品を燃やして燃焼熱を測る実験と、人間が食品から実際に得られるエネルギーを調べる研究をもとに、たんぱく質・脂質・炭水化物それぞれの利用できるエネルギーの係数をまとめました。これがアトウォーター係数（4・9・4 kcal/g）として、現在も食品のエネルギー表示の土台になっています。燃料や食品の燃焼熱を精密に測る道具であるボンベ熱量計は、フランスの化学者<strong>マルセラン・ベルテロ</strong>（1827〜1907）が考案したもので、密閉した耐圧容器の中で試料を完全燃焼させ、放出された熱を周囲の水の温度上昇から測ります。発熱量という考え方は、こうした熱量測定の技術の上に成り立っています。</p>
+  </section>
+
+  <a class="linkcard" href="calc-fuel-food-energy.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">燃料の発熱量と食品エネルギー 計算機：燃料の発熱量（質量あたり／物質量あたり）・発熱量と燃焼熱の換算・食品エネルギーの4モードで、解き方の手順つきで表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>反応熱の種類と表し方は<a href="reaction-heat-thermochemical-equations.html">反応熱と熱化学方程式</a>、生成熱から反応熱を組み立てる方法は<a href="hesss-law.html">ヘスの法則</a>、結合の切断・生成から反応熱を見積もる方法は<a href="bond-energy.html">結合エネルギーと結合の強さ</a>が役立ちます。熱量と温度変化の関係は物理コーナーの<a href="https://wankodo.github.io/physics/calorimetry-specific-heat.html">熱量と比熱・熱容量</a>も参考になります。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

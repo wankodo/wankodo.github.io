@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生成熱と燃焼熱｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="生成熱と燃焼熱の求め方を、公式・手順・例題で解説。代表物質の標準生成エンタルピーの表から ΔH＝生成物の生成熱の総和−反応物の生成熱の総和 で反応熱・燃焼熱を組み立てる方法や、燃料の発熱量の表示など実際の現場での使われ方まで紹介します。係数×生成熱のリスト計算ができる計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="生成熱と燃焼熱｜化学ツール集">
+<meta property="og:description" content="生成熱の表から反応熱と燃焼熱を組み立てる方法を、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/heat-of-formation-combustion.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">生成熱</span>と<span class="accent">燃焼熱</span></h1>
+    <p>化学の考え方辞典 ― 熱化学（高校化学・2年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 熱化学 ＞ 生成熱と燃焼熱</p>
+  <p><span class="badge badge-lv">高校化学・2年</span> <span class="badge badge-genre">熱化学</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    物質が単体からできるときの生成熱（標準生成エンタルピー）の表を使い、反応熱や燃焼熱を ΔH ＝ 生成物の生成熱の総和 − 反応物の生成熱の総和 で組み立てて求めるときに使う。燃焼熱は燃料 1 mol が完全燃焼したときの反応熱で、生成熱の表があれば実際に燃やさなくても計算できる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>各物質の<strong>生成熱</strong>が表で与えられたときに、反応熱や燃焼熱を計算で組み立てる解法です。次のような場面で使います。</p>
+    <ul>
+      <li>生成熱の表から、任意の反応の反応熱 ΔH を求める問題</li>
+      <li>燃料 1 mol が完全燃焼したときの熱量（燃焼熱）を、生成熱から求める問題</li>
+      <li>水が液体か気体かで燃焼熱がどう変わるか（発熱量の違い）を比べる問題</li>
+    </ul>
+    <p>生成熱そのものを直接測るのは難しい物質も多いのですが、いったん表がそろえば、表にある物質どうしの反応はすべて計算で熱を求められます。ここが生成熱の表の強みです。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p><strong>生成熱（標準生成エンタルピー）</strong>とは、物質 1 mol が、その元素の単体から生成するときの反応熱です。このページでは一貫して<strong>発熱方向を負の値</strong>で表します。単体自身の生成熱は定義により 0 です（O<sub>2</sub>、H<sub>2</sub>、N<sub>2</sub>、黒鉛など、その元素の基準となる単体）。値は 25 ℃（298 K）、標準状態での代表値で、以下の表の値は高校教科書レベルの概数です。</p>
+    <ul>
+      <li>CO<sub>2</sub>（気）：−394 kJ/mol</li>
+      <li>CO（気）：−111 kJ/mol</li>
+      <li>H<sub>2</sub>O（液）：−286 kJ/mol</li>
+      <li>H<sub>2</sub>O（気）：−242 kJ/mol</li>
+      <li>CH<sub>4</sub>（気）：−75 kJ/mol</li>
+      <li>C<sub>3</sub>H<sub>8</sub>（気）：−105 kJ/mol</li>
+      <li>C<sub>2</sub>H<sub>5</sub>OH（液）：−277 kJ/mol</li>
+      <li>C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>（固、グルコース）：−1273 kJ/mol</li>
+      <li>NH<sub>3</sub>（気）：−46 kJ/mol</li>
+      <li>HCl（気）：−92 kJ/mol</li>
+      <li>SO<sub>2</sub>（気）：−297 kJ/mol</li>
+      <li>NO（気）：＋90 kJ/mol（吸熱方向が正の例）</li>
+    </ul>
+    <p>反応熱は、生成物の生成熱の総和から反応物の生成熱の総和を引いて求めます（ヘスの法則の応用）。各物質の生成熱には、反応式の<strong>係数を掛けて</strong>から足します。</p>
+    <div class="formula">ΔH ＝ Σ（係数 × 生成熱）<sub>生成物</sub> − Σ（係数 × 生成熱）<sub>反応物</sub></div>
+    <p><strong>燃焼熱</strong>は、物質 1 mol が酸素と完全燃焼したときの反応熱で、燃焼反応に上の式をあてはめたものです。炭素を含む燃料なら生成物は CO<sub>2</sub> と H<sub>2</sub>O なので、燃焼熱はこの2つの生成熱と燃料自身の生成熱だけで決まります。O<sub>2</sub> は単体なので生成熱は 0 です。</p>
+    <div class="formula">燃焼熱 ΔH<sub>c</sub> ＝ ｛a × 生成熱(CO<sub>2</sub>) ＋ b × 生成熱(H<sub>2</sub>O)｝ − 生成熱(燃料)</div>
+    <p>各記号の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>ΔH</strong>：反応熱 [kJ]。反応式の係数に対応する物質量あたりの値</li>
+      <li><strong>生成熱</strong>：物質 1 mol が単体から生成するときの反応熱 [kJ/mol]。発熱方向を負とする</li>
+      <li><strong>a、b</strong>：燃焼の反応式で、燃料 1 mol に対して生じる CO<sub>2</sub> と H<sub>2</sub>O の係数</li>
+      <li>ΔH が負なら発熱、正なら吸熱。高校の熱化学方程式では燃焼熱を正の大きさ（例：891 kJ/mol）で書くこともあるが、エンタルピー変化としては負の値である</li>
+      <li>H<sub>2</sub>O は液体（−286 kJ/mol）か気体（−242 kJ/mol）かで値が違うので、問題文の指定を必ず確認する</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>反応式を書き、係数をそろえる。</strong>燃焼熱なら燃料の係数を 1 にした式にします。</li>
+      <li><strong>各物質の生成熱を表から拾う。</strong>単体は 0、H<sub>2</sub>O は液体か気体かを確認します。</li>
+      <li><strong>生成物側の合計 Σ<sub>p</sub> を出す。</strong>各生成物について「係数 × 生成熱」を計算して足します。</li>
+      <li><strong>反応物側の合計 Σ<sub>r</sub> を出す。</strong>反応物についても同じように合計します。</li>
+      <li><strong>ΔH ＝ Σ<sub>p</sub> − Σ<sub>r</sub> を計算する。</strong>「生成物 − 反応物」の順序と、マイナス同士の引き算の符号に注意します。</li>
+      <li><strong>符号と大きさを確認する。</strong>燃焼なら大きな負の値（発熱）になるはずです。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：エタノール C<sub>2</sub>H<sub>5</sub>OH（液）の燃焼 C<sub>2</sub>H<sub>5</sub>OH ＋ 3O<sub>2</sub> → 2CO<sub>2</sub> ＋ 3H<sub>2</sub>O（液）の反応熱（燃焼熱）を求めよ。生成熱は CO<sub>2</sub> が −394 kJ/mol、H<sub>2</sub>O（液）が −286 kJ/mol、C<sub>2</sub>H<sub>5</sub>OH（液）が −277 kJ/mol とする。問題2：水素 H<sub>2</sub> の燃焼で生じる水が気体の場合、H<sub>2</sub> 1 mol あたりの燃焼熱を求めよ。H<sub>2</sub>O（気）の生成熱は −242 kJ/mol とする。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1・生成物の合計：Σ<sub>p</sub> ＝ 2 × (−394) ＋ 3 × (−286) ＝ −788 − 858 ＝ −1646 kJ。</li>
+          <li>問題1・反応物の合計：Σ<sub>r</sub> ＝ (−277) ＋ 3 × 0 ＝ −277 kJ。O<sub>2</sub> は単体なので生成熱は 0 です。</li>
+          <li>問題1：ΔH ＝ Σ<sub>p</sub> − Σ<sub>r</sub> ＝ −1646 − (−277) ＝ −1369 kJ。つまりエタノール 1 mol の燃焼熱は 1369 kJ/mol（エンタルピー変化としては −1369 kJ/mol）です。</li>
+          <li>問題2：H<sub>2</sub> ＋ (1/2)O<sub>2</sub> → H<sub>2</sub>O（気）なので、ΔH ＝ 生成熱(H<sub>2</sub>O・気) − 0 ＝ −242 kJ。水が液体なら −286 kJ になるはずで、差の 44 kJ は水蒸気が凝縮するときに出る熱（凝縮熱）にあたります。</li>
+        </ol>
+        <p><strong>答え：問題1は −1369 kJ（燃焼熱の大きさ 1369 kJ/mol、発熱反応）、問題2は −242 kJ（燃焼熱の大きさ 242 kJ/mol）</strong>。生成熱がそのまま燃焼熱になる問題2のように、反応物がすべて単体の反応では、生成物の生成熱の合計がそのまま反応熱になります。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>燃料の発熱量表示（高位発熱量と低位発熱量）</h3>
+    <p>ガスや石油などの燃料のカタログには、発熱量として高位発熱量（総発熱量）と低位発熱量（真発熱量）の2つが表示されることがあります。違いは、燃焼で生じた水を液体として数えるか（生成熱 −286 kJ/mol）、気体のまま逃がすとして数えるか（−242 kJ/mol）で、ボイラーや給湯器の効率表示はこの約束にもとづいて決められています。</p>
+    <h3>食品のエネルギー量の見積もり</h3>
+    <p>食品のエネルギー量（カロリー）は、タンパク質・脂質・炭水化物が体内で最終的に CO<sub>2</sub> と H<sub>2</sub>O へ酸化される反応の燃焼熱をもとに見積もられています。成分ごとの生成熱と燃焼熱のデータが、栄養表示の計算の土台になっています。</p>
+    <h3>ロケット推進剤の性能評価</h3>
+    <p>ロケットの推進剤は、燃焼でどれだけの熱が出て、どれだけ軽い生成ガスができるかで性能が決まります。候補となる燃料と酸化剤の組み合わせは、生成熱のデータから燃焼熱と生成物の組成を計算して比較され、実際に燃焼試験をする前の設計段階で絞り込まれます。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ジェルマン・アンリ・ヘス</strong>（1802〜1850、スイス生まれのロシアの化学者）、<strong>マルセラン・ベルテロ</strong>（1827〜1907、フランスの化学者）</p>
+    <p>生成熱から反応熱を組み立てる計算の土台は、スイス生まれでロシアで活躍した化学者<strong>ジェルマン・アンリ・ヘス</strong>（1802〜1850）が1840年に発表したヘスの法則です。反応熱の総和が経路によらないことが保証されたことで、各物質の生成熱さえ測って表にしておけば、無数の反応の熱を計算で求められるようになりました。一方、燃焼熱の精密測定を大きく進めたのがフランスの化学者<strong>マルセラン・ベルテロ</strong>（1827〜1907）で、密閉した鋼製容器の中で試料を燃やすボンベ熱量計を使って多くの有機化合物の燃焼熱を測り、生成熱の表を充実させました。現在の標準生成エンタルピーの表は、こうした測定の積み重ねの上に成り立っています。</p>
+  </section>
+
+  <a class="linkcard" href="calc-heat-of-formation-combustion.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">生成熱と燃焼熱 計算機：生成物・反応物の欄に係数と生成熱を入れるリスト計算と、燃料の生成熱と CO<sub>2</sub>・H<sub>2</sub>O の係数から燃焼熱を求めるモードで、発熱・吸熱の判定つきで表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>この計算の土台となる法則は<a href="hesss-law.html">ヘスの法則</a>、燃焼熱・生成熱を含む反応熱の種類と熱化学方程式の書き方は<a href="reaction-heat-thermochemical-equations.html">反応熱と熱化学方程式</a>、結合の切り貼りから反応熱を見積もる方法は<a href="bond-energy.html">結合エネルギー</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

@@ -383,7 +383,7 @@
 
 ## 化学ツール集
 
-> 中学理科・高校化学基礎・高校化学・大学レベルの考え方辞典と計算機。全66項目、各項目に解説記事があり、計算機つきの項目もあります。トップは [化学ツール集](https://wankodo.github.io/chemistry/) です。
+> 中学理科・高校化学基礎・高校化学・大学レベルの考え方辞典と計算機。全83項目、各項目に解説記事があり、計算機つきの項目もあります。トップは [化学ツール集](https://wankodo.github.io/chemistry/) です。
 
 - [密度と物質の区別｜化学ツール集](https://wankodo.github.io/chemistry/density.html): 質量と体積から密度を求め、浮き沈みの判断や物質の同定に使う。計算機つき。
 - [モルとアボガドロ定数｜化学ツール集](https://wankodo.github.io/chemistry/mole-avogadro.html): 粒子数から物質量（mol）を、物質量から粒子数をアボガドロ定数で換算する。計算機つき。
@@ -451,3 +451,20 @@
 - [溶解平衡と溶解度積｜化学ツール集](https://wankodo.github.io/chemistry/solubility-product-ksp.html): 溶解度積 Ksp から溶解度を求める、イオン積 Q と Ksp の比較で沈殿が生じるかを予測する。計算機つき。
 - [分配の法則と抽出｜化学ツール集](https://wankodo.github.io/chemistry/partition-extraction.html): 分配係数から両層の濃度比を求める、抽出回数と溶媒量から水層に残る溶質の割合を求める。解説記事のみ。
 - [活量とイオン強度｜化学ツール集](https://wankodo.github.io/chemistry/activity-ionic-strength.html): 活量係数を使って活量を求める、溶液中の全イオンからイオン強度を求める、濃度だけでは平衡や pH がずれる理由を説明する。解説記事のみ。
+- [生成熱と燃焼熱｜化学ツール集](https://wankodo.github.io/chemistry/heat-of-formation-combustion.html): 代表物質の生成熱（標準生成エンタルピー）の表を使い、生成物の生成熱の総和から反応物の生成熱の総和を引いて反応熱や燃料の燃焼熱を求める。計算機つき。
+- [結合エネルギーから反応熱｜化学ツール集](https://wankodo.github.io/chemistry/bond-energy-reaction-heat.html): 反応式と構造式から切る結合と作る結合の本数を数え、平均結合エネルギーの合計の差から反応熱（エンタルピー変化）を見積もる。計算機つき。
+- [中和熱・溶解熱の測定と熱量計算｜化学ツール集](https://wankodo.github.io/chemistry/calorimetry-chemistry.html): 水溶液の温度変化から熱量 Q＝mcΔT を求め、物質量で割ってモルあたりの中和熱・溶解熱を求める。計算機つき。
+- [燃料の発熱量と食品エネルギー｜化学ツール集](https://wankodo.github.io/chemistry/fuel-food-energy.html): 燃料の発熱量を質量や物質量から求め、MJ/kgとkJ/molを換算し、食品のエネルギーを三大栄養素の量から求める。計算機つき。
+- [格子エネルギーとボルン・ハーバーサイクル｜化学ツール集](https://wankodo.github.io/chemistry/born-haber-cycle.html): 生成熱・昇華熱・イオン化エネルギー・結合解離・電子親和力から、ボルン・ハーバーサイクルで格子エネルギーを逆算する。計算機つき。
+- [エンタルピー・エントロピー・ギブズエネルギー｜化学ツール集](https://wankodo.github.io/chemistry/gibbs-free-energy.html): エンタルピー変化とエントロピー変化からギブズエネルギー変化を求めて反応が自発的かどうかを判定し、平衡定数や起電力と結びつける。計算機つき。
+- [熱化学と熱力学の接続｜化学ツール集](https://wankodo.github.io/chemistry/thermochemistry-thermodynamics-link.html): 熱化学の反応熱（ΔH）と熱力学の内部エネルギー変化（ΔU）の関係を説明する、定圧熱量と定積熱量を換算する、熱や仕事と状態量の違いを区別する。解説記事のみ。
+- [反応速度の表し方｜化学ツール集](https://wankodo.github.io/chemistry/reaction-rate.html): 濃度変化と時間から平均の反応速度を求め、反応式の係数で割って物質によらない速さにそろえる。計算機つき。
+- [速度式と反応次数｜化学ツール集](https://wankodo.github.io/chemistry/rate-law-reaction-order.html): 速度式 v＝k[A]^m[B]^n を使って反応速度や速度定数を求め、実験データから反応次数を判定する。計算機つき。
+- [活性化エネルギーとアレニウス式｜化学ツール集](https://wankodo.github.io/chemistry/arrhenius-equation.html): 温度の変化から反応速度の比を求める、速度比から活性化エネルギーを求める。計算機つき。
+- [触媒の働き｜化学ツール集](https://wankodo.github.io/chemistry/catalysts.html): 触媒が活性化エネルギーを下げて反応速度を大きくする仕組みと、ΔH・平衡の位置を変えない原則、正触媒・負触媒と均一・不均一触媒の区別を理解する。解説記事のみ。
+- [ルシャトリエの原理｜化学ツール集](https://wankodo.github.io/chemistry/le-chatelier.html): 濃度・圧力・温度の変化に対して、平衡がどちらへ移動するか（または移動しないか）を判断する。解説記事のみ。
+- [平衡と工業（ハーバー・ボッシュ法）｜化学ツール集](https://wankodo.github.io/chemistry/equilibrium-industrial-use.html): ハーバー・ボッシュ法で高圧・中温・鉄触媒・未反応ガスの循環が選ばれる理由を、平衡の移動と反応速度の両面から説明する。解説記事のみ。
+- [圧平衡定数 Kp｜化学ツール集](https://wankodo.github.io/chemistry/equilibrium-constant-kp.html): 濃度平衡定数 Kc から圧平衡定数 Kp を求める、圧平衡定数 Kp から濃度平衡定数 Kc を求める。計算機つき。
+- [反応商と平衡の予測｜化学ツール集](https://wankodo.github.io/chemistry/reaction-quotient.html): 現在の濃度から反応商 Q を求め、平衡定数 K と比べて反応が正反応・逆反応のどちらへ進むか予測する。計算機つき。
+- [一次反応と半減期（速度論）｜化学ツール集](https://wankodo.github.io/chemistry/first-order-kinetics-half-life.html): 一次反応の速度定数と時間から残りの濃度と残存率を、または濃度の変化から速度定数・半減期・経過時間を求める。計算機つき。
+- [酵素反応速度の入口｜化学ツール集](https://wankodo.github.io/chemistry/enzyme-kinetics-intro.html): 基質濃度を変えたときの酵素反応の初速度の変化を、ミカエリス・メンテン式と Km・Vmax で読み、阻害の効果を判断する。解説記事のみ。

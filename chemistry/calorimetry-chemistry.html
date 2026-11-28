@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中和熱・溶解熱の測定と熱量計算｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="中和熱・溶解熱の測定と熱量計算の使い方を、公式・手順・例題で解説。水溶液の温度変化から Q＝mcΔT で熱量を求め、モルあたりの反応熱に直す方法や、熱量計による燃料・食品の発熱量測定など実際の現場での使われ方まで紹介します。熱量とモルあたりの反応熱を求める計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="中和熱・溶解熱の測定と熱量計算｜化学ツール集">
+<meta property="og:description" content="水溶液の温度変化から熱量 Q＝mcΔT を求め、モルあたりの中和熱・溶解熱に直す方法を、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/calorimetry-chemistry.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">中和熱・溶解熱</span>の測定と熱量計算</h1>
+    <p>化学の考え方辞典 ― 熱化学（高校化学・2年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 熱化学 ＞ 中和熱・溶解熱の測定と熱量計算</p>
+  <p><span class="badge badge-lv">高校化学・2年</span> <span class="badge badge-genre">熱化学</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    水溶液の温度変化から、反応や溶解で出入りした熱量を求めるときに使う。水（水溶液）の質量に比熱 4.2 J/(g・K) と温度変化を掛けて熱量 Q＝mcΔT を出し、反応した物質の物質量で割れば、モルあたりの中和熱や溶解熱 [kJ/mol] が求まる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>反応や溶解で出入りした熱を、<strong>水溶液の温度変化から測って計算する</strong>解法です。次のような場面で使います。</p>
+    <ul>
+      <li>酸と塩基を混ぜたときの温度上昇から、<strong>中和熱</strong> [kJ/mol] を求める問題</li>
+      <li>固体を水に溶かしたときの温度変化から、<strong>溶解熱</strong> [kJ/mol] を求める問題</li>
+      <li>まず熱量 Q [J] だけを求める問題（Q＝mcΔT の計算）</li>
+    </ul>
+    <p>測定は、発泡スチロール製のコップなどを<strong>熱量計（カロリーメーター）</strong>として使い、その中で反応や溶解を行って温度の変化を測ります。反応で出た熱は水溶液が受け取り、溶解で吸収される熱は水溶液が失う、というのが基本の考え方です。高校の計算では、容器が受け取る熱や外への熱の逃げは無視し、水溶液全体が水と同じように熱を受け取るものとして扱います。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>水溶液が受け取った（または失った）熱量 Q は、水溶液の質量 m、比熱 c、温度変化 ΔT の積で表されます。</p>
+    <div class="formula">Q [J] ＝ m [g] × c [J/(g・K)] × ΔT [K]</div>
+    <p>モルあたりの反応熱（中和熱・溶解熱）を求めるには、この熱量を kJ に直してから、反応した物質の物質量 n で割ります。</p>
+    <div class="formula">モルあたりの反応熱 [kJ/mol] ＝ Q [kJ] ÷ n [mol]</div>
+    <p>各記号の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>Q</strong>：水溶液が受け取った（失った）熱量 [J]。反応で発生・吸収された熱量の大きさに等しいとみなす</li>
+      <li><strong>m</strong>：水溶液全体の質量 [g]。中和なら混ぜた後の溶液全体、溶解なら水と溶かした固体を合わせた質量を使う。密度が 1.0 g/cm<sup>3</sup> の水溶液では、体積 [mL] がそのまま質量 [g] になる</li>
+      <li><strong>c</strong>：水の比熱 ＝ <strong>4.2 J/(g・K)</strong>（水 1 g の温度を 1 K 上げるのに必要な熱量。水溶液もこの値で近似する）</li>
+      <li><strong>ΔT</strong>：温度変化の大きさ [K]。温度差なので ℃ で測った差と数値は同じ。温度が上がったか下がったかで発熱・吸熱を判断する</li>
+      <li><strong>n</strong>：反応した物質の物質量 [mol]。中和熱なら生成した水の物質量、溶解熱なら溶かした固体の物質量を使う</li>
+    </ul>
+    <p>温度が<strong>上がれば発熱反応</strong>（中和熱のように熱が出る反応）、<strong>下がれば吸熱反応</strong>（硝酸アンモニウムの溶解のように熱を奪う変化）です。熱化学方程式で表すときは、発熱なら ΔH は負、吸熱なら正の値になりますが、このページの計算ではまず大きさを求め、温度の向きから発熱・吸熱を判断します。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>水溶液全体の質量 m を出す。</strong>中和なら両方の溶液の体積を合計し（密度 1.0 g/cm<sup>3</sup> として質量に換算）、溶解なら水の質量に固体の質量を足します。</li>
+      <li><strong>温度変化 ΔT を読む。</strong>反応前後の温度の差の大きさを取り、上がったか下がったかも記録します。</li>
+      <li><strong>Q＝mcΔT で熱量を出す。</strong>c は水の比熱 4.2 J/(g・K) を使います。答えは [J] なので、必要なら 1000 で割って [kJ] に直します。</li>
+      <li><strong>物質量 n で割ってモルあたりに直す。</strong>中和なら生成した水の物質量（酸・塩基のうち不足する方から決まる）、溶解なら溶かした固体の物質量を使います。</li>
+      <li><strong>発熱・吸熱を添える。</strong>温度が上がったなら発熱、下がったなら吸熱です。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1（中和熱）：0.50 mol/L の塩酸 50 mL と 0.50 mol/L の水酸化ナトリウム水溶液 50 mL を熱量計の中で混ぜたところ、水溶液の温度が 3.4 K 上昇した。中和熱 [kJ/mol] を求めよ。水溶液の密度は 1.0 g/cm<sup>3</sup>、水の比熱は 4.2 J/(g・K) とする。問題2（溶解熱）：硝酸アンモニウム NH<sub>4</sub>NO<sub>3</sub> 4.0 g を水 100 g に溶かしたところ、水溶液の温度が 3.0 K 下がった。溶解熱 [kJ/mol] を求めよ。NH<sub>4</sub>NO<sub>3</sub> のモル質量は 80 g/mol とする。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：混ぜた後の水溶液は 50＋50＝100 mL で、密度 1.0 g/cm<sup>3</sup> より質量 m ＝ 100 g。</li>
+          <li>問題1：熱量 Q ＝ m × c × ΔT ＝ 100 g × 4.2 J/(g・K) × 3.4 K ＝ 1,428 J ＝ 1.428 kJ。</li>
+          <li>問題1：中和で生成した水の物質量は、塩酸が 0.50 mol/L × 0.050 L ＝ 0.025 mol、水酸化ナトリウムも同量なので n ＝ 0.025 mol。</li>
+          <li>問題1：モルあたりでは 1.428 kJ ÷ 0.025 mol ＝ 57.12 ≒ 57 kJ/mol。温度が上がったので発熱です。</li>
+          <li>問題2：水溶液の質量は水 100 g ＋ 固体 4.0 g ＝ 104 g。熱量 Q ＝ 104 g × 4.2 J/(g・K) × 3.0 K ＝ 1,310.4 J ＝ 1.3104 kJ（水溶液が失った熱量）。</li>
+          <li>問題2：溶かした NH<sub>4</sub>NO<sub>3</sub> は 4.0 g ÷ 80 g/mol ＝ 0.050 mol。モルあたりでは 1.3104 kJ ÷ 0.050 mol ＝ 26.208 ≒ 26 kJ/mol。温度が下がったので吸熱です。</li>
+        </ol>
+        <p><strong>答え：問題1の中和熱は約 57 kJ/mol（発熱）、問題2の溶解熱は約 26 kJ/mol（吸熱）</strong>。問題1の約 57 kJ/mol は、強酸と強塩基の中和熱の実測値（約 56〜57 kJ/mol）によく一致します。質量に「水だけ」ではなく「水溶液全体」を使う点と、最後に物質量で割る点がポイントです。</p>
+      </details>
+    </div>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>ボンベ熱量計による燃料・食品の発熱量測定</h3>
+    <p>燃料や食品の発熱量は、ボンベ熱量計という密閉容器の中で試料を完全に燃やし、周囲の水の温度上昇から Q＝mcΔT で熱量を求めて測定します。食品のカロリー表示の土台になる燃焼熱のデータも、この熱量測定から得られています。</p>
+    <h3>瞬間冷却パック（冷却剤）</h3>
+    <p>叩くと冷たくなる瞬間冷却パックは、硝酸アンモニウムなどの溶解熱が吸熱であることを利用した製品です。袋の中で固体が水に溶けるときに周囲から熱を奪う仕組みで、溶解熱の大きさが冷却の持続や到達温度の設計に使われます。</p>
+    <h3>セメントの水和熱の管理</h3>
+    <p>セメントが水と反応して固まるときに出る水和熱は、熱量計で測定され、ダムのような大型コンクリート構造物の設計に使われます。内部に熱がこもるとひび割れの原因になるため、反応熱の測定値をもとに材料の選定や施工方法が決められます。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ジョセフ・ブラック</strong>（1728〜1799、スコットランドの化学者・物理学者）、<strong>アントワーヌ・ラボアジエ</strong>（1743〜1794、フランスの化学者）、<strong>ピエール＝シモン・ラプラス</strong>（1749〜1827、フランスの数学者・物理学者）</p>
+    <p>熱量計算の土台になる<strong>比熱</strong>の考え方は、スコットランドの<strong>ジョセフ・ブラック</strong>（1728〜1799）が1760年代に、潜熱の概念とともに確立しました。物質ごとに「温まりやすさ」が違うことを定量的に捉えたことで、温度変化から熱量を逆算できるようになりました。熱を測る装置の側では、フランスの<strong>アントワーヌ・ラボアジエ</strong>（1743〜1794）と<strong>ピエール＝シモン・ラプラス</strong>（1749〜1827）が1780年代に氷熱量計を作り、反応で出た熱を氷の融けた量で測って、燃焼熱などの測定を行いました。現在の水の温度変化で測る方法は、この流れをくむ熱量測定の基本形です。</p>
+  </section>
+
+  <a class="linkcard" href="calc-calorimetry-chemistry.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">中和熱・溶解熱の測定と熱量計算 計算機：熱量 Q を求めるモードと、モルあたりの反応熱を求めるモードで、解き方の手順つきで表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>反応熱の種類と表し方は<a href="reaction-heat-thermochemical-equations.html">反応熱と熱化学方程式</a>、経路によらない熱の総和は<a href="hesss-law.html">ヘスの法則</a>、中和反応そのものの量的関係は<a href="neutralization-stoichiometry.html">中和反応と量的関係</a>、物理側の熱量の基本は<a href="https://wankodo.github.io/physics/calorimetry-specific-heat.html">熱量と比熱・熱容量</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

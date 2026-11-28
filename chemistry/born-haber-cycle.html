@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>格子エネルギーとボルン・ハーバーサイクル｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="格子エネルギーとボルン・ハーバーサイクルの使い方を、公式・手順・例題で解説。生成熱・昇華熱・イオン化エネルギー・結合解離・電子親和力から、直接測れない格子エネルギーをヘスの法則で逆算する方法や、イオン結晶の安定性評価など実際の現場での使われ方まで紹介します。各項を符号つきで入力して格子エネルギーを求める計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="格子エネルギーとボルン・ハーバーサイクル｜化学ツール集">
+<meta property="og:description" content="生成熱・昇華熱・イオン化エネルギー・電子親和力から格子エネルギーをヘスの法則で逆算する方法を、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/born-haber-cycle.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">格子エネルギー</span>とボルン・ハーバーサイクル</h1>
+    <p>化学の考え方辞典 ― 熱化学（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 熱化学 ＞ 格子エネルギーとボルン・ハーバーサイクル</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">熱化学</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    イオン結晶の格子エネルギーは直接測れないため、生成熱・昇華熱・イオン化エネルギー・結合解離エネルギー・電子親和力という測定できる量をヘスの法則でつないだボルン・ハーバーサイクルから逆算するときに使う。符号をそろえて各項を足し引きすれば、塩化ナトリウム NaCl の格子エネルギーのように、イオン結晶の結びつきの強さを数値で評価できる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>イオン結晶の<strong>格子エネルギー</strong>を、測定できるエンタルピー変化の組み合わせから求めるときの解法です。次のような場面で使います。</p>
+    <ul>
+      <li>塩化ナトリウム NaCl や塩化マグネシウム MgCl<sub>2</sub> の格子エネルギーを、生成熱などのデータから計算する問題</li>
+      <li>電子親和力のように直接測りにくい量を、格子エネルギーの理論値と組み合わせて逆に求める問題</li>
+      <li>イオン結晶どうしの安定性や融点の高低を、格子エネルギーの大きさで比較・説明する問題</li>
+    </ul>
+    <p>ポイントは2つあります。1つは、格子エネルギーには<strong>符号の約束が2通り</strong>あることです。気体イオンから結晶ができる「格子生成」の向きでは負の値、結晶を気体イオンにばらす「格子解離」の向きではその逆符号の正の値になります。もう1つは、塩素のような二原子分子では、化合物1 mol に必要な原子の分だけ結合を切ることです。NaCl 1 mol には Cl 原子が1 mol 必要なので、切る Cl<sub>2</sub> は 1/2 mol 分、つまり結合解離エネルギーの半分だけを数えます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>格子エネルギーとは、イオン結晶1 mol を気体のイオンに完全にばらすのに必要なエネルギー（格子解離エネルギー、正の値）、あるいはその逆向きの変化に伴うエンタルピー変化（格子生成エンタルピー、負の値）です。気体のイオンだけを取り出して熱量を測ることはできないため、この値は直接測定できません。</p>
+    <p>そこで、元素の単体からイオン結晶ができるまでの道筋を、測定できる段階に分けてたどります。単体から直接結晶ができる道筋（生成熱）と、単体→気体原子→気体イオン→結晶と遠回りする道筋では、<strong>ヘスの法則</strong>によりエンタルピー変化の合計が等しくなります。この遠回りの図が<strong>ボルン・ハーバーサイクル</strong>です。</p>
+    <div class="formula">ΔH<sub>f</sub> ＝ ΔH<sub>昇華</sub> ＋ IE ＋ ΔH<sub>解離</sub> ＋ EA ＋ ΔH<sub>格子生成</sub></div>
+    <p>未知数である格子生成エンタルピーについて解くと、次の形になります。</p>
+    <div class="formula">ΔH<sub>格子生成</sub> ＝ ΔH<sub>f</sub> −（ΔH<sub>昇華</sub> ＋ IE ＋ ΔH<sub>解離</sub> ＋ EA）</div>
+    <p>各記号の意味と単位、符号の決まり方は次の通りです。すべての量は、目的のイオン結晶1 mol を作るのに必要な分だけを、単位 [kJ/mol] でそろえます。</p>
+    <ul>
+      <li><strong>ΔH<sub>f</sub></strong>：結晶の標準生成エンタルピー（生成熱）[kJ/mol]。単体から結晶が直接できる変化で、安定なイオン結晶ではふつう負</li>
+      <li><strong>ΔH<sub>昇華</sub></strong>：金属単体の昇華熱（原子化熱）[kJ/mol]。固体金属を気体の原子にする吸熱過程なので正</li>
+      <li><strong>IE</strong>：イオン化エネルギー [kJ/mol]。気体の金属原子から電子を取り去る吸熱過程なので正。Mg<sup>2+</sup> のように2価のイオンでは第1・第2イオン化エネルギーの合計を使う</li>
+      <li><strong>ΔH<sub>解離</sub></strong>：非金属単体の結合解離に要する分 [kJ/mol]。結合を切る吸熱過程なので正。Cl<sub>2</sub> の結合解離エネルギーは 242 kJ/mol だが、NaCl では 1/2 mol 分の 121 kJ/mol を使う</li>
+      <li><strong>EA</strong>：電子親和力 [kJ/mol]。気体の非金属原子が電子を受け取る変化で、符号つきで入れる。第1電子親和力は発熱で負（Cl では −349 kJ/mol）だが、O<sup>2−</sup> のような2価の陰イオンでは第2電子親和力が大きな正の値になり、合計が正になることもある</li>
+      <li><strong>ΔH<sub>格子生成</sub></strong>：格子生成エンタルピー [kJ/mol]。気体イオンが集まって結晶できる発熱過程なので負。格子解離エネルギーはその逆符号で表す</li>
+    </ul>
+    <p>代表値（NaCl、単位は kJ/mol）：生成熱 −411、Na の昇華熱 ＋108、Na のイオン化エネルギー ＋496、Cl<sub>2</sub> の結合解離エネルギーの 1/2 分 ＋121、Cl の電子親和力 −349。これらから格子生成エンタルピーは −787 kJ/mol、格子解離エネルギーは ＋787 kJ/mol と求まります（出典により ±数 kJ/mol 程度の違いがあります）。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>必要な5つの量を、結晶1 mol 分にそろえて集める。</strong>生成熱・昇華熱・イオン化エネルギー・結合解離・電子親和力を、すべて [kJ/mol] で書き出します。</li>
+      <li><strong>量の「分量」を化学式に合わせる。</strong>2価の金属ならイオン化エネルギーは第1と第2の合計、陰イオンが2個ある式なら電子親和力も2倍、二原子分子の結合解離は必要な原子の分（NaCl なら半分）に直します。</li>
+      <li><strong>符号を確認する。</strong>昇華・イオン化・結合解離は吸熱で正、電子親和力は与えられた符号のまま（発熱なら負）使います。ここで符号を落とすのが一番多いミスです。</li>
+      <li><strong>ヘスの法則の式に代入する。</strong>格子生成エンタルピー ＝ 生成熱 −（昇華熱 ＋ イオン化エネルギー ＋ 結合解離分 ＋ 電子親和力）で計算します。</li>
+      <li><strong>求める約束に合わせて符号を読み替える。</strong>格子解離エネルギーで答えるなら、格子生成エンタルピーの逆符号にします。負の大きな値（解離では正の大きな値）ほど、イオンの結びつきが強い結晶です。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：塩化ナトリウム NaCl の標準生成エンタルピーは −411 kJ/mol、Na の昇華熱は ＋108 kJ/mol、Na のイオン化エネルギーは ＋496 kJ/mol、Cl<sub>2</sub> の結合解離エネルギーは 242 kJ/mol、Cl の電子親和力は −349 kJ/mol である。NaCl の格子生成エンタルピーと格子解離エネルギーを求めよ。問題2：塩化マグネシウム MgCl<sub>2</sub> の標準生成エンタルピーは −642 kJ/mol、Mg の昇華熱は ＋148 kJ/mol、Mg の第1・第2イオン化エネルギーは ＋738 kJ/mol と ＋1,451 kJ/mol、Cl<sub>2</sub> の結合解離エネルギーは 242 kJ/mol、Cl の電子親和力は −349 kJ/mol である。MgCl<sub>2</sub> の格子生成エンタルピーを求めよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：NaCl 1 mol に Cl 原子は1 mol 必要なので、結合解離は Cl<sub>2</sub> の 1/2 mol 分、242 ÷ 2 ＝ 121 kJ/mol を使います。</li>
+          <li>格子以外の項の合計は、108 ＋ 496 ＋ 121 ＋（−349）＝ ＋376 kJ/mol です。</li>
+          <li>格子生成エンタルピー ＝ −411 − 376 ＝ −787 kJ/mol。格子解離エネルギーはその逆符号で ＋787 kJ/mol です。</li>
+          <li>問題2：MgCl<sub>2</sub> 1 mol では、イオン化エネルギーは第1と第2の合計 738 ＋ 1,451 ＝ 2,189 kJ/mol、結合解離は Cl<sub>2</sub> 1 mol 分の 242 kJ/mol、電子親和力は Cl が2個分で −349 × 2 ＝ −698 kJ/mol です。</li>
+          <li>格子以外の項の合計は、148 ＋ 2,189 ＋ 242 ＋（−698）＝ ＋1,881 kJ/mol。格子生成エンタルピー ＝ −642 − 1,881 ＝ −2,523 kJ/mol です。</li>
+        </ol>
+        <p><strong>答え：問題1は格子生成エンタルピー −787 kJ/mol（格子解離エネルギー ＋787 kJ/mol）、問題2は格子生成エンタルピー −2,523 kJ/mol</strong>。問題2の値がずっと大きいのは、Mg<sup>2+</sup> の電荷が大きく、Cl<sup>−</sup> が2個集まる分だけイオンの引力が強くはたらくためです。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>イオン結晶の安定性と融点の予測</h3>
+    <p>格子エネルギーの大きさは、イオン結晶の融点や硬さ、水への溶けにくさと結びついています。新しいイオン性材料を設計するときは、ボルン・ハーバーサイクルで格子エネルギーを見積もることで、「その組成の結晶がそもそも安定に存在できるか」「融点はおよそどのくらいになりそうか」を、実際に合成する前に評価できます。電荷が大きくイオン半径が小さい組み合わせほど格子エネルギーが大きく、融点の高い結晶になるという傾向は、この見積もりの基本です。</p>
+    <h3>溶融塩・イオン液体の材料設計</h3>
+    <p>高温で溶けた塩を蓄熱材や電解質に使う溶融塩技術や、常温で液体の塩であるイオン液体の設計では、格子エネルギーが「塩がどの温度で溶けるか」を決める中心的な量になります。格子エネルギーの小さい組み合わせを選ぶと融点が下がるため、狙いの温度で液体になる塩の組成探しに、サイクルによる見積もりが使われます。</p>
+    <h3>電子親和力など測りにくい量の決定</h3>
+    <p>ボルン・ハーバーサイクルは逆向きにも使えます。格子エネルギーを結晶構造から計算する理論（ボルン・ランデの式など）と、測定できる生成熱などを組み合わせると、単独では測定の難しい電子親和力、とくに O<sup>2−</sup> のような多価陰イオンの第2電子親和力を逆算できます。こうして決められた値は、イオン結晶の熱化学データの基礎として各種のデータ集に収録されています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>マックス・ボルン</strong>（1882〜1970、ドイツの物理学者）、<strong>フリッツ・ハーバー</strong>（1868〜1934、ドイツの化学者）</p>
+    <p>このサイクルは、ドイツの物理学者<strong>マックス・ボルン</strong>（1882〜1970）と化学者<strong>フリッツ・ハーバー</strong>（1868〜1934）が、1919年にそれぞれ独立に提案したことにちなんで名付けられました。ボルンはイオン結晶の格子エネルギーの理論計算でも知られ、量子力学の確率解釈でノーベル物理学賞を受けています。ハーバーはアンモニア合成法（ハーバー・ボッシュ法）の開発でノーベル化学賞を受けた熱化学の専門家です。エンタルピーが道筋によらないという土台は、19世紀の<strong>ジェルマン・アンリ・ヘス</strong>の法則（ヘスの法則、1840年）で、ボルン・ハーバーサイクルはその代表的な応用例になっています。</p>
+  </section>
+
+  <a class="linkcard" href="calc-born-haber-cycle.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">格子エネルギーとボルン・ハーバーサイクル 計算機：生成熱・昇華熱・イオン化エネルギー・結合解離・電子親和力を符号つきで入力し、格子生成エンタルピーと格子解離エネルギーを解き方の手順つきで表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>土台になる法則は<a href="hesss-law.html">ヘスの法則</a>、生成熱の扱いは<a href="reaction-heat-thermochemical-equations.html">反応熱と熱化学方程式</a>、結合を切るエネルギーは<a href="bond-energy.html">結合エネルギー</a>、イオン化エネルギーと電子親和力そのものは<a href="ionization-energy-electron-affinity.html">イオン化エネルギーと電子親和力</a>、結晶の結びつきは<a href="ionic-bonding.html">イオン結合とイオン結晶</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

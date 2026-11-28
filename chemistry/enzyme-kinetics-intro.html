@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>酵素反応速度の入口｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="酵素反応の初速度と基質濃度の関係を、ミカエリス・メンテン式 v＝Vmax[S]/(Km＋[S]) で解説。Km と Vmax の意味、基質が少ないとき・酵素が飽和したときの振る舞い、競合阻害と非競合阻害の入口を、臨床検査や阻害薬など現場での使われ方とあわせて紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="酵素反応速度の入口｜化学ツール集">
+<meta property="og:description" content="ミカエリス・メンテン式の読み方を解説。Km は速度が Vmax の半分になる基質濃度、基質が増えると酵素は飽和して速度は Vmax に近づく。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/enzyme-kinetics-intro.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">酵素反応速度</span>の入口</h1>
+    <p>化学の考え方辞典 ― 反応速度と平衡（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 反応速度と平衡 ＞ 酵素反応速度の入口</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">反応速度と平衡</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    酵素が基質を生成物に変える速さが、基質濃度によってどう変わるかを読みたいときに使う。ミカエリス・メンテン式 v＝Vmax[S]/(Km＋[S]) で表され、基質が少ないうちは濃度にほぼ比例して速くなるが、基質が増えると酵素が飽和して最大速度 Vmax に近づき、[S]＝Km のときにちょうど Vmax の半分になる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>酵素（E）が基質（S）と結びついて生成物（P）を作る反応について、<strong>基質濃度と反応速度の関係</strong>を読み解くときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>基質濃度 [S] を変えて測った初速度のデータから、Km と Vmax を読み取る問題</li>
+      <li>基質を増やしても速度が頭打ちになる「飽和」がなぜ起こるかを説明する問題</li>
+      <li>阻害剤が加わったときに、Km と Vmax のどちらがどう変わるかを見分ける問題（競合阻害・非競合阻害）</li>
+      <li>酵素の量を変えたときに、グラフの形がどう変わるかを考える問題</li>
+    </ul>
+    <p>ポイントは、ここで扱う速度 v は反応が始まって間もない頃の<strong>初速度</strong>だということです。生成物がたまって逆反応が無視できなくなる前、基質がまだほとんど減っていない段階の速さで考えるのが、この式の前提です。酵素そのものの性質（基質特異性や最適温度・pH）は<a href="enzymes.html">酵素の働き</a>で扱っています。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>酵素反応は、酵素 E と基質 S がいったん複合体 ES を作り、そこから生成物 P が離れる、という2段階で進みます。</p>
+    <div class="formula">E ＋ S ⇌ ES → E ＋ P</div>
+    <p>基質が酵素よりずっと多く、ES の濃度がほぼ一定に落ち着いた（定常状態）と考えると、初速度 v は次の<strong>ミカエリス・メンテン式</strong>で表されます。</p>
+    <div class="formula">v ＝ V<sub>max</sub>[S] ÷ (K<sub>m</sub> ＋ [S])</div>
+    <p>各記号の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>v</strong>：反応の初速度 [mol/(L・s)、µmol/(L・min) など]。生成物ができる速さ（＝基質が減る速さ）</li>
+      <li><strong>[S]</strong>：基質濃度 [mol/L、mmol/L など]</li>
+      <li><strong>V<sub>max</sub></strong>：最大速度。単位は v と同じ。すべての酵素が ES になって働いているときの速さで、頭打ちの値</li>
+      <li><strong>K<sub>m</sub></strong>：ミカエリス定数。単位は [S] と同じ濃度。速度がちょうど V<sub>max</sub> の半分になる基質濃度（下の例題で確かめます）</li>
+    </ul>
+    <p><strong>基質が少ないとき（[S] が K<sub>m</sub> よりずっと小さい）</strong>：分母はほぼ K<sub>m</sub> とみなせるので、v ≒ (V<sub>max</sub>／K<sub>m</sub>)[S] となり、速度は基質濃度にほぼ比例します（基質についての一次反応のような振る舞い）。空いている酵素がたくさんあるので、基質が増えた分だけ ES が増えるからです。</p>
+    <p><strong>基質が多いとき（[S] が K<sub>m</sub> よりずっと大きい）</strong>：分母はほぼ [S] とみなせるので、v ≒ V<sub>max</sub> となり、基質を増やしても速度はほとんど増えません（基質についての零次反応のような振る舞い）。酵素がすべて ES になって<strong>飽和</strong>し、働き手の数が上限になっているからです。</p>
+    <p><strong>K<sub>m</sub> の読み方</strong>：K<sub>m</sub> が小さい酵素は、低い基質濃度でも半分の速さに届きます。一般に「基質との結びつきの強さ（親和性）」の目安とされますが、K<sub>m</sub> は ES が壊れる速さにも左右される量で、結びつきの強さそのもの（解離定数）と一致するとは限らない点に注意してください。</p>
+    <p><strong>V<sub>max</sub> の読み方</strong>：V<sub>max</sub> は酵素の量に比例します。正確には V<sub>max</sub> ＝ k<sub>cat</sub>[E]<sub>全</sub> と書け、k<sub>cat</sub> は酵素1分子が単位時間に処理できる基質の個数（回転数）、[E]<sub>全</sub> は酵素の全濃度です。したがって酵素の量を2倍にすれば V<sub>max</sub> は2倍になりますが、K<sub>m</sub> は（単純なモデルでは）変わりません。</p>
+    <p><strong>阻害の入口</strong>：反応を妨げる物質（阻害剤）の入り方には、大きく2つの型があります。<strong>競合阻害</strong>は、阻害剤が基質と似た形で活性部位を取り合う型で、見かけの K<sub>m</sub> が大きくなり（基質が結びつきにくくなる）、V<sub>max</sub> は変わりません。基質を大量に加えれば阻害剤を押しのけて追い越せます。<strong>非競合阻害</strong>は、阻害剤が活性部位とは別の場所に結びついて酵素の働きを落とす型で、V<sub>max</sub> が小さくなり、K<sub>m</sub> はほぼ変わりません。基質を増やしても追い越せないのが競合阻害との違いです。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>初速度のデータかを確認する。</strong>ミカエリス・メンテン式が使えるのは、生成物がほとんどなく基質も減りきっていない反応初期の速さです。</li>
+      <li><strong>[S] と K<sub>m</sub> の大小を比べる。</strong>[S] が K<sub>m</sub> よりずっと小さければ比例の領域、ずっと大きければ飽和の領域、[S] ＝ K<sub>m</sub> なら v ＝ V<sub>max</sub>／2 と、まず見当をつけます。</li>
+      <li><strong>式に代入する。</strong>v ＝ V<sub>max</sub>[S] ÷ (K<sub>m</sub> ＋ [S]) に数値を入れます。K<sub>m</sub> と [S] の単位は必ずそろえます。</li>
+      <li><strong>結果の向きを確認する。</strong>答えの v が V<sub>max</sub> を超えていたら計算ミスです。速度はどんなに基質を増やしても V<sub>max</sub> 未満にしかなりません。</li>
+      <li><strong>阻害の問題は K<sub>m</sub> と V<sub>max</sub> の変化で見分ける。</strong>見かけの K<sub>m</sub> だけが増えたら競合阻害、V<sub>max</sub> が減ったら非競合阻害です。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">ある酵素について V<sub>max</sub> ＝ 120 µmol/(L・min)、K<sub>m</sub> ＝ 2.0 mmol/L とする。問題1：[S] ＝ 2.0 mmol/L のときの初速度 v はいくらか。問題2：[S] ＝ 0.20 mmol/L のときと [S] ＝ 18 mmol/L のときの v はそれぞれいくらか。問題3：競合阻害剤が加わって見かけの K<sub>m</sub> が 6.0 mmol/L になったとき、[S] ＝ 2.0 mmol/L での v はいくらか。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：v ＝ 120 × 2.0 ÷ (2.0 ＋ 2.0) ＝ 240 ÷ 4.0 ＝ 60 µmol/(L・min)。[S] ＝ K<sub>m</sub> のとき v は V<sub>max</sub> のちょうど半分になることが確かめられます。これが K<sub>m</sub> の定義そのものです。</li>
+          <li>問題2（少ないとき）：v ＝ 120 × 0.20 ÷ (2.0 ＋ 0.20) ＝ 24 ÷ 2.2 ≒ 11 µmol/(L・min)。近似式 (V<sub>max</sub>／K<sub>m</sub>)[S] ＝ (120 ÷ 2.0) × 0.20 ＝ 12 とほぼ一致し、基質濃度にほぼ比例する領域だと分かります。</li>
+          <li>問題2（多いとき）：v ＝ 120 × 18 ÷ (2.0 ＋ 18) ＝ 2160 ÷ 20 ＝ 108 µmol/(L・min)。V<sub>max</sub> の 90% に達していて、基質を問題1の9倍にしても速度は 60 から 108 へ 1.8 倍しか増えていません。飽和の効果です。</li>
+          <li>問題3：V<sub>max</sub> は変わらず、見かけの K<sub>m</sub> だけが 6.0 mmol/L になるので、v ＝ 120 × 2.0 ÷ (6.0 ＋ 2.0) ＝ 240 ÷ 8.0 ＝ 30 µmol/(L・min)。阻害のない問題1の半分に落ちました。ただし競合阻害なので、基質を大量に加えれば速度はもとの V<sub>max</sub> に近づけられます。</li>
+        </ol>
+        <p><strong>答え：問題1は 60 µmol/(L・min)、問題2は約 11 µmol/(L・min) と 108 µmol/(L・min)、問題3は 30 µmol/(L・min)</strong>。どの場合も v が V<sub>max</sub> ＝ 120 を超えていないことが、計算が正しい方向にある目安になります。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>臨床検査での酵素活性の測定</h3>
+    <p>血液検査で肝臓や心臓などの状態をみるために、血中の酵素の活性（働きの強さ）が測られます。この測定では、基質を飽和するほど十分に多く入れた条件で初速度を測るのが基本です。飽和条件では速度が酵素の量に比例する（v ≒ V<sub>max</sub> ＝ k<sub>cat</sub>[E]<sub>全</sub>）ため、測った速さがそのまま試料中の酵素の量を反映するからです。ミカエリス・メンテンの飽和の考え方が、測定条件の設計に使われています。</p>
+    <h3>阻害剤を利用した薬（スタチンなど）</h3>
+    <p>コレステロールを下げる薬スタチンは、コレステロール合成の鍵酵素 HMG-CoA 還元酵素の<strong>競合阻害剤</strong>です。基質と活性部位を取り合うことで酵素の働きを抑え、体内のコレステロール合成を減らします。新しい薬の開発では、候補物質がどの酵素をどの型で阻害し、K<sub>m</sub> や V<sub>max</sub> をどう変えるかを調べることが、効き方と副作用を見極める基本の手順になっています。</p>
+    <h3>産業用酵素のプロセス設計</h3>
+    <p>洗剤用や食品加工用の酵素を工場で使うときは、基質濃度をどこに設定するかがコストと効率を左右します。K<sub>m</sub> よりずっと高い濃度にしても速度は V<sub>max</sub> で頭打ちになる一方、基質が残りすぎると無駄が出ます。酵素ごとに測られた K<sub>m</sub> と V<sub>max</sub> が、原料の投入量や反応時間を決める設計の土台になっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>レオノール・ミカエリス</strong>（1875〜1949、ドイツの生化学者・医師）、<strong>モード・メンテン</strong>（1879〜1960、カナダの生化学者・医師）</p>
+    <p>酵素反応の速度が基質濃度に対して飽和する形になることは、フランスの<strong>ヴィクトル・アンリ</strong>が1903年に早くも式の形で示していました。これを確かなものにしたのが、ドイツの生化学者<strong>レオノール・ミカエリス</strong>（1875〜1949）とカナダの生化学者<strong>モード・メンテン</strong>（1879〜1960）で、1913年にインベルターゼ（スクロースを分解する酵素）の実験をもとに、初速度と基質濃度の関係を整理した論文を発表しました。当時の論文は、生成物による阻害を避けるため反応のごく初期の速さを測る工夫が要で、この「初速度で考える」姿勢が今も式の前提として残っています。その後1925年に、イギリスの<strong>ジョージ・ブリッグス</strong>と<strong>ジョン・ホールデーン</strong>が、ES 複合体の濃度がほぼ一定になる定常状態の仮定で式を導き直し、K<sub>m</sub> が速度定数の組み合わせで表される量であることを明らかにしました。現在使われているミカエリス・メンテン式は、この定常状態にもとづく形です。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>酵素そのものの性質は<a href="enzymes.html">酵素の働き</a>、一般の化学反応の速度式は<a href="rate-law-reaction-order.html">速度式と反応次数</a>、酵素も含めた触媒の働きは<a href="catalysts.html">触媒の働き</a>、温度で速度が変わる仕組みは<a href="arrhenius-equation.html">活性化エネルギーとアレニウス式</a>、一次反応の速さの減り方は<a href="first-order-kinetics-half-life.html">一次反応と半減期（速度論）</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

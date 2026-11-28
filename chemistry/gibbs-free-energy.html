@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>エンタルピー・エントロピー・ギブズエネルギー｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="エンタルピー・エントロピー・ギブズエネルギーの関係 ΔG＝ΔH−TΔS を、公式・手順・例題で解説。反応が自発的に進む条件や自発になる境目の温度、平衡定数 K や電池の起電力とのつながり、製鉄や燃料電池など実際の現場での使われ方まで紹介します。ΔG・境目の温度・K を求める計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="エンタルピー・エントロピー・ギブズエネルギー｜化学ツール集">
+<meta property="og:description" content="ΔG＝ΔH−TΔS で反応が自発的に進むかどうかを判定する方法を、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/gibbs-free-energy.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>エンタルピー・エントロピー・<span class="accent">ギブズエネルギー</span></h1>
+    <p>化学の考え方辞典 ― 熱化学（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 熱化学 ＞ エンタルピー・エントロピー・ギブズエネルギー</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">熱化学</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    反応が自発的に進むかどうかを判定するときに使う。エンタルピー変化 ΔH とエントロピー変化 ΔS、絶対温度 T からギブズエネルギー変化 ΔG ＝ ΔH − TΔS を計算し、ΔG が負ならその反応は自発的に進む。ΔG° からは平衡定数 K が求まり、電池の起電力とも結びつけられる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>反応が<strong>自発的に進むかどうか</strong>を、熱の出入り（エンタルピー）と乱雑さの変化（エントロピー）の両方から判定する解法です。次のような場面で使います。</p>
+    <ul>
+      <li>ΔH と ΔS と温度 T から ΔG を計算し、反応が自発的かどうかを判定する問題</li>
+      <li>吸熱反応が高温で自発的になるような、<strong>自発になる境目の温度</strong>を求める問題</li>
+      <li>標準ギブズエネルギー変化 ΔG° から平衡定数 K を求める問題</li>
+      <li>電池の起電力 E から ΔG ＝ −nFE で反応の自発性を調べる問題</li>
+    </ul>
+    <p>発熱反応（ΔH ＜ 0）なら必ず自発的、とは限りません。たとえばアンモニア合成 N<sub>2</sub> ＋ 3H<sub>2</sub> → 2NH<sub>3</sub> は発熱反応ですが、気体の分子数が減るため ΔS は負で、高温になるほど ΔG は大きくなり自発的でなくなります。「熱を出すか」と「乱雑さが増えるか」の綱引きを1つの量で判定するのがギブズエネルギーです。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p><strong>エンタルピー H</strong> は物質がもつ熱的なエネルギーの目安で、その変化 ΔH が反応熱に対応します（定圧条件）。<strong>エントロピー S</strong> は系の乱雑さ（状態の数）の目安で、気体が増える・固体が溶ける・温度が上がるなどで大きくなります。この2つを温度で結びつけた量が<strong>ギブズエネルギー G</strong> です。</p>
+    <div class="formula">G ＝ H − TS</div>
+    <p>定温・定圧での変化量は次の式で与えられます。</p>
+    <div class="formula">ΔG ＝ ΔH − TΔS</div>
+    <p>各記号の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>ΔG</strong>：ギブズエネルギー変化 [kJ/mol]。反応式の係数に対応する物質量あたりの値</li>
+      <li><strong>ΔH</strong>：エンタルピー変化 [kJ/mol]。負なら発熱、正なら吸熱</li>
+      <li><strong>ΔS</strong>：エントロピー変化 [J/(mol・K)]。ふつう ΔH より3桁ほど小さい値になるので、計算では kJ/(mol・K) に直してから使う</li>
+      <li><strong>T</strong>：絶対温度 [K]</li>
+    </ul>
+    <p>判定のルールはシンプルです。定温・定圧では、<strong>ΔG ＜ 0 なら自発的に進み、ΔG ＞ 0 なら自発的には進まず（逆反応が自発的）、ΔG ＝ 0 なら平衡状態</strong>です。ΔH と ΔS の符号の組み合わせで、温度による振る舞いは次の4通りになります。</p>
+    <ul>
+      <li>ΔH ＜ 0、ΔS ＞ 0：すべての温度で自発的</li>
+      <li>ΔH ＞ 0、ΔS ＜ 0：すべての温度で非自発的</li>
+      <li>ΔH ＞ 0、ΔS ＞ 0：高温で自発的（境目の温度 T ＝ ΔH ÷ ΔS）</li>
+      <li>ΔH ＜ 0、ΔS ＜ 0：低温で自発的（境目の温度 T ＝ ΔH ÷ ΔS）</li>
+    </ul>
+    <p>標準状態での ΔG° は、平衡定数 K と次の関係で結ばれています。気体定数は R ＝ 8.3 J/(mol・K) を使います。</p>
+    <div class="formula">ΔG° ＝ −RT ln K</div>
+    <p>また、電池や電気分解のような電気が関わる反応では、ファラデー定数 F ＝ 9.65×10<sup>4</sup> C/mol を使って起電力 E [V] と結ばれます。n は反応で移動する電子の物質量 [mol] です。</p>
+    <div class="formula">ΔG ＝ −nFE</div>
+    <p>起電力が正の電池（自発的に電気を取り出せる電池）では ΔG が負になり、式の符号が自発性の判定と一致します。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>ΔH と ΔS の符号と値をそろえる。</strong>ΔS は [J/(mol・K)] で与えられることが多いので、1000 で割って [kJ/(mol・K)] に直し、ΔH と単位をそろえます。</li>
+      <li><strong>TΔS を計算する。</strong>温度は絶対温度 [K] で代入します。</li>
+      <li><strong>ΔG ＝ ΔH − TΔS を計算する。</strong>TΔS の符号ごと引く点が最大の注意点です（ΔS が負なら −TΔS はプラスになります）。</li>
+      <li><strong>ΔG の符号で判定する。</strong>負なら自発的、正なら非自発的、0 なら平衡です。</li>
+      <li><strong>必要なら K や E に換算する。</strong>ΔG° からは K ＝ e<sup>−ΔG°/(RT)</sup>、電池では ΔG ＝ −nFE を使います。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：アンモニア合成 N<sub>2</sub> ＋ 3H<sub>2</sub> → 2NH<sub>3</sub> について、ΔH ＝ −92.2 kJ/mol、ΔS ＝ −198.8 J/(mol・K) とする。298 K での ΔG を求め、自発的かどうかを判定せよ。問題2：石灰石の熱分解 CaCO<sub>3</sub> → CaO ＋ CO<sub>2</sub> は ΔH ＝ ＋178 kJ/mol、ΔS ＝ ＋160.5 J/(mol・K) の吸熱反応である。自発的になる境目の温度を求めよ。問題3：問題1の ΔG° ＝ −32.96 kJ/mol（298 K）から、平衡定数 K を求めよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：ΔS を kJ に直すと −198.8 ÷ 1000 ＝ −0.1988 kJ/(mol・K)。TΔS ＝ 298 × (−0.1988) ＝ −59.24 kJ/mol。</li>
+          <li>ΔG ＝ ΔH − TΔS ＝ −92.2 − (−59.24) ＝ −32.96 kJ/mol。ΔG ＜ 0 なので、298 K では<strong>自発的に進みます</strong>。ただし温度を上げるほど −TΔS の項が大きくなるため、高温では自発的でなくなっていきます。</li>
+          <li>問題2：境目は ΔG ＝ 0 の温度なので、T ＝ ΔH ÷ ΔS ＝ 178,000 J/mol ÷ 160.5 J/(mol・K) ≒ 1,109 K（約 836 ℃）。ΔH ＞ 0、ΔS ＞ 0 の組み合わせなので、これより高温で自発的になります。</li>
+          <li>問題3：ΔG° ＝ −RT ln K より ln K ＝ −ΔG° ÷ (RT) ＝ 32,960 ÷ (8.3 × 298) ≒ 13.33。よって K ＝ e<sup>13.33</sup> ≒ 6.1×10<sup>5</sup>。K が 1 よりはるかに大きく、平衡は生成物（NH<sub>3</sub>）側に大きく偏っています。</li>
+        </ol>
+        <p><strong>答え：問題1は ΔG ＝ −32.96 kJ/mol で自発的、問題2は約 1,109 K（約 836 ℃）以上で自発的、問題3は K ≒ 6.1×10<sup>5</sup></strong>。問題1で ΔS の単位を J のまま代入すると桁がずれる点、問題2で ΔH を J に直してから割る点が注意点です。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>製鉄・金属精錬（エリンガム図）</h3>
+    <p>金属の酸化物から金属を取り出す還元反応がどの温度で自発的になるかは、酸化物の生成 ΔG を温度に対して描いたエリンガム図で読み取ります。炭素による還元が高温で有利になるのは、CO の生成で ΔS が大きくなるためで、製鉄や金属精錬の温度設計の土台になっています。石灰石 CaCO<sub>3</sub> の熱分解（例題2）も、セメント製造の窯の温度を決める同じ考え方です。</p>
+    <h3>燃料電池・電池の理論起電力と効率</h3>
+    <p>電池から取り出せる電気エネルギーの上限は ΔG で決まり、ΔG ＝ −nFE から理論起電力が計算できます。水素燃料電池では、反応の ΔH のうち ΔG にあたる分だけが電気に変えられるため、理論効率の上限は ΔG ÷ ΔH で与えられ、熱機関のカルノー効率とは別の上限になることが知られています。</p>
+    <h3>生化学反応の駆動力（ATP）</h3>
+    <p>生体内では、ATP の加水分解の ΔG が負であることを利用して、本来は自発的に進まない合成反応などを駆動しています。反応同士を組み合わせて全体の ΔG を負にする「共役」という考え方は、ギブズエネルギーの加法性そのもので、代謝経路の設計図を読む基本になっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ジョサイア・ウィラード・ギブズ</strong>（1839〜1903、アメリカの物理学者・化学者）、<strong>ルドルフ・クラウジウス</strong>（1822〜1888、ドイツの物理学者）、<strong>ルートヴィヒ・ボルツマン</strong>（1844〜1906、オーストリアの物理学者）</p>
+    <p>ギブズエネルギーは、アメリカの<strong>ジョサイア・ウィラード・ギブズ</strong>（1839〜1903）が1876〜1878年の論文「不均一物質の平衡について」で定式化した量です。ギブズは、定温・定圧で反応が進むかどうかは、熱の出入りとエントロピーの変化を組み合わせた1つの量の符号で決まることを示し、化学平衡の理論全体を築きました。エントロピーという言葉自体は、熱力学第二法則を確立したドイツの<strong>ルドルフ・クラウジウス</strong>（1822〜1888）が1865年に命名したものです。その後、オーストリアの<strong>ルートヴィヒ・ボルツマン</strong>（1844〜1906）が、エントロピーを原子・分子の取りうる状態の数と結びつける統計的な解釈を与え、「乱雑さの目安」という描像が裏付けられました。ドイツのヘルマン・フォン・ヘルムホルツも1882年にほぼ同じ量を定温・定体積の条件で導入しており、そちらはヘルムホルツエネルギーと呼ばれます。</p>
+  </section>
+
+  <a class="linkcard" href="calc-gibbs-free-energy.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">エンタルピー・エントロピー・ギブズエネルギー 計算機：ΔG を求めて自発変化を判定するモード、自発になる境目の温度を求めるモード、ΔG° から平衡定数 K を求めるモードで表示します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>反応熱そのものの求め方は<a href="hesss-law.html">ヘスの法則</a>、平衡定数の定義と濃度による計算は<a href="chemical-equilibrium-kc.html">化学平衡と平衡定数</a>、起電力の元になる電池の仕組みは<a href="galvanic-cells.html">電池の原理（ボルタ電池・ダニエル電池）</a>が役立ちます。エントロピーの物理側の扱いは物理コーナーの<a href="https://wankodo.github.io/physics/second-law-entropy.html">熱力学第二法則とエントロピー</a>も参考になります。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
