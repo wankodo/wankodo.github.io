@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>グリーンケミストリー｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="グリーンケミストリーを、12原則の要点とアトムエコノミー・Eファクターの計算例で解説。付加反応は原子経済100%、置換・脱離では下がる理由を式量の比で確かめ、触媒の活用やイブプロフェン合成の改良など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="グリーンケミストリー｜化学ツール集">
+<meta property="og:description" content="反応の良し悪しを収率だけでなく物質収支全体で見るグリーンケミストリー。12原則とアトムエコノミー・Eファクターの計算例、イブプロフェン合成の改良を解説します。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/green-chemistry.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">グリーン</span>ケミストリー</h1>
+    <p>化学の考え方辞典 ― 生化学・環境と生活の化学（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 生化学・環境と生活の化学 ＞ グリーンケミストリー</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">生化学・環境と生活の化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    化学反応や製品づくりを「環境にどれだけ負荷をかけないか」で評価し直す考え方で、廃棄物を出さない設計（予防）、原料の原子をできるだけ目的の生成物に取り込むアトムエコノミー（原子経済）、有害物質や危険な溶媒を避けること、エネルギー効率の向上、触媒の活用などを柱とする。反応の良し悪しを収率だけでなく、副生成物も含めた物質収支全体で判断する点が特徴で、医薬品合成の改良など実際のプロセス設計の評価に使われている。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>化学プロセスを<strong>環境負荷の面から設計・評価する</strong>考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>グリーンケミストリーの12原則の要点を挙げ、ある合成法がどの原則に沿う（あるいは反する）かを判断する問題</li>
+      <li>反応式からアトムエコノミー（原子経済）を計算し、付加・置換・脱離などの反応形式による違いを説明する問題</li>
+      <li>Eファクター（廃棄物量÷生成物量）を計算し、業種やプロセスごとの廃棄物の多さを比べる問題</li>
+      <li>収率は高いのに環境負荷も高い反応を、触媒の利用や工程の短縮でどう改良できるかを考える問題</li>
+    </ul>
+    <p>ポイントは、従来の「どれだけ目的物が取れたか（収率）」という評価に、<strong>「反応物全体のうち、どれだけが目的物になり、どれだけがごみになったか」</strong>という物質収支の視点を加えることです。収率が100%でも、副生成物が大量に出る反応はグリーンとは言えません。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>グリーンケミストリーの12原則</h3>
+    <p>1998年にアナスタスとワーナーが著書で整理した設計指針です。要点は次の通りです。</p>
+    <ol class="steps">
+      <li><strong>予防</strong>：廃棄物は出してから処理するより、出さない方がよい。</li>
+      <li><strong>原子経済（アトムエコノミー）</strong>：原料の原子が最大限、目的生成物に取り込まれる合成法を設計する。</li>
+      <li><strong>有害性の低い合成法</strong>：人や環境への有害性が小さい（ない）物質を使い、生成する合成法にする。</li>
+      <li><strong>安全な化学製品の設計</strong>：効能を保ちながら、有害性を下げた製品を設計する。</li>
+      <li><strong>安全な溶媒と補助剤</strong>：溶媒や分離剤などの補助物質は、できるだけ使わず、使うなら無害なものを選ぶ。</li>
+      <li><strong>エネルギー効率の設計</strong>：エネルギー消費を環境・経済面から評価し、常温・常圧に近い条件を目指す。</li>
+      <li><strong>再生可能原料の利用</strong>：枯渇性の原料より、再生可能な原料を優先する。</li>
+      <li><strong>派生物の削減</strong>：保護基などの一時的な修飾は工程と試薬を増やすので、できるだけ避ける。</li>
+      <li><strong>触媒の利用</strong>：量論量の試薬より、少量で働く触媒（できるだけ選択的なもの）が優れる。</li>
+      <li><strong>分解しやすい設計</strong>：使用後に環境中で無害な物質へ分解し、残留しない製品を設計する。</li>
+      <li><strong>汚染防止のためのリアルタイム分析</strong>：有害物質ができる前に検知できるよう、工程中のモニタリングと制御を組み込む。</li>
+      <li><strong>事故を防ぐ本質的に安全な化学</strong>：漏出・爆発・火災などの事故の可能性を本質的に小さくする物質と扱い方を選ぶ。</li>
+    </ol>
+    <h3>アトムエコノミー（原子経済）</h3>
+    <p>トロストが提唱した指標で、反応物の原子がどれだけ目的生成物に取り込まれたかを、式量（モル質量）の比で表します。</p>
+    <div class="formula">アトムエコノミー [％] ＝（目的生成物の式量 ÷ 反応物の式量の合計）× 100</div>
+    <p>ここで式量は各物質1 molあたりの質量 [g/mol] で、反応式の係数を反映して合計します。副生成物がまったく出ない<strong>付加反応では100%</strong>になりますが、副生成物が必ず出る<strong>置換反応や脱離反応では、収率が100%でもアトムエコノミーは100%未満</strong>になります。つまりこれは収率とは独立の、「反応式そのものの無駄のなさ」を表す指標です。原子量は H＝1.0、C＝12、O＝16、Cl＝35.5 を使います。</p>
+    <h3>Eファクター</h3>
+    <p>シェルドンが提唱した指標で、製品に対してどれだけの廃棄物が出たかを表します。</p>
+    <div class="formula">Eファクター ＝ 廃棄物の総量 [kg] ÷ 生成物の量 [kg]</div>
+    <p>小さいほど環境負荷が小さいことを意味します。シェルドンの整理では、石油精製ではおよそ0.1程度と小さい一方、工程が多く溶媒を大量に使う医薬品製造では25〜100程度に達することがあるとされ、業種による差の大きさを示す代表例になっています。</p>
+    <h3>触媒の活用</h3>
+    <p>12原則の9番目にある通り、反応のたびに消費される量論試薬を、少量で繰り返し働く触媒に置き換えると、試薬由来の廃棄物を大きく減らせます。たとえば酸化反応では、重金属酸化剤を量論量使う代わりに、触媒と酸素（空気）を組み合わせる<strong>触媒的酸化</strong>にすれば、副生成物を水などに抑える設計が可能になります。触媒そのものの働きは<a href="catalysts.html">触媒</a>の項目も参照してください。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>反応式を係数まで正しく書く。</strong>副生成物も省略せずに書くことが出発点です。副生成物を書き落とすと、アトムエコノミーを実際より高く見積もってしまいます。</li>
+      <li><strong>各物質の式量を求める。</strong>原子量（H＝1.0、C＝12、O＝16、Cl＝35.5 など）から、反応物と目的生成物の式量を計算します。</li>
+      <li><strong>アトムエコノミーを計算する。</strong>（目的生成物の式量 ÷ 反応物の式量の合計）× 100。反応形式（付加・置換・脱離）から、100%になるか下がるかを先に予想してから計算すると検算になります。</li>
+      <li><strong>廃棄物の量からEファクターを求める。</strong>生成物量で廃棄物総量を割り、ほかのプロセスや業種の目安と比べます。</li>
+      <li><strong>12原則に照らして改良案を考える。</strong>触媒への置き換え、工程（保護基など）の削減、溶媒の見直し、再生可能原料への変更など、どの原則で改善できるかを挙げます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：次の3つの反応について、アトムエコノミーをそれぞれ求めよ。原子量は H＝1.0、C＝12、O＝16、Cl＝35.5 とする。（ア）エテンの水和（付加）：C<sub>2</sub>H<sub>4</sub> ＋ H<sub>2</sub>O → C<sub>2</sub>H<sub>5</sub>OH。（イ）メタンの塩素化（置換）：CH<sub>4</sub> ＋ Cl<sub>2</sub> → CH<sub>3</sub>Cl ＋ HCl（目的生成物は CH<sub>3</sub>Cl）。（ウ）エタノールの脱水（脱離）：C<sub>2</sub>H<sub>5</sub>OH → C<sub>2</sub>H<sub>4</sub> ＋ H<sub>2</sub>O（目的生成物は C<sub>2</sub>H<sub>4</sub>）。問題2：ある医薬品の製造で、生成物 100 kg に対して廃棄物が合計 2,500 kg 出た。Eファクターを求めよ。</p>
+      <div class="tri-fig">
+        <svg viewBox="0 0 560 150" width="560" height="150" role="img" aria-label="エテンと水からエタノールができる付加反応の構造式" style="max-width:100%;height:auto;">
+          <text x="90" y="24" text-anchor="middle" font-size="13" fill="currentColor">エテン C₂H₄</text>
+          <text x="58" y="86" text-anchor="middle" font-size="14" fill="currentColor">H₂C</text>
+          <line x1="84" y1="76" x2="102" y2="76" stroke="currentColor" stroke-width="2"/>
+          <line x1="84" y1="84" x2="102" y2="84" stroke="currentColor" stroke-width="2"/>
+          <text x="124" y="86" text-anchor="middle" font-size="14" fill="currentColor">CH₂</text>
+          <text x="196" y="86" text-anchor="middle" font-size="16" fill="currentColor">＋</text>
+          <text x="262" y="24" text-anchor="middle" font-size="13" fill="currentColor">水 H₂O</text>
+          <text x="238" y="86" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+          <line x1="252" y1="80" x2="258" y2="66" stroke="currentColor" stroke-width="2"/>
+          <text x="266" y="62" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+          <line x1="274" y1="66" x2="280" y2="80" stroke="currentColor" stroke-width="2"/>
+          <text x="288" y="86" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+          <text x="344" y="86" text-anchor="middle" font-size="16" fill="currentColor">→</text>
+          <text x="452" y="24" text-anchor="middle" font-size="13" fill="currentColor">エタノール C₂H₅OH</text>
+          <text x="386" y="86" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+          <line x1="410" y1="80" x2="430" y2="80" stroke="currentColor" stroke-width="2"/>
+          <text x="446" y="86" text-anchor="middle" font-size="14" fill="currentColor">CH₂</text>
+          <line x1="470" y1="80" x2="490" y2="80" stroke="currentColor" stroke-width="2"/>
+          <text x="508" y="86" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+          <text x="280" y="132" text-anchor="middle" font-size="12" fill="currentColor">二重結合に H と OH が付加し、副生成物は出ない</text>
+        </svg>
+        <p>問題1（ア）の付加反応。エテンの二重結合に水が付加してエタノールになり、反応物の原子がすべて生成物に入ります。逆向きに読むと問題1（ウ）の脱離反応（エタノールからエテンと水）にもなります。</p>
+      </div>
+      <div class="tri-fig">
+        <svg viewBox="0 0 560 150" width="560" height="150" role="img" aria-label="メタンの塩素化による置換反応の構造式" style="max-width:100%;height:auto;">
+          <text x="80" y="24" text-anchor="middle" font-size="13" fill="currentColor">メタン CH₄</text>
+          <text x="66" y="62" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+          <line x1="72" y1="66" x2="78" y2="76" stroke="currentColor" stroke-width="2"/>
+          <text x="80" y="92" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+          <line x1="70" y1="86" x2="56" y2="86" stroke="currentColor" stroke-width="2"/>
+          <text x="44" y="92" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+          <line x1="90" y1="86" x2="104" y2="86" stroke="currentColor" stroke-width="2"/>
+          <text x="116" y="92" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+          <line x1="86" y1="96" x2="94" y2="108" stroke="currentColor" stroke-width="2"/>
+          <text x="100" y="122" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+          <text x="162" y="86" text-anchor="middle" font-size="16" fill="currentColor">＋</text>
+          <text x="228" y="24" text-anchor="middle" font-size="13" fill="currentColor">塩素 Cl₂</text>
+          <text x="204" y="86" text-anchor="middle" font-size="14" fill="currentColor">Cl</text>
+          <line x1="220" y1="80" x2="238" y2="80" stroke="currentColor" stroke-width="2"/>
+          <text x="252" y="86" text-anchor="middle" font-size="14" fill="currentColor">Cl</text>
+          <text x="306" y="86" text-anchor="middle" font-size="16" fill="currentColor">→</text>
+          <text x="392" y="24" text-anchor="middle" font-size="13" fill="currentColor">クロロメタン CH₃Cl</text>
+          <text x="366" y="62" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+          <line x1="372" y1="66" x2="378" y2="76" stroke="currentColor" stroke-width="2"/>
+          <text x="380" y="92" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+          <line x1="370" y1="86" x2="356" y2="86" stroke="currentColor" stroke-width="2"/>
+          <text x="344" y="92" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+          <line x1="390" y1="86" x2="404" y2="86" stroke="currentColor" stroke-width="2"/>
+          <text x="420" y="92" text-anchor="middle" font-size="14" fill="currentColor">Cl</text>
+          <line x1="386" y1="96" x2="394" y2="108" stroke="currentColor" stroke-width="2"/>
+          <text x="400" y="122" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+          <text x="466" y="86" text-anchor="middle" font-size="16" fill="currentColor">＋</text>
+          <text x="516" y="24" text-anchor="middle" font-size="13" fill="currentColor">塩化水素 HCl</text>
+          <text x="502" y="86" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+          <line x1="514" y1="80" x2="524" y2="80" stroke="currentColor" stroke-width="2"/>
+          <text x="536" y="86" text-anchor="middle" font-size="14" fill="currentColor">Cl</text>
+          <text x="280" y="142" text-anchor="middle" font-size="12" fill="currentColor">H が Cl に置き換わり、HCl が副生成物として必ず出る</text>
+        </svg>
+        <p>問題1（イ）の置換反応。メタンの水素1個が塩素に置き換わりますが、その分だけ塩化水素が副生成物として出るため、収率が100%でもアトムエコノミーは下がります。</p>
+      </div>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>式量は、C<sub>2</sub>H<sub>4</sub> ＝ 12×2 ＋ 1.0×4 ＝ 28、H<sub>2</sub>O ＝ 1.0×2 ＋ 16 ＝ 18、C<sub>2</sub>H<sub>5</sub>OH ＝ 12×2 ＋ 1.0×6 ＋ 16 ＝ 46、CH<sub>4</sub> ＝ 12 ＋ 1.0×4 ＝ 16、Cl<sub>2</sub> ＝ 35.5×2 ＝ 71、CH<sub>3</sub>Cl ＝ 12 ＋ 1.0×3 ＋ 35.5 ＝ 50.5 です。</li>
+          <li>問題1（ア）：副生成物が出ない付加反応なので、アトムエコノミー ＝ 46 ÷（28 ＋ 18）× 100 ＝ 46 ÷ 46 × 100 ＝ <strong>100%</strong>。反応物の原子がすべてエタノールに入ります。</li>
+          <li>問題1（イ）：アトムエコノミー ＝ 50.5 ÷（16 ＋ 71）× 100 ＝ 50.5 ÷ 87 × 100 ≒ <strong>58%</strong>。残りの約42%は副生成物 HCl（式量 36.5）の分で、収率が100%でもこの割合は変わりません。</li>
+          <li>問題1（ウ）：アトムエコノミー ＝ 28 ÷ 46 × 100 ≒ <strong>61%</strong>。目的物でない水（式量 18）が切り離される分だけ下がります。（ア）と同じ物質の組み合わせでも、どちらを目的物とするかで値が変わることが分かります。</li>
+          <li>問題2：Eファクター ＝ 2,500 kg ÷ 100 kg ＝ <strong>25</strong>。生成物1 kgあたり25 kgの廃棄物が出たことになり、医薬品製造で言われる25〜100の範囲の下限にあたります。</li>
+        </ol>
+        <p><strong>答え：問題1は（ア）100%、（イ）約58%、（ウ）約61%。問題2は Eファクター ＝ 25</strong>。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>イブプロフェン合成の改良（BHC法）</h3>
+    <p>解熱鎮痛薬イブプロフェン（式量 206）の合成は、グリーンケミストリーの代表的な成功例として知られます。従来のブーツ社の製法は6工程で、アトムエコノミーは約40%にとどまりました。これに対して BHC社が開発した製法は、触媒を活用して3工程に短縮し、アトムエコノミーを約77%まで高めました（回収される酢酸も利用分に数えれば99%とも言われます）。工程が減ると使う試薬と溶媒、出る廃棄物がともに減り、同じ薬をずっと少ない物質投入で作れるようになりました。この改良は1997年にアメリカのグリーンケミストリー推進の表彰（Presidential Green Chemistry Challenge Award）を受けています。医薬品そのものの背景は<a href="pharmaceutical-chemistry.html">医薬品の化学</a>もどうぞ。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 170" width="560" height="170" role="img" aria-label="イブプロフェンの構造式" style="max-width:100%;height:auto;">
+        <text x="280" y="24" text-anchor="middle" font-size="13" fill="currentColor">イブプロフェン C₁₃H₁₈O₂（式量 206）</text>
+        <text x="52" y="76" text-anchor="middle" font-size="13" fill="currentColor">CH₃</text>
+        <line x1="76" y1="88" x2="94" y2="100" stroke="currentColor" stroke-width="2"/>
+        <text x="104" y="116" text-anchor="middle" font-size="13" fill="currentColor">CH</text>
+        <line x1="92" y1="120" x2="80" y2="127" stroke="currentColor" stroke-width="2"/>
+        <text x="66" y="132" text-anchor="middle" font-size="13" fill="currentColor">CH₃</text>
+        <line x1="118" y1="106" x2="138" y2="94" stroke="currentColor" stroke-width="2"/>
+        <text x="152" y="100" text-anchor="middle" font-size="13" fill="currentColor">CH₂</text>
+        <line x1="176" y1="94" x2="198" y2="94" stroke="currentColor" stroke-width="2"/>
+        <polygon points="198,94 214,66 246,66 262,94 246,122 214,122" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="230" cy="94" r="17" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="262" y1="94" x2="284" y2="94" stroke="currentColor" stroke-width="2"/>
+        <text x="298" y="100" text-anchor="middle" font-size="13" fill="currentColor">CH</text>
+        <line x1="292" y1="82" x2="284" y2="66" stroke="currentColor" stroke-width="2"/>
+        <text x="278" y="58" text-anchor="middle" font-size="13" fill="currentColor">CH₃</text>
+        <line x1="312" y1="94" x2="334" y2="94" stroke="currentColor" stroke-width="2"/>
+        <text x="348" y="100" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="342" y1="84" x2="342" y2="66" stroke="currentColor" stroke-width="2"/>
+        <line x1="354" y1="84" x2="354" y2="66" stroke="currentColor" stroke-width="2"/>
+        <text x="348" y="58" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="360" y1="94" x2="380" y2="94" stroke="currentColor" stroke-width="2"/>
+        <text x="396" y="100" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <text x="280" y="156" text-anchor="middle" font-size="12" fill="currentColor">ベンゼン環の向かい合う位置に、イソブチル基（左）と −CH(CH₃)COOH（右）がついた構造</text>
+      </svg>
+      <p>イブプロフェンの構造式。ベンゼン環にイソブチル基と、カルボキシ基を含む側鎖が向かい合って（パラ位に）ついています。BHC法ではこの骨格を触媒反応中心の3工程で組み立て、アトムエコノミーを従来法の約40%から約77%へ高めました。</p>
+    </div>
+    <h3>プロセス評価の指標としての利用</h3>
+    <p>アトムエコノミーとEファクターは、製薬・ファインケミカル（高付加価値の化学品）の分野で、新しい合成ルートを採用するかどうかを比べる評価指標として実際に使われています。収率だけでなく廃棄物の量まで数値化することで、「実験室ではうまくいくが、工場では大量の溶媒と副生成物が出る」ルートの問題点が早い段階で見えるようになります。収率そのものの考え方は<a href="yield-and-purity.html">収率と純度</a>の項目とあわせて読むと対比がはっきりします。</p>
+    <h3>溶媒や原料の見直し</h3>
+    <p>12原則に沿った改良は、身近なところでも進んでいます。たとえばコーヒーの脱カフェインでは、超臨界二酸化炭素が溶媒として実用化され、有機溶媒の使用を減らしています。また、トウモロコシなど再生可能な原料から作るポリ乳酸（PLA）のような生分解性プラスチックは、「再生可能原料の利用」と「分解しやすい設計」を組み合わせた製品例です。工業プロセス全体の条件選びの考え方は、<a href="equilibrium-industrial-use.html">平衡と工業（ハーバー・ボッシュ法）</a>の「収率と速度の妥協」とも通じます。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ポール・アナスタス</strong>（1962〜、アメリカの化学者）、<strong>ジョン・ワーナー</strong>（1962〜、アメリカの化学者）、<strong>バリー・トロスト</strong>（1941〜、アメリカの化学者）、<strong>ロジャー・シェルドン</strong>（1942〜、オランダの化学者）</p>
+    <p>「グリーンケミストリー」という枠組みを打ち立てたのは、アメリカ環境保護庁（EPA）で働いていた<strong>ポール・アナスタス</strong>（1962〜）です。1990年代にこの言葉を広め、1998年に<strong>ジョン・ワーナー</strong>（1962〜）との共著『Green Chemistry: Theory and Practice』で、本記事の12原則を整理しました。個別の指標では、スタンフォード大学の<strong>バリー・トロスト</strong>（1941〜）が1990年代にアトムエコノミー（原子経済）の考え方を提唱し、反応式そのものの無駄のなさを評価する道を開きました。また、オランダの<strong>ロジャー・シェルドン</strong>（1942〜）は1990年代初めにEファクターを提唱し、業種ごとに廃棄物の量が大きく違うことを数値で示しました。「作れるか」だけでなく「ごみを出さずに作れるか」を問う姿勢は、この人たちの仕事から化学の共通語になっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>少量で繰り返し働く触媒の仕組みは<a href="catalysts.html">触媒</a>、収率という従来の評価軸は<a href="yield-and-purity.html">収率と純度</a>、工業プロセスの条件選びは<a href="equilibrium-industrial-use.html">平衡と工業（ハーバー・ボッシュ法）</a>、イブプロフェンをはじめとする薬の化学は<a href="pharmaceutical-chemistry.html">医薬品の化学</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

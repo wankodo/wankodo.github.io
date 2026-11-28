@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高分子化合物と重合の基礎｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="分子量1万程度以上の高分子化合物について、単量体（モノマー）と重合体（ポリマー）、重合度の関係と、分子量が1つに決まらず分布をもつ理由・平均分子量の考え方を、ポリエチレンやデンプンなどの構造式と例題で解説。プラスチックや繊維など現場での使われ方も紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="高分子化合物と重合の基礎｜化学ツール集">
+<meta property="og:description" content="単量体と重合体、重合度の関係と、高分子の分子量が分布をもち平均分子量で表される理由を、ポリエチレン・ポリ塩化ビニル・デンプンの構造式と例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/polymers-basics.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">高分子化合物</span>と重合の基礎</h1>
+    <p>化学の考え方辞典 ― 高分子（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 高分子 ＞ 高分子化合物と重合の基礎</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">高分子</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    高分子化合物は、分子量が1万程度以上の大きな分子で、小さな分子である単量体（モノマー）が多数つながった重合体（ポリマー）である。つながった単量体の数を重合度といい、重合度が分子ごとにそろわないため、高分子の分子量は1つに決まらず分布をもち、平均分子量で表される。天然高分子と合成高分子があり、作り方には付加重合と縮合重合がある。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>プラスチック・合成繊維・ゴム・デンプン・タンパク質など、高分子全体の入口になる考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>単量体（モノマー）と重合体（ポリマー）の対応を答える問題（エチレン→ポリエチレン、塩化ビニル→ポリ塩化ビニルなど）</li>
+      <li>繰り返し単位の式量と平均分子量から、重合度を求める計算問題</li>
+      <li>「高分子の分子量はなぜ1つに決まらないのか」を、重合度のばらつきから説明する問題</li>
+      <li>天然高分子と合成高分子の分類や、付加重合と縮合重合の違いを区別する問題</li>
+    </ul>
+    <p>ポイントは、<strong>高分子は「小さな単位が多数つながったもの」</strong>という見方です。全体が大きくても、考えるときは繰り返し単位1つ分に分解すると、式量も重合度もシンプルに扱えます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>高分子化合物とは：分子量1万程度以上の化合物</h3>
+    <p><strong>高分子化合物</strong>とは、分子量が<strong>1万程度以上</strong>の化合物の総称です。ふつうの分子（水 H<sub>2</sub>O は分子量18、グルコース C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> は180）と比べると桁違いに大きく、この大きさが、プラスチックが丈夫で溶けにくい、ゴムが伸びる、繊維がしなやかといった高分子特有の性質のもとになっています。</p>
+    <h3>単量体・重合体・重合度</h3>
+    <p>高分子は、小さな分子が多数つながってできています。原料になる小さな分子を<strong>単量体（モノマー）</strong>、単量体が多数つながってできた高分子を<strong>重合体（ポリマー）</strong>、単量体をつなげる反応を<strong>重合</strong>といいます。そして、1本の高分子の中に単量体が何個つながっているかを<strong>重合度</strong>といい、記号 <em>n</em> で表します。重合体の中では、単量体に由来する単位が繰り返し現れるため、この単位を<strong>繰り返し単位</strong>と呼びます。</p>
+    <div class="formula">重合体の分子量 ≒ 繰り返し単位の式量 × 重合度 <em>n</em></div>
+    <p>原子量は H＝1.0、C＝12、O＝16、Cl＝35.5 を使います。たとえばエチレン C<sub>2</sub>H<sub>4</sub>（式量28）が重合したポリエチレンでは、繰り返し単位 −(CH<sub>2</sub>−CH<sub>2</sub>)− の式量も28なので、重合度 <em>n</em> の分子の分子量はおよそ 28<em>n</em> になります。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 270" width="520" height="270" role="img" aria-label="エチレンとポリエチレンの繰り返し単位、塩化ビニルとポリ塩化ビニルの繰り返し単位の構造式" style="max-width:100%;height:auto;">
+        <text x="130" y="24" text-anchor="middle" font-size="13" fill="currentColor">単量体：エチレン C₂H₄</text>
+        <text x="107" y="72" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="153" y="72" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="119" y1="64" x2="141" y2="64" stroke="currentColor" stroke-width="2"/>
+        <line x1="119" y1="72" x2="141" y2="72" stroke="currentColor" stroke-width="2"/>
+        <line x1="101" y1="60" x2="87" y2="46" stroke="currentColor" stroke-width="2"/>
+        <line x1="97" y1="72" x2="79" y2="72" stroke="currentColor" stroke-width="2"/>
+        <line x1="159" y1="60" x2="173" y2="46" stroke="currentColor" stroke-width="2"/>
+        <line x1="163" y1="72" x2="181" y2="72" stroke="currentColor" stroke-width="2"/>
+        <text x="81" y="40" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="69" y="77" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="179" y="40" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="191" y="77" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="130" y="106" text-anchor="middle" font-size="12" fill="currentColor">二重結合が開いてつながる</text>
+        <text x="390" y="24" text-anchor="middle" font-size="13" fill="currentColor">重合体：ポリエチレン</text>
+        <line x1="300" y1="68" x2="322" y2="68" stroke="currentColor" stroke-width="2"/>
+        <text x="345" y="73" text-anchor="middle" font-size="15" fill="currentColor">CH₂</text>
+        <line x1="368" y1="68" x2="390" y2="68" stroke="currentColor" stroke-width="2"/>
+        <text x="413" y="73" text-anchor="middle" font-size="15" fill="currentColor">CH₂</text>
+        <line x1="436" y1="68" x2="458" y2="68" stroke="currentColor" stroke-width="2"/>
+        <path d="M322 50 L314 50 L314 86 L322 86" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M436 50 L444 50 L444 86 L436 86" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="458" y="100" text-anchor="middle" font-size="14" fill="currentColor">n</text>
+        <text x="390" y="106" text-anchor="middle" font-size="12" fill="currentColor">繰り返し単位 −(CH₂−CH₂)ₙ−</text>
+        <text x="130" y="152" text-anchor="middle" font-size="13" fill="currentColor">単量体：塩化ビニル C₂H₃Cl</text>
+        <text x="107" y="200" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="153" y="200" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="119" y1="192" x2="141" y2="192" stroke="currentColor" stroke-width="2"/>
+        <line x1="119" y1="200" x2="141" y2="200" stroke="currentColor" stroke-width="2"/>
+        <line x1="101" y1="188" x2="87" y2="174" stroke="currentColor" stroke-width="2"/>
+        <line x1="97" y1="200" x2="79" y2="200" stroke="currentColor" stroke-width="2"/>
+        <line x1="159" y1="188" x2="173" y2="174" stroke="currentColor" stroke-width="2"/>
+        <line x1="153" y1="212" x2="153" y2="230" stroke="currentColor" stroke-width="2"/>
+        <text x="81" y="168" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="69" y="205" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="179" y="168" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="153" y="248" text-anchor="middle" font-size="14" fill="currentColor">Cl</text>
+        <text x="390" y="152" text-anchor="middle" font-size="13" fill="currentColor">重合体：ポリ塩化ビニル</text>
+        <line x1="300" y1="196" x2="322" y2="196" stroke="currentColor" stroke-width="2"/>
+        <text x="345" y="201" text-anchor="middle" font-size="15" fill="currentColor">CH₂</text>
+        <line x1="368" y1="196" x2="390" y2="196" stroke="currentColor" stroke-width="2"/>
+        <text x="413" y="201" text-anchor="middle" font-size="15" fill="currentColor">CHCl</text>
+        <line x1="436" y1="196" x2="458" y2="196" stroke="currentColor" stroke-width="2"/>
+        <path d="M322 178 L314 178 L314 214 L322 214" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M436 178 L444 178 L444 214 L436 214" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="458" y="228" text-anchor="middle" font-size="14" fill="currentColor">n</text>
+        <text x="390" y="234" text-anchor="middle" font-size="12" fill="currentColor">繰り返し単位 −(CH₂−CHCl)ₙ−</text>
+        <text x="390" y="254" text-anchor="middle" font-size="12" fill="currentColor">Cl が単位ごとに1つぶら下がる</text>
+      </svg>
+      <p>付加重合の代表例。エチレンと塩化ビニルはどちらも C＝C 二重結合をもち、この二重結合が開いて単結合で長くつながると、それぞれポリエチレンとポリ塩化ビニルになります。角括弧と <em>n</em> で囲んだ部分が繰り返し単位です。</p>
+    </div>
+    <h3>分子量が1つに決まらない理由：重合度がそろわない</h3>
+    <p>水やグルコースのようなふつうの化合物は、どの分子もまったく同じ構造なので、分子量は1つの値に決まります。しかし重合反応では、鎖の伸びが止まるタイミングが分子ごとにばらばらです。ある分子は単量体が800個で止まり、別の分子は1,200個まで伸びる、というように、<strong>同じポリエチレンでも分子ごとに重合度 <em>n</em> が異なります</strong>。そのため高分子の分子量は1つに決まらず、幅のある<strong>分布</strong>をもちます。そこで高分子の分子量は、分布の平均をとった<strong>平均分子量</strong>で表します。「ポリエチレンの分子量は約28万」という言い方は、「重合度の平均が約1万で、分子量の平均が約28万」という意味です。</p>
+    <h3>天然高分子と合成高分子</h3>
+    <p>高分子は、自然界に存在する<strong>天然高分子</strong>と、人工的に合成される<strong>合成高分子</strong>に分けられます。</p>
+    <ul>
+      <li><strong>デンプン・セルロース</strong>：グルコース C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> が多数つながった天然高分子。デンプン中でグルコースがつながるとき水が取れるため、繰り返し単位は C<sub>6</sub>H<sub>10</sub>O<sub>5</sub>（式量162）になります</li>
+      <li><strong>タンパク質</strong>：アミノ酸がペプチド結合（−CO−NH−）で多数つながった天然高分子。絹・羊毛・筋肉・酵素などの主成分です</li>
+      <li><strong>天然ゴム</strong>：イソプレン C<sub>5</sub>H<sub>8</sub> がつながった天然高分子。ゴムノキの樹液（ラテックス）から得られます</li>
+      <li><strong>合成高分子</strong>：ポリエチレン・ポリ塩化ビニル・ポリプロピレンなどのプラスチック、ナイロンやポリエステルなどの合成繊維、合成ゴムが代表例です</li>
+    </ul>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 210" width="520" height="210" role="img" aria-label="デンプンのグルコース単位の構造模式図" style="max-width:100%;height:auto;">
+        <text x="130" y="24" text-anchor="middle" font-size="13" fill="currentColor">α-グルコース（環状の模式図）</text>
+        <polygon points="150,50 185,72 185,114 150,136 115,114 115,72" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="150" y="46" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="115" y1="72" x2="103" y2="56" stroke="currentColor" stroke-width="2"/>
+        <text x="97" y="50" text-anchor="middle" font-size="12" fill="currentColor">CH₂OH</text>
+        <line x1="185" y1="114" x2="199" y2="126" stroke="currentColor" stroke-width="2"/>
+        <text x="208" y="140" text-anchor="middle" font-size="12" fill="currentColor">OH</text>
+        <line x1="115" y1="114" x2="101" y2="126" stroke="currentColor" stroke-width="2"/>
+        <text x="90" y="140" text-anchor="middle" font-size="12" fill="currentColor">OH</text>
+        <text x="130" y="168" text-anchor="middle" font-size="12" fill="currentColor">六角形の環に OH が付いた形</text>
+        <text x="130" y="188" text-anchor="middle" font-size="12" fill="currentColor">式は C₆H₁₂O₆</text>
+        <text x="375" y="24" text-anchor="middle" font-size="13" fill="currentColor">デンプン：グルコース単位の繰り返し</text>
+        <polygon points="300,58 326,74 326,106 300,122 274,106 274,74" fill="none" stroke="currentColor" stroke-width="2"/>
+        <polygon points="375,58 401,74 401,106 375,122 349,106 349,74" fill="none" stroke="currentColor" stroke-width="2"/>
+        <polygon points="450,58 476,74 476,106 450,122 424,106 424,74" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="337" y="95" text-anchor="middle" font-size="13" fill="currentColor">O</text>
+        <text x="412" y="95" text-anchor="middle" font-size="13" fill="currentColor">O</text>
+        <text x="375" y="150" text-anchor="middle" font-size="12" fill="currentColor">単位どうしが O をはさんでつながる</text>
+        <text x="375" y="170" text-anchor="middle" font-size="12" fill="currentColor">繰り返し単位は C₆H₁₀O₅（式量162）</text>
+        <text x="375" y="190" text-anchor="middle" font-size="12" fill="currentColor">つながるたびに水 H₂O が1つ取れる</text>
+      </svg>
+      <p>デンプンの模式図。グルコースの環が、酸素をはさんで多数つながっています。つながる部分で水が取れるため、デンプン中の繰り返し単位はグルコース C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> から H<sub>2</sub>O を引いた C<sub>6</sub>H<sub>10</sub>O<sub>5</sub> になります。糖類そのものの詳しい構造は糖類の項目で扱います。</p>
+    </div>
+    <h3>重合の2つの型：付加重合と縮合重合への入口</h3>
+    <p>重合の仕方には大きく2つの型があります。この項目では入口だけを示し、詳しくはそれぞれの項目で扱います。</p>
+    <ul>
+      <li><strong>付加重合</strong>：二重結合をもつ単量体が、二重結合を開いて次々と付加しながらつながる重合。小さな分子が取れることはなく、繰り返し単位の式量は単量体と等しくなります（エチレン→ポリエチレン、塩化ビニル→ポリ塩化ビニル）</li>
+      <li><strong>縮合重合（縮重合）</strong>：単量体どうしが、水などの小さな分子を取りながら（縮合しながら）つながる重合。繰り返し単位の式量は、単量体の合計から取れた小分子の分だけ小さくなります。デンプンの単位がグルコースより H<sub>2</sub>O の分だけ軽いのはこのためで、合成ではナイロン66（繰り返し単位 −(NH−(CH<sub>2</sub>)<sub>6</sub>−NH−CO−(CH<sub>2</sub>)<sub>4</sub>−CO)−）が代表例です</li>
+    </ul>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>単量体と繰り返し単位を取り出す。</strong>重合体の名前から単量体を思い出し、繰り返し単位の組成式と式量を求めます。付加重合では単量体の式量と等しく、縮合重合では取れた水などの分を差し引きます。</li>
+      <li><strong>重合度は「平均分子量 ÷ 繰り返し単位の式量」で求める。</strong>割り切れない場合は概数として扱い、「平均の重合度」であることを意識します。</li>
+      <li><strong>分子量が決まらない理由は重合度で説明する。</strong>「重合度が分子ごとに異なるため、分子量に分布が生じ、平均分子量で表す」が説明の型です。</li>
+      <li><strong>分類は出発点で分ける。</strong>自然界に存在すれば天然高分子、人工合成なら合成高分子。重合の型は、二重結合が開く付加か、小分子が取れる縮合かで区別します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1（重合度の計算）：平均分子量が 2.8×10<sup>5</sup> のポリエチレンがある。繰り返し単位 −(CH<sub>2</sub>−CH<sub>2</sub>)− の式量を28として、平均の重合度を求めよ。</p>
+      <p class="ex-q">問題2（ポリ塩化ビニル）：ポリ塩化ビニルの繰り返し単位は −(CH<sub>2</sub>−CHCl)− である。（a）繰り返し単位の式量を求めよ。（b）平均分子量が 6.25×10<sup>4</sup> のとき、平均の重合度を求めよ。（c）この重合体の単量体の名称を答えよ。</p>
+      <p class="ex-q">問題3（デンプンの単位）：デンプンの繰り返し単位は C<sub>6</sub>H<sub>10</sub>O<sub>5</sub> である。（a）この単位の式量を求めよ。（b）分子量が 1.62×10<sup>5</sup> のデンプン分子では、グルコース単位はおよそ何個つながっているか。（c）単位の式量が、単量体であるグルコース C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>（式量180）より小さい理由を答えよ。</p>
+      <p class="ex-q">問題4（分子量の分布）：「ポリエチレンの分子量は 2.8×10<sup>5</sup> である」という表現が、正確には平均値の意味である理由を、重合度の言葉を使って説明せよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：重合度 ＝ 平均分子量 ÷ 繰り返し単位の式量 ＝ 2.8×10<sup>5</sup> ÷ 28 ＝ <strong>1.0×10<sup>4</sup></strong>。エチレンが平均して約1万個つながっていることになります。</li>
+          <li>問題2：（a）繰り返し単位 C<sub>2</sub>H<sub>3</sub>Cl の式量は 12×2＋1.0×3＋35.5 ＝ <strong>62.5</strong>。（b）重合度 ＝ 6.25×10<sup>4</sup> ÷ 62.5 ＝ <strong>1.0×10<sup>3</sup></strong>。（c）単量体は<strong>塩化ビニル</strong> CH<sub>2</sub>＝CHCl です。付加重合では小さな分子が取れないため、繰り返し単位の式量は単量体の式量と等しくなります。</li>
+          <li>問題3：（a）C<sub>6</sub>H<sub>10</sub>O<sub>5</sub> の式量は 12×6＋1.0×10＋16×5 ＝ 72＋10＋80 ＝ <strong>162</strong>。（b）つながった単位の数 ＝ 1.62×10<sup>5</sup> ÷ 162 ＝ <strong>およそ1.0×10<sup>3</sup> 個</strong>。（c）グルコースどうしがつながるとき、結合1つごとに<strong>水 H<sub>2</sub>O が1分子取れる</strong>（縮合）ため、単位の式量は 180−18 ＝ 162 になります。</li>
+          <li>問題4：重合では鎖の伸びが止まるタイミングが分子ごとに異なり、<strong>重合度がそろわない</strong>ため、分子量も分子ごとにばらついて分布をもちます。したがって「分子量 2.8×10<sup>5</sup>」は全分子共通の値ではなく、分布の平均である<strong>平均分子量</strong>を表しています。</li>
+        </ol>
+        <p><strong>答え：問題1は重合度1.0×10<sup>4</sup>。問題2は（a）62.5、（b）重合度1.0×10<sup>3</sup>、（c）塩化ビニル。問題3は（a）162、（b）およそ1.0×10<sup>3</sup>個、（c）つながる際に水が取れるため。問題4は、重合度が分子ごとに異なるため分子量に分布が生じ、値は平均分子量だから。</strong>例題に登場する化合物の構造式は、本文の図（エチレン・ポリエチレン／塩化ビニル・ポリ塩化ビニル／グルコース・デンプン）にすべて示してあります。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>平均分子量で決まるプラスチックの性質と品質管理</h3>
+    <p>プラスチックの強さや溶けたときの流れやすさは、平均分子量とその分布に大きく左右されます。分子量が大きいほど分子どうしの絡み合いが強くなり丈夫になりますが、溶けても流れにくく成形しにくくなります。そのため樹脂メーカーでは、製品ごとに平均分子量を測定して品質を管理し、袋・フィルム用、容器用、配管用など用途に合わせた分子量の樹脂を出荷しています。「同じポリエチレンでも用途でグレードが違う」のは、この分子量の違いによるものです。</p>
+    <h3>身の回りの合成高分子</h3>
+    <p>ポリエチレンは袋・フィルム・容器、ポリ塩化ビニルは配管や建材、ポリプロピレンは食品容器や自動車部品に使われます。ナイロンやポリエステルは衣料用繊維として、合成ゴムはタイヤなどに使われます。これらはすべて、この項目の「単量体を重合させて大きな分子にする」という仕組みの応用です。石油から基礎原料を得る流れは石油化学の項目とつながっています。</p>
+    <h3>天然高分子の利用</h3>
+    <p>デンプンは食品であると同時に、糊や段ボールの接着剤にも使われます。タンパク質である絹や羊毛は古くから繊維として使われ、天然ゴムはタイヤや手袋などに使われます。天然高分子は自然界で分解されやすいものが多く、プラスチックごみ問題への関心から、デンプンなどを原料にした生分解性プラスチックの利用も広がっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ヘルマン・シュタウディンガー</strong>（1881〜1965年、ドイツの化学者） ― 高分子が共有結合でつながった巨大分子であるという「高分子説」を提唱した</p>
+    <p>かつてデンプンやゴムのような物質は、小さな分子が弱い力で寄り集まったコロイド状の集まりだと考えられていました。これに対してドイツの化学者<strong>ヘルマン・シュタウディンガー</strong>は1920年、重合体は単量体が共有結合で長くつながった巨大な分子であるという<strong>高分子説</strong>を提唱し、「高分子（Makromolekül）」という考え方を打ち立てました。当初は反対も多かったものの、分子量測定などの証拠が積み重なって説は認められ、シュタウディンガーは1953年にノーベル化学賞を受賞しました。「単量体が多数つながった重合体であり、分子量は平均で語る」というこの項目の見方は、彼の高分子説そのものです。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>重合の2つの型は<a href="addition-polymerization.html">付加重合</a>と<a href="condensation-polymerization.html">縮合重合</a>で詳しく扱います。製品の性質は<a href="synthetic-fibers-plastics.html">合成繊維とプラスチック</a>、ゴムについては<a href="rubber-vulcanization.html">天然ゴムと合成ゴム・加硫</a>へ進んでください。天然高分子の側は<a href="carbohydrates.html">糖類（炭水化物）</a>と<a href="amino-acids-proteins.html">アミノ酸とタンパク質</a>が詳しいです。原料の出発点は<a href="petroleum-petrochemicals.html">石油と石油化学</a>で扱います。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

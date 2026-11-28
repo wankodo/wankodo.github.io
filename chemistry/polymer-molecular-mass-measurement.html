@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高分子の分子量測定｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="高分子の分子量測定の考え方を、公式・手順・例題で解説。数平均分子量 Mn と質量平均分子量 Mw、多分散度 Mw/Mn の定義、浸透圧法・粘度法・光散乱法・GPC で得られる平均の種類の違いや、樹脂の品質管理など実際の現場での使われ方まで紹介します。平均分子量と多分散度を求める計算機つき。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="高分子の分子量測定｜化学ツール集">
+<meta property="og:description" content="Mn・Mw・多分散度の定義と、浸透圧法・粘度法・光散乱・GPCで得られる平均の違いを、公式・手順・例題と「現場での使われ方」で解説。計算機つき。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/polymer-molecular-mass-measurement.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>高分子の<span class="accent">分子量測定</span></h1>
+    <p>化学の考え方辞典 ― 高分子（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 高分子 ＞ 高分子の分子量測定</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">高分子</span> <span class="badge badge-calc">計算機あり</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    高分子は分子量の異なる分子の集まりなので、分子量は平均で表す。分子の数で重みづけした数平均分子量 Mn、質量で重みづけした質量平均分子量 Mw、その比 Mw/Mn（多分散度）で分布の広がりを表し、浸透圧法では Mn、粘度法では粘度平均分子量、光散乱法では Mw が得られる。測定法ごとに平均の種類が違うことを押さえて使い分けるのが、高分子の分子量測定の要点である。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>小分子と違い、高分子（ポリマー）の試料は<strong>鎖の長さの異なる分子の集まり</strong>です。重合反応では鎖の成長が止まるタイミングが分子ごとにばらつくため、1つの試料の中に分子量 1万の分子も10万の分子も混ざっています。したがって高分子の「分子量」は1つの値では決まらず、<strong>平均の取り方を決めて初めて意味をもつ</strong>量になります。この項目で扱うのは次のような問題です。</p>
+    <ul>
+      <li>分子量ごとの分子数（または質量）が分かっている分布から、<strong>数平均分子量 Mn</strong> と <strong>質量平均分子量 Mw</strong>、その比である<strong>多分散度 Mw/Mn</strong> を求める問題</li>
+      <li>高分子溶液の<strong>浸透圧</strong>の測定値から Mn を求める問題（浸透圧法）</li>
+      <li>溶液の粘度から求めた<strong>固有粘度 [η]</strong> とマルク・ハウウィンク式から、<strong>粘度平均分子量</strong> を求める問題（粘度法）</li>
+      <li>光散乱法や GPC（サイズ排除クロマトグラフィー）で得られる値が、なぜ Mn ではなく Mw や分布そのものなのかを説明する問題</li>
+    </ul>
+    <p>出発点は<a href="polymers-basics.html">高分子化合物と重合の基礎</a>で学ぶ「分子量が1つに決まらない」という性質です。平均の種類を取り違えると、同じ試料でも測定法によって「分子量」が何倍も違って見えるため、どの平均かを常に明示するのが高分子化学の約束事になっています。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 360 170" width="360" height="170" role="img" aria-label="ポリエチレンの繰り返し単位" style="max-width:100%;height:auto;">
+        <text x="180" y="24" text-anchor="middle" font-size="13" fill="currentColor">高分子の繰り返し単位の例：ポリエチレン</text>
+        <text x="62" y="86" text-anchor="middle" font-size="16" fill="currentColor">―[</text>
+        <text x="102" y="86" text-anchor="middle" font-size="15" fill="currentColor">CH₂</text>
+        <line x1="126" y1="81" x2="150" y2="81" stroke="currentColor" stroke-width="2"/>
+        <text x="174" y="86" text-anchor="middle" font-size="15" fill="currentColor">CH₂</text>
+        <text x="214" y="86" text-anchor="middle" font-size="16" fill="currentColor">]―</text>
+        <text x="238" y="92" text-anchor="middle" font-size="14" fill="currentColor">n</text>
+        <text x="180" y="126" text-anchor="middle" font-size="12" fill="currentColor">繰り返し数 n（重合度）が分子ごとに違うため、</text>
+        <text x="180" y="146" text-anchor="middle" font-size="12" fill="currentColor">分子量は分布をもち、平均で表すしかない</text>
+      </svg>
+      <p>繰り返し単位がつながった鎖の集まりが高分子です。重合度 n が分子ごとに異なる以上、分子量は「平均」でしか語れません。</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>（1）2つの平均 ― 数平均分子量 Mn と質量平均分子量 Mw</h3>
+    <p>分子量 M<sub>i</sub> の分子が N<sub>i</sub> 個ある成分 i の集まりとして試料を表します（N<sub>i</sub> は分子数、M<sub>i</sub> の単位は g/mol）。平均の取り方には主に2通りあります。</p>
+    <div class="formula">数平均分子量 Mn ＝ Σ N<sub>i</sub>M<sub>i</sub> ÷ Σ N<sub>i</sub></div>
+    <p><strong>数平均分子量 Mn</strong> は、分子を「1個ずつ数えて」平均したもので、通常の算術平均です。全質量を全分子数で割った値でもあり、試料の質量 w と全物質量（モル数）の比 w ÷ n とも一致します。分子の<strong>個数</strong>に敏感な量（浸透圧など、粒子の数で決まる束一的性質）から得られるのはこの Mn です。</p>
+    <div class="formula">質量平均分子量 Mw ＝ Σ N<sub>i</sub>M<sub>i</sub><sup>2</sup> ÷ Σ N<sub>i</sub>M<sub>i</sub> ＝ Σ w<sub>i</sub>M<sub>i</sub> ÷ Σ w<sub>i</sub></div>
+    <p><strong>質量平均分子量 Mw</strong> は、各分子をその<strong>質量 w<sub>i</sub>（＝ N<sub>i</sub>M<sub>i</sub>）で重みづけ</strong>した平均です。重い分子ほど大きく効くため、常に Mw ≧ Mn になり、等しくなるのは全分子の分子量がそろった（単分散の）場合だけです。質量分率で表した分布が与えられたときは、Mn は Mn ＝ Σ w<sub>i</sub> ÷ Σ（w<sub>i</sub>／M<sub>i</sub>）で求められます。</p>
+    <div class="formula">多分散度（分散度）＝ Mw ÷ Mn　（≧ 1）</div>
+    <p>比 <strong>Mw/Mn</strong> を<strong>多分散度</strong>（ポリディスパーシティ、分散度）と呼び、分布の広がりの指標にします。1 に近いほど分子量がそろっており、通常の合成高分子では 1.5〜2 程度やそれ以上になることも珍しくありません。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 360 190" width="360" height="190" role="img" aria-label="分子量分布と Mn・Mw の模式図" style="max-width:100%;height:auto;">
+        <text x="180" y="20" text-anchor="middle" font-size="13" fill="currentColor">分子量分布の模式図（横軸：分子量 M、縦軸：その分子量の分子の割合）</text>
+        <path d="M 40 160 C 90 158, 110 60, 155 48 C 200 36, 235 90, 265 125 C 290 152, 315 158, 335 159" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="40" y1="160" x2="340" y2="160" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="40" y1="160" x2="40" y2="34" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="150" y1="160" x2="150" y2="62" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <line x1="205" y1="160" x2="205" y2="88" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <text x="150" y="178" text-anchor="middle" font-size="13" fill="currentColor">Mn</text>
+        <text x="205" y="178" text-anchor="middle" font-size="13" fill="currentColor">Mw</text>
+        <text x="150" y="52" text-anchor="middle" font-size="12" fill="currentColor">数の平均</text>
+        <text x="228" y="80" text-anchor="middle" font-size="12" fill="currentColor">質量の重みで右へ寄る</text>
+      </svg>
+      <p>分布の模式図です。Mw は重い分子の寄与が大きいため、Mn よりも分布の右側（大きい分子量側）に来ます。2つの平均の開きが分布の広がりを表します。</p>
+    </div>
+    <h3>（2）浸透圧法 ― ファントホッフ式から Mn を求める</h3>
+    <p>浸透圧は溶質粒子の<strong>数</strong>で決まる束一的性質なので、浸透圧法で得られるのは Mn です。希薄溶液ではファントホッフの式 πV ＝ nRT が成り立ちますが、高分子溶液では濃度の影響を無視できないため、濃度 c に対して π/c をプロットし、c → 0 に外挿する拡張形（ビリアル展開）が使われます。その切片が RT/Mn を与えます。</p>
+    <div class="formula">πV ＝ （w ÷ Mn）RT　／　π ÷ c ＝ RT ÷ Mn ＋ A<sub>2</sub>c ＋ …</div>
+    <p>ここで π は浸透圧 [Pa]、V は溶液の体積 [L]、w は溶質（高分子）の質量 [g]、c は質量濃度 [g/L]、T は絶対温度 [K]、A<sub>2</sub> は第2ビリアル係数です。気体定数は R ＝ 8.31×10<sup>3</sup> Pa・L/(mol・K)（＝ 8.3 J/(mol・K)）を使います。浸透圧そのものの考え方は<a href="osmotic-pressure.html">浸透圧とファントホッフの法則</a>で扱っています。高分子はモル濃度が小さく浸透圧も小さいため、測定できる分子量には上限があり、比較的低分子量側の試料に向く方法です。</p>
+    <h3>（3）粘度法 ― マルク・ハウウィンク式から粘度平均分子量を求める</h3>
+    <p>高分子溶液の粘度は分子量とともに大きくなります。濃度 0 へ外挿した粘度の指標である<strong>固有粘度 [η]</strong>（極限粘度数）と分子量の間には、次の経験式が成り立ちます。</p>
+    <div class="formula">[η] ＝ K M<sup>a</sup>　／　粘度平均分子量 Mv ＝ （[η] ÷ K）<sup>1/a</sup></div>
+    <p>K と a は高分子・溶媒・温度の組み合わせごとに決まる定数で、a はおおむね 0.5〜0.8 の値を取ります（θ溶媒で 0.5、良溶媒ほど大きくなる）。この式で得られる<strong>粘度平均分子量 Mv</strong> は、定義上 Mn と Mw の間（a が 1 に近いほど Mw 寄り）に位置する第三の平均です。K と a を決めるには分子量の分かった試料での校正が必要なため、粘度法は相対的な測定法ですが、装置が簡単で再現性がよいため実務で広く使われます。</p>
+    <h3>（4）光散乱法と GPC ― Mw と分布そのものを測る</h3>
+    <p><strong>光散乱法</strong>では、溶液に光を当てて散乱光の強さを測ります。散乱の強さは分子の質量に比例して重みづけされるため、得られるのは Mw です。絶対測定（校正不要で分子量が決まる方法）である点が粘度法との違いです。</p>
+    <p><strong>GPC</strong>（ゲル浸透クロマトグラフィー、サイズ排除クロマトグラフィー／SEC とも）は、多孔質の充填剤を詰めたカラムに溶液を通し、分子の大きさ（流体力学的体積）の違いで分離する方法です。大きい分子は孔に入れずに早く、小さい分子は孔に入って遅く流れ出るため、溶出時間ごとに分子量を読み取れば、Mn・Mw・多分散度を含む<strong>分布全体</strong>が得られます。ただし分子量の読み取りには標準試料による校正が必要な相対法です。コロイド粒子の大きさの考え方は<a href="colloids.html">コロイド</a>ともつながります。</p>
+    <h3>（5）測定法によって平均が違う理由</h3>
+    <p>まとめると、測定法ごとに「何を数えているか」が違います。浸透圧のような束一的性質は粒子の<strong>個数</strong>を数えるので Mn、光散乱は<strong>質量</strong>の重みで信号が出るので Mw、粘度は鎖の広がり具合を反映するのでその中間の Mv が得られます。「分子量を測った」という報告では、<strong>どの平均か・どの測定法かをセットで確認する</strong>ことが不可欠です。付加重合・縮合重合で平均分子量がどう決まるかは<a href="addition-polymerization.html">付加重合と平均分子量</a>と<a href="condensation-polymerization.html">縮合重合とナイロン</a>で扱います。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>求める平均の種類を確認する。</strong>分布のデータからは Mn・Mw・多分散度、浸透圧からは Mn、固有粘度からは Mv、光散乱からは Mw が得られます。問題文の測定法と平均の対応を最初に押さえます。</li>
+      <li><strong>分布からは Σ の形に整理する。</strong>分子数が与えられれば Mn ＝ ΣN<sub>i</sub>M<sub>i</sub> ÷ ΣN<sub>i</sub>、Mw ＝ ΣN<sub>i</sub>M<sub>i</sub><sup>2</sup> ÷ ΣN<sub>i</sub>M<sub>i</sub>。質量が与えられれば Mw ＝ Σw<sub>i</sub>M<sub>i</sub> ÷ Σw<sub>i</sub>、Mn ＝ Σw<sub>i</sub> ÷ Σ（w<sub>i</sub>／M<sub>i</sub>）で計算します。</li>
+      <li><strong>浸透圧法では物質量を経由する。</strong>πV ＝ （w／Mn）RT を Mn について解き、Mn ＝ wRT ÷ （πV） で求めます。R の単位に合わせて π は Pa、V は L、T は K でそろえます。</li>
+      <li><strong>粘度法では両辺の冪を外す。</strong>[η] ＝ K M<sup>a</sup> を M について解き、Mv ＝ （[η]／K）<sup>1/a</sup> を計算します。K・a は問題文で与えられる定数を使います。</li>
+      <li><strong>多分散度と大小関係で検算する。</strong>Mw ≧ Mn、Mw/Mn ≧ 1、Mn ≦ Mv ≦ Mw の関係を満たしているかを確認します。満たさなければ計算ミスのサインです。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：ある高分子試料は、分子量 10000 の分子が 10 個、分子量 20000 の分子が 20 個、分子量 30000 の分子が 10 個からなる（個数は相対値でよい）。数平均分子量 Mn、質量平均分子量 Mw、多分散度 Mw/Mn を求めよ。問題2：ある高分子 2.50 g を溶かして 0.250 L の溶液にしたところ、300 K での浸透圧は 498.6 Pa であった。数平均分子量 Mn を求めよ（R ＝ 8.31×10<sup>3</sup> Pa・L/(mol・K)）。問題3：ある高分子・溶媒の組み合わせではマルク・ハウウィンク定数は K ＝ 1.0×10<sup>−2</sup>、a ＝ 0.50 である。固有粘度 [η] ＝ 2.0 の試料の粘度平均分子量 Mv を求めよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：ΣN<sub>i</sub> ＝ 10 ＋ 20 ＋ 10 ＝ 40。ΣN<sub>i</sub>M<sub>i</sub> ＝ 10×10000 ＋ 20×20000 ＋ 10×30000 ＝ 100000 ＋ 400000 ＋ 300000 ＝ 800000 なので、Mn ＝ 800000 ÷ 40 ＝ <strong>20000</strong> です。</li>
+          <li>ΣN<sub>i</sub>M<sub>i</sub><sup>2</sup> ＝ 10×10000<sup>2</sup> ＋ 20×20000<sup>2</sup> ＋ 10×30000<sup>2</sup> ＝ 1.0×10<sup>9</sup> ＋ 8.0×10<sup>9</sup> ＋ 9.0×10<sup>9</sup> ＝ 1.8×10<sup>10</sup> なので、Mw ＝ 1.8×10<sup>10</sup> ÷ 800000 ＝ <strong>22500</strong>。重い分子の重みが効いて、Mw は Mn より大きくなります。</li>
+          <li>多分散度は Mw ÷ Mn ＝ 22500 ÷ 20000 ＝ <strong>1.125</strong> です。1 より大きいので分布に幅があり、Mw ≧ Mn の関係も満たしています。</li>
+          <li>問題2：πV ＝ （w／Mn）RT より Mn ＝ wRT ÷ （πV）＝ 2.50 × 8.31×10<sup>3</sup> × 300 ÷ （498.6 × 0.250）＝ 6.2325×10<sup>6</sup> ÷ 124.65 ＝ <strong>50000</strong>。浸透圧は粒子の数で決まるため、得られるのは Mn です（物質量は n ＝ w／Mn ＝ 5.0×10<sup>−5</sup> mol）。</li>
+          <li>問題3：[η] ＝ K M<sup>a</sup> より Mv ＝ （[η]／K）<sup>1/a</sup> ＝ （2.0 ÷ 1.0×10<sup>−2</sup>）<sup>1/0.50</sup> ＝ 200<sup>2</sup> ＝ <strong>40000</strong> です。</li>
+        </ol>
+        <p><strong>答え：問題1は Mn ＝ 20000、Mw ＝ 22500、多分散度 Mw/Mn ＝ 1.125。問題2は Mn ＝ 50000（＝ 5.0×10<sup>4</sup>）。問題3は Mv ＝ 40000</strong>。同じ「平均分子量」でも、分布の重みづけ・浸透圧・粘度で得られる平均の種類が異なることに注意します。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>樹脂・プラスチックの品質管理（GPC と溶融粘度）</h3>
+    <p>プラスチック原料メーカーでは、出荷する樹脂ロットごとに GPC で分子量分布を測定し、Mn・Mw・多分散度が規格の範囲に入っているかを確認します。Mw が変わると溶融時の粘度や成形品の強度が変わり、多分散度が変わると成形のしやすさが変わるため、平均分子量と分布の管理は樹脂の品質管理の中心的な項目です。簡便な指標として、固有粘度に対応する溶液粘度やメルトフローレートとあわせて管理されます。</p>
+    <h3>医薬品・医療用高分子の規格試験</h3>
+    <p>医薬品の添加剤や医療材料に使われる高分子（ポリビニルピロリドンやポリエチレングリコールなど）では、分子量の規格が薬局方などで定められ、粘度法などによる平均分子量の測定が規格試験として行われます。分子量が変わると体内での溶け方や排出のされ方が変わるため、ロットごとの確認が欠かせません。</p>
+    <h3>研究開発での重合条件の評価</h3>
+    <p>新しい重合方法を開発する研究では、得られた高分子の Mn・Mw・多分散度を GPC や光散乱で測り、触媒や反応条件の違いが鎖の長さと分布にどう効いたかを評価します。多分散度が 1 に近い「そろった」高分子を作れるかどうかは、リビング重合などの精密重合技術の評価指標そのものです。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ヘルマン・シュタウディンガー</strong>（1881〜1965、ドイツの化学者）、<strong>ヤコブス・ヘンリクス・ファントホッフ</strong>（1852〜1911、オランダの化学者）、<strong>ポール・J・フローリー</strong>（1910〜1985、アメリカの化学者）</p>
+    <p>そもそも「高分子」という存在を認めさせたのが、ドイツの化学者<strong>ヘルマン・シュタウディンガー</strong>（1881〜1965）です。1920年代に、ゴムやセルロースは小さな分子の寄せ集めではなく、共有結合でつながった巨大な分子（高分子）であるという説を唱え、当初は激しい反対を受けながらも、粘度測定などの証拠を積み上げて認めさせました。浸透圧の法則 πV ＝ nRT は、オランダの化学者<strong>ヤコブス・ヘンリクス・ファントホッフ</strong>（1852〜1911）が希薄溶液について打ち立てたもので、高分子溶液への応用から Mn の測定法が生まれました。固有粘度と分子量を結ぶ式は、ヘルマン・F・マルクとルーロフ・ハウウィンクがそれぞれ独立に提案したことからマルク・ハウウィンク式と呼ばれます。アメリカの化学者<strong>ポール・J・フローリー</strong>（1910〜1985）は、溶液中での高分子の広がりや平均分子量の統計的な扱いを理論化し、高分子物理化学の基礎を築きました。「平均の種類」を区別して扱う現在の分子量測定の枠組みは、こうした積み重ねの上に成り立っています。</p>
+  </section>
+
+  <a class="linkcard" href="calc-polymer-molecular-mass-measurement.html">
+    <span class="lc-t">この解法を計算機で試す →</span>
+    <span class="lc-d" style="display:block;">高分子の分子量測定 計算機：分子数または質量と分子量のリストから Mn・Mw・多分散度を、浸透圧から Mn を、固有粘度とマルク・ハウウィンク式から粘度平均分子量を計算します。</span>
+  </a>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>出発点は<a href="polymers-basics.html">高分子化合物と重合の基礎</a>、重合の種類と平均分子量は<a href="addition-polymerization.html">付加重合と平均分子量</a>と<a href="condensation-polymerization.html">縮合重合とナイロン</a>、浸透圧そのものは<a href="osmotic-pressure.html">浸透圧とファントホッフの法則</a>、粒子の大きさと溶液の性質は<a href="colloids.html">コロイド</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

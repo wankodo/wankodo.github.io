@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>核酸とDNA｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="核酸とDNAを、公式・手順・例題で解説。ヌクレオチド（リン酸・糖・塩基）の構成、DNAとRNAの違い、塩基の相補性（A-T・G-Cと水素結合の本数）、二重らせん構造、遺伝情報とATPとの関係、PCR検査やDNA鑑定など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="核酸とDNA｜化学ツール集">
+<meta property="og:description" content="ヌクレオチドと二重らせんを中心に、DNAとRNAの違いと塩基の相補性を構造式・模式図と例題で解説。ATPとの関係も扱う。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/nucleic-acids-dna.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">核酸</span>とDNA</h1>
+    <p>化学の考え方辞典 ― 高分子（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 高分子 ＞ 核酸とDNA</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">高分子</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    核酸は、リン酸・糖・塩基からなるヌクレオチドが長くつながった高分子で、DNAとRNAがある。DNAは2本の鎖が塩基どうしの水素結合で結ばれた二重らせん構造をもち、AとT、GとCが相補的に組み合わさることで、塩基の並び方そのものが遺伝情報になる。DNAとRNAは糖（デオキシリボースとリボース）と塩基（チミンとウラシル）が違い、エネルギーの受け渡しに使われるATPもヌクレオチドの仲間である。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>タンパク質とならぶ生体高分子である<strong>核酸</strong>の構造を、構成単位から積み上げて理解するための項目です。次のような場面で使います。</p>
+    <ul>
+      <li>ヌクレオチドの構成（リン酸・糖・塩基）を見て、DNAのものかRNAのものかを判断する問題</li>
+      <li>一方の鎖の塩基配列から、相補的なもう一方の鎖の配列を書く問題</li>
+      <li>塩基の割合（A＝T、G＝C）や、水素結合の本数を数える問題</li>
+      <li>二重らせん構造が、遺伝情報の保存と複製にどう結びつくかを説明する問題</li>
+    </ul>
+    <p>核酸は「単位の名前」「DNAとRNAの違い」「塩基の相補性」の3点を押さえれば全体像がつかめます。この項目ではその3点を、構造式と模式図で確認しながら整理します。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>構成単位ヌクレオチド ― リン酸・糖・塩基の3点セット</h3>
+    <p><strong>核酸</strong>は、<strong>ヌクレオチド</strong>という単位が長く鎖状につながった高分子（ポリヌクレオチド）です。ヌクレオチド1個は、<strong>リン酸</strong>・<strong>五炭糖</strong>・<strong>塩基</strong>の3つの部分からできています。糖と塩基が結びついた部分をヌクレオシドといい、そこにリン酸が付いたものがヌクレオチドです。鎖の中では、あるヌクレオチドの糖と次のヌクレオチドのリン酸が結びついて（ホスホジエステル結合）、「糖―リン酸―糖―リン酸…」という背骨（主鎖）ができ、塩基がその横に並びます。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 210" width="560" height="210" role="img" aria-label="ヌクレオチドの模式構造" style="max-width:100%;height:auto;">
+        <text x="280" y="22" text-anchor="middle" font-size="13" fill="currentColor">ヌクレオチドの模式構造（リン酸・糖・塩基）</text>
+        <circle cx="80" cy="105" r="26" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="80" y="111" text-anchor="middle" font-size="16" fill="currentColor">P</text>
+        <text x="80" y="66" text-anchor="middle" font-size="13" fill="currentColor">O</text>
+        <line x1="80" y1="79" x2="80" y2="72" stroke="currentColor" stroke-width="2"/>
+        <text x="38" y="111" text-anchor="middle" font-size="13" fill="currentColor">O</text>
+        <line x1="54" y1="105" x2="46" y2="105" stroke="currentColor" stroke-width="2"/>
+        <text x="122" y="111" text-anchor="middle" font-size="13" fill="currentColor">O</text>
+        <line x1="106" y1="105" x2="114" y2="105" stroke="currentColor" stroke-width="2"/>
+        <text x="80" y="162" text-anchor="middle" font-size="12" fill="currentColor">リン酸</text>
+        <line x1="130" y1="105" x2="196" y2="105" stroke="currentColor" stroke-width="2"/>
+        <text x="163" y="94" text-anchor="middle" font-size="11" fill="currentColor">結合</text>
+        <polygon points="280,62 324,92 308,142 252,142 236,92" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="280" y="72" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="318" y="102" text-anchor="middle" font-size="12" fill="currentColor">C</text>
+        <text x="300" y="140" text-anchor="middle" font-size="12" fill="currentColor">C</text>
+        <text x="258" y="140" text-anchor="middle" font-size="12" fill="currentColor">C</text>
+        <text x="242" y="102" text-anchor="middle" font-size="12" fill="currentColor">C</text>
+        <text x="280" y="118" text-anchor="middle" font-size="12" fill="currentColor">塩基へ</text>
+        <text x="280" y="170" text-anchor="middle" font-size="12" fill="currentColor">五炭糖（ペントース）</text>
+        <text x="280" y="188" text-anchor="middle" font-size="11" fill="currentColor">環の中に酸素 O をもつ五角形</text>
+        <line x1="324" y1="92" x2="392" y2="92" stroke="currentColor" stroke-width="2"/>
+        <polygon points="430,58 486,58 486,126 430,126" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="458" y="97" text-anchor="middle" font-size="14" fill="currentColor">塩基</text>
+        <text x="458" y="152" text-anchor="middle" font-size="12" fill="currentColor">含窒素塩基</text>
+        <text x="458" y="170" text-anchor="middle" font-size="11" fill="currentColor">A・T（U）・G・C のいずれか</text>
+      </svg>
+      <p>ヌクレオチドの模式図。左からリン酸、五炭糖、塩基の3部分が結びついた単位で、この単位がリン酸と糖の結合で長くつながって核酸の鎖になります。</p>
+    </div>
+    <h3>塩基は4種類 ― プリン塩基とピリミジン塩基</h3>
+    <p>核酸の塩基は、窒素を含む環状の有機化合物（含窒素塩基）です。環が2つつながった<strong>プリン塩基</strong>として<strong>アデニン（A）</strong>と<strong>グアニン（G）</strong>、環が1つの<strong>ピリミジン塩基</strong>として<strong>チミン（T）</strong>・<strong>シトシン（C）</strong>・<strong>ウラシル（U）</strong>があります。DNAが使うのは A・T・G・C の4種、RNAでは T の代わりに U を使います。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 660 440" width="660" height="440" role="img" aria-label="アデニン、グアニン、シトシン、チミン、ウラシルの構造式" style="max-width:100%;height:auto;">
+        <text x="160" y="20" text-anchor="middle" font-size="13" fill="currentColor">アデニン（A）― プリン塩基</text>
+        <g transform="translate(60,30)">
+          <line x1="18" y1="56" x2="42" y2="44" stroke="currentColor" stroke-width="2"/>
+          <line x1="58" y1="44" x2="82" y2="56" stroke="currentColor" stroke-width="2"/>
+          <line x1="90" y1="68" x2="90" y2="92" stroke="currentColor" stroke-width="2"/>
+          <line x1="82" y1="104" x2="58" y2="116" stroke="currentColor" stroke-width="2"/>
+          <line x1="42" y1="116" x2="18" y2="104" stroke="currentColor" stroke-width="2"/>
+          <line x1="10" y1="92" x2="10" y2="68" stroke="currentColor" stroke-width="2"/>
+          <line x1="98" y1="62" x2="122" y2="66" stroke="currentColor" stroke-width="2"/>
+          <line x1="131" y1="75" x2="135" y2="97" stroke="currentColor" stroke-width="2"/>
+          <line x1="130" y1="108" x2="114" y2="121" stroke="currentColor" stroke-width="2"/>
+          <line x1="104" y1="116" x2="94" y2="100" stroke="currentColor" stroke-width="2"/>
+          <line x1="15" y1="63" x2="37" y2="51" stroke="currentColor" stroke-width="2"/>
+          <line x1="24" y1="100" x2="46" y2="110" stroke="currentColor" stroke-width="2"/>
+          <line x1="84" y1="68" x2="84" y2="92" stroke="currentColor" stroke-width="2"/>
+          <line x1="124" y1="76" x2="127" y2="95" stroke="currentColor" stroke-width="2"/>
+          <line x1="50" y1="40" x2="50" y2="24" stroke="currentColor" stroke-width="2"/>
+          <text x="50" y="16" text-anchor="middle" font-size="13" fill="currentColor">H₂N</text>
+          <text x="10" y="66" text-anchor="middle" font-size="14" fill="currentColor">N</text>
+          <text x="50" y="42" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="90" y="66" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="90" y="110" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="50" y="118" text-anchor="middle" font-size="14" fill="currentColor">N</text>
+          <text x="10" y="110" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="130" y="72" text-anchor="middle" font-size="14" fill="currentColor">N</text>
+          <text x="136" y="112" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="108" y="132" text-anchor="middle" font-size="14" fill="currentColor">N</text>
+          <text x="108" y="152" text-anchor="middle" font-size="11" fill="currentColor">糖はここの N に付く</text>
+        </g>
+        <text x="490" y="20" text-anchor="middle" font-size="13" fill="currentColor">グアニン（G）― プリン塩基</text>
+        <g transform="translate(390,30)">
+          <line x1="18" y1="56" x2="42" y2="44" stroke="currentColor" stroke-width="2"/>
+          <line x1="58" y1="44" x2="82" y2="56" stroke="currentColor" stroke-width="2"/>
+          <line x1="90" y1="68" x2="90" y2="92" stroke="currentColor" stroke-width="2"/>
+          <line x1="82" y1="104" x2="58" y2="116" stroke="currentColor" stroke-width="2"/>
+          <line x1="42" y1="116" x2="18" y2="104" stroke="currentColor" stroke-width="2"/>
+          <line x1="10" y1="92" x2="10" y2="68" stroke="currentColor" stroke-width="2"/>
+          <line x1="98" y1="62" x2="122" y2="66" stroke="currentColor" stroke-width="2"/>
+          <line x1="131" y1="75" x2="135" y2="97" stroke="currentColor" stroke-width="2"/>
+          <line x1="130" y1="108" x2="114" y2="121" stroke="currentColor" stroke-width="2"/>
+          <line x1="104" y1="116" x2="94" y2="100" stroke="currentColor" stroke-width="2"/>
+          <line x1="24" y1="100" x2="46" y2="110" stroke="currentColor" stroke-width="2"/>
+          <line x1="84" y1="68" x2="84" y2="92" stroke="currentColor" stroke-width="2"/>
+          <line x1="124" y1="76" x2="127" y2="95" stroke="currentColor" stroke-width="2"/>
+          <line x1="44" y1="38" x2="44" y2="20" stroke="currentColor" stroke-width="2"/>
+          <line x1="52" y1="38" x2="52" y2="20" stroke="currentColor" stroke-width="2"/>
+          <text x="48" y="14" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+          <line x1="6" y1="112" x2="-8" y2="126" stroke="currentColor" stroke-width="2"/>
+          <text x="-16" y="140" text-anchor="middle" font-size="12" fill="currentColor">H₂N</text>
+          <text x="10" y="66" text-anchor="middle" font-size="14" fill="currentColor">N</text>
+          <text x="10" y="82" text-anchor="middle" font-size="10" fill="currentColor">H</text>
+          <text x="50" y="42" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="90" y="66" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="90" y="110" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="50" y="118" text-anchor="middle" font-size="14" fill="currentColor">N</text>
+          <text x="10" y="110" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="130" y="72" text-anchor="middle" font-size="14" fill="currentColor">N</text>
+          <text x="136" y="112" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="108" y="132" text-anchor="middle" font-size="14" fill="currentColor">N</text>
+          <text x="108" y="152" text-anchor="middle" font-size="11" fill="currentColor">糖はここの N に付く</text>
+        </g>
+        <text x="110" y="225" text-anchor="middle" font-size="13" fill="currentColor">シトシン（C）― ピリミジン塩基</text>
+        <g transform="translate(10,235)">
+          <line x1="68" y1="26" x2="92" y2="14" stroke="currentColor" stroke-width="2"/>
+          <line x1="108" y1="14" x2="132" y2="26" stroke="currentColor" stroke-width="2"/>
+          <line x1="140" y1="38" x2="140" y2="62" stroke="currentColor" stroke-width="2"/>
+          <line x1="132" y1="74" x2="108" y2="86" stroke="currentColor" stroke-width="2"/>
+          <line x1="92" y1="86" x2="68" y2="74" stroke="currentColor" stroke-width="2"/>
+          <line x1="60" y1="62" x2="60" y2="38" stroke="currentColor" stroke-width="2"/>
+          <line x1="107" y1="20" x2="127" y2="31" stroke="currentColor" stroke-width="2"/>
+          <line x1="66" y1="66" x2="88" y2="78" stroke="currentColor" stroke-width="2"/>
+          <line x1="100" y1="10" x2="100" y2="-6" stroke="currentColor" stroke-width="2"/>
+          <text x="100" y="-12" text-anchor="middle" font-size="13" fill="currentColor">H₂N</text>
+          <line x1="142" y1="66" x2="160" y2="66" stroke="currentColor" stroke-width="2"/>
+          <line x1="142" y1="60" x2="160" y2="60" stroke="currentColor" stroke-width="2"/>
+          <text x="170" y="68" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+          <text x="60" y="56" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="100" y="12" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="140" y="56" text-anchor="middle" font-size="14" fill="currentColor">N</text>
+          <text x="140" y="80" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="100" y="88" text-anchor="middle" font-size="14" fill="currentColor">N</text>
+          <text x="60" y="80" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="100" y="112" text-anchor="middle" font-size="11" fill="currentColor">糖はここの N に付く</text>
+        </g>
+        <text x="330" y="225" text-anchor="middle" font-size="13" fill="currentColor">チミン（T）― ピリミジン塩基（DNAのみ）</text>
+        <g transform="translate(230,235)">
+          <line x1="68" y1="26" x2="92" y2="14" stroke="currentColor" stroke-width="2"/>
+          <line x1="108" y1="14" x2="132" y2="26" stroke="currentColor" stroke-width="2"/>
+          <line x1="140" y1="38" x2="140" y2="62" stroke="currentColor" stroke-width="2"/>
+          <line x1="132" y1="74" x2="108" y2="86" stroke="currentColor" stroke-width="2"/>
+          <line x1="92" y1="86" x2="68" y2="74" stroke="currentColor" stroke-width="2"/>
+          <line x1="60" y1="62" x2="60" y2="38" stroke="currentColor" stroke-width="2"/>
+          <line x1="66" y1="66" x2="88" y2="78" stroke="currentColor" stroke-width="2"/>
+          <line x1="94" y1="10" x2="94" y2="-8" stroke="currentColor" stroke-width="2"/>
+          <line x1="102" y1="10" x2="102" y2="-8" stroke="currentColor" stroke-width="2"/>
+          <text x="98" y="-14" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+          <line x1="142" y1="66" x2="160" y2="66" stroke="currentColor" stroke-width="2"/>
+          <line x1="142" y1="60" x2="160" y2="60" stroke="currentColor" stroke-width="2"/>
+          <text x="170" y="68" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+          <line x1="56" y1="34" x2="40" y2="20" stroke="currentColor" stroke-width="2"/>
+          <text x="28" y="16" text-anchor="middle" font-size="12" fill="currentColor">CH₃</text>
+          <text x="60" y="56" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="100" y="12" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="140" y="56" text-anchor="middle" font-size="14" fill="currentColor">N</text>
+          <text x="140" y="72" text-anchor="middle" font-size="10" fill="currentColor">H</text>
+          <text x="140" y="80" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="100" y="88" text-anchor="middle" font-size="14" fill="currentColor">N</text>
+          <text x="60" y="80" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="100" y="112" text-anchor="middle" font-size="11" fill="currentColor">糖はここの N に付く</text>
+        </g>
+        <text x="550" y="225" text-anchor="middle" font-size="13" fill="currentColor">ウラシル（U）― ピリミジン塩基（RNAのみ）</text>
+        <g transform="translate(450,235)">
+          <line x1="68" y1="26" x2="92" y2="14" stroke="currentColor" stroke-width="2"/>
+          <line x1="108" y1="14" x2="132" y2="26" stroke="currentColor" stroke-width="2"/>
+          <line x1="140" y1="38" x2="140" y2="62" stroke="currentColor" stroke-width="2"/>
+          <line x1="132" y1="74" x2="108" y2="86" stroke="currentColor" stroke-width="2"/>
+          <line x1="92" y1="86" x2="68" y2="74" stroke="currentColor" stroke-width="2"/>
+          <line x1="60" y1="62" x2="60" y2="38" stroke="currentColor" stroke-width="2"/>
+          <line x1="66" y1="66" x2="88" y2="78" stroke="currentColor" stroke-width="2"/>
+          <line x1="94" y1="10" x2="94" y2="-8" stroke="currentColor" stroke-width="2"/>
+          <line x1="102" y1="10" x2="102" y2="-8" stroke="currentColor" stroke-width="2"/>
+          <text x="98" y="-14" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+          <line x1="142" y1="66" x2="160" y2="66" stroke="currentColor" stroke-width="2"/>
+          <line x1="142" y1="60" x2="160" y2="60" stroke="currentColor" stroke-width="2"/>
+          <text x="170" y="68" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+          <text x="60" y="56" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="100" y="12" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="140" y="56" text-anchor="middle" font-size="14" fill="currentColor">N</text>
+          <text x="140" y="72" text-anchor="middle" font-size="10" fill="currentColor">H</text>
+          <text x="140" y="80" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="100" y="88" text-anchor="middle" font-size="14" fill="currentColor">N</text>
+          <text x="60" y="80" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+          <text x="100" y="112" text-anchor="middle" font-size="11" fill="currentColor">糖はここの N に付く</text>
+        </g>
+        <text x="330" y="428" text-anchor="middle" font-size="12" fill="currentColor">アデニンとグアニンは環が2つのプリン塩基、シトシン・チミン・ウラシルは環が1つのピリミジン塩基</text>
+      </svg>
+      <p>核酸の塩基5種の構造式。チミンとウラシルの違いは、環に付いた CH<sub>3</sub>（メチル基）があるかないかだけです。塩基は糖の炭素に、プリン塩基では9位の窒素、ピリミジン塩基では1位の窒素で結びつきます。</p>
+    </div>
+    <h3>DNAとRNAの違い</h3>
+    <p>核酸には<strong>DNA（デオキシリボ核酸）</strong>と<strong>RNA（リボ核酸）</strong>の2種類があり、違いは<strong>糖</strong>と<strong>塩基</strong>と<strong>鎖の本数</strong>の3点です。</p>
+    <ul>
+      <li><strong>糖</strong>：DNAの糖は<strong>デオキシリボース</strong>、RNAの糖は<strong>リボース</strong>。違いは糖の2位の炭素に付く基で、リボースにはヒドロキシ基 −OH が、デオキシリボースには水素 H が付いています（「デオキシ」は酸素が1つ欠けた、という意味です）</li>
+      <li><strong>塩基</strong>：DNAは A・T・G・C、RNAは A・<strong>U</strong>・G・C（チミンの代わりにウラシル）</li>
+      <li><strong>鎖の本数</strong>：DNAは通常2本の鎖が組み合わさった二本鎖、RNAは基本的に1本鎖</li>
+    </ul>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 190" width="560" height="190" role="img" aria-label="リボースとデオキシリボースの違い" style="max-width:100%;height:auto;">
+        <text x="140" y="22" text-anchor="middle" font-size="13" fill="currentColor">リボース（RNAの糖）</text>
+        <polygon points="140,48 184,78 168,128 112,128 96,78" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="140" y="58" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="178" y="88" text-anchor="middle" font-size="12" fill="currentColor">C</text>
+        <text x="160" y="126" text-anchor="middle" font-size="12" fill="currentColor">C</text>
+        <text x="118" y="126" text-anchor="middle" font-size="12" fill="currentColor">C</text>
+        <text x="102" y="88" text-anchor="middle" font-size="12" fill="currentColor">C</text>
+        <line x1="160" y1="132" x2="160" y2="150" stroke="currentColor" stroke-width="2"/>
+        <text x="160" y="166" text-anchor="middle" font-size="13" fill="currentColor">OH</text>
+        <text x="140" y="184" text-anchor="middle" font-size="11" fill="currentColor">2位の炭素に −OH</text>
+        <text x="420" y="22" text-anchor="middle" font-size="13" fill="currentColor">デオキシリボース（DNAの糖）</text>
+        <polygon points="420,48 464,78 448,128 392,128 376,78" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="420" y="58" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="458" y="88" text-anchor="middle" font-size="12" fill="currentColor">C</text>
+        <text x="440" y="126" text-anchor="middle" font-size="12" fill="currentColor">C</text>
+        <text x="398" y="126" text-anchor="middle" font-size="12" fill="currentColor">C</text>
+        <text x="382" y="88" text-anchor="middle" font-size="12" fill="currentColor">C</text>
+        <line x1="440" y1="132" x2="440" y2="150" stroke="currentColor" stroke-width="2"/>
+        <text x="440" y="166" text-anchor="middle" font-size="13" fill="currentColor">H</text>
+        <text x="420" y="184" text-anchor="middle" font-size="11" fill="currentColor">2位の炭素に −H（酸素が欠けている）</text>
+      </svg>
+      <p>リボースとデオキシリボースの模式図。糖の2位の炭素に付くのが −OH か −H かという、原子1個分の違いが DNA と RNA を分けます。デオキシリボースの方が化学的に安定で、長期保存に向くことも、DNAが遺伝情報の保存役を担う理由の1つとされています。</p>
+    </div>
+    <h3>塩基の相補性と二重らせん</h3>
+    <p>DNAの2本の鎖は、内側に向いた塩基どうしが<strong>水素結合</strong>で結ばれて組み合わさっています。このとき組み合わせは決まっていて、<strong>AはTと、GはCと</strong>だけが対を作ります。これを<strong>塩基の相補性</strong>といいます。A−T対の水素結合は<strong>2本</strong>、G−C対は<strong>3本</strong>です。プリン塩基（環2つ）とピリミジン塩基（環1つ）が常に対になるため、2本の鎖の間隔はどこでもほぼ一定になり、全体が規則正しくねじれた<strong>二重らせん</strong>構造になります。</p>
+    <div class="formula">塩基対：A ＝ T（水素結合2本）、G ≡ C（水素結合3本）　／　二本鎖DNA全体では A の数 ＝ T の数、G の数 ＝ C の数</div>
+    <p>Aの数とTの数、Gの数とCの数が等しくなるという関係は、エルヴィン・シャルガフが多くの生物のDNAを分析して見いだした経験則（シャルガフの規則）で、二重らせんモデルの重要な手がかりになりました。相補性があるため、一方の鎖の塩基配列が決まれば、もう一方の配列は自動的に決まります。これが、細胞分裂のときにDNAが正確に複製され、遺伝情報が受け継がれる仕組みの土台です。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 250" width="560" height="250" role="img" aria-label="DNAの二重らせんの模式図" style="max-width:100%;height:auto;">
+        <text x="280" y="20" text-anchor="middle" font-size="13" fill="currentColor">DNAの二重らせん（模式図）</text>
+        <path d="M40,120 q32,-64 65,0 t65,0 t65,0 t65,0 t65,0 t65,0 t65,0" fill="none" stroke="currentColor" stroke-width="2.5"/>
+        <path d="M40,120 q32,64 65,0 t65,0 t65,0 t65,0 t65,0 t65,0 t65,0" fill="none" stroke="currentColor" stroke-width="2.5"/>
+        <line x1="72" y1="88" x2="72" y2="152" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <line x1="137" y1="88" x2="137" y2="152" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <line x1="202" y1="88" x2="202" y2="152" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <line x1="267" y1="88" x2="267" y2="152" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <line x1="332" y1="88" x2="332" y2="152" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <line x1="397" y1="88" x2="397" y2="152" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <line x1="462" y1="88" x2="462" y2="152" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <text x="72" y="82" text-anchor="middle" font-size="13" fill="currentColor">A</text>
+        <text x="72" y="168" text-anchor="middle" font-size="13" fill="currentColor">T</text>
+        <text x="137" y="82" text-anchor="middle" font-size="13" fill="currentColor">G</text>
+        <text x="137" y="168" text-anchor="middle" font-size="13" fill="currentColor">C</text>
+        <text x="202" y="82" text-anchor="middle" font-size="13" fill="currentColor">T</text>
+        <text x="202" y="168" text-anchor="middle" font-size="13" fill="currentColor">A</text>
+        <text x="267" y="82" text-anchor="middle" font-size="13" fill="currentColor">C</text>
+        <text x="267" y="168" text-anchor="middle" font-size="13" fill="currentColor">G</text>
+        <text x="332" y="82" text-anchor="middle" font-size="13" fill="currentColor">A</text>
+        <text x="332" y="168" text-anchor="middle" font-size="13" fill="currentColor">T</text>
+        <text x="397" y="82" text-anchor="middle" font-size="13" fill="currentColor">G</text>
+        <text x="397" y="168" text-anchor="middle" font-size="13" fill="currentColor">C</text>
+        <text x="462" y="82" text-anchor="middle" font-size="13" fill="currentColor">C</text>
+        <text x="462" y="168" text-anchor="middle" font-size="13" fill="currentColor">G</text>
+        <text x="120" y="205" text-anchor="middle" font-size="12" fill="currentColor">2本の鎖＝糖とリン酸の主鎖</text>
+        <text x="330" y="205" text-anchor="middle" font-size="12" fill="currentColor">破線＝塩基どうしの水素結合</text>
+        <text x="280" y="230" text-anchor="middle" font-size="12" fill="currentColor">A−T は水素結合2本、G−C は3本。2本の鎖は互いに逆向きに並ぶ</text>
+      </svg>
+      <p>二重らせんの模式図。糖とリン酸からなる2本の主鎖がらせん状にねじれ、内側で塩基が相補的に対を作ります。実際のDNAでは、らせんが1回転する間に約10塩基対が入ります。</p>
+    </div>
+    <h3>遺伝情報とタンパク質合成の入口</h3>
+    <p>DNAの塩基の並び方（塩基配列）そのものが<strong>遺伝情報</strong>です。タンパク質を作るときは、まずDNAの一部分の情報がRNAの一種（伝令RNA、mRNA）に写し取られ（転写）、その配列をもとにアミノ酸が順番につながれてタンパク質が合成されます（翻訳）。塩基3個の並びが1つのアミノ酸を指定する対応表（遺伝暗号）を使うのが要点で、詳しい代謝の流れは「生体内の化学（代謝の入口）」で扱います。ここでは「核酸の塩基配列 → RNA → アミノ酸の配列 → タンパク質」という情報の流れの入口だけを押さえてください。</p>
+    <h3>ATPもヌクレオチドの仲間</h3>
+    <p>生体内のエネルギーの受け渡しに使われる<strong>ATP（アデノシン三リン酸）</strong>は、アデニンとリボースからなるヌクレオシド（アデノシン）に、リン酸が3個つながった物質で、ヌクレオチドの仲間です。末端のリン酸どうしの結合（高エネルギーリン酸結合）が切れてADP（アデノシン二リン酸）になるときにエネルギーが放出され、筋肉の収縮や物質の合成など、体内のさまざまな仕事に使われます。核酸の材料とエネルギーの通貨が、同じヌクレオチドという部品でできている点は、生体化学の面白い統一性の1つです。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 170" width="560" height="170" role="img" aria-label="ATPの模式構造" style="max-width:100%;height:auto;">
+        <text x="280" y="20" text-anchor="middle" font-size="13" fill="currentColor">ATP（アデノシン三リン酸）の模式構造</text>
+        <polygon points="52,52 108,52 108,108 52,108" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="80" y="85" text-anchor="middle" font-size="13" fill="currentColor">アデニン</text>
+        <text x="80" y="130" text-anchor="middle" font-size="11" fill="currentColor">塩基（A）</text>
+        <line x1="108" y1="80" x2="150" y2="80" stroke="currentColor" stroke-width="2"/>
+        <polygon points="196,44 236,70 224,112 168,112 156,70" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="196" y="54" text-anchor="middle" font-size="12" fill="currentColor">O</text>
+        <text x="196" y="96" text-anchor="middle" font-size="12" fill="currentColor">リボース</text>
+        <text x="196" y="130" text-anchor="middle" font-size="11" fill="currentColor">糖</text>
+        <line x1="236" y1="80" x2="272" y2="80" stroke="currentColor" stroke-width="2"/>
+        <circle cx="298" cy="80" r="17" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="298" y="86" text-anchor="middle" font-size="14" fill="currentColor">P</text>
+        <line x1="315" y1="80" x2="343" y2="80" stroke="currentColor" stroke-width="2"/>
+        <circle cx="369" cy="80" r="17" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="369" y="86" text-anchor="middle" font-size="14" fill="currentColor">P</text>
+        <line x1="386" y1="80" x2="414" y2="80" stroke="currentColor" stroke-width="2"/>
+        <circle cx="440" cy="80" r="17" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="440" y="86" text-anchor="middle" font-size="14" fill="currentColor">P</text>
+        <text x="369" y="130" text-anchor="middle" font-size="11" fill="currentColor">リン酸が3個つながる</text>
+        <text x="440" y="52" text-anchor="middle" font-size="12" fill="currentColor">〜</text>
+        <text x="490" y="86" text-anchor="middle" font-size="12" fill="currentColor">末端の結合が</text>
+        <text x="490" y="104" text-anchor="middle" font-size="12" fill="currentColor">切れるときに</text>
+        <text x="490" y="122" text-anchor="middle" font-size="12" fill="currentColor">エネルギー放出</text>
+      </svg>
+      <p>ATPの模式図。アデニン＋リボース＋リン酸3個という構成は、RNAの材料であるヌクレオチドと基本的に同じ部品の組み合わせです。</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>単位を確認する。</strong>リン酸・糖・塩基の3点セットがヌクレオチドです。リン酸がなければヌクレオシドとして区別します。</li>
+      <li><strong>糖と塩基で DNA か RNA かを判断する。</strong>糖がデオキシリボースで塩基にチミンがあればDNA、糖がリボースで塩基にウラシルがあればRNAです。</li>
+      <li><strong>相補性で対を作る。</strong>A↔T（RNAが相手ならA↔U）、G↔C の対応で、相補鎖の配列や相手側の塩基の数を求めます。</li>
+      <li><strong>割合と水素結合を数える。</strong>二本鎖DNAでは A＝T、G＝C の関係から割合をそろえ、水素結合は A−T対×2本＋G−C対×3本で合計します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：ある二本鎖DNAの一方の鎖の塩基配列が A T G C C G T A の順に並んでいた。相補的なもう一方の鎖の塩基配列と、この区間の水素結合の総数を答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>相補性にしたがって A→T、T→A、G→C、C→G と置き換えると、相手の鎖は <strong>T A C G G C A T</strong> となります。水素結合は、A−T対が4組（A・T・T・A の位置）で 4×2＝8本、G−C対が4組（G・C・C・G の位置）で 4×3＝12本、合計 <strong>20本</strong> です。</p>
+        <p><strong>答え：相補鎖は T A C G G C A T、水素結合は合計20本。</strong></p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題2：ある生物の二本鎖DNA全体を分析すると、アデニンが全体の28 %を占めていた。チミン、グアニン、シトシンの割合をそれぞれ答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>二本鎖DNAでは相補性のため A の数＝T の数、G の数＝C の数になります（シャルガフの規則）。よってチミンは <strong>28 %</strong>。残りは 100−28×2＝44 %で、これを G と C が半分ずつ分け合うので、グアニン <strong>22 %</strong>、シトシン <strong>22 %</strong> です。検算：28＋28＋22＋22＝100 %で、全体と一致します。</p>
+        <p><strong>答え：チミン28 %、グアニン22 %、シトシン22 %。</strong></p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題3：100塩基対からなる二本鎖DNAがあり、そのうち30塩基対が G−C 対、残りが A−T 対であった。このDNAの塩基対を結ぶ水素結合の総数を答えよ。また、このDNAを構成するヌクレオチドの総数も答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>A−T対は 100−30＝70 対で、水素結合は 70×2＝140本。G−C対は30対で 30×3＝90本。合計は 140＋90＝<strong>230本</strong>です。ヌクレオチドは1塩基対につき2個（2本の鎖に1個ずつ）あるので、総数は 100×2＝<strong>200個</strong> です。</p>
+        <p><strong>答え：水素結合は230本、ヌクレオチドは200個。</strong></p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題4：あるヌクレオチドを調べると、糖はリボースで、塩基はウラシルであった。このヌクレオチドはDNAとRNAのどちらの材料か答えよ。また、理由を糖と塩基の両面から述べよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>糖がリボースである点と、塩基にウラシルを含む点のどちらから見ても、DNAではなく <strong>RNA</strong> の材料です。DNAの糖はデオキシリボースで、塩基は A・T・G・C の4種に限られ、ウラシルは含まれません。</p>
+        <p><strong>答え：RNAの材料。糖がリボースで、チミンの代わりにウラシルを含むため。</strong></p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>PCR検査 ― 相補性を利用したDNAの増幅</h3>
+    <p>感染症の検査などで使われるPCR法は、調べたいDNAの特定の区間だけを、相補性を利用して大量に複製する技術です。温度を上げて2本の鎖をほどき、目印となる短いDNA（プライマー）を相補的に結びつけて新しい鎖を合成する、というサイクルを繰り返すことで、ごく微量のDNAからでも検出できる量まで増やせます。新型コロナウイルス感染症の検査で広く知られるようになった、核酸の性質そのものを使った実在の技術です。</p>
+    <h3>DNA鑑定と個人識別</h3>
+    <p>塩基配列や、短い配列の繰り返し回数には個人差があり、その違いを読み取ることで個人を識別できます。犯罪捜査でのDNA型鑑定や、親子関係の確認などに実際に使われています。DNAが「塩基の並び方＝情報」という性質をもつからこそできる応用です。</p>
+    <h3>DNAデータバンクと遺伝子検査</h3>
+    <p>ヒトゲノム（全遺伝情報）の解読以降、塩基配列を高速に読む技術（シーケンサー）が発達し、病気に関連する遺伝子の検査や、医薬品の効き方の個人差を調べる研究が進んでいます。医療機関での遺伝子検査は、DNAの配列という化学情報を読み取る作業そのものです。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ジェームズ・ワトソン</strong>（1928〜2025、アメリカの分子生物学者）、<strong>フランシス・クリック</strong>（1916〜2004、イギリスの物理学者・分子生物学者）、<strong>ロザリンド・フランクリン</strong>（1920〜1958、イギリスの化学者）</p>
+    <p>1953年、アメリカの分子生物学者<strong>ジェームズ・ワトソン</strong>とイギリスの<strong>フランシス・クリック</strong>は、DNAが二重らせん構造をもつというモデルを発表しました。このモデルは、AとT、GとCが対を作る相補性を備え、遺伝情報の複製の仕組みまで一気に説明できるものでした。モデルの構築には、イギリスの化学者<strong>ロザリンド・フランクリン</strong>らが撮影したDNAのX線回折写真（らせん構造を示す決定的なデータ）や、シャルガフの規則（A＝T、G＝C）が重要な手がかりになっています。ワトソンとクリックは、この業績で1962年にノーベル生理学・医学賞を受賞しました（フランクリンは1958年に亡くなっていたため受賞対象になりませんでした）。なお、核酸そのものは1869年にスイスのフリードリヒ・ミーシェルが細胞の核から発見しており、「核酸」という名前はこの出発点に由来します。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>タンパク質側の生体高分子は<a href="amino-acids-proteins.html">アミノ酸とタンパク質</a>、酵素のはたらきは<a href="enzymes.html">酵素の働き</a>、糖の仲間は<a href="carbohydrates.html">糖類</a>が役立ちます。ATPや呼吸・代謝とのつながりは<a href="biochemistry-intro.html">生体内の化学（代謝の入口）</a>へ、高分子全体の入口は<a href="polymers-basics.html">高分子化合物と重合の基礎</a>へ進んでください。水素結合そのものの基礎は<a href="intermolecular-forces.html">分子間力</a>で扱います。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

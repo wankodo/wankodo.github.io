@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>化学物質の安全表示とリスク｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="化学物質の安全表示とリスクを、公式・手順・例題で解説。GHSの絵表示（ピクトグラム）と危険有害性情報の読み方、塩素系漂白剤と酸性洗剤が混ざると塩素が発生する「混ぜるな危険」の反応式、リスク＝有害性×暴露量の考え方、換気・保管などの事故防止と、職場のSDSや毒物・劇物の表示といった現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="化学物質の安全表示とリスク｜化学ツール集">
+<meta property="og:description" content="GHSの絵表示の意味と「混ぜるな危険」の化学、リスク＝有害性×暴露量の考え方と家庭内の事故防止を例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/chemical-safety-labels.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>化学物質の<span class="accent">安全表示</span>とリスク</h1>
+    <p>化学の考え方辞典 ― 生化学・環境と生活の化学（高校化学基礎・1年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 生化学・環境と生活の化学 ＞ 化学物質の安全表示とリスク</p>
+  <p><span class="badge badge-lv">高校化学基礎・1年</span> <span class="badge badge-genre">生化学・環境と生活の化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    洗剤や漂白剤などの化学製品についている絵表示（ピクトグラム）や「混ぜるな危険」の表示は、物質の有害性と事故の起こり方を伝える合図である。塩素系漂白剤と酸性洗剤が混ざると有毒な塩素が発生するように、危険の大きさ（リスク）は物質そのものの有害性だけでなく、量や使い方、体がさらされる量（暴露量）で決まる。表示を読んで混ぜない・換気する・正しく保管することが、家庭内の事故を防ぐ出発点になる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>化学製品のラベルや表示を見て、<strong>どんな危険が、どのくらいの大きさで起こりうるかを読み取る</strong>ときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>GHS の絵表示（ピクトグラム）や危険有害性情報から、引火性・毒性・腐食性などの危険の種類を読み取る問題</li>
+      <li>塩素系漂白剤と酸性洗剤が混ざると塩素が発生する反応式を書き、原子の数で検算する問題</li>
+      <li>有害性と暴露量の組み合わせから、リスクの大小を比べる問題</li>
+      <li>家庭や理科室での保管・換気・取り扱いについて、安全な行動を選ぶ問題</li>
+    </ul>
+    <p>この項目は<strong>事故を防ぐための読み方</strong>を扱います。危険な混合を試すための項目ではありません。塩素系製品と酸性製品を混ぜる行為は、実際に有毒な気体を発生させる危険な行為なので、絶対に行わないでください。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>GHS と絵表示（ピクトグラム）の読み方</h3>
+    <p><strong>GHS</strong> は、化学物質の危険有害性を世界共通の基準で分類し、ラベルと安全データシートで伝える仕組みです。ラベルには、赤い菱形の枠に黒い絵を描いた<strong>絵表示（ピクトグラム）</strong>、「危険」または「警告」という<strong>注意喚起語</strong>、危険の内容を文章で示す<strong>危険有害性情報</strong>、そして使い方や保管の注意を示す注意書きが組み合わさっています。主な絵表示の意味は次の通りです。</p>
+    <ul>
+      <li><strong>爆発する爆弾の絵</strong>：爆発物など（爆発する危険）</li>
+      <li><strong>炎の絵</strong>：引火性（火がつきやすい）</li>
+      <li><strong>円の上の炎の絵</strong>：酸化性（ほかの物を燃えやすくする）</li>
+      <li><strong>ガスボンベの絵</strong>：高圧ガス（圧力で容器が破裂する危険）</li>
+      <li><strong>試験管から液体がこぼれる絵</strong>：腐食性（金属を腐食させる、皮膚や目を強く傷つける）</li>
+      <li><strong>どくろの絵</strong>：急性毒性（飲んだり吸ったりすると命に関わる）</li>
+      <li><strong>感嘆符「！」の絵</strong>：健康有害性（皮膚や目への刺激、アレルギーなど）</li>
+      <li><strong>人の上半身のシルエットの絵</strong>：重大な健康有害性（発がん性や臓器への障害など）</li>
+      <li><strong>魚と木の絵</strong>：環境有害性（水生生物などへの有害性）</li>
+    </ul>
+    <p>絵表示は「危険の種類」を伝えるもので、絵がついているかどうかだけでなく、注意喚起語が「危険」か「警告」か、危険有害性情報に何と書かれているかまで読むことで、危険の重さの目安が分かります。</p>
+    <h3>「混ぜるな危険」の化学：塩素の発生</h3>
+    <p>家庭用の塩素系漂白剤の主成分は<strong>次亜塩素酸ナトリウム NaClO</strong> です。これに塩酸 HCl を含む酸性洗剤などが混ざると、有毒な気体である<strong>塩素 Cl<sub>2</sub></strong> が発生します。反応式は次の通りです。</p>
+    <div class="formula">NaClO ＋ 2HCl → Cl<sub>2</sub> ＋ NaCl ＋ H<sub>2</sub>O</div>
+    <p>両辺の原子の数を検算すると、左辺は Na が1個、Cl が 1＋2＝3個、O が1個、H が2個です。右辺は Cl<sub>2</sub> の Cl 2個と NaCl の Cl 1個で Cl が3個、Na が1個、H<sub>2</sub>O の H が2個と O が1個で、両辺が一致します。イオン反応式で書くと ClO<sup>−</sup> ＋ Cl<sup>−</sup> ＋ 2H<sup>+</sup> → Cl<sub>2</sub> ＋ H<sub>2</sub>O となり、次亜塩素酸イオン中の塩素（酸化数＋1）と塩化物イオンの塩素（酸化数−1）が、どちらも酸化数0の塩素 Cl<sub>2</sub> になる反応です。酸化数の決め方は<a href="oxidation-number.html">酸化数</a>で扱っています。</p>
+    <p>塩素は目やのど、肺を強く刺激する有毒な気体です。そのため、塩素系漂白剤と酸性タイプの洗剤には「混ぜるな危険」の表示があり、同時に使わないこと、使うときは換気することが求められています。これは事故の仕組みの説明であり、この混合を試してはいけません。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 180" width="560" height="180" role="img" aria-label="次亜塩素酸ナトリウム・塩化水素・塩素・水の構造式" style="max-width:100%;height:auto;">
+        <text x="90" y="22" text-anchor="middle" font-size="13" fill="currentColor">次亜塩素酸ナトリウム NaClO</text>
+        <text x="90" y="58" text-anchor="middle" font-size="15" fill="currentColor">Na−O−Cl</text>
+        <text x="90" y="84" text-anchor="middle" font-size="12" fill="currentColor">塩素系漂白剤の主成分</text>
+        <text x="250" y="22" text-anchor="middle" font-size="13" fill="currentColor">塩化水素 HCl</text>
+        <text x="250" y="58" text-anchor="middle" font-size="15" fill="currentColor">H−Cl</text>
+        <text x="250" y="84" text-anchor="middle" font-size="12" fill="currentColor">酸性洗剤に含まれる酸の例</text>
+        <text x="400" y="22" text-anchor="middle" font-size="13" fill="currentColor">塩素 Cl₂</text>
+        <text x="400" y="58" text-anchor="middle" font-size="15" fill="currentColor">Cl−Cl</text>
+        <text x="400" y="84" text-anchor="middle" font-size="12" fill="currentColor">有毒な気体（発生させない）</text>
+        <text x="510" y="22" text-anchor="middle" font-size="13" fill="currentColor">水 H₂O</text>
+        <text x="496" y="50" text-anchor="middle" font-size="15" fill="currentColor">H</text>
+        <line x1="502" y1="54" x2="512" y2="64" stroke="currentColor" stroke-width="2"/>
+        <text x="518" y="76" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="524" y1="64" x2="534" y2="54" stroke="currentColor" stroke-width="2"/>
+        <text x="540" y="50" text-anchor="middle" font-size="15" fill="currentColor">H</text>
+        <text x="280" y="122" text-anchor="middle" font-size="13" fill="currentColor">反応で生じる塩化ナトリウム NaCl は、Na⁺ と Cl⁻ からなるイオン結晶で、分子の形では表しません</text>
+        <text x="280" y="152" text-anchor="middle" font-size="12" fill="currentColor">NaClO の Cl は酸化数＋1、HCl の Cl は酸化数−1、Cl₂ の Cl は酸化数0</text>
+      </svg>
+      <p>本文と反応式に登場する化合物の構造式。次亜塩素酸ナトリウムは Na−O−Cl の並びをもち、酸と混ざると塩素 Cl<sub>2</sub> が発生します。この図は事故の仕組みを理解するためのもので、混合を試すためのものではありません。</p>
+    </div>
+    <h3>毒性と量の関係：リスクの考え方</h3>
+    <p>物質そのものがもつ害の性質を<strong>有害性（ハザード）</strong>、実際に体がその物質にさらされる量を<strong>暴露量</strong>といい、現実の危険の大きさである<strong>リスク</strong>は、この2つの組み合わせで考えます。</p>
+    <div class="formula">リスク ＝ 有害性 × 暴露量</div>
+    <p>ここでいう有害性は物質固有の性質の強さ、暴露量は「濃さ×時間×触れたり吸ったりした量」の目安です。有害性が大きい物質でも、ふたを閉めて保管し、体に触れなければ暴露量は小さく、リスクは下げられます。反対に、身近な物質でも、大量に、長時間、換気のない場所で使えば暴露量が増え、リスクは大きくなります。「毒かどうか」は物質名だけでは決まらず、<strong>量と使われ方まで含めて判断する</strong>のがリスクの考え方です。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <p class="note">※ 塩素系製品と酸性製品は絶対に混ぜないでください。同時に使わず、使用中は換気し、目や皮膚についたり気分が悪くなったりしたときは、すぐに使用をやめて新鮮な空気の場所へ移り、必要に応じて医療機関や専門の相談窓口に相談してください。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>絵表示で危険の種類を読む。</strong>炎なら引火性、どくろなら急性毒性、試験管の絵なら腐食性というように、絵を危険の種類に直します。</li>
+      <li><strong>注意喚起語と危険有害性情報を確認する。</strong>「危険」は「警告」より重い危険の目安です。文章で、体のどこに、どんな害が起こるのかを読み取ります。</li>
+      <li><strong>混ざると何が起こるかを反応式で確かめる。</strong>塩素系（NaClO）と酸性（HCl など）の組み合わせでは Cl<sub>2</sub> が発生します。式を書いたら、両辺の原子の数と電荷が合うか検算します。</li>
+      <li><strong>リスクは有害性×暴露量で比べる。</strong>物質が同じなら、量・濃さ・時間・換気の有無で暴露量がどう変わるかを考え、リスクの大小を判断します。</li>
+      <li><strong>行動に落とし込む。</strong>混ぜない、換気する、ラベルを確認する、子どもの手の届かない場所に元の容器のまま保管する、といった具体的な対策で結論を書きます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：ある製品のラベルに、炎の絵表示と、どくろの絵表示がついている。この製品について読み取れる危険の種類を、それぞれ答えよ。問題2：次亜塩素酸ナトリウムと塩酸の反応 NaClO ＋ 2HCl → □ ＋ NaCl ＋ H<sub>2</sub>O の □ に入る物質の化学式を答え、両辺の塩素原子の数が一致することを示せ。問題3：有害性の強さが同じ洗剤について、（ア）換気のない狭い浴室で多量を長時間使う場合と、（イ）換気扇を回しながら少量を短時間使う場合では、どちらのリスクが大きいか。理由も含めて答えよ。問題4：家庭での事故防止として適切な行動を、次からすべて選べ。（a）塩素系漂白剤と酸性洗剤を混ぜて洗浄力を上げる （b）使う前にラベルの表示を確認する （c）使用中は換気する （d）別の容器に移し替えて、表示なしで保管する</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：炎の絵表示は引火性（火がつきやすいこと）、どくろの絵表示は急性毒性（飲んだり吸ったりすると命に関わる害があること）を表します。</li>
+          <li>問題2：□ は塩素 Cl<sub>2</sub> です。塩素原子の数は、左辺が NaClO の1個と 2HCl の2個で合計3個、右辺が Cl<sub>2</sub> の2個と NaCl の1個で合計3個となり、一致します。ほかの原子も、Na は両辺1個、H は両辺2個、O は両辺1個で一致します。</li>
+          <li>問題3：有害性が同じなら、リスクは暴露量で決まります。（ア）は量が多く、時間が長く、換気がないため気体や飛沫に体がさらされる暴露量が大きく、リスクは（ア）の方が大きくなります。</li>
+          <li>問題4：適切なのは（b）と（c）です。（a）は有毒な塩素を発生させる危険な行為で、絶対に行いません。（d）は中身が分からなくなり、誤使用や子どもの誤飲につながるため不適切で、元の容器のまま表示を確認できる状態で保管します。</li>
+        </ol>
+        <p><strong>答え：問題1は引火性と急性毒性。問題2は Cl<sub>2</sub>（塩素原子は両辺とも3個）。問題3は（ア）の方がリスクが大きい。問題4は（b）と（c）</strong>。表示の問題は「絵→危険の種類」「反応式→原子数で検算」「リスク→有害性×暴露量」「対策→混ぜない・換気・ラベルの確認」の4つの型で整理します。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>家庭用製品の「混ぜるな危険」表示</h3>
+    <p>塩素系漂白剤や酸性タイプの洗剤など、混ぜると有毒な塩素が発生するおそれのある家庭用製品には、「混ぜるな危険」の表示が付けられています。年末の大掃除などで複数の洗剤を続けて使う場面で、前の洗剤をよく洗い流し、同時に使わないことが、家庭内の塩素ガス事故を防ぐ実務上のルールになっています。表示を確認してから使う習慣そのものが、事故防止の仕組みの一部です。</p>
+    <h3>職場のラベルとSDS（安全データシート）</h3>
+    <p>工場や研究室など、化学物質を仕事で扱う現場では、GHS に基づくラベル表示と、物質ごとに危険有害性や取り扱い方法をまとめた<strong>SDS（安全データシート）</strong>の交付が使われています。働く人は容器の絵表示で危険の種類を一目で確かめ、詳しい対策は SDS で確認します。学校の理科室でも、薬品はラベルのある元の容器で保管し、棚や鍵のかかる保管庫で種類ごとに分けて管理します。</p>
+    <h3>毒物・劇物の法令表示</h3>
+    <p>特に毒性の強い物質は、<strong>毒物及び劇物取締法</strong>によって毒物・劇物に指定され、容器への表示が定められています。毒物の容器には赤地に白文字で「医薬用外毒物」、劇物の容器には白地に赤文字で「医薬用外劇物」と表示され、鍵のかかる場所への保管や、譲渡の記録なども求められます。身近な洗剤の注意表示から、法令で管理される毒物・劇物まで、表示は危険の重さに応じて段階的に用意されています。</p>
+    <h3>リスク評価と製品づくり</h3>
+    <p>化学製品を作る企業や、物質を扱う事業所では、有害性のデータと実際の使用条件から暴露量を見積もり、リスクを評価して、濃度の設定、容器の形、表示の文面などを決めています。「有害性があるから使わない」ではなく、「暴露量をどこまで下げれば安全に使えるか」を数字で考えることが、洗剤や消毒用品のような生活に必要な化学製品を成り立たせています。食品の化学でも、保存料などは有害性と使用量の両面から使用の基準が決められています（<a href="food-chemistry.html">食品の化学</a>も参照）。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who">特定の考案者はいない（GHSは国連が採択した国際的な分類・表示の仕組みで、「用量が毒を決める」という考え方は<strong>パラケルスス</strong>（1493〜1541、スイスの医師）が説いたものにさかのぼる）</p>
+    <p>安全表示に特定の考案者はいません。<strong>GHS</strong> は、国ごとにばらばらだった化学物質の分類と表示をそろえるため、国連で合意され、2003年に採択された国際的な仕組みです。日本でも、製品のラベルや SDS にこの考え方が取り入れられています。</p>
+    <p>一方、「毒性と量の関係」というリスクの土台は、ルネサンス期の医師<strong>パラケルスス</strong>（1493〜1541）が説いた考え方にさかのぼります。パラケルススは、すべての物質は量によって毒にも薬にもなる、つまり<strong>用量だけが毒と薬を分ける</strong>という趣旨の考え方を示しました。有害性だけでなく暴露量まで含めてリスクを考える現代の安全評価は、この発想の延長線上にあります。酸や塩基の強さの読み方は<a href="acids-and-alkalis-junior.html">酸とアルカリ</a>、身近な液体の pH との関わりは<a href="ph-in-daily-life.html">pHと暮らし・環境</a>で扱っています。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>酸とアルカリの基本は<a href="acids-and-alkalis-junior.html">酸とアルカリ</a>、塩素の発生に関わる酸化数の決め方は<a href="oxidation-number.html">酸化数</a>、塩素そのものの性質は<a href="halogens.html">ハロゲン</a>、身近な液体の pH の読み方は<a href="ph-in-daily-life.html">pHと暮らし・環境</a>、食品中の化学物質の使われ方は<a href="food-chemistry.html">食品の化学</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食品の化学｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="食品の化学を、公式・手順・例題で解説。三大栄養素と五大栄養素の化学的な顔ぶれ、グルタミン酸・イノシン酸・グアニル酸のうま味と相乗効果、保存料ソルビン酸や甘味料アスパルテームなど食品添加物の役割と安全性評価の仕組み、メイラード反応、食品の酸化と腐敗まで、現場での使われ方とあわせて紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="食品の化学｜化学ツール集">
+<meta property="og:description" content="三大栄養素・うま味成分・食品添加物・メイラード反応を、構造式と例題で解説する食品の化学入門。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/food-chemistry.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">食品</span>の化学</h1>
+    <p>化学の考え方辞典 ― 生化学・環境と生活の化学（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 生化学・環境と生活の化学 ＞ 食品の化学</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">生化学・環境と生活の化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    食品の化学は、食べ物の中の物質とその変化を分子の目で見る分野である。炭水化物・タンパク質・脂質の三大栄養素にビタミン・無機質を加えた五大栄養素、昆布のグルタミン酸やかつお節のイノシン酸といったうま味成分、保存料や甘味料などの食品添加物、そして焼き色と香りを生むメイラード反応まで、味・栄養・保存性はすべて化学で説明できる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>食品を「物質の集まりとその反応」として捉え直すときの解法です。次のような場面で使います。</p>
+    <ul>
+      <li>炭水化物・タンパク質・脂質などの栄養素を、構成元素や化学構造の観点から分類する問題</li>
+      <li>うま味成分の種類と、組み合わせでうま味が強まる相乗効果を説明する問題</li>
+      <li>保存料・酸化防止剤・甘味料など食品添加物の役割を、化学的な働きから説明する問題</li>
+      <li>加熱調理で起こるメイラード反応と、食品の酸化・腐敗の違いを説明する問題</li>
+      <li>栄養成分の量から食品のエネルギー（熱量）を計算する問題</li>
+    </ul>
+    <p>個々の栄養素の詳しい構造は、<a href="carbohydrates.html">炭水化物</a>、<a href="amino-acids-proteins.html">アミノ酸とタンパク質</a>、<a href="fats-soaps-detergents.html">油脂とセッケン・洗剤</a>で扱っています。この項目では、それらを「食べ物」という一つの場に集めて、味・保存・安全の観点から横断的に整理します。</p>
+  </section>
+
+  <section class="card">
+    <h2>栄養素の化学的な顔ぶれ</h2>
+    <p>栄養素のうち、エネルギー源になる<strong>炭水化物・タンパク質・脂質</strong>を<strong>三大栄養素</strong>といい、これに<strong>ビタミン</strong>と<strong>無機質（ミネラル）</strong>を加えたものが<strong>五大栄養素</strong>です。化学の目で見ると、それぞれ次のような物質の集まりです。</p>
+    <ul>
+      <li><strong>炭水化物</strong>：炭素・水素・酸素からなる有機化合物。単糖が多数つながったデンプンのような多糖の形で米やパンに多く含まれ、体内で単糖に分解されてエネルギー源になる</li>
+      <li><strong>タンパク質</strong>：アミノ酸がペプチド結合で多数つながった高分子。炭素・水素・酸素のほかに窒素を含み、硫黄を含むものもある。肉・魚・卵・大豆に多く、体の材料になるとともにエネルギー源にもなる</li>
+      <li><strong>脂質</strong>：グリセリンと脂肪酸がエステル結合した油脂が代表例。水に溶けにくく、質量あたりのエネルギーが最も大きい</li>
+      <li><strong>ビタミン</strong>：体内で必要量を作れないため食品から取る有機化合物の総称。ごく少量で体の調節に関わり、脂溶性のものと水溶性のものに分かれる</li>
+      <li><strong>無機質</strong>：カルシウムや鉄、ナトリウムなどの元素そのもの（イオン）。骨や血液の材料になったり、体液の濃度調節に関わったりする</li>
+    </ul>
+    <p>食品のエネルギーは、三大栄養素の量から見積もることができます。体内での利用を加味した換算係数（アトウォーター係数）は、タンパク質と炭水化物が <strong>4 kcal/g</strong>、脂質が <strong>9 kcal/g</strong> です。脂質の値が大きいのは、脂肪酸の炭素鎖が長く、酸化される部分が多いためです。</p>
+    <div class="formula">エネルギー［kcal］＝ タンパク質［g］× 4 ＋ 脂質［g］× 9 ＋ 炭水化物［g］× 4</div>
+    <p>係数の単位は kcal/g で、質量［g］に掛けるとエネルギー［kcal］が得られます。実際の食品表示の値は、食物繊維の扱いなど細かな計算規則によって、この単純計算と少しずれることがあります。</p>
+  </section>
+
+  <section class="card">
+    <h2>うま味成分の化学</h2>
+    <p>うま味は、甘味・酸味・塩味・苦味と並ぶ基本味の一つです。化学物質としては主に次の3つが知られています。</p>
+    <ul>
+      <li><strong>グルタミン酸</strong>：アミノ酸の一種。昆布だしに多く含まれ、ナトリウム塩である<strong>グルタミン酸ナトリウム</strong>（調味料として使われる、いわゆる MSG）が代表的なうま味調味料</li>
+      <li><strong>イノシン酸</strong>：核酸を構成するヌクレオチドの一種。かつお節や肉・魚に多く含まれる</li>
+      <li><strong>グアニル酸</strong>：同じくヌクレオチドの一種。干しシイタケに多く含まれる</li>
+    </ul>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 150" width="520" height="150" role="img" aria-label="グルタミン酸の構造式" style="max-width:100%;height:auto;">
+        <text x="260" y="22" text-anchor="middle" font-size="13" fill="currentColor">グルタミン酸（アミノ酸の一種）</text>
+        <text x="52" y="86" text-anchor="middle" font-size="14" fill="currentColor">HOOC</text>
+        <line x1="82" y1="80" x2="108" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="128" y="86" text-anchor="middle" font-size="14" fill="currentColor">CH₂</text>
+        <line x1="152" y1="80" x2="178" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="198" y="86" text-anchor="middle" font-size="14" fill="currentColor">CH₂</text>
+        <line x1="222" y1="80" x2="248" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="266" y="86" text-anchor="middle" font-size="14" fill="currentColor">CH</text>
+        <line x1="284" y1="80" x2="310" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="342" y="86" text-anchor="middle" font-size="14" fill="currentColor">COOH</text>
+        <line x1="266" y1="92" x2="266" y2="112" stroke="currentColor" stroke-width="2"/>
+        <text x="266" y="130" text-anchor="middle" font-size="14" fill="currentColor">NH₂</text>
+        <text x="430" y="86" text-anchor="middle" font-size="12" fill="currentColor">カルボキシ基を2つもつ</text>
+        <text x="260" y="146" text-anchor="middle" font-size="12" fill="currentColor">ナトリウム塩がグルタミン酸ナトリウム（うま味調味料）</text>
+      </svg>
+      <p>グルタミン酸の構造式。アミノ基 −NH<sub>2</sub> とカルボキシ基 −COOH をもつアミノ酸で、カルボキシ基を2つもつ点が特徴です。水溶液中ではイオンになって舌のうま味受容体に作用します。</p>
+    </div>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 150" width="520" height="150" role="img" aria-label="イノシン酸とグアニル酸の構造の模式図" style="max-width:100%;height:auto;">
+        <text x="260" y="22" text-anchor="middle" font-size="13" fill="currentColor">イノシン酸・グアニル酸（ヌクレオチドの模式図）</text>
+        <rect x="40" y="55" width="110" height="40" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="95" y="80" text-anchor="middle" font-size="13" fill="currentColor">リン酸</text>
+        <line x1="150" y1="75" x2="185" y2="75" stroke="currentColor" stroke-width="2"/>
+        <rect x="185" y="55" width="110" height="40" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="240" y="80" text-anchor="middle" font-size="13" fill="currentColor">リボース（糖）</text>
+        <line x1="295" y1="75" x2="330" y2="75" stroke="currentColor" stroke-width="2"/>
+        <rect x="330" y="55" width="150" height="40" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="405" y="80" text-anchor="middle" font-size="13" fill="currentColor">塩基（イノシン／グアニン）</text>
+        <text x="260" y="122" text-anchor="middle" font-size="12" fill="currentColor">リン酸＋糖＋塩基がつながったヌクレオチド。塩基の種類でイノシン酸とグアニル酸に分かれる</text>
+        <text x="260" y="142" text-anchor="middle" font-size="12" fill="currentColor">核酸（RNA）を分解すると生じる成分でもある</text>
+      </svg>
+      <p>イノシン酸とグアニル酸の構造の模式図。どちらも「リン酸＋リボース＋塩基」というヌクレオチドの骨格をもち、塩基部分の違いが両者を分けます。</p>
+    </div>
+    <h3>うま味の相乗効果</h3>
+    <p>グルタミン酸（アミノ酸系）と、イノシン酸・グアニル酸（核酸系）を<strong>一緒に使うと、うま味が単純な足し算以上に強く感じられます</strong>。これを<strong>うま味の相乗効果</strong>といいます。昆布（グルタミン酸）とかつお節（イノシン酸）を合わせる日本の「合わせだし」や、干しシイタケ（グアニル酸）を使う精進だしは、この相乗効果を経験的に利用してきた例です。</p>
+  </section>
+
+  <section class="card">
+    <h2>食品添加物の役割と安全性の考え方</h2>
+    <p><strong>食品添加物</strong>は、保存・加工・味や見た目の調整などの目的で食品に加える物質です。役割ごとに整理すると、化学的な働きが見えてきます。</p>
+    <ul>
+      <li><strong>保存料</strong>：微生物の増殖を抑えて腐敗を遅らせる。<strong>ソルビン酸</strong>（カリウム塩の形でも使われる）が代表例で、かまぼこやチーズなどに使われる</li>
+      <li><strong>酸化防止剤</strong>：食品中の成分が空気中の酸素と反応する酸化を抑え、油脂の劣化や変色を防ぐ。酸素と結びつきやすい物質が、食品の代わりに酸化されることで働く</li>
+      <li><strong>甘味料</strong>：砂糖の代わりに甘味をつける。<strong>アスパルテーム</strong>はアミノ酸2つがつながった構造をもち、砂糖の約200倍の甘さがあるため、ごく少量で済む</li>
+    </ul>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 150" width="520" height="150" role="img" aria-label="ソルビン酸の構造式" style="max-width:100%;height:auto;">
+        <text x="260" y="22" text-anchor="middle" font-size="13" fill="currentColor">ソルビン酸（保存料）</text>
+        <text x="48" y="86" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+        <line x1="72" y1="80" x2="98" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="112" y="86" text-anchor="middle" font-size="14" fill="currentColor">CH</text>
+        <line x1="126" y1="74" x2="152" y2="74" stroke="currentColor" stroke-width="2"/>
+        <line x1="126" y1="82" x2="152" y2="82" stroke="currentColor" stroke-width="2"/>
+        <text x="166" y="86" text-anchor="middle" font-size="14" fill="currentColor">CH</text>
+        <line x1="182" y1="80" x2="208" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="222" y="86" text-anchor="middle" font-size="14" fill="currentColor">CH</text>
+        <line x1="236" y1="74" x2="262" y2="74" stroke="currentColor" stroke-width="2"/>
+        <line x1="236" y1="82" x2="262" y2="82" stroke="currentColor" stroke-width="2"/>
+        <text x="276" y="86" text-anchor="middle" font-size="14" fill="currentColor">CH</text>
+        <line x1="292" y1="80" x2="318" y2="80" stroke="currentColor" stroke-width="2"/>
+        <text x="350" y="86" text-anchor="middle" font-size="14" fill="currentColor">COOH</text>
+        <text x="260" y="122" text-anchor="middle" font-size="12" fill="currentColor">CH₃−CH＝CH−CH＝CH−COOH：二重結合を2つもつ不飽和脂肪酸に似た構造</text>
+        <text x="260" y="142" text-anchor="middle" font-size="12" fill="currentColor">微生物の増殖を抑える働きがあり、カリウム塩の形でも使われる</text>
+      </svg>
+      <p>ソルビン酸の構造式。炭素6個の鎖に二重結合が2つあるカルボン酸です。分子の形のまま微生物の細胞に入り込み、その増殖を抑えると考えられています。</p>
+    </div>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 160" width="520" height="160" role="img" aria-label="アスパルテームの構造式" style="max-width:100%;height:auto;">
+        <text x="260" y="22" text-anchor="middle" font-size="13" fill="currentColor">アスパルテーム（甘味料）の縮合構造式</text>
+        <text x="260" y="62" text-anchor="middle" font-size="14" fill="currentColor">H₂N−CH(COOH)−CH₂−CO−NH−CH(CH₂−C₆H₅)−COOCH₃</text>
+        <text x="130" y="92" text-anchor="middle" font-size="12" fill="currentColor">← アスパラギン酸の部分</text>
+        <text x="360" y="92" text-anchor="middle" font-size="12" fill="currentColor">フェニルアラニンの部分 →</text>
+        <text x="260" y="118" text-anchor="middle" font-size="12" fill="currentColor">中央の −CO−NH− がペプチド結合。アミノ酸2つからできたジペプチドの誘導体</text>
+        <text x="260" y="140" text-anchor="middle" font-size="12" fill="currentColor">体内ではアミノ酸などに分解される。フェニルアラニンを代謝できない人向けの表示が義務づけられている</text>
+      </svg>
+      <p>アスパルテームの構造式（縮合構造式）。タンパク質と同じペプチド結合をもつため体内でアミノ酸に分解されますが、フェニルケトン尿症の人はフェニルアラニンを処理できないため、アスパルテームを含む食品にはその旨の表示が義務づけられています。</p>
+    </div>
+    <h3>安全性はどう評価されるか</h3>
+    <p>日本で食品添加物として使えるのは、食品衛生法に基づいて厚生労働大臣が指定したものなど、法律で認められたものに限られ、食品ごとに使える量の上限（使用基準）が決められているものも多くあります。安全性の評価では、動物実験などで「毎日一生食べ続けても影響が現れない量」（無毒性量）を求め、それに安全係数（通常は100分の1）を掛けた<strong>ADI（一日摂取許容量）</strong>［mg/（kg体重・日）］が設定され、実際の食事からの摂取量がこの範囲に収まるかが確かめられます。つまり安全性は「ゼロか有るか」ではなく、<strong>量との関係で評価される</strong>のが基本的な考え方であり、食品安全委員会によるリスク評価と、厚生労働省によるリスク管理という役割分担で運用されています。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <p>この項目の考え方は、次の3本柱で整理できます。</p>
+    <div class="formula">栄養 ＝ 物質の種類と量（三大栄養素のエネルギー換算）／ 味 ＝ うま味成分の種類と相乗効果 ／ 保存 ＝ 微生物と酸化をどう抑えるか</div>
+    <ul>
+      <li><strong>エネルギー換算</strong>：タンパク質 4 kcal/g、脂質 9 kcal/g、炭水化物 4 kcal/g（アトウォーター係数）</li>
+      <li><strong>相乗効果</strong>：アミノ酸系（グルタミン酸）× 核酸系（イノシン酸・グアニル酸）の組み合わせで、うま味は足し算以上に強まる</li>
+      <li><strong>保存の化学</strong>：腐敗は微生物による分解、酸化は空気中の酸素との反応。保存料は前者に、酸化防止剤は後者に働きかける</li>
+    </ul>
+    <h3>メイラード反応 ― 焼き色と香りの化学</h3>
+    <p>パンの耳のこげ色、焼き肉の香ばしさは、加熱によって<strong>糖とアミノ酸（タンパク質）が反応するメイラード反応</strong>で生じます。この反応では褐色の色素（メラノイジン）と多数の香り成分が同時にでき、「焼く・炒める」調理特有の風味を作ります。糖だけを加熱してできるカラメル化とは別の反応で、メイラード反応にはアミノ酸が関わる点が違いです。高温で長時間加熱しすぎると焦げが進み、苦味や好ましくない成分も増えるため、加熱の程度の調整が調理の腕の見せどころになります。</p>
+    <h3>食品の酸化と腐敗</h3>
+    <p>食品が傷む原因は大きく2つに分かれます。<strong>腐敗</strong>は微生物がタンパク質などを分解して、臭いのある物質や有害な物質を作る変化です。一方、<strong>酸化</strong>は微生物が関わらなくても起こり、油脂の不飽和脂肪酸が空気中の酸素と反応して、嫌な臭いや味の劣化（油焼け）を起こします。冷蔵・冷凍は微生物の増殖と化学反応の両方を遅らせ、密閉や脱酸素剤は酸素を断って酸化を抑える、というように保存方法は原因ごとに効き方が違います。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>対象を物質に置き換える。</strong>「栄養」「味」「保存」のどの話かを決め、関係する物質（栄養素・うま味成分・添加物）を特定します。</li>
+      <li><strong>構造と性質を結びつける。</strong>油脂は炭素鎖が長くエネルギーが大きい、ヌクレオチド系うま味は核酸の分解物、というように、構造から性質を説明します。</li>
+      <li><strong>組み合わせを考える。</strong>うま味は相乗効果、保存は「微生物対策」と「酸化対策」の分担、というように単独でなく組み合わせで判断します。</li>
+      <li><strong>量で締める。</strong>エネルギーはアトウォーター係数で計算し、添加物の安全性は ADI のような「量のものさし」で語ります。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：ある食品100 g 中にタンパク質 10 g、脂質 5 g、炭水化物 20 g が含まれている。アトウォーター係数（タンパク質 4 kcal/g、脂質 9 kcal/g、炭水化物 4 kcal/g）を使って、この食品100 g のエネルギーを求めよ。問題2：昆布だけのだしより、昆布とかつお節を合わせた「合わせだし」のうま味が強く感じられる理由を、うま味成分の名前を挙げて説明せよ。問題3：ソルビン酸と酸化防止剤は、食品が傷む仕組みのうち、それぞれどちらに働きかける添加物か答えよ。問題4：ステーキの表面の焼き色と香ばしい香りは主に何という反応によるものか。また、砂糖だけを加熱してできるカラメル化との違いを一言で述べよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：タンパク質 10 g × 4 kcal/g ＝ 40 kcal、脂質 5 g × 9 kcal/g ＝ 45 kcal、炭水化物 20 g × 4 kcal/g ＝ 80 kcal。合計は 40 ＋ 45 ＋ 80 ＝ 165 kcal です。脂質は量が一番少なくても、係数が大きいためエネルギーへの寄与が大きくなります。</li>
+          <li>問題2：昆布にはアミノ酸系のうま味成分グルタミン酸、かつお節には核酸系のイノシン酸が含まれます。アミノ酸系と核酸系を組み合わせると、うま味が足し算以上に強まる相乗効果が起こるためです。</li>
+          <li>問題3：ソルビン酸は保存料で、微生物の増殖を抑えることで腐敗に働きかけます。酸化防止剤は、空気中の酸素による油脂などの酸化（劣化）に働きかけます。傷む原因が違うので、対策も分かれます。</li>
+          <li>問題4：糖とアミノ酸が加熱で反応するメイラード反応です。カラメル化との違いは、メイラード反応にはアミノ酸（タンパク質）が関わる点です。</li>
+        </ol>
+        <p><strong>答え：問題1は 165 kcal。問題2はグルタミン酸とイノシン酸の相乗効果による。問題3はソルビン酸が腐敗（微生物）、酸化防止剤が酸化に働きかける。問題4はメイラード反応で、アミノ酸が関わる点がカラメル化と違う</strong>。食品の問題は「物質に置き換える→構造と結びつける→量で締める」の型で整理するのがコツです。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>だしと調味料の設計</h3>
+    <p>うま味の相乗効果は、即席みそ汁やスープ、顆粒だしの配合設計に実際に使われています。グルタミン酸ナトリウムに核酸系うま味成分を少量組み合わせることで、うま味を保ちながら調味料全体の使用量や塩分を抑える工夫が、食品メーカーの商品開発で行われています。</p>
+    <h3>栄養成分表示と給食・病院食</h3>
+    <p>包装食品の栄養成分表示（エネルギー・タンパク質・脂質・炭水化物・食塩相当量）は、食品表示法に基づいて義務づけられた制度で、エネルギーの算出にはアトウォーター係数の考え方が土台になっています。学校給食や病院食の献立作りでも、栄養素の量を積み上げて一食分のエネルギーを設計する同じ計算が毎日使われています。</p>
+    <h3>保存技術と賞味期限の設定</h3>
+    <p>ハム・ソーセージや練り製品では、保存料の使用、冷蔵流通、包装内の酸素を除くガス置換包装などを組み合わせて、腐敗と酸化の両方を抑えています。賞味期限は、微生物検査や油脂の酸化の進み具合を測る理化学検査の結果に基づいてメーカーが設定するもので、「傷む原因ごとに測って決める」というこの項目の考え方がそのまま実務になっています。</p>
+    <h3>添加物の使用基準と摂取量調査</h3>
+    <p>厚生労働省は、食品添加物ごとに使える食品と量の上限（使用基準）を定め、国民が実際にどれだけ添加物を摂取しているかを調査して、ADI の範囲に収まっているかを継続的に確認しています。新しい物質を添加物として認める際には食品安全委員会がリスク評価を行う、という評価と管理の分担も実在の制度です。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>池田菊苗</strong>（1864〜1936、日本の化学者）、<strong>小玉新太郎</strong>（1886〜1939、日本の化学者）、<strong>国中明</strong>（1925〜1996、日本の農芸化学者）</p>
+    <p>うま味を「物質」として取り出したのは、東京帝国大学の化学者<strong>池田菊苗</strong>（1864〜1936）です。池田は1908年、昆布だしのうま味の本体がアミノ酸のグルタミン酸であることを突き止め、うま味を基本味の一つとして提唱しました。そのナトリウム塩はうま味調味料として製品化され、世界の調味料のあり方を変えました。続いて弟子の<strong>小玉新太郎</strong>（1886〜1939）が1913年にかつお節のうま味成分イノシン酸を、さらに<strong>国中明</strong>（1925〜1996）が1957年に干しシイタケのうま味成分グアニル酸を発見し、アミノ酸系と核酸系を合わせるとうま味が飛躍的に強まる相乗効果の仕組みが明らかになりました。日本の伝統的な「だし」の知恵が、化学によって物質レベルで裏づけられた代表例です。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>栄養素それぞれの詳しい構造は<a href="carbohydrates.html">炭水化物</a>、<a href="amino-acids-proteins.html">アミノ酸とタンパク質</a>、<a href="fats-soaps-detergents.html">油脂とセッケン・洗剤</a>、生化学全体の入口は<a href="biochemistry-intro.html">生体内の化学（代謝の入口）</a>、化学物質の安全表示とリスクの考え方は<a href="chemical-safety-labels.html">化学物質の安全表示とリスク</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>肥料と土壌の化学｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="肥料と土壌の化学を、公式・手順・例題で解説。肥料の三要素（窒素・リン酸・カリ）の働きと硫安・過リン酸石灰・塩化カリウム・尿素、N-P-K表示の読み方と成分量の計算、土壌の酸性化と消石灰・炭酸カルシウムによる pH 調整、緩効性肥料と有機肥料の違い、農業の現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="肥料と土壌の化学｜化学ツール集">
+<meta property="og:description" content="肥料の三要素と N-P-K 表示の読み方、成分量の計算、酸性土壌を石灰で調整する仕組みを、構造式と例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/fertilizer-soil-chemistry.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">肥料</span>と土壌の化学</h1>
+    <p>化学の考え方辞典 ― 生化学・環境と生活の化学（高校化学基礎・1年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 生化学・環境と生活の化学 ＞ 肥料と土壌の化学</p>
+  <p><span class="badge badge-lv">高校化学基礎・1年</span> <span class="badge badge-genre">生化学・環境と生活の化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    作物が育つのに特に多く必要な窒素・リン・カリウムは肥料の三要素と呼ばれ、袋には N-P-K の数字で成分量が表示される。日本の土壌は雨で塩基が流されて酸性に傾きやすいため、消石灰や炭酸カルシウムなどの石灰資材で pH を調整し、三要素を過不足なく補うことが、肥料と土壌の化学の基本になる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>植物の栄養と土の性質を、<strong>元素の働きとイオンの反応</strong>で読み解くときの解法です。次のような場面で使います。</p>
+    <ul>
+      <li>窒素・リン・カリウムの三要素が、植物の体のどこにどう使われるかを説明する問題</li>
+      <li>硫安・過リン酸石灰・塩化カリウム・尿素など、代表的な肥料の化学式と成分を答える問題</li>
+      <li>肥料袋の N-P-K 表示から、実際に含まれる成分の質量を求める問題</li>
+      <li>土壌が酸性になる理由と、石灰資材をまいて pH を調整する反応を説明する問題</li>
+    </ul>
+    <p>土壌の pH そのものの読み方は<a href="ph-in-daily-life.html">pHと暮らし・環境</a>でも扱っています。この項目では、肥料の成分表示の読み方と、土の酸性を直す中和の化学を中心にします。肥料の製法は教科書レベルの一般論にとどめ、原料となるアンモニアの工業的製法は<a href="nitrogen-ammonia.html">窒素とアンモニア・ハーバー法</a>で扱っています。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>肥料の三要素</h3>
+    <p>植物は多くの元素を必要としますが、その中でも特にたくさん吸収し、土から不足しやすい<strong>窒素（N）・リン（P）・カリウム（K）</strong>の3つを<strong>肥料の三要素</strong>といいます。働きの目安は「窒素は葉、リンは花・実、カリウムは根」と覚えられます。</p>
+    <ul>
+      <li><strong>窒素 N</strong>：タンパク質や葉緑素の材料になる。葉や茎の成長を促すため「葉肥（はごえ）」とも呼ばれる。不足すると全体の生育が悪くなり、多すぎると葉ばかり茂って実りが遅れる。</li>
+      <li><strong>リン P</strong>：DNA や ATP などエネルギーのやり取りに関わる物質の材料になる。花や実のつきをよくするため「実肥（みごえ）」とも呼ばれる。</li>
+      <li><strong>カリウム K</strong>：植物の体内でイオン K<sup>+</sup> として存在し、水分や養分の移動、光合成の働きを助ける。根や茎を丈夫にするため「根肥（ねごえ）」とも呼ばれる。</li>
+    </ul>
+    <h3>代表的な化学肥料</h3>
+    <ul>
+      <li><strong>硫安（硫酸アンモニウム）(NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub></strong>：窒素肥料。窒素の含有率は約21％で、水に溶けて速く効く（速効性）。</li>
+      <li><strong>尿素 CO(NH<sub>2</sub>)<sub>2</sub></strong>：窒素肥料。窒素の含有率は約47％と高く、窒素肥料の中で最も多く使われるものの1つ。土の中で微生物の働きでアンモニウムイオンに変わってから吸収される。</li>
+      <li><strong>過リン酸石灰</strong>：リン酸肥料。主成分は水に溶けやすいリン酸二水素カルシウム Ca(H<sub>2</sub>PO<sub>4</sub>)<sub>2</sub> で、石膏 CaSO<sub>4</sub> との混合物として売られている。</li>
+      <li><strong>塩化カリウム KCl</strong>：カリウム肥料。カリウムの代表的な供給源で、水に溶けて K<sup>+</sup> として吸収される。</li>
+    </ul>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 180" width="520" height="180" role="img" aria-label="尿素と硫酸アンモニウムの構造式" style="max-width:100%;height:auto;">
+        <text x="130" y="22" text-anchor="middle" font-size="13" fill="currentColor">尿素 CO(NH₂)₂</text>
+        <text x="130" y="92" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="124" y1="76" x2="124" y2="46" stroke="currentColor" stroke-width="2"/>
+        <line x1="136" y1="76" x2="136" y2="46" stroke="currentColor" stroke-width="2"/>
+        <text x="130" y="40" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="118" y1="86" x2="92" y2="86" stroke="currentColor" stroke-width="2"/>
+        <text x="66" y="92" text-anchor="middle" font-size="14" fill="currentColor">NH₂</text>
+        <line x1="142" y1="86" x2="168" y2="86" stroke="currentColor" stroke-width="2"/>
+        <text x="194" y="92" text-anchor="middle" font-size="14" fill="currentColor">NH₂</text>
+        <text x="130" y="126" text-anchor="middle" font-size="12" fill="currentColor">炭素1個に窒素が2個つき、窒素の割合が高い</text>
+        <text x="390" y="22" text-anchor="middle" font-size="13" fill="currentColor">硫酸アンモニウム (NH₄)₂SO₄</text>
+        <text x="322" y="70" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <line x1="322" y1="76" x2="322" y2="86" stroke="currentColor" stroke-width="2"/>
+        <text x="296" y="98" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <line x1="306" y1="92" x2="316" y2="92" stroke="currentColor" stroke-width="2"/>
+        <text x="322" y="98" text-anchor="middle" font-size="15" fill="currentColor">N</text>
+        <line x1="334" y1="92" x2="344" y2="92" stroke="currentColor" stroke-width="2"/>
+        <text x="354" y="98" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <line x1="322" y1="102" x2="322" y2="112" stroke="currentColor" stroke-width="2"/>
+        <text x="322" y="128" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="368" y="66" text-anchor="middle" font-size="13" fill="currentColor">＋</text>
+        <text x="330" y="152" text-anchor="middle" font-size="12" fill="currentColor">アンモニウムイオン NH₄⁺ ×2</text>
+        <text x="452" y="52" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="452" y1="58" x2="452" y2="72" stroke="currentColor" stroke-width="2"/>
+        <text x="424" y="92" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="434" y1="86" x2="448" y2="86" stroke="currentColor" stroke-width="2"/>
+        <text x="458" y="92" text-anchor="middle" font-size="15" fill="currentColor">S</text>
+        <line x1="470" y1="86" x2="484" y2="86" stroke="currentColor" stroke-width="2"/>
+        <text x="494" y="92" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="458" y1="96" x2="458" y2="110" stroke="currentColor" stroke-width="2"/>
+        <text x="458" y="126" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="492" y="66" text-anchor="middle" font-size="13" fill="currentColor">2−</text>
+        <text x="458" y="152" text-anchor="middle" font-size="12" fill="currentColor">硫酸イオン SO₄²⁻</text>
+      </svg>
+      <p>尿素と硫酸アンモニウム（硫安）の構造。尿素は炭素に2つの −NH<sub>2</sub> がついた有機化合物で、硫安はアンモニウムイオン NH<sub>4</sub><sup>+</sup> 2個と硫酸イオン SO<sub>4</sub><sup>2−</sup> 1個からなる塩です。どちらも植物が吸える窒素の供給源になります。</p>
+    </div>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 180" width="520" height="180" role="img" aria-label="リン酸二水素イオンと炭酸イオンの構造" style="max-width:100%;height:auto;">
+        <text x="130" y="22" text-anchor="middle" font-size="13" fill="currentColor">リン酸二水素イオン H₂PO₄⁻</text>
+        <text x="130" y="48" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="124" y1="56" x2="124" y2="72" stroke="currentColor" stroke-width="2"/>
+        <line x1="136" y1="56" x2="136" y2="72" stroke="currentColor" stroke-width="2"/>
+        <text x="130" y="92" text-anchor="middle" font-size="15" fill="currentColor">P</text>
+        <line x1="118" y1="86" x2="96" y2="86" stroke="currentColor" stroke-width="2"/>
+        <text x="76" y="92" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <line x1="142" y1="86" x2="164" y2="86" stroke="currentColor" stroke-width="2"/>
+        <text x="184" y="92" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <line x1="130" y1="96" x2="130" y2="112" stroke="currentColor" stroke-width="2"/>
+        <text x="130" y="128" text-anchor="middle" font-size="14" fill="currentColor">O⁻</text>
+        <text x="130" y="158" text-anchor="middle" font-size="12" fill="currentColor">過リン酸石灰の主成分に含まれるイオン</text>
+        <text x="390" y="22" text-anchor="middle" font-size="13" fill="currentColor">炭酸イオン CO₃²⁻</text>
+        <text x="390" y="48" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="384" y1="56" x2="384" y2="72" stroke="currentColor" stroke-width="2"/>
+        <line x1="396" y1="56" x2="396" y2="72" stroke="currentColor" stroke-width="2"/>
+        <text x="390" y="92" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="380" y1="94" x2="360" y2="108" stroke="currentColor" stroke-width="2"/>
+        <text x="342" y="122" text-anchor="middle" font-size="14" fill="currentColor">O⁻</text>
+        <line x1="400" y1="94" x2="420" y2="108" stroke="currentColor" stroke-width="2"/>
+        <text x="438" y="122" text-anchor="middle" font-size="14" fill="currentColor">O⁻</text>
+        <text x="390" y="158" text-anchor="middle" font-size="12" fill="currentColor">炭酸カルシウム CaCO₃ に含まれるイオン</text>
+      </svg>
+      <p>リン酸二水素イオンと炭酸イオンの構造。過リン酸石灰のリンを植物が吸うときの形がリン酸二水素イオン H<sub>2</sub>PO<sub>4</sub><sup>−</sup> で、炭酸イオン CO<sub>3</sub><sup>2−</sup> は石灰資材の炭酸カルシウム CaCO<sub>3</sub> に含まれ、土の水素イオンと反応して酸性を弱めます。</p>
+    </div>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 160" width="520" height="160" role="img" aria-label="塩化カリウムと消石灰のイオンの組み合わせ" style="max-width:100%;height:auto;">
+        <text x="130" y="22" text-anchor="middle" font-size="13" fill="currentColor">塩化カリウム KCl</text>
+        <circle cx="106" cy="84" r="22" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="106" y="90" text-anchor="middle" font-size="14" fill="currentColor">K⁺</text>
+        <circle cx="168" cy="84" r="26" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="168" y="90" text-anchor="middle" font-size="14" fill="currentColor">Cl⁻</text>
+        <text x="130" y="140" text-anchor="middle" font-size="12" fill="currentColor">陽イオンと陰イオンが1：1で結びついた塩</text>
+        <text x="390" y="22" text-anchor="middle" font-size="13" fill="currentColor">消石灰 Ca(OH)₂</text>
+        <text x="330" y="90" text-anchor="middle" font-size="14" fill="currentColor">OH⁻</text>
+        <circle cx="390" cy="84" r="24" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="390" y="90" text-anchor="middle" font-size="14" fill="currentColor">Ca²⁺</text>
+        <text x="450" y="90" text-anchor="middle" font-size="14" fill="currentColor">OH⁻</text>
+        <text x="390" y="140" text-anchor="middle" font-size="12" fill="currentColor">Ca²⁺ 1個に OH⁻ が2個ついた塩基</text>
+      </svg>
+      <p>塩化カリウムと消石灰のイオンの組み合わせ。塩化カリウムは水に溶けて K<sup>+</sup> と Cl<sup>−</sup> になり、消石灰（水酸化カルシウム）Ca(OH)<sub>2</sub> は Ca<sup>2+</sup> と OH<sup>−</sup> になって、土の酸性を中和します。</p>
+    </div>
+    <h3>肥料の表示（N-P-K）</h3>
+    <p>肥料の袋には、たとえば「14-14-14」のように3つの数字が並んでいます。これは左から順に<strong>窒素 N・リン酸 P<sub>2</sub>O<sub>5</sub>・カリ K<sub>2</sub>O の含有率（質量パーセント）</strong>を表します。リンとカリウムは、元素そのものではなく酸化物に換算した P<sub>2</sub>O<sub>5</sub> と K<sub>2</sub>O の質量で表示するのが約束です。三要素を1つの粒にまとめた肥料は<strong>化成肥料</strong>と呼ばれます。成分の質量は、質量パーセント濃度と同じ考え方で求められます（<a href="mass-percent-concentration.html">質量パーセント濃度</a>も参照）。</p>
+    <div class="formula">成分の質量 [kg] ＝ 肥料の質量 [kg] ×（表示の数値 ÷ 100）</div>
+    <p>たとえば表示が 14-14-14 の肥料 10 kg なら、窒素は 10 × 14/100 ＝ 1.4 kg 含まれます。逆に、必要な成分量が決まっているときは、この式を割り算に直して肥料の量を求めます。</p>
+    <h3>土壌の酸性化と石灰による pH 調整</h3>
+    <p>日本の土壌は、雨が多いため土の中のカルシウムイオン Ca<sup>2+</sup> やマグネシウムイオン Mg<sup>2+</sup> などの塩基が雨水に溶けて流されやすく、放っておくと<strong>酸性に傾きやすい</strong>性質があります。さらに、硫安などのアンモニウムイオン NH<sub>4</sub><sup>+</sup> を含む肥料を続けて使うと、NH<sub>4</sub><sup>+</sup> が土の中で微生物に酸化されて硝酸イオン NO<sub>3</sub><sup>−</sup> になるときに水素イオン H<sup>+</sup> が生じ、酸性化が進みます。</p>
+    <div class="formula">NH<sub>4</sub><sup>+</sup> ＋ 2O<sub>2</sub> → NO<sub>3</sub><sup>−</sup> ＋ 2H<sup>+</sup> ＋ H<sub>2</sub>O</div>
+    <p>酸性に傾いた土を直すには、塩基性の<strong>石灰資材</strong>をまいて H<sup>+</sup> を中和します。代表は<strong>消石灰（水酸化カルシウム）Ca(OH)<sub>2</sub></strong> と<strong>炭酸カルシウム CaCO<sub>3</sub></strong>（石灰石を砕いたものなど）で、反応は次の通りです。消石灰は速く効き、炭酸カルシウムはゆっくり効きます。</p>
+    <div class="formula">Ca(OH)<sub>2</sub> ＋ 2H<sup>+</sup> → Ca<sup>2+</sup> ＋ 2H<sub>2</sub>O</div>
+    <div class="formula">CaCO<sub>3</sub> ＋ 2H<sup>+</sup> → Ca<sup>2+</sup> ＋ H<sub>2</sub>O ＋ CO<sub>2</sub></div>
+    <p>多くの野菜は pH 6〜7 程度の弱酸性〜中性でよく育ちますが、石灰をまきすぎてアルカリ性に寄せすぎると、今度はリン酸や鉄などが植物に吸われにくくなるため、「酸性だからとにかく石灰を多く」ではなく、土の pH を測ってから量を決めるのが基本です（中和の基本は<a href="neutralization-and-salts.html">中和と塩</a>を参照）。</p>
+    <h3>効き方の違い：速効性・緩効性と、有機肥料</h3>
+    <ul>
+      <li><strong>化学肥料</strong>：成分が水に溶けやすく、まいてすぐ効くものが多い（速効性）。成分量が表示ではっきり分かるため、量の計算がしやすい。</li>
+      <li><strong>緩効性（かんこうせい）肥料</strong>：効き目がゆっくり長く続くように工夫した肥料。尿素の粒を樹脂などで包んだ<strong>被覆肥料</strong>が代表で、土の温度などに応じて成分が少しずつ溶け出す。</li>
+      <li><strong>有機肥料</strong>：堆肥・油かす・魚粉など、動植物由来の肥料。微生物に分解されてから効くため効きはゆっくりだが、土の性質そのものをよくする働きも期待される。化学肥料のような成分表示の数字だけでは読み切れない面がある。</li>
+    </ul>
+    <p>窒素肥料の原料になるアンモニアは、空気中の窒素を原料に工業的に作られています。その製法の流れは教科書レベルの一般論として<a href="nitrogen-ammonia.html">窒素とアンモニア・ハーバー法</a>にまとめています。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>表示を読む。</strong>N-P-K の数字は左から窒素 N、リン酸 P<sub>2</sub>O<sub>5</sub>、カリ K<sub>2</sub>O の含有率（％）です。リンとカリは酸化物換算である点に注意します。</li>
+      <li><strong>成分量は割合で計算する。</strong>成分の質量 ＝ 肥料の質量 ×（数値 ÷ 100）。必要な成分量から肥料の量を求めるときは逆に割り算します。</li>
+      <li><strong>含有率を化学式から求めるときは式量を使う。</strong>たとえば窒素の含有率は「式量に占める窒素原子の質量の割合」で、原子量 H＝1.0、N＝14、O＝16、S＝32 を使って計算します。</li>
+      <li><strong>土の調整は pH を測ってから。</strong>酸性に傾いていれば石灰資材で中和し、まきすぎによるアルカリ性への寄りすぎを避けます。作物ごとに育ちやすい pH が違うことも確認します。</li>
+      <li><strong>効き方で使い分ける。</strong>すぐ効かせたいときは速効性の化学肥料、長く効かせたいときは緩効性肥料や有機肥料、というように目的で選びます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：表示が 14-14-14 の化成肥料 10 kg には、窒素 N、リン酸 P<sub>2</sub>O<sub>5</sub>、カリ K<sub>2</sub>O がそれぞれ何 kg 含まれるか。問題2：硫安 (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub> の窒素の含有率（質量％）を、原子量 H＝1.0、N＝14、O＝16、S＝32 を使って求めよ。問題3：窒素を 2.8 kg まきたい。尿素（窒素の含有率 46.7％）を使うと何 kg 必要か。問題4：酸性に傾いた畑に炭酸カルシウム CaCO<sub>3</sub> をまくと土の酸性が弱まる理由を、反応式を使って説明せよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：成分の質量 ＝ 肥料の質量 ×（数値 ÷ 100）なので、10 kg × 14/100 ＝ 1.4 kg。三要素とも表示が14なので、窒素・リン酸・カリはどれも 1.4 kg ずつです。</li>
+          <li>問題2：(NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub> の式量は (14＋1.0×4)×2 ＋ 32 ＋ 16×4 ＝ 36 ＋ 32 ＋ 64 ＝ 132。そのうち窒素は 14×2 ＝ 28 なので、含有率は 28/132 × 100 ≒ 21.2％です。</li>
+          <li>問題3：必要な尿素の質量を x kg とすると、x × 46.7/100 ＝ 2.8 となるので、x ＝ 2.8 ÷ 0.467 ≒ 6.0 kg です。尿素は窒素の含有率が高いため、硫安（約21％）で同じ窒素をまく場合（約13 kg）より少ない量で済みます。</li>
+          <li>問題4：炭酸カルシウムの炭酸イオンが、土の中の水素イオン H<sup>+</sup> と反応して消費するためです。CaCO<sub>3</sub> ＋ 2H<sup>+</sup> → Ca<sup>2+</sup> ＋ H<sub>2</sub>O ＋ CO<sub>2</sub> という中和が起こり、H<sup>+</sup> が減って pH が上がります。同時に Ca<sup>2+</sup> も補給されます。</li>
+        </ol>
+        <p><strong>答え：問題1は三要素とも 1.4 kg。問題2は約21.2％。問題3は約6.0 kg。問題4は炭酸イオンが H<sup>+</sup> を消費する中和が起こるため</strong>。肥料の計算は「表示の数字は％」「成分量は割合の掛け算・割り算」という型で整理できます。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>農業の施肥設計と土壌診断</h3>
+    <p>実際の農業では、作物と畑ごとに必要な三要素の量が施肥基準として示され、農家は土壌診断（土の pH や成分を測る検査）の結果を見ながら、どの肥料をどれだけまくかを決めています。肥料袋の N-P-K 表示と成分量の計算は、そのまま施肥設計の計算の入口になっています。まきすぎはコストの無駄になるだけでなく、後述の水質問題にもつながるため、「必要な量を、必要なときに」が現場の原則です。</p>
+    <h3>田んぼと被覆肥料</h3>
+    <p>稲作では、田植えのときに一度まけば収穫まで効き続ける緩効性の被覆肥料が広く使われています。樹脂で包んだ尿素の粒から、土の温度に応じて窒素が少しずつ溶け出す仕組みで、追肥の手間を減らしながら、効かせたい時期に合わせて溶け方を設計できます。効き方を化学的に制御した肥料の代表例です。</p>
+    <h3>川や海への流出と富栄養化</h3>
+    <p>まきすぎた窒素やリンが雨で川や湖、海へ流れ出すと、水中の植物プランクトンが異常に増える<strong>富栄養化</strong>が起こり、赤潮やアオコの原因になります。肥料は作物に必要な量だけを吸わせ、余らせないことが、環境を守る上でも重要です。三要素の計算ができることは、環境負荷を減らす施肥にも直結しています。</p>
+    <h3>家庭園芸と土の pH 調整</h3>
+    <p>家庭菜園でも、苦土石灰や消石灰をまいて酸性土壌を調整したり、作物に合わせて化成肥料の N-P-K を選んだりするのは日常の作業です。酸性の土を好むブルーベリーのように、作物によって好む pH が違うため、土壌の pH を測る簡易キットや pH メーターも園芸店で普通に売られています（土壌の pH と植物の関係は<a href="ph-in-daily-life.html">pHと暮らし・環境</a>も参照）。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ユストゥス・フォン・リービッヒ</strong>（1803〜1873、ドイツの化学者／植物の無機栄養説と最小律を提唱）</p>
+    <p>肥料を「三要素の補給」と考える見方は、ドイツの化学者<strong>ユストゥス・フォン・リービッヒ</strong>（1803〜1873）が切り開いたものです。リービッヒは1840年の著書で、植物は土の中の無機成分（ミネラル）を吸って育つという<strong>無機栄養説</strong>を唱え、農業に化学を持ち込みました。さらに、植物の成長は「最も不足している養分」の量で決まるという考え方は<strong>最小律</strong>として知られ、三要素のどれか1つでも欠ければ他の要素を増やしても収量は伸びない、という施肥の基本原則になっています。20世紀に入ると、ハーバーとボッシュが空気中の窒素からアンモニアを作る方法を工業化し、窒素肥料を大量に供給できるようになりました（<a href="nitrogen-ammonia.html">窒素とアンモニア・ハーバー法</a>を参照）。なお、肥料そのものは堆肥などとして古代から使われてきたもので、特定の個人が発明したものではありません。リービッヒの役割は、その働きを化学の言葉で説明し、成分を量って補う近代的な施肥の考え方を打ち立てた点にあります。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>窒素肥料の原料アンモニアの製法は<a href="nitrogen-ammonia.html">窒素とアンモニア・ハーバー法</a>、リンの元素としての性質は<a href="phosphorus-silicon.html">リンとケイ素</a>、土壌の pH の読み方と植物との関係は<a href="ph-in-daily-life.html">pHと暮らし・環境</a>、成分量の計算の基礎は<a href="mass-percent-concentration.html">質量パーセント濃度</a>、石灰で酸を中和する反応の基本は<a href="neutralization-and-salts.html">中和と塩</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

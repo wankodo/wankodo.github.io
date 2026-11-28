@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>糖類｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="単糖・二糖・多糖と還元性を、グルコース・フルクトース・スクロース・マルトース・デンプン・セルロースの構造式と例題で解説。グリコシド結合とα／β結合の違い、ヨウ素デンプン反応、食品や医療など現場での使われ方も紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="糖類｜化学ツール集">
+<meta property="og:description" content="単糖・二糖・多糖の分類と還元性の決まり方を、グルコースなどの構造式と例題で解説。α結合とβ結合の違いも扱う。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/carbohydrates.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">糖類</span></h1>
+    <p>化学の考え方辞典 ― 高分子（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 高分子 ＞ 糖類</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">高分子</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    糖類は単糖がグリコシド結合でつながった炭水化物で、単糖（グルコース、フルクトース、ガラクトース）、二糖（スクロース、マルトース、ラクトース）、多糖（デンプン、グリコーゲン、セルロース）に分けられる。還元性は環を開いてアルデヒド基を生じるかどうかで決まり、結合のしかたによって決まる。デンプンとセルロースはどちらもグルコースの重合体だが、α結合かβ結合かの違いで消化できるかどうかが分かれる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>糖類は、炭水化物の代表として、<strong>つながっている単糖の数と、つながり方（結合のしかた）から性質を判断する</strong>ときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>グルコース、フルクトース、ガラクトース、スクロース、マルトース、ラクトース、デンプン、グリコーゲン、セルロースを、単糖・二糖・多糖に分類する問題</li>
+      <li>フェーリング反応や銀鏡反応が陽性かどうか、つまり<strong>還元性</strong>の有無を、構造から判断する問題</li>
+      <li>二糖や多糖を加水分解したときに何が何 mol（何 g）得られるかを計算する問題</li>
+      <li>デンプンは消化できるのにセルロースは消化できない理由を、α結合とβ結合の違いで説明する問題、ヨウ素デンプン反応の結果を答える問題</li>
+    </ul>
+    <p>暗記のコツは、名前をばらばらに覚えるのではなく、<strong>「何個の単糖が、どの炭素どうしで、αかβかでつながっているか」</strong>という1つの物差しで全部を整理することです。還元性も消化の可否も、この物差しから説明できます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>糖類（炭水化物）の分類</h3>
+    <p>糖類は、一般式 C<sub>n</sub>(H<sub>2</sub>O)<sub>m</sub> で表されることが多いため<strong>炭水化物</strong>とも呼ばれます。加水分解でそれ以上分解できない最小単位を<strong>単糖</strong>、単糖2個がつながったものを<strong>二糖</strong>、単糖が多数つながったものを<strong>多糖</strong>といいます。単糖どうしがつながるとき、水 H<sub>2</sub>O が1分子取れてできる結合を<strong>グリコシド結合</strong>といいます（脱水縮合）。逆に、水を加えて切る反応が加水分解です。</p>
+    <div class="formula">単糖2個 → 二糖 ＋ H<sub>2</sub>O　　2 C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> → C<sub>12</sub>H<sub>22</sub>O<sub>11</sub> ＋ H<sub>2</sub>O</div>
+    <p>式量・分子量の計算には原子量 H＝1.0、C＝12、O＝16 を使います。グルコース C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> の分子量は 12×6＋1.0×12＋16×6＝180、二糖 C<sub>12</sub>H<sub>22</sub>O<sub>11</sub> の分子量は 12×12＋1.0×22＋16×11＝342 です。多糖は、単糖から水が取れた単位 C<sub>6</sub>H<sub>10</sub>O<sub>5</sub>（式量 162）が n 個繰り返した (C<sub>6</sub>H<sub>10</sub>O<sub>5</sub>)<sub>n</sub> と表します。</p>
+    <h3>単糖 ― グルコース、フルクトース、ガラクトース</h3>
+    <p>代表的な単糖はすべて分子式 C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> で、互いに異性体です。</p>
+    <ul>
+      <li><strong>グルコース（ブドウ糖）</strong>：鎖状ではアルデヒド基 −CHO をもつ。水溶液中では主に六員環（環状）で存在し、鎖状との平衡にあるため、環が開いてアルデヒド基を生じ、<strong>還元性を示す</strong>。デンプン、グリコーゲン、セルロースの構成単位</li>
+      <li><strong>フルクトース（果糖）</strong>：鎖状ではケトン基をもつが、水溶液中では主に五員環で存在する。条件によって環が開き、グルコースに似た構造を経て酸化されるため、単糖として<strong>還元性を示す</strong>。果物や蜂蜜に多く、糖類の中で特に甘みが強い</li>
+      <li><strong>ガラクトース</strong>：グルコースとよく似た六員環の単糖で、ヒドロキシ基 −OH の向きが1か所だけグルコースと違う。ラクトースの構成単位で、<strong>還元性を示す</strong></li>
+    </ul>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 250" width="560" height="250" role="img" aria-label="グルコースの鎖状構造と環状構造（ハワース式の模式）" style="max-width:100%;height:auto;">
+        <text x="110" y="22" text-anchor="middle" font-size="13" fill="currentColor">グルコース（鎖状・フィッシャー式の模式）</text>
+        <line x1="110" y1="36" x2="110" y2="200" stroke="currentColor" stroke-width="2"/>
+        <text x="110" y="48" text-anchor="middle" font-size="13" fill="currentColor" style="background:#fff">CHO</text>
+        <text x="78" y="82" text-anchor="middle" font-size="12" fill="currentColor">HO</text><text x="140" y="82" text-anchor="middle" font-size="12" fill="currentColor">H</text>
+        <text x="82" y="112" text-anchor="middle" font-size="12" fill="currentColor">H</text><text x="140" y="112" text-anchor="middle" font-size="12" fill="currentColor">OH</text>
+        <text x="78" y="142" text-anchor="middle" font-size="12" fill="currentColor">HO</text><text x="140" y="142" text-anchor="middle" font-size="12" fill="currentColor">H</text>
+        <text x="82" y="172" text-anchor="middle" font-size="12" fill="currentColor">H</text><text x="140" y="172" text-anchor="middle" font-size="12" fill="currentColor">OH</text>
+        <text x="110" y="216" text-anchor="middle" font-size="13" fill="currentColor">CH₂OH</text>
+        <text x="110" y="238" text-anchor="middle" font-size="11" fill="currentColor">端に −CHO（アルデヒド基）をもつ</text>
+        <text x="370" y="22" text-anchor="middle" font-size="13" fill="currentColor">グルコース（環状・ハワース式の模式）</text>
+        <polygon points="300,70 350,45 405,55 430,105 390,150 325,140" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="412" y="52" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="350" y1="45" x2="350" y2="22" stroke="currentColor" stroke-width="2"/>
+        <text x="350" y="16" text-anchor="middle" font-size="11" fill="currentColor">CH₂OH（上）</text>
+        <text x="292" y="66" text-anchor="middle" font-size="11" fill="currentColor">OH</text>
+        <text x="322" y="168" text-anchor="middle" font-size="11" fill="currentColor">OH</text>
+        <text x="398" y="168" text-anchor="middle" font-size="11" fill="currentColor">OH</text>
+        <text x="452" y="112" text-anchor="middle" font-size="11" fill="currentColor">OH</text>
+        <text x="370" y="196" text-anchor="middle" font-size="11" fill="currentColor">六員環。1位の炭素の −OH が下向きなら α、上向きなら β</text>
+        <text x="370" y="216" text-anchor="middle" font-size="11" fill="currentColor">水溶液では環状が主で、鎖状と平衡にある</text>
+      </svg>
+      <p>グルコースの鎖状構造と環状構造。環状はハワース式の模式図で、環の炭素と水素は省略し、主な −OH と CH<sub>2</sub>OH の上下だけを示しています（以下の図も同じ約束です）。</p>
+    </div>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 210" width="560" height="210" role="img" aria-label="フルクトースとガラクトースの環状構造（ハワース式の模式）" style="max-width:100%;height:auto;">
+        <text x="140" y="22" text-anchor="middle" font-size="13" fill="currentColor">フルクトース（環状・五員環）</text>
+        <polygon points="90,60 160,42 205,85 175,145 105,145" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="212" y="80" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="82" y="52" text-anchor="middle" font-size="11" fill="currentColor">CH₂OH</text>
+        <text x="98" y="168" text-anchor="middle" font-size="11" fill="currentColor">OH</text>
+        <text x="182" y="168" text-anchor="middle" font-size="11" fill="currentColor">OH</text>
+        <text x="140" y="196" text-anchor="middle" font-size="11" fill="currentColor">五員環が主。単糖なので還元性を示す</text>
+        <text x="410" y="22" text-anchor="middle" font-size="13" fill="currentColor">ガラクトース（環状・六員環）</text>
+        <polygon points="330,70 380,45 435,55 460,105 420,150 355,140" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="442" y="52" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <line x1="380" y1="45" x2="380" y2="24" stroke="currentColor" stroke-width="2"/>
+        <text x="380" y="16" text-anchor="middle" font-size="11" fill="currentColor">CH₂OH（上）</text>
+        <text x="322" y="66" text-anchor="middle" font-size="11" fill="currentColor">OH</text>
+        <text x="352" y="168" text-anchor="middle" font-size="11" fill="currentColor">OH</text>
+        <text x="428" y="34" text-anchor="middle" font-size="11" fill="currentColor"></text>
+        <text x="410" y="196" text-anchor="middle" font-size="11" fill="currentColor">グルコースと −OH の向きが1か所違う。還元性を示す</text>
+      </svg>
+      <p>フルクトース（五員環）とガラクトース（六員環）のハワース式の模式図。どちらも分子式はグルコースと同じ C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> です。</p>
+    </div>
+    <h3>二糖 ― スクロース、マルトース、ラクトースと還元性</h3>
+    <p>二糖はすべて分子式 C<sub>12</sub>H<sub>22</sub>O<sub>11</sub> で、構成する単糖と結合のしかたが違います。</p>
+    <ul>
+      <li><strong>スクロース（ショ糖）</strong>：グルコース＋フルクトース。グルコースの1位の炭素とフルクトースの2位の炭素という、<strong>両方の「環が開くカギになる炭素」どうしがグリコシド結合で結ばれている</strong>ため、どちらの環も開けず、アルデヒド基を生じない。したがって<strong>非還元性</strong>。砂糖の主成分で、加水分解するとグルコースとフルクトースが1個ずつ生じる</li>
+      <li><strong>マルトース（麦芽糖）</strong>：グルコース＋グルコース（α-1,4結合）。片方のグルコースは環を開ける炭素が空いているため、<strong>還元性を示す</strong>。デンプンを酵素アミラーゼで分解したときに生じる</li>
+      <li><strong>ラクトース（乳糖）</strong>：ガラクトース＋グルコース（β-1,4結合）。グルコース側の環が開けるため、<strong>還元性を示す</strong>。哺乳類の乳に含まれる</li>
+    </ul>
+    <p>還元性の判定は、名前ではなく<strong>「環を開いてアルデヒド基になれる炭素が、結合に使われず残っているか」</strong>で決まります。スクロースだけが両方とも結合に使われているため非還元性になる、というのが要点です。還元性のある糖は、フェーリング反応で赤色の酸化銅(I) Cu<sub>2</sub>O の沈殿を生じ、銀鏡反応で銀を析出します（詳しくは「アルデヒドとケトン」）。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 300" width="560" height="300" role="img" aria-label="マルトース、スクロース、ラクトースの模式構造" style="max-width:100%;height:auto;">
+        <text x="150" y="20" text-anchor="middle" font-size="13" fill="currentColor">マルトース（グルコース＋グルコース、α結合）</text>
+        <polygon points="55,55 90,38 130,45 145,80 118,108 72,102" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="136" y="42" text-anchor="middle" font-size="12" fill="currentColor">O</text>
+        <polygon points="185,55 220,38 260,45 275,80 248,108 202,102" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="266" y="42" text-anchor="middle" font-size="12" fill="currentColor">O</text>
+        <line x1="145" y1="80" x2="185" y2="68" stroke="currentColor" stroke-width="2"/>
+        <text x="165" y="60" text-anchor="middle" font-size="12" fill="currentColor">O</text>
+        <text x="150" y="132" text-anchor="middle" font-size="11" fill="currentColor">右の環は開ける → 還元性あり</text>
+        <text x="420" y="20" text-anchor="middle" font-size="13" fill="currentColor">スクロース（グルコース＋フルクトース）</text>
+        <polygon points="335,55 370,38 410,45 425,80 398,108 352,102" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="416" y="42" text-anchor="middle" font-size="12" fill="currentColor">O</text>
+        <polygon points="455,52 495,42 520,72 505,108 465,102" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="526" y="68" text-anchor="middle" font-size="12" fill="currentColor">O</text>
+        <line x1="425" y1="80" x2="455" y2="66" stroke="currentColor" stroke-width="2"/>
+        <text x="440" y="58" text-anchor="middle" font-size="12" fill="currentColor">O</text>
+        <text x="420" y="132" text-anchor="middle" font-size="11" fill="currentColor">両方の環のカギの炭素どうしが結合 → 非還元性</text>
+        <text x="280" y="168" text-anchor="middle" font-size="13" fill="currentColor">ラクトース（ガラクトース＋グルコース、β結合）</text>
+        <polygon points="155,205 190,188 230,195 245,230 218,258 172,252" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="236" y="192" text-anchor="middle" font-size="12" fill="currentColor">O</text>
+        <polygon points="285,205 320,188 360,195 375,230 348,258 302,252" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="366" y="192" text-anchor="middle" font-size="12" fill="currentColor">O</text>
+        <line x1="245" y1="230" x2="285" y2="218" stroke="currentColor" stroke-width="2"/>
+        <text x="265" y="210" text-anchor="middle" font-size="12" fill="currentColor">O</text>
+        <text x="280" y="282" text-anchor="middle" font-size="11" fill="currentColor">グルコース側の環は開ける → 還元性あり</text>
+      </svg>
+      <p>二糖の模式図。六角形は六員環の単糖、五角形は五員環のフルクトースを表し、環と環の間の O がグリコシド結合です。還元性の有無は、結合に使われていない「開ける環」があるかどうかで決まります。</p>
+    </div>
+    <h3>多糖 ― デンプン、グリコーゲン、セルロースと α／β 結合</h3>
+    <p>多糖はすべてグルコースの重合体ですが、結合の向きと枝分かれで性質が大きく分かれます。グルコースの1位の炭素の −OH が下向きの結合を<strong>α結合</strong>、上向きの結合を<strong>β結合</strong>といいます。</p>
+    <ul>
+      <li><strong>デンプン</strong>：α結合でつながった植物の貯蔵多糖。直線状（らせん状）につながった<strong>アミロース</strong>と、枝分かれの多い<strong>アミロペクチン</strong>の混合物。ヒトの消化酵素で分解でき、エネルギー源になる</li>
+      <li><strong>グリコーゲン</strong>：α結合でつながった動物の貯蔵多糖。アミロペクチンよりさらに枝分かれが多く、肝臓や筋肉に蓄えられ、必要に応じてグルコースに分解される</li>
+      <li><strong>セルロース</strong>：β結合でまっすぐつながった植物の細胞壁の主成分。鎖どうしが水素結合で束になり、丈夫な繊維になる。ヒトはβ結合を切る消化酵素をもたないため<strong>消化できず</strong>、食物繊維として働く</li>
+    </ul>
+    <p><strong>ヨウ素デンプン反応</strong>：デンプン水溶液にヨウ素溶液（ヨウ素ヨウ化カリウム溶液）を加えると、ヨウ素分子がアミロースのらせん構造の中に入り込み、<strong>青紫色</strong>を呈します。デンプンの検出に使う代表的な反応で、加熱するとらせんがほどけて色は消え、冷やすと戻ります。アミロペクチンは枝分かれのためらせんが短く、赤紫色寄りになります。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 260" width="560" height="260" role="img" aria-label="デンプン、グリコーゲン、セルロースのつながり方の模式図" style="max-width:100%;height:auto;">
+        <text x="140" y="20" text-anchor="middle" font-size="13" fill="currentColor">アミロース（α結合・らせん状）</text>
+        <path d="M30,70 Q60,40 90,70 T150,70 T210,70 T250,70" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="55" cy="58" r="13" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="115" cy="58" r="13" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="175" cy="58" r="13" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="230" cy="58" r="13" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="140" y="102" text-anchor="middle" font-size="11" fill="currentColor">アミロペクチンはここから枝分かれする</text>
+        <text x="420" y="20" text-anchor="middle" font-size="13" fill="currentColor">グリコーゲン（α結合・枝分かれが多い）</text>
+        <path d="M320,70 H520 M400,70 L370,110 M460,70 L490,110" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="345" cy="70" r="12" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="395" cy="70" r="12" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="445" cy="70" r="12" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="495" cy="70" r="12" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="362" cy="118" r="12" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="498" cy="118" r="12" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="420" y="152" text-anchor="middle" font-size="11" fill="currentColor">動物の貯蔵多糖。末端が多く、すばやく分解できる</text>
+        <text x="280" y="182" text-anchor="middle" font-size="13" fill="currentColor">セルロース（β結合・まっすぐな鎖が束になる）</text>
+        <path d="M60,215 H500 M60,240 H500" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M120,215 V240 M220,215 V240 M320,215 V240 M420,215 V240" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3"/>
+        <circle cx="90" cy="215" r="12" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="160" cy="215" r="12" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="230" cy="215" r="12" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="300" cy="215" r="12" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="370" cy="215" r="12" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="440" cy="215" r="12" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="280" y="260" text-anchor="middle" font-size="11" fill="currentColor">鎖どうしの水素結合（破線）で束になり丈夫な繊維になる。ヒトは消化できない</text>
+      </svg>
+      <p>多糖のつながり方の模式図。丸はグルコース単位を表します。同じグルコースの重合体でも、α結合では曲がった・枝分かれした貯蔵用の形に、β結合ではまっすぐな構造用の形になります。</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>単糖の数を数える。</strong>加水分解で得られる最小単位が1種類・1個なら単糖、単糖2個分なら二糖、(C<sub>6</sub>H<sub>10</sub>O<sub>5</sub>)<sub>n</sub> の形なら多糖と分類します。分子式が C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> か C<sub>12</sub>H<sub>22</sub>O<sub>11</sub> かも手がかりです。</li>
+      <li><strong>構成単糖と結合を確認する。</strong>二糖なら「何と何がつながっているか」、多糖なら「α結合かβ結合か、枝分かれはあるか」を押さえます。</li>
+      <li><strong>還元性を判断する。</strong>環を開いてアルデヒド基になれる炭素が結合に使われず残っているかを考えます。単糖はすべて還元性、二糖ではスクロースだけ非還元性、多糖は末端の割合がごく小さいため還元性は示さないものとして扱います。</li>
+      <li><strong>加水分解の計算は、まず mol に直す。</strong>二糖1 mol から単糖は合計2 mol、多糖の単位1 mol（162 g）からグルコース1 mol（180 g）が得られます。水が加わる分だけ質量が増えることに注意します。</li>
+      <li><strong>検出反応と結び付ける。</strong>デンプンならヨウ素デンプン反応で青紫色、還元性のある糖ならフェーリング反応・銀鏡反応が陽性、と反応の結果までセットで答えます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：グルコース、マルトース、スクロースの水溶液について、フェーリング反応が陽性になるものをすべて選べ。また、スクロース水溶液を希酸で加水分解した後にフェーリング反応を行うと結果はどうなるか答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>グルコースは環状と鎖状の平衡にあり、鎖状のアルデヒド基によって還元性を示すので<strong>陽性</strong>です。マルトースは2個のグルコースのうち片方の環が開けるため<strong>陽性</strong>です。スクロースはグルコースとフルクトースの「開くカギになる炭素」どうしが結合していてどちらの環も開けないため<strong>陰性（非還元性）</strong>です。ただしスクロースを加水分解するとグルコースとフルクトースに分かれ、どちらも還元性を示す単糖なので、加水分解後は<strong>陽性</strong>になります。</p>
+        <p><strong>答え：陽性はグルコースとマルトース。スクロースは陰性だが、加水分解後は陽性になる。</strong></p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題2：スクロース 34.2 g を完全に加水分解したとき、生じるグルコースとフルクトースはそれぞれ何 g か。原子量は H＝1.0、C＝12、O＝16 とする。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>スクロース C<sub>12</sub>H<sub>22</sub>O<sub>11</sub> の分子量は342なので、34.2 g は 34.2÷342＝0.100 mol です。反応式は C<sub>12</sub>H<sub>22</sub>O<sub>11</sub> ＋ H<sub>2</sub>O → C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>（グルコース）＋ C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>（フルクトース）で、スクロース1 mol からグルコースとフルクトースが1 mol ずつ生じます。グルコースの分子量は180なので 0.100 mol × 180 g/mol ＝ 18.0 g、フルクトースも分子式が同じで 18.0 g です。合計36.0 g は、もとの34.2 g に加水分解で加わった水 0.100 mol × 18 g/mol ＝ 1.8 g を足した値と一致します。</p>
+        <p><strong>答え：グルコース 18.0 g、フルクトース 18.0 g。</strong></p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題3：デンプン 81 g を完全に加水分解すると、グルコースは何 g 得られるか。また、セルロースも同じ (C<sub>6</sub>H<sub>10</sub>O<sub>5</sub>)<sub>n</sub> で表されるのに、ヒトがセルロースを栄養として利用できない理由を、結合の違いから説明せよ。あわせて、デンプンの存在を確認する反応とその色も答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>デンプンの繰り返し単位 C<sub>6</sub>H<sub>10</sub>O<sub>5</sub> の式量は 12×6＋1.0×10＋16×5＝162 です。81 g は 81÷162＝0.50 mol の単位にあたり、単位1 mol の加水分解でグルコース（分子量180）が1 mol 得られるので、0.50 mol × 180 g/mol ＝ <strong>90 g</strong> です（水 0.50 mol＝9.0 g が加わった分、81 g より増えます）。セルロースが利用できないのは、デンプンのグルコースが<strong>α結合</strong>でつながっているのに対し、セルロースは<strong>β結合</strong>でつながっており、ヒトの消化酵素はβ結合を切ることができないためです。デンプンの確認は<strong>ヨウ素デンプン反応</strong>で、ヨウ素溶液を加えると<strong>青紫色</strong>になります。</p>
+        <p><strong>答え：グルコース 90 g。セルロースはβ結合で、ヒトはそれを切る消化酵素をもたないため利用できない。確認はヨウ素デンプン反応で青紫色。</strong></p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>食品・飲料と甘味料</h3>
+    <p>砂糖の主成分スクロース、麦芽糖（マルトース）を含む水あめ、牛乳のラクトース（乳糖）など、糖類は食品の甘味とエネルギー源そのものです。デンプンを酵素で分解して作る水あめやブドウ糖液糖は、清涼飲料や菓子の原料として大量に使われています。牛乳を飲むとお腹の調子が悪くなる乳糖不耐症の人向けには、酵素ラクターゼでラクトースをあらかじめグルコースとガラクトースに分解した乳糖分解乳（ラクトースフリー乳）が実際に販売されています。</p>
+    <h3>医療 ― 点滴と経口補水</h3>
+    <p>病院の点滴に使われるブドウ糖液はグルコース水溶液で、食事が取れない患者へのエネルギーと水分の補給に使われます。また、下痢などで水分を失ったときの経口補水液は、腸でグルコースとナトリウムが一緒に吸収される仕組みを利用して、水分の吸収を助ける組成になっています。</p>
+    <h3>繊維・紙と発酵産業</h3>
+    <p>セルロースは綿や麻などの天然繊維、紙（パルプ）の主成分であり、β結合でできた丈夫さがそのまま材料の強さになっています。一方、デンプンや糖を酵母で発酵させてエタノールを作る酒造・バイオエタノール生産では、まずアミラーゼでデンプンをマルトースやグルコースに分解する工程が欠かせません。同じ糖類でも、α結合のものは発酵原料に、β結合のものは材料にと、結合の違いが用途を分けています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>エミール・フィッシャー</strong>（1852〜1919、ドイツの化学者）、<strong>ウォルター・ハワース</strong>（1883〜1950、イギリスの化学者）</p>
+    <p>糖類の構造を初めて体系的に決めたのは、ドイツの化学者<strong>エミール・フィッシャー</strong>です。フィッシャーは1890年代に、グルコースをはじめとする単糖の立体配置を次々に決定し、鎖状構造を十字の投影式で表す方法（フィッシャー投影式）を確立しました。この業績で1902年にノーベル化学賞を受賞しています。その後、イギリスの化学者<strong>ウォルター・ハワース</strong>は、糖が水溶液中で環状構造を取ることを明らかにし、環を平面で描くハワース式（ハワース投影式）を提案しました。本項目の図で使っている環状の描き方がこれです。ハワースはビタミンCの構造決定と合成でも知られ、1937年にノーベル化学賞を受賞しています。鎖状で考えるフィッシャーの見方と、環状で考えるハワースの見方を両方使うことが、還元性を理解するカギになっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>還元性の反応そのものは<a href="aldehydes-ketones.html">アルデヒドとケトン</a>、糖のヒドロキシ基の土台は<a href="alcohols-ethers.html">アルコールとエーテル</a>、有機化合物の分類の入口は<a href="organic-basics.html">有機化合物の特徴と分類</a>と<a href="functional-groups.html">官能基と化合物の分類</a>が役立ちます。立体的な向きの違いは<a href="optical-isomers.html">光学異性体</a>、もう1つの生体高分子である油脂は<a href="fats-soaps-detergents.html">油脂とセッケン・合成洗剤</a>、糖を分解する酵素の反応速度は<a href="enzyme-kinetics-intro.html">酵素反応の速度論入門</a>、食品のエネルギーとしての側面は<a href="fuel-food-energy.html">燃料と食品のエネルギー</a>へ進んでください。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

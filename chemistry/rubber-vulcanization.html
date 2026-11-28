@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天然ゴムと合成ゴム・加硫｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="天然ゴム（cis-ポリイソプレン）の構造と、硫黄で架橋する加硫によって弾性が生まれるしくみ、硫黄量で変わる軟質ゴムとエボナイトの違い、SBR・ブタジエンゴム・クロロプレンゴムなど合成ゴムの特徴と用途を、構造式と例題で解説。タイヤやゴム製品など現場での使われ方も紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="天然ゴムと合成ゴム・加硫｜化学ツール集">
+<meta property="og:description" content="天然ゴムの構造と硫黄で架橋する加硫のしくみ、エボナイトやSBR・クロロプレンゴムなど合成ゴムの特徴と用途を、構造式と例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/rubber-vulcanization.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1>天然ゴムと<span class="accent">合成ゴム</span>・加硫</h1>
+    <p>化学の考え方辞典 ― 高分子（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 高分子 ＞ 天然ゴムと合成ゴム・加硫</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">高分子</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    天然ゴムはゴムノキの樹液から得られる cis-ポリイソプレンで、そのままではべたつきやすく強度も弱いが、硫黄と加熱する加硫によって鎖どうしが硫黄で架橋され、弾性と強度をもつゴムになる。硫黄の量を増やすと硬いエボナイトになる。石油化学から作られる合成ゴムには、タイヤに使われる SBR（スチレン・ブタジエンゴム）やブタジエンゴム、耐油性に優れるクロロプレンゴムなどがあり、天然ゴムと使い分けられている。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>ゴムという身近な材料を、高分子の構造から説明するときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>天然ゴムの原料（ゴムノキの樹液ラテックス）と単量体（イソプレン）、重合体（ポリイソプレン）の関係を答える問題</li>
+      <li>加硫によって弾性や強度が生まれる理由を、硫黄による架橋のしくみから説明する問題</li>
+      <li>硫黄の量の違いによる軟質ゴムとエボナイト（硬質ゴム）の区別を問う問題</li>
+      <li>SBR・ブタジエンゴム・クロロプレンゴムなど合成ゴムについて、原料となる単量体と特徴・用途を結びつける問題</li>
+    </ul>
+    <p>ポイントは、<strong>「ゴムの弾性は、長い鎖がところどころ硫黄で結ばれた網目構造から生まれる」</strong>という一点です。鎖だけでは互いにすべり合って元に戻りませんが、架橋があることで引き伸ばしても鎖がずり落ちず、力を抜くと元の形に戻ります。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>天然ゴム：ゴムノキの樹液から得られる cis-ポリイソプレン</h3>
+    <p><strong>天然ゴム</strong>は、熱帯で栽培されるゴムノキの樹皮を傷つけて採取する白い乳液<strong>ラテックス</strong>を原料とします。ラテックスに酢酸などを加えて凝固させ、乾燥させたものが<strong>生ゴム</strong>です。生ゴムの成分は、炭素数5の炭化水素<strong>イソプレン</strong>（2-メチル-1,3-ブタジエン）C<sub>5</sub>H<sub>8</sub> が多数つながった<strong>ポリイソプレン</strong>で、付加重合によって二重結合が1つ残った形で鎖状につながっています。</p>
+    <div class="formula">n CH<sub>2</sub>＝C(CH<sub>3</sub>)−CH＝CH<sub>2</sub>（イソプレン） → −(CH<sub>2</sub>−C(CH<sub>3</sub>)＝CH−CH<sub>2</sub>)<sub>n</sub>−（ポリイソプレン）</div>
+    <p>ポリイソプレンには、鎖の曲がり方の違いで2種類の立体構造があります。天然ゴムは、繰り返し単位の二重結合に対して鎖が同じ側に折れ曲がった <strong>cis（シス）型</strong>で、鎖が不規則に丸まりやすく、ゴム特有の大きな伸びと弾性のもとになります。一方、二重結合の両側に鎖が伸びた <strong>trans（トランス）型</strong>はグッタペルカと呼ばれ、硬くて弾性のない樹脂状の物質で、かつて海底ケーブルの被覆などに使われました。<strong>同じ分子式・同じつながり方でも、立体構造が違えば性質がまったく変わる</strong>好例です。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 215" width="520" height="215" role="img" aria-label="イソプレンとポリイソプレンの繰り返し単位の構造式" style="max-width:100%;height:auto;">
+        <text x="130" y="20" text-anchor="middle" font-size="13" fill="currentColor">イソプレン C₅H₈（2-メチル-1,3-ブタジエン）</text>
+        <text x="55" y="86" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="105" y="86" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="155" y="86" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="205" y="86" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="67" y1="78" x2="93" y2="78" stroke="currentColor" stroke-width="2"/>
+        <line x1="67" y1="86" x2="93" y2="86" stroke="currentColor" stroke-width="2"/>
+        <line x1="117" y1="82" x2="143" y2="82" stroke="currentColor" stroke-width="2"/>
+        <line x1="167" y1="78" x2="193" y2="78" stroke="currentColor" stroke-width="2"/>
+        <line x1="167" y1="86" x2="193" y2="86" stroke="currentColor" stroke-width="2"/>
+        <line x1="105" y1="70" x2="105" y2="48" stroke="currentColor" stroke-width="2"/>
+        <text x="55" y="52" text-anchor="middle" font-size="12" fill="currentColor">H₂</text>
+        <text x="105" y="38" text-anchor="middle" font-size="12" fill="currentColor">CH₃</text>
+        <text x="155" y="52" text-anchor="middle" font-size="12" fill="currentColor">H</text>
+        <text x="205" y="52" text-anchor="middle" font-size="12" fill="currentColor">H₂</text>
+        <text x="130" y="112" text-anchor="middle" font-size="12" fill="currentColor">CH₂＝C(CH₃)−CH＝CH₂ とも書く</text>
+        <text x="390" y="20" text-anchor="middle" font-size="13" fill="currentColor">ポリイソプレンの繰り返し単位</text>
+        <text x="305" y="86" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="355" y="86" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="405" y="86" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="455" y="86" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="282" y1="82" x2="293" y2="82" stroke="currentColor" stroke-width="2"/>
+        <line x1="317" y1="82" x2="343" y2="82" stroke="currentColor" stroke-width="2"/>
+        <line x1="367" y1="78" x2="393" y2="78" stroke="currentColor" stroke-width="2"/>
+        <line x1="367" y1="86" x2="393" y2="86" stroke="currentColor" stroke-width="2"/>
+        <line x1="417" y1="82" x2="443" y2="82" stroke="currentColor" stroke-width="2"/>
+        <line x1="467" y1="82" x2="478" y2="82" stroke="currentColor" stroke-width="2"/>
+        <line x1="355" y1="70" x2="355" y2="48" stroke="currentColor" stroke-width="2"/>
+        <text x="305" y="52" text-anchor="middle" font-size="12" fill="currentColor">H₂</text>
+        <text x="355" y="38" text-anchor="middle" font-size="12" fill="currentColor">CH₃</text>
+        <text x="405" y="52" text-anchor="middle" font-size="12" fill="currentColor">H</text>
+        <text x="455" y="52" text-anchor="middle" font-size="12" fill="currentColor">H₂</text>
+        <text x="390" y="112" text-anchor="middle" font-size="12" fill="currentColor">−(CH₂−C(CH₃)＝CH−CH₂)ₙ−</text>
+        <text x="260" y="150" text-anchor="middle" font-size="13" fill="currentColor">繰り返し単位1つの式量は C₅H₈ ＝ 12×5＋1.0×8 ＝ 68</text>
+        <text x="260" y="174" text-anchor="middle" font-size="12" fill="currentColor">天然ゴムでは、二重結合の同じ側に鎖が折れる cis 型のつながりがそろっている</text>
+        <text x="260" y="196" text-anchor="middle" font-size="12" fill="currentColor">trans 型にそろったものは硬いグッタペルカになる</text>
+      </svg>
+      <p>イソプレン（左）と、その付加重合でできるポリイソプレンの繰り返し単位（右）。重合しても二重結合が単位ごとに1つ残り、この二重結合の部分が後の加硫で架橋の足場になります。</p>
+    </div>
+    <h3>加硫：硫黄で鎖どうしを架橋する</h3>
+    <p>生ゴムは、夏は軟らかくべたつき、冬は硬くなり、引っ張ると鎖どうしがすべって元に戻らないなど、そのままでは実用に耐えません。そこで生ゴムに数％の<strong>硫黄</strong>を混ぜて加熱すると、ポリイソプレンの鎖の二重結合の部分どうしが硫黄原子の鎖（−S−S− など）で結ばれます。この操作を<strong>加硫</strong>、鎖どうしを結ぶ橋のような結合を<strong>架橋</strong>といいます。</p>
+    <p>架橋によって鎖全体がゆるやかな網目構造になると、引っ張っても鎖がずり落ちず、大きく伸びて元に戻る<strong>弾性</strong>と、ちぎれにくい<strong>強度</strong>が生まれます。これが、ゴムがゴムらしくなる決定的な一段階です。加える硫黄の量で性質は大きく変わります。硫黄が数％程度なら軟らかく弾性のある通常のゴム（軟質ゴム）になり、硫黄を30〜40％程度まで増やすと架橋が密になって、弾性のない硬い樹脂状の<strong>エボナイト（硬質ゴム）</strong>になります。エボナイトは電気絶縁性に優れ、万年筆の軸や楽器のマウスピースなどに使われてきました。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 190" width="520" height="190" role="img" aria-label="硫黄による架橋の模式図" style="max-width:100%;height:auto;">
+        <path d="M40,55 C100,40 160,70 220,55 C280,40 340,70 400,55 C430,48 460,58 480,55" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M40,140 C100,155 160,125 220,140 C280,155 340,125 400,140 C430,147 460,137 480,140" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="180" y1="60" x2="180" y2="82" stroke="currentColor" stroke-width="2"/>
+        <text x="180" y="102" text-anchor="middle" font-size="14" fill="currentColor">S</text>
+        <line x1="180" y1="108" x2="180" y2="130" stroke="currentColor" stroke-width="2"/>
+        <line x1="350" y1="62" x2="350" y2="76" stroke="currentColor" stroke-width="2"/>
+        <text x="350" y="94" text-anchor="middle" font-size="14" fill="currentColor">S</text>
+        <line x1="350" y1="100" x2="350" y2="112" stroke="currentColor" stroke-width="2"/>
+        <text x="350" y="130" text-anchor="middle" font-size="14" fill="currentColor">S</text>
+        <line x1="350" y1="136" x2="350" y2="140" stroke="currentColor" stroke-width="2"/>
+        <text x="110" y="30" text-anchor="middle" font-size="12" fill="currentColor">ポリイソプレンの鎖</text>
+        <text x="110" y="172" text-anchor="middle" font-size="12" fill="currentColor">ポリイソプレンの鎖</text>
+        <text x="420" y="100" text-anchor="middle" font-size="12" fill="currentColor">硫黄の架橋</text>
+        <text x="260" y="30" text-anchor="middle" font-size="12" fill="currentColor">架橋で全体が網目構造になり、伸ばしても鎖がずり落ちない</text>
+      </svg>
+      <p>加硫による架橋の模式図。上下2本のポリイソプレンの鎖が、硫黄原子（S）や硫黄の鎖でところどころ結ばれ、全体が一つの網目になります。</p>
+    </div>
+    <h3>合成ゴム：石油化学の単量体から作るゴム</h3>
+    <p>天然ゴムは産地が熱帯に限られ、供給量にも限りがあります。そこで、石油化学の基礎原料である <strong>1,3-ブタジエン</strong> C<sub>4</sub>H<sub>6</sub> や<strong>スチレン</strong> C<sub>6</sub>H<sub>5</sub>CH＝CH<sub>2</sub> などを重合させて、ゴムの性質をもつ高分子を人工的に作るようになりました。これが<strong>合成ゴム</strong>で、合成ゴムにも天然ゴムと同じように加硫を行って架橋させ、弾性と強度をもたせます。代表的なものは次の3つです。</p>
+    <ul>
+      <li><strong>SBR（スチレン・ブタジエンゴム）</strong>：1,3-ブタジエンとスチレンの<strong>共重合</strong>で作られます。最も生産量の多い合成ゴムで、耐摩耗性に優れ、自動車のタイヤの主原料です</li>
+      <li><strong>ブタジエンゴム（BR）</strong>：1,3-ブタジエンの単独重合で作られます。弾性と耐摩耗性に優れますが単独では加工しにくいため、天然ゴムや SBR と混ぜてタイヤなどに使われます</li>
+      <li><strong>クロロプレンゴム（CR）</strong>：クロロプレン（2-クロロ-1,3-ブタジエン）の重合で作られ、商品名ネオプレンでも知られます。塩素を含むため燃えにくく、耐油性・耐候性に優れ、ベルト・ホース・ウェットスーツなどに使われます</li>
+    </ul>
+    <p>このほか、気密性に優れるブチルゴム（ゴム風船やタイヤの内側の層）や、耐油性に特に優れるニトリルゴム（耐油手袋やホース）など、用途に合わせた多様な合成ゴムが作られています。一方、天然ゴムは発熱が少なく弾性に優れるため、大型トラックや航空機のタイヤなど、今も天然ゴムでなければ務まらない用途が残っています。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 170" width="520" height="170" role="img" aria-label="ブタジエン・スチレン・クロロプレンの構造式" style="max-width:100%;height:auto;">
+        <text x="90" y="22" text-anchor="middle" font-size="13" fill="currentColor">1,3-ブタジエン C₄H₆</text>
+        <text x="90" y="62" text-anchor="middle" font-size="14" fill="currentColor">CH₂＝CH−CH＝CH₂</text>
+        <text x="90" y="96" text-anchor="middle" font-size="12" fill="currentColor">SBR・ブタジエンゴムの原料</text>
+        <text x="260" y="22" text-anchor="middle" font-size="13" fill="currentColor">スチレン C₆H₅CH＝CH₂</text>
+        <polygon points="235,42 260,28 285,42 285,70 260,84 235,70" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="260" cy="56" r="11" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="285" y1="42" x2="303" y2="32" stroke="currentColor" stroke-width="2"/>
+        <text x="330" y="30" text-anchor="middle" font-size="12" fill="currentColor">CH＝CH₂</text>
+        <text x="260" y="110" text-anchor="middle" font-size="12" fill="currentColor">ベンゼン環にビニル基が付いた形</text>
+        <text x="260" y="128" text-anchor="middle" font-size="12" fill="currentColor">SBR の共重合の相手</text>
+        <text x="440" y="22" text-anchor="middle" font-size="13" fill="currentColor">クロロプレン C₄H₅Cl</text>
+        <text x="440" y="62" text-anchor="middle" font-size="14" fill="currentColor">CH₂＝C(Cl)−CH＝CH₂</text>
+        <text x="440" y="96" text-anchor="middle" font-size="12" fill="currentColor">クロロプレンゴムの原料</text>
+        <text x="440" y="114" text-anchor="middle" font-size="12" fill="currentColor">イソプレンの CH₃ が Cl に置き換わった形</text>
+        <text x="260" y="156" text-anchor="middle" font-size="12" fill="currentColor">いずれも二重結合を2つ（スチレンは環のほかに1つ）もち、付加重合で長い鎖になる</text>
+      </svg>
+      <p>合成ゴムの原料となる単量体の構造式。ブタジエンとクロロプレンはイソプレンとよく似た骨格で、この「二重結合を2つもつ炭素数4〜5の単量体」という形がゴムの原料の共通点です。</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>天然ゴムは「ゴムノキ→ラテックス→ポリイソプレン」の流れで押さえる。</strong>単量体はイソプレン C<sub>5</sub>H<sub>8</sub>、繰り返し単位の式量は 68 です。</li>
+      <li><strong>cis か trans かで性質が決まる。</strong>cis 型が弾性のある天然ゴム、trans 型が硬いグッタペルカです。</li>
+      <li><strong>加硫は「硫黄＋加熱→架橋→網目構造→弾性と強度」と因果でたどる。</strong>架橋がなければ鎖がすべって元に戻らない、という対比で説明します。</li>
+      <li><strong>硫黄量と硬さを結びつける。</strong>硫黄が数％で軟質ゴム、30〜40％程度で弾性のないエボナイトになります。</li>
+      <li><strong>合成ゴムは「単量体の組み合わせ→名前→用途」で整理する。</strong>SBR＝ブタジエン＋スチレン（タイヤ）、ブタジエンゴム＝ブタジエン単独、クロロプレンゴム＝クロロプレン（耐油性・ベルトやホース）です。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1（天然ゴムの構造）：天然ゴムの単量体の名称と分子式を答えよ。また、その重合体の繰り返し単位の式量を求めよ。原子量は H＝1.0、C＝12 とする。</p>
+      <p class="ex-q">問題2（重合度と分子量）：ある天然ゴムの平均重合度が 5000 であった。このゴム1本の鎖の平均分子量を求めよ。</p>
+      <p class="ex-q">問題3（加硫と硫黄量）：（a）生ゴムに硫黄を加えて加熱すると弾性と強度が生まれる理由を、架橋という語を用いて説明せよ。（b）質量 250 g のエボナイトに硫黄が質量パーセントで 32％ 含まれているとき、含まれる硫黄の質量と物質量を求めよ。硫黄の原子量は S＝32 とする。</p>
+      <p class="ex-q">問題4（合成ゴム）：次の用途に最も適する合成ゴムを、SBR・ブタジエンゴム・クロロプレンゴムから選べ。（a）自動車タイヤの主原料で、最も生産量が多い（b）油に触れるホースやベルトで、耐油性が求められる（c）弾性と耐摩耗性に優れ、天然ゴムや SBR と混ぜてタイヤに使われる</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：天然ゴムはイソプレンの重合体（ポリイソプレン）です。単量体は<strong>イソプレン</strong>で、分子式は <strong>C<sub>5</sub>H<sub>8</sub></strong>。付加重合では原子が脱離しないので、繰り返し単位の式量は単量体の分子量と等しく、12×5＋1.0×8＝<strong>68</strong> です。</li>
+          <li>問題2：平均分子量 ＝ 繰り返し単位の式量 × 重合度 ＝ 68 × 5000 ＝ 340000、すなわち <strong>3.4×10<sup>5</sup></strong> です。天然ゴムの分子量が数十万のオーダーになることが分かります。</li>
+          <li>問題3：（a）硫黄がポリイソプレンの鎖どうしを結ぶ<strong>架橋</strong>となり、全体が網目構造になるため、引っ張っても鎖がずり落ちず、力を抜くと元に戻る弾性と、ちぎれにくい強度が生まれます。（b）硫黄の質量は 250 g × 0.32 ＝ <strong>80 g</strong>。物質量は 80 g ÷ 32 g/mol ＝ <strong>2.5 mol</strong> です。硫黄が多いぶん架橋が密になり、弾性のない硬いエボナイトになります。</li>
+          <li>問題4：（a）<strong>SBR</strong>。ブタジエンとスチレンの共重合体で、タイヤの主原料です。（b）<strong>クロロプレンゴム</strong>。塩素を含み、耐油性・耐候性に優れます。（c）<strong>ブタジエンゴム</strong>。弾性と耐摩耗性に優れますが加工しにくいため、他のゴムと混ぜて使われます。</li>
+        </ol>
+        <p><strong>答え：問題1はイソプレン、C<sub>5</sub>H<sub>8</sub>、式量68。問題2は3.4×10<sup>5</sup>。問題3は（a）硫黄の架橋で網目構造になるため、（b）硫黄80 g、2.5 mol。問題4は（a）SBR、（b）クロロプレンゴム、（c）ブタジエンゴム。</strong>例題に登場する化合物（イソプレン・ポリイソプレン・ブタジエン・スチレン・クロロプレン）の構造式は、本文の図にすべて示してあります。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>タイヤ：ゴム工業の中心</h3>
+    <p>生産されるゴムの大部分は自動車のタイヤに使われます。タイヤは、天然ゴム・SBR・ブタジエンゴムを用途に応じて配合し、補強材のカーボンブラック（すす）や硫黄などを混ぜて成形し、加硫して作られます。乗用車用は合成ゴムの比率が高く、発熱の少なさと弾性が求められる大型トラック用や航空機用では天然ゴムの比率が高くなります。同じ「タイヤ」でも、求められる性質に応じてゴムの配合が設計されているのです。</p>
+    <h3>身の回りのゴム製品とエボナイト</h3>
+    <p>輪ゴム・消しゴム・ゴム手袋・ホース・ベルト・防振ゴム・ウェットスーツなど、ゴム製品は加硫されたゴムの弾性と強度を利用したものばかりです。硫黄を多く入れたエボナイトは、硬くて電気を通さない性質から、かつて蓄電池の箱や電気部品、万年筆の軸、サクソフォンやクラリネットのマウスピースに使われ、現在もマウスピースなど一部の製品に使われています。</p>
+    <h3>ゴムノキのプランテーションと供給</h3>
+    <p>天然ゴムの原料ゴムノキは南米原産で、現在はタイ・インドネシア・ベトナムなど東南アジアのプランテーションで大規模に栽培され、樹皮からラテックスを採取しています。天然ゴムは石油に依存しない再生可能な資源である一方、天候や病害で供給が左右されるため、石油化学から安定して作れる合成ゴムと併用する体制が世界のゴム工業の基本になっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>チャールズ・グッドイヤー</strong>（1800〜1860、アメリカの発明家） ― 硫黄と加熱することでゴムに弾性と耐久性が生まれる「加硫」を発見した</p>
+    <p>生ゴムは温度で性質が変わり実用に耐えなかったため、19世紀前半にはゴムを改良しようとする試みが盛んでした。アメリカの発明家<strong>チャールズ・グッドイヤー</strong>は、借金に苦しみながらも研究を続け、1839年に、硫黄を混ぜたゴムが熱いストーブに触れて偶然加熱されたことから、熱してもべたつかず弾力を保つゴムができることを発見し、1844年に加硫の特許を取得しました。「加硫（vulcanization）」という名は、ローマ神話の火の神ウルカヌス（Vulcan）に由来するといわれます。グッドイヤーの発見によってゴムは工業材料として実用化され、その後のタイヤやゴム製品の発展の出発点になりました。一方、合成ゴムは20世紀に入ってから、天然ゴムの供給不足を背景に各国で開発が進み、第二次世界大戦期に SBR の大量生産が始まって大きく広がりました。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>高分子全体の入口は<a href="polymers-basics.html">高分子化合物と重合の基礎</a>、二重結合が開いてつながる重合のしくみは<a href="addition-polymerization.html">付加重合と縮合重合</a>が役立ちます。もう一つの大きな高分子製品のまとまりは<a href="synthetic-fibers-plastics.html">合成繊維とプラスチック</a>、原料となるブタジエンやスチレンの出所は<a href="petroleum-petrochemicals.html">石油と石油化学</a>、単量体の骨格である炭化水素の基礎は<a href="hydrocarbons.html">炭化水素（アルカン・アルケン・アルキン）</a>で扱います。重合度から分子量を求める考え方は<a href="polymer-molecular-mass-measurement.html">高分子の分子量と測定法</a>へ進んでください。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分析化学の入口｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="分析化学の入口として、定性分析と定量分析の違い、クロマトグラフィーの原理とRf値、ランベルト・ベールの法則による吸光光度法、検量線・標準物質・検出限界といった分析の品質の考え方を、公式・手順・例題で解説。環境分析や食品検査、ドーピング検査など実際の現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="分析化学の入口｜化学ツール集">
+<meta property="og:description" content="定性分析と定量分析、クロマトグラフィーの原理とRf値、ランベルト・ベールの法則、検量線と検出限界まで、分析化学の入口を公式・手順・例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/analytical-chemistry-intro.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">分析化学</span>の入口</h1>
+    <p>化学の考え方辞典 ― 生化学・環境と生活の化学（大学）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 生化学・環境と生活の化学 ＞ 分析化学の入口</p>
+  <p><span class="badge badge-lv">大学</span> <span class="badge badge-genre">生化学・環境と生活の化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    分析化学は、試料に「何が」含まれているかを調べる定性分析と、「どれだけ」含まれているかを調べる定量分析からなる分野である。その入口となるのが、成分を分けるクロマトグラフィーと、光の吸収から量を測る分光分析で、分離して測り、検量線で濃度に換算するという流れが分析の基本になる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p><strong>分析化学</strong>は、物質を「調べる」ための化学です。問いかけは大きく2つに分かれます。試料に<strong>何が</strong>含まれているかを明らかにするのが<strong>定性分析</strong>、それが<strong>どれだけ</strong>含まれているかを数値で求めるのが<strong>定量分析</strong>です。未知の粉末がどの金属イオンを含むかを炎色反応や沈殿で確かめるのは定性分析、河川水に含まれる重金属の濃度を mg/L で報告するのは定量分析にあたります。</p>
+    <p>実際の試料はたいてい多くの成分が混ざった混合物なので、分析はふつう「<strong>分離 → 検出 → 定量</strong>」の順に進みます。この項目では、その入口として次の考え方を扱います。</p>
+    <ul>
+      <li>混合物を成分ごとに分ける<strong>クロマトグラフィー</strong>の原理（固定相と移動相、保持時間、Rf値）</li>
+      <li>光の吸収の強さから濃度を求める<strong>分光分析</strong>（吸光光度法とランベルト・ベールの法則、原子吸光）</li>
+      <li>測定値を信頼できる濃度に換算するための<strong>検量線・標準物質・検出限界</strong>といった分析の品質の考え方</li>
+    </ul>
+    <p>分離した成分をそのまま質量分析計に送り込むなど、手法どうしを組み合わせるのが現代の分析ラボの基本形です。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>クロマトグラフィー：分けてから測る</h3>
+    <p><strong>クロマトグラフィー</strong>は、じっとしている<strong>固定相</strong>と、そのそばを流れていく<strong>移動相</strong>（溶媒や気体）の間で、成分ごとに「固定相へのつかまりやすさ」と「移動相への溶けやすさ」が違うことを利用して混合物を分ける方法です。固定相につかまりやすい成分は遅く、移動相に乗って進みやすい成分は速く移動するので、時間や距離の差として成分が分かれます。</p>
+    <p>カラム（管）に試料を通す方式では、試料を入れてから各成分が検出器に届くまでの時間を<strong>保持時間</strong>といい、成分ごとに決まった値をとるため同定の手がかりになります。出口に検出器をつけて描いた記録が<strong>クロマトグラム</strong>で、ピークの位置（保持時間）が「何が」、ピークの面積や高さが「どれだけ」に対応します。</p>
+    <div class="tri-fig">
+      <svg width="520" height="210" viewBox="0 0 520 210" role="img" aria-label="クロマトグラムの模式図">
+        <line x1="50" y1="170" x2="500" y2="170" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="50" y1="170" x2="50" y2="25" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M70 170 L95 170 L108 60 L121 170 L160 170" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M200 170 L228 170 L243 105 L258 170 L300 170" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M330 170 L362 170 L380 38 L398 170 L450 170" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="108" y="48" text-anchor="middle" font-size="13" fill="currentColor">成分A</text>
+        <text x="243" y="93" text-anchor="middle" font-size="13" fill="currentColor">成分B</text>
+        <text x="380" y="26" text-anchor="middle" font-size="13" fill="currentColor">成分C</text>
+        <text x="275" y="196" text-anchor="middle" font-size="13" fill="currentColor">時間（保持時間）→</text>
+        <text x="18" y="100" font-size="13" fill="currentColor" transform="rotate(-90 18 100)">検出信号</text>
+      </svg>
+      <p class="note">クロマトグラムの模式図。ピークが出る時間（保持時間）で成分を同定し、ピークの大きさで量を求める。</p>
+    </div>
+    <p>ろ紙の上を溶媒がしみ上がる力で成分を分ける<strong>ペーパークロマトグラフィー</strong>では、距離の比である <strong>Rf値</strong>（アールエフ値）が同定の指標になります。</p>
+    <div class="formula">Rf値 ＝ 原点からスポット中心までの距離 ÷ 原点から溶媒先端までの距離</div>
+    <p>Rf値は単位のない比で、必ず 0〜1 の間に入ります。同じ溶媒・同じろ紙の条件では、同じ物質は同じRf値を示すので、標準物質のスポットと並べて比べれば成分を同定できます。ただし条件が変わると値も変わるため、文献値だけで断定せず標準物質と同時に行うのが原則です。</p>
+    <div class="tri-fig">
+      <svg width="300" height="260" viewBox="0 0 300 260" role="img" aria-label="ペーパークロマトグラフィーの模式図">
+        <rect x="90" y="15" width="120" height="230" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="90" y1="55" x2="210" y2="55" stroke="currentColor" stroke-width="1" stroke-dasharray="5 4"/>
+        <line x1="90" y1="215" x2="210" y2="215" stroke="currentColor" stroke-width="1" stroke-dasharray="5 4"/>
+        <circle cx="125" cy="215" r="5" fill="currentColor"/>
+        <circle cx="175" cy="215" r="5" fill="currentColor"/>
+        <ellipse cx="125" cy="150" rx="9" ry="6" fill="none" stroke="currentColor" stroke-width="2"/>
+        <ellipse cx="175" cy="95" rx="9" ry="6" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="222" y="59" font-size="12" fill="currentColor">溶媒先端</text>
+        <text x="222" y="219" font-size="12" fill="currentColor">原点</text>
+        <text x="105" y="140" font-size="12" fill="currentColor">色素X</text>
+        <text x="160" y="85" font-size="12" fill="currentColor">色素Y</text>
+      </svg>
+      <p class="note">ペーパークロマトグラフィーの模式図。原点に付けた混合物のスポットが、溶媒のしみ上がりに伴って成分ごとに分かれて移動する。</p>
+    </div>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <h3>分光分析：光の吸収から量を測る</h3>
+    <p>物質は種類ごとに決まった波長の光を吸収します。<strong>分光分析</strong>は、この性質を使って「何が・どれだけ」を調べる方法の総称です。溶液に光を通し、吸収の強さを測る<strong>吸光光度法</strong>では、<strong>ランベルト・ベールの法則</strong>が成り立ちます。</p>
+    <div class="formula">A ＝ ε c l</div>
+    <p>各記号の意味と単位は次の通りです。</p>
+    <ul>
+      <li><strong>A</strong>：吸光度。通過前後の光の強さ I<sub>0</sub>、I を使って A ＝ log<sub>10</sub>（I<sub>0</sub>/I）と定義される、単位のない量</li>
+      <li><strong>ε</strong>（イプシロン）：モル吸光係数 [L/(mol・cm)]。物質と波長ごとに決まる定数で、吸収の強さを表す</li>
+      <li><strong>c</strong>：溶液のモル濃度 [mol/L]</li>
+      <li><strong>l</strong>：光が溶液を通る長さ（光路長）[cm]。測定用のセルは 1 cm 角が標準</li>
+    </ul>
+    <p>吸光度が濃度に比例するので、濃度の分かった標準液で<strong>検量線</strong>（濃度と吸光度の関係を引いた直線）を用意しておけば、未知試料の吸光度を測るだけで濃度に換算できます。気体にした原子に光を通す<strong>原子吸光分析</strong>も同じ原理で、金属元素ごとに固有の波長の光が吸収されるため、水中の微量金属の定量に使われます。</p>
+    <h3>分析の品質：検量線・標準物質・検出限界</h3>
+    <p>分析値が信頼できるかどうかは、装置の性能だけでなく手順全体で決まります。入口として押さえるのは次の3つです。</p>
+    <ul>
+      <li><strong>検量線</strong>：濃度既知の標準液を何点か測って引く換算用の直線。未知試料はこの直線の範囲内（内挿）で測るのが原則で、直線から外れる高濃度では薄めて測り直す</li>
+      <li><strong>標準物質</strong>：濃度や組成が公的に保証された物質。検量線の作成や、測定値が正しいかを確かめる物差しとして使う</li>
+      <li><strong>検出限界</strong>：試料に含まれないはずの信号（ノイズ）と区別して「ある」と言える最小の量。これより低い濃度は「検出されなかった」と報告し、0 とは書かない</li>
+    </ul>
+    <p>クロマトグラフィーで分けた成分をそのまま質量分析計に送る <strong>LC-MS</strong> や <strong>GC-MS</strong> のように、分離と高感度な検出を組み合わせると、複雑な試料でも成分ごとに同定・定量できます。質量分析そのものの読み取り方は、関連項目の「質量分析と同位体存在比」で扱います。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>問いを定性か定量かに分ける。</strong>「何が入っているか」なら同定の指標（保持時間・Rf値・吸収波長）を、「どれだけか」なら定量の関係式（ランベルト・ベールの法則や検量線）を用意します。</li>
+      <li><strong>まず分離する。</strong>クロマトグラフィーでは、固定相によく吸着する成分ほど遅れることを手がかりに、ピークやスポットを成分ごとに切り分けます。</li>
+      <li><strong>同定する。</strong>保持時間やRf値を、同じ条件で測った標準物質の値と比べます。ペーパークロマトグラフィーでは Rf値 ＝ スポットの移動距離 ÷ 溶媒先端の移動距離 で計算し、0〜1 に入るかを確認します。</li>
+      <li><strong>定量する。</strong>吸光度を測ったら A ＝ εcl に代入するか、検量線に当てはめて濃度に換算します。検量線の範囲を超えた値は、薄めてから測り直した値を使います。</li>
+      <li><strong>品質を確認する。</strong>求めた濃度が検出限界より十分大きいか、検量線の直線範囲内かを確認してから結果として報告します。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：ペーパークロマトグラフィーで、原点から溶媒先端までが 8.0 cm 進んだとき、色素Xのスポットは原点から 3.2 cm、色素Yのスポットは 6.4 cm 移動していた。XとYのRf値を求めよ。問題2：ある色素のモル吸光係数 ε ＝ 1.0×10<sup>4</sup> L/(mol・cm) の波長で、光路長 1 cm のセルを使って溶液の吸光度を測ると A ＝ 0.50 だった。この色素の濃度を求めよ。問題3：濃度 c [mg/L] と吸光度 A の検量線が A ＝ 0.050c で表される測定で、未知試料の吸光度が 0.35 だった。未知試料の濃度を求めよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：Rf値 ＝ スポットの移動距離 ÷ 溶媒先端の移動距離。色素Xは 3.2 ÷ 8.0 ＝ 0.40、色素Yは 6.4 ÷ 8.0 ＝ 0.80 です。どちらも 0〜1 の範囲に入っています。Rf値が大きいYの方が、移動相に乗って進みやすい（固定相への吸着が弱い）成分だと分かります。</li>
+          <li>問題2：A ＝ εcl を c について解くと c ＝ A ÷（εl）＝ 0.50 ÷（1.0×10<sup>4</sup> × 1）＝ 5.0×10<sup>−5</sup> mol/L です。吸光度が濃度に比例するので、吸光度が半分になれば濃度も半分になります。</li>
+          <li>問題3：検量線 A ＝ 0.050c に A ＝ 0.35 を代入すると c ＝ 0.35 ÷ 0.050 ＝ 7.0 mg/L です。検量線は「吸光度 → 濃度」の換算表として使うので、式を c について解いてから代入するのが確実です。</li>
+        </ol>
+        <p><strong>答え：問題1は色素XのRf値 0.40、色素YのRf値 0.80。問題2は 5.0×10<sup>−5</sup> mol/L。問題3は 7.0 mg/L</strong>。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>環境分析：水や大気の汚れを測る</h3>
+    <p>河川水や地下水に含まれる重金属は原子吸光分析や ICP 質量分析で、農薬などの有機汚染物質は GC-MS や LC-MS で測られ、環境基準を満たしているかの判定に使われています。ごく低い濃度まで測る必要があるため、検出限界や標準物質による精度管理が実務の中心になります。</p>
+    <h3>食品検査：残留農薬と添加物のチェック</h3>
+    <p>食品中の残留農薬や食品添加物は、クロマトグラフィーで成分を分けてから質量分析計で同定・定量する検査が標準的です。多数の農薬を一斉に測る「一斉分析」もこの組み合わせの応用で、輸入食品の検査や出荷前の安全確認に使われています。</p>
+    <h3>ドーピング検査と法科学</h3>
+    <p>スポーツのドーピング検査では、尿や血液から禁止物質を LC-MS などで検出します。検出されたかどうかだけでなく、標準物質との照合や保持時間の一致など、同定の根拠を何重にも確認する手順が定められています。法科学でも、押収物や血中の薬物・毒物の同定に同じ分析の流れが使われています。</p>
+    <h3>分析ラボの仕事</h3>
+    <p>公的機関や民間の受託分析ラボでは、依頼された試料を前処理して分離・測定し、検量線で濃度に換算し、検出限界や測定条件とあわせて報告書にまとめる、というのが分析技術者の日常の仕事です。この項目で扱った「分ける・測る・換算する・品質を確かめる」という流れそのものが、分析ラボの実務の骨格になっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ミハイル・ツヴェット</strong>（1872〜1919、ロシアの植物学者）、<strong>ヨハン・ハインリヒ・ランベルト</strong>（1728〜1777、ドイツの数学者・物理学者）、<strong>アウグスト・ベーア</strong>（1825〜1863、ドイツの物理学者）</p>
+    <p>クロマトグラフィーを生んだのは、ロシアの植物学者<strong>ミハイル・ツヴェット</strong>（1872〜1919）です。ツヴェットは1900年代のはじめ、炭酸カルシウムを詰めたガラス管に植物の葉の抽出液を通し、緑や黄色の色素が帯状に分かれて流れていくことを示しました。ギリシャ語の「色（chroma）」と「書く（graphein）」から、この方法をクロマトグラフィーと名づけたのもツヴェットです。当初はあまり注目されませんでしたが、後に混合物を分ける基本技術として分析化学の中心に躍り出ました。</p>
+    <p>光の吸収と濃度の関係は、ドイツの数学者・物理学者<strong>ヨハン・ハインリヒ・ランベルト</strong>（1728〜1777）が1760年の著書で、光が物質を通るとき厚さに応じて吸収される法則を示し、ドイツの物理学者<strong>アウグスト・ベーア</strong>（1825〜1863）が1852年に、吸収が溶液の濃度にも比例することを示しました。2人の法則を合わせたランベルト・ベールの法則が、吸光度から濃度を求める分光分析の土台になっています。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>クロマトグラフィーと組み合わせて使う質量分析の読み取り方は<a href="mass-spectrometry-isotopes.html">質量分析と同位体存在比</a>、溶けやすさの差で分けるもう一つの分離法は<a href="partition-extraction.html">分配と抽出</a>、金属イオンを沈殿や炎色で見分ける定性分析は<a href="cation-qualitative-analysis.html">陽イオンの定性分析</a>と<a href="precipitation-ion-detection.html">沈殿によるイオンの検出</a>、有機化合物の構造を分析データから決める流れは<a href="organic-structure-determination.html">有機化合物の構造決定</a>へどうぞ。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>酵素の働き｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="酵素の働きを、公式・手順・例題で解説。タンパク質でできた触媒であること、基質特異性と鍵と鍵穴のモデル、最適温度・最適pHと変性による失活、アミラーゼ・ペプシン・トリプシン・リパーゼ・カタラーゼの働く場所と基質、基質濃度と反応速度の入口、洗剤や食品加工・医療検査など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="酵素の働き｜化学ツール集">
+<meta property="og:description" content="酵素は決まった基質にだけ働くタンパク質の触媒。基質特異性、最適温度・最適pHと失活、代表的な酵素の働く場所を図と例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/enzymes.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">酵素</span>の働き</h1>
+    <p>化学の考え方辞典 ― 高分子（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 高分子 ＞ 酵素の働き</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">高分子</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    酵素は、体の中で起こる化学反応を速めるタンパク質の触媒で、決まった相手（基質）にだけ働く基質特異性をもつ。働きは温度とpHに敏感で、それぞれ最もよく働く最適温度・最適pHがあり、高温ではタンパク質が変性して失活する。アミラーゼやペプシンなど酵素ごとに働く場所と相手が決まっているため、消化や代謝は、必要な場所で必要な反応だけが進むように仕組まれている。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>生体内で起こる反応を速める<strong>酵素</strong>について、「どの物質に働くか」「どんな条件で働くか」を判断するときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>ある酵素が、与えられた物質（基質）に働くかどうかを、基質特異性から判断する問題</li>
+      <li>消化酵素（アミラーゼ、ペプシン、トリプシン、リパーゼなど）が働く場所と相手を対応づける問題</li>
+      <li>温度やpHを変えたときに酵素の働きがどう変わるか、加熱した酵素が働かなくなる理由を説明する問題</li>
+      <li>基質濃度を増やしたときに、酵素反応の速度がどこまで速くなるかを読み取る問題</li>
+    </ul>
+    <p>酵素の問題は、<strong>「相手（基質）は合っているか」「温度とpHは合っているか」</strong>の2点を順に確認するのが基本です。どちらか一方が合わなければ、酵素は十分に働きません。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>酵素はタンパク質でできた触媒</h3>
+    <p><strong>酵素</strong>とは、生体内で起こる化学反応の速度を大きくする<strong>触媒</strong>のうち、主成分が<strong>タンパク質</strong>であるものの総称です。触媒ですから、酵素自身は反応の前後で変化せず、少量で繰り返し働きます。体温程度の温和な条件ではほとんど進まない反応も、酵素があることで必要な速さで進むようになります。酵素が作用する相手の物質を<strong>基質</strong>、反応のあとにできる物質を<strong>生成物</strong>といいます。酵素の働きは、基質が酵素と一時的に結びつく複合体を作ることとして表されます。</p>
+    <div class="formula">酵素 ＋ 基質 ⇌ 酵素基質複合体 → 酵素 ＋ 生成物</div>
+    <p>ポイントは、最後に酵素がそのまま戻ってくることです。1つの酵素分子は、基質を生成物に変えたあと、また次の基質を受け入れることができます。酵素がタンパク質であることは、この先の「熱に弱い」「pHに敏感」という性質すべての土台になります（タンパク質そのものの構造は<a href="amino-acids-proteins.html">アミノ酸とタンパク質</a>で扱います）。</p>
+    <h3>基質特異性 ― 鍵と鍵穴のモデル</h3>
+    <p>酵素には、決まった基質にしか働かない性質があり、これを<strong>基質特異性</strong>といいます。酵素の表面には基質が結びつく場所（<strong>活性部位</strong>）があり、その立体的な形に合う基質だけが入り込むことができます。この関係は、鍵が決まった鍵穴にだけ合うことに例えて<strong>鍵と鍵穴のモデル</strong>と呼ばれます。例えば、デンプンを分解するアミラーゼはタンパク質には働かず、タンパク質を分解するペプシンはデンプンには働きません。体の中では何千種類もの酵素が、それぞれ担当する1つの反応だけを受けもつことで、必要な反応だけが選ばれて進みます。なお、現在では、基質が近づくと活性部位の形が少し変化して基質に合うようになるという考え方（誘導適合モデル）もあわせて説明されますが、特異性の要点は「形が合う相手にだけ働く」ことです。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 170" width="520" height="170" role="img" aria-label="鍵と鍵穴のモデルの模式図" style="max-width:100%;height:auto;">
+        <text x="85" y="24" text-anchor="middle" font-size="13" fill="currentColor">酵素と基質</text>
+        <path d="M 40 130 L 40 60 Q 40 40 62 40 L 78 40 L 78 58 L 96 58 L 96 40 L 112 40 Q 132 40 132 62 L 132 130 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+        <polygon points="86,78 104,96 86,114 68,96" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="86" y="152" text-anchor="middle" font-size="12" fill="currentColor">形が合う基質だけが入る</text>
+        <text x="180" y="90" text-anchor="middle" font-size="18" fill="currentColor">→</text>
+        <text x="265" y="24" text-anchor="middle" font-size="13" fill="currentColor">酵素基質複合体</text>
+        <path d="M 220 130 L 220 60 Q 220 40 242 40 L 258 40 L 258 58 L 276 58 L 276 40 L 292 40 Q 312 40 312 62 L 312 130 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+        <polygon points="266,60 284,78 266,96 248,78" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="266" y="152" text-anchor="middle" font-size="12" fill="currentColor">活性部位に基質が結びつく</text>
+        <text x="360" y="90" text-anchor="middle" font-size="18" fill="currentColor">→</text>
+        <text x="445" y="24" text-anchor="middle" font-size="13" fill="currentColor">酵素と生成物</text>
+        <path d="M 400 130 L 400 60 Q 400 40 422 40 L 438 40 L 438 58 L 456 58 L 456 40 L 472 40 Q 492 40 492 62 L 492 130 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+        <polygon points="428,80 438,90 428,100 418,90" fill="none" stroke="currentColor" stroke-width="2"/>
+        <polygon points="462,80 472,90 462,100 452,90" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="446" y="152" text-anchor="middle" font-size="12" fill="currentColor">生成物が離れ、酵素は元通り</text>
+      </svg>
+      <p>鍵と鍵穴のモデルの模式図。酵素の活性部位の形に合う基質だけが結びつき（酵素基質複合体）、生成物に変わって離れます。酵素自身は変化せず、次々に基質を受け入れます。</p>
+    </div>
+    <h3>最適温度と最適pH、変性による失活</h3>
+    <p>酵素の働きは温度とpHに敏感です。一般の化学反応は温度を上げるほど速くなりますが、酵素反応では、ある温度までは温度とともに速くなり、それを超えると急に働きが弱くなります。最もよく働く温度を<strong>最適温度</strong>といい、ヒトの体内の酵素ではおよそ 37 ℃ 付近（体温付近）のものが多くなっています。高温で働きが失われるのは、酵素の本体であるタンパク質の立体構造が熱で崩れる<strong>変性</strong>が起こり、活性部位の形が壊れてしまうためです。変性して働きを失うことを<strong>失活</strong>といい、一度失活した酵素は、温度を戻しても通常は元には戻りません。</p>
+    <p>pHについても同様で、酵素ごとに最もよく働くpH（<strong>最適pH</strong>）が決まっています。胃液の中で働くペプシンは pH 2 前後の強い酸性が最適ですが、だ液のアミラーゼは中性付近が最適で、胃の中の酸性条件では働きが止まります。このように、働く場所の環境と酵素の最適pHが対応していることが、消化の流れを読み解く手がかりになります。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 190" width="520" height="190" role="img" aria-label="温度と酵素の働きの関係のグラフ" style="max-width:100%;height:auto;">
+        <line x1="70" y1="150" x2="470" y2="150" stroke="currentColor" stroke-width="2"/>
+        <line x1="70" y1="150" x2="70" y2="30" stroke="currentColor" stroke-width="2"/>
+        <path d="M 80 146 Q 170 140 230 84 Q 262 52 285 50 Q 315 52 340 96 Q 365 140 395 148" fill="none" stroke="currentColor" stroke-width="2.5"/>
+        <line x1="285" y1="50" x2="285" y2="150" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3"/>
+        <text x="285" y="166" text-anchor="middle" font-size="12" fill="currentColor">最適温度</text>
+        <text x="285" y="38" text-anchor="middle" font-size="12" fill="currentColor">最もよく働く</text>
+        <text x="150" y="120" text-anchor="middle" font-size="12" fill="currentColor">温度とともに速くなる</text>
+        <text x="400" y="96" text-anchor="middle" font-size="12" fill="currentColor">変性して失活</text>
+        <text x="486" y="154" font-size="12" fill="currentColor">温度</text>
+        <text x="46" y="42" font-size="12" fill="currentColor">働き</text>
+      </svg>
+      <p>温度と酵素の働きの関係。最適温度までは温度が上がるほど反応が速くなりますが、それを超えるとタンパク質の変性が進み、働きは急激に失われます。pHについても、最適pHを頂点とする似た山形の関係が見られます。</p>
+    </div>
+    <h3>代表的な酵素</h3>
+    <p>消化に関わる代表的な酵素を、働く場所・基質・生成物の対応で整理します。基質の種類ごとに担当の酵素が決まっていることが、基質特異性の具体例になっています。</p>
+    <ul>
+      <li><strong>アミラーゼ</strong>：だ液とすい液に含まれ、<strong>デンプン</strong>を分解して<strong>マルトース</strong>（麦芽糖）などにする。最適pHは中性付近</li>
+      <li><strong>ペプシン</strong>：胃液に含まれ、<strong>タンパク質</strong>を分解する。最適pHは 2 前後の強い酸性</li>
+      <li><strong>トリプシン</strong>：すい液に含まれて小腸で働き、<strong>タンパク質</strong>を分解する。最適pHは弱アルカリ性寄り</li>
+      <li><strong>リパーゼ</strong>：すい液などに含まれ、<strong>脂肪</strong>を脂肪酸とモノグリセリドなどに分解する</li>
+      <li><strong>カタラーゼ</strong>：肝臓など多くの細胞に含まれ、有害な<strong>過酸化水素 H<sub>2</sub>O<sub>2</sub></strong> を水と酸素に分解する：2H<sub>2</sub>O<sub>2</sub> → 2H<sub>2</sub>O ＋ O<sub>2</sub></li>
+    </ul>
+    <p>カタラーゼの働きは、肝臓の切片を過酸化水素水に入れると酸素の泡が発生する、教科書の実験で確認できます。煮沸した肝臓では泡が出ません。これは、熱でカタラーゼが変性して失活したためです。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 250" width="520" height="250" role="img" aria-label="デンプンからマルトースへの分解と、過酸化水素の分解の模式図" style="max-width:100%;height:auto;">
+        <text x="260" y="24" text-anchor="middle" font-size="13" fill="currentColor">アミラーゼ：デンプン → マルトース</text>
+        <polygon points="52,44 76,44 88,64 76,84 52,84 40,64" fill="none" stroke="currentColor" stroke-width="2"/>
+        <polygon points="104,44 128,44 140,64 128,84 104,84 92,64" fill="none" stroke="currentColor" stroke-width="2"/>
+        <polygon points="156,44 180,44 192,64 180,84 156,84 144,64" fill="none" stroke="currentColor" stroke-width="2"/>
+        <polygon points="208,44 232,44 244,64 232,84 208,84 196,64" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="260" y="70" text-anchor="middle" font-size="16" fill="currentColor">…</text>
+        <text x="300" y="70" text-anchor="middle" font-size="13" fill="currentColor">アミラーゼ →</text>
+        <polygon points="392,44 416,44 428,64 416,84 392,84 380,64" fill="none" stroke="currentColor" stroke-width="2"/>
+        <polygon points="444,44 468,44 480,64 468,84 444,84 432,64" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="142" y="106" text-anchor="middle" font-size="12" fill="currentColor">デンプン（グルコースが長くつながった鎖）</text>
+        <text x="430" y="106" text-anchor="middle" font-size="12" fill="currentColor">マルトース（グルコース2個分）</text>
+        <text x="260" y="146" text-anchor="middle" font-size="13" fill="currentColor">カタラーゼ：過酸化水素の分解</text>
+        <text x="70" y="196" text-anchor="middle" font-size="15" fill="currentColor">H</text>
+        <line x1="82" y1="190" x2="104" y2="190" stroke="currentColor" stroke-width="2"/>
+        <text x="116" y="196" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="128" y1="190" x2="150" y2="190" stroke="currentColor" stroke-width="2"/>
+        <text x="162" y="196" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <line x1="174" y1="190" x2="196" y2="190" stroke="currentColor" stroke-width="2"/>
+        <text x="208" y="196" text-anchor="middle" font-size="15" fill="currentColor">H</text>
+        <text x="139" y="226" text-anchor="middle" font-size="12" fill="currentColor">過酸化水素 H₂O₂（H−O−O−H）</text>
+        <text x="252" y="196" text-anchor="middle" font-size="13" fill="currentColor">カタラーゼ →</text>
+        <text x="392" y="182" text-anchor="middle" font-size="14" fill="currentColor">2H₂O ＋ O₂</text>
+        <text x="392" y="206" text-anchor="middle" font-size="12" fill="currentColor">水と酸素に分解される</text>
+      </svg>
+      <p>反応の模式図（上）と過酸化水素の構造（下）。デンプンはグルコースが長くつながった鎖で、アミラーゼはその結合を切ってマルトースなどの短い糖に変えます（糖の詳しい構造は<a href="carbohydrates.html">糖類</a>で扱います）。カタラーゼは H−O−O−H の構造をもつ過酸化水素を、水と酸素に分解します。</p>
+    </div>
+    <h3>基質濃度と反応速度の入口</h3>
+    <p>酵素の量が一定のとき、基質濃度と反応速度の関係には特徴があります。基質が少ないうちは、基質濃度を増やすほど酵素と基質が出会う機会が増え、速度はほぼ濃度に比例して大きくなります。しかし基質が十分に多くなると、すべての酵素が常に基質と結びついた状態（飽和）になり、それ以上基質を増やしても速度はほとんど増えず、最大速度に近づいて頭打ちになります。この関係を式で表すミカエリス・メンテンの扱いは、発展項目の<a href="enzyme-kinetics-intro.html">酵素反応速度の入口</a>で扱います。ここでは「酵素が飽和すると基質を増やしても速くならない」という読み取りまでを押さえてください。</p>
+    <h3>無機触媒との共通点と違い</h3>
+    <p>酵素は触媒の一種なので、酸化マンガン(IV) MnO<sub>2</sub> のような無機触媒と共通する性質をもちます。実際、カタラーゼが担う過酸化水素の分解 2H<sub>2</sub>O<sub>2</sub> → 2H<sub>2</sub>O ＋ O<sub>2</sub> は、MnO<sub>2</sub> を加えても進めることができます。共通点は、<strong>反応の前後で自身は変化しない</strong>こと、<strong>活性化エネルギーを下げて反応を速くする</strong>こと、反応熱や平衡の位置は変えないことです（触媒の一般論は<a href="catalysts.html">触媒の働き</a>で扱います）。</p>
+    <p>一方、違いは酵素がタンパク質であることに由来します。酵素には<strong>基質特異性</strong>があり、MnO<sub>2</sub> のようにさまざまな反応に広く効くわけではありません。また、酵素には最適温度・最適pHがあり、高温では変性して失活しますが、無機触媒は高温でも働き続けるものが多くなっています。逆に酵素は、体温程度の温和な条件と中性に近い水中で、特定の反応だけを非常に速く進められる点に強みがあります。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>酵素と基質の対応を確認する。</strong>基質特異性により、その酵素が働ける相手は決まっています。アミラーゼならデンプン、ペプシンやトリプシンならタンパク質、リパーゼなら脂肪、という対応をまず押さえます。</li>
+      <li><strong>温度の条件を見る。</strong>最適温度（ヒトの酵素では体温付近）から大きく外れていないか、高温で変性・失活していないかを確認します。一度失活した酵素は元に戻りません。</li>
+      <li><strong>pHの条件を見る。</strong>働く場所のpHと酵素の最適pHが合っているかを確かめます。胃（強酸性）ではペプシン、口や小腸（中性〜弱アルカリ性）ではアミラーゼやトリプシン、という対応で判断します。</li>
+      <li><strong>速度の変化を問われたら飽和を考える。</strong>基質が少ない範囲では濃度に比例して速くなり、酵素が飽和したあとは基質を増やしても速度は頭打ちになる、という形で答えます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：だ液に含まれるアミラーゼは、デンプンには働くがタンパク質には働かない。また、胃液に含まれるペプシンは、だ液のアミラーゼとは逆にタンパク質に働く。これらの性質を何というか。また、アミラーゼが胃の中では十分に働けない理由を、pHの観点から答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>酵素が決まった基質にだけ働く性質は<strong>基質特異性</strong>です。活性部位の形に合う基質だけが結びつくため、アミラーゼはデンプンにだけ、ペプシンはタンパク質にだけ働きます。アミラーゼの最適pHは中性付近ですが、胃の中は胃液の塩酸によって pH 2 前後の強い酸性です。そのため、だ液とともに飲み込まれたアミラーゼは、胃の中では働きが止まってしまいます（胃で働くのは、強い酸性が最適pHのペプシンです）。</p>
+        <p><strong>答え：基質特異性。アミラーゼの最適pHは中性付近であり、強い酸性の胃の中では働けないため。</strong></p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題2：肝臓の切片を過酸化水素水に入れると、酸素の泡が盛んに発生した。ところが、煮沸した肝臓の切片を入れても、泡はほとんど発生しなかった。この理由を、酵素の性質に触れて答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>肝臓には、過酸化水素を水と酸素に分解する酵素<strong>カタラーゼ</strong>が含まれています（2H<sub>2</sub>O<sub>2</sub> → 2H<sub>2</sub>O ＋ O<sub>2</sub>）。酵素の本体はタンパク質なので、煮沸するとタンパク質が<strong>変性</strong>し、活性部位の立体構造が壊れて<strong>失活</strong>します。失活したカタラーゼは過酸化水素を分解できないため、泡は発生しません。温度を下げても失活した酵素は元に戻らない点も、変性による失活の特徴です。</p>
+        <p><strong>答え：煮沸によってカタラーゼ（タンパク質）が変性して失活し、過酸化水素を分解できなくなったため。</strong></p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題3：一定量の酵素に加える基質の量を少しずつ増やしていくと、はじめは反応速度が基質の量にほぼ比例して大きくなったが、基質がある量を超えると、基質を増やしても速度はほとんど変わらなくなった。この理由を答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>基質が少ないうちは、空いている酵素が多く、基質が増えるほど酵素と結びつく機会が増えるため、速度は濃度にほぼ比例します。ところが基質が十分に多くなると、すべての酵素が常に基質と結びついた<strong>飽和</strong>の状態になり、反応の速さは「酵素が1回働く速さ×酵素の数」で決まってしまいます。そのため、基質をさらに増やしても速度は頭打ちになります。この関係を式で扱う発展は<a href="enzyme-kinetics-intro.html">酵素反応速度の入口</a>（ミカエリス・メンテン式）で扱います。</p>
+        <p><strong>答え：酵素が基質で飽和し、すべての酵素が働き続けている状態になるため、それ以上基質を増やしても速度は上がらない。</strong></p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>洗剤用酵素</h3>
+    <p>衣料用洗剤には、タンパク質の汚れを分解するプロテアーゼ（タンパク質分解酵素）、脂肪の汚れを分解するリパーゼ、デンプンの汚れを分解するアミラーゼなどの酵素が配合されている製品があります。酵素が汚れを小さな分子に分解することで、水に溶けて落ちやすくなります。酵素の働きのおかげで、高温で洗わなくても汚れを落としやすくなる点も、洗剤用酵素の実用上の利点です。</p>
+    <h3>食品加工</h3>
+    <p>食品の製造では酵素の働きが広く使われています。デンプンをアミラーゼで分解して水あめやブドウ糖（グルコース）を作る糖化の工程、牛乳のタンパク質を凝固させる酵素（レンネット）を使ったチーズの製造、清酒やビールの醸造でコウジカビの酵素がデンプンを糖に変える工程などが代表例です。基質特異性があるため、目的の反応だけを選んで進められることが、食品加工で酵素が重宝される理由です。</p>
+    <h3>医療検査と消化薬</h3>
+    <p>尿や血液中のグルコースを調べる検査では、グルコースにだけ働く酵素（グルコースオキシダーゼなど）の基質特異性を利用して、グルコースの量を測る方法が使われています。糖尿病の自己測定用の試験紙やセンサーにも、この仕組みが応用されています。また、食べ過ぎたときの消化薬には、アミラーゼやリパーゼなどの消化酵素を含むものがあり、体内の消化を助ける目的で使われています。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>エミール・フィッシャー</strong>（1852〜1919、ドイツの化学者）、<strong>ジェームズ・サムナー</strong>（1887〜1955、アメリカの生化学者）</p>
+    <p>酵素が決まった基質にだけ働く理由を、ドイツの化学者<strong>エミール・フィッシャー</strong>は1894年、鍵と鍵穴のモデルで説明しました。酵素と基質の形が合うもの同士だけが結びつくというこの考え方は、基質特異性の説明として今も教科書で使われています。一方、酵素の正体については長く議論がありましたが、アメリカの生化学者<strong>ジェームズ・サムナー</strong>は1926年、尿素を分解する酵素ウレアーゼを結晶として取り出すことに成功し、酵素がタンパク質であることを示しました。酵素がタンパク質であるからこそ、熱で変性して失活するという、本項目の中心の性質が説明できるようになったのです。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>酵素の本体であるタンパク質の構造は<a href="amino-acids-proteins.html">アミノ酸とタンパク質</a>、アミラーゼが分解するデンプンなどの糖は<a href="carbohydrates.html">糖類</a>、酵素を含む触媒の一般論は<a href="catalysts.html">触媒の働き</a>が役立ちます。基質濃度と速度の関係を式で扱う発展は<a href="enzyme-kinetics-intro.html">酵素反応速度の入口</a>へ、生体内の反応全体の入口は<a href="biochemistry-intro.html">生体内の化学（代謝の入口）</a>へ進んでください。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大気の化学と酸性雨｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="大気の化学と酸性雨を、公式・手順・例題で解説。pH 5.6 未満という酸性雨の定義、硫黄酸化物 SO2 や窒素酸化物 NOx が硫酸・硝酸に変わる反応式、光化学スモッグとオゾン、森林・湖沼・建造物への影響、排煙脱硫や触媒コンバーターなど現場での対策まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="大気の化学と酸性雨｜化学ツール集">
+<meta property="og:description" content="酸性雨の定義 pH 5.6 未満と、SO2・NOx から硫酸・硝酸ができる反応、光化学スモッグ、排煙脱硫などの対策を例題と「現場での使われ方」で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/air-chemistry-acid-rain.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">大気の化学</span>と酸性雨</h1>
+    <p>化学の考え方辞典 ― 生化学・環境と生活の化学（高校化学・2年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 生化学・環境と生活の化学 ＞ 大気の化学と酸性雨</p>
+  <p><span class="badge badge-lv">高校化学・2年</span> <span class="badge badge-genre">生化学・環境と生活の化学</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    酸性雨とは、化石燃料の燃焼で生じた硫黄酸化物や窒素酸化物が大気中で硫酸や硝酸に変わり、雨に溶け込んで降る、pH 5.6 未満の雨のことである。普通の雨も二酸化炭素が溶けるため約5.6の弱い酸性を示すので、酸性雨かどうかは 5.6 を目安に判断する。森林や湖沼、建造物への影響が知られ、排煙脱硫や触媒コンバーターなどの対策が進められている。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>大気中での酸化物の変化――<strong>二酸化硫黄 SO<sub>2</sub> や窒素酸化物 NO<sub>x</sub> が、硫酸 H<sub>2</sub>SO<sub>4</sub> や硝酸 HNO<sub>3</sub> に変わって雨に溶け込むまで</strong>――を反応式で追い、酸性雨の定義・影響・対策を説明するときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>雨の pH を見て、酸性雨にあたるかどうかを判断する問題</li>
+      <li>SO<sub>2</sub> が SO<sub>3</sub> を経て硫酸になる反応式や、NO<sub>2</sub> から硝酸ができる反応式を書く問題</li>
+      <li>酸性雨の原因物質の発生源（化石燃料の燃焼、自動車排ガス）と、森林・湖沼・建造物への影響を説明する問題</li>
+      <li>排煙脱硫や触媒コンバーター、石灰石による中和など、対策の化学反応を問う問題</li>
+      <li>光化学スモッグやオゾン O<sub>3</sub> の生成など、大気汚染全体の仕組みを問う問題</li>
+    </ul>
+    <p>pH そのものの読み方は<a href="ph-in-daily-life.html">pHと暮らし・環境</a>、硫酸そのものの性質と接触法は<a href="sulfur-sulfuric-acid.html">硫黄と硫酸</a>で扱っています。この項目では、大気の中で酸性の物質が「どこから来て、何に変わり、どう防ぐか」をつなげて整理します。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>酸性雨の定義：pH 5.6 未満</h3>
+    <p>汚染のない雨でも、空気中の<strong>二酸化炭素 CO<sub>2</sub></strong> が溶け込むため、雨水は弱い酸性になります。CO<sub>2</sub> が水に溶けると弱い酸である<strong>炭酸 H<sub>2</sub>CO<sub>3</sub></strong> ができ、pH は約5.6まで下がります。</p>
+    <div class="formula">CO<sub>2</sub> ＋ H<sub>2</sub>O ⇌ H<sub>2</sub>CO<sub>3</sub></div>
+    <p>そのため、pH 7 未満の雨がすべて酸性雨というわけではありません。<strong>pH 5.6 未満の雨を酸性雨</strong>と呼ぶのが目安で、5.6との差が大きいほど、人間活動由来の強い酸が多く溶け込んでいると考えます。</p>
+    <div class="formula">酸性雨の目安：雨の pH ＜ 5.6（自然の雨は CO<sub>2</sub> が溶けて約5.6）</div>
+    <h3>硫黄酸化物：SO<sub>2</sub> から硫酸へ</h3>
+    <p>石炭や石油などの化石燃料には硫黄分が含まれており、燃焼すると<strong>二酸化硫黄 SO<sub>2</sub></strong> が発生します。燃料中の硫黄 S の燃焼は、硫黄そのものの燃焼と同じ式で書けます。</p>
+    <div class="formula">S ＋ O<sub>2</sub> → SO<sub>2</sub></div>
+    <p>SO<sub>2</sub> は水に溶けると弱い酸である<strong>亜硫酸 H<sub>2</sub>SO<sub>3</sub></strong> になりますが、大気中ではさらに酸化されて<strong>三酸化硫黄 SO<sub>3</sub></strong> になり、水と反応して強い酸である<strong>硫酸 H<sub>2</sub>SO<sub>4</sub></strong> になります。この2段階目の酸化は、硫酸の工業的製法である接触法の中心反応と同じです。</p>
+    <div class="formula">SO<sub>2</sub> ＋ H<sub>2</sub>O ⇌ H<sub>2</sub>SO<sub>3</sub>（亜硫酸）</div>
+    <div class="formula">2SO<sub>2</sub> ＋ O<sub>2</sub> → 2SO<sub>3</sub></div>
+    <div class="formula">SO<sub>3</sub> ＋ H<sub>2</sub>O → H<sub>2</sub>SO<sub>4</sub>（硫酸）</div>
+    <p>硫黄の酸化数で見ると、SO<sub>2</sub> では +4、SO<sub>3</sub> と H<sub>2</sub>SO<sub>4</sub> では +6 で、酸化されながらより強い酸へ変わっていく流れが読み取れます。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 300" width="560" height="300" role="img" aria-label="二酸化硫黄・三酸化硫黄・亜硫酸・硫酸の構造式" style="max-width:100%;height:auto;">
+        <text x="140" y="24" text-anchor="middle" font-size="13" fill="currentColor">二酸化硫黄 SO₂</text>
+        <line x1="128" y1="82" x2="102" y2="52" stroke="currentColor" stroke-width="2"/>
+        <line x1="136" y1="88" x2="110" y2="58" stroke="currentColor" stroke-width="2"/>
+        <line x1="152" y1="82" x2="178" y2="52" stroke="currentColor" stroke-width="2"/>
+        <line x1="144" y1="88" x2="170" y2="58" stroke="currentColor" stroke-width="2"/>
+        <text x="140" y="102" text-anchor="middle" font-size="15" fill="currentColor">S</text>
+        <text x="94" y="48" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="186" y="48" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="140" y="132" text-anchor="middle" font-size="12" fill="currentColor">折れ線形（O＝S＝O）</text>
+        <text x="420" y="24" text-anchor="middle" font-size="13" fill="currentColor">三酸化硫黄 SO₃</text>
+        <line x1="414" y1="76" x2="414" y2="52" stroke="currentColor" stroke-width="2"/>
+        <line x1="422" y1="76" x2="422" y2="52" stroke="currentColor" stroke-width="2"/>
+        <line x1="408" y1="92" x2="382" y2="112" stroke="currentColor" stroke-width="2"/>
+        <line x1="428" y1="92" x2="454" y2="112" stroke="currentColor" stroke-width="2"/>
+        <text x="418" y="102" text-anchor="middle" font-size="15" fill="currentColor">S</text>
+        <text x="418" y="44" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="368" y="124" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="468" y="124" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="420" y="142" text-anchor="middle" font-size="12" fill="currentColor">平面三角形（共鳴あり）</text>
+        <text x="140" y="176" text-anchor="middle" font-size="13" fill="currentColor">亜硫酸 H₂SO₃</text>
+        <line x1="132" y1="228" x2="106" y2="202" stroke="currentColor" stroke-width="2"/>
+        <line x1="140" y1="234" x2="114" y2="208" stroke="currentColor" stroke-width="2"/>
+        <line x1="148" y1="230" x2="168" y2="248" stroke="currentColor" stroke-width="2"/>
+        <line x1="132" y1="230" x2="112" y2="248" stroke="currentColor" stroke-width="2"/>
+        <text x="140" y="248" text-anchor="middle" font-size="15" fill="currentColor">S</text>
+        <text x="96" y="198" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="182" y="262" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <text x="98" y="262" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <text x="140" y="288" text-anchor="middle" font-size="12" fill="currentColor">S＝O が1個と −OH が2個</text>
+        <text x="420" y="176" text-anchor="middle" font-size="13" fill="currentColor">硫酸 H₂SO₄</text>
+        <line x1="410" y1="224" x2="388" y2="200" stroke="currentColor" stroke-width="2"/>
+        <line x1="418" y1="230" x2="396" y2="206" stroke="currentColor" stroke-width="2"/>
+        <line x1="430" y1="224" x2="452" y2="200" stroke="currentColor" stroke-width="2"/>
+        <line x1="422" y1="230" x2="444" y2="206" stroke="currentColor" stroke-width="2"/>
+        <line x1="412" y1="240" x2="392" y2="256" stroke="currentColor" stroke-width="2"/>
+        <line x1="428" y1="240" x2="448" y2="256" stroke="currentColor" stroke-width="2"/>
+        <text x="420" y="248" text-anchor="middle" font-size="15" fill="currentColor">S</text>
+        <text x="380" y="196" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="460" y="196" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="378" y="270" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <text x="462" y="270" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <text x="420" y="292" text-anchor="middle" font-size="12" fill="currentColor">S＝O が2個と −OH が2個</text>
+      </svg>
+      <p>硫黄酸化物とその酸の構造式。SO<sub>2</sub> は折れ線形、SO<sub>3</sub> は平面三角形で、硫酸では中心の S に =O が2個と −OH が2個が付いています。亜硫酸は SO<sub>2</sub> が水に溶けてできる弱い酸です。</p>
+    </div>
+    <h3>窒素酸化物：NO<sub>x</sub> から硝酸へ</h3>
+    <p><strong>窒素酸化物 NO<sub>x</sub></strong> は、一酸化窒素 NO と二酸化窒素 NO<sub>2</sub> の総称です。空気中の窒素 N<sub>2</sub> と酸素 O<sub>2</sub> はふつう反応しませんが、自動車のエンジンやボイラーのような<strong>高温の燃焼</strong>では結びついて NO が生じます。工場の煙だけでなく、自動車排ガスが大きな発生源になるのはこのためです。</p>
+    <div class="formula">N<sub>2</sub> ＋ O<sub>2</sub> → 2NO（高温の燃焼時）</div>
+    <div class="formula">2NO ＋ O<sub>2</sub> → 2NO<sub>2</sub></div>
+    <p>NO<sub>2</sub> は赤褐色の気体で、水に溶けると<strong>硝酸 HNO<sub>3</sub></strong> と NO を生じます。大気中では酸素と水が関わる次の形で、最終的に硝酸として雨に取り込まれます。</p>
+    <div class="formula">3NO<sub>2</sub> ＋ H<sub>2</sub>O → 2HNO<sub>3</sub> ＋ NO</div>
+    <div class="formula">4NO<sub>2</sub> ＋ O<sub>2</sub> ＋ 2H<sub>2</sub>O → 4HNO<sub>3</sub>（硝酸）</div>
+    <p>窒素の酸化数は、NO で +2、NO<sub>2</sub> で +4、HNO<sub>3</sub> で +5 と、こちらも酸化が進むほど大きな値になります。酸性雨の酸は、主にこの硫酸と硝酸の2つです。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 300" width="560" height="300" role="img" aria-label="二酸化炭素・一酸化窒素・二酸化窒素・硝酸・オゾン・炭酸の構造式" style="max-width:100%;height:auto;">
+        <text x="93" y="24" text-anchor="middle" font-size="13" fill="currentColor">二酸化炭素 CO₂</text>
+        <line x1="72" y1="58" x2="86" y2="58" stroke="currentColor" stroke-width="2"/>
+        <line x1="72" y1="64" x2="86" y2="64" stroke="currentColor" stroke-width="2"/>
+        <line x1="100" y1="58" x2="114" y2="58" stroke="currentColor" stroke-width="2"/>
+        <line x1="100" y1="64" x2="114" y2="64" stroke="currentColor" stroke-width="2"/>
+        <text x="60" y="66" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="93" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="126" y="66" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="93" y="92" text-anchor="middle" font-size="12" fill="currentColor">直線形（O＝C＝O）</text>
+        <text x="280" y="24" text-anchor="middle" font-size="13" fill="currentColor">一酸化窒素 NO</text>
+        <line x1="272" y1="58" x2="286" y2="58" stroke="currentColor" stroke-width="2"/>
+        <line x1="272" y1="64" x2="286" y2="64" stroke="currentColor" stroke-width="2"/>
+        <text x="258" y="66" text-anchor="middle" font-size="15" fill="currentColor">N</text>
+        <text x="300" y="66" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="280" y="92" text-anchor="middle" font-size="12" fill="currentColor">N＝O</text>
+        <text x="467" y="24" text-anchor="middle" font-size="13" fill="currentColor">二酸化窒素 NO₂</text>
+        <line x1="455" y1="82" x2="429" y2="52" stroke="currentColor" stroke-width="2"/>
+        <line x1="463" y1="88" x2="437" y2="58" stroke="currentColor" stroke-width="2"/>
+        <line x1="479" y1="82" x2="505" y2="52" stroke="currentColor" stroke-width="2"/>
+        <text x="467" y="102" text-anchor="middle" font-size="15" fill="currentColor">N</text>
+        <text x="421" y="48" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="513" y="48" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="467" y="132" text-anchor="middle" font-size="12" fill="currentColor">折れ線形（赤褐色の気体）</text>
+        <text x="93" y="176" text-anchor="middle" font-size="13" fill="currentColor">硝酸 HNO₃</text>
+        <line x1="88" y1="224" x2="88" y2="202" stroke="currentColor" stroke-width="2"/>
+        <line x1="94" y1="224" x2="94" y2="202" stroke="currentColor" stroke-width="2"/>
+        <line x1="100" y1="238" x2="122" y2="250" stroke="currentColor" stroke-width="2"/>
+        <line x1="84" y1="238" x2="64" y2="250" stroke="currentColor" stroke-width="2"/>
+        <text x="91" y="246" text-anchor="middle" font-size="15" fill="currentColor">N</text>
+        <text x="91" y="196" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="136" y="264" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="48" y="264" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <text x="93" y="290" text-anchor="middle" font-size="12" fill="currentColor">−OH と N＝O、もう1個の O（共鳴あり）</text>
+        <text x="280" y="176" text-anchor="middle" font-size="13" fill="currentColor">オゾン O₃</text>
+        <line x1="266" y1="232" x2="246" y2="206" stroke="currentColor" stroke-width="2"/>
+        <line x1="273" y1="238" x2="253" y2="212" stroke="currentColor" stroke-width="2"/>
+        <line x1="287" y1="234" x2="307" y2="210" stroke="currentColor" stroke-width="2"/>
+        <text x="280" y="252" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="238" y="202" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="315" y="206" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="280" y="290" text-anchor="middle" font-size="12" fill="currentColor">折れ線形（共鳴あり）</text>
+        <text x="467" y="176" text-anchor="middle" font-size="13" fill="currentColor">炭酸 H₂CO₃</text>
+        <line x1="462" y1="224" x2="462" y2="202" stroke="currentColor" stroke-width="2"/>
+        <line x1="468" y1="224" x2="468" y2="202" stroke="currentColor" stroke-width="2"/>
+        <line x1="472" y1="238" x2="492" y2="250" stroke="currentColor" stroke-width="2"/>
+        <line x1="458" y1="238" x2="438" y2="250" stroke="currentColor" stroke-width="2"/>
+        <text x="465" y="246" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <text x="465" y="196" text-anchor="middle" font-size="15" fill="currentColor">O</text>
+        <text x="508" y="264" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <text x="422" y="264" text-anchor="middle" font-size="14" fill="currentColor">OH</text>
+        <text x="467" y="290" text-anchor="middle" font-size="12" fill="currentColor">−OH が2個と C＝O</text>
+      </svg>
+      <p>窒素酸化物と関係する化合物の構造式。NO<sub>2</sub> は折れ線形の赤褐色気体、硝酸は −OH を1個もつ強い酸、オゾン O<sub>3</sub> は酸素原子3個からなる折れ線形の分子です。炭酸は普通の雨を約5.6にする弱い酸です。</p>
+    </div>
+    <h3>光化学スモッグとオゾン</h3>
+    <p>NO<sub>x</sub> は酸性雨だけでなく、<strong>光化学スモッグ</strong>の原因にもなります。自動車排ガスなどに含まれる NO<sub>2</sub> が太陽の紫外線を受けると分解し、生じた酸素原子が酸素分子と結びついて<strong>オゾン O<sub>3</sub></strong> ができます。オゾンは強い酸化作用をもつ気体で、高濃度になると目や喉を刺激し、光化学スモッグの主役（光化学オキシダントの主成分）になります。成層圏のオゾン層は紫外線を吸収して生物を守りますが、地表付近で増えたオゾンは健康や植物に悪影響を及ぼします。</p>
+    <div class="formula">NO<sub>2</sub> → NO ＋ O（紫外線による分解）　／　O ＋ O<sub>2</sub> → O<sub>3</sub></div>
+    <h3>酸性雨の影響</h3>
+    <ul>
+      <li><strong>森林</strong>：土壌が酸性化すると、植物の栄養分が流れ出したり、有害なアルミニウムが溶け出したりして、樹木が衰弱・枯死することがあります。</li>
+      <li><strong>湖沼・河川</strong>：水が酸性化すると魚や水生生物が生きにくくなり、生態系が変化します。</li>
+      <li><strong>建造物・文化財</strong>：大理石や石灰石は炭酸カルシウム CaCO<sub>3</sub> を主成分とするため、酸と反応して溶け、石像や建物の表面が傷みます。金属の腐食も進みやすくなります。</li>
+    </ul>
+    <div class="formula">CaCO<sub>3</sub> ＋ H<sub>2</sub>SO<sub>4</sub> → CaSO<sub>4</sub> ＋ H<sub>2</sub>O ＋ CO<sub>2</sub></div>
+    <div class="formula">CaCO<sub>3</sub> ＋ 2HNO<sub>3</sub> → Ca(NO<sub>3</sub>)<sub>2</sub> ＋ H<sub>2</sub>O ＋ CO<sub>2</sub></div>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 170" width="560" height="170" role="img" aria-label="炭酸カルシウム・亜硫酸カルシウム・硫酸カルシウム・硝酸カルシウムの構造" style="max-width:100%;height:auto;">
+        <text x="70" y="24" text-anchor="middle" font-size="13" fill="currentColor">炭酸カルシウム CaCO₃</text>
+        <text x="34" y="86" text-anchor="middle" font-size="14" fill="currentColor">Ca²⁺</text>
+        <line x1="88" y1="66" x2="88" y2="50" stroke="currentColor" stroke-width="2"/>
+        <line x1="93" y1="66" x2="93" y2="50" stroke="currentColor" stroke-width="2"/>
+        <line x1="96" y1="76" x2="114" y2="88" stroke="currentColor" stroke-width="2"/>
+        <line x1="84" y1="76" x2="66" y2="88" stroke="currentColor" stroke-width="2"/>
+        <text x="90" y="84" text-anchor="middle" font-size="14" fill="currentColor">C</text>
+        <text x="90" y="44" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="124" y="100" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="56" y="100" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="70" y="140" text-anchor="middle" font-size="12" fill="currentColor">Ca²⁺ と CO₃²⁻ のイオン結晶</text>
+        <text x="210" y="24" text-anchor="middle" font-size="13" fill="currentColor">亜硫酸カルシウム CaSO₃</text>
+        <text x="174" y="86" text-anchor="middle" font-size="14" fill="currentColor">Ca²⁺</text>
+        <line x1="228" y1="66" x2="228" y2="50" stroke="currentColor" stroke-width="2"/>
+        <line x1="233" y1="66" x2="233" y2="50" stroke="currentColor" stroke-width="2"/>
+        <line x1="236" y1="76" x2="254" y2="88" stroke="currentColor" stroke-width="2"/>
+        <line x1="224" y1="76" x2="206" y2="88" stroke="currentColor" stroke-width="2"/>
+        <text x="230" y="84" text-anchor="middle" font-size="14" fill="currentColor">S</text>
+        <text x="230" y="44" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="264" y="100" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="196" y="100" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="210" y="140" text-anchor="middle" font-size="12" fill="currentColor">Ca²⁺ と SO₃²⁻（排煙脱硫の中間生成物）</text>
+        <text x="350" y="24" text-anchor="middle" font-size="13" fill="currentColor">硫酸カルシウム CaSO₄</text>
+        <text x="300" y="86" text-anchor="middle" font-size="14" fill="currentColor">Ca²⁺</text>
+        <line x1="356" y1="62" x2="340" y2="46" stroke="currentColor" stroke-width="2"/>
+        <line x1="362" y1="68" x2="346" y2="52" stroke="currentColor" stroke-width="2"/>
+        <line x1="370" y1="62" x2="386" y2="46" stroke="currentColor" stroke-width="2"/>
+        <line x1="364" y1="68" x2="380" y2="52" stroke="currentColor" stroke-width="2"/>
+        <line x1="358" y1="80" x2="344" y2="96" stroke="currentColor" stroke-width="2"/>
+        <line x1="366" y1="80" x2="380" y2="96" stroke="currentColor" stroke-width="2"/>
+        <text x="362" y="84" text-anchor="middle" font-size="14" fill="currentColor">S</text>
+        <text x="332" y="42" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="394" y="42" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="336" y="112" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="388" y="112" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="350" y="140" text-anchor="middle" font-size="12" fill="currentColor">Ca²⁺ と SO₄²⁻（石膏の主成分）</text>
+        <text x="490" y="24" text-anchor="middle" font-size="13" fill="currentColor">硝酸カルシウム Ca(NO₃)₂</text>
+        <text x="436" y="86" text-anchor="middle" font-size="14" fill="currentColor">Ca²⁺</text>
+        <line x1="494" y1="66" x2="494" y2="50" stroke="currentColor" stroke-width="2"/>
+        <line x1="499" y1="66" x2="499" y2="50" stroke="currentColor" stroke-width="2"/>
+        <line x1="502" y1="76" x2="518" y2="88" stroke="currentColor" stroke-width="2"/>
+        <line x1="490" y1="76" x2="474" y2="88" stroke="currentColor" stroke-width="2"/>
+        <text x="496" y="84" text-anchor="middle" font-size="14" fill="currentColor">N</text>
+        <text x="496" y="44" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="528" y="100" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="464" y="100" text-anchor="middle" font-size="14" fill="currentColor">O</text>
+        <text x="490" y="140" text-anchor="middle" font-size="12" fill="currentColor">Ca²⁺ と NO₃⁻ が2個（水に溶けやすい）</text>
+      </svg>
+      <p>本文に登場するカルシウム塩の構造。いずれも Ca<sup>2+</sup> と陰イオンからなるイオン性の化合物で、陰イオンの形（CO<sub>3</sub><sup>2−</sup> は平面三角形、SO<sub>4</sub><sup>2−</sup> は四面体形など）が違います。CaSO<sub>4</sub> は水に溶けにくく大理石の表面に残りますが、Ca(NO<sub>3</sub>)<sub>2</sub> は水に溶けやすいため、硝酸による損傷では表面が流されながら進みます。</p>
+    </div>
+    <h3>対策：出す前に取り除く・中和する</h3>
+    <ul>
+      <li><strong>排煙脱硫</strong>：火力発電所などでは、排ガスに石灰石 CaCO<sub>3</sub> の粉末やスラリーを作用させて SO<sub>2</sub> を取り除きます。まず亜硫酸カルシウム CaSO<sub>3</sub> として固定し、空気で酸化して硫酸カルシウム CaSO<sub>4</sub>（石膏として利用される）にする方式が広く使われています。</li>
+    </ul>
+    <div class="formula">CaCO<sub>3</sub> ＋ SO<sub>2</sub> → CaSO<sub>3</sub> ＋ CO<sub>2</sub>　／　2CaSO<sub>3</sub> ＋ O<sub>2</sub> → 2CaSO<sub>4</sub></div>
+    <ul>
+      <li><strong>触媒コンバーター（三元触媒）</strong>：自動車の排気管に取り付けられ、白金 Pt・パラジウム Pd・ロジウム Rh などの触媒で、NO<sub>x</sub> を窒素 N<sub>2</sub> に還元すると同時に、一酸化炭素 CO や未燃焼の炭化水素を酸化して CO<sub>2</sub> と水に変えます。NO の還元は 2NO ＋ 2CO → N<sub>2</sub> ＋ 2CO<sub>2</sub> のように書けます。</li>
+      <li><strong>石灰石による中和</strong>：酸性化した湖や土壌に、石灰石や消石灰などのアルカリ性の物質をまいて中和する対策も行われてきました。酸を出す段階で抑える対策と組み合わせて考えます。</li>
+    </ul>
+    <p>ここで挙げた反応式は、両辺で各原子の数が一致することを検算済みです。たとえば CaCO<sub>3</sub> ＋ SO<sub>2</sub> → CaSO<sub>3</sub> ＋ CO<sub>2</sub> では、Ca・C・S が各1個、O が左辺 3＋2＝5個、右辺 3＋2＝5個でそろいます。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>雨は 5.6 と比べる。</strong>pH が 5.6 未満なら酸性雨、5.6前後なら CO<sub>2</sub> が溶けた自然の雨の酸性と考えます。</li>
+      <li><strong>酸の出どころを2系統に分ける。</strong>硫黄分を含む燃料の燃焼からは SO<sub>2</sub>（硫酸のもと）、高温燃焼の空気からは NO<sub>x</sub>（硝酸のもと）が生じると整理します。</li>
+      <li><strong>酸化の階段をたどる。</strong>SO<sub>2</sub>（S の酸化数 +4）→ SO<sub>3</sub>（+6）→ H<sub>2</sub>SO<sub>4</sub>、NO（+2）→ NO<sub>2</sub>（+4）→ HNO<sub>3</sub>（+5）と、酸化数が上がる順に反応式を並べます。</li>
+      <li><strong>反応式は原子数で検算する。</strong>係数を付けたら、両辺で各原子の数が一致するか必ず数え直します。</li>
+      <li><strong>影響と対策は原因と対応づける。</strong>建造物への影響は CaCO<sub>3</sub> と酸の反応、対策は「発生源で取り除く（脱硫・触媒）」か「中和する（石灰石）」かで分類して答えます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：ある日に降った雨の pH は 4.6 だった。(a) この雨は酸性雨といえるか。(b) pH 5.6 の雨と比べて、酸性の強さはどちらが強いか。問題2：次の反応式の係数を完成させよ。(a) （　）SO<sub>2</sub> ＋ O<sub>2</sub> → （　）SO<sub>3</sub>　(b) （　）NO<sub>2</sub> ＋ H<sub>2</sub>O → （　）HNO<sub>3</sub> ＋ NO　(c) CaCO<sub>3</sub> ＋ （　）HNO<sub>3</sub> → Ca(NO<sub>3</sub>)<sub>2</sub> ＋ H<sub>2</sub>O ＋ CO<sub>2</sub>　問題3：硫黄分を質量で 1.0% 含む石炭 1.0 t を燃焼させた。含まれる硫黄がすべて SO<sub>2</sub> になるとすると、発生する SO<sub>2</sub> は何 kg か。また、その SO<sub>2</sub> がすべて硫酸になり、石灰石 CaCO<sub>3</sub> で中和するには CaCO<sub>3</sub> が何 kg 必要か（原子量は S ＝ 32、O ＝ 16、Ca ＝ 40、C ＝ 12 とし、有効数字2桁で答えること）。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：(a) 酸性雨の目安は pH 5.6 未満で、4.6 ＜ 5.6 なので、この雨は酸性雨といえます。(b) pH が小さいほど酸性が強いので、pH 4.6 の雨の方が pH 5.6 の雨より酸性が強いです。</li>
+          <li>問題2：(a) S と O の数をそろえると 2SO<sub>2</sub> ＋ O<sub>2</sub> → 2SO<sub>3</sub>（O は左辺 4＋2＝6個、右辺 6個）。(b) N の数をそろえると 3NO<sub>2</sub> ＋ H<sub>2</sub>O → 2HNO<sub>3</sub> ＋ NO（N は両辺3個、H は両辺2個、O は左辺 6＋1＝7個、右辺 6＋1＝7個）。(c) NO<sub>3</sub> の数をそろえると CaCO<sub>3</sub> ＋ 2HNO<sub>3</sub> → Ca(NO<sub>3</sub>)<sub>2</sub> ＋ H<sub>2</sub>O ＋ CO<sub>2</sub>（O は左辺 3＋6＝9個、右辺 6＋1＋2＝9個）。</li>
+          <li>問題3：石炭 1.0 t ＝ 1,000 kg の 1.0% が硫黄なので、硫黄は 10 kg ＝ 10,000 g。物質量は 10,000 g ÷ 32 g/mol ＝ 312.5 mol です。S 1 mol から SO<sub>2</sub> 1 mol ができるので、SO<sub>2</sub>（モル質量 32＋16×2＝64 g/mol）は 312.5 mol × 64 g/mol ＝ 20,000 g ＝ <strong>20 kg</strong>。次に、SO<sub>2</sub> がすべて硫酸になると H<sub>2</sub>SO<sub>4</sub> も 312.5 mol で、中和 CaCO<sub>3</sub> ＋ H<sub>2</sub>SO<sub>4</sub> → CaSO<sub>4</sub> ＋ H<sub>2</sub>O ＋ CO<sub>2</sub> では CaCO<sub>3</sub> が 1:1 で必要です。CaCO<sub>3</sub> のモル質量は 40＋12＋16×3＝100 g/mol なので、312.5 mol × 100 g/mol ＝ 31,250 g ≒ <strong>31 kg</strong>。</li>
+        </ol>
+        <p><strong>答え：問題1は (a) 酸性雨といえる、(b) pH 4.6 の雨の方が酸性が強い。問題2は (a) 2SO<sub>2</sub> ＋ O<sub>2</sub> → 2SO<sub>3</sub>、(b) 3NO<sub>2</sub> ＋ H<sub>2</sub>O → 2HNO<sub>3</sub> ＋ NO、(c) 係数は 2。問題3は SO<sub>2</sub> が 20 kg、必要な CaCO<sub>3</sub> が約 31 kg</strong>。酸性雨の問題は「5.6と比べる」「酸化の階段をたどる」「原子数で検算する」の3点で整理するのが型です。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>火力発電所の排煙脱硫（石灰石・石膏法）</h3>
+    <p>石炭火力発電所などでは、排ガス中の SO<sub>2</sub> を石灰石スラリーに吸収させ、亜硫酸カルシウムを経て硫酸カルシウム（石膏）として回収する<strong>石灰石・石膏法</strong>が広く採用されています。副生した石膏は石膏ボードなどの建材に利用されます。酸性雨の原因物質を、煙突から出る前に化学反応で固定してしまう仕組みです。</p>
+    <h3>自動車の三元触媒コンバーター</h3>
+    <p>ガソリン車の排気管には、白金・パラジウム・ロジウムを用いた<strong>三元触媒</strong>が装着され、NO<sub>x</sub> の還元と、CO・炭化水素の酸化を同時に行います。NO<sub>x</sub> は酸性雨と光化学スモッグの両方の原因物質なので、この触媒は都市の大気汚染対策の中心装置になっています。触媒そのものの働きは<a href="catalysts.html">触媒の働き</a>で扱っています。</p>
+    <h3>酸性雨のモニタリング</h3>
+    <p>日本では環境省などが各地で雨水の pH や硫酸イオン・硝酸イオンの濃度を継続的に測定しており、東アジア各国が参加する<strong>東アジア酸性雨モニタリングネットワーク（EANET）</strong>でも、越境する大気汚染の監視が行われています。酸性雨は風で運ばれて国境を越えるため、国内だけの対策では完結しない点が特徴です。</p>
+    <h3>湖沼の中和と文化財の保護</h3>
+    <p>酸性化した湖沼への対策として、スウェーデンなどでは湖や周辺の土壌に石灰を散布して中和する取り組みが大規模に行われてきました。また、大理石や石灰石でできた建造物・石像は酸性雨で表面が溶けるため、文化財の分野では劣化の調査と保護が続けられています。どちらも、この項目の中和反応 CaCO<sub>3</sub> ＋ 酸 の裏表の応用です。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ロバート・アンガス・スミス</strong>（1817〜1884、イギリス（スコットランド）の化学者。「酸性雨（acid rain）」という言葉を作った人物）</p>
+    <p>「酸性雨」という言葉は、イギリスの化学者<strong>ロバート・アンガス・スミス</strong>（1817〜1884）が作りました。スミスは産業革命で石炭の煙に覆われていたマンチェスター周辺で雨や大気の化学的な調査を行い、1852年に雨の酸性と大気汚染との関わりを報告、1872年の著書『Air and Rain（空気と雨）』の中で "acid rain" という言葉を用いました。当時はまだ地域の公害として捉えられていましたが、20世紀後半に、汚染物質が風で長距離を運ばれ、国境を越えて森林や湖沼に被害を及ぼすことが明らかになり、スミスの指摘は国際的な環境問題の出発点として見直されました。酸性雨そのものは人間活動が生んだ現象で特定の発明品ではありませんが、その概念と言葉を定着させたのはスミスです。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>雨の pH と身のまわりの液性は<a href="ph-in-daily-life.html">pHと暮らし・環境</a>、SO<sub>2</sub> と硫酸の性質・接触法は<a href="sulfur-sulfuric-acid.html">硫黄と硫酸</a>、窒素化合物とハーバー法は<a href="nitrogen-ammonia.html">窒素とアンモニア・ハーバー法</a>、三元触媒の仕組みの基礎は<a href="catalysts.html">触媒の働き</a>、金属が酸で傷む腐食の話は<a href="corrosion.html">金属の腐食</a>が役立ちます。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>合成繊維とプラスチック｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="ナイロン・ポリエステル・アクリル・ビニロンなど合成繊維の特徴と用途、熱可塑性樹脂（ポリエチレン・ポリプロピレン・ポリ塩化ビニル・ポリスチレン・PET）と熱硬化性樹脂（フェノール樹脂・尿素樹脂・メラミン樹脂）の性質の違いを、代表樹脂の繰り返し単位の構造式と例題で解説。衣料やリサイクルの識別表示など現場での使われ方も紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="合成繊維とプラスチック｜化学ツール集">
+<meta property="og:description" content="合成繊維（ナイロン・ポリエステル・アクリル・ビニロン）と、熱可塑性樹脂・熱硬化性樹脂の性質の違いを、代表樹脂の繰り返し単位の構造式と例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/synthetic-fibers-plastics.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">合成繊維</span>とプラスチック</h1>
+    <p>化学の考え方辞典 ― 高分子（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 高分子 ＞ 合成繊維とプラスチック</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">高分子</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    合成繊維とプラスチックは、石油化学の基礎原料を重合して得られる高分子化合物である。合成繊維にはナイロン・ポリエステル・アクリル・ビニロンがあり、プラスチック（合成樹脂）は、加熱すると軟化する熱可塑性樹脂と、架橋構造をもち加熱しても軟化しない熱硬化性樹脂に分けられる。代表的な樹脂の繰り返し単位と性質を知ることで、身の回りの材料を化学の目で読み分けられる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>石油化学の基礎原料から作られる、代表的な高分子材料の性質と用途を扱う項目です。次のような場面で使います。</p>
+    <ul>
+      <li>ナイロン・ポリエステル・アクリル・ビニロンという合成繊維を、原料・特徴・用途と結びつける問題</li>
+      <li>プラスチックを熱可塑性樹脂と熱硬化性樹脂に分類し、加熱したときの振る舞いの違いを、線状構造と架橋構造（網目状構造）から説明する問題</li>
+      <li>ポリエチレン・ポリプロピレン・ポリ塩化ビニル・ポリスチレン・PETの繰り返し単位を見て、どの樹脂かを判別する問題</li>
+      <li>密度（水に浮くか沈むか）や燃え方から、プラスチックの種類を識別する問題の入口</li>
+    </ul>
+    <p>ポイントは、材料の名前を丸暗記するのではなく、<strong>「繰り返し単位に何が含まれているか（塩素・ベンゼン環・エステル結合・アミド結合など）」</strong>と<strong>「分子が線状か網目状か」</strong>の2つの目で性質を読み取ることです。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>合成繊維：石油から作る繊維</h3>
+    <p>天然繊維（綿・羊毛・絹）に対して、石油化学の原料から人工的に作る繊維が<strong>合成繊維</strong>です。いずれも長い線状の高分子を糸状に引き伸ばして作られ、丈夫で腐りにくく、大量生産できるのが共通の特徴です。代表的な4つを押さえます。</p>
+    <ul>
+      <li><strong>ナイロン（ナイロン66）</strong>：アジピン酸とヘキサメチレンジアミンの縮合重合で得られる、<strong>アミド結合 −NH−CO−</strong> をもつポリアミドです。世界初の合成繊維で、非常に丈夫で摩擦に強く、ストッキング・ロープ・歯ブラシの毛・機械の歯車などに使われます</li>
+      <li><strong>ポリエステル</strong>：テレフタル酸とエチレングリコールの縮合重合で得られる PET（ポリエチレンテレフタラート）を繊維にしたものです。<strong>エステル結合 −CO−O−</strong> をもち、しわになりにくく乾きやすいため、衣料に最も広く使われます。ペットボトルと同じ高分子です</li>
+      <li><strong>アクリル繊維</strong>：アクリロニトリルの付加重合で得られるポリアクリロニトリルを主成分とします。繰り返し単位に <strong>−CN（シアノ基）</strong> をもち、羊毛に似た風合いで軽くて暖かいため、セーターなどの衣料や毛布に使われます</li>
+      <li><strong>ビニロン</strong>：ポリビニルアルコールを原料とし、水に溶けないよう処理して繊維にしたものです。合成繊維の中では比較的吸水性があり、丈夫なため、ロープ・漁網・作業服などに使われます。日本で開発された合成繊維としても知られます</li>
+    </ul>
+    <h3>プラスチックの分類：加熱で軟らかくなるか</h3>
+    <p><strong>プラスチック（合成樹脂）</strong>は、加熱したときの振る舞いで大きく2つに分けられます。分かれ目は、分子のつながり方です。</p>
+    <div class="formula">熱可塑性樹脂：線状の高分子 → 加熱すると軟化し、冷やすと再び固まる（成形し直せる）<br>熱硬化性樹脂：架橋による網目状構造 → 一度固まると加熱しても軟化しない</div>
+    <p><strong>熱可塑性樹脂</strong>は、分子が線状（ひも状）につながった構造です。分子どうしは分子間力で寄り集まっているだけなので、加熱すると分子の熱運動が大きくなり、ひもがほどけるように軟らかくなります。冷やせば再び固まるため、溶かして成形し直すことができ、リサイクルにも向いています。</p>
+    <p><strong>熱硬化性樹脂</strong>は、成形の際に分子どうしの間に共有結合の橋がかかり（<strong>架橋</strong>）、全体が1つの巨大な網目状構造になります。加熱しても網目そのものはほどけず、軟化しないまま、さらに高温では分解・炭化します。硬くて耐熱性に優れますが、成形し直すことはできません。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 170" width="520" height="170" role="img" aria-label="線状構造と架橋構造の模式図" style="max-width:100%;height:auto;">
+        <text x="130" y="22" text-anchor="middle" font-size="13" fill="currentColor">熱可塑性樹脂（線状）</text>
+        <path d="M30,55 q25,-12 50,0 t50,0 t50,0 t50,0" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M30,90 q25,-12 50,0 t50,0 t50,0 t50,0" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M30,125 q25,-12 50,0 t50,0 t50,0 t50,0" fill="none" stroke="currentColor" stroke-width="2"/>
+        <text x="130" y="155" text-anchor="middle" font-size="12" fill="currentColor">加熱でひもが動き、軟化する</text>
+        <text x="390" y="22" text-anchor="middle" font-size="13" fill="currentColor">熱硬化性樹脂（網目状・架橋）</text>
+        <path d="M290,55 q25,-12 50,0 t50,0 t50,0 t50,0" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M290,90 q25,-12 50,0 t50,0 t50,0 t50,0" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M290,125 q25,-12 50,0 t50,0 t50,0 t50,0" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="340" y1="52" x2="340" y2="88" stroke="currentColor" stroke-width="2"/>
+        <line x1="415" y1="87" x2="415" y2="122" stroke="currentColor" stroke-width="2"/>
+        <line x1="465" y1="52" x2="465" y2="88" stroke="currentColor" stroke-width="2"/>
+        <text x="390" y="155" text-anchor="middle" font-size="12" fill="currentColor">橋（架橋）が全体を固定し、軟化しない</text>
+      </svg>
+      <p>線状構造と架橋構造の模式図。熱可塑性と熱硬化性の違いは、この「橋がかかっているかどうか」で決まります。</p>
+    </div>
+    <h3>代表的な熱可塑性樹脂</h3>
+    <ul>
+      <li><strong>ポリエチレン（PE）</strong>：エチレン CH<sub>2</sub>＝CH<sub>2</sub> の付加重合。繰り返し単位は −(CH<sub>2</sub>−CH<sub>2</sub>)<sub>n</sub>− です。密度が水より小さく（およそ0.92〜0.96 g/cm<sup>3</sup>）水に浮き、最も多く生産されるプラスチックで、袋・フィルム・容器に使われます</li>
+      <li><strong>ポリプロピレン（PP）</strong>：プロペン CH<sub>2</sub>＝CH−CH<sub>3</sub> の付加重合。側鎖に −CH<sub>3</sub> をもち、密度はおよそ0.90 g/cm<sup>3</sup> と汎用プラスチックの中で最も小さく、軽くて耐熱性も比較的高いため、食品容器・自動車部品・繊維に使われます</li>
+      <li><strong>ポリ塩化ビニル（PVC）</strong>：塩化ビニル CH<sub>2</sub>＝CHCl の付加重合。繰り返し単位に<strong>塩素 Cl</strong> を含み、密度はおよそ1.4 g/cm<sup>3</sup> で水に沈みます。燃えにくく丈夫で安価なため、水道管・窓枠・床材に使われます</li>
+      <li><strong>ポリスチレン（PS）</strong>：スチレン C<sub>6</sub>H<sub>5</sub>−CH＝CH<sub>2</sub> の付加重合。側鎖に<strong>ベンゼン環</strong> をもち、透明で硬い一方、衝撃にはややもろい樹脂です。発泡させたものが<strong>発泡スチロール</strong>です</li>
+      <li><strong>PET（ポリエチレンテレフタラート）</strong>：テレフタル酸とエチレングリコールの縮合重合。主鎖にベンゼン環とエステル結合をもち、透明で強度が高く、気体を通しにくいため、ペットボトルとポリエステル繊維に使われます。密度はおよそ1.4 g/cm<sup>3</sup> で水に沈みます</li>
+    </ul>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 230" width="520" height="230" role="img" aria-label="ポリエチレン・ポリプロピレン・ポリ塩化ビニル・ポリスチレンの繰り返し単位" style="max-width:100%;height:auto;">
+        <text x="130" y="24" text-anchor="middle" font-size="13" fill="currentColor">ポリエチレン（PE）</text>
+        <text x="130" y="62" text-anchor="middle" font-size="17" fill="currentColor">−[CH₂−CH₂]ₙ−</text>
+        <text x="130" y="88" text-anchor="middle" font-size="12" fill="currentColor">側鎖なし・最も単純な構造</text>
+        <text x="390" y="24" text-anchor="middle" font-size="13" fill="currentColor">ポリプロピレン（PP）</text>
+        <text x="390" y="62" text-anchor="middle" font-size="17" fill="currentColor">−[CH₂−CH(CH₃)]ₙ−</text>
+        <text x="390" y="88" text-anchor="middle" font-size="12" fill="currentColor">側鎖に CH₃ をもつ</text>
+        <text x="130" y="128" text-anchor="middle" font-size="13" fill="currentColor">ポリ塩化ビニル（PVC）</text>
+        <text x="130" y="166" text-anchor="middle" font-size="17" fill="currentColor">−[CH₂−CHCl]ₙ−</text>
+        <text x="130" y="192" text-anchor="middle" font-size="12" fill="currentColor">塩素 Cl を含むのが目印</text>
+        <text x="390" y="128" text-anchor="middle" font-size="13" fill="currentColor">ポリスチレン（PS）</text>
+        <text x="390" y="166" text-anchor="middle" font-size="17" fill="currentColor">−[CH₂−CH(C₆H₅)]ₙ−</text>
+        <text x="390" y="192" text-anchor="middle" font-size="12" fill="currentColor">側鎖にベンゼン環 C₆H₅ をもつ</text>
+        <text x="260" y="220" text-anchor="middle" font-size="12" fill="currentColor">いずれも二重結合が開いてつながる付加重合でできる線状高分子</text>
+      </svg>
+      <p>代表的な熱可塑性樹脂の繰り返し単位。主鎖はすべて −CH<sub>2</sub>−CH− の並びで、違いは側鎖（−CH<sub>3</sub>、−Cl、−C<sub>6</sub>H<sub>5</sub>）に現れます。</p>
+    </div>
+    <h3>代表的な熱硬化性樹脂</h3>
+    <ul>
+      <li><strong>フェノール樹脂</strong>：フェノールとホルムアルデヒドの縮合で得られ、最初に実用化された合成樹脂（商品名ベークライト）です。硬く、熱に強く、電気絶縁性に優れるため、電気部品や鍋・フライパンの取っ手に使われます</li>
+      <li><strong>尿素樹脂（ユリア樹脂）</strong>：尿素とホルムアルデヒドの縮合で得られます。接着力が強く、合板などの木材用接着剤に広く使われます</li>
+      <li><strong>メラミン樹脂</strong>：メラミンとホルムアルデヒドの縮合で得られます。表面が硬く傷つきにくく、耐水性・耐熱性にも優れるため、食器や化粧板（メラミン化粧板）に使われます</li>
+    </ul>
+    <p>熱硬化性樹脂はいずれも、原料の小さな分子が三次元に縮合して架橋し、網目状の巨大分子になる点が共通しています。そのため、加熱しても軟化せず、溶剤にも溶けにくい性質をもちます。</p>
+    <h3>縮合重合でできる高分子の繰り返し単位</h3>
+    <p>PETとナイロン66は、付加重合ではなく<strong>縮合重合</strong>でできる熱可塑性樹脂・繊維です。主鎖の中にエステル結合やアミド結合が規則正しく並ぶのが特徴で、この結合部分が判別の目印になります。アクリル繊維の主成分であるポリアクリロニトリルもあわせて示します。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 560 210" width="560" height="210" role="img" aria-label="PET・ナイロン66・ポリアクリロニトリルの繰り返し単位" style="max-width:100%;height:auto;">
+        <text x="280" y="24" text-anchor="middle" font-size="13" fill="currentColor">PET（ポリエチレンテレフタラート）</text>
+        <text x="280" y="58" text-anchor="middle" font-size="15" fill="currentColor">−[CO−C₆H₄−CO−O−CH₂CH₂−O]ₙ−</text>
+        <text x="280" y="82" text-anchor="middle" font-size="12" fill="currentColor">ベンゼン環（C₆H₄）とエステル結合 −CO−O− をもつ</text>
+        <text x="280" y="112" text-anchor="middle" font-size="13" fill="currentColor">ナイロン66</text>
+        <text x="280" y="146" text-anchor="middle" font-size="15" fill="currentColor">−[NH−(CH₂)₆−NH−CO−(CH₂)₄−CO]ₙ−</text>
+        <text x="280" y="170" text-anchor="middle" font-size="12" fill="currentColor">アミド結合 −NH−CO− をもつ（数字は炭素数の並びに由来）</text>
+        <text x="280" y="196" text-anchor="middle" font-size="12" fill="currentColor">ポリアクリロニトリル：−[CH₂−CH(CN)]ₙ−（アクリル繊維の主成分、付加重合）</text>
+      </svg>
+      <p>PET・ナイロン66・ポリアクリロニトリルの繰り返し単位。PETとナイロン66は2種類の原料が交互につながる縮合重合の産物です。</p>
+    </div>
+    <h3>発泡スチロールと、プラスチックの識別の入口</h3>
+    <p><strong>発泡スチロール</strong>は、ポリスチレンの中に無数の小さな空気の泡を含ませたものです。体積の大部分が空気のため非常に軽く、空気が熱を伝えにくいことから断熱性に優れ、衝撃を吸収する緩衝性もあります。魚箱・梱包材・断熱材に使われるのはこのためです。</p>
+    <p>プラスチックの識別では、まず<strong>密度</strong>が手がかりになります。水（密度1.00 g/cm<sup>3</sup>）に入れて浮けばポリエチレンかポリプロピレン、沈めばポリ塩化ビニル・PET・ポリスチレン（およそ1.05 g/cm<sup>3</sup> でわずかに沈む）の候補になります。さらに、燃え方（溶けながら燃えるか、燃えにくいか）や炎の様子を組み合わせて判別する方法が、学校の実験などでも扱われます。ただし、ポリ塩化ビニルなどは燃やすと有害な気体が出ることがあるため、燃焼による識別は指導のもとでのみ行うものです。</p>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>まず「繊維か樹脂か」「熱可塑性か熱硬化性か」を分ける。</strong>加熱で軟化するかどうかは、線状構造か架橋構造かで決まります。</li>
+      <li><strong>繰り返し単位の目印を探す。</strong>Cl があればポリ塩化ビニル、側鎖のベンゼン環があればポリスチレン、主鎖のエステル結合があれば PET、アミド結合があればナイロン、−CN があればアクリル繊維（ポリアクリロニトリル）です。</li>
+      <li><strong>重合の種類と結びつける。</strong>二重結合が開く付加重合（PE・PP・PVC・PS・ポリアクリロニトリル）と、水などが取れてつながる縮合重合（PET・ナイロン66・熱硬化性樹脂）を区別します。</li>
+      <li><strong>性質は構造から説明する。</strong>密度の大小（浮く・沈む）、燃えにくさ（塩素を含む）、断熱性（泡に含まれる空気）など、性質には必ず構造上の理由を添えます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1（熱可塑性・熱硬化性の分類）：次の樹脂を熱可塑性樹脂と熱硬化性樹脂に分類せよ。ポリエチレン、フェノール樹脂、ポリ塩化ビニル、メラミン樹脂、PET、尿素樹脂</p>
+      <p class="ex-q">問題2（合成繊維と用途）：次の用途に最も適する合成繊維を、ナイロン・ポリエステル・アクリル・ビニロンから選べ。（a）しわになりにくく乾きやすい衣料（b）羊毛に似た風合いのセーター（c）摩擦に強く、ロープや歯ブラシの毛に使われるもの（d）丈夫で漁網や作業服に使われる、日本で開発されたもの</p>
+      <p class="ex-q">問題3（繰り返し単位からの判別）：次の繰り返し単位をもつ高分子の名称を答えよ。（a）−(CH<sub>2</sub>−CHCl)<sub>n</sub>−（b）−(CH<sub>2</sub>−CH(C<sub>6</sub>H<sub>5</sub>))<sub>n</sub>−（c）主鎖にエステル結合とベンゼン環をもち、ペットボトルの材料になるもの（d）主鎖にアミド結合をもつ繊維</p>
+      <p class="ex-q">問題4（密度による識別）：プラスチック片Aは密度0.91 g/cm<sup>3</sup> で水に浮き、プラスチック片Bは密度1.4 g/cm<sup>3</sup> で水に沈み、燃えにくかった。AとBの樹脂の候補をそれぞれ答えよ（水の密度は1.00 g/cm<sup>3</sup> とする）。</p>
+      <p class="ex-q">問題5（発泡スチロール）：発泡スチロールが断熱材や魚箱に適している理由を、構造に触れて説明せよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <ol class="steps">
+          <li>問題1：<strong>熱可塑性樹脂</strong>はポリエチレン・ポリ塩化ビニル・PET（線状高分子で、加熱すると軟化する）。<strong>熱硬化性樹脂</strong>はフェノール樹脂・メラミン樹脂・尿素樹脂（架橋した網目状構造で、加熱しても軟化しない）。</li>
+          <li>問題2：（a）<strong>ポリエステル</strong>。PETを繊維にしたもので、衣料の主力です。（b）<strong>アクリル</strong>。ポリアクリロニトリルを主成分とし、羊毛に似て軽く暖かい繊維です。（c）<strong>ナイロン</strong>。アミド結合をもつポリアミドで、丈夫さと耐摩擦性が特徴です。（d）<strong>ビニロン</strong>。ポリビニルアルコールを原料とする繊維です。</li>
+          <li>問題3：（a）塩素を含むので<strong>ポリ塩化ビニル</strong>。（b）側鎖にベンゼン環をもつので<strong>ポリスチレン</strong>。（c）<strong>PET（ポリエチレンテレフタラート）</strong>。テレフタル酸とエチレングリコールの縮合重合でできます。（d）<strong>ナイロン</strong>（ポリアミド）。いずれも繰り返し単位は本文の図に示してあります。</li>
+          <li>問題4：Aは密度が水より小さく、候補はポリエチレン（およそ0.92〜0.96 g/cm<sup>3</sup>）か<strong>ポリプロピレン</strong>（およそ0.90 g/cm<sup>3</sup>）で、0.91 g/cm<sup>3</sup> という値はポリプロピレンによく一致します。Bは密度およそ1.4 g/cm<sup>3</sup> で燃えにくいことから、塩素を含む<strong>ポリ塩化ビニル</strong>が候補です（PETもおよそ1.4 g/cm<sup>3</sup> で沈みますが、燃えにくさが塩素を含む PVC の特徴です）。</li>
+          <li>問題5：発泡スチロールはポリスチレンの中に無数の小さな泡を含み、体積の大部分が<strong>空気</strong>です。空気は熱を伝えにくいため断熱性が高く、軽く、衝撃も吸収します。そのため温度を保ちたい魚箱や、壊れ物を守る梱包材・断熱材に適しています。</li>
+        </ol>
+        <p><strong>答え：問題1は熱可塑性＝ポリエチレン・ポリ塩化ビニル・PET、熱硬化性＝フェノール樹脂・メラミン樹脂・尿素樹脂。問題2は（a）ポリエステル、（b）アクリル、（c）ナイロン、（d）ビニロン。問題3は（a）ポリ塩化ビニル、（b）ポリスチレン、（c）PET、（d）ナイロン。問題4はAがポリプロピレン（ポリエチレンも候補）、Bがポリ塩化ビニル。問題5は泡の中の空気による断熱性と軽さ・緩衝性。</strong></p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>衣料と機能性繊維</h3>
+    <p>現在の衣料の多くは合成繊維です。ポリエステルは速乾性のあるスポーツウェアや制服、ナイロンはストッキングやアウトドア用品、アクリルはセーターや毛布に使われます。天然繊維と混ぜて紡ぐ（混紡）ことで、綿の吸水性とポリエステルの乾きやすさのように、互いの長所を組み合わせる使い方も一般的です。</p>
+    <h3>容器包装とリサイクルの識別表示</h3>
+    <p>プラスチック製品や容器包装には、材料の樹脂の種類を示す識別表示（ペットボトルなら PET など）が付けられています。これは、リサイクルの現場で樹脂ごとに分別するための目印です。熱可塑性樹脂は溶かして再成形できるため材料リサイクルの対象になりやすく、ペットボトルから再びボトルや繊維を作る取り組みが進められています。一方、架橋した熱硬化性樹脂は溶かして成形し直せないため、リサイクルの扱いが異なります。この項目の「線状か網目状か」という区別は、そのままリサイクルの可否につながっています。</p>
+    <h3>電気部品・建材・物流</h3>
+    <p>フェノール樹脂は電気絶縁性と耐熱性から、コンセントやスイッチなどの電気部品に長く使われてきました。メラミン樹脂の化粧板はキッチンや家具の表面材、ポリ塩化ビニルの管は上下水道の配管に使われます。発泡スチロールは鮮魚の輸送箱や家電の梱包材として物流を支えています。身の回りの「硬い・軽い・腐らない」材料の多くが、この項目の分類表のどこかに位置づけられます。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>ウォーレス・カロザース</strong>（1896〜1937、アメリカの化学者）、<strong>レオ・ベークランド</strong>（1863〜1944、ベルギー出身・アメリカの化学者）、<strong>ヘルマン・シュタウディンガー</strong>（1881〜1965、ドイツの化学者）</p>
+    <p><strong>レオ・ベークランド</strong>は1907年、フェノールとホルムアルデヒドからフェノール樹脂を作り、ベークライトの名で実用化しました。これは天然の材料に頼らない、最初の本格的な合成樹脂（熱硬化性樹脂）です。<strong>ウォーレス・カロザース</strong>はアメリカのデュポン社で高分子の研究を率い、1935年にナイロン66の合成に成功しました。ナイロンは世界初の合成繊維として、絹の代わりから工業材料まで広く使われるようになりました。そして、これらの発明の土台には、<strong>ヘルマン・シュタウディンガー</strong>が1920年代に提唱した「高分子説」――プラスチックや繊維は、共有結合で長くつながった巨大な分子からなるという考え方――があります。当初は異説も多かったこの説が実証されたことで、高分子を設計して作る化学が大きく前進し、シュタウディンガーは1953年にノーベル化学賞を受賞しました。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>高分子そのものの考え方は<a href="polymers-basics.html">高分子化合物と重合の基礎</a>、二重結合が開いてつながる重合は<a href="addition-polymerization.html">付加重合</a>、水などが取れてつながる重合は<a href="condensation-polymerization.html">縮合重合</a>で詳しく扱います。ゴムの話は<a href="rubber-vulcanization.html">天然ゴムと合成ゴム・加硫</a>、原料の出発点は<a href="petroleum-petrochemicals.html">石油と石油化学</a>、使い終わったあとの話は<a href="recycling-material-cycles.html">リサイクルと物質の循環</a>へ進んでください。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>

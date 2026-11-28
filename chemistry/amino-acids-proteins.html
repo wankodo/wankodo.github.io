@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<script>try{var _t=localStorage.getItem("ido_theme_v1");if(_t==="andy"||_t==="kuma")document.documentElement.dataset.theme=_t;}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アミノ酸とタンパク質｜化学ツール集</title>
+<link rel="icon" type="image/svg+xml" href="favicon-chemistry.svg">
+<meta name="description" content="アミノ酸とタンパク質を、公式・手順・例題で解説。α-アミノ酸の一般構造と側鎖、双性イオンと等電点、ペプチド結合とタンパク質の一次〜四次構造、変性、ビウレット反応などの検出反応、食品・医療など現場での使われ方まで紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="化学ツール集">
+<meta property="og:title" content="アミノ酸とタンパク質｜化学ツール集">
+<meta property="og:description" content="α-アミノ酸の構造、双性イオンと等電点、ペプチド結合、タンパク質の構造と変性、検出反応を構造式の図と例題で解説。">
+<meta property="og:url" content="https://wankodo.github.io/chemistry/amino-acids-proteins.html">
+<meta property="og:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://wankodo.github.io/chemistry/ogp-chemistry.png">
+<style>
+:root{
+  --navy:#12283f; --navy2:#0b1a2c; --amber:#f2a007; --amber-d:#c77f02;
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1d2733; --mut:#68707c;
+  --line:#ddd6c8; --red:#b03a2e; --green:#1e7d46; --soft:#fdf6e0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}
+header{background:linear-gradient(135deg,var(--navy2),var(--navy));color:#fff;padding:22px 16px 18px;border-bottom:4px solid var(--amber)}
+header .wrap{max-width:980px;margin:0 auto}
+header h1{margin:0;font-size:24px;letter-spacing:.04em}
+header h1 .accent{color:var(--amber)}
+header p{margin:6px 0 0;font-size:13px;color:#cfd9e4}
+.wrap{max-width:980px;margin:0 auto;padding:0 12px}
+.note{font-size:12.5px;color:var(--mut)}
+.sitebar{background:var(--navy2);border-bottom:2px solid var(--amber)}
+.sitebar .sb-in{max-width:980px;margin:0 auto;padding:7px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sitebar a{color:#fff;text-decoration:none;font-size:13px}
+.sitebar a:hover{color:var(--amber)}
+.sitebar .sb-name{font-weight:700;letter-spacing:.03em;color:#fff;font-size:13px}
+.sitenav{background:var(--card);border-bottom:1px solid var(--line)}
+.sitenav .sn-in{max-width:980px;margin:0 auto;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.sitenav a{font-size:13px;text-decoration:none;color:var(--navy)}
+.sitenav a:hover{text-decoration:underline;color:var(--amber-d)}
+.sitenav a.cur{font-weight:700;color:var(--amber-d)}
+.crumb{font-size:12.5px;color:var(--mut);margin:14px 0 2px}
+.crumb a{color:var(--navy);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0;box-shadow:0 1px 3px rgba(18,40,63,.06)}
+.card h2{margin:0 0 10px;font-size:19px;color:var(--navy);border-left:5px solid var(--amber);padding-left:10px}
+.card h3{margin:16px 0 6px;font-size:16px;color:var(--navy)}
+.card p{margin:8px 0}
+.who{margin:10px 0;padding:9px 12px;background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:8px}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;line-height:1.7}
+.badge-lv{background:var(--navy);color:#fff}
+.badge-genre{background:var(--amber);color:#231a00}
+.badge-calc{background:var(--green);color:#fff}
+.summary-box{background:var(--soft);border:1px solid var(--amber);border-radius:10px;padding:14px 16px;font-size:15px;margin:12px 0}
+.summary-box .sb-lab{font-weight:700;color:var(--amber-d);font-size:12.5px;display:block;margin-bottom:4px}
+.formula{font-size:21px;text-align:center;padding:16px 10px;background:#fbfcfd;border:1px solid var(--line);border-radius:10px;margin:12px 0;letter-spacing:.03em}
+ol.steps{margin:8px 0;padding-left:22px}
+ol.steps li{margin-bottom:7px}
+.example{background:#fbfcfd;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.example .ex-q{font-weight:700}
+.example details.ans-fold{margin-top:12px}
+.example details.ans-fold>summary{cursor:pointer;font-weight:700;color:var(--amber-d);background:var(--soft);border:1px solid var(--amber);border-radius:8px;padding:10px 14px;min-height:44px}
+.example details.ans-fold[open]>summary{margin-bottom:10px}
+.tri-fig{text-align:center;margin:10px 0;color:var(--navy)}
+.linkcard{display:block;background:var(--navy);color:#fff;border-radius:10px;padding:16px;text-decoration:none;margin:14px 0}
+.linkcard:hover{background:var(--navy2)}
+.linkcard .lc-t{font-weight:700;font-size:16px}
+.linkcard .lc-d{font-size:13px;color:#cfd9e4;margin-top:4px}
+footer{margin:26px 0 0;background:var(--navy2);color:#cfd9e4}
+footer .wrap{max-width:980px;margin:0 auto;padding:18px 12px}
+footer .note{color:#9fb0c1}
+footer .credit{margin:8px 0 0;font-size:13px;color:#fff}
+</style>
+<style id="hud-theme-style">
+/* ===== DEF/HUD テーマ切替（共通） ===== */
+.ido-theme-switch{position:relative;z-index:1;display:flex;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07);flex:none}
+.ido-theme-switch button{border:0;border-radius:999px;padding:6px 13px;background:transparent;box-shadow:none;color:#cfe2f3;font:inherit;font-size:12.5px;font-weight:800;line-height:1.25;cursor:pointer}
+.ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#ffc44d,var(--amber));color:#14273c}
+html[data-theme="andy"] .ido-theme-switch button[aria-pressed="true"]{background:linear-gradient(180deg,#8ff2ff,#46d9ec);color:#03222e;box-shadow:0 0 16px rgba(70,217,236,.55)}
+:root[data-theme="andy"]{color-scheme:dark;--navy:#1d4568;--navy2:#02070d;--amber:#46d9ec;--amber-d:#8ff2ff;--bg:#04090f;--card:#081623;--ink:#d8f1f6;--mut:#a9c9d9;--line:rgba(110,205,230,.32);--red:#ff6b61;--green:#3ddc97;--soft:rgba(70,217,236,.10);--good:#3ddc97;--bad:#ff6b61;--sat:#7cc7ff;--sun:#ff6b61}
+html[data-theme="andy"]{background:#04090f}
+html[data-theme="andy"] body{background:radial-gradient(900px 480px at 85% -120px,rgba(70,217,236,.13),rgba(70,217,236,0) 60%),repeating-linear-gradient(0deg,rgba(140,230,255,.022) 0 1px,transparent 1px 4px),linear-gradient(rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(110,205,230,.045) 1px,transparent 1px),linear-gradient(180deg,#030a12,#04090f);background-size:auto,auto,52px 52px,52px 52px,auto}
+html[data-theme="andy"] a{color:#ffcf4d}
+html[data-theme="andy"] .sitebar a{color:#fff}
+html[data-theme="andy"] :is(.card h2,.card h3,.tool-card h3,.tool-card h3 a,.result .ans){color:#d8f1f6}
+html[data-theme="andy"] :is(.suggest,.chip,.plan,.rank li,.dir-cell,.hexbox.sub,.result .action,.checks label,.badges span,.rank-num,.prod .cond,.prod .nodatabox,.chips button,.tabs button,.cal-nav button,.btn-ghost,.btn.ghost,.presets button,.lp-line .lp,button.dbtn,.plan.dim){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),html[data-theme="andy"] select,html[data-theme="andy"] textarea{background-color:#0a1a29;color:#d8f1f6;border-color:rgba(110,205,230,.42)}
+html[data-theme="andy"] :is(.badge,.best-b,.birthday-banner,.rank-num.top,.chip.active,button.draw,.mini.kyo,.mini.kichi){color:#03222e}
+html[data-theme="andy"] :is(.badge.badge-ins,.badge.badge-uranai,.badge.badge-mob,.badge.na,.badge.agency){color:#fff}
+</style>
+<style>
+/* 化学コーナー固有のHUD調整 */
+html[data-theme="andy"] .sitenav{background:#0a1e30}
+html[data-theme="andy"] :is(.formula,.example){background:#0a1e30;color:#d8f1f6;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .who{background:#0a1e30;border-color:rgba(110,205,230,.32)}
+html[data-theme="andy"] .badge-lv{color:#fff}
+html[data-theme="andy"] .badge-calc{color:#fff}
+html[data-theme="andy"] .tri-fig{color:#d8f1f6}
+html[data-theme="andy"] .linkcard{background:#0d2a42}
+html[data-theme="andy"] .err{background:rgba(255,82,82,.13);color:#ff9d94}
+</style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QQ4435VBMK"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QQ4435VBMK');
+</script>
+<style>
+/* プライバシーポリシー（共通・移動サイトと同一文面/同一流儀） */
+.pp-footer{text-align:center;margin:1rem 0 0;}
+.pp-link{background:none;border:0;padding:10px 14px;min-height:44px;color:inherit;opacity:.75;font-size:13px;text-decoration:underline;cursor:pointer;}
+.pp-overlay{position:fixed;inset:0;z-index:10001;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,18,30,.55);}
+.pp-overlay.open{display:flex;}
+.pp-dialog{width:100%;max-width:640px;max-height:min(86dvh,760px);display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #d7dee6;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.25);color:#1c2b3a;text-align:left;}
+.pp-scroll{overflow-y:auto;padding:22px 22px 8px;-webkit-overflow-scrolling:touch;}
+.pp-actions{border-top:1px solid #d7dee6;padding:12px 22px 14px;}
+.pp-btn-row{display:flex;gap:10px;}
+.pp-close-btn{flex:1;min-height:48px;border:0;border-radius:9px;cursor:pointer;background:#16324f;color:#fff;font-size:15px;font-weight:700;}
+.privacy-policy h2{font-size:16px;margin:0 0 6px;}
+.privacy-policy p{font-size:13px;color:#42566b;line-height:1.8;}
+</style>
+</head>
+<body>
+<div class="sitebar"><div class="sb-in"><span class="sb-name">化学ツール集</span><span style="display:flex;align-items:center;gap:12px;"><a href="https://wankodo.github.io/">よろず道具箱</a><div class="ido-theme-switch" role="group" aria-label="表示モード切替"><button type="button" data-ido-theme="kuma" aria-pressed="true">DEF</button><button type="button" data-ido-theme="andy" aria-pressed="false">HUD</button></div></span></div></div>
+<nav class="sitenav"><div class="sn-in">
+<a href="https://wankodo.github.io/">よろず道具箱</a>
+<a href="https://wankodo.github.io/mobility-simulator/">移動シミュレーター</a>
+<a href="https://wankodo.github.io/money-tools/">お金計算ツール集</a>
+<a href="https://wankodo.github.io/insurance/">保険ツール集</a>
+<a href="https://wankodo.github.io/uranai/">占いツール集</a>
+<a href="https://wankodo.github.io/history/">歴史人物名鑑</a>
+<a href="https://wankodo.github.io/math/">数学ツール集</a>
+<a href="https://wankodo.github.io/physics/">物理ツール集</a>
+<a href="./" class="cur">化学ツール集</a>
+</div></nav>
+<header>
+  <div class="wrap">
+    <h1><span class="accent">アミノ酸</span>とタンパク質</h1>
+    <p>化学の考え方辞典 ― 高分子（高校化学・3年）</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="crumb"><a href="./">化学ツール集トップ</a> ＞ 高分子 ＞ アミノ酸とタンパク質</p>
+  <p><span class="badge badge-lv">高校化学・3年</span> <span class="badge badge-genre">高分子</span></p>
+
+  <div class="summary-box">
+    <span class="sb-lab">どんな時に使えるか</span>
+    アミノ酸はアミノ基とカルボキシ基をあわせもつ化合物で、水溶液中では双性イオンとして存在し、pHによって陽イオン・双性イオン・陰イオンの割合が変わる。アミノ酸どうしがペプチド結合でつながるとポリペプチドになり、折りたたまれて特有の立体構造をもつタンパク質になる。加熱やpHの変化で立体構造が崩れる変性が起こり、ビウレット反応などの検出反応でタンパク質の存在を確認できる。
+  </div>
+
+  <section class="card">
+    <h2>どんな問題に使うか</h2>
+    <p>タンパク質を、その部品であるアミノ酸の構造から理解するときの考え方です。次のような場面で使います。</p>
+    <ul>
+      <li>アミノ酸の構造式を見て、アミノ基・カルボキシ基・側鎖を読み取る問題</li>
+      <li>pHを変えたときにアミノ酸が陽イオン・双性イオン・陰イオンのどれになるか、等電点とは何かを説明する問題</li>
+      <li>2つのアミノ酸からできるジペプチドの構造と、ペプチド結合の数を答える問題</li>
+      <li>タンパク質の一次〜四次構造の違いと、変性で何が変わり何が変わらないかを説明する問題</li>
+      <li>ビウレット反応・キサントプロテイン反応・ニンヒドリン反応の使い分けを答える問題</li>
+    </ul>
+    <p>合言葉は<strong>「部品（アミノ酸）→つながり方（ペプチド結合）→折りたたみ（立体構造）→働き」</strong>です。この順にたどれば、タンパク質の性質の多くが見通せます。</p>
+  </section>
+
+  <section class="card">
+    <h2>公式・考え方</h2>
+    <h3>α-アミノ酸の一般構造 ― アミノ基とカルボキシ基と側鎖 R</h3>
+    <p>天然のタンパク質を加水分解すると得られるアミノ酸の多くは、同じ炭素（α炭素）に<strong>アミノ基 −NH<sub>2</sub></strong>と<strong>カルボキシ基 −COOH</strong>が付いた<strong>α-アミノ酸</strong>です。α炭素にはこのほかに水素 H と<strong>側鎖</strong>と呼ばれる基 R が付いていて、<strong>アミノ酸の種類は側鎖 R の違いで決まります</strong>。タンパク質を構成するアミノ酸は主に20種類です（グリシン以外は不斉炭素原子をもち、光学異性体については「光学異性体」で扱います）。</p>
+    <div class="formula">α-アミノ酸の一般式：H<sub>2</sub>N−CH(R)−COOH（R は側鎖。R＝H ならグリシン、R＝CH<sub>3</sub> ならアラニン）</div>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 300" width="520" height="300" role="img" aria-label="アミノ酸の一般式、グリシン、アラニン、グルタミン酸の構造式" style="max-width:100%;height:auto;">
+        <text x="130" y="24" text-anchor="middle" font-size="13" fill="currentColor">α-アミノ酸の一般式</text>
+        <text x="130" y="86" text-anchor="middle" font-size="16" fill="currentColor">C</text>
+        <line x1="118" y1="76" x2="92" y2="56" stroke="currentColor" stroke-width="2"/>
+        <line x1="142" y1="76" x2="168" y2="56" stroke="currentColor" stroke-width="2"/>
+        <line x1="118" y1="96" x2="92" y2="116" stroke="currentColor" stroke-width="2"/>
+        <line x1="142" y1="96" x2="168" y2="116" stroke="currentColor" stroke-width="2"/>
+        <text x="72" y="52" text-anchor="middle" font-size="14" fill="currentColor">H₂N</text>
+        <text x="196" y="52" text-anchor="middle" font-size="14" fill="currentColor">COOH</text>
+        <text x="76" y="134" text-anchor="middle" font-size="14" fill="currentColor">H</text>
+        <text x="182" y="134" text-anchor="middle" font-size="14" fill="currentColor">R（側鎖）</text>
+        <text x="130" y="158" text-anchor="middle" font-size="12" fill="currentColor">中央が α炭素。−NH₂ と −COOH が同じ炭素に付く</text>
+        <text x="380" y="24" text-anchor="middle" font-size="13" fill="currentColor">グリシン（R＝H）</text>
+        <text x="322" y="66" text-anchor="middle" font-size="14" fill="currentColor">H₂N</text>
+        <line x1="348" y1="60" x2="372" y2="60" stroke="currentColor" stroke-width="2"/>
+        <text x="384" y="66" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="396" y1="60" x2="420" y2="60" stroke="currentColor" stroke-width="2"/>
+        <text x="452" y="66" text-anchor="middle" font-size="14" fill="currentColor">COOH</text>
+        <text x="384" y="92" text-anchor="middle" font-size="12" fill="currentColor">H が2つ付く最も小さいアミノ酸</text>
+        <text x="130" y="196" text-anchor="middle" font-size="13" fill="currentColor">アラニン（R＝CH₃）</text>
+        <text x="52" y="238" text-anchor="middle" font-size="14" fill="currentColor">H₂N</text>
+        <line x1="78" y1="232" x2="102" y2="232" stroke="currentColor" stroke-width="2"/>
+        <text x="114" y="238" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="126" y1="232" x2="150" y2="232" stroke="currentColor" stroke-width="2"/>
+        <text x="182" y="238" text-anchor="middle" font-size="14" fill="currentColor">COOH</text>
+        <line x1="114" y1="246" x2="114" y2="268" stroke="currentColor" stroke-width="2"/>
+        <text x="114" y="288" text-anchor="middle" font-size="14" fill="currentColor">CH₃</text>
+        <text x="380" y="196" text-anchor="middle" font-size="13" fill="currentColor">グルタミン酸（側鎖にも −COOH）</text>
+        <text x="272" y="238" text-anchor="middle" font-size="14" fill="currentColor">H₂N</text>
+        <line x1="298" y1="232" x2="318" y2="232" stroke="currentColor" stroke-width="2"/>
+        <text x="330" y="238" text-anchor="middle" font-size="15" fill="currentColor">C</text>
+        <line x1="342" y1="232" x2="366" y2="232" stroke="currentColor" stroke-width="2"/>
+        <text x="398" y="238" text-anchor="middle" font-size="14" fill="currentColor">COOH</text>
+        <line x1="330" y1="246" x2="330" y2="264" stroke="currentColor" stroke-width="2"/>
+        <text x="392" y="282" text-anchor="middle" font-size="13" fill="currentColor">CH₂−CH₂−COOH</text>
+        <text x="380" y="158" text-anchor="middle" font-size="12" fill="currentColor">側鎖にカルボキシ基をもつ酸性アミノ酸</text>
+      </svg>
+      <p>アミノ酸の一般式と、グリシン、アラニン、グルタミン酸の構造。違いは側鎖 R だけです。グルタミン酸は側鎖にもカルボキシ基をもつ酸性アミノ酸で、そのナトリウム塩はうま味調味料として知られます。</p>
+    </div>
+    <h3>双性イオンと等電点 ― pHで姿が変わる</h3>
+    <p>アミノ酸の結晶や中性付近の水溶液では、カルボキシ基が H<sup>+</sup> を放し、アミノ基がそれを受け取った形、つまり −COO<sup>−</sup> と −NH<sub>3</sub><sup>+</sup> を1分子の中にあわせもつ<strong>双性イオン</strong>として存在します。正と負の電荷を両方もつため、全体の電荷は0です。ここに酸や塩基を加えると姿が変わります。</p>
+    <ul>
+      <li><strong>酸性側（H<sup>+</sup> が多い）</strong>：−COO<sup>−</sup> が H<sup>+</sup> を受け取り −COOH に戻り、分子全体は<strong>陽イオン</strong>（−NH<sub>3</sub><sup>+</sup> の正電荷が残る）になる</li>
+      <li><strong>塩基性側（OH<sup>−</sup> が多い）</strong>：−NH<sub>3</sub><sup>+</sup> が H<sup>+</sup> を放して −NH<sub>2</sub> になり、分子全体は<strong>陰イオン</strong>（−COO<sup>−</sup> の負電荷が残る）になる</li>
+    </ul>
+    <div class="formula">陽イオン ⇌ 双性イオン ⇌ 陰イオン（左へ寄るのが酸性側、右へ寄るのが塩基性側）</div>
+    <p>双性イオンの割合が最も大きく、分子全体の平均の電荷が0になる pH を<strong>等電点</strong>といいます。等電点ではアミノ酸は電場をかけても移動せず、溶解度が小さくなる傾向があります。等電点は側鎖によって異なり、中性アミノ酸では pH 6 前後、グルタミン酸のような酸性アミノ酸では酸性側、塩基性アミノ酸では塩基性側にあります。</p>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 170" width="520" height="170" role="img" aria-label="pHによるアミノ酸の陽イオン、双性イオン、陰イオンの変化" style="max-width:100%;height:auto;">
+        <text x="85" y="24" text-anchor="middle" font-size="13" fill="currentColor">酸性側：陽イオン</text>
+        <text x="85" y="66" text-anchor="middle" font-size="14" fill="currentColor">⁺H₃N−CH(R)−COOH</text>
+        <text x="85" y="92" text-anchor="middle" font-size="12" fill="currentColor">全体の電荷 ＋1</text>
+        <text x="175" y="66" text-anchor="middle" font-size="16" fill="currentColor">⇌</text>
+        <text x="260" y="24" text-anchor="middle" font-size="13" fill="currentColor">等電点付近：双性イオン</text>
+        <text x="260" y="66" text-anchor="middle" font-size="14" fill="currentColor">⁺H₃N−CH(R)−COO⁻</text>
+        <text x="260" y="92" text-anchor="middle" font-size="12" fill="currentColor">＋と−を両方もち全体は 0</text>
+        <text x="345" y="66" text-anchor="middle" font-size="16" fill="currentColor">⇌</text>
+        <text x="435" y="24" text-anchor="middle" font-size="13" fill="currentColor">塩基性側：陰イオン</text>
+        <text x="435" y="66" text-anchor="middle" font-size="14" fill="currentColor">H₂N−CH(R)−COO⁻</text>
+        <text x="435" y="92" text-anchor="middle" font-size="12" fill="currentColor">全体の電荷 −1</text>
+        <text x="260" y="130" text-anchor="middle" font-size="12" fill="currentColor">H⁺ を加えると左へ、OH⁻ を加えると右へ平衡が移動する</text>
+        <text x="260" y="150" text-anchor="middle" font-size="12" fill="currentColor">等電点では電場をかけてもアミノ酸は移動しない</text>
+      </svg>
+      <p>pHによるアミノ酸の姿の変化。中性付近の双性イオンを中心に、酸性側では陽イオン、塩基性側では陰イオンになります。</p>
+    </div>
+    <h3>ペプチド結合 ― 脱水縮合でつながる</h3>
+    <p>1つのアミノ酸のカルボキシ基 −COOH と、別のアミノ酸のアミノ基 −NH<sub>2</sub> の間で、水 H<sub>2</sub>O が取れて（<strong>脱水縮合</strong>）できる −CO−NH− の結合を<strong>ペプチド結合</strong>といいます。アミノ酸2つがつながったものを<strong>ジペプチド</strong>、3つをトリペプチド、多数がつながったものを<strong>ポリペプチド</strong>といい、ポリペプチドのうち分子量が大きく特有の働きをもつものがタンパク質です。つなぐ順序が違えば別のペプチドになる点が重要で、グリシンとアラニンからはグリシルアラニンとアラニルグリシンの2種類のジペプチドができます。</p>
+    <div class="formula">アミノ酸 ＋ アミノ酸 → ジペプチド ＋ H<sub>2</sub>O（ペプチド結合1つにつき水1分子が取れる）</div>
+    <div class="tri-fig">
+      <svg viewBox="0 0 520 210" width="520" height="210" role="img" aria-label="グリシンとアラニンからペプチド結合でグリシルアラニンができる反応" style="max-width:100%;height:auto;">
+        <text x="110" y="24" text-anchor="middle" font-size="13" fill="currentColor">グリシン</text>
+        <text x="110" y="62" text-anchor="middle" font-size="14" fill="currentColor">H₂N−CH₂−COOH</text>
+        <text x="196" y="62" text-anchor="middle" font-size="16" fill="currentColor">＋</text>
+        <text x="310" y="24" text-anchor="middle" font-size="13" fill="currentColor">アラニン</text>
+        <text x="310" y="62" text-anchor="middle" font-size="14" fill="currentColor">H₂N−CH(CH₃)−COOH</text>
+        <text x="310" y="86" text-anchor="middle" font-size="12" fill="currentColor">−COOH の OH と −NH₂ の H が取れて H₂O に</text>
+        <text x="260" y="122" text-anchor="middle" font-size="16" fill="currentColor">↓ 脱水縮合</text>
+        <text x="260" y="152" text-anchor="middle" font-size="13" fill="currentColor">グリシルアラニン（ジペプチド）＋ H₂O</text>
+        <text x="260" y="182" text-anchor="middle" font-size="14" fill="currentColor">H₂N−CH₂−CO−NH−CH(CH₃)−COOH</text>
+        <text x="260" y="202" text-anchor="middle" font-size="12" fill="currentColor">中央の −CO−NH− がペプチド結合</text>
+      </svg>
+      <p>ペプチド結合の形成。カルボキシ基側の OH とアミノ基側の H が水として取れ、−CO−NH− でつながります。逆向きにつないだアラニルグリシンは別の化合物です。</p>
+    </div>
+    <h3>タンパク質の構造 ― 一次から四次まで</h3>
+    <ul>
+      <li><strong>一次構造</strong>：アミノ酸がペプチド結合でつながった<strong>配列の順序</strong>そのもの</li>
+      <li><strong>二次構造</strong>：ペプチド結合どうしの水素結合でできる部分的な折りたたみ。らせん状の<strong>α-ヘリックス</strong>と、折り重なった<strong>β-シート</strong>が代表例</li>
+      <li><strong>三次構造</strong>：側鎖どうしの相互作用（水素結合、イオン結合、疎水性の集まり、−S−S− のジスルフィド結合など）でポリペプチド全体が折りたたまれた立体構造</li>
+      <li><strong>四次構造</strong>：三次構造をもったポリペプチドが複数集まってできる構造。例：ヘモグロビンは4本のポリペプチドからなる</li>
+    </ul>
+    <p>タンパク質の働きは立体構造で決まります。ところが、加熱や酸・塩基、重金属イオンなどによって水素結合などの弱い相互作用が切れると、立体構造が崩れて性質が変わります。これを<strong>変性</strong>といいます。変性では一次構造（ペプチド結合の配列）は原則として切れません。ゆで卵が加熱で固まり冷やしても戻らないのは、卵白のタンパク質の変性の身近な例です。</p>
+    <h3>タンパク質・アミノ酸の検出反応</h3>
+    <ul>
+      <li><strong>ビウレット反応</strong>：水酸化ナトリウム水溶液と硫酸銅(II)水溶液を加えると、ペプチド結合を2つ以上もつペプチドやタンパク質が<strong>赤紫色</strong>を示す。タンパク質の検出の基本</li>
+      <li><strong>キサントプロテイン反応</strong>：濃硝酸を加えて加熱すると、ベンゼン環をもつアミノ酸を含むタンパク質が<strong>黄色</strong>になり、アンモニア水を加えると橙黄色に変わる</li>
+      <li><strong>ニンヒドリン反応</strong>：ニンヒドリン水溶液を加えて加熱すると、アミノ酸やタンパク質が<strong>青紫色（紫色）</strong>を示す。アミノ酸の検出に広く使う</li>
+    </ul>
+    <p class="note">※ ここで紹介する実験・製法を実際に行うときは、学校の授業や専門家の指導のもとで、安全に十分注意し、自己責任で行ってください。</p>
+  </section>
+
+  <section class="card">
+    <h2>解き方の手順</h2>
+    <ol class="steps">
+      <li><strong>構造式では α炭素を探す。</strong>−NH<sub>2</sub> と −COOH が付いた炭素が α炭素で、残りの1つが側鎖 R です。R を読み取ればアミノ酸の種類が決まります。</li>
+      <li><strong>pHの問題では電荷で考える。</strong>酸性側では −COO<sup>−</sup> が H<sup>+</sup> を受け取って陽イオンに、塩基性側では −NH<sub>3</sub><sup>+</sup> が H<sup>+</sup> を放して陰イオンに、等電点では双性イオンが中心で全体の電荷は0、と整理します。</li>
+      <li><strong>ペプチドの問題では水の数を数える。</strong>ペプチド結合1つにつき水1分子が取れます。アミノ酸 n 個が鎖状につながればペプチド結合は n−1 個、水も n−1 分子取れます。</li>
+      <li><strong>順序の入れ替えを忘れない。</strong>AとBからできるジペプチドは A−B と B−A の2種類です。種類数を聞かれたら並べ替えも数えます。</li>
+      <li><strong>変性の問題では「何が切れるか」を答える。</strong>変性で崩れるのは水素結合などによる二次〜四次構造で、ペプチド結合（一次構造）は切れない、が定番の整理です。</li>
+      <li><strong>検出反応は色と対象をセットで覚える。</strong>ビウレット反応＝赤紫色（ペプチド結合）、キサントプロテイン反応＝黄色（ベンゼン環）、ニンヒドリン反応＝青紫色（アミノ酸全般）と対応付けます。</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>例題</h2>
+    <div class="example">
+      <p class="ex-q">問題1：グリシンの水溶液について、(1) 塩酸を加えて強い酸性にしたとき、(2) 水酸化ナトリウム水溶液を加えて強い塩基性にしたとき、グリシンは主にどのようなイオンとして存在するか。それぞれの形を −NH<sub>3</sub><sup>+</sup>、−NH<sub>2</sub>、−COOH、−COO<sup>−</sup> を使って表せ。また、等電点ではどの形が中心か答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>グリシンは H<sub>2</sub>N−CH<sub>2</sub>−COOH です。(1) 酸性側では H<sup>+</sup> が多く、−COO<sup>−</sup> が H<sup>+</sup> を受け取って −COOH に戻るため、<strong><sup>+</sup>H<sub>3</sub>N−CH<sub>2</sub>−COOH（陽イオン）</strong>が中心です。(2) 塩基性側では −NH<sub>3</sub><sup>+</sup> が H<sup>+</sup> を放すため、<strong>H<sub>2</sub>N−CH<sub>2</sub>−COO<sup>−</sup>（陰イオン）</strong>が中心です。等電点では <strong><sup>+</sup>H<sub>3</sub>N−CH<sub>2</sub>−COO<sup>−</sup>（双性イオン）</strong>が中心で、全体の電荷は0です。</p>
+        <p><strong>答え：(1) 陽イオン <sup>+</sup>H<sub>3</sub>N−CH<sub>2</sub>−COOH、(2) 陰イオン H<sub>2</sub>N−CH<sub>2</sub>−COO<sup>−</sup>、等電点では双性イオン <sup>+</sup>H<sub>3</sub>N−CH<sub>2</sub>−COO<sup>−</sup>。</strong></p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題2：グリシンとアラニンからできるジペプチドは何種類あるか。また、そのうちグリシンのカルボキシ基とアラニンのアミノ基が脱水縮合したものの名称と、取れる水の分子数を答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>ジペプチドはつなぐ順序で別の化合物になります。グリシン→アラニンの順の<strong>グリシルアラニン</strong>と、アラニン→グリシンの順の<strong>アラニルグリシン</strong>の<strong>2種類</strong>です（上の図はグリシルアラニン）。ペプチド結合は1つだけできるので、脱水縮合で取れる水は<strong>1分子</strong>です。</p>
+        <p><strong>答え：2種類。グリシルアラニンで、水は1分子取れる。</strong></p>
+      </details>
+    </div>
+    <div class="example">
+      <p class="ex-q">問題3：ある試料について、(1) 水酸化ナトリウム水溶液と硫酸銅(II)水溶液を加えると赤紫色になった、(2) ニンヒドリン水溶液を加えて加熱すると青紫色になった、(3) 濃硝酸を加えて加熱すると黄色になった。これらの結果から分かることをそれぞれ答えよ。</p>
+      <details class="ans-fold">
+        <summary>答えと解説を見る</summary>
+        <p>(1) は<strong>ビウレット反応</strong>で、ペプチド結合を2つ以上もつペプチドやタンパク質が存在することが分かります。(2) は<strong>ニンヒドリン反応</strong>で、アミノ酸やタンパク質が存在することが分かります。(3) は<strong>キサントプロテイン反応</strong>で、ベンゼン環をもつアミノ酸を含むタンパク質が存在することが分かります。色と反応名と対象をセットで答えるのがポイントです。</p>
+        <p><strong>答え：(1) ビウレット反応でタンパク質（ペプチド結合）の存在、(2) ニンヒドリン反応でアミノ酸・タンパク質の存在、(3) キサントプロテイン反応でベンゼン環をもつアミノ酸を含むタンパク質の存在が分かる。</strong></p>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>現場での使われ方</h2>
+    <h3>食品 ― うま味と栄養、加熱調理</h3>
+    <p>グルタミン酸のナトリウム塩はうま味調味料として実際に使われ、昆布のうま味成分としても知られます。また、卵や肉を加熱するとタンパク質が変性して固まる性質は、ゆで卵や焼き肉など日常の調理そのものです。食品表示のタンパク質含有量の測定にも、窒素量からタンパク質量を換算する方法が実務で使われています。</p>
+    <h3>医療 ― インスリンと酵素、検査</h3>
+    <p>糖尿病の治療に使うインスリンは、アミノ酸51個からなるペプチド（タンパク質）で、現在は遺伝子組換え技術によって生産されています。体内の化学反応を進める酵素もタンパク質であり、温度やpHで変性して働きを失う性質が、発熱時の体調変化や酵素を使う検査・医薬品の保管条件（冷蔵など）の理由になっています。血液や尿中のタンパク質の検出には、ビウレット反応の原理を応用した検査法が実際に使われています。</p>
+    <h3>分析 ― アミノ酸分析と指紋検出</h3>
+    <p>ニンヒドリン反応は、アミノ酸分析装置でアミノ酸を定量する検出法として実用化されているほか、汗に含まれるアミノ酸と反応して指紋を浮かび上がらせる指紋検出にも使われています。等電点の違いを利用してタンパク質を分ける等電点電気泳動も、生化学の実験室で日常的に使われる分離法です。</p>
+  </section>
+
+  <section class="card">
+    <h2>考え出した人</h2>
+    <p class="who"><strong>エミール・フィッシャー</strong>（1852〜1919、ドイツの化学者）、<strong>フレデリック・サンガー</strong>（1918〜2013、イギリスの生化学者）</p>
+    <p>ドイツの化学者<strong>エミール・フィッシャー</strong>は、アミノ酸どうしが脱水縮合でつながる結合をペプチド結合と名付け、実際にアミノ酸を多数つないだペプチドを合成して、タンパク質がアミノ酸の鎖であることを示しました。糖やアミノ酸の研究で1902年にノーベル化学賞を受賞しています。イギリスの生化学者<strong>フレデリック・サンガー</strong>は1950年代に、インスリンのアミノ酸配列（一次構造）を世界で初めて完全に決定し、タンパク質ごとに決まった配列があることを証明しました。この業績で1958年にノーベル化学賞を受賞し、のちにDNAの塩基配列の決定法でも2度目のノーベル化学賞を受賞しています。</p>
+  </section>
+
+  <section class="card">
+    <h2>関連項目</h2>
+    <p>高分子の入口は<a href="polymers-basics.html">高分子化合物と重合の基礎</a>、アミノ酸のカルボキシ基の性質は<a href="carboxylic-acids-esters.html">カルボン酸とエステル</a>、タンパク質の一種である酵素は<a href="enzymes.html">酵素の働き</a>が役立ちます。もう1つの生体高分子は<a href="nucleic-acids-dna.html">核酸とDNA</a>、食と栄養の化学は<a href="food-chemistry.html">食品の化学</a>へ進んでください。<a href="./">化学ツール集トップへ戻る</a></p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="note">このサイトのツールは非公式の個人ツールです。計算結果は目安であり、正確性を保証するものではありません。大事な判断の前に、公式の情報もあわせてご確認ください。</p>
+    <p class="credit">著作権は andy に帰属します。無断転載を禁止します（リンクは自由です）。埋め込みリンクは動作を保証できないため禁止です。プログラムの複製・転用も禁止します。｜© 2026 andy（わんこ堂）</p>
+    <p class="credit">制作：andy（わんこ堂）× 熊八 🐾（Muse Spark）</p>
+  </div>
+  <p class="pp-footer"><button type="button" class="pp-link" data-pp-open>プライバシーポリシー</button></p>
+</footer>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll("[data-ido-theme]");
+  function sync(){var cur=document.documentElement.dataset.theme||"kuma";btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.idoTheme===cur));});}
+  btns.forEach(function(b){b.addEventListener("click",function(){document.documentElement.dataset.theme=b.dataset.idoTheme;try{localStorage.setItem("ido_theme_v1",b.dataset.idoTheme);}catch(e){}sync();});});
+  sync();
+})();
+</script>
+<script src="../kumagames.js"></script>
+<div class="pp-overlay" data-pp-overlay>
+  <div class="pp-dialog privacy-policy" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+    <div class="pp-scroll">
+      <h2 id="ppTitle">プライバシーポリシー</h2>
+      <p>当サイト「化学ツール集」は、個人を特定する情報を収集しません。</p>
+      <p><strong>入力データについて：</strong>ツールに入力した内容は、お使いの端末のブラウザの中だけで処理され、サーバーへ送信されることはありません。ツールによっては、入力内容や設定を、お使いのブラウザの localStorage にのみ保存する場合があります。</p>
+      <p><strong>広告について：</strong>当サイトは、第三者配信の広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため Cookie を使用することがあります。パーソナライズ広告は、Google の「広告設定」から無効にできます。</p>
+      <p><strong>アクセス解析について：</strong>当サイトは、アクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスは Cookie を使用してサイトの利用状況を収集しますが、個人を特定する情報は含まれません。</p>
+      <p><strong>免責事項：</strong>計算結果や占い結果は目安・娯楽であり、実際の料金や判断は各事業者・専門家の公式情報をご確認ください。当サイトの利用によって生じた損害について、運営者は責任を負いません。</p>
+      <p><strong>お問い合わせ：</strong>当サイトは個人運営のツールサイトです。</p>
+      <p>制定日：2026年11月15日</p>
+    </div>
+    <div class="pp-actions">
+      <div class="pp-btn-row">
+        <button type="button" class="pp-close-btn" data-pp-close>閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../policy-snippet.js"></script>
+</body>
+</html>
